@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Encrypt Attributes — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-livemd">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/how-to/encrypt-attributes.livemd#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Encrypt Attributes</span>
+  </h1>
+
+    <div class="livebook-badge-container">
+      <a href="#" class="livebook-badge">
+        <img src="https://livebook.dev/badge/v1/blue.svg" alt="Run in Livebook" width="150" />
+      </a>
+    </div>
+
+<pre><code class="makeup elixir" translate="no"><span class="nc">Mix</span><span class="o">.</span><span class="n">install</span><span class="p" data-group-id="4256643658-1">(</span><span class="p" data-group-id="4256643658-2">[</span><span class="p" data-group-id="4256643658-3">{</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 3.0&quot;</span><span class="p" data-group-id="4256643658-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4256643658-4">{</span><span class="ss">:ash_cloak</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="4256643658-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4256643658-5">{</span><span class="ss">:cloak</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.1&quot;</span><span class="p" data-group-id="4256643658-5">}</span><span class="p" data-group-id="4256643658-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">consolidate_protocols</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="p" data-group-id="4256643658-1">)</span><span class="w">
+
+</span><span class="nc">Application</span><span class="o">.</span><span class="n">put_env</span><span class="p" data-group-id="4256643658-6">(</span><span class="ss">:my_app</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Vault</span><span class="p">,</span><span class="w">
+  </span><span class="ss">ciphers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4256643658-7">[</span><span class="w">
+    </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4256643658-8">{</span><span class="w">
+      </span><span class="nc">Cloak.Ciphers.AES.GCM</span><span class="p">,</span><span class="w">
+      </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AES.GCM.V1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="nc">Base</span><span class="o">.</span><span class="n">decode64!</span><span class="p" data-group-id="4256643658-9">(</span><span class="s">&quot;ETpvtowVAL7JmcxfqJ+XVQWzKrt1ynAkC0vT7AxfyNU=&quot;</span><span class="p" data-group-id="4256643658-9">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">iv_length</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+    </span><span class="p" data-group-id="4256643658-8">}</span><span class="w">
+  </span><span class="p" data-group-id="4256643658-7">]</span><span class="w">
+</span><span class="p" data-group-id="4256643658-6">)</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Vault</span><span class="w"> </span><span class="k" data-group-id="4256643658-10">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Cloak.Vault</span><span class="p">,</span><span class="w"> </span><span class="ss">otp_app</span><span class="p">:</span><span class="w"> </span><span class="ss">:my_app</span><span class="w">
+</span><span class="k" data-group-id="4256643658-10">end</span><span class="w">
+
+</span><span class="nc">MyApp.Vault</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="4256643658-11">(</span><span class="p" data-group-id="4256643658-11">)</span></code></pre><h2 id="introduction" class="section-heading">
+  <a href="#introduction" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introduction</span>
+</h2>
+<p>When dealing with PII or other sensitive data, we often want to encrypt this data, and control access to the decrypted values.</p><p>To do this in <a href="Ash.html"><code class="inline">Ash</code></a>, we do that with <code class="inline">AshCloak</code>. See the getting started guide in <code class="inline">AshCloak</code> for installation instructions.</p><h2 id="encrypting-attributes" class="section-heading">
+  <a href="#encrypting-attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Encrypting attributes</span>
+</h2>
+<ol><li>If you have not yet, follow the getting started guide for <code class="inline">AshCloak</code> and <code class="inline">Cloak</code></li><li>Add the <code class="inline">AshCloak</code> extension to your resource</li><li>Configure the attributes that should be encrypted</li><li>Add any other additional desired configuration (provided by <code class="inline">AshCloak</code>)</li></ol><h2 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<!-- livebook:{"disable_formatting":true} --><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="k" data-group-id="4877448071-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.DataLayer.Ets</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4877448071-2">[</span><span class="nc">AshCloak</span><span class="p" data-group-id="4877448071-2">]</span><span class="w">
+
+  </span><span class="n">cloak</span><span class="w"> </span><span class="k" data-group-id="4877448071-3">do</span><span class="w">
+    </span><span class="n">vault</span><span class="w"> </span><span class="nc">MyApp.Vault</span><span class="w">
+    </span><span class="n">attributes</span><span class="w"> </span><span class="p" data-group-id="4877448071-4">[</span><span class="ss">:ssn</span><span class="p" data-group-id="4877448071-4">]</span><span class="w">
+  </span><span class="k" data-group-id="4877448071-3">end</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="4877448071-5">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:ssn</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="4877448071-5">end</span><span class="w">
+
+  </span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="4877448071-6">do</span><span class="w">
+    </span><span class="n">defaults</span><span class="w"> </span><span class="p" data-group-id="4877448071-7">[</span><span class="ss">:read</span><span class="p">,</span><span class="w"> </span><span class="ss">create</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4877448071-8">[</span><span class="ss">:ssn</span><span class="p" data-group-id="4877448071-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4877448071-9">[</span><span class="ss">:ssn</span><span class="p" data-group-id="4877448071-9">]</span><span class="p" data-group-id="4877448071-7">]</span><span class="w">
+  </span><span class="k" data-group-id="4877448071-6">end</span><span class="w">
+</span><span class="k" data-group-id="4877448071-1">end</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Domain</span><span class="w"> </span><span class="k" data-group-id="4877448071-10">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">validate_config_inclusion?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="4877448071-11">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="k" data-group-id="4877448071-12">do</span><span class="w">
+      </span><span class="n">define</span><span class="p" data-group-id="4877448071-13">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4877448071-14">[</span><span class="ss">:ssn</span><span class="p" data-group-id="4877448071-14">]</span><span class="p" data-group-id="4877448071-13">)</span><span class="w">
+      </span><span class="n">define</span><span class="p" data-group-id="4877448071-15">(</span><span class="ss">:update_user</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4877448071-16">[</span><span class="ss">:ssn</span><span class="p" data-group-id="4877448071-16">]</span><span class="p" data-group-id="4877448071-15">)</span><span class="w">
+      </span><span class="n">define</span><span class="p" data-group-id="4877448071-17">(</span><span class="ss">:list_users</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:read</span><span class="p" data-group-id="4877448071-17">)</span><span class="w">
+    </span><span class="k" data-group-id="4877448071-12">end</span><span class="w">
+  </span><span class="k" data-group-id="4877448071-11">end</span><span class="w">
+</span><span class="k" data-group-id="4877448071-10">end</span></code></pre><pre><code class="makeup output" translate="no"><span class="p" data-group-id="0990621104-1">{</span><span class="ss">:module</span><span class="p">,</span><span class="w"> </span><span class="nc">Domain</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0990621104-2">&lt;&lt;</span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">79</span><span class="p">,</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="0990621104-2">&gt;&gt;</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="0990621104-3">[</span><span class="w">
+   </span><span class="nc">Ash.Domain.Dsl.Resources.Resource</span><span class="p">,</span><span class="w">
+   </span><span class="nc">Ash.Domain.Dsl.Resources.Options</span><span class="p">,</span><span class="w">
+   </span><span class="nc">Ash.Domain.Dsl</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="0990621104-4">%{</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0990621104-5">[</span><span class="p" data-group-id="0990621104-5">]</span><span class="p">,</span><span class="w"> </span><span class="ss">entities</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0990621104-6">[</span><span class="n">...</span><span class="p" data-group-id="0990621104-6">]</span><span class="p" data-group-id="0990621104-4">}</span><span class="p">,</span><span class="w">
+   </span><span class="nc">Ash.Domain.Dsl</span><span class="p">,</span><span class="w">
+   </span><span class="nc">Ash.Domain.Dsl.Resources.Options</span><span class="p">,</span><span class="w">
+   </span><span class="n">...</span><span class="w">
+ </span><span class="p" data-group-id="0990621104-3">]</span><span class="p" data-group-id="0990621104-1">}</span></code></pre><h2 id="data-is-encrypted-when-modified-and-is-not-displayed-when-inspecting" class="section-heading">
+  <a href="#data-is-encrypted-when-modified-and-is-not-displayed-when-inspecting" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Data is encrypted when modified and is <em>not displayed</em> when inspecting.</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Domain</span><span class="o">.</span><span class="n">create_user!</span><span class="p" data-group-id="5398179767-1">(</span><span class="s">&quot;111-11-1111&quot;</span><span class="p" data-group-id="5398179767-1">)</span></code></pre><pre><code class="makeup output" translate="no"><span class="p" data-group-id="8789812904-1">#</span><span class="nc" data-group-id="8789812904-1">User</span><span class="p" data-group-id="8789812904-1">&lt;</span><span class="w">
+  </span><span class="ss">__meta__</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8789812904-2">#</span><span class="nc" data-group-id="8789812904-2">Ecto.Schema.Metadata</span><span class="p" data-group-id="8789812904-2">&lt;</span><span class="ss">:loaded</span><span class="p" data-group-id="8789812904-2">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bc5284fe-294a-485e-8585-06130a4bca4e&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">aggregates</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8789812904-3">%{</span><span class="p" data-group-id="8789812904-3">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">calculations</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8789812904-4">%{</span><span class="p" data-group-id="8789812904-4">}</span><span class="p">,</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+</span><span class="p" data-group-id="8789812904-1">&gt;</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># AshCloak turned ssn into a calculation</span><span class="w">
+</span><span class="n">user</span><span class="o">.</span><span class="n">ssn</span></code></pre><pre><code class="makeup output" translate="no"><span class="p" data-group-id="0474416421-1">#</span><span class="nc" data-group-id="0474416421-1">Ash.NotLoaded</span><span class="p" data-group-id="0474416421-1">&lt;</span><span class="ss">:calculation</span><span class="p">,</span><span class="w"> </span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="ss">:ssn</span><span class="p" data-group-id="0474416421-1">&gt;</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># Load the value to decrypt it on-demand</span><span class="w">
+</span><span class="nc">Ash</span><span class="o">.</span><span class="n">load!</span><span class="p" data-group-id="9959481017-1">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="ss">:ssn</span><span class="p" data-group-id="9959481017-1">)</span><span class="o">.</span><span class="n">ssn</span></code></pre><pre><code class="makeup output" translate="no"><span class="s">&quot;111-11-1111&quot;</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="authorize-access-to-resources.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Authorize Access to Resources
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="prevent-concurrent-writes.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Prevent concurrent writes
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/how-to/encrypt-attributes.livemd">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

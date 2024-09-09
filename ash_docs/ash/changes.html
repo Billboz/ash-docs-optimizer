@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Changes — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/resources/changes.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Changes</span>
+  </h1>
+
+<p>Changes are the primary way of customizing create/update/destroy action behavior. If you are familiar with <a href="https://hexdocs.pm/plug/1.16.1/Plug.html"><code class="inline">Plug</code></a>, you can think of an <a href="Ash.Resource.Change.html"><code class="inline">Ash.Resource.Change</code></a> as the equivalent of a <a href="https://hexdocs.pm/plug/1.16.1/Plug.html"><code class="inline">Plug</code></a> for changesets. At its most basic, a change will take a changeset and return a new changeset. Changes can be simple, like setting or modifying an attribute value, or more complex, attaching hooks to be executed within the lifecycle of the action.</p><h2 id="builtin-changes" class="section-heading">
+  <a href="#builtin-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Builtin Changes</span>
+</h2>
+<p>There are a number of builtin changes that can be used, and are automatically imported into your resources. See <a href="Ash.Resource.Change.Builtins.html"><code class="inline">Ash.Resource.Change.Builtins</code></a> for more.</p><p>Some examples of usage of builtin changes</p><pre><code class="makeup elixir" translate="no"><span class="c1"># set the `owner` to the current actor</span><span class="w">
+</span><span class="n">change</span><span class="w"> </span><span class="n">relate_actor</span><span class="p" data-group-id="2818343619-1">(</span><span class="ss">:owner</span><span class="p" data-group-id="2818343619-1">)</span><span class="w">
+
+</span><span class="c1"># set `commited_at` to the current timestamp when the action is called</span><span class="w">
+</span><span class="n">change</span><span class="w"> </span><span class="n">set_attribute</span><span class="p" data-group-id="2818343619-2">(</span><span class="ss">:committed_at</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">DateTime</span><span class="o">.</span><span class="n">utc_now</span><span class="o">/</span><span class="mi">0</span><span class="p" data-group-id="2818343619-2">)</span><span class="w">
+
+</span><span class="c1"># optimistic lock using the `version` attribute</span><span class="w">
+</span><span class="n">change</span><span class="w"> </span><span class="n">optimistic_lock</span><span class="p" data-group-id="2818343619-3">(</span><span class="ss">:version</span><span class="p" data-group-id="2818343619-3">)</span></code></pre><h2 id="custom-changes" class="section-heading">
+  <a href="#custom-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Custom Changes</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Changes.Slugify</span><span class="w"> </span><span class="k" data-group-id="1536385054-1">do</span><span class="w">
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.Change</span><span class="w">
+
+  </span><span class="c1"># transform and validate opts</span><span class="w">
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="1536385054-2">(</span><span class="n">opts</span><span class="p" data-group-id="1536385054-2">)</span><span class="w"> </span><span class="k" data-group-id="1536385054-3">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">is_atom</span><span class="p" data-group-id="1536385054-4">(</span><span class="n">opts</span><span class="p" data-group-id="1536385054-5">[</span><span class="ss">:attribute</span><span class="p" data-group-id="1536385054-5">]</span><span class="p" data-group-id="1536385054-4">)</span><span class="w"> </span><span class="k" data-group-id="1536385054-6">do</span><span class="w">
+      </span><span class="p" data-group-id="1536385054-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="1536385054-7">}</span><span class="w">
+    </span><span class="k" data-group-id="1536385054-6">else</span><span class="w">
+      </span><span class="p" data-group-id="1536385054-8">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;attribute must be an atom!&quot;</span><span class="p" data-group-id="1536385054-8">}</span><span class="w">
+    </span><span class="k" data-group-id="1536385054-6">end</span><span class="w">
+  </span><span class="k" data-group-id="1536385054-3">end</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">change</span><span class="p" data-group-id="1536385054-9">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="c">_context</span><span class="p" data-group-id="1536385054-9">)</span><span class="w"> </span><span class="k" data-group-id="1536385054-10">do</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">fetch_change</span><span class="p" data-group-id="1536385054-11">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="1536385054-12">[</span><span class="ss">:attribute</span><span class="p" data-group-id="1536385054-12">]</span><span class="p" data-group-id="1536385054-11">)</span><span class="w"> </span><span class="k" data-group-id="1536385054-13">do</span><span class="w">
+      </span><span class="p" data-group-id="1536385054-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="1536385054-14">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="n">slug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">String</span><span class="o">.</span><span class="n">replace</span><span class="p" data-group-id="1536385054-15">(</span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="sr">~r/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p" data-group-id="1536385054-15">)</span><span class="w">
+        </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">force_change_attribute</span><span class="p" data-group-id="1536385054-16">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="1536385054-17">[</span><span class="ss">:attribute</span><span class="p" data-group-id="1536385054-17">]</span><span class="p">,</span><span class="w"> </span><span class="n">slug</span><span class="p" data-group-id="1536385054-16">)</span><span class="w">
+      </span><span class="ss">:error</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="n">changeset</span><span class="w">
+    </span><span class="k" data-group-id="1536385054-13">end</span><span class="w">
+  </span><span class="k" data-group-id="1536385054-10">end</span><span class="w">
+</span><span class="k" data-group-id="1536385054-1">end</span></code></pre><p>This could then be used in a resource via:</p><pre><code class="makeup elixir" translate="no"><span class="n">change</span><span class="w"> </span><span class="p" data-group-id="0454986622-1">{</span><span class="nc">MyApp.Changes.Slugify</span><span class="p">,</span><span class="w"> </span><span class="ss">attribute</span><span class="p">:</span><span class="w"> </span><span class="ss">:foo</span><span class="p" data-group-id="0454986622-1">}</span></code></pre><h2 id="anonymous-function-changes" class="section-heading">
+  <a href="#anonymous-function-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Anonymous Function Changes</span>
+</h2>
+<p>You can also use anonymous functions for changes. Keep in mind, these cannot be made atomic, or support batching. This is great for prototyping, but we generally recommend using a module, both for organizational purposes, and to allow adding atomic/batch behavior.</p><pre><code class="makeup elixir" translate="no"><span class="n">change</span><span class="w"> </span><span class="k" data-group-id="5532286180-1">fn</span><span class="w"> </span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="c">_context</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="c1"># put your code here</span><span class="w">
+</span><span class="k" data-group-id="5532286180-1">end</span></code></pre><h2 id="where" class="section-heading">
+  <a href="#where" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Where</span>
+</h2>
+<p>The <code class="inline">where</code> can be used to perform changes conditionally. This functions by running the validations in the <code class="inline">where</code>, and if the validation returns an error, we discard the error and skip the operation. This means that even custom validations can be used in conditions.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">change</span><span class="w"> </span><span class="p" data-group-id="7189234971-1">{</span><span class="nc">Slugify</span><span class="p">,</span><span class="w"> </span><span class="ss">attribute</span><span class="p">:</span><span class="w"> </span><span class="ss">:foo</span><span class="p" data-group-id="7189234971-1">}</span><span class="w"> </span><span class="k" data-group-id="7189234971-2">do</span><span class="w">
+  </span><span class="n">where</span><span class="w"> </span><span class="p" data-group-id="7189234971-3">[</span><span class="n">attribute_equals</span><span class="p" data-group-id="7189234971-4">(</span><span class="ss">:slugify</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7189234971-4">)</span><span class="p" data-group-id="7189234971-3">]</span><span class="w">
+</span><span class="k" data-group-id="7189234971-2">end</span></code></pre><h2 id="action-vs-global-changes" class="section-heading">
+  <a href="#action-vs-global-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Action vs Global Changes</span>
+</h2>
+<p>You can place a change on any create, update, or destroy action. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="1386229652-1">do</span><span class="w">
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create</span><span class="w"> </span><span class="k" data-group-id="1386229652-2">do</span><span class="w">
+    </span><span class="n">change</span><span class="w"> </span><span class="p" data-group-id="1386229652-3">{</span><span class="nc">Slugify</span><span class="p">,</span><span class="w"> </span><span class="ss">attribute</span><span class="p">:</span><span class="w"> </span><span class="ss">:name</span><span class="p" data-group-id="1386229652-3">}</span><span class="w">
+  </span><span class="k" data-group-id="1386229652-2">end</span><span class="w">
+</span><span class="k" data-group-id="1386229652-1">end</span></code></pre><p>Or you can use the global changes block to apply to all actions of a given type. Where statements can be used in both cases. Use <code class="inline">on</code> to determine the types of actions the validation runs on. By default, it only runs on create and update actions.</p><pre><code class="makeup elixir" translate="no"><span class="n">changes</span><span class="w"> </span><span class="k" data-group-id="7120197108-1">do</span><span class="w">
+  </span><span class="n">change</span><span class="w"> </span><span class="p" data-group-id="7120197108-2">{</span><span class="nc">Slugify</span><span class="p">,</span><span class="w"> </span><span class="ss">attribute</span><span class="p">:</span><span class="w"> </span><span class="ss">:name</span><span class="p" data-group-id="7120197108-2">}</span><span class="w"> </span><span class="k" data-group-id="7120197108-3">do</span><span class="w">
+    </span><span class="n">on</span><span class="w"> </span><span class="p" data-group-id="7120197108-4">[</span><span class="ss">:create</span><span class="p" data-group-id="7120197108-4">]</span><span class="w">
+  </span><span class="k" data-group-id="7120197108-3">end</span><span class="w">
+</span><span class="k" data-group-id="7120197108-1">end</span></code></pre><p>The changes section allows you to add changes across multiple actions of a resource.</p><blockquote><h3 id="running-on-destroy-actions" class="warning section-heading">
+  <a href="#running-on-destroy-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Running on destroy actions</span>
+</h3>
+<p>By default, changes in the global <code class="inline">changes</code> block will run on create and update only. Many changes don't make sense in the context of destroys. To make them run on destroy, use <code class="inline">on: [:create, :update, :destroy]</code></p></blockquote><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">changes</span><span class="w"> </span><span class="k" data-group-id="1596152812-1">do</span><span class="w">
+  </span><span class="n">change</span><span class="w"> </span><span class="n">relate_actor</span><span class="p" data-group-id="1596152812-2">(</span><span class="ss">:owner</span><span class="p" data-group-id="1596152812-2">)</span><span class="w">
+  </span><span class="n">change</span><span class="w"> </span><span class="n">set_attribute</span><span class="p" data-group-id="1596152812-3">(</span><span class="ss">:committed_at</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">DateTime</span><span class="o">.</span><span class="n">utc_now</span><span class="o">/</span><span class="mi">0</span><span class="p" data-group-id="1596152812-3">)</span><span class="w">
+  </span><span class="n">change</span><span class="w"> </span><span class="n">optimistic_lock</span><span class="p" data-group-id="1596152812-4">(</span><span class="ss">:version</span><span class="p" data-group-id="1596152812-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1596152812-5">[</span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="p" data-group-id="1596152812-5">]</span><span class="w">
+  </span><span class="n">change</span><span class="w"> </span><span class="p" data-group-id="1596152812-6">{</span><span class="nc">Slugify</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1596152812-7">[</span><span class="ss">attribute</span><span class="p">:</span><span class="w"> </span><span class="ss">:foo</span><span class="p" data-group-id="1596152812-7">]</span><span class="p" data-group-id="1596152812-6">}</span><span class="p">,</span><span class="w"> </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+</span><span class="k" data-group-id="1596152812-1">end</span></code></pre><h2 id="atomic-changes" class="section-heading">
+  <a href="#atomic-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Atomic Changes</span>
+</h2>
+<p>To make a change atomic, you have to implement the <a href="Ash.Resource.Change.html#c:atomic/3"><code class="inline">Ash.Resource.Change.atomic/3</code></a> callback. This callback returns a map of changes to attributes that should be changed atomically. We will also honor any <a href="Ash.Resource.Change.html#c:after_batch/3"><code class="inline">Ash.Resource.Change.after_batch/3</code></a> functionality to run code after atomic changes have been applied (only if <code class="inline">atomic/3</code> callback has also been defined). Note that <a href="Ash.Resource.Change.html#c:before_batch/3"><code class="inline">Ash.Resource.Change.before_batch/3</code></a> is not supported in this scenario and will be ignored.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Changes.Slugify</span><span class="w"> </span><span class="k" data-group-id="1526455005-1">do</span><span class="w">
+  </span><span class="c1"># transform and validate opts</span><span class="w">
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.Change</span><span class="w">
+
+  </span><span class="n">...</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">atomic</span><span class="p" data-group-id="1526455005-2">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="1526455005-2">)</span><span class="w"> </span><span class="k" data-group-id="1526455005-3">do</span><span class="w">
+    </span><span class="p" data-group-id="1526455005-4">{</span><span class="ss">:atomic</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1526455005-5">%{</span><span class="w">
+      </span><span class="n">opts</span><span class="p" data-group-id="1526455005-6">[</span><span class="ss">:attribute</span><span class="p" data-group-id="1526455005-6">]</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="1526455005-7">(</span><span class="w">
+        </span><span class="n">fragment</span><span class="p" data-group-id="1526455005-8">(</span><span class="s">&quot;regexp_replace(?, ?, ?)&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">^</span><span class="n">ref</span><span class="p" data-group-id="1526455005-9">(</span><span class="n">opts</span><span class="p" data-group-id="1526455005-10">[</span><span class="ss">:attribute</span><span class="p" data-group-id="1526455005-10">]</span><span class="p" data-group-id="1526455005-9">)</span><span class="p">,</span><span class="w"> </span><span class="sr">~r/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p" data-group-id="1526455005-8">)</span><span class="w">
+      </span><span class="p" data-group-id="1526455005-7">)</span><span class="w">
+    </span><span class="p" data-group-id="1526455005-5">}</span><span class="p" data-group-id="1526455005-4">}</span><span class="w">
+  </span><span class="k" data-group-id="1526455005-3">end</span><span class="w">
+</span><span class="k" data-group-id="1526455005-1">end</span></code></pre><p>In some cases, changes operate only on arguments or context, or otherwise can do their work regardless of atomicity. In these cases, you can make your atomic callback call the <code class="inline">change/3</code> function</p><pre><code class="makeup elixir" translate="no"><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">atomic</span><span class="p" data-group-id="1199896029-1">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="1199896029-1">)</span><span class="w"> </span><span class="k" data-group-id="1199896029-2">do</span><span class="w">
+  </span><span class="p" data-group-id="1199896029-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">change</span><span class="p" data-group-id="1199896029-4">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="1199896029-4">)</span><span class="p" data-group-id="1199896029-3">}</span><span class="w">
+</span><span class="k" data-group-id="1199896029-2">end</span></code></pre><p>In other cases, a change may not be necessary in a fully atomic action. For this, you can simply return <code class="inline">:ok</code></p><pre><code class="makeup elixir" translate="no"><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">atomic</span><span class="p" data-group-id="9079185591-1">(</span><span class="c">_changeset</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="c">_context</span><span class="p" data-group-id="9079185591-1">)</span><span class="w"> </span><span class="k" data-group-id="9079185591-2">do</span><span class="w">
+  </span><span class="ss">:ok</span><span class="w">
+</span><span class="k" data-group-id="9079185591-2">end</span></code></pre><h2 id="batches" class="section-heading">
+  <a href="#batches" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Batches</span>
+</h2>
+<p>Changes can support being run on batches of changesets, using the <a href="Ash.Resource.Change.html#c:batch_change/3"><code class="inline">Ash.Resource.Change.batch_change/3</code></a>, <a href="Ash.Resource.Change.html#c:before_batch/3"><code class="inline">Ash.Resource.Change.before_batch/3</code></a>, and <a href="Ash.Resource.Change.html#c:after_batch/3"><code class="inline">Ash.Resource.Change.after_batch/3</code></a> callbacks.</p><blockquote><h3 id="when-do-we-use-batch-callbacks" class="warning section-heading">
+  <a href="#when-do-we-use-batch-callbacks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">When do we use batch callbacks?</span>
+</h3>
+<p><a href="Ash.Resource.Change.html#c:batch_change/3"><code class="inline">Ash.Resource.Change.batch_change/3</code></a> must be defined for <a href="Ash.Resource.Change.html#c:before_batch/3"><code class="inline">Ash.Resource.Change.before_batch/3</code></a> and <a href="Ash.Resource.Change.html#c:after_batch/3"><code class="inline">Ash.Resource.Change.after_batch/3</code></a> to be called!</p><p>The one exception is that <code class="inline">after_batch/3</code> is called after atomic changes as well as batches, so it will be called in cases that <code class="inline">atomic/3</code> is defined. <code class="inline">before_batch/3</code> is ignored when calling changes atomically.</p></blockquote><p>For some changes, this may not be necessary at all, i.e the <code class="inline">Slugify</code> example has no benefit from batching. If no batch callbacks are added, your change will be run on a loop over the changesets. For the sake of example, however, we will show what it might look like to implement batching for our <code class="inline">Slugify</code> example.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Changes.Slugify</span><span class="w"> </span><span class="k" data-group-id="9769077531-1">do</span><span class="w">
+  </span><span class="c1"># transform and validate opts</span><span class="w">
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.Change</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="9769077531-2">(</span><span class="n">opts</span><span class="p" data-group-id="9769077531-2">)</span><span class="w"> </span><span class="k" data-group-id="9769077531-3">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">is_atom</span><span class="p" data-group-id="9769077531-4">(</span><span class="n">opts</span><span class="p" data-group-id="9769077531-5">[</span><span class="ss">:attribute</span><span class="p" data-group-id="9769077531-5">]</span><span class="p" data-group-id="9769077531-4">)</span><span class="w"> </span><span class="k" data-group-id="9769077531-6">do</span><span class="w">
+      </span><span class="p" data-group-id="9769077531-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="9769077531-7">}</span><span class="w">
+    </span><span class="k" data-group-id="9769077531-6">else</span><span class="w">
+      </span><span class="p" data-group-id="9769077531-8">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;attribute must be an atom!&quot;</span><span class="p" data-group-id="9769077531-8">}</span><span class="w">
+    </span><span class="k" data-group-id="9769077531-6">end</span><span class="w">
+  </span><span class="k" data-group-id="9769077531-3">end</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">batch_change</span><span class="p" data-group-id="9769077531-9">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="9769077531-9">)</span><span class="w"> </span><span class="k" data-group-id="9769077531-10">do</span><span class="w">
+    </span><span class="c1"># here we could run queries or do common work required</span><span class="w">
+    </span><span class="c1"># for a given batch of changesets.</span><span class="w">
+    </span><span class="c1"># in this example, however, we just return the changesets with</span><span class="w">
+    </span><span class="c1"># the change logic applied.</span><span class="w">
+    </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="9769077531-11">(</span><span class="n">changesets</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">change</span><span class="p" data-group-id="9769077531-12">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="9769077531-12">)</span><span class="p" data-group-id="9769077531-11">)</span><span class="w">
+  </span><span class="k" data-group-id="9769077531-10">end</span><span class="w">
+</span><span class="k" data-group-id="9769077531-1">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="validations.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Validations
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="preparations.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Preparations
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/resources/changes.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

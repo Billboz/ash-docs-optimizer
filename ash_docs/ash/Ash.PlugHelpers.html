@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Ash.PlugHelpers — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L2" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Ash.PlugHelpers</span> 
+    <small class="app-vsn" translate="no">(ash v3.4.8)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Helpers for working with the Plug connection.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_actor/1" data-no-tooltip translate="no">get_actor(arg1)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Retrieves the actor from the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_context/1" data-no-tooltip translate="no">get_context(arg1)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Retrieves the context from the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_tenant/1" data-no-tooltip translate="no">get_tenant(arg1)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Retrieves the tenant from the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_actor/2" data-no-tooltip translate="no">set_actor(conn, actor)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets the actor inside the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_context/2" data-no-tooltip translate="no">set_context(conn, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets the context inside the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_tenant/2" data-no-tooltip translate="no">set_tenant(conn, tenant)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets the tenant inside the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_actor/2" data-no-tooltip translate="no">update_actor(conn, callback)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates the actor inside the Plug connection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_context/2" data-no-tooltip translate="no">update_context(conn, callback)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates the context inside the Plug connection.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="get_actor/1">
+
+  <div class="detail-header">
+    <a href="#get_actor/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_actor(arg1)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L77" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_actor(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()) :: nil | <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()</pre>
+
+      </div>
+
+<p>Retrieves the actor from the Plug connection.</p><p>The actor is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="get_actor/1-deprecation-warning" class="section-heading">
+  <a href="#get_actor/1-deprecation-warning" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Deprecation warning</span>
+</h2>
+<p>This function checks to see if the actor is already set in the <code class="inline">@actor</code>
+assign, and if so will emit a deprecation warning.</p><p>This is to allow apps using the previous method a chance to update.</p><p>Rather than setting the actor in the assigns, please use the <a href="#set_actor/2"><code class="inline">set_actor/2</code></a>
+method.</p><h2 id="get_actor/1-example" class="section-heading">
+  <a href="#get_actor/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_actor</span><span class="p" data-group-id="1855180640-1">(</span><span class="p" data-group-id="1855180640-2">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="1855180640-2">}</span><span class="p" data-group-id="1855180640-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="1855180640-3">(</span><span class="p" data-group-id="1855180640-3">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">put_private</span><span class="p" data-group-id="1855180640-4">(</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1855180640-5">%{</span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p" data-group-id="1855180640-5">}</span><span class="p" data-group-id="1855180640-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_actor</span><span class="p" data-group-id="1855180640-6">(</span><span class="n">conn</span><span class="p" data-group-id="1855180640-6">)</span><span class="w">
+</span><span class="p" data-group-id="1855180640-7">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="1855180640-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_actor</span><span class="p" data-group-id="1855180640-8">(</span><span class="p" data-group-id="1855180640-9">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="1855180640-9">}</span><span class="p" data-group-id="1855180640-8">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="1855180640-10">(</span><span class="p" data-group-id="1855180640-10">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="1855180640-11">(</span><span class="ss">:actor</span><span class="p">,</span><span class="w"> </span><span class="n">actor</span><span class="p" data-group-id="1855180640-11">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_actor</span><span class="p" data-group-id="1855180640-12">(</span><span class="n">conn</span><span class="p" data-group-id="1855180640-12">)</span><span class="w">
+</span><span class="p" data-group-id="1855180640-13">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="1855180640-13">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_context/1">
+
+  <div class="detail-header">
+    <a href="#get_context/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_context(arg1)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L218" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_context(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()) :: nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+<p>Retrieves the context from the Plug connection.</p><p>The context is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="get_context/1-example" class="section-heading">
+  <a href="#get_context/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1955787656-1">%{</span><span class="ss">fraud_score</span><span class="p">:</span><span class="w"> </span><span class="mf">0.427</span><span class="p" data-group-id="1955787656-1">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="1955787656-2">(</span><span class="p" data-group-id="1955787656-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">put_private</span><span class="p" data-group-id="1955787656-3">(</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1955787656-4">%{</span><span class="ss">context</span><span class="p">:</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="1955787656-4">}</span><span class="p" data-group-id="1955787656-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_context</span><span class="p" data-group-id="1955787656-5">(</span><span class="n">conn</span><span class="p" data-group-id="1955787656-5">)</span><span class="w">
+</span><span class="p" data-group-id="1955787656-6">%{</span><span class="ss">fraud_score</span><span class="p">:</span><span class="w"> </span><span class="mf">0.427</span><span class="p" data-group-id="1955787656-6">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_tenant/1">
+
+  <div class="detail-header">
+    <a href="#get_tenant/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_tenant(arg1)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L168" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_tenant(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Retrieves the tenant from the Plug connection.</p><p>The tenant is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="get_tenant/1-deprecation-warning" class="section-heading">
+  <a href="#get_tenant/1-deprecation-warning" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Deprecation warning</span>
+</h2>
+<p>This function checks to see if the tenant is already set in the <code class="inline">@tenant</code>
+assign, and if so will emit a deprecation warning.</p><p>This is to allow apps using the previous method a chance to update.</p><p>Rather than setting the tenant in the assigns, please use the <a href="#set_tenant/2"><code class="inline">set_tenant/2</code></a>
+method.</p><h2 id="get_tenant/1-example" class="section-heading">
+  <a href="#get_tenant/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="3424719417-1">(</span><span class="p" data-group-id="3424719417-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">put_private</span><span class="p" data-group-id="3424719417-2">(</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3424719417-3">%{</span><span class="ss">tenant</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-tenant&quot;</span><span class="p" data-group-id="3424719417-3">}</span><span class="p" data-group-id="3424719417-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">tenant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tenant</span><span class="p" data-group-id="3424719417-4">(</span><span class="n">conn</span><span class="p" data-group-id="3424719417-4">)</span><span class="w">
+</span><span class="s">&quot;my_tenant&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tenant</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="3424719417-5">(</span><span class="p" data-group-id="3424719417-5">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="3424719417-6">(</span><span class="ss">:tenant</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my-tenant&quot;</span><span class="p" data-group-id="3424719417-6">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">tenant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tenant</span><span class="p" data-group-id="3424719417-7">(</span><span class="n">conn</span><span class="p" data-group-id="3424719417-7">)</span><span class="w">
+</span><span class="s">&quot;my_tenant&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tenant</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="set_actor/2">
+
+  <div class="detail-header">
+    <a href="#set_actor/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_actor(conn, actor)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L38" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_actor(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()) :: <a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
+
+      </div>
+
+<p>Sets the actor inside the Plug connection.</p><p>The actor is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="set_actor/2-example" class="section-heading">
+  <a href="#set_actor/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_actor</span><span class="p" data-group-id="9894038313-1">(</span><span class="p" data-group-id="9894038313-2">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="9894038313-2">}</span><span class="p" data-group-id="9894038313-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="9894038313-3">(</span><span class="p" data-group-id="9894038313-3">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">set_actor</span><span class="p" data-group-id="9894038313-4">(</span><span class="n">actor</span><span class="p" data-group-id="9894038313-4">)</span><span class="w">
+</span><span class="p" data-group-id="9894038313-5">%</span><span class="nc" data-group-id="9894038313-5">Plug.Conn</span><span class="p" data-group-id="9894038313-5">{</span><span class="ss">private</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9894038313-6">%{</span><span class="ss">ash</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9894038313-7">%{</span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9894038313-8">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="9894038313-8">}</span><span class="p" data-group-id="9894038313-7">}</span><span class="p" data-group-id="9894038313-6">}</span><span class="p" data-group-id="9894038313-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="set_context/2">
+
+  <div class="detail-header">
+    <a href="#set_context/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_context(conn, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L194" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_context(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
+
+      </div>
+
+<p>Sets the context inside the Plug connection.</p><p>Context can be used to store abitrary data about the user, connection, or
+anything else you like that doesn't belong as part of the actor or tenant.</p><p>The context is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="set_context/2-example" class="section-heading">
+  <a href="#set_context/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2092504378-1">%{</span><span class="ss">fraud_score</span><span class="p">:</span><span class="w"> </span><span class="mf">0.427</span><span class="p" data-group-id="2092504378-1">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="2092504378-2">(</span><span class="p" data-group-id="2092504378-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">set_context</span><span class="p" data-group-id="2092504378-3">(</span><span class="n">context</span><span class="p" data-group-id="2092504378-3">)</span><span class="w">
+</span><span class="p" data-group-id="2092504378-4">%</span><span class="nc" data-group-id="2092504378-4">Plug.Conn</span><span class="p" data-group-id="2092504378-4">{</span><span class="ss">private</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2092504378-5">%{</span><span class="ss">ash</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2092504378-6">%{</span><span class="ss">context</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2092504378-7">%{</span><span class="ss">fraud_score</span><span class="p">:</span><span class="w"> </span><span class="mf">0.427</span><span class="p" data-group-id="2092504378-7">}</span><span class="p" data-group-id="2092504378-6">}</span><span class="p" data-group-id="2092504378-5">}</span><span class="p" data-group-id="2092504378-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="set_tenant/2">
+
+  <div class="detail-header">
+    <a href="#set_tenant/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_tenant(conn, tenant)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L130" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_tenant(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), <a href="Ash.ToTenant.html#t:t/0">Ash.ToTenant.t</a>()) :: <a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
+
+      </div>
+
+<p>Sets the tenant inside the Plug connection.</p><p>The tenant is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="set_tenant/2-example" class="section-heading">
+  <a href="#set_tenant/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="8573855381-1">(</span><span class="p" data-group-id="8573855381-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">set_tenant</span><span class="p" data-group-id="8573855381-2">(</span><span class="s">&quot;my-tenant&quot;</span><span class="p" data-group-id="8573855381-2">)</span><span class="w">
+</span><span class="p" data-group-id="8573855381-3">%</span><span class="nc" data-group-id="8573855381-3">Plug.Conn</span><span class="p" data-group-id="8573855381-3">{</span><span class="ss">private</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8573855381-4">%{</span><span class="ss">ash</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8573855381-5">%{</span><span class="ss">tenant</span><span class="p">:</span><span class="w"> </span><span class="err">&quot;</span><span class="n">my</span><span class="o">-</span><span class="n">tenant</span><span class="p" data-group-id="8573855381-5">}</span><span class="p" data-group-id="8573855381-4">}</span><span class="p" data-group-id="8573855381-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update_actor/2">
+
+  <div class="detail-header">
+    <a href="#update_actor/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_actor(conn, callback)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L107" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_actor(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), (nil | <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>() -&gt;
+                               nil | <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())) ::
+  <a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
+
+      </div>
+
+<p>Updates the actor inside the Plug connection.</p><p>The actor is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="update_actor/2-example" class="section-heading">
+  <a href="#update_actor/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_actor</span><span class="p" data-group-id="9068821045-1">(</span><span class="p" data-group-id="9068821045-2">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="9068821045-2">}</span><span class="p" data-group-id="9068821045-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="9068821045-3">(</span><span class="p" data-group-id="9068821045-3">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">put_private</span><span class="p" data-group-id="9068821045-4">(</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9068821045-5">%{</span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p" data-group-id="9068821045-5">}</span><span class="p" data-group-id="9068821045-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_actor</span><span class="p" data-group-id="9068821045-6">(</span><span class="n">conn</span><span class="p" data-group-id="9068821045-6">)</span><span class="w">
+</span><span class="p" data-group-id="9068821045-7">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p" data-group-id="9068821045-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_actor</span><span class="p" data-group-id="9068821045-8">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="9068821045-9">fn</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="9068821045-10">(</span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Marty Retro&quot;</span><span class="p" data-group-id="9068821045-10">)</span><span class="w"> </span><span class="k" data-group-id="9068821045-9">end</span><span class="p" data-group-id="9068821045-8">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_actor</span><span class="p" data-group-id="9068821045-11">(</span><span class="n">conn</span><span class="p" data-group-id="9068821045-11">)</span><span class="w">
+</span><span class="p" data-group-id="9068821045-12">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;marty@1985.retro&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Marty Retro&quot;</span><span class="p" data-group-id="9068821045-12">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_actor</span><span class="p" data-group-id="9068821045-13">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="9068821045-14">fn</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="9068821045-15">(</span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="ss">:email</span><span class="p" data-group-id="9068821045-15">)</span><span class="w"> </span><span class="k" data-group-id="9068821045-14">end</span><span class="p" data-group-id="9068821045-13">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_actor</span><span class="p" data-group-id="9068821045-16">(</span><span class="n">conn</span><span class="p" data-group-id="9068821045-16">)</span><span class="w">
+</span><span class="p" data-group-id="9068821045-17">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Marty Retro&quot;</span><span class="p" data-group-id="9068821045-17">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update_context/2">
+
+  <div class="detail-header">
+    <a href="#update_context/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_context(conn, callback)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/plug_helpers.ex#L242" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_context(<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), (nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>() -&gt; nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())) :: <a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
+
+      </div>
+
+<p>Updates the context inside the Plug connection.</p><p>The context is stored inside the <a href="https://hexdocs.pm/plug/Plug.Conn.html#module-private-fields">connection's private
+fields</a>.</p><h2 id="update_context/2-example" class="section-heading">
+  <a href="#update_context/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6461989507-1">%{</span><span class="ss">species</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Fythetropozoat&quot;</span><span class="p" data-group-id="6461989507-1">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_conn</span><span class="p" data-group-id="6461989507-2">(</span><span class="p" data-group-id="6461989507-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">put_private</span><span class="p" data-group-id="6461989507-3">(</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6461989507-4">%{</span><span class="ss">context</span><span class="p">:</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="6461989507-4">}</span><span class="p" data-group-id="6461989507-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_context</span><span class="p" data-group-id="6461989507-5">(</span><span class="n">conn</span><span class="p" data-group-id="6461989507-5">)</span><span class="w">
+</span><span class="p" data-group-id="6461989507-6">%{</span><span class="ss">fraud_score</span><span class="p">:</span><span class="w"> </span><span class="mf">0.427</span><span class="p" data-group-id="6461989507-6">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_context</span><span class="p" data-group-id="6461989507-7">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="6461989507-8">fn</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="6461989507-9">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="ss">:location</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Barnard&#39;s Loop&quot;</span><span class="p" data-group-id="6461989507-9">)</span><span class="w"> </span><span class="k" data-group-id="6461989507-8">end</span><span class="p" data-group-id="6461989507-7">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_context</span><span class="p" data-group-id="6461989507-10">(</span><span class="n">conn</span><span class="p" data-group-id="6461989507-10">)</span><span class="w">
+</span><span class="p" data-group-id="6461989507-11">%{</span><span class="ss">species</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Fythetropozoat&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">location</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Barnard&#39;s Loop&quot;</span><span class="p" data-group-id="6461989507-11">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_context</span><span class="p" data-group-id="6461989507-12">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="6461989507-13">fn</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="6461989507-14">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="ss">:fraud_score</span><span class="p" data-group-id="6461989507-14">)</span><span class="w"> </span><span class="k" data-group-id="6461989507-13">end</span><span class="p" data-group-id="6461989507-12">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_context</span><span class="p" data-group-id="6461989507-15">(</span><span class="n">conn</span><span class="p" data-group-id="6461989507-15">)</span><span class="w">
+</span><span class="p" data-group-id="6461989507-16">%{</span><span class="ss">location</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Barnard&#39;s Loop&quot;</span><span class="p" data-group-id="6461989507-16">}</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Notifiers — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/resources/notifiers.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Notifiers</span>
+  </h1>
+
+<h2 id="built-in-notifiers" class="section-heading">
+  <a href="#built-in-notifiers" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Built-in Notifiers</span>
+</h2>
+<p>Ash comes with a builtin pub_sub notifier: <a href="Ash.Notifier.PubSub.html"><code class="inline">Ash.Notifier.PubSub</code></a>. See the module documentation for more.</p><h2 id="creating-your-own-notifier" class="section-heading">
+  <a href="#creating-your-own-notifier" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Creating your own notifier</span>
+</h2>
+<p>A notifier is a simple extension that must implement a single callback <code class="inline">notify/1</code>. Notifiers do not have to implement an Ash DSL extension, but they may in order to configure how that notifier should behave. See <a href="Ash.Notifier.Notification.html"><code class="inline">Ash.Notifier.Notification</code></a> for the currently available fields on a notification.</p><p>For more information on creating a DSL extension to configure your notifier, see the docs for <a href="https://hexdocs.pm/spark/2.2.24/Spark.Dsl.Extension.html"><code class="inline">Spark.Dsl.Extension</code></a>.</p><blockquote><h3 id="notifier-performance" class="warning section-heading">
+  <a href="#notifier-performance" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Notifier performance</span>
+</h3>
+<p>Notifiers should not do intensive synchronous work. If any heavy work needs to be done, they should delegate to something else to handle the notification, like sending it to a GenServer or GenStage.</p></blockquote><h3 id="example-notifier" class="section-heading">
+  <a href="#example-notifier" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example notifier</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ExampleNotifier</span><span class="w"> </span><span class="k" data-group-id="0802217640-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Notifier</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">notify</span><span class="p" data-group-id="0802217640-2">(</span><span class="p" data-group-id="0802217640-3">%</span><span class="nc" data-group-id="0802217640-3">Ash.Notifier.Notification</span><span class="p" data-group-id="0802217640-3">{</span><span class="ss">resource</span><span class="p">:</span><span class="w"> </span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0802217640-4">%{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="p" data-group-id="0802217640-4">}</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p" data-group-id="0802217640-3">}</span><span class="p" data-group-id="0802217640-2">)</span><span class="w"> </span><span class="k" data-group-id="0802217640-5">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="k" data-group-id="0802217640-6">do</span><span class="w">
+      </span><span class="nc">Logger</span><span class="o">.</span><span class="n">info</span><span class="p" data-group-id="0802217640-7">(</span><span class="s">&quot;</span><span class="si" data-group-id="0802217640-8">#{</span><span class="n">actor</span><span class="o">.</span><span class="n">id</span><span class="si" data-group-id="0802217640-8">}</span><span class="s"> created a </span><span class="si" data-group-id="0802217640-9">#{</span><span class="n">resource</span><span class="si" data-group-id="0802217640-9">}</span><span class="s">&quot;</span><span class="p" data-group-id="0802217640-7">)</span><span class="w">
+    </span><span class="k" data-group-id="0802217640-6">else</span><span class="w">
+      </span><span class="nc">Logger</span><span class="o">.</span><span class="n">info</span><span class="p" data-group-id="0802217640-10">(</span><span class="s">&quot;A non-logged in user created a </span><span class="si" data-group-id="0802217640-11">#{</span><span class="n">resource</span><span class="si" data-group-id="0802217640-11">}</span><span class="s">&quot;</span><span class="p" data-group-id="0802217640-10">)</span><span class="w">
+    </span><span class="k" data-group-id="0802217640-6">end</span><span class="w">
+  </span><span class="k" data-group-id="0802217640-5">end</span><span class="w">
+</span><span class="k" data-group-id="0802217640-1">end</span></code></pre><h3 id="including-a-notifier-in-a-resource" class="section-heading">
+  <a href="#including-a-notifier-in-a-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Including a notifier in a resource</span>
+</h3>
+<p>If the notifier is also an extension, include it in the <code class="inline">notifiers</code> key:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyResource</span><span class="w"> </span><span class="k" data-group-id="7702619428-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">notifiers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7702619428-2">[</span><span class="nc">ExampleNotifier</span><span class="p" data-group-id="7702619428-2">]</span><span class="w">
+</span><span class="k" data-group-id="7702619428-1">end</span></code></pre><p>Configuring a notifier for a specific action or actions can be a great way to avoid complexity in the implementation of a notifier. It allows you to avoid doing things like pattern matching on the action, and treat it more like a change module, that does its work whenever it is called.</p><pre><code class="makeup elixir" translate="no"><span class="n">create</span><span class="w"> </span><span class="ss">:create</span><span class="w"> </span><span class="k" data-group-id="2910236205-1">do</span><span class="w">
+  </span><span class="n">notifiers</span><span class="w"> </span><span class="p" data-group-id="2910236205-2">[</span><span class="nc">ExampleNotifier</span><span class="p" data-group-id="2910236205-2">]</span><span class="w">
+</span><span class="k" data-group-id="2910236205-1">end</span></code></pre><p>When your notifier is not an extension, and you want it to run on all actions, include it this way to avoid unnecessary compile time dependencies:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyResource</span><span class="w"> </span><span class="k" data-group-id="4150736308-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">simple_notifiers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4150736308-2">[</span><span class="nc">ExampleNotifier</span><span class="p" data-group-id="4150736308-2">]</span><span class="w">
+</span><span class="k" data-group-id="4150736308-1">end</span></code></pre><h2 id="transactions" class="section-heading">
+  <a href="#transactions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Transactions</span>
+</h2>
+<p>Domain calls involving resources who's datalayer supports transactions (like Postgres), notifications are saved up and sent after the transaction is closed. For example, the domain call below ultimately results in many many database calls.</p><pre><code class="makeup elixir" translate="no"><span class="nc">Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="5519520452-1">(</span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5519520452-2">%{</span><span class="p" data-group-id="5519520452-2">}</span><span class="p" data-group-id="5519520452-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">manage_relationship</span><span class="p" data-group-id="5519520452-3">(</span><span class="ss">:related_posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5519520452-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="5519520452-4">]</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:append</span><span class="p" data-group-id="5519520452-3">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">manage_relationship</span><span class="p" data-group-id="5519520452-5">(</span><span class="ss">:related_posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5519520452-6">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="5519520452-6">]</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:remove</span><span class="p" data-group-id="5519520452-5">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">manage_relationship</span><span class="p" data-group-id="5519520452-7">(</span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5519520452-8">[</span><span class="mi">10</span><span class="p" data-group-id="5519520452-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:append</span><span class="p" data-group-id="5519520452-7">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="5519520452-9">(</span><span class="p" data-group-id="5519520452-9">)</span></code></pre><p><code class="inline">Ash.Changeset.manage_relationship</code> doesn't leverage bulk operations yet, so it performs the following operations:</p><ul><li>a read of the currently related posts</li><li>a read of the currently related comments</li><li>a creation of a post_link to relate to 1</li><li>a creation of a post_link to relate to 2</li><li>a creation of a post_link to relate to 3</li><li>a destruction of the post_link related to 4</li><li>a destruction of the post_link related to 5</li><li>an update to comment 10, to set its <code class="inline">post_id</code> to this post</li></ul><p>If all three of these resources have notifiers configured, we need to send a notification for each operation (notifications are not sent for reads). For data consistency reasons, if a data layer supports transactions, all writes are done in a transaction. However, if you try to read the record from the database that you have just received a notification about before the transaction has been closed, in a different process, the information will be wrong. For this reason, Ash accumulates notifications until they can be sent.</p><p>If you need to perform multiple operations against your resources in your own transaction, you will have to handle that case yourself. To support this, <a href="Ash.html#create/2"><code class="inline">Ash.create/2</code></a>, <a href="Ash.html#update/2"><code class="inline">Ash.update/2</code></a> and <a href="Ash.html#destroy/2"><code class="inline">Ash.destroy/2</code></a> support a <code class="inline">return_notifications?: true</code> option. This causes the domain call to return <code class="inline">{:ok, result, notifications}</code> in the successful case. Here is an example of how you might use it.</p><pre><code class="makeup elixir" translate="no"><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">Ash.DataLayer</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="1979243967-1">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1979243967-2">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="1979243967-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">something</span><span class="p">,</span><span class="w"> </span><span class="n">notifications1</span><span class="p" data-group-id="1979243967-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_something</span><span class="p" data-group-id="1979243967-4">(</span><span class="p" data-group-id="1979243967-4">)</span><span class="w">
+    </span><span class="p" data-group-id="1979243967-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">notifications2</span><span class="p" data-group-id="1979243967-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_another_thing</span><span class="p" data-group-id="1979243967-6">(</span><span class="n">something</span><span class="p" data-group-id="1979243967-6">)</span><span class="w">
+    </span><span class="p" data-group-id="1979243967-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">notifications3</span><span class="p" data-group-id="1979243967-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destroy_something</span><span class="p" data-group-id="1979243967-8">(</span><span class="n">something</span><span class="p" data-group-id="1979243967-8">)</span><span class="w">
+
+    </span><span class="p" data-group-id="1979243967-9">{</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="1979243967-10">(</span><span class="p" data-group-id="1979243967-11">[</span><span class="n">notifications1</span><span class="p">,</span><span class="w"> </span><span class="n">notifications2</span><span class="p">,</span><span class="w"> </span><span class="n">notifications3</span><span class="p" data-group-id="1979243967-11">]</span><span class="p" data-group-id="1979243967-10">)</span><span class="p" data-group-id="1979243967-9">}</span><span class="w">
+  </span><span class="k" data-group-id="1979243967-2">end</span><span class="p" data-group-id="1979243967-1">)</span><span class="w">
+
+</span><span class="k">case</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k" data-group-id="1979243967-12">do</span><span class="w">
+  </span><span class="p" data-group-id="1979243967-13">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">notifications</span><span class="p" data-group-id="1979243967-13">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="nc">Ash.Notifier</span><span class="o">.</span><span class="n">notify</span><span class="p" data-group-id="1979243967-14">(</span><span class="n">notifications</span><span class="p" data-group-id="1979243967-14">)</span><span class="w">
+
+     </span><span class="n">value</span><span class="w">
+  </span><span class="p" data-group-id="1979243967-15">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p" data-group-id="1979243967-15">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="n">handle_error</span><span class="p" data-group-id="1979243967-16">(</span><span class="n">error</span><span class="p" data-group-id="1979243967-16">)</span><span class="w">
+</span><span class="k" data-group-id="1979243967-12">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="identities.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Identities
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="actions.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Actions
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/resources/notifiers.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

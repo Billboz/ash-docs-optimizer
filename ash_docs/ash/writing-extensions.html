@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Writing Extensions — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/advanced/writing-extensions.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Writing Extensions</span>
+  </h1>
+
+<p>Extensions allow you to make powerful modifications to DSL entities. If you are using <code class="inline">AshPostgres</code>, <code class="inline">AshGraphql</code> or <code class="inline">AshJsonApi</code>, they are all integrated into Ash using extensions. In this guide we will build a simple extension for <a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a> that adds timestamps to your resource. We'll also show some simple patterns that can help ensure that all of your resources are using your extension.</p><h2 id="creating-an-extension" class="section-heading">
+  <a href="#creating-an-extension" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Creating an extension</span>
+</h2>
+<p>What we call an &quot;extension&quot; is typically one or more <a href="https://hexdocs.pm/spark/2.2.24/Spark.Dsl.Extension.html"><code class="inline">Spark.Dsl.Extension</code></a>, and then any additional code that is used by that extension. For example, <code class="inline">AshGraphql</code> has a domain extension called <code class="inline">AshGraphql.Domain</code>, a resource extension called <code class="inline">AshGraphql.Resource</code>, and code to connect a GraphQL schema to your resources.</p><h3 id="dsl-extension" class="section-heading">
+  <a href="#dsl-extension" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">DSL Extension</span>
+</h3>
+<p>Here we create a DSL extension called <code class="inline">MyApp.Extensions.Base</code>, and configure a single transformer, called <code class="inline">MyApp.Extensions.Base.AddTimestamps</code></p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Extensions.Base</span><span class="w"> </span><span class="k" data-group-id="3072457607-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Dsl.Extension</span><span class="p">,</span><span class="w"> </span><span class="ss">transformers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3072457607-2">[</span><span class="nc">MyApp.Extensions.Base.AddTimestamps</span><span class="p" data-group-id="3072457607-2">]</span><span class="w">
+</span><span class="k" data-group-id="3072457607-1">end</span></code></pre><h3 id="transformers" class="section-heading">
+  <a href="#transformers" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Transformers</span>
+</h3>
+<p>Transformers are all run serially against a map of data called <code class="inline">dsl_state</code>, which is the data structure that we build as we use the DSL. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="6778861458-1">do</span><span class="w">
+  </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+</span><span class="k" data-group-id="6778861458-1">end</span></code></pre><p>Would, under the hood, look something like this:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5950136031-1">%{</span><span class="w">
+  </span><span class="p" data-group-id="5950136031-2">[</span><span class="ss">:attributes</span><span class="p" data-group-id="5950136031-2">]</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="5950136031-3">%{</span><span class="ss">entities</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5950136031-4">[</span><span class="w">
+      </span><span class="p" data-group-id="5950136031-5">%</span><span class="nc" data-group-id="5950136031-5">Ash.Resource.Attribute</span><span class="p" data-group-id="5950136031-5">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="5950136031-5">}</span><span class="w">
+    </span><span class="p" data-group-id="5950136031-4">]</span><span class="w">
+  </span><span class="p" data-group-id="5950136031-3">}</span><span class="p">,</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+</span><span class="p" data-group-id="5950136031-1">}</span></code></pre><p>A transformer exposes <code class="inline">transform/1</code>, which takes the <code class="inline">dsl_state</code> and returns either <code class="inline">{:ok, dsl_state}</code> or <code class="inline">{:error, error}</code></p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Extensions.Base.AddTimestamps</span><span class="w"> </span><span class="k" data-group-id="3774315179-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Dsl.Transformer</span><span class="w">
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">Spark.Dsl.Transformer</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">transform</span><span class="p" data-group-id="3774315179-2">(</span><span class="n">dsl_state</span><span class="p" data-group-id="3774315179-2">)</span><span class="w"> </span><span class="k" data-group-id="3774315179-3">do</span><span class="w">
+    </span><span class="n">dsl_state</span><span class="w">
+    </span><span class="c1"># Ash.Resource.Builder has utilities for extending resources</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Resource.Builder</span><span class="o">.</span><span class="n">add_new_create_timestamp</span><span class="p" data-group-id="3774315179-4">(</span><span class="ss">:inserted_at</span><span class="p" data-group-id="3774315179-4">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Resource.Builder</span><span class="o">.</span><span class="n">add_new_update_timestamp</span><span class="p" data-group-id="3774315179-5">(</span><span class="ss">:updated_at</span><span class="p" data-group-id="3774315179-5">)</span><span class="w">
+  </span><span class="k" data-group-id="3774315179-3">end</span><span class="w">
+</span><span class="k" data-group-id="3774315179-1">end</span></code></pre><p>This transformer builds adds a <code class="inline">create_timestamp</code> called <code class="inline">:inserted_at</code> and an <code class="inline">update_timestamp</code> called <code class="inline">:updated_at</code>, unless they already exist.</p><h3 id="make-the-extension-configurable" class="section-heading">
+  <a href="#make-the-extension-configurable" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Make the extension configurable</span>
+</h3>
+<p>So far we've covered transformers, and using them to modify resources, but now lets say we want to make this behavior opt-out. Perhaps certain resources really shouldn't have timestamps, but we want it to be the default. Lets add a &quot;DSL Section&quot; to our extension.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Extensions.Base</span><span class="w"> </span><span class="k" data-group-id="7301696645-1">do</span><span class="w">
+  </span><span class="na">@base</span><span class="w"> </span><span class="p" data-group-id="7301696645-2">%</span><span class="nc" data-group-id="7301696645-2">Spark.Dsl.Section</span><span class="p" data-group-id="7301696645-2">{</span><span class="w">
+    </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:base</span><span class="p">,</span><span class="w">
+    </span><span class="ss">describe</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+    Configure the behavior of our base extension.
+    &quot;&quot;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">examples</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7301696645-3">[</span><span class="w">
+      </span><span class="s">&quot;&quot;&quot;
+      base do
+        timestamps? false
+      end
+      &quot;&quot;&quot;</span><span class="w">
+    </span><span class="p" data-group-id="7301696645-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7301696645-4">[</span><span class="w">
+      </span><span class="ss">timestamps?</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7301696645-5">[</span><span class="w">
+        </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:boolean</span><span class="p">,</span><span class="w">
+        </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Set to false to skip adding timestamps&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+      </span><span class="p" data-group-id="7301696645-5">]</span><span class="w">
+    </span><span class="p" data-group-id="7301696645-4">]</span><span class="w">
+  </span><span class="p" data-group-id="7301696645-2">}</span><span class="w">
+
+
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Dsl.Extension</span><span class="p">,</span><span class="w">
+    </span><span class="ss">transformers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7301696645-6">[</span><span class="nc">MyApp.Extensions.Base.AddTimestamps</span><span class="p" data-group-id="7301696645-6">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">sections</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7301696645-7">[</span><span class="na">@base</span><span class="p" data-group-id="7301696645-7">]</span><span class="w">
+</span><span class="k" data-group-id="7301696645-1">end</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Extensions.Base.Info</span><span class="w"> </span><span class="k" data-group-id="7301696645-8">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.InfoGenerator</span><span class="p">,</span><span class="w"> </span><span class="ss">extension</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Extensions.Base</span><span class="p">,</span><span class="w"> </span><span class="ss">sections</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7301696645-9">[</span><span class="ss">:base</span><span class="p" data-group-id="7301696645-9">]</span><span class="w">
+
+  </span><span class="c1"># This will define `base_timestamps?/1`.</span><span class="w">
+</span><span class="k" data-group-id="7301696645-8">end</span></code></pre><p>Now we can use this configuration in our transformer, like so:</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kd">def</span><span class="w"> </span><span class="nf">transform</span><span class="p" data-group-id="9232189214-1">(</span><span class="n">dsl_state</span><span class="p" data-group-id="9232189214-1">)</span><span class="w"> </span><span class="k" data-group-id="9232189214-2">do</span><span class="w">
+    </span><span class="c1"># Introspection functions can take a `dsl_state` *or* a module</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="nc">MyApp.Extensions.Base.Info</span><span class="o">.</span><span class="n">base_timestamps?</span><span class="p" data-group-id="9232189214-3">(</span><span class="n">dsl_state</span><span class="p" data-group-id="9232189214-3">)</span><span class="w"> </span><span class="k" data-group-id="9232189214-4">do</span><span class="w">
+      </span><span class="n">dsl_state</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Resource.Builder</span><span class="o">.</span><span class="n">add_new_create_timestamp</span><span class="p" data-group-id="9232189214-5">(</span><span class="ss">:inserted_at</span><span class="p" data-group-id="9232189214-5">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Resource.Builder</span><span class="o">.</span><span class="n">add_new_update_timestamp</span><span class="p" data-group-id="9232189214-6">(</span><span class="ss">:updated_at</span><span class="p" data-group-id="9232189214-6">)</span><span class="w">
+    </span><span class="k" data-group-id="9232189214-4">else</span><span class="w">
+      </span><span class="p" data-group-id="9232189214-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">dsl_state</span><span class="p" data-group-id="9232189214-7">}</span><span class="w">
+    </span><span class="k" data-group-id="9232189214-4">end</span><span class="w">
+  </span><span class="k" data-group-id="9232189214-2">end</span></code></pre><p>And now we have a configurable base extension! For more information on writing DSLs, see <a href="https://hexdocs.pm/spark/2.2.24/Spark.html"><code class="inline">Spark</code></a>.  <a href="https://hexdocs.pm/spark/2.2.24/Spark.html"><code class="inline">Spark</code></a> is still lacking in documentation, unfortunately, as its something that mostly the adventurous/power users work with, and they often learn by way of examples, looking at <a href="Ash.html"><code class="inline">Ash</code></a> extensions. We would like to rectify this in the future. Please reach out if you're interested in assisting with that effort!</p><h3 id="ordering-of-transformers" class="section-heading">
+  <a href="#ordering-of-transformers" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Ordering of transformers</span>
+</h3>
+<p>In this case, this transformer can run in any order. However, as we start adding transformers and/or modify the behavior of this one, we may need to ensure that our transformer runs before or after specific transformers. As of the writing of this guide, the best way to look at the list of transformers is to look at the source of the extension, and see what transformers it has and what they do. The <a href="https://github.com/ash-project/ash/blob/main/lib/ash/resource/dsl.ex">Resource DSL</a> for example.</p><p>If you need to affect the ordering, you can define <code class="inline">before?/1</code> and <code class="inline">after?/1</code> in your transformer, i.e</p><pre><code class="makeup elixir" translate="no"><span class="c1"># I go after every transformer</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">after?</span><span class="p" data-group-id="3753760998-1">(</span><span class="bp">_</span><span class="p" data-group-id="3753760998-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+
+</span><span class="c1"># except I go before `SomeOtherTransformer`</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">before?</span><span class="p" data-group-id="3753760998-2">(</span><span class="nc">SomeOtherTransformer</span><span class="p" data-group-id="3753760998-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">before?</span><span class="p" data-group-id="3753760998-3">(</span><span class="bp">_</span><span class="p" data-group-id="3753760998-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="no">false</span></code></pre><h2 id="using-your-extension" class="section-heading">
+  <a href="#using-your-extension" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using your extension</span>
+</h2>
+<p>Now it can be used in a resource:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweet</span><span class="w"> </span><span class="k" data-group-id="9697917402-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9697917402-2">[</span><span class="nc">MyApp.Extensions.Base</span><span class="p" data-group-id="9697917402-2">]</span><span class="w">
+
+  </span><span class="n">base</span><span class="w"> </span><span class="k" data-group-id="9697917402-3">do</span><span class="w">
+    </span><span class="c1"># And you can configure it like so</span><span class="w">
+    </span><span class="n">timestamps?</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="9697917402-3">end</span><span class="w">
+</span><span class="k" data-group-id="9697917402-1">end</span></code></pre><p>Your extension will automatically support autocompletion if using <code class="inline">ElixirLS</code>, showing inline documentation and type-aware auto complete as you type. For more, see <a href="development-utilities.html">Development Utilities</a></p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="multitenancy.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Multitenancy
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="test-resources.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Test Resources
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/advanced/writing-extensions.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

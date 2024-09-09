@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Actions — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/actions/actions.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Actions</span>
+  </h1>
+
+<p>In Ash, actions are the primary way to interact with your resources. There are five types of actions:</p><ul><li><a href="read-actions.html">Read</a></li><li><a href="create-actions.html">Create</a></li><li><a href="update-actions.html">Update</a></li><li><a href="destroy-actions.html">Destroy</a></li><li><a href="generic-actions.html">Generic</a></li></ul><p>All actions can be run in a transaction. Create, update and destroy actions are run in a transaction by <em>default</em>, whereas read and generic actions require opting in with <code class="inline">transaction? true</code> in the action definition. Each action has its own set of options, ways of calling it, and ways of customizing it. See the relevant guide for specifics on each action type. This topic focuses on idiomatic ways to use actions, and concepts that cross all action types.</p><h2 id="primary-actions" class="section-heading">
+  <a href="#primary-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Primary Actions</span>
+</h2>
+<p>Primary actions are a way to inform the framework which actions should be used in certain &quot;automated&quot; circumstances, or in cases where an action has not been specified. If a primary action is attempted to be used but does not exist, you will get an error about it at runtime.</p><p>The place you typically need primary actions is when <a href="relationships.html#managing-relationships">Managing Relationships</a>. When using the <code class="inline">defaults</code> option to add default actions, they are marked as primary.</p><p>A simple example where a primary action would be used:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># No action is specified, so we look for a primary read.</span><span class="w">
+</span><span class="nc">Ash</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="2626685862-1">(</span><span class="nc">Resource</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;8ba0ab56-c6e3-4ab0-9c9c-df70e9945281&quot;</span><span class="p" data-group-id="2626685862-1">)</span></code></pre><p>To mark an action as primary, add the option, i.e</p><pre><code class="makeup elixir" translate="no"><span class="n">read</span><span class="w"> </span><span class="ss">:action_name</span><span class="w"> </span><span class="k" data-group-id="4425827766-1">do</span><span class="w">
+  </span><span class="n">primary?</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="k" data-group-id="4425827766-1">end</span></code></pre><h2 id="accepting-inputs" class="section-heading">
+  <a href="#accepting-inputs" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Accepting Inputs</span>
+</h2>
+<p><a href="create-actions.html">Create</a> and <a href="update-actions.html">Update</a> actions can accept attributes as input. There are two primary ways that you annotate this.</p><h3 id="using-accept-in-specific-actions" class="section-heading">
+  <a href="#using-accept-in-specific-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using <code class="inline">accept</code> in specific actions</span>
+</h3>
+<p>Each action can define what it accepts, for example:</p><pre><code class="makeup elixir" translate="no"><span class="n">create</span><span class="w"> </span><span class="ss">:create</span><span class="w"> </span><span class="k" data-group-id="6952111807-1">do</span><span class="w">
+  </span><span class="n">accept</span><span class="w"> </span><span class="p" data-group-id="6952111807-2">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:description</span><span class="p" data-group-id="6952111807-2">]</span><span class="w">
+</span><span class="k" data-group-id="6952111807-1">end</span></code></pre><p>You could then pass in <code class="inline">%{name: &quot;a name&quot;, description: &quot;a description&quot;}</code> to this action.</p><h3 id="using-default_accept-for-all-actions" class="section-heading">
+  <a href="#using-default_accept-for-all-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using <code class="inline">default_accept</code> for all actions</span>
+</h3>
+<p>The resource can have a <code class="inline">default_accept</code>, declared in its <code class="inline">actions</code> block, which will be used as the accept list for <code class="inline">create</code> and <code class="inline">update</code> actions, if they don't define one.</p><pre><code class="makeup elixir" translate="no"><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="2721149473-1">do</span><span class="w">
+  </span><span class="n">default_accept</span><span class="w"> </span><span class="p" data-group-id="2721149473-2">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:description</span><span class="p" data-group-id="2721149473-2">]</span><span class="w">
+
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+  </span><span class="n">update</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+
+  </span><span class="n">update</span><span class="w"> </span><span class="ss">:special_update</span><span class="w"> </span><span class="k" data-group-id="2721149473-3">do</span><span class="w">
+    </span><span class="n">accept</span><span class="w"> </span><span class="p" data-group-id="2721149473-4">[</span><span class="ss">:something_else</span><span class="p" data-group-id="2721149473-4">]</span><span class="w">
+  </span><span class="k" data-group-id="2721149473-3">end</span><span class="w">
+</span><span class="k" data-group-id="2721149473-1">end</span></code></pre><p>In the example above, you can provide <code class="inline">%{name: &quot;a name&quot;, description: &quot;a description&quot;}</code> to both the <code class="inline">:create</code> and <code class="inline">:update</code> actions, but only <code class="inline">%{something_else: &quot;some_value&quot;}</code> to <code class="inline">:special_update</code>.</p><h2 id="idiomatic-actions" class="section-heading">
+  <a href="#idiomatic-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Idiomatic Actions</span>
+</h2>
+<h3 id="name-your-actions" class="section-heading">
+  <a href="#name-your-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Name Your Actions</span>
+</h3>
+<p>The intent behind Ash is <em>not</em> to have you building simple CRUD style applications. In a typical set up you may have a resource with four basic actions, there is even a shorthand to accomplish this:</p><pre><code class="makeup elixir" translate="no"><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="5782206985-1">do</span><span class="w">
+  </span><span class="n">defaults</span><span class="w"> </span><span class="p" data-group-id="5782206985-2">[</span><span class="ss">:read</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="p">,</span><span class="w"> </span><span class="ss">create</span><span class="p">:</span><span class="w"> </span><span class="ss">:*</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="ss">:*</span><span class="p" data-group-id="5782206985-2">]</span><span class="w">
+</span><span class="k" data-group-id="5782206985-1">end</span></code></pre><p>But that is just a simple way to get started, or to create resources that really don't do anything beyond those four operations. You can have <em>as many actions as you want</em>. The best designed Ash applications will have numerous actions, named after the intent behind how they are used. They won't have all reads going through a single read action, and the same goes for the other action types. The richer the actions on the resource, the better interface you can have. With that said, many resources may only have those four basic actions, especially those that are &quot;managed&quot; through some parent resource. See the guide on <a href="relationships.html#managing-relationships">Managing Relationships</a> for more.</p><h3 id="put-everything-inside-the-action" class="section-heading">
+  <a href="#put-everything-inside-the-action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Put everything inside the action</span>
+</h3>
+<p>Ash provides utilities to modify queries and changesets <em>outside</em> of the actions on the resources. This is a very important tool in our tool belt, <em>but</em> it is very easy to abuse. The intent is that as much behavior as possible is put into the action. Here is the &quot;wrong way&quot; to do it. There is a lot going on here, so don't hesitate to check out other relevant guides if you see something you don't understand.</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">top_tickets</span><span class="p" data-group-id="3351864843-1">(</span><span class="n">user_id</span><span class="p" data-group-id="3351864843-1">)</span><span class="w"> </span><span class="k" data-group-id="3351864843-2">do</span><span class="w">
+  </span><span class="nc">Ticket</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">for_read</span><span class="p" data-group-id="3351864843-3">(</span><span class="ss">:read</span><span class="p" data-group-id="3351864843-3">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3351864843-4">(</span><span class="n">priority</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p" data-group-id="3351864843-5">[</span><span class="ss">:medium</span><span class="p">,</span><span class="w"> </span><span class="ss">:high</span><span class="p" data-group-id="3351864843-5">]</span><span class="p" data-group-id="3351864843-4">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3351864843-6">(</span><span class="n">representative_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">user_id</span><span class="p" data-group-id="3351864843-6">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3351864843-7">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:open</span><span class="p" data-group-id="3351864843-7">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="3351864843-8">(</span><span class="ss">opened_at</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p" data-group-id="3351864843-8">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">limit</span><span class="p" data-group-id="3351864843-9">(</span><span class="mi">10</span><span class="p" data-group-id="3351864843-9">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="3351864843-10">(</span><span class="p" data-group-id="3351864843-10">)</span><span class="w">
+</span><span class="k" data-group-id="3351864843-2">end</span><span class="w">
+
+</span><span class="c1"># in the resource</span><span class="w">
+
+</span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="3351864843-11">do</span><span class="w"> 
+  </span><span class="n">defaults</span><span class="w"> </span><span class="p" data-group-id="3351864843-12">[</span><span class="ss">:read</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="3351864843-12">]</span><span class="w">
+</span><span class="k" data-group-id="3351864843-11">end</span></code></pre><p>And here is the &quot;right way&quot;, where the rules about getting the top tickets have been moved into the resource as a nicely named action, and included in the <code class="inline">code_interface</code> of that resource. The reality of the situation is that <code class="inline">top_tickets/1</code> is meant to be obsoleted by your Ash resource! Here is how it <em>should</em> be done.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in the resource</span><span class="w">
+
+</span><span class="n">code_interface</span><span class="w"> </span><span class="k" data-group-id="4709798177-1">do</span><span class="w">
+  </span><span class="n">define</span><span class="w"> </span><span class="ss">:top</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4709798177-2">[</span><span class="ss">:user_id</span><span class="p" data-group-id="4709798177-2">]</span><span class="w">
+</span><span class="k" data-group-id="4709798177-1">end</span><span class="w">
+
+</span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="4709798177-3">do</span><span class="w"> 
+  </span><span class="n">read</span><span class="w"> </span><span class="ss">:top</span><span class="w"> </span><span class="k" data-group-id="4709798177-4">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="ss">:uuid</span><span class="w"> </span><span class="k" data-group-id="4709798177-5">do</span><span class="w">
+      </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="k" data-group-id="4709798177-5">end</span><span class="w">
+
+    </span><span class="n">prepare</span><span class="w"> </span><span class="n">build</span><span class="p" data-group-id="4709798177-6">(</span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">sort</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4709798177-7">[</span><span class="ss">opened_at</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p" data-group-id="4709798177-7">]</span><span class="p" data-group-id="4709798177-6">)</span><span class="w">
+
+    </span><span class="n">filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="4709798177-8">(</span><span class="n">priority</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p" data-group-id="4709798177-9">[</span><span class="ss">:medium</span><span class="p">,</span><span class="w"> </span><span class="ss">:high</span><span class="p" data-group-id="4709798177-9">]</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">representative_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">arg</span><span class="p" data-group-id="4709798177-10">(</span><span class="ss">:user_id</span><span class="p" data-group-id="4709798177-10">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:open</span><span class="p" data-group-id="4709798177-8">)</span><span class="w">
+  </span><span class="k" data-group-id="4709798177-4">end</span><span class="w">
+</span><span class="k" data-group-id="4709798177-3">end</span></code></pre><p>Now, whatever code I had that would have called <code class="inline">top_tickets/1</code> can now call <code class="inline">Helpdesk.Support.Ticket.top(user.id)</code>. By doing it this way, you get the primary benefit of getting a nice simple interface to call into, but you <em>also</em> have a way to modify how the action is invoked in any way necessary, by going back to the old way of building the query manually. For example, if I also only want to see top tickets that were opened in the last 10 minutes:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ticket</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">for_read</span><span class="p" data-group-id="8890820421-1">(</span><span class="ss">:top</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8890820421-2">%{</span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8890820421-2">}</span><span class="p" data-group-id="8890820421-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="8890820421-3">(</span><span class="n">opened_at</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ago</span><span class="p" data-group-id="8890820421-4">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">:minute</span><span class="p" data-group-id="8890820421-4">)</span><span class="p" data-group-id="8890820421-3">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="8890820421-5">(</span><span class="p" data-group-id="8890820421-5">)</span></code></pre><p>That is the best of both worlds! These same lessons transfer to changeset based actions as well.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="notifiers.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Notifiers
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="read-actions.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Read Actions
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/actions/actions.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

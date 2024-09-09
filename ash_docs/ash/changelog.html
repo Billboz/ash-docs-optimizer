@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Changelog — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Changelog</span>
+  </h1>
+
+<!-- changelog --><h2 id="v3-4-8-2024-09-09" class="section-heading">
+  <a href="#v3-4-8-2024-09-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.7...v3.4.8">v3.4.8</a> (2024-09-09)</span>
+</h2>
+<h3 id="bug-fixes" class="section-heading">
+  <a href="#bug-fixes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] support passing a forbidden error for policy breakdowns per the docs</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] don't report the action as the actor for policy breakdowns</p></li><li><p>[<a href="Ash.Changeset.html"><code class="inline">Ash.Changeset</code></a>] check <code class="inline">changeset.action</code> before raising a required primary action error</p></li><li><p>[bulk actions] ensure proper return types for <code class="inline">:stream</code> strategy bulk update/destroys</p></li></ul><h2 id="v3-4-7-2024-09-06" class="section-heading">
+  <a href="#v3-4-7-2024-09-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.6...v3.4.7">v3.4.7</a> (2024-09-06)</span>
+</h2>
+<h3 id="improvements" class="section-heading">
+  <a href="#improvements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="Ash.Resource.Igniter.html"><code class="inline">Ash.Resource.Igniter</code></a>] add <code class="inline">add_bypass</code> and <code class="inline">add_policy</code> igniter utilities</li></ul><h2 id="v3-4-6-2024-09-06" class="section-heading">
+  <a href="#v3-4-6-2024-09-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.5...v3.4.6">v3.4.6</a> (2024-09-06)</span>
+</h2>
+<h3 id="bug-fixes-1" class="section-heading">
+  <a href="#bug-fixes-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[loading relationships] don't select destination attributes that don't exist</p></li><li><p>[<a href="Ash.Filter.Runtime.html"><code class="inline">Ash.Filter.Runtime</code></a>] properly pass actor when running filters at runtime</p></li><li><p>[<a href="Ash.Type.Struct.html"><code class="inline">Ash.Type.Struct</code></a>] misplaced curly bracket when handling struct type casting</p></li><li><p>[bulk/atomic updates] properly leverage atomic upgrade read action for an update action</p></li></ul><h3 id="improvements-1" class="section-heading">
+  <a href="#improvements-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] show informative error explaining the use of filter checks with create actions</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] show the actor's primary key in policy breakdowns</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] add an expanded description option to checks</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] use expanded description to display filled in filter templates in policy breakdowns</p></li><li><p>[<a href="Ash.Changeset.html"><code class="inline">Ash.Changeset</code></a> ] Add <a href="Ash.Changeset.html#is_valid/1"><code class="inline">Ash.Changeset.is_valid/1</code></a> guard. (#1437)</p></li></ul><h2 id="v3-4-5-2024-09-05" class="section-heading">
+  <a href="#v3-4-5-2024-09-05" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.4...v3.4.5">v3.4.5</a> (2024-09-05)</span>
+</h2>
+<h3 id="bug-fixes-2" class="section-heading">
+  <a href="#bug-fixes-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[update actions] fix type definition for <code class="inline">atomic_upgrade_with</code></li></ul><h2 id="v3-4-4-2024-09-05" class="section-heading">
+  <a href="#v3-4-4-2024-09-05" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.3...v3.4.4">v3.4.4</a> (2024-09-05)</span>
+</h2>
+<h2 id="v3-4-3-2024-09-04" class="section-heading">
+  <a href="#v3-4-3-2024-09-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.2...v3.4.3">v3.4.3</a> (2024-09-04)</span>
+</h2>
+<h3 id="bug-fixes-3" class="section-heading">
+  <a href="#bug-fixes-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[loading relationships] properly await tasks from lazy loading multiple relationships</li></ul><h2 id="v3-4-2-2024-09-04" class="section-heading">
+  <a href="#v3-4-2-2024-09-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.1...v3.4.2">v3.4.2</a> (2024-09-04)</span>
+</h2>
+<h3 id="bug-fixes-4" class="section-heading">
+  <a href="#bug-fixes-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[soft destroys] honor <code class="inline">return_destroyed?</code> in soft destroy actions</p></li><li><p>[<a href="Ash.Resource.Change.html"><code class="inline">Ash.Resource.Change</code></a>] correctly handle return values of batch callbacks (#1424)</p></li><li><p>[read actions] ensure that async limiter is cleared up front</p></li><li><p>[bulk creates] honor bulk upsert condition (#1432)</p></li><li><p>[bulk updates] ensure that update_defaults are set on streaming updates</p></li><li><p>[bulk actions] honor <code class="inline">skip_global_validations?</code> in bulk actions</p></li><li><p>[pagination] honor the <code class="inline">countable</code> option in pagination</p></li><li><p>[read actions] return proper data shape when doing a read in a transaction</p></li><li><p>[notifications] ensure that <code class="inline">from</code> is properly set on all notifications</p></li><li><p>[notifications] fix typo in bulk destroy not clearing ash_started_transaction state</p></li><li><p>[calculations] traverse calculated relationships when rewriting transient calculation values</p></li><li><p>[calculations] don't unload calculation dependencies when <code class="inline">lazy?</code> is set</p></li><li><p>[<a href="Ash.DataLayer.Ets.html"><code class="inline">Ash.DataLayer.Ets</code></a>] handle no_attributes when joining lateral join relationship data</p></li><li><p>[<a href="Ash.DataLayer.Ets.html"><code class="inline">Ash.DataLayer.Ets</code></a>] fix ets lateral join source field usage</p></li><li><p>[<a href="Ash.DataLayer.Ets.html"><code class="inline">Ash.DataLayer.Ets</code></a>] properly apply distinct in ets</p></li></ul><h3 id="improvements-with-backwards-compatibility-configurations" class="section-heading">
+  <a href="#improvements-with-backwards-compatibility-configurations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements with backwards compatibility configurations</span>
+</h3>
+<p>These configurations default to the current behavior, but in 4.0 (someday) will
+be removed, and the new option will be the only option.</p><ul><li>[pagination] make default page type configurable, defaulting to <code class="inline">:offset</code>.</li></ul><pre><code class="makeup elixir" translate="no"><span class="c1"># set this configuration to adopt the new preferred behavior</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:ash</span><span class="p">,</span><span class="w">
+  </span><span class="ss">default_page_type</span><span class="p">:</span><span class="w"> </span><span class="ss">:keyset</span></code></pre><ul><li>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] make read policies more consistent, always preferring to filter over raise</li></ul><p>Currently, some read actions can still return a <code class="inline">Forbidden</code> error, even
+though policies are meant to filter out records by default. Now, it will always
+filter, unless you set <code class="inline">access_type :strict</code> in the policy.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># set this configuration to adopt the new preferred behavior</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="ss">:policies</span><span class="p">,</span><span class="w">
+  </span><span class="ss">no_filter_static_forbidden_reads?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span></code></pre><h3 id="improvements-2" class="section-heading">
+  <a href="#improvements-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] show an explanation when a forbidden is because no policies applied</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] error at compile for bypasses that will have no effect</p></li><li><p>[<a href="Ash.Resource.ManualRead.html"><code class="inline">Ash.Resource.ManualRead</code></a>] add <code class="inline">load_relationships/5</code> callback to manual reads</p></li><li><p>[<a href="Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a>] add <code class="inline">uuid-v7-primary-key</code> option to <a href="Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a></p></li><li><p>[<a href="Ash.Resource.Change.CascadeUpdate.html"><code class="inline">Ash.Resource.Change.CascadeUpdate</code></a>] add cascade update built in change (#1398)</p></li><li><p>[<a href="Ash.Resource.Change.CascadeDestroy.html"><code class="inline">Ash.Resource.Change.CascadeDestroy</code></a>] add <code class="inline">read_action</code> option to <code class="inline">cascade_destroy</code></p></li><li><p>[inline aggregates] support <code class="inline">expr</code> and <code class="inline">expr_type</code> options when building aggregates</p></li><li><p>[create actions] Implement condition for upsert (#1386)</p></li><li><p>[optimization] do not add relationship filter when building relationship authorization</p></li><li><p>[optimization] don't list telemetry handlers if app is compiling</p></li><li><p>[optimization] do not call tracer <code class="inline">set_metadata</code> with span type that it ignores (#1400)</p></li><li><p>[optimization] optimize filter expr traversal</p></li><li><p>[optimization] Add a case for handling mapsets in Filter.map (#1427)</p></li><li><p>[optimization] Cache always selected fields and use mapsets for building select list (#1428)</p></li><li><p>[optimization] add pattern for Ash.Query.Call in Filter.map (#1416)</p></li><li><p>[optimization] prevent unnecessary calls to <code class="inline">Ash.load</code></p></li><li><p>[optimization] cache action known inputs individually</p></li><li><p>[optimization] cache action required inputs all together</p></li><li><p>[optimization] optimize to avoid inspects in changesets</p></li><li><p>[optimization] optimize to avoid expensive <code class="inline">String.valid?</code> check in uuid type</p></li><li><p>[optimization] add <code class="inline">async?</code> option to calculations, default to false</p></li><li><p>[optimization] optimize field checking for loading fields in query</p></li><li><p>[optimization] allow functions in tracers for lazy loading metadata</p></li><li><p>[optimization] don't start processes for single items in list</p></li><li><p>[optimization] Optimize option validation with compile time validators (#1387)</p></li></ul><h2 id="v3-4-1-2024-08-13" class="section-heading">
+  <a href="#v3-4-1-2024-08-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.4.0...v3.4.1">v3.4.1</a> (2024-08-13)</span>
+</h2>
+<h3 id="bug-fixes-5" class="section-heading">
+  <a href="#bug-fixes-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[authorization] properly pass actor, action, tenant etc. to lazy loaded relationships</li></ul><h2 id="v3-4-0-2024-08-12" class="section-heading">
+  <a href="#v3-4-0-2024-08-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.3.3...v3.4.0">v3.4.0</a> (2024-08-12)</span>
+</h2>
+<h3 id="features" class="section-heading">
+  <a href="#features" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] add policy groups</p></li><li><p>[authorization] support <code class="inline">authorize_with</code> option on <code class="inline">Ash.read</code>, allowing to error if any forbidden matching data exists</p></li><li><p>[<a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a>] Add <code class="inline">@type t</code> typespec to resource if it doesn't exist</p></li></ul><h3 id="bug-fixes-6" class="section-heading">
+  <a href="#bug-fixes-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[calculations] remove pattern match error when exceptions come from calculations</p></li><li><p>[calculations] resolve nested expression calculation references in runtime filters</p></li><li><p>[arrays] Fix error with nil value on structure types (#1380)</p></li><li><p>[bulk actions] Pass options without :templated tuple to after_batch (#1376)</p></li><li><p>[bulk actions] <code class="inline">after_batch</code> arguments for <code class="inline">bulk_create</code> with <code class="inline">return_records?</code> disabled (#1371)</p></li><li><p>[bulk actions] set <code class="inline">upsert?</code> option when managing relationships in bulk creation</p></li><li><p>[<a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a>] check for <code class="inline">nil</code> resource_calculation in <a href="Ash.Resource.html#loaded?/2"><code class="inline">Ash.Resource.loaded?/2</code></a></p></li><li><p>[<a href="Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] properly consider not-loaded record calculations as <code class="inline">:unknown</code></p></li><li><p>[atomic updates] handle <code class="inline">nil</code> in atomic array casting</p></li><li><p>[aggregates] respect previously validated-for-action query for aggregates</p></li><li><p>[<a href="Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a>] use <code class="inline">timestamps()</code> instead of <code class="inline">timestamps</code></p></li><li><p>[belongs_to relationships] prefer <code class="inline">source_attribute</code> is required, instead of relationship name</p></li></ul><h3 id="improvements-3" class="section-heading">
+  <a href="#improvements-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[performance] optimizations around allocating strings</p></li><li><p>[performance] optimizations around list operations for embedded resources</p></li><li><p>[performance] prune calculations made unnecessary by field policies</p></li><li><p>[performance] add optimized path for casting embeds when they are simple</p></li><li><p>[performance] add <code class="inline">include_embedded_source_by_default?</code> config to optimize embeds</p></li><li><p>[error messages] show proper error message when trying to accept non-writable attributes</p></li><li><p>[error messages] add &quot;hints&quot; to <code class="inline">NoSuchInput</code> errors to make any errors clearer</p></li><li><p>[<a href="Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] warn on usage of <code class="inline">== nil</code></p></li><li><p>[<a href="Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] implement <a href="Comp.html"><code class="inline">Comp</code></a> for atoms &amp; strings, comparing atoms as strings</p></li><li><p>[embedded resources] increase cases where embedded attribute can be updated atomically</p></li><li><p>[<a href="Ash.Type.Struct.html"><code class="inline">Ash.Type.Struct</code></a>] support <code class="inline">:fields</code> constraint on <code class="inline">:struct</code> type, enabling persistence</p></li><li><p>[bulk actions] Warn on bulk action <code class="inline">return_stream?</code> without any other <code class="inline">return_*?</code> options enabled. (#1370)</p></li><li><p>[calculations] ensure the called calculation function is always in the stacktrace</p></li><li><p>[dependencies] remove <code class="inline">:comparable</code> as a dependency</p></li><li><p>[<a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a>] Add default values to resulting Resource struct (#1364)</p></li></ul><h2 id="v3-3-3-2024-08-01" class="section-heading">
+  <a href="#v3-3-3-2024-08-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.3.2...v3.3.3">v3.3.3</a> (2024-08-01)</span>
+</h2>
+<h3 id="bug-fixes-7" class="section-heading">
+  <a href="#bug-fixes-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>delete ash_notifications from pdict after reading</li></ul><h2 id="v3-3-2-2024-08-01" class="section-heading">
+  <a href="#v3-3-2-2024-08-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.3.1...v3.3.2">v3.3.2</a> (2024-08-01)</span>
+</h2>
+<h3 id="bug-fixes-8" class="section-heading">
+  <a href="#bug-fixes-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[<a href="Ash.Igniter.html"><code class="inline">Ash.Igniter</code></a>] properly parse multiple occurrences of :keep arguments</p></li><li><p>[calculations] properly key nested calculations and add additional tests</p></li><li><p>[calculations] pass relationship path down when merging query loads</p></li><li><p>[<a href="Mix.Tasks.Ash.Codegen.html"><code class="inline">mix ash.codegen</code></a>] don't set <code class="inline">--name nil</code> when calling codegen tasks</p></li><li><p>[<a href="Ash.Filter.html"><code class="inline">Ash.Filter</code></a>] fix behavior of synthesized joins across data layers</p></li></ul><h3 id="improvements-4" class="section-heading">
+  <a href="#improvements-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a>] add <code class="inline">--timestamps</code> argument to add timestamps to the resource</li></ul><h2 id="v3-3-1-2024-07-30" class="section-heading">
+  <a href="#v3-3-1-2024-07-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.3.0...v3.3.1">v3.3.1</a> (2024-07-30)</span>
+</h2>
+<h3 id="bug-fixes-9" class="section-heading">
+  <a href="#bug-fixes-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[<a href="Mix.Tasks.Ash.Gen.Domain.html"><code class="inline">mix ash.gen.domain</code></a>] properly parse domain module in <a href="Mix.Tasks.Ash.Gen.Domain.html"><code class="inline">mix ash.gen.domain</code></a></p></li><li><p>[<a href="Ash.Resource.Change.html"><code class="inline">Ash.Resource.Change</code></a>, <a href="Ash.Resource.Validation.html"><code class="inline">Ash.Resource.Validation</code></a>] properly handle mixed atomic &amp; non-atomic validations/changes</p></li><li><p>[<a href="Ash.Filter.html"><code class="inline">Ash.Filter</code></a>] properly find data layer predicates when name is provided as a string</p></li><li><p>[relationships] set <code class="inline">accessing_from</code> and join read action for many_to_many relationships correctly (#1355)</p></li></ul><h3 id="improvements-5" class="section-heading">
+  <a href="#improvements-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="Ash.Resource.Change.html"><code class="inline">Ash.Resource.Change</code></a>] implement <code class="inline">change/3</code> automatically if batch callbacks are defined</li></ul><h2 id="v3-3-0-2024-07-27" class="section-heading">
+  <a href="#v3-3-0-2024-07-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.6...v3.3.0">v3.3.0</a> (2024-07-27)</span>
+</h2>
+<h3 id="features-1" class="section-heading">
+  <a href="#features-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[<a href="Ash.Type.File.html"><code class="inline">Ash.Type.File</code></a>] Add Ash.Type.File (#1337)</li></ul><h3 id="bug-fixes-10" class="section-heading">
+  <a href="#bug-fixes-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[bulk actions] ensure that statuses are set correctly on bulk actions</p></li><li><p>[bulk actions] properly transfer process context(tracers) for bulk actions</p></li><li><p>[embedded resources] properly display identity/primary key mismatch error on lists of embeds</p></li><li><p>[<a href="Ash.Type.NewType.html"><code class="inline">Ash.Type.NewType</code></a>] apply constraints to NewType even when casting an array (#1341)</p></li><li><p>[<a href="Ash.Query.html"><code class="inline">Ash.Query</code></a>] pass reuse_values? true when loading in Ash.Query.apply_to/2 (#1346)</p></li><li><p>[code interfaces] honor <code class="inline">skip_unknown_inputs</code> in code interfaces</p></li><li><p>[notifications] don't gather notifications except for in the top level transaction starter</p></li><li><p>[generic actions] support <code class="inline">skip_unknown_inputs</code> on generic actions</p></li><li><p>[atomic updates] ensure <code class="inline">changed?</code> context is set on atomic changesets (we assume it is <code class="inline">true</code>, its up to extensions to handle)</p></li><li><p>[<a href="Ash.Type.CiString.html"><code class="inline">Ash.Type.CiString</code></a>, <a href="Ash.Type.String.html"><code class="inline">Ash.Type.String</code></a>] Update string/ci_string generators to ensure min_length (#1335)</p></li><li><p>[<a href="Ash.html"><code class="inline">Ash</code></a>] handle <code class="inline">{record, action, input}</code> types in <code class="inline">Ash.can?</code></p></li><li><p>[bulk actions] only call <code class="inline">batch_change</code> if it is defined, never <code class="inline">change</code> in bulk create</p></li></ul><h3 id="improvements-6" class="section-heading">
+  <a href="#improvements-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<a href="Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a>] better positional argument handling with igniter</p></li><li><p>[<a href="Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] use <code class="inline">:utc_datetime_usec</code> for <code class="inline">now()</code> return type</p></li><li><p>[<a href="Mix.Tasks.Ash.Install.html"><code class="inline">mix ash.install</code></a>] don't install sat solver in initial installation</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] validate that a solver exists at compile time when using policies</p></li><li><p>[<a href="Ash.Type.Enum.html"><code class="inline">Ash.Type.Enum</code></a>] Expose type t() on Ash.Type.Enum implementations (#1338)</p></li><li><p>[<a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a>] add :* as a valid value in <code class="inline">skip_unknown_inputs</code></p></li><li><p>[<a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a>] add <code class="inline">skip_unknown_inputs</code> to individual actions</p></li><li><p>[embedded resources] add <code class="inline">skip_unknown_inputs</code> constraint to embedded resources</p></li><li><p>[embedded resources] automatically fall back to a default domain when working with embeds</p></li><li><p>[<a href="Ash.html"><code class="inline">Ash</code></a>] handle 3 tuple in <code class="inline">Ash.can?</code></p></li><li><p>[<a href="Ash.Error.html"><code class="inline">Ash.Error</code></a>] add <code class="inline">Ash.Error.error_descriptions</code></p></li></ul><h2 id="v3-2-6-2024-07-22" class="section-heading">
+  <a href="#v3-2-6-2024-07-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.5...v3.2.6">v3.2.6</a> (2024-07-22)</span>
+</h2>
+<h3 id="bug-fixes-11" class="section-heading">
+  <a href="#bug-fixes-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[bulk actions] fallback to <code class="inline">authorize_with</code> when authorizing bulk destroy actions</p></li><li><p>[bulk actions] don't refer to non-existent <code class="inline">batch_change/4</code></p></li></ul><h3 id="improvements-7" class="section-heading">
+  <a href="#improvements-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[bulk actions] Replace incorrect function_exported?-checks in bulk-actions, add has-defs for change modules (#1330)</li></ul><h2 id="v3-2-5-2024-07-22" class="section-heading">
+  <a href="#v3-2-5-2024-07-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.4...v3.2.5">v3.2.5</a> (2024-07-22)</span>
+</h2>
+<h3 id="bug-fixes-12" class="section-heading">
+  <a href="#bug-fixes-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[destroy actions] apply atomic validations on non-bulk destroy actions</p></li><li><p>[<a href="Ash.Policy.Info.html"><code class="inline">Ash.Policy.Info</code></a>] add default to private_fields_policy in Ash.Policy.Info (#1329)</p></li><li><p>[relating_to_actor] make <code class="inline">relating_to_actor</code> built-in-check aware of atomics</p></li><li><p>[<a href="Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] remove redundant overload of <code class="inline">Ash.Expr.get_path</code> (#1328)</p></li><li><p>[<a href="Ash.Type.NewType.html"><code class="inline">Ash.Type.NewType</code></a>] cast_input/2 of Ash.Type.NewType returning :ok (#1324)</p></li><li><p>[<a href="Ash.Reactor.html"><code class="inline">Ash.Reactor</code></a>] warnings emitted by removed reactor behaviour function. (#1325)</p></li></ul><h3 id="improvements-8" class="section-heading">
+  <a href="#improvements-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[bulk actions] add <code class="inline">authorize_with</code> fallback option to bulk actions</p></li><li><p>[<a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>] allow policy conditions to be applied inside their block</p></li></ul><h2 id="v3-2-4-2024-07-18" class="section-heading">
+  <a href="#v3-2-4-2024-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.3...v3.2.4">v3.2.4</a> (2024-07-18)</span>
+</h2>
+<h3 id="bug-fixes-13" class="section-heading">
+  <a href="#bug-fixes-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[transaction hooks] fix warning on transaction hooks violating their semantics</li></ul><h2 id="v3-2-3-2024-07-18" class="section-heading">
+  <a href="#v3-2-3-2024-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.2...v3.2.3">v3.2.3</a> (2024-07-18)</span>
+</h2>
+<h3 id="bug-fixes-14" class="section-heading">
+  <a href="#bug-fixes-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[<a href="Mix.Tasks.Ash.Patch.Extend.html"><code class="inline">mix ash.patch.extend</code></a>] properly convert extension string into a module</p></li><li><p>[<a href="Mix.Tasks.Ash.Patch.Extend.html"><code class="inline">mix ash.patch.extend</code></a>] only display available to extend</p></li><li><p>[<a href="Mix.Tasks.Ash.Install.html"><code class="inline">mix ash.install</code></a>] mix igniter.install ash --example case clause error (#1317)</p></li><li><p>[multitenancy] only use attribute for filtering when multitenancy strategy == :attribute</p></li></ul><h3 id="improvements-9" class="section-heading">
+  <a href="#improvements-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="Ash.Resource.Igniter.html"><code class="inline">Ash.Resource.Igniter</code></a>] Add <code class="inline">Ash.Resource.Igniter.domain</code> to get the domain of a resource</li></ul><h2 id="v3-2-2-2024-07-17" class="section-heading">
+  <a href="#v3-2-2-2024-07-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.1...v3.2.2">v3.2.2</a> (2024-07-17)</span>
+</h2>
+<h3 id="features-2" class="section-heading">
+  <a href="#features-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[<a href="Ash.Reactor.html"><code class="inline">Ash.Reactor</code></a>] Add ash_step wrapper (#1311)</li></ul><h3 id="bug-fixes-15" class="section-heading">
+  <a href="#bug-fixes-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[bulk destroys] honor atomic validations in destroy actions using <code class="inline">filter</code></p></li><li><p>[Ash.Type.Vector] handle casting nil vectors (#1316)</p></li><li><p>[Ash.Type] don't override <code class="inline">nil</code> handling in <a href="Ash.Type.html#cast_input/3"><code class="inline">Ash.Type.cast_input/3</code></a></p></li></ul><h2 id="v3-2-1-2024-07-17" class="section-heading">
+  <a href="#v3-2-1-2024-07-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.2.0...v3.2.1">v3.2.1</a> (2024-07-17)</span>
+</h2>
+<h3 id="bug-fixes-16" class="section-heading">
+  <a href="#bug-fixes-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly honor the <code class="inline">include_nil?</code> option</p></li><li><p>store after_action hooks added outside of changes for atomic upgrade</p></li><li><p>don't use <code class="inline">type/3</code> in string interpolation</p></li><li><p>properly pass <code class="inline">include_nil?</code> from when building query aggregates</p></li></ul><h3 id="improvements-10" class="section-heading">
+  <a href="#improvements-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>allow skipping initialization of types in unions</li></ul><h2 id="v3-2-0-2024-07-15" class="section-heading">
+  <a href="#v3-2-0-2024-07-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.8...v3.2.0">v3.2.0</a> (2024-07-15)</span>
+</h2>
+<h3 id="features-3" class="section-heading">
+  <a href="#features-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[field policies] Allow field policies to hide private fields (#1289)</li></ul><p>Use the <code class="inline">private_fields :include | :show | :hide</code> option in the <code class="inline">field_policies</code> section of your resource to control how private fields are handled by field policies.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># hide all private fields when authorizing</span><span class="w">
+</span><span class="n">field_policies</span><span class="w"> </span><span class="ss">:hide</span><span class="w">
+
+</span><span class="c1"># the current behavior. Private fields are ignored by field policies</span><span class="w">
+</span><span class="n">field_policies</span><span class="w"> </span><span class="ss">:show</span><span class="w">
+
+</span><span class="c1"># private fields can have field policies like any other field</span><span class="w">
+</span><span class="n">field_policies</span><span class="w"> </span><span class="ss">:include</span></code></pre><h3 id="improvements-11" class="section-heading">
+  <a href="#improvements-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<a href="Ash.Domain.Igniter.html"><code class="inline">Ash.Domain.Igniter</code></a>] add <a href="Ash.Domain.Igniter.html#list_domains/1"><code class="inline">Ash.Domain.Igniter.list_domains/1</code></a></p></li><li><p>[<a href="Ash.Resource.Igniter.html"><code class="inline">Ash.Resource.Igniter</code></a>] add <a href="Ash.Resource.Igniter.html#list_resources/1"><code class="inline">Ash.Resource.Igniter.list_resources/1</code></a></p></li></ul><h2 id="v3-1-8-2024-07-14" class="section-heading">
+  <a href="#v3-1-8-2024-07-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.7...v3.1.8">v3.1.8</a> (2024-07-14)</span>
+</h2>
+<h3 id="bug-fixes-17" class="section-heading">
+  <a href="#bug-fixes-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[bulk actions] use <code class="inline">unpaginated_read</code> when simulating streaming for low limit queries</li></ul><h2 id="v3-1-7-2024-07-14" class="section-heading">
+  <a href="#v3-1-7-2024-07-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.6...v3.1.7">v3.1.7</a> (2024-07-14)</span>
+</h2>
+<h3 id="bug-fixes-18" class="section-heading">
+  <a href="#bug-fixes-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[Ash.Query] don't use <code class="inline">:same</code> return type for most operators</p></li><li><p>[Ash.Query] don't use returns as basis type unless explicitly allowed</p></li></ul><h2 id="v3-1-6-2024-07-14" class="section-heading">
+  <a href="#v3-1-6-2024-07-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.5...v3.1.6">v3.1.6</a> (2024-07-14)</span>
+</h2>
+<h3 id="bug-fixes-19" class="section-heading">
+  <a href="#bug-fixes-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[Ash.Query] ensure <code class="inline">today</code> has properly configured returns type</p></li><li><p>[Ash.Type] module type apply_constraints for nil fix (#1313)</p></li></ul><h2 id="v3-1-5-2024-07-14" class="section-heading">
+  <a href="#v3-1-5-2024-07-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.4...v3.1.5">v3.1.5</a> (2024-07-14)</span>
+</h2>
+<h3 id="bug-fixes-20" class="section-heading">
+  <a href="#bug-fixes-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[Ash.Type] don't specify that <code class="inline">get_path</code> is a predicate function</li></ul><h3 id="improvements-12" class="section-heading">
+  <a href="#improvements-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Expr] add <code class="inline">Ash.Expr.determine_type(mod, children)</code></p></li><li><p>[Ash.Query] add return typing to functions</p></li></ul><h2 id="v3-1-4-2024-07-13" class="section-heading">
+  <a href="#v3-1-4-2024-07-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.3...v3.1.4">v3.1.4</a> (2024-07-13)</span>
+</h2>
+<h3 id="bug-fixes-21" class="section-heading">
+  <a href="#bug-fixes-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[code interface] properly omit destroyed result in code interfaces</p></li><li><p>[Ash.Type.Integer] properly compare <code class="inline">expr</code> to <code class="inline">min</code> with <code class="inline">min</code> integer constraint</p></li><li><p>[Ash.Reactor] Make action ctx-values from reactor-ctx take precedence if set. (#1308)</p></li></ul><h3 id="improvements-13" class="section-heading">
+  <a href="#improvements-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Resource.Change] support returning a list of atomics from atomic change callbacks</p></li><li><p>[Ash.Type] add <code class="inline">cast_atomic_constraints</code> callback and use it in core types</p></li><li><p>[Ash.Expr] improve type signature for <code class="inline">if/3</code></p></li><li><p>[Ash.Expr] simpler and/or short circuiting</p></li></ul><h2 id="v3-1-3-2024-07-11" class="section-heading">
+  <a href="#v3-1-3-2024-07-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.2...v3.1.3">v3.1.3</a> (2024-07-11)</span>
+</h2>
+<h3 id="bug-fixes-22" class="section-heading">
+  <a href="#bug-fixes-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[bulk actions] ensure that errors in queries do not raise in atomic upgrades/single atomics</p></li><li><p>[Ash.Type.Integer] use correct contraint when validating min int (#1298)</p></li><li><p>[Ash.Filter] don't refer to private attributes when parsing filter inputs that refer to relationships (#1280)</p></li></ul><h3 id="improvements-14" class="section-heading">
+  <a href="#improvements-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[Ash.Query] add <code class="inline">strict?</code> option to <code class="inline">Ash.Query.load</code> (#1302)</li></ul><h2 id="v3-1-2-2024-07-10" class="section-heading">
+  <a href="#v3-1-2-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.1...v3.1.2">v3.1.2</a> (2024-07-10)</span>
+</h2>
+<h3 id="bug-fixes-23" class="section-heading">
+  <a href="#bug-fixes-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[bulk actions] ensure that manual action configurations are honored for bulk actions</li></ul><h2 id="v3-1-1-2024-07-10" class="section-heading">
+  <a href="#v3-1-1-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.1.0...v3.1.1">v3.1.1</a> (2024-07-10)</span>
+</h2>
+<h3 id="bug-fixes-24" class="section-heading">
+  <a href="#bug-fixes-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[ash.install] installer doesn't need to add spark as a dependency, just run its installer</li></ul><h2 id="v3-1-0-2024-07-09" class="section-heading">
+  <a href="#v3-1-0-2024-07-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.16...v3.1.0">v3.1.0</a> (2024-07-09)</span>
+</h2>
+<h3 id="features-4" class="section-heading">
+  <a href="#features-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li><p>[Generators] add <a href="Mix.Tasks.Ash.Install.html"><code class="inline">mix ash.install</code></a> (call with <code class="inline">mix igniter.install ash</code>)</p></li><li><p>[Generators] add <a href="Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a></p></li><li><p>[Generators] add <a href="Mix.Tasks.Ash.Gen.BaseResource.html"><code class="inline">mix ash.gen.base_resource</code></a></p></li><li><p>[Generators] add <a href="Mix.Tasks.Ash.Gen.Domain.html"><code class="inline">mix ash.gen.domain</code></a></p></li><li><p>[Generators] add <code class="inline">mix ash.extend</code></p></li><li><p>[Ash.Type.UUIDv7] Add built in <a href="Ash.Type.UUIDv7.html"><code class="inline">Ash.Type.UUIDv7</code></a> type, and <code class="inline">uuid_v7_primary_key</code> builder</p></li></ul><h3 id="bug-fixes-25" class="section-heading">
+  <a href="#bug-fixes-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[atomics] sort primary key changes ahead of others in atomic changes</p></li><li><p>[Ash.Changeet] fix typespec for Changeset.around_transaction/2 (#1292)</p></li><li><p>[multitenancy] ensure tenancy is always enforced on create/update/destroy actions</p></li><li><p>[loading relationships] lateral join on <code class="inline">from_many? true</code> relationships</p></li><li><p>[calculations] don't reuse calculations/aggregates if <code class="inline">authorize?</code> is true</p></li><li><p>[aggregates] ensure aggregate context is fully configured in <code class="inline">Ash.aggregate</code></p></li><li><p>[bulk actions] properly transfer changeset.context on streamed batch changesets</p></li><li><p>[bulk actions] ensure notifications are dispatched from bulk actions</p></li><li><p>[lazy loading] lazy-loading logic for calculations/aggregates was inversed (#1275)</p></li><li><p>[error handling] properly match on async task exceptions</p></li><li><p>[policies] ensure <code class="inline">context</code> is available in policy template expressions</p></li><li><p>[policies] ensure forbidden errors behave the same when using implicit bulk version of code interface functions</p></li><li><p>[manual relationships] compare keys in manual relationships when using 'complex' types (#1270)</p></li><li><p>[Ash.Filter] cover more cases in filter input parsing (#1261)</p></li><li><p>[has_one relationships] automatically set <code class="inline">from_many?</code> if a <code class="inline">has_one</code> has a <code class="inline">sort</code> applied</p></li><li><p>[Ash.Filter] fix match error when synthesizing joins across data layers</p></li><li><p>[Ash.DataLayer.Ets] properly support multitenancy when referencing relationships</p></li><li><p>[Ash.Type.Union] initialize &amp; validate each subtype of a union</p></li></ul><h3 id="improvements-15" class="section-heading">
+  <a href="#improvements-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Type.Enum] allow overriding <code class="inline">cast_stored/2</code> and <code class="inline">dump_to_native/2</code></p></li><li><p>[Ash.DataLayer.Simple] support offset in the simple data layer</p></li><li><p>[Ash.Changeset] allow after_action hooks in fully atomic changesets</p></li></ul><h2 id="v3-0-16-2024-06-21" class="section-heading">
+  <a href="#v3-0-16-2024-06-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.15...v3.0.16">v3.0.16</a> (2024-06-21)</span>
+</h2>
+<h3 id="bug-fixes-26" class="section-heading">
+  <a href="#bug-fixes-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[bulk updates] use the proper opts when calling manual updates in bulk updates</p></li><li><p>[pagination] apply pagination at runtime for non lateral join queries</p></li><li><p>[multitenancy] consider multitenancy when checking if through-join is unique</p></li><li><p>[Ash.Changeset] don't run any <code class="inline">before_action</code> hooks if changeset is invalidated in prior hook</p></li><li><p>[atomic upgrade] only prevent atomic upgrade when hooks were explicitly added</p></li></ul><h3 id="improvements-16" class="section-heading">
+  <a href="#improvements-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[Ash.Error] retain error context on overridden messages</li></ul><h2 id="v3-0-15-2024-06-18" class="section-heading">
+  <a href="#v3-0-15-2024-06-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.14...v3.0.15">v3.0.15</a> (2024-06-18)</span>
+</h2>
+<h3 id="improvements-17" class="section-heading">
+  <a href="#improvements-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Type] add optional <code class="inline">matches_type?/2</code> callback to <a href="Ash.Type.html"><code class="inline">Ash.Type</code></a></p></li><li><p>[Ash.Domain] add <code class="inline">backwards_compatible_interface?</code> option to <code class="inline">use Ash.Domain</code></p></li></ul><h2 id="v3-0-14-2024-06-18" class="section-heading">
+  <a href="#v3-0-14-2024-06-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.13...v3.0.14">v3.0.14</a> (2024-06-18)</span>
+</h2>
+<h3 id="bug-fixes-27" class="section-heading">
+  <a href="#bug-fixes-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[many-to-many relationships] apply join relationship filter when loading many_to_many relationships</p></li><li><p>[Ash.Query] ensure we honor any computed select changes when loading through attributes</p></li></ul><h3 id="improvements-18" class="section-heading">
+  <a href="#improvements-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[Ash.Policy.Authorier] add <code class="inline">subject</code> and <code class="inline">context</code> keys to policy context</li></ul><h2 id="v3-0-13-2024-06-17" class="section-heading">
+  <a href="#v3-0-13-2024-06-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.12...v3.0.13">v3.0.13</a> (2024-06-17)</span>
+</h2>
+<h3 id="bug-fixes-28" class="section-heading">
+  <a href="#bug-fixes-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[parallelism] don't start async limiter tasks if async is disabled</p></li><li><p>[Ash.Domain] properly set default timeout to <code class="inline">:infinity</code></p></li><li><p>[upserts] pass down <code class="inline">identity</code> when doing upserts, for new feature support</p></li><li><p>[Ash.Changeset] ensure that <code class="inline">before_transaction</code> hook errors fail the operation</p></li><li><p>[Ash.Changeset] ensure that <code class="inline">before_transaction</code> hook errors still trigger <code class="inline">after_transaction</code> hooks</p></li><li><p>[bulk updates] abort bulk updates on before transaction hook errors</p></li></ul><h2 id="v3-0-12-2024-06-14" class="section-heading">
+  <a href="#v3-0-12-2024-06-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.11...v3.0.12">v3.0.12</a> (2024-06-14)</span>
+</h2>
+<h3 id="bug-fixes-29" class="section-heading">
+  <a href="#bug-fixes-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[atomic updates] fix expression interpolation for cast_atomic for integer, decimal, float</p></li><li><p>[generic actions] set default argument values on generic actions</p></li><li><p>[generic actions] support <a href="https://hexdocs.pm/elixir/Kernel.SpecialForms.html#%5E/1"><code class="inline">^arg/1</code></a> and similar constructions in filter policies on generic actions</p></li></ul><h3 id="improvements-19" class="section-heading">
+  <a href="#improvements-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[Ash.Resource] set a <code class="inline">module</code> when validating accepts</li></ul><h2 id="v3-0-11-2024-06-11" class="section-heading">
+  <a href="#v3-0-11-2024-06-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.10...v3.0.11">v3.0.11</a> (2024-06-11)</span>
+</h2>
+<h3 id="bug-fixes-30" class="section-heading">
+  <a href="#bug-fixes-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[loading through attributes] only apply load through for attributes that are being selected directly</p></li><li><p>[relationship loading] ensure we lateral join with <code class="inline">from_many?: true</code> or any <code class="inline">:many</code> cardinality relationships</p></li><li><p>[create/update/destroy actions] correctly load paginated relationships after create, update, delete (#1229)</p></li><li><p>[bulk create/update/destroy] load relationships on bulk operations (#1234)</p></li><li><p>[Ash.Type.Atom] return proper <code class="inline">{:ok, value}</code> from <code class="inline">Ash.Type.Atom.apply_constraints/2</code></p></li><li><p>[Ash.Filter] fix the compare/2 implementations (#1232)</p></li><li><p>[Ash.Filter] return proper value from short-circuit filter hydration</p></li><li><p>[Ash.Seed] fix seed not working when :<strong>keep_nil</strong> is generated using seed_input (#1228)</p></li><li><p>[Ash.Generator] pass resource to Ash.Seed.seed! in Ash.Generator.seed! (#1227)</p></li></ul><h3 id="improvements-20" class="section-heading">
+  <a href="#improvements-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Resource] validate <code class="inline">require_attributes</code> (error) and <code class="inline">allow_nil_input</code> (warning) at compile time</p></li><li><p>[Ash.Seed] add tenant option to Ash.Seed.seed! (#1230)</p></li></ul><h2 id="v3-0-10-2024-06-06" class="section-heading">
+  <a href="#v3-0-10-2024-06-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.9...v3.0.10">v3.0.10</a> (2024-06-06)</span>
+</h2>
+<h3 id="bug-fixes-31" class="section-heading">
+  <a href="#bug-fixes-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[Ash.Union] ensure that union types w/ explicit tags have constraints applied</p></li><li><p>[multitenancy] don't update tenant on update, instead enforce it</p></li><li><p>[compare/2 validation] Do not compare nil values in <code class="inline">compare</code> validation (#1223)</p></li><li><p>[bulk actions] ensure context is properly set on bulk manual action invocations</p></li></ul><h3 id="improvements-21" class="section-heading">
+  <a href="#improvements-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Resource] detect invalid resources placed in relationships on domains verifier</p></li><li><p>[Ash.Resource] warn at compile time on types that don't define <code class="inline">atomic_update/2</code></p></li></ul><h2 id="v3-0-9-2024-05-31" class="section-heading">
+  <a href="#v3-0-9-2024-05-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.8...v3.0.9">v3.0.9</a> (2024-05-31)</span>
+</h2>
+<h3 id="bug-fixes-32" class="section-heading">
+  <a href="#bug-fixes-32" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[Ash.Filter] use correct boolean operation names in Filter.find/4 (#1214)</p></li><li><p>[aggregates] when hydrating nested aggregates, use correct related resource/path pair</p></li><li><p>[aggregates] retain <code class="inline">ref_path</code> when authorizing aggregates</p></li><li><p>[relationship loading] ensure that belongs_to relationships are properly not reloaded with <code class="inline">lazy?: true</code></p></li><li><p>[bulk actions] implement rollback on after hooks for bulk actions</p></li><li><p>[bulk actions] check if in transaction before trying to roll it back</p></li></ul><h3 id="improvements-22" class="section-heading">
+  <a href="#improvements-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>compatibility with elixir 1.17</li></ul><h2 id="v3-0-8-2024-05-28" class="section-heading">
+  <a href="#v3-0-8-2024-05-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.7...v3.0.8">v3.0.8</a> (2024-05-28)</span>
+</h2>
+<h3 id="bug-fixes-33" class="section-heading">
+  <a href="#bug-fixes-33" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[bulk updates] missing <code class="inline">else</code> caused manual updates not to work with <code class="inline">bulk_update</code></p></li><li><p>[Ash.Policy.Authorizer] properly compose multiple filter-checks in policy conditions</p></li><li><p>[Ash.Policy.Authorizer] properly honor trailing policies that are constantly false</p></li></ul><h3 id="improvements-23" class="section-heading">
+  <a href="#improvements-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[Ash.Notifier] verify notifiers all use the <a href="Ash.Notifier.html"><code class="inline">Ash.Notifier</code></a> behaviour</li></ul><h2 id="v3-0-7-2024-05-24" class="section-heading">
+  <a href="#v3-0-7-2024-05-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.6...v3.0.7">v3.0.7</a> (2024-05-24)</span>
+</h2>
+<h3 id="improvements-24" class="section-heading">
+  <a href="#improvements-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[identities] support <code class="inline">nils_distinct?</code> on identities</p></li><li><p>[identties] support <code class="inline">where</code> option on <code class="inline">identities</code></p></li><li><p>[identities] allow calculations in identity keys</p></li></ul><h2 id="v3-0-6-2024-05-23" class="section-heading">
+  <a href="#v3-0-6-2024-05-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.5...v3.0.6">v3.0.6</a> (2024-05-23)</span>
+</h2>
+<h3 id="bug-fixes-34" class="section-heading">
+  <a href="#bug-fixes-34" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[policies] don't raise an error when authorizing against previous values without atomic upgrades</p></li><li><p>[calculations] handle subquery-requiring calculations in <code class="inline">calculate/2</code>, ensuring we have a primary key</p></li><li><p>[Ash.DataLayer] resolve mixup between atomic upsert vs update capability of datalayers (#1198)</p></li></ul><h2 id="v3-0-5-2024-05-23" class="section-heading">
+  <a href="#v3-0-5-2024-05-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.4...v3.0.5">v3.0.5</a> (2024-05-23)</span>
+</h2>
+<h3 id="bug-fixes-35" class="section-heading">
+  <a href="#bug-fixes-35" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[mix ash.*] only use <code class="inline">Mix.deps_tree</code> if defined (its only defined for elixir 1.15+)</li></ul><h3 id="improvements-25" class="section-heading">
+  <a href="#improvements-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[atomic upgrade] add <code class="inline">atomic_upgrade?</code> flag to update/destroy actions</p></li><li><p>[atomic upgrade] do not do atomic upgrade by default unless <code class="inline">require_atomic?</code> is <code class="inline">true</code></p></li><li><p>[atomic upgrade] allow configuring the read action used by atomic upgrades</p></li></ul><h2 id="v3-0-4-2024-05-22" class="section-heading">
+  <a href="#v3-0-4-2024-05-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.3...v3.0.4">v3.0.4</a> (2024-05-22)</span>
+</h2>
+<h3 id="bug-fixes-36" class="section-heading">
+  <a href="#bug-fixes-36" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[bulk update/destroy] ensure that all notifications are sent</li></ul><h2 id="3-0-3-2024-05-22" class="section-heading">
+  <a href="#3-0-3-2024-05-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.2...3.0.3">3.0.3</a> (2024-05-22)</span>
+</h2>
+<h3 id="features-5" class="section-heading">
+  <a href="#features-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li><p>[relationship pagination] allow retrieving the count of paginated relationships (#1183)</p></li><li><p>[Ash.Reactor] Add <code class="inline">bulk_create</code> step type.</p></li><li><p>[Ash.Reactor] Add <code class="inline">bulk_update</code> step type. (#1185)</p></li></ul><h3 id="bug-fixes-37" class="section-heading">
+  <a href="#bug-fixes-37" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[Ash.Actions.Read] properly hydrate and scope sorts with query context</p></li><li><p>[Ash.Changeset] handle list of atomic conditions coming from atomic validation implementation (#1194) (#1195)</p></li><li><p>[embedded resources] handle nil value for old_values when casting arrays (#1191)</p></li><li><p>[Ash.Query] use <a href="Ash.Sort.html#parse_input/3"><code class="inline">Ash.Sort.parse_input/3</code></a> in <a href="Ash.Query.html#sort_input/2"><code class="inline">Ash.Query.sort_input/2</code></a></p></li><li><p>[Ash.Resource.Validation.Changing] works correctly in atomics, and can eagerly detect changing (#1178)</p></li><li><p>[atomic updates] check the where condition before checking validation atomicity (#1177)</p></li><li><p>[bulk actions] don't emit after batch notifications if <code class="inline">notify?: false</code></p></li><li><p>[Ash.Resource] prefer resource domain over option domain (#1176)</p></li><li><p>[bulk update/destroy] don't require domain for empty stream bulk update and destroy (#1175)</p></li><li><p>[Ash.Generator] only return valid non nil values items from generator (#1121)</p></li><li><p>[bulk destroy] properly validate action when calling bulk destroy</p></li><li><p>[code interface] allow all strategies for bulk actions in code interfaces by default</p></li><li><p>[code interfaces] honor <code class="inline">get?</code> for bulk update/bulk destroy</p></li></ul><h3 id="improvements-26" class="section-heading">
+  <a href="#improvements-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Query] support anonymous aggregates and calculations in sorts</p></li><li><p>[sensitive fields] Implement <code class="inline">show_sensitive?</code> config (#1180)</p></li><li><p>[Ash.Query] support <code class="inline">filter_input</code> and <code class="inline">sort_input</code> in <a href="Ash.Query.html#build/2"><code class="inline">Ash.Query.build/2</code></a></p></li><li><p>[Ash.Changeset] add <code class="inline">template_requires_actor</code> check for changesets</p></li><li><p>[bulk update/destroy] don't use queries for streaming if they have hooks</p></li><li><p>[Ash.Policy.Check.ChangingAttributes] consider <code class="inline">from: nil</code> in <code class="inline">changing_attributes/1</code> check</p></li></ul><h2 id="v3-0-2-2024-05-15" class="section-heading">
+  <a href="#v3-0-2-2024-05-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.1...v3.0.2">v3.0.2</a> (2024-05-15)</span>
+</h2>
+<h3 id="improvements-27" class="section-heading">
+  <a href="#improvements-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Expr] add pattern matching for clarity on values accepted by <code class="inline">ref/1</code> and <code class="inline">ref/2</code></p></li><li><p>[Ash.Expr] add <code class="inline">can_return_nil?/1</code> callback to Ash expressions, allowing for various optimizations</p></li><li><p>[Ash.Type.NewType] raise argument error on unknown options in <a href="Ash.Type.NewType.html"><code class="inline">Ash.Type.NewType</code></a>. Helps with typos &amp; misunderstandings</p></li><li><p>[embedded resources] use the <code class="inline">source</code> configuration for attributes in embedded resources (it was previously just ignored)</p></li><li><p>[Ash.Policy.Authorizer] better type specification for checks, to get better autocomplete and compile time validation</p></li><li><p>[Ash.Error.Invalid.NoSuchInput] added a <code class="inline">did_you_mean</code> field and used it in the error message</p></li></ul><h3 id="bug-fixes-38" class="section-heading">
+  <a href="#bug-fixes-38" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[Ash.Resource] properly persist simple_notifiers (they were being ignored before)</p></li><li><p>[code interface] accept single ids in code interface as subject for destroy/update</p></li><li><p>[bulk update] ensure that the <code class="inline">changed?</code> context is set in after action hooks on batches</p></li><li><p>[relationships] allow for inferred domains when authorizing join queries</p></li><li><p>[Ash.Expr] don't treat <code class="inline">nil</code> as not a valid value when type casting lists</p></li><li><p>[atomic upgrade] keep data's metadata in atomic upgraded update (#1165)</p></li></ul><h2 id="v3-0-1-2024-05-14" class="section-heading">
+  <a href="#v3-0-1-2024-05-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.0...v3.0.1">v3.0.1</a> (2024-05-14)</span>
+</h2>
+<h3 id="features-6" class="section-heading">
+  <a href="#features-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[Ash.Resource.Change.Builtins] Add <code class="inline">cascade_destroy</code> to builtin changes.</li></ul><h3 id="bug-fixes-39" class="section-heading">
+  <a href="#bug-fixes-39" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[calculations] calculation eager evaluation bug caused <code class="inline">exists</code> to eager evaluate when we didn't actually have the related data</p></li><li><p>[field policies] fix field policy rewrite errors on non-success cases (#1163)</p></li><li><p>[embedded resources] fix embedded resource authorization (#1159) (#1160)</p></li><li><p>infinite recursion if query is empty (#1158)</p></li><li><p>[Ash.DataLayer.Ets] ensure that changeset filters are honored in ETS destroy/update_query</p></li><li><p>[update/destroy actions] don't rollback transactions on stale records, ignore stale records in bulk actions</p></li><li><p>[bulk creates] don't check required belongs to fields until after setting them in bulk creation</p></li><li><p>[code interface] check require_reference? when generating update code interface (#1152)</p></li></ul><h2 id="v3-0-0" class="section-heading">
+  <a href="#v3-0-0" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash/compare/v3.0.0...2.0">v3.0.0</a></span>
+</h2>
+<h2 id="3-0" class="section-heading">
+  <a href="#3-0" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">3.0</span>
+</h2>
+<p>We are starting the changelog fresh. See <code class="inline">documentation/2.0-CHANGELOG.md</code> in GitHub for the old changelogs.</p><h3 id="breaking-changes" class="section-heading">
+  <a href="#breaking-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Breaking Changes:</span>
+</h3>
+<p>For a guide on adjusting to these breaking changes, see the <a href="upgrading-to-3-0.html">upgrade guide</a></p><ul><li>[Ash.Api] has been renamed to <a href="Ash.Domain.html"><code class="inline">Ash.Domain</code></a>, and references to the concept have been renamed as well, i.e in options and in the DSL</li><li>[Ash] we now call functions on this, isntead of the domain. i.e <code class="inline">Ash.create</code> and <code class="inline">Ash.read</code>. The generated functions are now marked as deprecated</li><li>[Ash] remove process context functionality. You can no longer store the actor/tenant in the context with <code class="inline">Ash.set_actor</code> and so on</li><li>[private?] deprecate <code class="inline">private?: false</code> in favor of the more explicit <code class="inline">public?: true</code></li><li>[default_accept] default <code class="inline">default_accept</code> is now <code class="inline">[]</code></li><li>[action lifecycle] after transaction hooks cannot be added from inside of other lifecycle hooks</li><li>[Ash.NotLoaded] use <code class="inline">%Ash.NotLoaded{}</code> for unselected values, instead of <code class="inline">nil</code></li><li>[require_atomic?] now defaults to <code class="inline">true</code>, requiring opt-out of atomic behavior</li><li>[authorization] default <code class="inline">api.authorization.authorize</code> to <code class="inline">:by_default</code></li><li>[Ash.Registry] has been removed</li><li>[actions] <code class="inline">domain</code> must always be known when constructing changesets</li><li>[Ash.Notifier] <code class="inline">requires_original_data?/2</code> callback defaults to <code class="inline">false</code></li><li>[Ash.Notifier.PubSub] default to <code class="inline">previous_values?: false</code>, allowing notifications to be sent for atomic updates</li><li>[unknown inputs] all action invocations now use <code class="inline">UnknownInput</code> errors when given an input they don't accept</li><li>[policies] <code class="inline">requires_original_data?/2</code> callback on checks defaults to <code class="inline">false</code></li><li>[Ash.Calculation] has been renamed to <a href="Ash.Resource.Calculation.html"><code class="inline">Ash.Resource.Calculation</code></a></li><li>[Ash.Resource.Calculation] &quot;strict mode&quot; has been added and defaults to <code class="inline">true</code>. This causes only explicitly requested fields from relationships to be loaded</li><li>[Ash.Query.Calculation] positional arguments are now an options list</li><li>[calculations] anonymous function calculations in a resource now take lists and return lists, instead of a single record (like standard calculations do)</li><li>[context] The context argument passed to many different callbacks is now a struct, tailored to that specific context. For example, in a calculation you will receive an <a href="Ash.Resource.Calculation.Context.html"><code class="inline">Ash.Resource.Calculation.Context</code></a></li><li>[after_action/before_action] These builtin changes now accept a 3rd context argument</li><li>[picosat_elixir] is now optional (<code class="inline">simple_sat</code> is now an alternative)</li><li>[Ash.Changeset] <code class="inline">Ash.Changeset.new!</code> has been removed</li><li>[Ash.Changeset] <code class="inline">Ash.Changeset.new/2</code> has been removed (<a href="Ash.Changeset.html#new/1"><code class="inline">Ash.Changeset.new/1</code></a> is still available)</li><li>[Ash.Changeset] <code class="inline">changeset.filters</code> is now <code class="inline">changeset.filter</code></li><li>[Ash.Changeset] reverse order of before action &amp; before transaction hooks. They now run in the action they are added. They used to run in reverse order.</li><li>[Ash.CiString] <a href="Ash.CiString.html#new/1"><code class="inline">Ash.CiString.new/1</code></a> returns <code class="inline">nil</code> on <code class="inline">nil</code> input</li><li>[belongs_to.attribute_writable?] add <code class="inline">attribute_public?</code> for controlling publicity, and default <code class="inline">attribute_writable?</code> to <code class="inline">true</code>.</li><li>[Ash.Filter.TemplateHelpers] removed, all functions needed for expressions are now defined in <a href="Ash.Expr.html"><code class="inline">Ash.Expr</code></a></li><li>[Ash.Expr] keyword lists are no longer special cased in ash expressions, and requiring pinning like any other value.</li><li>[Ash.Resource] default read actions are now paginatable with keyset and offset pagination (but pagination is not required)</li><li>[Ash.Resource] default actions require explicit accept lists (or will use <code class="inline">default_accept</code>). i.e <code class="inline">defaults [:read, create: [:first_name, :last_name]]</code></li><li>[Ash.Resource] <code class="inline">simple_notifiers</code> is now an option to <code class="inline">use Ash.Resource</code>, instead of being in the DSL at <code class="inline">resource.simple_notifiers</code></li><li>[Ash.Flow] has been removed and put in its own package <code class="inline">ash_flow</code>. It is being deprecated in favor of <a href="https://hexdocs.pm/reactor/0.9.1/Reactor.html"><code class="inline">Reactor</code></a></li><li>[Ash.Error] the implementation has been extracted out to <a href="https://hexdocs.pm/splode/0.2.4/Splode.html"><code class="inline">Splode</code></a>. Defining new <a href="Ash.Error.html"><code class="inline">Ash.Error</code></a>s is now done by defining a new <a href="https://hexdocs.pm/splode/0.2.4/Splode.Error.html"><code class="inline">Splode.Error</code></a></li><li>[Ash.Query] swap position of sort order and arguments in calculation sorting, i.e instead of <code class="inline">calculation: {:asc, %{...args}}</code> it is now <code class="inline">calculation: {%{...args}, :asc}</code></li><li>[Ash.Resource.Aggregate] add <code class="inline">include_nil?</code> aggregate option, and default it to <code class="inline">false</code> (so <code class="inline">list</code> and <code class="inline">first</code> aggregates do not consider <code class="inline">nil</code> values by default)</li><li>[Ash.Policy.FilterCheck] now accepts <code class="inline">context</code> arguments, like <code class="inline">Ash.Policy.FilterCheckWithContext</code></li><li>[Ash.Policy.FilterCheckWithContext] has been removed, use <a href="Ash.Policy.FilterCheck.html"><code class="inline">Ash.Policy.FilterCheck</code></a></li></ul><h3 id="features-7" class="section-heading">
+  <a href="#features-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[Ash.Type] add new remove_nil_items? array type constraint (#1116)</li><li>[Ash.Query] Paginatable relationships (#1050)</li><li>[Ash.DataLayer] new <code class="inline">calculate/3</code> callback that allows for data layers to compute the result of expressions outside the context of a query. Used to power <a href="Ash.html#calculate/3"><code class="inline">Ash.calculate/3</code></a>.</li><li>[validations] new builtin validations, <code class="inline">attributes_present/2</code> and <code class="inline">attributes_absent/2</code></li><li>[multitenancy] configurable multitenancy behaviour on read actions (#1030)</li><li>[Ash.Reactor] Add new <code class="inline">change</code> step type which can be used to modify changesets.</li><li>[Ash.Changeset] add <code class="inline">Ash.Changeset.update_change/2</code> function and builtin change (#976)</li><li>[Ash.Domain] code interfaces can now be defined on the domain</li><li>[Ash.Domain] policies can now be defined on the domain, and will run before resource policies</li><li>[Ash.ToTenant] add <a href="Ash.ToTenant.html"><code class="inline">Ash.ToTenant</code></a>, allowing for passing arbitrary values as tenants</li><li>[Ash] add <code class="inline">Ash.read_first</code> (like <code class="inline">Ash.read_one</code>, but applies a limit automatically)</li><li>[Ash] support a second optional <code class="inline">input</code> option for <code class="inline">create</code>, <code class="inline">update</code> and <code class="inline">destroy</code>, allowing for things like <code class="inline">Ash.create!(Post, %{text: &quot;text&quot;}, opts)</code></li><li>[sensitive?] support <code class="inline">sensitive?</code> option in query aggregate/calculation (#963)</li><li>[Ash.Resource] support <code class="inline">require_reference?: false</code> on code interfaces, for when an update or destroy action uniquely identifies a record (or for bulk update/destroy)</li><li>[Ash.Resource] notifiers can now be specified for specific actions, using the <code class="inline">notifiers</code> option</li><li>[mix ash.rollback] delegates to extensions to trigger their rollback tasks</li><li>[Ash.Query] add <a href="Ash.Query.html#apply_to/3"><code class="inline">Ash.Query.apply_to/3</code></a>, to &quot;apply&quot; the query to a set of records (i.e filter, sort, distinct, etc.)</li><li>[Ash.CustomExpression] Use <a href="Ash.CustomExpression.html"><code class="inline">Ash.CustomExpression</code></a> to extend Ash's expression syntax in a data-layer agnostic way</li><li>[code interface] Code interface functions now support bulk actions, in a &quot;do what I mean&quot; way. For example: <code class="inline">Domain.deactive(post)</code> can also be <code class="inline">Post |&gt; Ash.Query.filter(active == true) |&gt; Domain.deactive()</code></li></ul><h3 id="improvements-28" class="section-heading">
+  <a href="#improvements-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[Ash.Actions.Sort] allow providing a stream of records to sort, and performance improvements</li><li>[bulk actions] add <code class="inline">read_action</code> option to bulk actions (#1088)</li><li>[Ash.stream] support streaming with offset, or even <em>no</em> pagination</li><li>[Ash.DataLayer.Ets] add debug logging, similar to ecto query debug logging</li><li>[Ash.DataLayer.Ets] support update_query, destroy_query and <a href="Ash.Changeset.html#filter/2"><code class="inline">Ash.Changeset.filter/2</code></a></li><li>[Embedded resources] don't add <code class="inline">autogenerated_id</code> to embeds if they don't have a primary key</li><li>[Ash.Resource] you can now omit the return type of generic actions, indicating it either succeeds or fails, returning <code class="inline">:ok</code> or <code class="inline">{:error, error}</code></li><li>[Ash.Resource] Generic actions can now accept a Reactor module, running it directly. (#993)</li><li>[Ash.Resource] support <code class="inline">allow_nil_input</code> dsl option in update/destroy actions (#964)</li><li>[Ash.Resource] The <code class="inline">filter</code> option can now be supplied multiple times in read actions and in relationships. They will be combined with <code class="inline">and</code></li><li>[Ash.Resource] private attributes can now be accepted as action inputs</li><li>[Ash.Expr] is now imported automatically into places you will likely use it, like changes, validations, checks and calculations.</li><li>[Ash.Query] is now required automatically in places you will likely use it, as above</li><li>[sortable?] fields may mark themselves as unusable in sorts by using <code class="inline">sortable? false</code></li><li>[sensitive?] calculations and aggregates may now also be marked as <code class="inline">sensitive?</code></li></ul><h3 id="bug-fixes-40" class="section-heading">
+  <a href="#bug-fixes-40" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[Ash.Type] apply array type <code class="inline">nil_items?</code> constraint after item constraints are applied (#1115)</li><li>[Ash.DataLayer.Ets] fix ETS data layer's support for lateral joining</li><li>[bulk actions] ensure transaction is rolled back on data layer errors during streaming</li><li>[bulk actions] set <code class="inline">notify?: true</code> when <code class="inline">return_notifications?: true</code> is set</li><li>[Ash.Changeset] <code class="inline">attributes_present?/2</code> -&gt; <code class="inline">attribute_present?/2</code></li><li>[Ash.Filter] don't eager evaluate <code class="inline">type/3</code> because data layers require type information</li><li>[Ash.Changeset] when comparing identities for <code class="inline">manage_relationship</code>, we now properly cast the values. Before, <code class="inline">&quot;1&quot;</code> and <code class="inline">1</code> were not considered equal for integer primary keys/identity fields</li><li>Many more bug fixes were added, but few are relevant enough to list here</li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="alternatives.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Alternatives
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="domains.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Domains
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/CHANGELOG.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

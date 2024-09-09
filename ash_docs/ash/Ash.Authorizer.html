@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Ash.Authorizer — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Ash.Authorizer</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(ash v3.4.8)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The interface for an ash authorizer</p><p>These will typically be implemented by an extension, but a custom
+one can be implemented by defining an extension that also adopts this behaviour.</p><p>Then you can extend a resource with <code class="inline">authorizers: [YourAuthorizer]</code></p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:context/0" data-no-tooltip translate="no">context()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:state/0" data-no-tooltip translate="no">state()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:add_calculations/3" data-no-tooltip translate="no">add_calculations(arg1, state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:alter_filter/3" data-no-tooltip translate="no">alter_filter(filter, state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:alter_results/3" data-no-tooltip translate="no">alter_results(state, list, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:check/2" data-no-tooltip translate="no">check(state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:check_context/1" data-no-tooltip translate="no">check_context(state)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:exception/2" data-no-tooltip translate="no">exception(atom, state)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:initial_state/4" data-no-tooltip translate="no">initial_state(t, record, action, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:strict_check/2" data-no-tooltip translate="no">strict_check(state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:strict_check_context/1" data-no-tooltip translate="no">strict_check_context(state)</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_calculations/4" data-no-tooltip translate="no">add_calculations(module, query_or_changeset, state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#alter_filter/4" data-no-tooltip translate="no">alter_filter(module, state, filter, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#alter_results/4" data-no-tooltip translate="no">alter_results(module, state, records, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#alter_sort/4" data-no-tooltip translate="no">alter_sort(module, state, sort, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#check/3" data-no-tooltip translate="no">check(module, state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#check_context/2" data-no-tooltip translate="no">check_context(module, state)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#exception/3" data-no-tooltip translate="no">exception(module, reason, state)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#initial_state/5" data-no-tooltip translate="no">initial_state(module, actor, resource, action, domain)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#strict_check/3" data-no-tooltip translate="no">strict_check(module, state, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#strict_check_context/2" data-no-tooltip translate="no">strict_check_context(module, state)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:context/0">
+
+  <div class="detail-header">
+    <a href="#t:context/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">context()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L11" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> context() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:state/0">
+
+  <div class="detail-header">
+    <a href="#t:state/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">state()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L10" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> state() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:add_calculations/3">
+
+  <div class="detail-header">
+    <a href="#c:add_calculations/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">add_calculations(arg1, state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L28" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> add_calculations(<a href="Ash.Query.html#t:t/0">Ash.Query.t</a>() | <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(), <a href="#t:state/0">state</a>(), <a href="#t:context/0">context</a>()) ::
+  {:ok, <a href="Ash.Query.html#t:t/0">Ash.Query.t</a>() | <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(), <a href="#t:state/0">state</a>()} | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:alter_filter/3">
+
+  <div class="detail-header">
+    <a href="#c:alter_filter/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">alter_filter(filter, state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L26" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> alter_filter(filter :: <a href="Ash.Filter.html#t:t/0">Ash.Filter.t</a>(), <a href="#t:state/0">state</a>(), <a href="#t:context/0">context</a>()) ::
+  {:ok, <a href="Ash.Filter.html#t:t/0">Ash.Filter.t</a>()} | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:alter_results/3">
+
+  <div class="detail-header">
+    <a href="#c:alter_results/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">alter_results(state, list, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L30" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> alter_results(<a href="#t:state/0">state</a>(), [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()], <a href="#t:context/0">context</a>()) ::
+  {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]} | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:check/2">
+
+  <div class="detail-header">
+    <a href="#c:check/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">check(state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L33" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> check(<a href="#t:state/0">state</a>(), <a href="#t:context/0">context</a>()) ::
+  :authorized | {:data, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:check_context/1">
+
+  <div class="detail-header">
+    <a href="#c:check_context/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">check_context(state)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L32" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> check_context(<a href="#t:state/0">state</a>()) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:exception/2">
+
+  <div class="detail-header">
+    <a href="#c:exception/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">exception(atom, state)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L35" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> exception(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="#t:state/0">state</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:initial_state/4">
+
+  <div class="detail-header">
+    <a href="#c:initial_state/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">initial_state(t, record, action, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L12" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> initial_state(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>(),
+  <a href="Ash.Resource.Actions.html#t:action/0">Ash.Resource.Actions.action</a>(),
+  <a href="Ash.Domain.html#t:t/0">Ash.Domain.t</a>()
+) :: <a href="#t:state/0">state</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:strict_check/2">
+
+  <div class="detail-header">
+    <a href="#c:strict_check/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">strict_check(state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> strict_check(<a href="#t:state/0">state</a>(), <a href="#t:context/0">context</a>()) ::
+  {:authorized, <a href="#t:state/0">state</a>()}
+  | {:continue, <a href="#t:state/0">state</a>()}
+  | {:filter, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()}
+  | {:filter, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>(), <a href="#t:state/0">state</a>()}
+  | {:filter_and_continue, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>(), <a href="#t:state/0">state</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:strict_check_context/1">
+
+  <div class="detail-header">
+    <a href="#c:strict_check_context/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">strict_check_context(state)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L18" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> strict_check_context(<a href="#t:state/0">state</a>()) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_calculations/4">
+
+  <div class="detail-header">
+    <a href="#add_calculations/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_calculations(module, query_or_changeset, state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L69" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="alter_filter/4">
+
+  <div class="detail-header">
+    <a href="#alter_filter/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">alter_filter(module, state, filter, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L85" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="alter_results/4">
+
+  <div class="detail-header">
+    <a href="#alter_results/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">alter_results(module, state, records, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L77" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="alter_sort/4">
+
+  <div class="detail-header">
+    <a href="#alter_sort/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">alter_sort(module, state, sort, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L93" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="check/3">
+
+  <div class="detail-header">
+    <a href="#check/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">check(module, state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L105" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="check_context/2">
+
+  <div class="detail-header">
+    <a href="#check_context/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">check_context(module, state)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L101" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="exception/3">
+
+  <div class="detail-header">
+    <a href="#exception/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">exception(module, reason, state)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L49" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="initial_state/5">
+
+  <div class="detail-header">
+    <a href="#initial_state/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">initial_state(module, actor, resource, action, domain)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L45" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="strict_check/3">
+
+  <div class="detail-header">
+    <a href="#strict_check/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">strict_check(module, state, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L65" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="strict_check_context/2">
+
+  <div class="detail-header">
+    <a href="#strict_check_context/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">strict_check_context(module, state)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/authorizer.ex#L61" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
