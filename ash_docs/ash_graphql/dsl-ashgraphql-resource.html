@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_graphql v1.3.3">
+
+
+    <title>DSL: AshGraphql.Resource — ash_graphql v1.3.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-515155DF.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_graphql" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectName" translate="no">
+ash_graphql
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.3.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_graphql</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/documentation/dsls/DSL:-AshGraphql.Resource.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>DSL: AshGraphql.Resource</span>
+</h1>
+
+<p>This Ash resource extension adds configuration for exposing a resource in a graphql.</p><h2 id="graphql" class="section-heading">
+  <a href="#graphql" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql</span>
+</h2>
+<p>Configuration for a given resource in graphql</p><h3 id="nested-dsls" class="section-heading">
+  <a href="#nested-dsls" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#graphql-queries">queries</a><ul><li>get</li><li>read_one</li><li>list</li><li>action</li></ul></li><li><a href="#graphql-mutations">mutations</a><ul><li>create</li><li>update</li><li>destroy</li><li>action</li></ul></li><li><a href="#graphql-managed_relationships">managed_relationships</a><ul><li>managed_relationship</li></ul></li></ul><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="8002731437-1">do</span><span class="w">
+  </span><span class="n">type</span><span class="w"> </span><span class="ss">:post</span><span class="w">
+
+  </span><span class="n">queries</span><span class="w"> </span><span class="k" data-group-id="8002731437-2">do</span><span class="w">
+    </span><span class="n">get</span><span class="w"> </span><span class="ss">:get_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+    </span><span class="n">list</span><span class="w"> </span><span class="ss">:list_posts</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+  </span><span class="k" data-group-id="8002731437-2">end</span><span class="w">
+
+  </span><span class="n">mutations</span><span class="w"> </span><span class="k" data-group-id="8002731437-3">do</span><span class="w">
+    </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+    </span><span class="n">update</span><span class="w"> </span><span class="ss">:update_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+    </span><span class="n">destroy</span><span class="w"> </span><span class="ss">:destroy_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="w">
+  </span><span class="k" data-group-id="8002731437-3">end</span><span class="w">
+</span><span class="k" data-group-id="8002731437-1">end</span><span class="w">
+</span></code></pre><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-type" id="graphql-type"><code class="inline">type</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The type to use for this entity in the graphql schema. If the resource doesn't have a type, it also needs to have <code class="inline">generate_object? false</code> and can only expose generic action queries.</td></tr><tr><td style="text-align: left;"><a href="#graphql-derive_filter?" id="graphql-derive_filter?"><code class="inline">derive_filter?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Set to false to disable the automatic generation of a filter input for read actions.</td></tr><tr><td style="text-align: left;"><a href="#graphql-derive_sort?" id="graphql-derive_sort?"><code class="inline">derive_sort?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Set to false to disable the automatic generation of a sort input for read actions.</td></tr><tr><td style="text-align: left;"><a href="#graphql-encode_primary_key?" id="graphql-encode_primary_key?"><code class="inline">encode_primary_key?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">For resources with composite primary keys, or primary keys not called <code class="inline">:id</code>, this will cause the id to be encoded as a single <code class="inline">id</code> attribute, both in the representation of the resource and in get requests</td></tr><tr><td style="text-align: left;"><a href="#graphql-relationships" id="graphql-relationships"><code class="inline">relationships</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of relationships to include on the created type. Defaults to all public relationships where the destination defines a graphql type.</td></tr><tr><td style="text-align: left;"><a href="#graphql-paginate_relationship_with" id="graphql-paginate_relationship_with"><code class="inline">paginate_relationship_with</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating which kind of pagination should be used for each <code class="inline">has_many</code> and <code class="inline">many_to_many</code> relationships, e.g. <code class="inline">related_things: :keyset, other_related_things: :offset</code>. Valid pagination values are <code class="inline">nil</code>, <code class="inline">:offset</code>, <code class="inline">:keyset</code> and <code class="inline">:relay</code>.</td></tr><tr><td style="text-align: left;"><a href="#graphql-field_names" id="graphql-field_names"><code class="inline">field_names</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"></td><td style="text-align: left;">A keyword list of name overrides for attributes.</td></tr><tr><td style="text-align: left;"><a href="#graphql-hide_fields" id="graphql-hide_fields"><code class="inline">hide_fields</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of attributes to hide from the domain</td></tr><tr><td style="text-align: left;"><a href="#graphql-show_fields" id="graphql-show_fields"><code class="inline">show_fields</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of attributes to show in the domain. If not specified includes all (excluding <code class="inline">hide_fiels</code>).</td></tr><tr><td style="text-align: left;"><a href="#graphql-argument_names" id="graphql-argument_names"><code class="inline">argument_names</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"></td><td style="text-align: left;">A nested keyword list of action names, to argument name remappings. i.e <code class="inline">create: [arg_name: :new_name]</code></td></tr><tr><td style="text-align: left;"><a href="#graphql-keyset_field" id="graphql-keyset_field"><code class="inline">keyset_field</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">If set, the keyset will be displayed on all read actions in this field.  It will be <code class="inline">nil</code> unless at least one of the read actions on a resource uses keyset pagination or it is the result of a mutation</td></tr><tr><td style="text-align: left;"><a href="#graphql-attribute_types" id="graphql-attribute_types"><code class="inline">attribute_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"></td><td style="text-align: left;">A keyword list of type overrides for attributes. The type overrides should refer to types available in the graphql (absinthe) schema. <code class="inline">list_of/1</code> and <code class="inline">non_null/1</code> helpers can be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-attribute_input_types" id="graphql-attribute_input_types"><code class="inline">attribute_input_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"></td><td style="text-align: left;">A keyword list of input type overrides for attributes. The type overrides should refer to types available in the graphql (absinthe) schema. <code class="inline">list_of/1</code> and <code class="inline">non_null/1</code> helpers can be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-argument_input_types" id="graphql-argument_input_types"><code class="inline">argument_input_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"></td><td style="text-align: left;">A keyword list of actions and their input type overrides for arguments. The type overrides should refer to types available in the graphql (absinthe) schema. <code class="inline">list_of/1</code> and <code class="inline">non_null/1</code> helpers can be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-primary_key_delimiter" id="graphql-primary_key_delimiter"><code class="inline">primary_key_delimiter</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"><code class="inline">&quot;~&quot;</code></td><td style="text-align: left;">If a composite primary key exists, this can be set to determine delimiter used in the <code class="inline">id</code> field value.</td></tr><tr><td style="text-align: left;"><a href="#graphql-depth_limit" id="graphql-depth_limit"><code class="inline">depth_limit</code></a></td><td style="text-align: left;"><code class="inline">integer</code></td><td style="text-align: left;"></td><td style="text-align: left;">A simple way to prevent massive queries.</td></tr><tr><td style="text-align: left;"><a href="#graphql-generate_object?" id="graphql-generate_object?"><code class="inline">generate_object?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not to create the GraphQL object, this allows you to manually create the GraphQL object.</td></tr><tr><td style="text-align: left;"><a href="#graphql-filterable_fields" id="graphql-filterable_fields"><code class="inline">filterable_fields</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of fields that are allowed to be filtered on. Defaults to all filterable fields for which a GraphQL type can be created.</td></tr><tr><td style="text-align: left;"><a href="#graphql-nullable_fields" id="graphql-nullable_fields"><code class="inline">nullable_fields</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">Mark fields as nullable even if they are required. This is useful when using field policies. See the authorization guide for more.</td></tr></tbody></table><h2 id="graphql-queries" class="section-heading">
+  <a href="#graphql-queries" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.queries</span>
+</h2>
+<p>Queries (read actions) to expose for the resource.</p><h3 id="nested-dsls-1" class="section-heading">
+  <a href="#nested-dsls-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#graphql-queries-get">get</a></li><li><a href="#graphql-queries-read_one">read_one</a></li><li><a href="#graphql-queries-list">list</a></li><li><a href="#graphql-queries-action">action</a></li></ul><h3 id="examples-1" class="section-heading">
+  <a href="#examples-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">queries</span><span class="w"> </span><span class="k" data-group-id="6106560061-1">do</span><span class="w">
+  </span><span class="n">get</span><span class="w"> </span><span class="ss">:get_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+  </span><span class="n">read_one</span><span class="w"> </span><span class="ss">:current_user</span><span class="p">,</span><span class="w"> </span><span class="ss">:current_user</span><span class="w">
+  </span><span class="n">list</span><span class="w"> </span><span class="ss">:list_posts</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+</span><span class="k" data-group-id="6106560061-1">end</span><span class="w">
+</span></code></pre><h2 id="graphql-queries-get" class="section-heading">
+  <a href="#graphql-queries-get" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.queries.get</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">get</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>A query to fetch a record by primary key</p><h3 id="examples-2" class="section-heading">
+  <a href="#examples-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">get</span><span class="w"> </span><span class="ss">:get_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span></code></pre><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-get-name" id="graphql-queries-get-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the query.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-queries-get-action" id="graphql-queries-get-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the query.</td></tr></tbody></table><h3 id="options-1" class="section-heading">
+  <a href="#options-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-get-identity" id="graphql-queries-get-identity"><code class="inline">identity</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The identity to use for looking up the record. Pass <code class="inline">false</code> to not use an identity.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-allow_nil?" id="graphql-queries-get-allow_nil?"><code class="inline">allow_nil?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not the action can return nil.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-modify_resolution" id="graphql-queries-get-modify_resolution"><code class="inline">modify_resolution</code></a></td><td style="text-align: left;"><code class="inline">mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">An MFA that will be called with the resolution, the query, and the result of the action as the first three arguments. See the <a href="/documentation/topics/modifying-the-resolution.html">the guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-type_name" id="graphql-queries-get-type_name"><code class="inline">type_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Override the type name returned by this query. Must be set if the read action has <code class="inline">metadata</code> that is not hidden via the <code class="inline">show_metadata</code> key.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-description" id="graphql-queries-get-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The query description that gets shown in the Graphql schema. If not provided, the action description will be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-metadata_names" id="graphql-queries-get-metadata_names"><code class="inline">metadata_names</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Name overrides for metadata fields on the read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-metadata_types" id="graphql-queries-get-metadata_types"><code class="inline">metadata_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Type overrides for metadata fields on the read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-show_metadata" id="graphql-queries-get-show_metadata"><code class="inline">show_metadata</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The metadata attributes to show. Defaults to all.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-as_mutation?" id="graphql-queries-get-as_mutation?"><code class="inline">as_mutation?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Places the query in the <code class="inline">mutations</code> key instead. Not typically necessary, but is often paired with <code class="inline">as_mutation?</code>. See the <a href="/documentation/topics/modifying-the-resolution.html">the guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-relay_id_translations" id="graphql-queries-get-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-get-hide_inputs" id="graphql-queries-get-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of inputs to hide from the mutation.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Query.html"><code class="inline">AshGraphql.Resource.Query</code></a></p><h2 id="graphql-queries-read_one" class="section-heading">
+  <a href="#graphql-queries-read_one" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.queries.read_one</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">read_one</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>A query to fetch a record</p><h3 id="examples-3" class="section-heading">
+  <a href="#examples-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">read_one</span><span class="w"> </span><span class="ss">:current_user</span><span class="p">,</span><span class="w"> </span><span class="ss">:current_user</span></code></pre><h3 id="arguments-1" class="section-heading">
+  <a href="#arguments-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-name" id="graphql-queries-read_one-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the query.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-queries-read_one-action" id="graphql-queries-read_one-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the query.</td></tr></tbody></table><h3 id="options-2" class="section-heading">
+  <a href="#options-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-allow_nil?" id="graphql-queries-read_one-allow_nil?"><code class="inline">allow_nil?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not the action can return nil.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-type_name" id="graphql-queries-read_one-type_name"><code class="inline">type_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Override the type name returned by this query. Must be set if the read action has <code class="inline">metadata</code> that is not hidden via the <code class="inline">show_metadata</code> key.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-description" id="graphql-queries-read_one-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The query description that gets shown in the Graphql schema. If not provided, the action description will be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-metadata_names" id="graphql-queries-read_one-metadata_names"><code class="inline">metadata_names</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Name overrides for metadata fields on the read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-metadata_types" id="graphql-queries-read_one-metadata_types"><code class="inline">metadata_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Type overrides for metadata fields on the read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-show_metadata" id="graphql-queries-read_one-show_metadata"><code class="inline">show_metadata</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The metadata attributes to show. Defaults to all.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-as_mutation?" id="graphql-queries-read_one-as_mutation?"><code class="inline">as_mutation?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Places the query in the <code class="inline">mutations</code> key instead. Not typically necessary, but is often paired with <code class="inline">as_mutation?</code>. See the <a href="/documentation/topics/modifying-the-resolution.html">the guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-relay_id_translations" id="graphql-queries-read_one-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-read_one-hide_inputs" id="graphql-queries-read_one-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of inputs to hide from the mutation.</td></tr></tbody></table><h3 id="introspection-1" class="section-heading">
+  <a href="#introspection-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Query.html"><code class="inline">AshGraphql.Resource.Query</code></a></p><h2 id="graphql-queries-list" class="section-heading">
+  <a href="#graphql-queries-list" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.queries.list</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">list</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>A query to fetch a list of records</p><h3 id="examples-4" class="section-heading">
+  <a href="#examples-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">list</span><span class="w"> </span><span class="ss">:list_posts</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">list</span><span class="w"> </span><span class="ss">:list_posts_paginated</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="p">,</span><span class="w"> </span><span class="ss">relay?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span></code></pre><h3 id="arguments-2" class="section-heading">
+  <a href="#arguments-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-list-name" id="graphql-queries-list-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the query.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-queries-list-action" id="graphql-queries-list-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the query.</td></tr></tbody></table><h3 id="options-3" class="section-heading">
+  <a href="#options-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-list-relay?" id="graphql-queries-list-relay?"><code class="inline">relay?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">If true, the graphql queries/resolvers for this resource will be built to honor the relay specification. See <a href="/documentation/topics/relay.html">the relay guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-paginate_with" id="graphql-queries-list-paginate_with"><code class="inline">paginate_with</code></a></td><td style="text-align: left;"><code class="inline">:keyset | :offset | nil</code></td><td style="text-align: left;"><code class="inline">:keyset</code></td><td style="text-align: left;">Determine the pagination strategy to use, if multiple are available. If <code class="inline">nil</code>, no pagination is applied, otherwise the given strategy is used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-type_name" id="graphql-queries-list-type_name"><code class="inline">type_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Override the type name returned by this query. Must be set if the read action has <code class="inline">metadata</code> that is not hidden via the <code class="inline">show_metadata</code> key.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-description" id="graphql-queries-list-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The query description that gets shown in the Graphql schema. If not provided, the action description will be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-metadata_names" id="graphql-queries-list-metadata_names"><code class="inline">metadata_names</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Name overrides for metadata fields on the read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-metadata_types" id="graphql-queries-list-metadata_types"><code class="inline">metadata_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Type overrides for metadata fields on the read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-show_metadata" id="graphql-queries-list-show_metadata"><code class="inline">show_metadata</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The metadata attributes to show. Defaults to all.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-as_mutation?" id="graphql-queries-list-as_mutation?"><code class="inline">as_mutation?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Places the query in the <code class="inline">mutations</code> key instead. Not typically necessary, but is often paired with <code class="inline">as_mutation?</code>. See the <a href="/documentation/topics/modifying-the-resolution.html">the guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-relay_id_translations" id="graphql-queries-list-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-list-hide_inputs" id="graphql-queries-list-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of inputs to hide from the mutation.</td></tr></tbody></table><h3 id="introspection-2" class="section-heading">
+  <a href="#introspection-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Query.html"><code class="inline">AshGraphql.Resource.Query</code></a></p><h2 id="graphql-queries-action" class="section-heading">
+  <a href="#graphql-queries-action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.queries.action</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>Runs a generic action</p><h3 id="examples-5" class="section-heading">
+  <a href="#examples-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:check_status</span><span class="p">,</span><span class="w"> </span><span class="ss">:check_status</span></code></pre><h3 id="arguments-3" class="section-heading">
+  <a href="#arguments-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-action-name" id="graphql-queries-action-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the query.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-queries-action-action" id="graphql-queries-action-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the query.</td></tr></tbody></table><h3 id="options-4" class="section-heading">
+  <a href="#options-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-queries-action-description" id="graphql-queries-action-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The description that gets shown in the Graphql schema. If not provided, the action description will be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-action-hide_inputs" id="graphql-queries-action-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Inputs to hide in the mutation/query</td></tr><tr><td style="text-align: left;"><a href="#graphql-queries-action-relay_id_translations" id="graphql-queries-action-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr></tbody></table><h3 id="introspection-3" class="section-heading">
+  <a href="#introspection-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Action.html"><code class="inline">AshGraphql.Resource.Action</code></a></p><h2 id="graphql-mutations" class="section-heading">
+  <a href="#graphql-mutations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.mutations</span>
+</h2>
+<p>Mutations (create/update/destroy actions) to expose for the resource.</p><h3 id="nested-dsls-2" class="section-heading">
+  <a href="#nested-dsls-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#graphql-mutations-create">create</a></li><li><a href="#graphql-mutations-update">update</a></li><li><a href="#graphql-mutations-destroy">destroy</a></li><li><a href="#graphql-mutations-action">action</a></li></ul><h3 id="examples-6" class="section-heading">
+  <a href="#examples-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">mutations</span><span class="w"> </span><span class="k" data-group-id="9572704925-1">do</span><span class="w">
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+  </span><span class="n">update</span><span class="w"> </span><span class="ss">:update_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+  </span><span class="n">destroy</span><span class="w"> </span><span class="ss">:destroy_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="w">
+</span><span class="k" data-group-id="9572704925-1">end</span><span class="w">
+</span></code></pre><h2 id="graphql-mutations-create" class="section-heading">
+  <a href="#graphql-mutations-create" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.mutations.create</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">create</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>A mutation to create a record</p><h3 id="examples-7" class="section-heading">
+  <a href="#examples-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">create</span><span class="w"> </span><span class="ss">:create_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span></code></pre><h3 id="arguments-4" class="section-heading">
+  <a href="#arguments-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-create-name" id="graphql-mutations-create-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the mutation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-mutations-create-action" id="graphql-mutations-create-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the mutation.</td></tr></tbody></table><h3 id="options-5" class="section-heading">
+  <a href="#options-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-create-description" id="graphql-mutations-create-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The mutation description that gets shown in the Graphql schema. If not provided, the action description will be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-create-upsert?" id="graphql-mutations-create-upsert?"><code class="inline">upsert?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Whether or not to use the <code class="inline">upsert?: true</code> option when calling <code class="inline">YourDomain.create/2</code>.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-create-upsert_identity" id="graphql-mutations-create-upsert_identity"><code class="inline">upsert_identity</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Which identity to use for the upsert</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-create-modify_resolution" id="graphql-mutations-create-modify_resolution"><code class="inline">modify_resolution</code></a></td><td style="text-align: left;"><code class="inline">mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">An MFA that will be called with the resolution, the query, and the result of the action as the first three arguments. See the <a href="/documentation/topics/modifying-the-resolution.html">the guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-create-hide_inputs" id="graphql-mutations-create-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of inputs to hide from the mutation.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-create-relay_id_translations" id="graphql-mutations-create-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr></tbody></table><h3 id="introspection-4" class="section-heading">
+  <a href="#introspection-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Mutation.html"><code class="inline">AshGraphql.Resource.Mutation</code></a></p><h2 id="graphql-mutations-update" class="section-heading">
+  <a href="#graphql-mutations-update" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.mutations.update</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">update</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>A mutation to update a record</p><h3 id="examples-8" class="section-heading">
+  <a href="#examples-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">update</span><span class="w"> </span><span class="ss">:update_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span></code></pre><h3 id="arguments-5" class="section-heading">
+  <a href="#arguments-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-update-name" id="graphql-mutations-update-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the mutation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-mutations-update-action" id="graphql-mutations-update-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the mutation.</td></tr></tbody></table><h3 id="options-6" class="section-heading">
+  <a href="#options-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-update-identity" id="graphql-mutations-update-identity"><code class="inline">identity</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The identity to use to fetch the record to be updated. Use <code class="inline">false</code> if no identity is required.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-update-read_action" id="graphql-mutations-update-read_action"><code class="inline">read_action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The read action to use to fetch the record to be updated. Defaults to the primary read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-update-hide_inputs" id="graphql-mutations-update-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of inputs to hide from the mutation.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-update-relay_id_translations" id="graphql-mutations-update-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr></tbody></table><h3 id="introspection-5" class="section-heading">
+  <a href="#introspection-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Mutation.html"><code class="inline">AshGraphql.Resource.Mutation</code></a></p><h2 id="graphql-mutations-destroy" class="section-heading">
+  <a href="#graphql-mutations-destroy" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.mutations.destroy</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">destroy</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>A mutation to destroy a record</p><h3 id="examples-9" class="section-heading">
+  <a href="#examples-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">destroy</span><span class="w"> </span><span class="ss">:destroy_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span></code></pre><h3 id="arguments-6" class="section-heading">
+  <a href="#arguments-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-destroy-name" id="graphql-mutations-destroy-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the mutation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-mutations-destroy-action" id="graphql-mutations-destroy-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the mutation.</td></tr></tbody></table><h3 id="options-7" class="section-heading">
+  <a href="#options-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-destroy-read_action" id="graphql-mutations-destroy-read_action"><code class="inline">read_action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The read action to use to fetch the record to be destroyed. Defaults to the primary read action.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-destroy-identity" id="graphql-mutations-destroy-identity"><code class="inline">identity</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The identity to use to fetch the record to be destroyed. Use <code class="inline">false</code> if no identity is required.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-destroy-hide_inputs" id="graphql-mutations-destroy-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of inputs to hide from the mutation.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-destroy-relay_id_translations" id="graphql-mutations-destroy-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr></tbody></table><h3 id="introspection-6" class="section-heading">
+  <a href="#introspection-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Mutation.html"><code class="inline">AshGraphql.Resource.Mutation</code></a></p><h2 id="graphql-mutations-action" class="section-heading">
+  <a href="#graphql-mutations-action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.mutations.action</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span></code></pre><p>Runs a generic action</p><h3 id="examples-10" class="section-heading">
+  <a href="#examples-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:check_status</span><span class="p">,</span><span class="w"> </span><span class="ss">:check_status</span></code></pre><h3 id="arguments-7" class="section-heading">
+  <a href="#arguments-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-action-name" id="graphql-mutations-action-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:get</code></td><td style="text-align: left;">The name to use for the query.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-mutations-action-action" id="graphql-mutations-action-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to use for the query.</td></tr></tbody></table><h3 id="options-8" class="section-heading">
+  <a href="#options-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-mutations-action-description" id="graphql-mutations-action-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The description that gets shown in the Graphql schema. If not provided, the action description will be used.</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-action-hide_inputs" id="graphql-mutations-action-hide_inputs"><code class="inline">hide_inputs</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Inputs to hide in the mutation/query</td></tr><tr><td style="text-align: left;"><a href="#graphql-mutations-action-relay_id_translations" id="graphql-mutations-action-relay_id_translations"><code class="inline">relay_id_translations</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list indicating arguments or attributes that have to be translated from global Relay IDs to internal IDs. See the <a href="relay.html#translating-relay-global-ids-passed-as-arguments">Relay guide</a> for more.</td></tr></tbody></table><h3 id="introspection-7" class="section-heading">
+  <a href="#introspection-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.Action.html"><code class="inline">AshGraphql.Resource.Action</code></a></p><h2 id="graphql-managed_relationships" class="section-heading">
+  <a href="#graphql-managed_relationships" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.managed_relationships</span>
+</h2>
+<p>Generates input objects for <code class="inline">manage_relationship</code> arguments on resource actions.</p><h3 id="nested-dsls-3" class="section-heading">
+  <a href="#nested-dsls-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#graphql-managed_relationships-managed_relationship">managed_relationship</a></li></ul><h3 id="examples-11" class="section-heading">
+  <a href="#examples-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">managed_relationships</span><span class="w"> </span><span class="k" data-group-id="7046976277-1">do</span><span class="w">
+  </span><span class="n">manage_relationship</span><span class="w"> </span><span class="ss">:create_post</span><span class="p">,</span><span class="w"> </span><span class="ss">:comments</span><span class="w">
+</span><span class="k" data-group-id="7046976277-1">end</span><span class="w">
+</span></code></pre><h3 id="options-9" class="section-heading">
+  <a href="#options-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-auto?" id="graphql-managed_relationships-auto?"><code class="inline">auto?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Automatically derive types for all arguments that have a <code class="inline">manage_relationship</code> call change.</td></tr></tbody></table><h2 id="graphql-managed_relationships-managed_relationship" class="section-heading">
+  <a href="#graphql-managed_relationships-managed_relationship" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">graphql.managed_relationships.managed_relationship</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">managed_relationship</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">argument</span></code></pre><p>Instructs ash_graphql that a given argument with a <code class="inline">manage_relationship</code> change should have its input objects derived automatically from the potential actions to be called.</p><p>For example, given an action like:</p><pre><code class="makeup elixir" translate="no"><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="3953178229-1">do</span><span class="w">
+</span><span class="n">create</span><span class="w"> </span><span class="ss">:create</span><span class="w"> </span><span class="k" data-group-id="3953178229-2">do</span><span class="w">
+</span><span class="n">argument</span><span class="w"> </span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3953178229-3">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:map</span><span class="p" data-group-id="3953178229-3">}</span><span class="w">
+
+</span><span class="n">change</span><span class="w"> </span><span class="n">manage_relationship</span><span class="p" data-group-id="3953178229-4">(</span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:direct_control</span><span class="p" data-group-id="3953178229-4">)</span><span class="w"> </span><span class="c1"># &lt;- we look for this change with a matching argument name</span><span class="w">
+</span><span class="k" data-group-id="3953178229-2">end</span><span class="w">
+</span><span class="k" data-group-id="3953178229-1">end</span></code></pre><p>You could add the following managed_relationship</p><pre><code class="makeup elixir" translate="no"><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="3026338224-1">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+
+</span><span class="n">managed_relationships</span><span class="w"> </span><span class="k" data-group-id="3026338224-2">do</span><span class="w">
+</span><span class="n">managed_relationship</span><span class="w"> </span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="ss">:comments</span><span class="w">
+</span><span class="k" data-group-id="3026338224-2">end</span><span class="w">
+</span><span class="k" data-group-id="3026338224-1">end</span></code></pre><p>By default, the <code class="inline">{:array, :map}</code> would simply be a <code class="inline">json[]</code> type. If the argument name
+is placed in this list, all of the potential actions that could be called will be combined
+into a single input object. If there are type conflicts (for example, if the input could create
+or update a record, and the create and update actions have an argument of the same name but with a different type),
+a warning is emitted at compile time and the first one is used. If that is insufficient, you will need to do one of the following:</p><p>1.) provide the <code class="inline">:types</code> option to the <code class="inline">managed_relationship</code> constructor (see that option for more)
+2.) define a custom type, with a custom input object (see the custom types guide), and use that custom type instead of <code class="inline">:map</code>
+3.) change your actions to not have overlapping inputs with different types</p><p>Since managed relationships can ultimately call multiple actions, there is the possibility
+of field type conflicts. Use the <code class="inline">types</code> option to determine the type of fields and remove the conflict warnings.</p><p>For <code class="inline">non_null</code> use <code class="inline">{:non_null, type}</code>, and for a list, use <code class="inline">{:array, type}</code>, for example:</p><p><code class="inline">{:non_null, {:array, {:non_null, :string}}}</code> for a non null list of non null strings.</p><p>To <em>remove</em> a key from the input object, simply pass <code class="inline">nil</code> as the type.</p><h3 id="arguments-8" class="section-heading">
+  <a href="#arguments-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-managed_relationship-action" id="graphql-managed_relationships-managed_relationship-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action that accepts the argument</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#graphql-managed_relationships-managed_relationship-argument" id="graphql-managed_relationships-managed_relationship-argument"><code class="inline">argument</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The argument for which an input object should be derived.</td></tr></tbody></table><h3 id="options-10" class="section-heading">
+  <a href="#options-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-managed_relationship-lookup_with_primary_key?" id="graphql-managed_relationships-managed_relationship-lookup_with_primary_key?"><code class="inline">lookup_with_primary_key?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"></td><td style="text-align: left;">If the managed_relationship has <code class="inline">on_lookup</code> behavior, this option determines whether or not the primary key is provided in the input object for looking up.</td></tr><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-managed_relationship-lookup_identities" id="graphql-managed_relationships-managed_relationship-lookup_identities"><code class="inline">lookup_identities</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">Determines which identities are provided in the input object for looking up, if there is <code class="inline">on_lookup</code> behavior. Defalts to the <code class="inline">use_identities</code> option.</td></tr><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-managed_relationship-type_name" id="graphql-managed_relationships-managed_relationship-type_name"><code class="inline">type_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the input object that will be derived. Defaults to <code class="inline">&lt;action_type&gt;_&lt;resource&gt;_&lt;argument_name&gt;_input</code></td></tr><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-managed_relationship-types" id="graphql-managed_relationships-managed_relationship-types"><code class="inline">types</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A keyword list of field names to their graphql type identifiers.</td></tr><tr><td style="text-align: left;"><a href="#graphql-managed_relationships-managed_relationship-ignore?" id="graphql-managed_relationships-managed_relationship-ignore?"><code class="inline">ignore?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Use this to ignore a given managed relationship, preventing <code class="inline">auto? true</code> from deriving a type for it.</td></tr></tbody></table><h3 id="introspection-8" class="section-heading">
+  <a href="#introspection-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshGraphql.Resource.ManagedRelationship.html"><code class="inline">AshGraphql.Resource.ManagedRelationship</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashgraphql-domain.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: AshGraphql.Domain
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Change Log
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_graphql/1.3.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_graphql/1.3.3">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_graphql/1.3.3/show/documentation/dsls/DSL:-AshGraphql.Resource.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_graphql.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

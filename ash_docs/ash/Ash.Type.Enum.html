@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Ash.Type.Enum — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/type/enum.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Ash.Type.Enum</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(ash v3.4.8)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>A type for abstracting enums into a single type.</p><p>For example, your existing attribute might look like:</p><pre><code class="makeup elixir" translate="no"><span class="n">attribute</span><span class="w"> </span><span class="ss">:status</span><span class="p">,</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w"> </span><span class="ss">constraints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0676754621-1">[</span><span class="ss">one_of</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0676754621-2">[</span><span class="ss">:open</span><span class="p">,</span><span class="w"> </span><span class="ss">:closed</span><span class="p" data-group-id="0676754621-2">]</span><span class="p" data-group-id="0676754621-1">]</span></code></pre><p>But as that starts to spread around your system, you may find that you want
+to centralize that logic. To do that, use this module to define an Ash type
+easily:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.TicketStatus</span><span class="w"> </span><span class="k" data-group-id="2796636050-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Type.Enum</span><span class="p">,</span><span class="w"> </span><span class="ss">values</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2796636050-2">[</span><span class="ss">:open</span><span class="p">,</span><span class="w"> </span><span class="ss">:closed</span><span class="p" data-group-id="2796636050-2">]</span><span class="w">
+</span><span class="k" data-group-id="2796636050-1">end</span></code></pre><p>Then, you can rewrite your original attribute as follows:</p><pre><code class="makeup elixir" translate="no"><span class="n">attribute</span><span class="w"> </span><span class="ss">:status</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.TicketStatus</span></code></pre><p>Valid values are:</p><ul><li>The atom itself, e.g <code class="inline">:open</code></li><li>A string that matches the atom, e.g <code class="inline">&quot;open&quot;</code></li><li>A string that matches the atom after being downcased, e.g <code class="inline">&quot;OPEN&quot;</code> or <code class="inline">&quot;oPeN&quot;</code></li><li>A string that matches the stringified, downcased atom, after itself being downcased.
+This allows for enum values like <code class="inline">:Open</code>, <code class="inline">:SomeState</code> and <code class="inline">:Some_State</code></li></ul><h2 id="module-custom-input-values" class="section-heading">
+  <a href="#module-custom-input-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Custom input values</span>
+</h2>
+<p>If you need to accept inputs beyond those described above while still mapping them to one
+of the enum values, you can override the <code class="inline">match/1</code> callback.</p><p>For example, if you want to map both the <code class="inline">:half_empty</code> and <code class="inline">:half_full</code> states to the same enum
+value, you could implement it as follows:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.GlassState</span><span class="w"> </span><span class="k" data-group-id="6857155900-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Type.Enum</span><span class="p">,</span><span class="w"> </span><span class="ss">values</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6857155900-2">[</span><span class="ss">:empty</span><span class="p">,</span><span class="w"> </span><span class="ss">:half_full</span><span class="p">,</span><span class="w"> </span><span class="ss">:full</span><span class="p" data-group-id="6857155900-2">]</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">match</span><span class="p" data-group-id="6857155900-3">(</span><span class="ss">:half_empty</span><span class="p" data-group-id="6857155900-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6857155900-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:half_full</span><span class="p" data-group-id="6857155900-4">}</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">match</span><span class="p" data-group-id="6857155900-5">(</span><span class="s">&quot;half_empty&quot;</span><span class="p" data-group-id="6857155900-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6857155900-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:half_full</span><span class="p" data-group-id="6857155900-6">}</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">match</span><span class="p" data-group-id="6857155900-7">(</span><span class="n">value</span><span class="p" data-group-id="6857155900-7">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="k">super</span><span class="p" data-group-id="6857155900-8">(</span><span class="n">value</span><span class="p" data-group-id="6857155900-8">)</span><span class="w">
+</span><span class="k" data-group-id="6857155900-1">end</span></code></pre><p>In the provided example, if no additional value is matched, <code class="inline">super(value)</code> is called, invoking
+the default implementation of <code class="inline">match/1</code>. This approach is typically suitable if you only aim to
+extend default matching rather than completely reimplementing it.</p><h3 id="module-caveats" class="section-heading">
+  <a href="#module-caveats" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Caveats</span>
+</h3>
+<p>Additional input values are not exposed in derived interfaces. For example, <code class="inline">HALF_EMPTY</code> will not
+be present as a possible enum value when using <code class="inline">ash_graphql</code>.</p><p>Moreover, only explicitly matched values are mapped to the enum value. For instance,
+<code class="inline">&quot;HaLf_emPty&quot;</code> would not be accepted by the code provided earlier. If case normalization is
+needed for additional values, it must be explicitly implemented.</p><h2 id="module-value-descriptions" class="section-heading">
+  <a href="#module-value-descriptions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Value descriptions</span>
+</h2>
+<p>It's possible to associate a description with a value by passing a <code class="inline">{value, description}</code> tuple
+inside the values list, which becomes a keyword list:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.TicketStatus</span><span class="w"> </span><span class="k" data-group-id="9119008386-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Type.Enum</span><span class="p">,</span><span class="w">
+    </span><span class="ss">values</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9119008386-2">[</span><span class="w">
+      </span><span class="ss">open</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;An open ticket&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">closed</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A closed ticket&quot;</span><span class="w">
+    </span><span class="p" data-group-id="9119008386-2">]</span><span class="w">
+</span><span class="k" data-group-id="9119008386-1">end</span></code></pre><p>This can be used by extensions to provide detailed descriptions of enum values.</p><p>The description of a value can be retrieved with <code class="inline">description/1</code>:</p><pre><code class="makeup elixir" translate="no"><span class="nc">MyApp.TicketStatus</span><span class="o">.</span><span class="n">description</span><span class="p" data-group-id="1688641656-1">(</span><span class="ss">:open</span><span class="p" data-group-id="1688641656-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="s">&quot;An open ticket&quot;</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:description/1" data-no-tooltip translate="no">description(arg1)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The description of the value, if existing</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:match/1" data-no-tooltip translate="no">match(term)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>finds the valid value that matches a given input term</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:match?/1" data-no-tooltip translate="no">match?(term)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>true if a given term matches a value</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:values/0" data-no-tooltip translate="no">values()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The list of valid values (not all input types that match them)</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:description/1">
+
+  <div class="detail-header">
+    <a href="#c:description/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">description(arg1)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/type/enum.ex#L91" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> description(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+      </div>
+
+<p>The description of the value, if existing</p>
+  </section>
+</section>
+<section class="detail" id="c:match/1">
+
+  <div class="detail-header">
+    <a href="#c:match/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">match(term)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/type/enum.ex#L95" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> match(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} | :error</pre>
+
+      </div>
+
+<p>finds the valid value that matches a given input term</p>
+  </section>
+</section>
+<section class="detail" id="c:match?/1">
+
+  <div class="detail-header">
+    <a href="#c:match?/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">match?(term)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/type/enum.ex#L93" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> match?(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>true if a given term matches a value</p>
+  </section>
+</section>
+<section class="detail" id="c:values/0">
+
+  <div class="detail-header">
+    <a href="#c:values/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">values()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/type/enum.ex#L89" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> values() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]</pre>
+
+      </div>
+
+<p>The list of valid values (not all input types that match them)</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

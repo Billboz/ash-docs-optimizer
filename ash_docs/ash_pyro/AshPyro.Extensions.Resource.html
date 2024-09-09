@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.1">
+    <meta name="project" content="AshPyro v0.2.1">
+
+
+    <title>AshPyro.Extensions.Resource — AshPyro v0.2.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-FM2CSD74.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-43PMFBC7.js"></script>
+    <script src="dist/sidebar_items-9A48DD12.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-L4O5OK2K.js"></script>
+
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<div class="background-layer"></div>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="about.html" class="sidebar-projectName" translate="no">
+AshPyro
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+      <div class="top-search">
+        <div class="search-settings">
+          <form class="search-bar" action="search.html">
+            <label class="search-label">
+              <span class="sr-only">Search documentation of AshPyro</span>
+              <input name="q" type="text" class="search-input" placeholder="Search Documentation (press /)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            </label>
+            <button type="submit" class="search-button" aria-label="Submit Search">
+              <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+            </button>
+            <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+              <i class="ri-close-line ri-lg" title="Cancel search"></i>
+            </button>
+          </form>
+          <div class="autocomplete">
+          </div>
+          <button class="icon-settings display-settings">
+            <i class="ri-settings-3-line"></i>
+            <span class="sr-only">Settings</span>
+          </button>
+        </div>
+
+      </div>
+
+<h1>
+
+    <a href="https://github.com/frankdugan3/ash_pyro/blob/v0.2.1/lib/ash_pyro/extensions/resource/resource.ex#L183" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">AshPyro.Extensions.Resource</span> 
+  <small class="app-vsn" translate="no">(AshPyro v0.2.1)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>An Ash resource extension providing declarative configuration of user interfaces via AshPyro components.</p><h2 id="module-dsl-documentation" class="section-heading">
+  <a href="#module-dsl-documentation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">DSL Documentation</span>
+</h2>
+<h3 id="module-index" class="section-heading">
+  <a href="#module-index" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Index</span>
+</h3>
+<ul><li>pyro<ul><li>data_table<ul><li>action<ul><li>column</li></ul></li><li>action_type<ul><li>column</li></ul></li></ul></li><li>form<ul><li>action<ul><li>field</li><li>field_group<ul><li>field</li></ul></li></ul></li><li>action_type<ul><li>field</li><li>field_group<ul><li>field</li></ul></li></ul></li></ul></li><li>live_view<ul><li>page<ul><li>list</li><li>show</li><li>create</li><li>update</li></ul></li></ul></li></ul></li></ul><h3 id="module-docs" class="section-heading">
+  <a href="#module-docs" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Docs</span>
+</h3>
+<h2 id="module-pyro" class="section-heading">
+  <a href="#module-pyro" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">pyro</span>
+</h2>
+<p>Configure the pyro dashboard for a given resource</p><ul><li><a href="#module-data_table">data_table</a><ul><li>action<ul><li>column</li></ul></li><li>action_type<ul><li>column</li></ul></li></ul></li><li><a href="#module-form">form</a><ul><li>action<ul><li>field</li><li>field_group<ul><li>field</li></ul></li></ul></li><li>action_type<ul><li>field</li><li>field_group<ul><li>field</li></ul></li></ul></li></ul></li><li><a href="#module-live_view">live_view</a><ul><li>page<ul><li>list</li><li>show</li><li>create</li><li>update</li></ul></li></ul></li></ul><hr class="thin"/><h3 id="module-data_table" class="section-heading">
+  <a href="#module-data_table" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">data_table</span>
+</h3>
+<p>Configure the appearance of data tables in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><a href="#module-action">action</a><ul><li>column</li></ul></li><li><a href="#module-action_type">action_type</a><ul><li>column</li></ul></li></ul><hr class="thin"/><ul><li><code class="inline">:exclude</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The actions to exclude from data tables. The default value is <code class="inline">[]</code>.</li></ul><h4>action</h4><p>Configure the appearance of the data table for specific action(s).</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">column</span></code></pre><ul><li><p><code class="inline">:class</code> - Customize data table classes.</p></li><li><p><code class="inline">:default_display</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The columns to display by default. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:default_sort</code> - The columns to sort on by default. The default value is <code class="inline">nil</code>.</p></li><li><p><code class="inline">:exclude</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The fields to exclude from columns. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The description for this data table (defaults to action's description).</p></li><li><p><code class="inline">:name</code> - Required. The action name(s) for this data table.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label for this data table (defaults to capitalized name).</p></li></ul><h6>column</h6><p>Declare non-default behavior for a specific data table column in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><p><code class="inline">:cell_class</code> - Customize cell class.</p></li><li><p><code class="inline">:class</code> - Customize header class.</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default extracted description.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of the column (defaults to capitalized name).</p></li><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the column.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li><li><p><code class="inline">:render_cell</code> (function of arity 1) -  The default value is <code class="inline">&amp;AshPyro.Extensions.Resource.DataTable.Column.render_cell/1</code>.</p></li><li><p><code class="inline">:sortable?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Set to false to disable sorting. Note: If it it is not technically sortable, it will automatically be set to false. The default value is <code class="inline">true</code>.</p></li><li><p><code class="inline">:type</code> - The type of the the column. Valid values are :default The default value is <code class="inline">:default</code>.</p></li></ul><h4>action_type</h4><p>Configure the default data table appearance for actions of type(s). Will be ignored by actions configured explicitly.</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">column</span></code></pre><ul><li><p><code class="inline">:class</code> - Customize data table classes.</p></li><li><p><code class="inline">:default_display</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The columns to display by default. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:default_sort</code> - The columns to sort on by default. The default value is <code class="inline">nil</code>.</p></li><li><p><code class="inline">:exclude</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The fields to exclude from columns. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:exclude</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The fields to exclude from columns. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:name</code> - Required. The action type(s) for this data table.</p></li></ul><h6>column</h6><p>Declare non-default behavior for a specific data table column in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><p><code class="inline">:cell_class</code> - Customize cell class.</p></li><li><p><code class="inline">:class</code> - Customize header class.</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default extracted description.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of the column (defaults to capitalized name).</p></li><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the column.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li><li><p><code class="inline">:render_cell</code> (function of arity 1) -  The default value is <code class="inline">&amp;AshPyro.Extensions.Resource.DataTable.Column.render_cell/1</code>.</p></li><li><p><code class="inline">:sortable?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Set to false to disable sorting. Note: If it it is not technically sortable, it will automatically be set to false. The default value is <code class="inline">true</code>.</p></li><li><p><code class="inline">:type</code> - The type of the the column. Valid values are :default The default value is <code class="inline">:default</code>.</p></li></ul><h3 id="module-form" class="section-heading">
+  <a href="#module-form" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">form</span>
+</h3>
+<p>Configure the appearance of forms in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><a href="#module-action">action</a><ul><li>field</li><li>field_group<ul><li>field</li></ul></li></ul></li><li><a href="#module-action_type">action_type</a><ul><li>field</li><li>field_group<ul><li>field</li></ul></li></ul></li></ul><hr class="thin"/><ul><li><code class="inline">:exclude</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The actions to exclude from forms. The default value is <code class="inline">[]</code>.</li></ul><h4>action</h4><p>Configure the appearance forms forms for specific action(s).</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">field</span><span class="w">
+ </span><span class="o">*</span><span class="w"> </span><span class="n">field_group</span><span class="w">
+   </span><span class="o">*</span><span class="w"> </span><span class="n">field</span></code></pre><ul><li><p><code class="inline">:name</code> - Required. The action name(s) for this form.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label for this form (defaults to capitalized name).</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The description for this form (defaults to action's description).</p></li><li><p><code class="inline">:class</code> - Customize form classes.</p></li></ul><h6>field</h6><p>Declare non-default behavior for a specific form field in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the field to be modified</p></li><li><p><code class="inline">:type</code> - The type of the value in the form. Valid values are :default, :long_text, :short_text, :autocomplete, :select, :nested_form The default value is <code class="inline">:default</code>.</p></li><li><p><code class="inline">:options</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - The options for a select type input. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of the field (defaults to capitalized name).</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default extracted description.</p></li><li><p><code class="inline">:class</code> - Customize class.</p></li><li><p><code class="inline">:input_class</code> - Customize input class.</p></li><li><p><code class="inline">:autofocus</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Autofocus the field. The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:prompt</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default prompt.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li><li><p><code class="inline">:autocomplete_search_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search action name. The default value is <code class="inline">:autocomplete</code>.</p></li><li><p><code class="inline">:autocomplete_search_arg</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search argument key. The default value is <code class="inline">:search</code>.</p></li><li><p><code class="inline">:autocomplete_option_label_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a label. The default value is <code class="inline">:label</code>.</p></li><li><p><code class="inline">:autocomplete_option_value_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a value. The default value is <code class="inline">:id</code>.</p></li></ul><h6>field_group</h6><p>Configure the appearance of form field groups in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="n">field</span></code></pre><ul><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the field group.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of this group (defaults to capitalized name).</p></li><li><p><code class="inline">:class</code> - Customize class.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li></ul><p>####### field</p><p>Declare non-default behavior for a specific form field in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the field to be modified</p></li><li><p><code class="inline">:type</code> - The type of the value in the form. Valid values are :default, :long_text, :short_text, :autocomplete, :select, :nested_form The default value is <code class="inline">:default</code>.</p></li><li><p><code class="inline">:options</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - The options for a select type input. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of the field (defaults to capitalized name).</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default extracted description.</p></li><li><p><code class="inline">:class</code> - Customize class.</p></li><li><p><code class="inline">:input_class</code> - Customize input class.</p></li><li><p><code class="inline">:autofocus</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Autofocus the field. The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:prompt</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default prompt.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li><li><p><code class="inline">:autocomplete_search_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search action name. The default value is <code class="inline">:autocomplete</code>.</p></li><li><p><code class="inline">:autocomplete_search_arg</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search argument key. The default value is <code class="inline">:search</code>.</p></li><li><p><code class="inline">:autocomplete_option_label_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a label. The default value is <code class="inline">:label</code>.</p></li><li><p><code class="inline">:autocomplete_option_value_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a value. The default value is <code class="inline">:id</code>.</p></li></ul><h4>action_type</h4><p>Configure default form appearance for actions of type(s). Will be ignored by actions configured explicitly.</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">field</span><span class="w">
+ </span><span class="o">*</span><span class="w"> </span><span class="n">field_group</span><span class="w">
+   </span><span class="o">*</span><span class="w"> </span><span class="n">field</span></code></pre><ul><li><p><code class="inline">:name</code> - Required. The action type(s) for this form.</p></li><li><p><code class="inline">:class</code> - Customize form classes.</p></li></ul><h6>field</h6><p>Declare non-default behavior for a specific form field in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the field to be modified</p></li><li><p><code class="inline">:type</code> - The type of the value in the form. Valid values are :default, :long_text, :short_text, :autocomplete, :select, :nested_form The default value is <code class="inline">:default</code>.</p></li><li><p><code class="inline">:options</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - The options for a select type input. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of the field (defaults to capitalized name).</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default extracted description.</p></li><li><p><code class="inline">:class</code> - Customize class.</p></li><li><p><code class="inline">:input_class</code> - Customize input class.</p></li><li><p><code class="inline">:autofocus</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Autofocus the field. The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:prompt</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default prompt.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li><li><p><code class="inline">:autocomplete_search_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search action name. The default value is <code class="inline">:autocomplete</code>.</p></li><li><p><code class="inline">:autocomplete_search_arg</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search argument key. The default value is <code class="inline">:search</code>.</p></li><li><p><code class="inline">:autocomplete_option_label_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a label. The default value is <code class="inline">:label</code>.</p></li><li><p><code class="inline">:autocomplete_option_value_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a value. The default value is <code class="inline">:id</code>.</p></li></ul><h6>field_group</h6><p>Configure the appearance of form field groups in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="n">field</span></code></pre><ul><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the field group.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of this group (defaults to capitalized name).</p></li><li><p><code class="inline">:class</code> - Customize class.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li></ul><p>####### field</p><p>Declare non-default behavior for a specific form field in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The name of the field to be modified</p></li><li><p><code class="inline">:type</code> - The type of the value in the form. Valid values are :default, :long_text, :short_text, :autocomplete, :select, :nested_form The default value is <code class="inline">:default</code>.</p></li><li><p><code class="inline">:options</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - The options for a select type input. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:label</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The label of the field (defaults to capitalized name).</p></li><li><p><code class="inline">:description</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default extracted description.</p></li><li><p><code class="inline">:class</code> - Customize class.</p></li><li><p><code class="inline">:input_class</code> - Customize input class.</p></li><li><p><code class="inline">:autofocus</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Autofocus the field. The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:prompt</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Override the default prompt.</p></li><li><p><code class="inline">:path</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Append to the root path (nested paths are appended).</p></li><li><p><code class="inline">:autocomplete_search_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search action name. The default value is <code class="inline">:autocomplete</code>.</p></li><li><p><code class="inline">:autocomplete_search_arg</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Set the autocomplete search argument key. The default value is <code class="inline">:search</code>.</p></li><li><p><code class="inline">:autocomplete_option_label_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a label. The default value is <code class="inline">:label</code>.</p></li><li><p><code class="inline">:autocomplete_option_value_key</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Override the default autocomplete key used as a value. The default value is <code class="inline">:id</code>.</p></li></ul><h3 id="module-live_view" class="section-heading">
+  <a href="#module-live_view" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">live_view</span>
+</h3>
+<p>Configure LiveViews in the <a href="AshPyro.Extensions.Resource.html#content"><code class="inline">AshPyro.Extensions.Resource</code></a> extension.</p><ul><li><a href="#module-page">page</a><ul><li>list</li><li>show</li><li>create</li><li>update</li></ul></li></ul><hr class="thin"/><h4>page</h4><p>Configure a page for this resource.</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="w">
+ </span><span class="o">*</span><span class="w"> </span><span class="n">show</span><span class="w">
+ </span><span class="o">*</span><span class="w"> </span><span class="n">create</span><span class="w">
+ </span><span class="o">*</span><span class="w"> </span><span class="n">update</span></code></pre><ul><li><p><code class="inline">:api</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The API for routes on this page (can also specify per-route/per-action).</p></li><li><p><code class="inline">:class</code> - Customize page classes.</p></li><li><p><code class="inline">:keep_live?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Subscribe to resource updates and keep the view up to date. The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:name</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The live action for this page.</p></li><li><p><code class="inline">:path</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Required. The route path for this page.</p></li><li><p><code class="inline">:route_helper</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The route helper name to be generated. Defaults to [name]_path.</p></li><li><p><code class="inline">:view_as</code> - The view style of the page:</p><ul><li><code class="inline">:list_and_modal</code> - Always list view, show/create/edit in a modal</li><li><code class="inline">:show_and_modal</code> - List view for list actions, show as a dedicated view, create/edit in a modal on show</li><li><code class="inline">:individual</code> - All actions are a dedicated view
+Valid values are :list_and_modal, :show_and_modal, :individual The default value is <code class="inline">:list_and_modal</code>.</li></ul></li></ul><h6>list</h6><p>Configure a list action for this resource.</p><ul><li><p><code class="inline">:path</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Required. The route path for this action.</p></li><li><p><code class="inline">:live_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The live action for this action.</p></li><li><p><code class="inline">:action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The action to use to load the records.</p></li><li><p><code class="inline">:display_as</code> - How to display the action. Valid values are :data_table, :card_grid The default value is <code class="inline">:data_table</code>.</p></li><li><p><code class="inline">:label</code> - The label for this action (defaults to humanized live_action).</p></li><li><p><code class="inline">:description</code> - The description for this action.</p></li><li><p><code class="inline">:class</code> - Customize action classes.</p></li><li><p><code class="inline">:pagination</code> - The pagination type (defaults to <code class="inline">:offset</code> if available). Valid values are :keyset, :offset, :none</p></li><li><p><code class="inline">:default_limit</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">integer/0</code></a>) - The default pagination limit (defaults to the resource's <code class="inline">default_limit</code>, falling back to <code class="inline">max_page_size</code>).</p></li><li><p><code class="inline">:count?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Whether to count the query (defaults to true for <code class="inline">:offset</code> pagination if available).</p></li></ul><h6>show</h6><p>Configure a show action for this resource.</p><ul><li><p><code class="inline">:path</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Required. The route path for this action.</p></li><li><p><code class="inline">:live_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The live action for this action.</p></li><li><p><code class="inline">:action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The action to use to load the record.</p></li><li><p><code class="inline">:display_as</code> - How to display the action. Valid values are :card The default value is <code class="inline">:card</code>.</p></li><li><p><code class="inline">:label</code> - The label for this action (defaults to humanized live_action).</p></li><li><p><code class="inline">:description</code> - The description for this action.</p></li><li><p><code class="inline">:class</code> - Customize action classes.</p></li><li><p><code class="inline">:identity</code> - The identity used to load the record. The default value is <code class="inline">:id</code>.</p></li></ul><h6>create</h6><p>Configure a create action for this resource.</p><ul><li><p><code class="inline">:path</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Required. The route path for this action.</p></li><li><p><code class="inline">:live_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The live action for this action.</p></li><li><p><code class="inline">:action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The action to use to create the record.</p></li><li><p><code class="inline">:display_as</code> - How to display the action. Valid values are :form The default value is <code class="inline">:form</code>.</p></li><li><p><code class="inline">:label</code> - The label for this action (defaults to humanized live_action).</p></li><li><p><code class="inline">:description</code> - The description for this action.</p></li><li><p><code class="inline">:class</code> - Customize action classes.</p></li><li><p><code class="inline">:identity</code> - The identity used to load the record. The default value is <code class="inline">:id</code>.</p></li></ul><h6>update</h6><p>Configure a update action for this resource.</p><ul><li><p><code class="inline">:path</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Required. The route path for this action.</p></li><li><p><code class="inline">:live_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The live action for this action.</p></li><li><p><code class="inline">:action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - Required. The action to use to update the record.</p></li><li><p><code class="inline">:load_action</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The action to use to load the record.</p></li><li><p><code class="inline">:display_as</code> - How to display the action. Valid values are :form The default value is <code class="inline">:form</code>.</p></li><li><p><code class="inline">:label</code> - The label for this action (defaults to humanized live_action).</p></li><li><p><code class="inline">:description</code> - The description for this action.</p></li><li><p><code class="inline">:class</code> - Customize action classes.</p></li><li><p><code class="inline">:identity</code> - The identity used to load the record. The default value is <code class="inline">:id</code>.</p></li></ul>
+  </section>
+
+
+
+      <footer class="footer">
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ash_pyro/0.2.1" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ash_pyro/0.2.1">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="AshPyro.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

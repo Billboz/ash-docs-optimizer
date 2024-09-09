@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_oban v0.2.4">
+
+
+    <title>AshOban — ash_oban v0.2.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-E490895E.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_oban" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_oban" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_oban" class="sidebar-projectName" translate="no">
+ash_oban
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_oban</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">AshOban</span> 
+    <small class="app-vsn" translate="no">(ash_oban v0.2.4)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Tools for working with AshOban triggers.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:result/0" data-no-tooltip translate="no">result()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:triggerable/0" data-no-tooltip translate="no">triggerable()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#authorize?/0" data-no-tooltip translate="no">authorize?()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build_trigger/3" data-no-tooltip translate="no">build_trigger(record, trigger, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Builds a specific trigger for the record provided, but does not insert it into the database.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#config/3" data-no-tooltip translate="no">config(domains, base, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Alters your oban configuration to include the required AshOban configuration.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#do_schedule_and_run_triggers/2" data-no-tooltip translate="no">do_schedule_and_run_triggers(resources_or_domains_or_otp_apps, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#lookup_actor/1" data-no-tooltip translate="no">lookup_actor(actor_json)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_trigger/3" data-no-tooltip translate="no">run_trigger(record, trigger, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Runs a specific trigger for the record provided.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#schedule/3" data-no-tooltip translate="no">schedule(resource, trigger, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Schedules all relevant jobs for the provided trigger or scheduled action</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#schedule_and_run_triggers/2" data-no-tooltip translate="no">schedule_and_run_triggers(resources_or_domains_or_otp_apps, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Runs the schedulers for the given resource, domain, or otp_app, or list of resources, domains, or otp_apps.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#stacktrace/1" data-no-tooltip translate="no">stacktrace(arg1)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#store_actor/2" data-no-tooltip translate="no">store_actor(args, actor)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:result/0">
+
+  <div class="detail-header">
+    <a href="#t:result/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">result()</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L364" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> result() :: %{
+  discard: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  cancelled: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  success: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  failure: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  snoozed: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  queues_not_drained: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:triggerable/0">
+
+  <div class="detail-header">
+    <a href="#t:triggerable/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">triggerable()</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L363" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> triggerable() ::
+  <a href="https://hexdocs.pm/ash/3.2.2/Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | {<a href="https://hexdocs.pm/ash/3.2.2/Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} | <a href="https://hexdocs.pm/ash/3.2.2/Ash.Domain.html#t:t/0">Ash.Domain.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="authorize?/0">
+
+  <div class="detail-header">
+    <a href="#authorize?/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">authorize?()</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L408" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> authorize?() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="build_trigger/3">
+
+    <span id="build_trigger/2"></span>
+
+  <div class="detail-header">
+    <a href="#build_trigger/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build_trigger(record, trigger, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L460" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Builds a specific trigger for the record provided, but does not insert it into the database.</p><h2 id="build_trigger/3-options" class="section-heading">
+  <a href="#build_trigger/3-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><code class="inline">:actor</code> - the actor to set on the job. Requires configuring an actor persister.</li></ul><p>All other options are passed through to <a href="https://hexdocs.pm/oban/2.17.12/Oban.Worker.html#c:new/2"><code class="inline">Oban.Worker.new/2</code></a></p>
+  </section>
+</section>
+<section class="detail" id="config/3">
+
+    <span id="config/2"></span>
+
+  <div class="detail-header">
+    <a href="#config/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">config(domains, base, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L526" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Alters your oban configuration to include the required AshOban configuration.</p><h1>Options</h1><ul><li><code class="inline">:require?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Whether to require queues and plugins to be defined in your oban config. This can be helpful to
+allow the ability to split queues between nodes. See <a href="https://hexdocs.pm/oban/splitting-queues.html">https://hexdocs.pm/oban/splitting-queues.html</a> The default value is <code class="inline">true</code>.</li></ul>
+  </section>
+</section>
+<section class="detail" id="do_schedule_and_run_triggers/2">
+
+  <div class="detail-header">
+    <a href="#do_schedule_and_run_triggers/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">do_schedule_and_run_triggers(resources_or_domains_or_otp_apps, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L786" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="lookup_actor/1">
+
+  <div class="detail-header">
+    <a href="#lookup_actor/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">lookup_actor(actor_json)</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L426" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> lookup_actor(actor_json :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="run_trigger/3">
+
+    <span id="run_trigger/2"></span>
+
+  <div class="detail-header">
+    <a href="#run_trigger/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_trigger(record, trigger, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L445" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Runs a specific trigger for the record provided.</p><h2 id="run_trigger/3-options" class="section-heading">
+  <a href="#run_trigger/3-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><code class="inline">:actor</code> - the actor to set on the job. Requires configuring an actor persister.</li></ul><p>All other options are passed through to <a href="https://hexdocs.pm/oban/2.17.12/Oban.Worker.html#c:new/2"><code class="inline">Oban.Worker.new/2</code></a></p>
+  </section>
+</section>
+<section class="detail" id="schedule/3">
+
+    <span id="schedule/2"></span>
+
+  <div class="detail-header">
+    <a href="#schedule/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">schedule(resource, trigger, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L380" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Schedules all relevant jobs for the provided trigger or scheduled action</p><h2 id="schedule/3-options" class="section-heading">
+  <a href="#schedule/3-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<p>  <code class="inline">:actor</code> - the actor to set on the job. Requires configuring an actor persister.</p>
+  </section>
+</section>
+<section class="detail" id="schedule_and_run_triggers/2">
+
+    <span id="schedule_and_run_triggers/1"></span>
+
+  <div class="detail-header">
+    <a href="#schedule_and_run_triggers/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">schedule_and_run_triggers(resources_or_domains_or_otp_apps, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L775" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> schedule_and_run_triggers(
+  <a href="#t:triggerable/0">triggerable</a>() | [<a href="#t:triggerable/0">triggerable</a>()],
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>Runs the schedulers for the given resource, domain, or otp_app, or list of resources, domains, or otp_apps.</p><p>Options:</p><ul><li><code class="inline">drain_queues?</code> - Defaults to false, drains the queues after scheduling. This is primarily for testing</li><li><code class="inline">queue</code>, <code class="inline">with_limit</code>, <code class="inline">with_recursion</code>, <code class="inline">with_safety</code>, <code class="inline">with_scheduled</code> - passed through to <a href="https://hexdocs.pm/oban/2.17.12/Oban.html#drain_queue/2"><code class="inline">Oban.drain_queue/2</code></a>, if it is called</li><li><code class="inline">scheduled_actions?</code> - Defaults to false, unless a scheduled action name was explicitly provided. Schedules all applicable scheduled actions.</li><li><code class="inline">triggers?</code> - Defaults to true, schedules all applicable scheduled actions.</li><li><code class="inline">actor</code> - The actor to schedule and run the triggers with</li><li><code class="inline">oban</code> - The oban module to use. Defaults to <a href="https://hexdocs.pm/oban/2.17.12/Oban.html"><code class="inline">Oban</code></a></li></ul><p>If the input is:</p><ul><li>a list - each item is passed into <a href="#schedule_and_run_triggers/1"><code class="inline">schedule_and_run_triggers/1</code></a>, and the results are merged together.</li><li>an otp_app - each domain configured in the <code class="inline">ash_domains</code> of that otp_app is passed into <a href="#schedule_and_run_triggers/1"><code class="inline">schedule_and_run_triggers/1</code></a>, and the results are merged together.</li><li>a domain - each reosurce configured in that domain is passed into <a href="#schedule_and_run_triggers/1"><code class="inline">schedule_and_run_triggers/1</code></a>, and the results are merged together.</li><li>a tuple of {resource, :trigger_name} - that trigger is scheduled, and the results are merged together.</li><li>a resource - each trigger configured in that resource is scheduled, and the results are merged together.</li></ul>
+  </section>
+</section>
+<section class="detail" id="stacktrace/1">
+
+  <div class="detail-header">
+    <a href="#stacktrace/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">stacktrace(arg1)</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L749" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="store_actor/2">
+
+  <div class="detail-header">
+    <a href="#store_actor/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">store_actor(args, actor)</h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/lib/ash_oban.ex#L413" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> store_actor(args :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), actor :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_oban/0.2.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_oban/0.2.4">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_oban.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

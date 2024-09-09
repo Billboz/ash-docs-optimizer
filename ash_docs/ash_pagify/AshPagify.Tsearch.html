@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_pagify v1.0.2">
+
+
+    <title>AshPagify.Tsearch — ash_pagify v1.0.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-6F6CB061.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://hexdocs.pm/ash_pagify" class="sidebar-projectName" translate="no">
+ash_pagify
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_pagify</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">AshPagify.Tsearch</span> 
+    <small class="app-vsn" translate="no">(ash_pagify v1.0.2)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>AshPagify full-text search utilities.</p><p>This module provides utilities for full-text search in AshPagify. For a basic usage
+you can <code class="inline">use AshPagify.Tsearch</code> and implement the <code class="inline">tsvector</code> calculation in your
+resource.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Resource</span><span class="w"> </span><span class="k" data-group-id="9394652444-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPagify.Tsearch</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="w">
+
+  </span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="9394652444-2">do</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="n">expr</span><span class="p" data-group-id="9394652444-3">(</span><span class="w">
+                </span><span class="n">fragment</span><span class="p" data-group-id="9394652444-4">(</span><span class="w">
+                  </span><span class="s">&quot;to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;)) || to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;))&quot;</span><span class="p">,</span><span class="w">
+                  </span><span class="n">name</span><span class="p">,</span><span class="w">
+                  </span><span class="n">title</span><span class="w">
+                </span><span class="p" data-group-id="9394652444-4">)</span><span class="w">
+              </span><span class="p" data-group-id="9394652444-3">)</span><span class="p">,</span><span class="w">
+              </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="k" data-group-id="9394652444-2">end</span><span class="w">
+  </span><span class="k" data-group-id="9394652444-1">end</span><span class="w">
+</span><span class="k">end</span></code></pre><p>AshPagify.Tsearch provides the following calculations which are used by <code class="inline">AshPagify.search</code> for full-text search:</p><ul><li><code class="inline">:tsquery</code> - The tsquery to search for.</li><li><code class="inline">:full_text_search</code> - A boolean indicating whether the tsvector matches the tsquery.</li><li><code class="inline">:full_text_search_rank</code> - The rank of the tsvector against the tsquery.</li></ul><p>If you need to provide a custom implementation for one of these calculations, you can do so by</p><ol><li>not require the calculation in your resource</li><li>implementing the calculation in your resource</li></ol><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Resource</span><span class="w"> </span><span class="k" data-group-id="6944794791-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPagify.Tsearch</span><span class="p">,</span><span class="w"> </span><span class="ss">only</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6944794791-2">[</span><span class="ss">:full_text_search</span><span class="p">,</span><span class="w"> </span><span class="ss">:full_text_search_rank</span><span class="p" data-group-id="6944794791-2">]</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="w">
+
+  </span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="6944794791-3">do</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:tsquery</span><span class="p">,</span><span class="w">
+              </span><span class="nc">AshPostgres.Tsquery</span><span class="p">,</span><span class="w">
+              </span><span class="c1"># use english dictionary unaccent PostgreSQL extension</span><span class="w">
+              </span><span class="n">expr</span><span class="p" data-group-id="6944794791-4">(</span><span class="n">fragment</span><span class="p" data-group-id="6944794791-5">(</span><span class="s">&quot;to_tsquery(&#39;english&#39;, unaccent(?))&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">^</span><span class="n">arg</span><span class="p" data-group-id="6944794791-6">(</span><span class="ss">:search</span><span class="p" data-group-id="6944794791-6">)</span><span class="p" data-group-id="6944794791-5">)</span><span class="p" data-group-id="6944794791-4">)</span><span class="w"> </span><span class="k" data-group-id="6944794791-7">do</span><span class="w">
+      </span><span class="n">public?</span><span class="w"> </span><span class="no">true</span><span class="w">
+      </span><span class="n">argument</span><span class="w"> </span><span class="ss">:search</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_expr?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="k" data-group-id="6944794791-7">end</span><span class="w">
+
+    </span><span class="n">...</span><span class="w">
+  </span><span class="k" data-group-id="6944794791-3">end</span><span class="w">
+</span><span class="k" data-group-id="6944794791-1">end</span></code></pre><h2 id="module-installation" class="section-heading">
+  <a href="#module-installation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installation</span>
+</h2>
+<p>If you do not use any PostgreSQL specific full-text search extensions, you can skip this step.</p><p>Otherwise, you need to add the required extensions to your Repo.installed_extensions list.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Repo</span><span class="w"> </span><span class="k" data-group-id="1411747215-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPostgres.Repo</span><span class="p">,</span><span class="w"> </span><span class="ss">otp_app</span><span class="p">:</span><span class="w"> </span><span class="ss">:my_app</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">installed_extensions</span><span class="w"> </span><span class="k" data-group-id="1411747215-2">do</span><span class="w">
+    </span><span class="p" data-group-id="1411747215-3">[</span><span class="s">&quot;ash-functions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;uuid-ossp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;citext&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;unaccent&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">AshUUID.PostgresExtension</span><span class="p" data-group-id="1411747215-3">]</span><span class="w">
+  </span><span class="k" data-group-id="1411747215-2">end</span><span class="w">
+</span><span class="k" data-group-id="1411747215-1">end</span></code></pre><h2 id="module-configuration" class="section-heading">
+  <a href="#module-configuration" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Configuration</span>
+</h2>
+<p>You can configure the full-text search options globally, per resource, or locally.
+The options are merged in the following order:</p><ol><li>Function arguments (highest priority)</li><li>Resource-level options (set in the resource module)</li><li>Global options in the application environment (set in config files)</li><li>Library defaults (lowest priority)</li></ol><p>Have a look at <a href="#t:tsearch_option/0"><code class="inline">tsearch_option/0</code></a> for a list of available options.</p><h2 id="module-features" class="section-heading">
+  <a href="#module-features" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features</span>
+</h2>
+<h3 id="module-prefix-postgresql-8-4-and-newer-only" class="section-heading">
+  <a href="#module-prefix-postgresql-8-4-and-newer-only" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">:prefix (PostgreSQL 8.4 and newer only)</span>
+</h3>
+<p>PostgreSQL's full text search matches on whole words by default. If you want to search for partial words,
+however, you can set :prefix to true in one of the configuration options described above.</p><p>Default: <code class="inline">true</code></p><h3 id="module-negation" class="section-heading">
+  <a href="#module-negation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">:negation</span>
+</h3>
+<p>PostgreSQL's full text search matches all search terms by default. If you want to exclude certain words,
+you can set :negation to true. Then any term that begins with an exclamation point <code class="inline">!</code> will be excluded
+from the results.</p><p>Default: <code class="inline">true</code></p><h3 id="module-any_word" class="section-heading">
+  <a href="#module-any_word" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">:any_word</span>
+</h3>
+<p>Setting this attribute to true will perform a search which will return all models containing any word
+in the search terms. If set to false, the search will return all models containing all words in the
+search terms.</p><p>Default: <code class="inline">false</code></p><h3 id="module-tsvector_column" class="section-heading">
+  <a href="#module-tsvector_column" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">:tsvector_column</span>
+</h3>
+<p>This option allows you to specify a custom tsvector column expression for dynamic tsvector column lookup.
+Have a look at the <code class="inline">Enhanced search</code> section for more information.</p><p>Default: <code class="inline">nil</code></p><h3 id="module-dictionary" class="section-heading">
+  <a href="#module-dictionary" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">:dictionary</span>
+</h3>
+<p>We do not provide a mechanisme to set the dictionary in the configuration options. You can set the dictionary
+in a custom <code class="inline">tsquery</code> calculation implementation in your resource.</p><h3 id="module-weighting" class="section-heading">
+  <a href="#module-weighting" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">:weighting</span>
+</h3>
+<p>We do not provide a mechanisme to set the weighting in the configuration options. You can set the weighting
+in your <code class="inline">tsvector</code> calculation implementation in your resource (or in the tsvector column in your database).</p><h2 id="module-enhanced-search" class="section-heading">
+  <a href="#module-enhanced-search" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Enhanced search</span>
+</h2>
+<p>If you need to be able to change the <code class="inline">tsvector</code> column dynamically (e.g. based on some user input), you can
+use the <code class="inline">:tsvector_column</code> option. This option should be specified in your resource module. Then you need
+to pass the targeted tsvector calculation as <code class="inline">full_text_search: [tsvector: :custom_tsvector]</code> option to your
+<a href="AshPagify.html#validate_and_run/4"><code class="inline">AshPagify.validate_and_run/4</code></a> call (or other functions provided by AshPagify). This approach is mandatory so we
+can serialize the custom tsvector in <code class="inline">AshPagify.query_to_filters_map</code> and restore it in <code class="inline">AshPagify.query_for_filters_map</code>
+accordingly.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Resource</span><span class="w"> </span><span class="k" data-group-id="3422390064-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPagify.Tsearch</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">full_text_search</span><span class="w"> </span><span class="k" data-group-id="3422390064-2">do</span><span class="w">
+    </span><span class="p" data-group-id="3422390064-3">[</span><span class="w">
+      </span><span class="ss">tsvector_column</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3422390064-4">[</span><span class="w">
+        </span><span class="ss">custom_tsvector</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="o">.</span><span class="n">expr</span><span class="p" data-group-id="3422390064-5">(</span><span class="n">custom_tsvector</span><span class="p" data-group-id="3422390064-5">)</span><span class="p">,</span><span class="w">
+        </span><span class="ss">another_custom_tsvector</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="o">.</span><span class="n">expr</span><span class="p" data-group-id="3422390064-6">(</span><span class="n">another_custom_tsvector</span><span class="p" data-group-id="3422390064-6">)</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="3422390064-4">]</span><span class="w">
+    </span><span class="p" data-group-id="3422390064-3">]</span><span class="w">
+  </span><span class="k" data-group-id="3422390064-2">end</span><span class="w">
+
+  </span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="3422390064-7">do</span><span class="w">
+    </span><span class="c1"># default tsvector calculation</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="n">expr</span><span class="p" data-group-id="3422390064-8">(</span><span class="w">
+                </span><span class="n">fragment</span><span class="p" data-group-id="3422390064-9">(</span><span class="w">
+                  </span><span class="s">&quot;to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;)) || to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;))&quot;</span><span class="p">,</span><span class="w">
+                  </span><span class="n">name</span><span class="p">,</span><span class="w">
+                  </span><span class="n">title</span><span class="w">
+                </span><span class="p" data-group-id="3422390064-9">)</span><span class="w">
+              </span><span class="p" data-group-id="3422390064-8">)</span><span class="p">,</span><span class="w">
+              </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="k" data-group-id="3422390064-7">end</span><span class="w">
+
+    </span><span class="c1"># custom tsvector calculation</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:custom_tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="n">expr</span><span class="p" data-group-id="3422390064-10">(</span><span class="w">
+                </span><span class="n">fragment</span><span class="p" data-group-id="3422390064-11">(</span><span class="w">
+                  </span><span class="s">&quot;to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;))&quot;</span><span class="p">,</span><span class="w">
+                  </span><span class="n">name</span><span class="w">
+                </span><span class="p" data-group-id="3422390064-11">)</span><span class="w">
+              </span><span class="p" data-group-id="3422390064-10">)</span><span class="p">,</span><span class="w">
+              </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="k" data-group-id="3422390064-1">end</span><span class="w">
+
+    </span><span class="c1"># another custom tsvector calculation</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:another_custom_tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="n">expr</span><span class="p" data-group-id="3422390064-12">(</span><span class="w">
+                </span><span class="n">fragment</span><span class="p" data-group-id="3422390064-13">(</span><span class="w">
+                  </span><span class="s">&quot;to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;))&quot;</span><span class="p">,</span><span class="w">
+                  </span><span class="n">title</span><span class="w">
+                </span><span class="p" data-group-id="3422390064-13">)</span><span class="w">
+              </span><span class="p" data-group-id="3422390064-12">)</span><span class="p">,</span><span class="w">
+              </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="k">end</span><span class="w">
+  </span><span class="k">end</span><span class="w">
+</span><span class="k">end</span></code></pre><p>The in your business logic:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">search</span><span class="p" data-group-id="3816086586-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="3816086586-2">[</span><span class="p" data-group-id="3816086586-2">]</span><span class="p" data-group-id="3816086586-1">)</span><span class="w"> </span><span class="k" data-group-id="3816086586-3">do</span><span class="w">
+  </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_tsvector</span><span class="p" data-group-id="3816086586-4">(</span><span class="ss">:custom_tsvector</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="3816086586-4">)</span><span class="w">
+  </span><span class="n">query</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">validate_and_run</span><span class="p" data-group-id="3816086586-5">(</span><span class="nc">MyApp.Resource</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="3816086586-5">)</span><span class="w">
+</span><span class="k" data-group-id="3816086586-3">end</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:tsearch_option/0" data-no-tooltip translate="no">tsearch_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A list of options for full text search.</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#default_opts/0" data-no-tooltip translate="no">default_opts()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the default full text search options.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#merge_opts/1" data-no-tooltip translate="no">merge_opts(opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Merges the given options with the default options.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#normalize/1" data-no-tooltip translate="no">normalize(term)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Replaces disallowed characters in the term with spaces.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#option_keys/0" data-no-tooltip translate="no">option_keys()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the keys for the full text search options.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#query_terms/1" data-no-tooltip translate="no">query_terms(search)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Splits the search term into terms and returns a list of trimmed terms.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#sanitize_term/2" data-no-tooltip translate="no">sanitize_term(term, bool)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles the negation of the term.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tsquery/2" data-no-tooltip translate="no">tsquery(search, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the tsquery expression for the given search term and options.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tsquery_expression/2" data-no-tooltip translate="no">tsquery_expression(term_sql, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>After this, the SQL expression evaluates to a string containing the term surrounded by single-quotes.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tsquery_for_term/2" data-no-tooltip translate="no">tsquery_for_term(unsanitized_term, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the tsquery expression for the given term and options.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tsvector/1" data-no-tooltip translate="no">tsvector(opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the tsvector expression for the given options.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:tsearch_option/0">
+
+  <div class="detail-header">
+    <a href="#t:tsearch_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">tsearch_option()</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L219" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> tsearch_option() ::
+  {:negation, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
+  | {:prefix, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
+  | {:any_word, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
+  | {:tsvector_column, <a href="https://hexdocs.pm/ash/3.3.3/Ash.Expr.html#t:t/0">Ash.Expr.t</a>() | [<a href="https://hexdocs.pm/ash/3.3.3/Ash.Expr.html#t:t/0">Ash.Expr.t</a>()]}</pre>
+
+      </div>
+
+<p>A list of options for full text search.</p><ul><li><code class="inline">:negation</code> - Whether to negate the search. Defaults to <code class="inline">true</code>.</li><li><code class="inline">:prefix</code> - Whether to prefix the search. Defaults to <code class="inline">true</code>.</li><li><code class="inline">:any_word</code> - Whether to combine multiple words with || or &amp;&amp;. Defaults to <code class="inline">false</code> (&amp;&amp;).</li><li><code class="inline">:tsvector_column</code> - Custom tsvector column expressions for dynamic tsvector
+column lookup. Defaults to <code class="inline">nil</code>.</li></ul>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="default_opts/0">
+
+  <div class="detail-header">
+    <a href="#default_opts/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">default_opts()</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L235" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> default_opts() :: [<a href="#t:tsearch_option/0">tsearch_option</a>()]</pre>
+
+      </div>
+
+<p>Returns the default full text search options.</p><p>The default options are:</p><ul><li><code class="inline">:negation</code> - <code class="inline">true</code></li><li><code class="inline">:prefix</code> - <code class="inline">true</code></li><li><code class="inline">:any_word</code> - <code class="inline">false</code></li><li><code class="inline">:tsvector_column</code> - <code class="inline">nil</code></li></ul>
+  </section>
+</section>
+<section class="detail" id="merge_opts/1">
+
+    <span id="merge_opts/0"></span>
+
+  <div class="detail-header">
+    <a href="#merge_opts/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">merge_opts(opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L263" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Merges the given options with the default options.</p><p>The options are merged in the following order:</p><ol><li>Function arguments (highest priority)</li><li>Resource-level options (set in the resource module)</li><li>Global options in the application environment (set in config files)</li><li>Library defaults (lowest priority)</li></ol>
+  </section>
+</section>
+<section class="detail" id="normalize/1">
+
+  <div class="detail-header">
+    <a href="#normalize/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">normalize(term)</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L388" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Replaces disallowed characters in the term with spaces.</p>
+  </section>
+</section>
+<section class="detail" id="option_keys/0">
+
+  <div class="detail-header">
+    <a href="#option_keys/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">option_keys()</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L249" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the keys for the full text search options.</p>
+  </section>
+</section>
+<section class="detail" id="query_terms/1">
+
+  <div class="detail-header">
+    <a href="#query_terms/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">query_terms(search)</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L349" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Splits the search term into terms and returns a list of trimmed terms.</p>
+  </section>
+</section>
+<section class="detail" id="sanitize_term/2">
+
+  <div class="detail-header">
+    <a href="#sanitize_term/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">sanitize_term(term, bool)</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L376" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Handles the negation of the term.</p>
+  </section>
+</section>
+<section class="detail" id="tsquery/2">
+
+    <span id="tsquery/1"></span>
+
+  <div class="detail-header">
+    <a href="#tsquery/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">tsquery(search, opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L326" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the tsquery expression for the given search term and options.</p><p>The search term is split into terms and each term is sanitized and normalized.
+The terms are then combined into a tsquery expression.</p>
+  </section>
+</section>
+<section class="detail" id="tsquery_expression/2">
+
+    <span id="tsquery_expression/1"></span>
+
+  <div class="detail-header">
+    <a href="#tsquery_expression/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">tsquery_expression(term_sql, opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L398" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>After this, the SQL expression evaluates to a string containing the term surrounded by single-quotes.</p><p>If :prefix is true, then the term will have :* appended to the end.
+If :negated is true, then the term will have ! prepended to the front and be surrounded by brackets.</p>
+  </section>
+</section>
+<section class="detail" id="tsquery_for_term/2">
+
+    <span id="tsquery_for_term/1"></span>
+
+  <div class="detail-header">
+    <a href="#tsquery_for_term/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">tsquery_for_term(unsanitized_term, opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L359" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the tsquery expression for the given term and options.</p>
+  </section>
+</section>
+<section class="detail" id="tsvector/1">
+
+    <span id="tsvector/0"></span>
+
+  <div class="detail-header">
+    <a href="#tsvector/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">tsvector(opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/tsearch.ex#L288" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the tsvector expression for the given options.</p><p>Respects the <code class="inline">:tsvector_column</code> option together with the <code class="inline">:tsvector</code> option.
+If both are set, the <code class="inline">:tsvector</code> option is used to lookup the tsvector column
+in the <code class="inline">:tsvector_column</code> option. If the custom tsvector column is not found,
+the default tsvector column is used.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_pagify/1.0.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_pagify/1.0.2">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_pagify.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Code Interface — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/resources/code-interfaces.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Code Interface</span>
+  </h1>
+
+<p>One of the ways that we interact with our resources is via hand-written code. The general pattern for that looks like building a query or a changeset for a given action, and calling it via functions like <a href="Ash.html#read/2"><code class="inline">Ash.read/2</code></a> and <a href="Ash.html#create/2"><code class="inline">Ash.create/2</code></a>. This, however, is just one way to use Ash, and is designed to help you build tools that work with resources, and to power things like <code class="inline">AshPhoenix.Form</code>, <code class="inline">AshGraphql.Resource</code> and <code class="inline">AshJsonApi.Resource</code>. When working with your resources in code, we generally want something more idiomatic and simple. For example, on a domain called <code class="inline">Helpdesk.Support</code>.</p><pre><code class="makeup elixir" translate="no"><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="2589813364-1">do</span><span class="w">
+  </span><span class="n">resource</span><span class="w"> </span><span class="nc">Ticket</span><span class="w"> </span><span class="k" data-group-id="2589813364-2">do</span><span class="w">
+    </span><span class="n">define</span><span class="w"> </span><span class="ss">:open_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2589813364-3">[</span><span class="ss">:subject</span><span class="p" data-group-id="2589813364-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:open</span><span class="w">
+  </span><span class="k" data-group-id="2589813364-2">end</span><span class="w">
+</span><span class="k" data-group-id="2589813364-1">end</span></code></pre><p>This simple setup now allows you to open a ticket with <code class="inline">Helpdesk.Support.open_ticket(subject)</code>. You can cause it to raise errors instead of return them with <code class="inline">Helpdesk.Support.open_ticket!(subject)</code>. For information on the options and additional inputs these defined functions take, look at the generated function documentation, which you can do in iex with <code class="inline">h Helpdesk.Support.open_ticket</code>. For more information on the code interface, read the DSL documentation: <code class="inline"><a href="dsl-ash-domain.html#resource-interfaces">Ash.Domain.Dsl.resource.interfaces</a></code>.</p><h2 id="code-interfaces-on-the-resource" class="section-heading">
+  <a href="#code-interfaces-on-the-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Code interfaces on the resource</span>
+</h2>
+<p>You can define a code interface on individual resources as well, using the <code class="inline">code_interface</code> block. The DSL is the same as the DSL for defining it in the <code class="inline">domain</code>. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">code_interface</span><span class="w"> </span><span class="k" data-group-id="4002713123-1">do</span><span class="w">
+  </span><span class="c1"># the action open can be omitted because it matches the functon name</span><span class="w">
+  </span><span class="n">define</span><span class="w"> </span><span class="ss">:open</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4002713123-2">[</span><span class="ss">:subject</span><span class="p" data-group-id="4002713123-2">]</span><span class="w">
+</span><span class="k" data-group-id="4002713123-1">end</span></code></pre><p>These will then be called on the resource itself, i.e <code class="inline">Helpdesk.Support.Ticket.open(subject)</code>.</p><h2 id="using-the-code-interface" class="section-heading">
+  <a href="#using-the-code-interface" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using the code interface</span>
+</h2>
+<p>If the action is an update or destroy, it will take a record or a changeset as its <em>first</em> argument.
+If the action is a read action, it will take a starting query as an <em>opt in the last</em> argument.</p><p>All functions will have an optional last argument that accepts options. See <a href="Ash.Resource.Interface.html#interface_options/2"><code class="inline">Ash.Resource.Interface.interface_options/2</code></a> for valid options.</p><p>For reads:</p><ul><li><code class="inline">:query</code> - a query to start the action with, can be used to filter/sort the results of the action.</li></ul><p>For creates:</p><ul><li><code class="inline">:changeset</code> - a changeset to start the action with</li></ul><p>They will also have an optional second to last argument that is a freeform map to provide action input. It <em>must be a map</em>.
+If it is a keyword list, it will be assumed that it is actually <code class="inline">options</code> (for convenience).
+This allows for the following behaviour:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># Because the 3rd argument is a keyword list, we use it as options</span><span class="w">
+</span><span class="nc">Accounts</span><span class="o">.</span><span class="n">register_user</span><span class="p" data-group-id="2189548521-1">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2189548521-2">[</span><span class="ss">tenant</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;organization_22&quot;</span><span class="p" data-group-id="2189548521-2">]</span><span class="p" data-group-id="2189548521-1">)</span><span class="w">
+</span><span class="c1"># Because the 3rd argument is a map, we use it as action input</span><span class="w">
+</span><span class="nc">Accounts</span><span class="o">.</span><span class="n">register_user</span><span class="p" data-group-id="2189548521-3">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2189548521-4">%{</span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;val&quot;</span><span class="p" data-group-id="2189548521-4">}</span><span class="p" data-group-id="2189548521-3">)</span><span class="w">
+</span><span class="c1"># When all arguments are provided it is unambiguous</span><span class="w">
+</span><span class="nc">Accounts</span><span class="o">.</span><span class="n">register_user</span><span class="p" data-group-id="2189548521-5">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2189548521-6">%{</span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;val&quot;</span><span class="p" data-group-id="2189548521-6">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2189548521-7">[</span><span class="ss">tenant</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;organization_22&quot;</span><span class="p" data-group-id="2189548521-7">]</span><span class="p" data-group-id="2189548521-5">)</span></code></pre><h2 id="calculations" class="section-heading">
+  <a href="#calculations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Calculations</span>
+</h2>
+<p>Resource calculations can be run dynamically using <a href="Ash.html#calculate/3"><code class="inline">Ash.calculate/3</code></a>, but
+you can also expose them using the code_interface with <code class="inline">define_calculation</code>.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="0300062092-1">do</span><span class="w">
+  </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:full_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="0300062092-2">(</span><span class="n">first_name</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">^</span><span class="n">arg</span><span class="p" data-group-id="0300062092-3">(</span><span class="ss">:separator</span><span class="p" data-group-id="0300062092-3">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">last_name</span><span class="p" data-group-id="0300062092-2">)</span><span class="w"> </span><span class="k" data-group-id="0300062092-4">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:separator</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="0300062092-5">do</span><span class="w">
+      </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+      </span><span class="n">default</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w">
+    </span><span class="k" data-group-id="0300062092-5">end</span><span class="w">
+  </span><span class="k" data-group-id="0300062092-4">end</span><span class="w">
+</span><span class="k" data-group-id="0300062092-1">end</span><span class="w">
+
+</span><span class="c1"># in your domain</span><span class="w">
+</span><span class="n">resource</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="k" data-group-id="0300062092-6">do</span><span class="w">
+  </span><span class="n">define_calculation</span><span class="w"> </span><span class="ss">:full_name</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0300062092-7">[</span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:last_name</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0300062092-8">{</span><span class="ss">:optional</span><span class="p">,</span><span class="w"> </span><span class="ss">:separator</span><span class="p" data-group-id="0300062092-8">}</span><span class="p" data-group-id="0300062092-7">]</span><span class="w">
+  </span><span class="c1"># or if you want to take a record as an argument</span><span class="w">
+  </span><span class="n">define_calculation</span><span class="w"> </span><span class="ss">:full_name</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0300062092-9">[</span><span class="ss">:_record</span><span class="p" data-group-id="0300062092-9">]</span><span class="w">
+</span><span class="k" data-group-id="0300062092-6">end</span></code></pre><p>This could now be used like so:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Accounts</span><span class="o">.</span><span class="n">full_name</span><span class="p" data-group-id="9574220908-1">(</span><span class="s">&quot;Jessie&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;James&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p" data-group-id="9574220908-1">)</span><span class="w">
+</span><span class="c1"># or with a record as an argument</span><span class="w">
+</span><span class="nc">Accounts</span><span class="o">.</span><span class="n">full_name</span><span class="p" data-group-id="9574220908-2">(</span><span class="n">user</span><span class="p" data-group-id="9574220908-2">)</span></code></pre><p>This allows for running calculations without an instance of a resource, normally done via <code class="inline">Ash.load(user, :full_name)</code></p><p>By default, configured args will be provided for any matching named reference <em>or</em> argument. This is normally fine, but in the case that you have an argument and a reference with the same name, you can specify it by supplying <code class="inline">{:arg, :name}</code> and <code class="inline">{:ref, :name}</code>. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">define_calculation</span><span class="w"> </span><span class="ss">:id_matches</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7734132056-1">[</span><span class="p" data-group-id="7734132056-2">{</span><span class="ss">:arg</span><span class="p">,</span><span class="w"> </span><span class="ss">:id</span><span class="p" data-group-id="7734132056-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7734132056-3">{</span><span class="ss">:ref</span><span class="p">,</span><span class="w"> </span><span class="ss">:id</span><span class="p" data-group-id="7734132056-3">}</span><span class="p" data-group-id="7734132056-1">]</span></code></pre><p>To make arguments optional, wrap them in <code class="inline">{:optional, ..}</code>, for example:</p><pre><code class="makeup elixir" translate="no"><span class="n">define_calculation</span><span class="w"> </span><span class="ss">:id_matches</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4839177334-1">[</span><span class="p" data-group-id="4839177334-2">{</span><span class="ss">:arg</span><span class="p">,</span><span class="w"> </span><span class="ss">:id</span><span class="p" data-group-id="4839177334-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4839177334-3">{</span><span class="ss">:optional</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4839177334-4">{</span><span class="ss">:ref</span><span class="p">,</span><span class="w"> </span><span class="ss">:id</span><span class="p" data-group-id="4839177334-4">}</span><span class="p" data-group-id="4839177334-3">}</span><span class="p" data-group-id="4839177334-1">]</span></code></pre><h2 id="bulk-atomic-actions" class="section-heading">
+  <a href="#bulk-atomic-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bulk &amp; atomic actions</span>
+</h2>
+<h3 id="bulk-updates-destroys" class="section-heading">
+  <a href="#bulk-updates-destroys" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bulk Updates &amp; Destroys</span>
+</h3>
+<p>Updates support a list, stream, or query as the first argument. This allows for bulk updates. In this mode, an <code class="inline">%Ash.BulkResult{}</code> is returned.</p><blockquote><h3 id="valid-inputs" class="warning section-heading">
+  <a href="#valid-inputs" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Valid inputs</span>
+</h3>
+<p>You cannot provide &quot;any enumerable&quot;, only lists, streams (a function or a %Stream{}), and queries. We have to be able to distinguish the input as a bulk input and not input to the action itself.</p></blockquote><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="7236274756-1">(</span><span class="n">author_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">author_id</span><span class="p" data-group-id="7236274756-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyApp.Blog</span><span class="o">.</span><span class="n">archive_post!</span><span class="p" data-group-id="7236274756-2">(</span><span class="p" data-group-id="7236274756-2">)</span><span class="w">
+</span><span class="c1"># =&gt; %Ash.BulkResult{}</span><span class="w">
+
+</span><span class="p" data-group-id="7236274756-3">[</span><span class="p" data-group-id="7236274756-4">%</span><span class="nc" data-group-id="7236274756-4">Post</span><span class="p" data-group-id="7236274756-4">{</span><span class="p" data-group-id="7236274756-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7236274756-5">%</span><span class="nc" data-group-id="7236274756-5">Post</span><span class="p" data-group-id="7236274756-5">{</span><span class="p" data-group-id="7236274756-5">}</span><span class="p" data-group-id="7236274756-3">]</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyApp.Blog</span><span class="o">.</span><span class="n">destroy_post!</span><span class="p" data-group-id="7236274756-6">(</span><span class="p" data-group-id="7236274756-6">)</span><span class="w">
+</span><span class="c1"># =&gt; %Ash.BulkResult{}</span><span class="w">
+</span><span class="k">end</span></code></pre><p>You can pass options to the bulk operation with the <code class="inline">bulk_options</code> option to your code interface function.</p><h3 id="bulk-creates" class="section-heading">
+  <a href="#bulk-creates" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bulk Creates</span>
+</h3>
+<p>For bulk creates, you can provide a list or stream of inputs. In this mode also, an <code class="inline">%Ash.BulkResult{}</code> is returned.</p><blockquote><h3 id="valid-inputs-1" class="warning section-heading">
+  <a href="#valid-inputs-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Valid inputs</span>
+</h3>
+<p>You cannot provide &quot;any enumerable&quot;, only lists, streams (a function or a %Stream{}). We have to be able to distinguish the input as a bulk input and not input to the action itself.</p></blockquote><p>Any arguments on the code interface will be applied to <em>all</em> inputs given as a list, and the arguments will come first.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1551146988-1">[</span><span class="p" data-group-id="1551146988-2">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p" data-group-id="1551146988-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1551146988-3">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Post 2&quot;</span><span class="p" data-group-id="1551146988-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1551146988-1">]</span><span class="w">
+</span><span class="c1"># if `:special` is an action argument, it will be applied to all inputs</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyApp.Blog</span><span class="o">.</span><span class="n">create_post!</span><span class="p" data-group-id="1551146988-4">(</span><span class="ss">:special</span><span class="p">,</span><span class="w"> </span><span class="ss">bulk_options</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1551146988-5">[</span><span class="ss">batch_size</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="1551146988-5">]</span><span class="p" data-group-id="1551146988-4">)</span></code></pre><h3 id="returning-streams-from-read-actions" class="section-heading">
+  <a href="#returning-streams-from-read-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Returning streams from read actions</span>
+</h3>
+<p>The <code class="inline">:stream?</code> option allows you to return a stream to be enumerated later.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">MyApp.Blog</span><span class="o">.</span><span class="n">my_posts</span><span class="p" data-group-id="7382749068-1">(</span><span class="ss">stream?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">me</span><span class="p" data-group-id="7382749068-1">)</span><span class="w">
+</span><span class="c1"># =&gt; #Stream&lt;...&gt;</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="preparations.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Preparations
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="embedded-resources.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Embedded Resources
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/resources/code-interfaces.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

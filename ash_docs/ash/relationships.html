@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Relationships — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/resources/relationships.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Relationships</span>
+  </h1>
+
+<p>Relationships describe the connections between resources and are a core component of Ash. Defining relationships enables you to do things like</p><ul><li>Loading related data</li><li>Filtering on related data</li><li>Managing related records through changes on a single resource</li><li>Authorizing based on the state of related data</li></ul><h2 id="relationships-basics" class="section-heading">
+  <a href="#relationships-basics" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Relationships Basics</span>
+</h2>
+<p>A relationship exists between a source resource and a destination resource. These are defined in the <code class="inline">relationships</code> block of the source resource. For example, if <code class="inline">MyApp.Tweet</code> is the source resource, and <code class="inline">MyApp.User</code> is the destination resource, we could define a relationship called <code class="inline">:owner</code> like this:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweet</span><span class="w"> </span><span class="k" data-group-id="2982405638-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="n">my_data_layer</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="2982405638-2">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:body</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+  </span><span class="k" data-group-id="2982405638-2">end</span><span class="w">
+
+  </span><span class="n">relationships</span><span class="w"> </span><span class="k" data-group-id="2982405638-3">do</span><span class="w">
+    </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:owner</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.User</span><span class="w">
+  </span><span class="k" data-group-id="2982405638-3">end</span><span class="w">
+</span><span class="k" data-group-id="2982405638-1">end</span></code></pre><h2 id="managing-related-data" class="section-heading">
+  <a href="#managing-related-data" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Managing related data</span>
+</h2>
+<p>See <a href="relationships.html#managing-relationships">Managing Relationships</a> for more information.</p><p>Your data layer may enforce foreign key constraints, see the following guides for more information:</p><ul><li><a href="https://hexdocs.pm/ash_postgres/references.html">AshPostgres references</a></li></ul><h2 id="kinds-of-relationships" class="section-heading">
+  <a href="#kinds-of-relationships" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Kinds of relationships</span>
+</h2>
+<p>There are four kinds of relationships:</p><ul><li><a href="#belongs-to"><code class="inline">belongs_to</code></a></li><li><a href="#has-one"><code class="inline">has_one</code></a></li><li><a href="#has-many"><code class="inline">has_many</code></a></li><li><a href="#many-to-many"><code class="inline">many_to_many</code></a></li></ul><p>Each of these relationships has a <code class="inline">source</code> resource and a <code class="inline">destination</code> resource with a corresponding attribute on the source resource (<code class="inline">source_attribute</code>), and destination resource (<code class="inline">destination_attribute</code>). Relationships will validate that their configured attributes exist at compile time.</p><p>You don't need to have a corresponding &quot;reverse&quot; relationship for every relationship, i.e if you have a <code class="inline">MyApp.Tweet</code> resource with <code class="inline">belongs_to :user, MyApp.User</code> you aren't required to have a <code class="inline">has_many :tweets, MyApp.Tweet</code> on <code class="inline">MyApp.User</code>. All that is required is that the attributes used by the relationship exist.</p><h3 id="belongs-to" class="section-heading">
+  <a href="#belongs-to" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Belongs To</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="c1"># on MyApp.Tweet</span><span class="w">
+</span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:owner</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.User</span></code></pre><p>A <code class="inline">belongs_to</code> relationship means that there is an attribute (<code class="inline">source_attribute</code>) on the source resource that uniquely identifies a record with a matching attribute (<code class="inline">destination_attribute</code>) in the destination. In the example above, the source attribute on <code class="inline">MyApp.Tweet</code> is <code class="inline">:owner_id</code> and the destination attribute on <code class="inline">MyApp.User</code> is <code class="inline">:id</code>.</p><h4>Attribute Defaults</h4><p>By default, the <code class="inline">source_attribute</code> is defined as <code class="inline">:&lt;relationship_name&gt;_id</code> of the type <code class="inline">:uuid</code> on the source resource and the <code class="inline">destination_attribute</code> is assumed to be <code class="inline">:id</code>. You can override the attribute names by specifying the <code class="inline">source_attribute</code> and <code class="inline">destination_attribute</code> options like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:owner</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.User</span><span class="w"> </span><span class="k" data-group-id="9214747161-1">do</span><span class="w">
+  </span><span class="c1"># defaults to :&lt;relationship_name&gt;_id (i.e. :owner_id)</span><span class="w">
+  </span><span class="n">source_attribute</span><span class="w"> </span><span class="ss">:custom_attribute_name</span><span class="w">
+
+  </span><span class="c1"># defaults to :id</span><span class="w">
+  </span><span class="n">destination_attribute</span><span class="w"> </span><span class="ss">:custom_attribute_name</span><span class="w">
+</span><span class="k" data-group-id="9214747161-1">end</span></code></pre><p>You can further customize the <code class="inline">source_attribute</code> using options such as:</p><ul><li><code class="inline"><a href="dsl-ash-resource.html#relationships-belongs_to-define_attribute?">Ash.Resource.Dsl.relationships.belongs_to.define_attribute?</a></code> to define it yourself</li><li><code class="inline"><a href="dsl-ash-resource.html#relationships-belongs_to-attribute_type">Ash.Resource.Dsl.relationships.belongs_to.attribute_type</a></code> to modify the default type</li><li><code class="inline"><a href="dsl-ash-resource.html#relationships-belongs_to-attribute_public?">Ash.Resource.Dsl.relationships.belongs_to.attribute_public?</a></code> to make the source attribute <code class="inline">public?: true</code></li></ul><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:owner</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.User</span><span class="w"> </span><span class="k" data-group-id="5335039194-1">do</span><span class="w">
+  </span><span class="n">attribute_type</span><span class="w"> </span><span class="ss">:integer</span><span class="w">
+  </span><span class="n">attribute_writable?</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="k" data-group-id="5335039194-1">end</span></code></pre><p>Or if you wanted to define the attribute yourself,</p><pre><code class="makeup elixir" translate="no"><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="7337927245-1">do</span><span class="w">
+  </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:owner_foo</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.CustomType</span><span class="w">
+</span><span class="k" data-group-id="7337927245-1">end</span><span class="w">
+
+</span><span class="n">...</span><span class="w">
+</span><span class="n">relationships</span><span class="w"> </span><span class="k" data-group-id="7337927245-2">do</span><span class="w">
+  </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:owner</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.User</span><span class="w"> </span><span class="k" data-group-id="7337927245-3">do</span><span class="w">
+    </span><span class="n">define_attribute?</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="n">source_attribute</span><span class="w"> </span><span class="ss">:owner_foo</span><span class="w">
+  </span><span class="k" data-group-id="7337927245-3">end</span><span class="w">
+</span><span class="k" data-group-id="7337927245-2">end</span></code></pre><h4>Customizing default belongs_to attribute type</h4><p>Destination attributes that are added by default are assumed to be <code class="inline">:uuid</code>. To change this, set the following configuration in <code class="inline">config.exs</code>:</p><pre><code class="makeup elixir" translate="no"><span class="n">config</span><span class="w"> </span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="ss">:default_belongs_to_type</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span></code></pre><p>See the docs for more: <code class="inline"><a href="dsl-ash-resource.html#relationships-belongs_to">Ash.Resource.Dsl.relationships.belongs_to</a></code></p><h3 id="has-one" class="section-heading">
+  <a href="#has-one" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Has One</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="c1"># on MyApp.User</span><span class="w">
+</span><span class="n">has_one</span><span class="w"> </span><span class="ss">:profile</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Profile</span></code></pre><p>A <code class="inline">has_one</code> relationship means that there is a unique attribute (<code class="inline">destination_attribute</code>) on the destination resource that identifies a record with a matching unique attribute (<code class="inline">source_resource</code>) in the source. In the example above, the source attribute on <code class="inline">MyApp.User</code> is <code class="inline">:id</code> and the destination attribute on <code class="inline">MyApp.Profile</code> is <code class="inline">:user_id</code>.</p><p>A <code class="inline">has_one</code> is similar to a <code class="inline">belongs_to</code> except the reference attribute is on
+the destination resource, instead of the source.</p><h4>Attribute Defaults</h4><p>By default, the <code class="inline">source_attribute</code> is assumed to be <code class="inline">:id</code>, and <code class="inline">destination_attribute</code> defaults to <code class="inline">&lt;snake_cased_last_part_of_module_name&gt;_id</code>.</p><p>See the docs for more: <code class="inline"><a href="dsl-ash-resource.html#relationships-has_one">Ash.Resource.Dsl.relationships.has_one</a></code></p><h3 id="has-many" class="section-heading">
+  <a href="#has-many" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Has Many</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="c1"># on MyApp.User</span><span class="w">
+</span><span class="n">has_many</span><span class="w"> </span><span class="ss">:tweets</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Tweet</span></code></pre><p>A <code class="inline">has_many</code> relationship means that there is a non-unique attribute (<code class="inline">destination_attribute</code>) on the destination resource that identifies a record with a matching attribute (<code class="inline">source_attribute</code>) in the source. In the example above, the source attribute on <code class="inline">MyApp.User</code> is <code class="inline">:id</code> and the destination attribute on <code class="inline">MyApp.Tweet</code> is <code class="inline">:user_id</code>.</p><p>A <code class="inline">has_many</code> relationship is similar to a <code class="inline">has_one</code> because the reference attribute exists on the destination resource. The only difference between this and <code class="inline">has_one</code> is that the destination attribute is not unique, and therefore will produce a list of related items. In the example above, <code class="inline">:tweets</code> corresponds to a list of <code class="inline">MyApp.Tweet</code> records.</p><h4>Attribute Defaults</h4><p>By default, the <code class="inline">source_attribute</code> is assumed to be <code class="inline">:id</code>, and <code class="inline">destination_attribute</code> defaults to <code class="inline">&lt;snake_cased_last_part_of_module_name&gt;_id</code>.</p><p>See the docs for more: <code class="inline"><a href="dsl-ash-resource.html#relationships-has_many">Ash.Resource.Dsl.relationships.has_many</a></code></p><h3 id="many-to-many" class="section-heading">
+  <a href="#many-to-many" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Many To Many</span>
+</h3>
+<p>A <code class="inline">many_to_many</code> relationship can be used to relate many source resources to many destination resources. To achieve this, the <code class="inline">source_attribute</code> and <code class="inline">destination_attribute</code> are defined on a join resource. A <code class="inline">many_to_many</code> relationship can be thought of as a combination of a <code class="inline">has_many</code> relationship on the source/destination resources and a <code class="inline">belongs_to</code> relationship on the join resource.</p><p>For example, consider two resources <code class="inline">MyApp.Tweet</code> and <code class="inline">MyApp.Hashtag</code> representing tweets and hashtags. We want to be able to associate a tweet with many hashtags, and a hashtag with many tweets. To do this, we could define the following <code class="inline">many_to_many</code> relationship:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># on MyApp.Tweet</span><span class="w">
+</span><span class="n">many_to_many</span><span class="w"> </span><span class="ss">:hashtags</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Hashtag</span><span class="w"> </span><span class="k" data-group-id="1177744787-1">do</span><span class="w">
+  </span><span class="n">through</span><span class="w"> </span><span class="nc">MyApp.TweetHashtag</span><span class="w">
+  </span><span class="n">source_attribute_on_join_resource</span><span class="w"> </span><span class="ss">:tweet_id</span><span class="w">
+  </span><span class="n">destination_attribute_on_join_resource</span><span class="w"> </span><span class="ss">:hashtag_id</span><span class="w">
+</span><span class="k" data-group-id="1177744787-1">end</span></code></pre><p>The <code class="inline">through</code> option specifies the &quot;join&quot; resource that will be used to store the relationship. We need to define this resource as well:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.TweetHashtag</span><span class="w"> </span><span class="k" data-group-id="2301879880-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="n">your_data_layer</span><span class="w">
+
+  </span><span class="n">postgres</span><span class="w"> </span><span class="k" data-group-id="2301879880-2">do</span><span class="w">
+    </span><span class="n">table</span><span class="w"> </span><span class="s">&quot;tweet_hashtags&quot;</span><span class="w">
+    </span><span class="n">repo</span><span class="w"> </span><span class="nc">MyApp.Repo</span><span class="w">
+  </span><span class="k" data-group-id="2301879880-2">end</span><span class="w">
+
+  </span><span class="n">relationships</span><span class="w"> </span><span class="k" data-group-id="2301879880-3">do</span><span class="w">
+    </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:tweet</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Tweet</span><span class="p">,</span><span class="w"> </span><span class="ss">primary_key?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:hashtag</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Hashtag</span><span class="p">,</span><span class="w"> </span><span class="ss">primary_key?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="2301879880-3">end</span><span class="w">
+
+  </span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="2301879880-4">do</span><span class="w">
+    </span><span class="n">defaults</span><span class="w"> </span><span class="p" data-group-id="2301879880-5">[</span><span class="ss">:read</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="p">,</span><span class="w"> </span><span class="ss">create</span><span class="p">:</span><span class="w"> </span><span class="ss">:*</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="ss">:*</span><span class="p" data-group-id="2301879880-5">]</span><span class="w">
+  </span><span class="k" data-group-id="2301879880-4">end</span><span class="w">
+</span><span class="k" data-group-id="2301879880-1">end</span></code></pre><p>It is convention to name this resource <code class="inline">&lt;source_resource_name&gt;&lt;destination_resource_name&gt;</code> however this is not required. The attributes on the join resource must match the <code class="inline">source_attribute_on_join_resource</code> and <code class="inline">destination_attribute_on_join_resource</code> options on the <code class="inline">many_to_many</code> relationship. The relationships on the join resource are standard <code class="inline">belongs_to</code> relationships, and can be configured as such. In this case, we have specified that the <code class="inline">:tweet_id</code> and <code class="inline">:hashtag_id</code> attributes form the primary key for the join resource, and that they cannot be <code class="inline">nil</code>.</p><p>Now that we have a resource with the proper attributes, Ash will use this automatically under the hood when
+performing relationship operations like filtering and loading.</p><p>See the docs for more: <code class="inline"><a href="dsl-ash-resource.html#relationships-many_to_many">Ash.Resource.Dsl.relationships.many_to_many</a></code></p><h2 id="loading-related-data" class="section-heading">
+  <a href="#loading-related-data" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Loading related data</span>
+</h2>
+<p>There are two ways to load relationships:</p><ul><li>in the query using <a href="Ash.Query.html#load/2"><code class="inline">Ash.Query.load/2</code></a></li><li>directly on records using <a href="Ash.html#load/3"><code class="inline">Ash.load/3</code></a></li></ul><h3 id="on-records" class="section-heading">
+  <a href="#on-records" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">On records</span>
+</h3>
+<p>Given a single record or a set of records, it is possible to load their relationships by calling the <code class="inline">load</code> function on the record's parent domain. For example:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># user = %User{...}</span><span class="w">
+</span><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="7807288095-1">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="ss">:tweets</span><span class="p" data-group-id="7807288095-1">)</span><span class="w">
+
+</span><span class="c1"># users = [%User{...}, %User{...}, ....]</span><span class="w">
+</span><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="7807288095-2">(</span><span class="n">users</span><span class="p">,</span><span class="w"> </span><span class="ss">:tweets</span><span class="p" data-group-id="7807288095-2">)</span></code></pre><p>This will fetch the tweets for each user, and set them in the corresponding <code class="inline">tweets</code> key.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5073415189-1">%</span><span class="nc" data-group-id="5073415189-1">User</span><span class="p" data-group-id="5073415189-1">{</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+  </span><span class="ss">tweets</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5073415189-2">[</span><span class="w">
+    </span><span class="p" data-group-id="5073415189-3">%</span><span class="nc" data-group-id="5073415189-3">Tweet</span><span class="p" data-group-id="5073415189-3">{</span><span class="n">...</span><span class="p" data-group-id="5073415189-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="5073415189-4">%</span><span class="nc" data-group-id="5073415189-4">Tweet</span><span class="p" data-group-id="5073415189-4">{</span><span class="n">...</span><span class="p" data-group-id="5073415189-4">}</span><span class="p">,</span><span class="w">
+    </span><span class="n">...</span><span class="w">
+  </span><span class="p" data-group-id="5073415189-2">]</span><span class="w">
+</span><span class="p" data-group-id="5073415189-1">}</span></code></pre><p>See <a href="Ash.html#load/3"><code class="inline">Ash.load/3</code></a> for more information.</p><h3 id="in-the-query" class="section-heading">
+  <a href="#in-the-query" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">In the query</span>
+</h3>
+<p>The following will return a list of users with their tweets loaded identically to the previous example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">User</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="0978416566-1">(</span><span class="ss">:tweets</span><span class="p" data-group-id="0978416566-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read</span><span class="p" data-group-id="0978416566-2">(</span><span class="p" data-group-id="0978416566-2">)</span></code></pre><p>At present, loading relationships in the query is fundamentally the same as loading on records. Eventually, data layers will be able to optimize these loads (potentially including them as joins in the main query).</p><p>See <a href="Ash.Query.html#load/2"><code class="inline">Ash.Query.load/2</code></a> for more information.</p><h3 id="more-complex-data-loading" class="section-heading">
+  <a href="#more-complex-data-loading" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">More complex data loading</span>
+</h3>
+<p>Multiple relationships can be loaded at once, i.e</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1641963019-1">(</span><span class="n">users</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1641963019-2">[</span><span class="ss">:tweets</span><span class="p">,</span><span class="w"> </span><span class="ss">:followers</span><span class="p" data-group-id="1641963019-2">]</span><span class="p" data-group-id="1641963019-1">)</span></code></pre><p>Nested relationships can be loaded:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="5504932930-1">(</span><span class="n">users</span><span class="p">,</span><span class="w"> </span><span class="ss">followers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5504932930-2">[</span><span class="ss">:tweets</span><span class="p">,</span><span class="w"> </span><span class="ss">:followers</span><span class="p" data-group-id="5504932930-2">]</span><span class="p" data-group-id="5504932930-1">)</span></code></pre><p>The queries used for loading can be customized by providing a query as the value.</p><pre><code class="makeup elixir" translate="no"><span class="n">followers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="6574099747-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="ss">follower_count</span><span class="p">:</span><span class="w"> </span><span class="ss">:asc</span><span class="p" data-group-id="6574099747-1">)</span><span class="w">
+
+</span><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="6574099747-2">(</span><span class="n">users</span><span class="p">,</span><span class="w"> </span><span class="ss">followers</span><span class="p">:</span><span class="w"> </span><span class="n">followers</span><span class="p" data-group-id="6574099747-2">)</span></code></pre><p>Nested loads will be included in the parent load.</p><pre><code class="makeup elixir" translate="no"><span class="n">followers</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">User</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="9304985000-1">(</span><span class="ss">follower_count</span><span class="p">:</span><span class="w"> </span><span class="ss">:asc</span><span class="p" data-group-id="9304985000-1">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="9304985000-2">(</span><span class="ss">:followers</span><span class="p" data-group-id="9304985000-2">)</span><span class="w">
+
+</span><span class="c1"># Will load followers and followers of those followers</span><span class="w">
+</span><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="9304985000-3">(</span><span class="n">users</span><span class="p">,</span><span class="w"> </span><span class="ss">followers</span><span class="p">:</span><span class="w"> </span><span class="n">followers</span><span class="p" data-group-id="9304985000-3">)</span></code></pre><h2 id="no_attributes-true" class="section-heading">
+  <a href="#no_attributes-true" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">no_attributes? true</span>
+</h2>
+<p>This is really useful when creating customized relationships that aren't joined with simple attribute matches. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">has_many</span><span class="w"> </span><span class="ss">:higher_priority_tickets</span><span class="p">,</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="w"> </span><span class="k" data-group-id="4444904291-1">do</span><span class="w">
+  </span><span class="n">no_attributes?</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="c1"># parent/1 in this case puts the expression on this current resource</span><span class="w">
+  </span><span class="c1"># so this is &quot;tickets with priority higher than this ticket&quot;</span><span class="w">
+  </span><span class="n">filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="4444904291-2">(</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">parent</span><span class="p" data-group-id="4444904291-3">(</span><span class="n">priority</span><span class="p" data-group-id="4444904291-3">)</span><span class="p" data-group-id="4444904291-2">)</span><span class="w">
+</span><span class="k" data-group-id="4444904291-1">end</span></code></pre><p>This can also be very useful when combined with multitenancy. Specifically, if you have a tenant resource like <code class="inline">Organization</code>,
+you can use <code class="inline">no_attributes?</code> to do things like <code class="inline">has_many :employees, Employee, no_attributes?: true</code>, which lets you avoid having an
+unnecessary <code class="inline">organization_id</code> field on <code class="inline">Employee</code>. The same works in reverse: <code class="inline">has_one :organization, Organization, no_attributes?: true</code>
+allows relating the employee to their organization.</p><blockquote><h3 id="caveats-for-using-no_attributes" class="warning section-heading">
+  <a href="#caveats-for-using-no_attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Caveats for using <code class="inline">no_attributes?</code></span>
+</h3>
+<ol><li>You can still manage relationships from one to the other, but &quot;relate&quot; and &quot;unrelate&quot; will have no effect, because there are no fields to change.</li><li>Loading the relationship on a list of resources will not behave as expected in all circumstances involving multitenancy. For example, if you get a list of <code class="inline">Organization</code> and then try to load <code class="inline">employees</code>, you would need to set a single tenant on the load query, meaning you'll get all organizations back with the set of employees from one tenant. This could eventually be solved, but for now it is considered an edge case.</li></ol></blockquote><h2 id="manual-relationships" class="section-heading">
+  <a href="#manual-relationships" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Manual Relationships</span>
+</h2>
+<p>Manual relationships allow you to express complex or non-typical relationships between resources in a standard way. Individual data layers may interact with manual relationships in their own way, so see their corresponding guides. In general, you should try to use manual relationships sparingly, as you can do <em>a lot</em> with filters on relationships, and the <code class="inline">no_attributes?</code> flag.</p><h3 id="example" class="section-heading">
+  <a href="#example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<p>In our Helpdesk example, we'd like to have a way to find tickets</p><p>In the <code class="inline">Representative</code> resource, define a <code class="inline">has_many</code> relationship as <code class="inline">manual</code> and point to the module where
+it will be implemented.</p><pre><code class="makeup elixir" translate="no"><span class="n">relationships</span><span class="w"> </span><span class="k" data-group-id="3860867077-1">do</span><span class="w">
+  </span><span class="n">has_many</span><span class="w"> </span><span class="ss">:tickets_above_threshold</span><span class="p">,</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="3860867077-2">do</span><span class="w">
+    </span><span class="n">manual</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket.Relationships.TicketsAboveThreshold</span><span class="w">
+  </span><span class="k" data-group-id="3860867077-2">end</span><span class="w">
+</span><span class="k" data-group-id="3860867077-1">end</span></code></pre><p>Using Ash to get the destination records is ideal, so you can authorize access like normal
+but if you need to use a raw ecto query here, you can. As long as you return the right structure.</p><p>The <code class="inline">TicketsAboveThreshold</code> module is implemented as follows.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket.Relationships.TicketsAboveThreshold</span><span class="w"> </span><span class="k" data-group-id="3932862761-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.ManualRelationship</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">load</span><span class="p" data-group-id="3932862761-2">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3932862761-3">%{</span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="p" data-group-id="3932862761-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p" data-group-id="3932862761-2">)</span><span class="w"> </span><span class="k" data-group-id="3932862761-4">do</span><span class="w">
+    </span><span class="c1"># Use existing records to limit results</span><span class="w">
+    </span><span class="n">rep_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="3932862761-5">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="3932862761-5">)</span><span class="w">
+
+    </span><span class="p" data-group-id="3932862761-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+     </span><span class="n">query</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3932862761-7">(</span><span class="n">representative_id</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">^</span><span class="n">rep_ids</span><span class="p" data-group-id="3932862761-7">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3932862761-8">(</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">representative</span><span class="o">.</span><span class="n">priority_threshold</span><span class="p" data-group-id="3932862761-8">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="3932862761-9">(</span><span class="nc">Ash.Context</span><span class="o">.</span><span class="n">to_opts</span><span class="p" data-group-id="3932862761-10">(</span><span class="n">context</span><span class="p" data-group-id="3932862761-10">)</span><span class="p" data-group-id="3932862761-9">)</span><span class="w">
+     </span><span class="c1"># Return the items grouped by the primary key of the source, i.e representative.id =&gt; [...tickets above threshold]</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">group_by</span><span class="p" data-group-id="3932862761-11">(</span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">representative_id</span><span class="p" data-group-id="3932862761-11">)</span><span class="p" data-group-id="3932862761-6">}</span><span class="w">
+  </span><span class="k" data-group-id="3932862761-4">end</span><span class="w">
+</span><span class="k" data-group-id="3932862761-1">end</span></code></pre><h3 id="reusing-the-query" class="section-heading">
+  <a href="#reusing-the-query" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Reusing the Query</span>
+</h3>
+<p>Since you likely want to support things like filtering your relationship when being loaded, you will want to make sure that you use the query being provided. However, depending on how you're loading the relationship, you may need to do things like fetch extra records. To do this, you might do things like</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">load</span><span class="p" data-group-id="1075325369-1">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1075325369-2">%{</span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p" data-group-id="1075325369-2">}</span><span class="p" data-group-id="1075325369-1">)</span><span class="w"> </span><span class="k" data-group-id="1075325369-3">do</span><span class="w">
+  </span><span class="c1"># unset some fields</span><span class="w">
+  </span><span class="n">fetch_query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">unset</span><span class="p" data-group-id="1075325369-4">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1075325369-5">[</span><span class="ss">:limit</span><span class="p">,</span><span class="w"> </span><span class="ss">:offset</span><span class="p" data-group-id="1075325369-5">]</span><span class="p" data-group-id="1075325369-4">)</span><span class="w">
+
+  </span><span class="c1"># or, to be more safe/explicit, you might make a new query, explicitly setting only a few fields</span><span class="w">
+  </span><span class="n">fetch_query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">query</span><span class="o">.</span><span class="n">resource</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="1075325369-6">(</span><span class="o">^</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="1075325369-6">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="1075325369-7">(</span><span class="n">query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="1075325369-7">)</span><span class="w">
+
+  </span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="1075325369-3">end</span></code></pre><h3 id="query-when-loading-with-strict-true" class="section-heading">
+  <a href="#query-when-loading-with-strict-true" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Query when loading with strict?: true</span>
+</h3>
+<p>When using <code class="inline">Ash.Query.load</code> or <code class="inline">Ash.load</code> with the <code class="inline">strict?: true</code> option, the query
+that is provided to the load callback might be configured with a select-statement that doesn't 
+load the attributes you want to group matching results by. If your codebase utilizes the strict
+loading functionality, it is therefore recommended to use <code class="inline">Ash.Query.ensure_selected</code> on the
+query to ensure the required attributes are indeed fetched.</p><pre><code class="makeup elixir" translate="no"><span class="w">
+</span><span class="c1"># Here only :id &amp; :priority is set, which will then configure the relationship query to only</span><span class="w">
+</span><span class="c1"># select those attributes</span><span class="w">
+</span><span class="p" data-group-id="6340433247-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rep</span><span class="p" data-group-id="6340433247-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="6340433247-2">(</span><span class="n">representative</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6340433247-3">[</span><span class="ss">tickets_above_threshold</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6340433247-4">[</span><span class="ss">:id</span><span class="p">,</span><span class="w"> </span><span class="ss">:priority</span><span class="p" data-group-id="6340433247-4">]</span><span class="p" data-group-id="6340433247-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">strict?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="6340433247-2">)</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket.Relationships.TicketsAboveThreshold</span><span class="w"> </span><span class="k" data-group-id="6340433247-5">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.ManualRelationship</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">load</span><span class="p" data-group-id="6340433247-6">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6340433247-7">%{</span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="ss">authorize?</span><span class="p">:</span><span class="w"> </span><span class="n">authorize?</span><span class="p" data-group-id="6340433247-7">}</span><span class="p" data-group-id="6340433247-6">)</span><span class="w"> </span><span class="k" data-group-id="6340433247-8">do</span><span class="w">
+    </span><span class="n">rep_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="6340433247-9">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6340433247-9">)</span><span class="w">
+
+    </span><span class="p" data-group-id="6340433247-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+     </span><span class="n">query</span><span class="w">
+     </span><span class="c1"># If this isn&#39;t added, representative_id would be set to %Ash.NotLoaded, causing the</span><span class="w">
+     </span><span class="c1"># Enum.group_by call below to fail mapping results to the correct records.</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">ensure_selected</span><span class="p" data-group-id="6340433247-11">(</span><span class="p" data-group-id="6340433247-12">[</span><span class="ss">:representative_id</span><span class="p" data-group-id="6340433247-12">]</span><span class="p" data-group-id="6340433247-11">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="6340433247-13">(</span><span class="n">representative_id</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">^</span><span class="n">rep_ids</span><span class="p" data-group-id="6340433247-13">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="6340433247-14">(</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">representative</span><span class="o">.</span><span class="n">priority_threshold</span><span class="p" data-group-id="6340433247-14">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="6340433247-15">(</span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="ss">authorize?</span><span class="p">:</span><span class="w"> </span><span class="n">authorize?</span><span class="p" data-group-id="6340433247-15">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">group_by</span><span class="p" data-group-id="6340433247-16">(</span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">representative_id</span><span class="p" data-group-id="6340433247-16">)</span><span class="p" data-group-id="6340433247-10">}</span><span class="w">
+  </span><span class="k" data-group-id="6340433247-8">end</span><span class="w">
+</span><span class="k" data-group-id="6340433247-5">end</span></code></pre><h3 id="fetching-the-records-and-then-applying-a-query" class="section-heading">
+  <a href="#fetching-the-records-and-then-applying-a-query" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Fetching the records and then applying a query</span>
+</h3>
+<p>Lets say the records come from some totally unrelated source, or you can't just modify the query to fetch the records you need. You can fetch the records you need and then apply the query to them in memory.</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">load</span><span class="p" data-group-id="2295252939-1">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2295252939-2">%{</span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p" data-group-id="2295252939-2">}</span><span class="p" data-group-id="2295252939-1">)</span><span class="w"> </span><span class="k" data-group-id="2295252939-3">do</span><span class="w">
+  </span><span class="c1"># fetch the data from the other source, which is capable of sorting</span><span class="w">
+  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_other_data</span><span class="p" data-group-id="2295252939-4">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="2295252939-4">)</span><span class="w">
+
+  </span><span class="n">query</span><span class="w">
+  </span><span class="c1"># unset the sort since we already applied that</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">unset</span><span class="p" data-group-id="2295252939-5">(</span><span class="p" data-group-id="2295252939-6">[</span><span class="ss">:sort</span><span class="p" data-group-id="2295252939-6">]</span><span class="p" data-group-id="2295252939-5">)</span><span class="w">
+  </span><span class="c1"># apply the query in memory (filtering, distinct, limit, offset)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">apply_to</span><span class="p" data-group-id="2295252939-7">(</span><span class="n">data</span><span class="p" data-group-id="2295252939-7">)</span><span class="w">
+</span><span class="k" data-group-id="2295252939-3">end</span></code></pre><h2 id="managing-relationships" class="section-heading">
+  <a href="#managing-relationships" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Managing Relationships</span>
+</h2>
+<p>In Ash, managing related data is done via <a href="Ash.Changeset.html#manage_relationship/4"><code class="inline">Ash.Changeset.manage_relationship/4</code></a>. There are various ways to leverage the functionality expressed there. If you are working with changesets directly, you can call that function. However, if you want that logic to be portable (e.g available in <code class="inline">ash_graphql</code> mutations and <code class="inline">ash_json_api</code> actions), then you want to use the following <code class="inline">argument</code> + <code class="inline">change</code> pattern:</p><pre><code class="makeup elixir" translate="no"><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="4245273808-1">do</span><span class="w">
+  </span><span class="n">update</span><span class="w"> </span><span class="ss">:update</span><span class="w"> </span><span class="k" data-group-id="4245273808-2">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:add_comment</span><span class="p">,</span><span class="w"> </span><span class="ss">:map</span><span class="w"> </span><span class="k" data-group-id="4245273808-3">do</span><span class="w">
+      </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="k" data-group-id="4245273808-3">end</span><span class="w">
+
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:tags</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4245273808-4">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:uuid</span><span class="p" data-group-id="4245273808-4">}</span><span class="w"> </span><span class="k" data-group-id="4245273808-5">do</span><span class="w">
+      </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="k" data-group-id="4245273808-5">end</span><span class="w">
+
+    </span><span class="c1"># First argument is the name of the action argument to use</span><span class="w">
+    </span><span class="c1"># Second argument is the relationship to be managed</span><span class="w">
+    </span><span class="c1"># Third argument is options. For more, see `Ash.Changeset.manage_relationship/4`. This accepts the same options.</span><span class="w">
+    </span><span class="n">change</span><span class="w"> </span><span class="n">manage_relationship</span><span class="p" data-group-id="4245273808-6">(</span><span class="ss">:add_comment</span><span class="p">,</span><span class="w"> </span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="p" data-group-id="4245273808-6">)</span><span class="w">
+
+    </span><span class="c1"># Second argument can be omitted, as the argument name is the same as the relationship</span><span class="w">
+    </span><span class="n">change</span><span class="w"> </span><span class="n">manage_relationship</span><span class="p" data-group-id="4245273808-7">(</span><span class="ss">:tags</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:append_and_remove</span><span class="p" data-group-id="4245273808-7">)</span><span class="w">
+  </span><span class="k" data-group-id="4245273808-2">end</span><span class="w">
+</span><span class="k" data-group-id="4245273808-1">end</span></code></pre><p>With this, those arguments can be used in action input:</p><pre><code class="makeup elixir" translate="no"><span class="n">post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="5612578618-1">(</span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5612578618-2">%{</span><span class="ss">tags</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5612578618-3">[</span><span class="n">tag1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">tag2</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="5612578618-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">add_comment</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5612578618-4">%{</span><span class="ss">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;comment text&quot;</span><span class="p" data-group-id="5612578618-4">}</span><span class="p" data-group-id="5612578618-2">}</span><span class="p" data-group-id="5612578618-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="5612578618-5">(</span><span class="p" data-group-id="5612578618-5">)</span></code></pre><h3 id="argument-types" class="section-heading">
+  <a href="#argument-types" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Argument Types</span>
+</h3>
+<p>Notice how we provided a map as input to <code class="inline">add_comment</code>, and a list of UUIDs as an input to <code class="inline">manage_relationship</code>. When providing maps or lists of maps, you are generally just providing input that will eventually be passed into actions on the destination resource. However, you can also provide individual values or lists of values. By default, we assume that value maps to the primary key of the destination resource, but you can use the <code class="inline">value_is_key</code> option to modify that behavior. For example, if you wanted adding a comment to take a list of strings, you could say:</p><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:add_comment</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+
+</span><span class="n">...</span><span class="w">
+</span><span class="n">change</span><span class="w"> </span><span class="n">manage_relationship</span><span class="p" data-group-id="8564917015-1">(</span><span class="ss">:add_comment</span><span class="p">,</span><span class="w"> </span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="ss">value_is_key</span><span class="p">:</span><span class="w"> </span><span class="ss">:text</span><span class="p" data-group-id="8564917015-1">)</span></code></pre><p>And then you could use it like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="6279022270-1">(</span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6279022270-2">%{</span><span class="ss">tags</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6279022270-3">[</span><span class="n">tag1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">tag2</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6279022270-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">add_comment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;comment text&quot;</span><span class="p" data-group-id="6279022270-2">}</span><span class="p" data-group-id="6279022270-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="6279022270-4">(</span><span class="p" data-group-id="6279022270-4">)</span></code></pre><h3 id="derived-behavior" class="section-heading">
+  <a href="#derived-behavior" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Derived behavior</span>
+</h3>
+<p>Determining what will happen when managing related data can be complicated, as the nature of the problem itself is quite complicated. In some simple cases, like <code class="inline">type: :create</code>, there may be only one action that will be called. But in order to support all of the various ways that related resources may need to be managed, Ash provides a rich set of options to determine what happens with the provided input. Tools like <code class="inline">AshPhoenix.Form</code> can look at your arguments that have a corresponding <code class="inline">manage_relationship</code> change, and derive the structure of those nested forms. Tools like <code class="inline">AshGraphql</code> can derive complex input objects to allow manipulating those relationships over a graphql Api. This all works because the options are, ultimately, quite explicit. It can be determined exactly what actions might be called, and therefore what input could be needed.</p><p>To see all of the options available, see <a href="Ash.Changeset.html#manage_relationship/4"><code class="inline">Ash.Changeset.manage_relationship/4</code></a></p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="attributes.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Attributes
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="calculations.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Calculations
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/resources/relationships.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

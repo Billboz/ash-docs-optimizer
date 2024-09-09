@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_paper_trail v0.1.4">
+
+
+    <title>Getting started with AshPaperTrail — ash_paper_trail v0.1.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-BBCDF6F3.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_paper_trail" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_paper_trail" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_paper_trail" class="sidebar-projectName" translate="no">
+ash_paper_trail
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_paper_trail</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_paper_trail/blob/v0.1.4/documentation/tutorials/getting-started-with-ash-paper-trail.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Getting started with AshPaperTrail</span>
+  </h1>
+
+<p>First, add the dependency to your <code class="inline">mix.exs</code></p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1395020830-1">{</span><span class="ss">:ash_paper_trail</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.4&quot;</span><span class="p" data-group-id="1395020830-1">}</span></code></pre><p>Then, add the <a href="AshPaperTrail.Resource.html"><code class="inline">AshPaperTrail.Resource</code></a> extension to any resource you would like to version and configure the change tracking mode</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+  </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyDomain</span><span class="p">,</span><span class="w">
+  </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6591634224-1">[</span><span class="w">
+    </span><span class="nc">AshPaperTrail.Resource</span><span class="w">
+  </span><span class="p" data-group-id="6591634224-1">]</span><span class="w">
+
+  </span><span class="n">paper_trail</span><span class="w"> </span><span class="k" data-group-id="6591634224-2">do</span><span class="w">
+    </span><span class="n">change_tracking_mode</span><span class="w"> </span><span class="ss">:changes_only</span><span class="w"> </span><span class="c1"># default is :snapshot</span><span class="w">
+    </span><span class="n">store_action_name?</span><span class="w"> </span><span class="no">true</span><span class="w"> </span><span class="c1"># default is false</span><span class="w">
+    </span><span class="n">ignore_attributes</span><span class="w"> </span><span class="p" data-group-id="6591634224-3">[</span><span class="ss">:inserted_at</span><span class="p">,</span><span class="w"> </span><span class="ss">:updated_at</span><span class="p" data-group-id="6591634224-3">]</span><span class="w"> </span><span class="c1"># the primary keys are always ignored</span><span class="w">
+  </span><span class="k" data-group-id="6591634224-2">end</span></code></pre><p>This will generate the version resource automatically and add them to your domain. The autogenerated resource will be named <a href="https://hexdocs.pm/elixir/Version.html"><code class="inline">Version</code></a> under the namespace of the original resource and will belong to the original resource. For example, if your original resource is <code class="inline">MyApp.Post</code> the autogenerated resource will be <code class="inline">MyApp.Post.Version</code>. <code class="inline">Post</code> has_many <code class="inline">paper_trail_versions</code> and <a href="https://hexdocs.pm/elixir/Version.html"><code class="inline">Version</code></a> belong_to <code class="inline">source_version</code></p><h2 id="including-version-resources-in-your-domain" class="section-heading">
+  <a href="#including-version-resources-in-your-domain" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Including version resources in your domain</span>
+</h2>
+<p>First, add the <a href="AshPaperTrail.Domain.html"><code class="inline">AshPaperTrail.Domain</code></a> extension to your domain.</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w">
+  </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8140832831-1">[</span><span class="w">
+    </span><span class="nc">AshPaperTrail.Domain</span><span class="w">
+  </span><span class="p" data-group-id="8140832831-1">]</span></code></pre><h3 id="including-all-version-resources" class="section-heading">
+  <a href="#including-all-version-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Including all version resources:</span>
+</h3>
+<p>Set <code class="inline">include_verisons? true</code> in the configuration, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">paper_trail</span><span class="w"> </span><span class="k" data-group-id="2350016865-1">do</span><span class="w">
+  </span><span class="n">include_versions?</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="k" data-group-id="2350016865-1">end</span></code></pre><h3 id="including-specific-version-resources" class="section-heading">
+  <a href="#including-specific-version-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Including specific version resources</span>
+</h3>
+<p>Alternatively, you can configure individual version resources, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="0895635925-1">do</span><span class="w">
+  </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Post</span><span class="w">
+  </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Post.Version</span><span class="w"> </span><span class="c1"># &lt;- add version resource</span><span class="w">
+</span><span class="k" data-group-id="0895635925-1">end</span></code></pre><h2 id="destroy-actions" class="section-heading">
+  <a href="#destroy-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Destroy Actions</span>
+</h2>
+<p>If you are using <code class="inline">AshPostgres</code>, and you want to support destroy actions, you need to do one of two things:</p><ol><li><p>use something like <code class="inline">AshArchival</code> in conjunction with this resource to ensure that destroy actions are <code class="inline">soft?</code> and do not actually result in row deletion</p></li><li><p>configure <a href="AshPaperTrail.html"><code class="inline">AshPaperTrail</code></a> not to create references, via:</p></li></ol><pre><code class="makeup elixir" translate="no"><span class="n">paper_trail</span><span class="w"> </span><span class="k" data-group-id="6160052545-1">do</span><span class="w">
+  </span><span class="n">reference_source?</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="k" data-group-id="6160052545-1">end</span></code></pre><h2 id="attributes" class="section-heading">
+  <a href="#attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Attributes</span>
+</h2>
+<p>By default, attribute values are stored in the <code class="inline">changes</code> attribute. This is to protect you over time as your resources change. However, if there are attributes that you are confident will not change,
+you can create attributes for them on the version resource, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">paper_trail</span><span class="w"> </span><span class="k" data-group-id="7412518828-1">do</span><span class="w">
+  </span><span class="n">attributes_as_attributes</span><span class="w"> </span><span class="p" data-group-id="7412518828-2">[</span><span class="ss">:organization_id</span><span class="p">,</span><span class="w"> </span><span class="ss">:author_id</span><span class="p" data-group-id="7412518828-2">]</span><span class="w">
+</span><span class="k" data-group-id="7412518828-1">end</span></code></pre><p>This will make your version resource have <code class="inline">foo</code> and <code class="inline">bar</code> attributes (they will still show up in <code class="inline">changes</code>), i.e</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="9884951322-1">%</span><span class="nc" data-group-id="9884951322-1">ThingVersion</span><span class="p" data-group-id="9884951322-1">{</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">changes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9884951322-2">%{</span><span class="s">&quot;foo&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p" data-group-id="9884951322-2">}</span><span class="p" data-group-id="9884951322-1">}</span></code></pre><h2 id="change-tracking-modes" class="section-heading">
+  <a href="#change-tracking-modes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Change Tracking Modes</span>
+</h2>
+<p>Valid options are <code class="inline">:snapshot</code> and <code class="inline">:changes_only</code> and <code class="inline">:full_diff</code>.</p><h3 id="snapshots" class="section-heading">
+  <a href="#snapshots" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Snapshots</span>
+</h3>
+<p><code class="inline">:snapshot</code> will json dump the contents of every attribute whether they changed or not.</p><p><code class="inline">{ subject: &quot;new subject&quot;, body: &quot;unchanged body&quot;, author: { name: &quot;bob&quot;}}</code></p><h3 id="changes-only" class="section-heading">
+  <a href="#changes-only" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Changes Only</span>
+</h3>
+<p><code class="inline">:changes_only</code> will json dump the contents of only the attributes that have changed.
+Note if any part of an embedded attribute and array of embedded attributes, changes then the entire top level attribute is dumped.</p><p><code class="inline">{ subject: &quot;new subject&quot; }</code></p><h3 id="full-diff" class="section-heading">
+  <a href="#full-diff" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Full Diff</span>
+</h3>
+<p><code class="inline">:full_diff</code> will json dump the contents of each attribute.</p><p><code class="inline">{ subject: { from: &quot;subject&quot;, to: &quot;new subject&quot; }, body: { unchanged: &quot;unchanged_body&quot; }}, author: { changes: { unchanged: &quot;bob&quot; }}</code></p><h2 id="associating-versions-with-actors" class="section-heading">
+  <a href="#associating-versions-with-actors" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Associating Versions with Actors</span>
+</h2>
+<p>You can record the actor who made the change by declaring one or more resources that can be actors.</p><pre><code class="makeup elixir" translate="no"><span class="n">paper_trail</span><span class="w"> </span><span class="k" data-group-id="9433704239-1">do</span><span class="w">
+  </span><span class="n">belongs_to_actor</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="p">,</span><span class="w"> </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Accounts</span><span class="w">
+  </span><span class="n">belongs_to_actor</span><span class="w"> </span><span class="ss">:news_feed</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Accounts.NewsFeed</span><span class="p">,</span><span class="w"> </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Accounts</span><span class="w">
+</span><span class="k" data-group-id="9433704239-1">end</span></code></pre><p>Each <code class="inline">belongs_to_actor</code> will create a <code class="inline">belongs_to</code> relationship with the given name destination. When creating a new version, if the actor on the action is set and matches the resource type, the version will be related to the actor. If your actors are polymorphic or varying types, declare a belongs_to_actor for each type.</p><p>A reference is also created with <code class="inline">on_delete: :nilify</code> and <code class="inline">on_update: :update</code></p><p>If you need a more complex relationship or your actor is not a resource (e.g. String), the actor is always set on Version create and you can store it by adding <code class="inline">:on_create</code> <code class="inline">change</code> in a mixin.</p><h2 id="multitenancy" class="section-heading">
+  <a href="#multitenancy" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Multitenancy</span>
+</h2>
+<p>If your resource uses multitenancy, then the strategy, attribute, and parse_attribute options (if any) will be applied to the version resource. If using the attribute strategy you will need to ensure this is also an attribute on the version using the <code class="inline">attributes_as_attributes</code> option (described above) or via a mixin (described below)</p><h2 id="enriching-the-versions-resource" class="section-heading">
+  <a href="#enriching-the-versions-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Enriching the Versions resource</span>
+</h2>
+<p>If you want to do something like exposing your versions resource over your graphql, you can use the <code class="inline">mixin</code> and <code class="inline">version_extensions</code> options.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">paper_trail</span><span class="w"> </span><span class="k" data-group-id="7866119527-1">do</span><span class="w">
+  </span><span class="n">mixin</span><span class="w"> </span><span class="p" data-group-id="7866119527-2">{</span><span class="nc">MyApp.MyResource.PaperTrailMixin</span><span class="p">,</span><span class="w"> </span><span class="ss">:graphql</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7866119527-3">[</span><span class="ss">:my_resource_version</span><span class="p" data-group-id="7866119527-3">]</span><span class="p" data-group-id="7866119527-2">}</span><span class="w">
+  </span><span class="n">relationship_opts</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="n">version_extensions</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7866119527-4">[</span><span class="nc">AshGraphql.Resource</span><span class="p" data-group-id="7866119527-4">]</span><span class="w">
+</span><span class="k" data-group-id="7866119527-1">end</span></code></pre><p>And then you can define a module like so:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.MyResource.PaperTrailMixin</span><span class="w"> </span><span class="k" data-group-id="2158593487-1">do</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">graphql</span><span class="p" data-group-id="2158593487-2">(</span><span class="n">type</span><span class="p" data-group-id="2158593487-2">)</span><span class="w"> </span><span class="k" data-group-id="2158593487-3">do</span><span class="w">
+    </span><span class="k">quote</span><span class="w"> </span><span class="k" data-group-id="2158593487-4">do</span><span class="w">
+      </span><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="2158593487-5">do</span><span class="w">
+        </span><span class="n">type</span><span class="w"> </span><span class="k">unquote</span><span class="p" data-group-id="2158593487-6">(</span><span class="n">type</span><span class="p" data-group-id="2158593487-6">)</span><span class="w">
+
+        </span><span class="n">queries</span><span class="w"> </span><span class="k" data-group-id="2158593487-7">do</span><span class="w">
+          </span><span class="n">list</span><span class="w"> </span><span class="ss">:list_versions</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+        </span><span class="k" data-group-id="2158593487-7">end</span><span class="w">
+      </span><span class="k" data-group-id="2158593487-5">end</span><span class="w">
+    </span><span class="k" data-group-id="2158593487-4">end</span><span class="w">
+  </span><span class="k" data-group-id="2158593487-3">end</span><span class="w">
+</span><span class="k" data-group-id="2158593487-1">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashpapertrail-resource.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: AshPaperTrail.Resource
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_paper_trail/0.1.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_paper_trail/0.1.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_paper_trail/0.1.4/show/documentation/tutorials/getting-started-with-ash-paper-trail.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_paper_trail.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

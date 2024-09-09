@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>DSL: Ash.Policy.Authorizer — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/dsls/DSL:-Ash.Policy.Authorizer.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: Ash.Policy.Authorizer</span>
+  </h1>
+
+<p>An authorization extension for ash resources.</p><p>To add this extension to a resource, add it to the list of <code class="inline">authorizers</code> like so:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+  </span><span class="n">...</span><span class="p">,</span><span class="w">
+  </span><span class="ss">authorizers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8358118295-1">[</span><span class="w">
+    </span><span class="nc">Ash.Policy.Authorizer</span><span class="w">
+  </span><span class="p" data-group-id="8358118295-1">]</span></code></pre><p>A resource can be given a set of policies, which are enforced on each call to a resource action.</p><p>For reads, policies can be configured to filter out data that the actor shouldn't see, as opposed to
+resulting in a forbidden error.</p><p>See the <a href="policies.html">policies guide</a> for practical examples.</p><p>Policies are solved/managed via a boolean satisfiability solver. To read more about boolean satisfiability,
+see this page: <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">https://en.wikipedia.org/wiki/Boolean_satisfiability_problem</a>. At the end of
+the day, however, it is not necessary to understand exactly how Ash takes your
+authorization requirements and determines if a request is allowed. The
+important thing to understand is that Ash may or may not run any/all of your
+authorization rules as they may be deemed unnecessary. As such, authorization
+checks should have no side effects. Ideally, the checks built-in to ash should
+cover the bulk of your needs.</p><h2 id="policies" class="section-heading">
+  <a href="#policies" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies</span>
+</h2>
+<p>A section for declaring authorization policies.</p><p>Each policy that applies must pass independently in order for the
+request to be authorized.</p><p>See the <a href="policies.html">policies guide</a> for more.</p><h3 id="nested-dsls" class="section-heading">
+  <a href="#nested-dsls" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#policies-policy">policy</a><ul><li>authorize_if</li><li>forbid_if</li><li>authorize_unless</li><li>forbid_unless</li></ul></li><li><a href="#policies-policy_group">policy_group</a><ul><li>policy<ul><li>authorize_if</li><li>forbid_if</li><li>authorize_unless</li><li>forbid_unless</li></ul></li></ul></li><li><a href="#policies-bypass">bypass</a><ul><li>authorize_if</li><li>forbid_if</li><li>authorize_unless</li><li>forbid_unless</li></ul></li></ul><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">policies</span><span class="w"> </span><span class="k" data-group-id="1484832246-1">do</span><span class="w">
+  </span><span class="c1"># Anything you can use in a condition, you can use in a check, and vice-versa</span><span class="w">
+  </span><span class="c1"># This policy applies if the actor is a super_user</span><span class="w">
+  </span><span class="c1"># Additionally, this policy is declared as a `bypass`. That means that this check is allowed to fail without</span><span class="w">
+  </span><span class="c1"># failing the whole request, and that if this check *passes*, the entire request passes.</span><span class="w">
+  </span><span class="n">bypass</span><span class="w"> </span><span class="n">actor_attribute_equals</span><span class="p" data-group-id="1484832246-2">(</span><span class="ss">:super_user</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1484832246-2">)</span><span class="w"> </span><span class="k" data-group-id="1484832246-3">do</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="1484832246-4">(</span><span class="p" data-group-id="1484832246-4">)</span><span class="w">
+  </span><span class="k" data-group-id="1484832246-3">end</span><span class="w">
+
+  </span><span class="c1"># This will likely be a common occurrence. Specifically, policies that apply to all read actions</span><span class="w">
+  </span><span class="n">policy</span><span class="w"> </span><span class="n">action_type</span><span class="p" data-group-id="1484832246-5">(</span><span class="ss">:read</span><span class="p" data-group-id="1484832246-5">)</span><span class="w"> </span><span class="k" data-group-id="1484832246-6">do</span><span class="w">
+    </span><span class="c1"># unless the actor is an active user, forbid their request</span><span class="w">
+    </span><span class="n">forbid_unless</span><span class="w"> </span><span class="n">actor_attribute_equals</span><span class="p" data-group-id="1484832246-7">(</span><span class="ss">:active</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1484832246-7">)</span><span class="w">
+    </span><span class="c1"># if the record is marked as public, authorize the request</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">attribute</span><span class="p" data-group-id="1484832246-8">(</span><span class="ss">:public</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1484832246-8">)</span><span class="w">
+    </span><span class="c1"># if the actor is related to the data via that data&#39;s `owner` relationship, authorize the request</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">relates_to_actor_via</span><span class="p" data-group-id="1484832246-9">(</span><span class="ss">:owner</span><span class="p" data-group-id="1484832246-9">)</span><span class="w">
+  </span><span class="k" data-group-id="1484832246-6">end</span><span class="w">
+</span><span class="k" data-group-id="1484832246-1">end</span><span class="w">
+</span></code></pre><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-default_access_type" id="policies-default_access_type"><code class="inline">default_access_type</code></a></td><td style="text-align: left;"><code class="inline">:strict | :filter | :runtime</code></td><td style="text-align: left;"><code class="inline">:filter</code></td><td style="text-align: left;">The default access type of policies for this resource.</td></tr></tbody></table><h2 id="policies-policy" class="section-heading">
+  <a href="#policies-policy" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>A policy has a name, a condition, and a list of checks.</p><p>Checks apply logically in the order they are specified, from top to bottom.
+If no check explicitly authorizes the request, then the request is forbidden.
+This means that, if you want to &quot;blacklist&quot; instead of &quot;whitelist&quot;, you likely
+want to add an <code class="inline">authorize_if always()</code> at the bottom of your policy, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="n">action_type</span><span class="p" data-group-id="2553686843-1">(</span><span class="ss">:read</span><span class="p" data-group-id="2553686843-1">)</span><span class="w"> </span><span class="k" data-group-id="2553686843-2">do</span><span class="w">
+</span><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="2553686843-3">(</span><span class="p" data-group-id="2553686843-3">)</span><span class="w">
+</span><span class="n">forbid_if</span><span class="w"> </span><span class="n">user_is_denylisted</span><span class="p" data-group-id="2553686843-4">(</span><span class="p" data-group-id="2553686843-4">)</span><span class="w">
+</span><span class="n">forbid_if</span><span class="w"> </span><span class="n">user_is_in_denylisted_group</span><span class="p" data-group-id="2553686843-5">(</span><span class="p" data-group-id="2553686843-5">)</span><span class="w">
+
+</span><span class="n">authorize_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="2553686843-6">(</span><span class="p" data-group-id="2553686843-6">)</span><span class="w">
+</span><span class="k" data-group-id="2553686843-2">end</span></code></pre><p>If the policy should always run, use the <code class="inline">always()</code> check, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="3801952778-1">(</span><span class="p" data-group-id="3801952778-1">)</span><span class="w"> </span><span class="k" data-group-id="3801952778-2">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="3801952778-2">end</span></code></pre><p>See the <a href="policies.html">policies guide</a> for more.</p><h3 id="nested-dsls-1" class="section-heading">
+  <a href="#nested-dsls-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#policies-policy-authorize_if">authorize_if</a></li><li><a href="#policies-policy-forbid_if">forbid_if</a></li><li><a href="#policies-policy-authorize_unless">authorize_unless</a></li><li><a href="#policies-policy-forbid_unless">forbid_unless</a></li></ul><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy-condition" id="policies-policy-condition"><code class="inline">condition</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A check or list of checks that must be true in order for this policy to apply.</td></tr></tbody></table><h3 id="options-1" class="section-heading">
+  <a href="#options-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy-description" id="policies-policy-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A description for the policy, used when explaining authorization results</td></tr><tr><td style="text-align: left;"><a href="#policies-policy-access_type" id="policies-policy-access_type"><code class="inline">access_type</code></a></td><td style="text-align: left;"><code class="inline">:strict | :filter | :runtime</code></td><td style="text-align: left;"></td><td style="text-align: left;">Determines how the policy is applied. See the guide for more.</td></tr></tbody></table><h2 id="policies-policy-authorize_if" class="section-heading">
+  <a href="#policies-policy-authorize_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy.authorize_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-1" class="section-heading">
+  <a href="#examples-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="8347909497-1">(</span><span class="p" data-group-id="8347909497-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="4011593434-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="4011593434-1">)</span></code></pre><h3 id="arguments-1" class="section-heading">
+  <a href="#arguments-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy-authorize_if-check" id="policies-policy-authorize_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-2" class="section-heading">
+  <a href="#options-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy-authorize_if-name" id="policies-policy-authorize_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-policy-forbid_if" class="section-heading">
+  <a href="#policies-policy-forbid_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy.forbid_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-2" class="section-heading">
+  <a href="#examples-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="9329479226-1">(</span><span class="p" data-group-id="9329479226-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="9901333076-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="9901333076-1">)</span></code></pre><h3 id="arguments-2" class="section-heading">
+  <a href="#arguments-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy-forbid_if-check" id="policies-policy-forbid_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-3" class="section-heading">
+  <a href="#options-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy-forbid_if-name" id="policies-policy-forbid_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-1" class="section-heading">
+  <a href="#introspection-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-policy-authorize_unless" class="section-heading">
+  <a href="#policies-policy-authorize_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy.authorize_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is false, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-3" class="section-heading">
+  <a href="#examples-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="7881109033-1">(</span><span class="p" data-group-id="7881109033-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="6992583333-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="6992583333-1">)</span></code></pre><h3 id="arguments-3" class="section-heading">
+  <a href="#arguments-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy-authorize_unless-check" id="policies-policy-authorize_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-4" class="section-heading">
+  <a href="#options-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy-authorize_unless-name" id="policies-policy-authorize_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-2" class="section-heading">
+  <a href="#introspection-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-policy-forbid_unless" class="section-heading">
+  <a href="#policies-policy-forbid_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy.forbid_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-4" class="section-heading">
+  <a href="#examples-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="2002044218-1">(</span><span class="p" data-group-id="2002044218-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="5407131649-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="5407131649-1">)</span></code></pre><h3 id="arguments-4" class="section-heading">
+  <a href="#arguments-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy-forbid_unless-check" id="policies-policy-forbid_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-5" class="section-heading">
+  <a href="#options-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy-forbid_unless-name" id="policies-policy-forbid_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-3" class="section-heading">
+  <a href="#introspection-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h3 id="introspection-4" class="section-heading">
+  <a href="#introspection-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Policy.html"><code class="inline">Ash.Policy.Policy</code></a></p><h2 id="policies-policy_group" class="section-heading">
+  <a href="#policies-policy_group" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy_group</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">policy_group</span><span class="w"> </span><span class="n">condition</span></code></pre><p>Groups a set of policies together by some condition.</p><p>If the condition on the policy group does not apply, then none of the policies within it apply.</p><p>This is primarily syntactic sugar. At compile time, the conditions from the policy group are
+added to each policy it contains, and the list is flattened out. This exists primarily to make it
+easier to reason about and write policies.</p><p>The following are equivalent:</p><pre><code class="makeup elixir" translate="no"><span class="n">policy_group</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="k" data-group-id="5042405985-1">do</span><span class="w">
+</span><span class="n">policy</span><span class="w"> </span><span class="n">condition2</span><span class="w"> </span><span class="k" data-group-id="5042405985-2">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="5042405985-2">end</span><span class="w">
+
+</span><span class="n">policy</span><span class="w"> </span><span class="n">condition3</span><span class="w"> </span><span class="k" data-group-id="5042405985-3">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="5042405985-3">end</span><span class="w">
+</span><span class="k" data-group-id="5042405985-1">end</span></code></pre><p>and</p><pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="p" data-group-id="8360842292-1">[</span><span class="n">condition1</span><span class="p">,</span><span class="w"> </span><span class="n">condition2</span><span class="p" data-group-id="8360842292-1">]</span><span class="w"> </span><span class="k" data-group-id="8360842292-2">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="8360842292-2">end</span><span class="w">
+
+</span><span class="n">policy</span><span class="w"> </span><span class="p" data-group-id="8360842292-3">[</span><span class="n">condition1</span><span class="p">,</span><span class="w"> </span><span class="n">condition3</span><span class="p" data-group-id="8360842292-3">]</span><span class="w"> </span><span class="k" data-group-id="8360842292-4">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="8360842292-4">end</span></code></pre><h3 id="nested-dsls-2" class="section-heading">
+  <a href="#nested-dsls-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#policies-policy_group-policy">policy</a><ul><li>authorize_if</li><li>forbid_if</li><li>authorize_unless</li><li>forbid_unless</li></ul></li></ul><h3 id="arguments-5" class="section-heading">
+  <a href="#arguments-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-condition" id="policies-policy_group-condition"><code class="inline">condition</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A check or list of checks that must be true in order for this policy to apply.</td></tr></tbody></table><h2 id="policies-policy_group-policy" class="section-heading">
+  <a href="#policies-policy_group-policy" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy_group.policy</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>A policy has a name, a condition, and a list of checks.</p><p>Checks apply logically in the order they are specified, from top to bottom.
+If no check explicitly authorizes the request, then the request is forbidden.
+This means that, if you want to &quot;blacklist&quot; instead of &quot;whitelist&quot;, you likely
+want to add an <code class="inline">authorize_if always()</code> at the bottom of your policy, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="n">action_type</span><span class="p" data-group-id="7244796767-1">(</span><span class="ss">:read</span><span class="p" data-group-id="7244796767-1">)</span><span class="w"> </span><span class="k" data-group-id="7244796767-2">do</span><span class="w">
+</span><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="7244796767-3">(</span><span class="p" data-group-id="7244796767-3">)</span><span class="w">
+</span><span class="n">forbid_if</span><span class="w"> </span><span class="n">user_is_denylisted</span><span class="p" data-group-id="7244796767-4">(</span><span class="p" data-group-id="7244796767-4">)</span><span class="w">
+</span><span class="n">forbid_if</span><span class="w"> </span><span class="n">user_is_in_denylisted_group</span><span class="p" data-group-id="7244796767-5">(</span><span class="p" data-group-id="7244796767-5">)</span><span class="w">
+
+</span><span class="n">authorize_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="7244796767-6">(</span><span class="p" data-group-id="7244796767-6">)</span><span class="w">
+</span><span class="k" data-group-id="7244796767-2">end</span></code></pre><p>If the policy should always run, use the <code class="inline">always()</code> check, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">policy</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="2973060052-1">(</span><span class="p" data-group-id="2973060052-1">)</span><span class="w"> </span><span class="k" data-group-id="2973060052-2">do</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="2973060052-2">end</span></code></pre><p>See the <a href="policies.html">policies guide</a> for more.</p><h3 id="nested-dsls-3" class="section-heading">
+  <a href="#nested-dsls-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#policies-policy_group-policy-authorize_if">authorize_if</a></li><li><a href="#policies-policy_group-policy-forbid_if">forbid_if</a></li><li><a href="#policies-policy_group-policy-authorize_unless">authorize_unless</a></li><li><a href="#policies-policy_group-policy-forbid_unless">forbid_unless</a></li></ul><h3 id="arguments-6" class="section-heading">
+  <a href="#arguments-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-condition" id="policies-policy_group-policy-condition"><code class="inline">condition</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A check or list of checks that must be true in order for this policy to apply.</td></tr></tbody></table><h3 id="options-6" class="section-heading">
+  <a href="#options-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-description" id="policies-policy_group-policy-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A description for the policy, used when explaining authorization results</td></tr><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-access_type" id="policies-policy_group-policy-access_type"><code class="inline">access_type</code></a></td><td style="text-align: left;"><code class="inline">:strict | :filter | :runtime</code></td><td style="text-align: left;"></td><td style="text-align: left;">Determines how the policy is applied. See the guide for more.</td></tr></tbody></table><h2 id="policies-policy_group-policy-authorize_if" class="section-heading">
+  <a href="#policies-policy_group-policy-authorize_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy_group.policy.authorize_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-5" class="section-heading">
+  <a href="#examples-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="5077556210-1">(</span><span class="p" data-group-id="5077556210-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="0218349670-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="0218349670-1">)</span></code></pre><h3 id="arguments-7" class="section-heading">
+  <a href="#arguments-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy_group-policy-authorize_if-check" id="policies-policy_group-policy-authorize_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-7" class="section-heading">
+  <a href="#options-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-authorize_if-name" id="policies-policy_group-policy-authorize_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-5" class="section-heading">
+  <a href="#introspection-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-policy_group-policy-forbid_if" class="section-heading">
+  <a href="#policies-policy_group-policy-forbid_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy_group.policy.forbid_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-6" class="section-heading">
+  <a href="#examples-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="1689093265-1">(</span><span class="p" data-group-id="1689093265-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="8273566389-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="8273566389-1">)</span></code></pre><h3 id="arguments-8" class="section-heading">
+  <a href="#arguments-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy_group-policy-forbid_if-check" id="policies-policy_group-policy-forbid_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-8" class="section-heading">
+  <a href="#options-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-forbid_if-name" id="policies-policy_group-policy-forbid_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-6" class="section-heading">
+  <a href="#introspection-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-policy_group-policy-authorize_unless" class="section-heading">
+  <a href="#policies-policy_group-policy-authorize_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy_group.policy.authorize_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is false, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-7" class="section-heading">
+  <a href="#examples-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="0777929129-1">(</span><span class="p" data-group-id="0777929129-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="8542132696-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="8542132696-1">)</span></code></pre><h3 id="arguments-9" class="section-heading">
+  <a href="#arguments-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy_group-policy-authorize_unless-check" id="policies-policy_group-policy-authorize_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-9" class="section-heading">
+  <a href="#options-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-authorize_unless-name" id="policies-policy_group-policy-authorize_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-7" class="section-heading">
+  <a href="#introspection-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-policy_group-policy-forbid_unless" class="section-heading">
+  <a href="#policies-policy_group-policy-forbid_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.policy_group.policy.forbid_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-8" class="section-heading">
+  <a href="#examples-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="0889032962-1">(</span><span class="p" data-group-id="0889032962-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="1049673469-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="1049673469-1">)</span></code></pre><h3 id="arguments-10" class="section-heading">
+  <a href="#arguments-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-policy_group-policy-forbid_unless-check" id="policies-policy_group-policy-forbid_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-10" class="section-heading">
+  <a href="#options-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-policy_group-policy-forbid_unless-name" id="policies-policy_group-policy-forbid_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-8" class="section-heading">
+  <a href="#introspection-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h3 id="introspection-9" class="section-heading">
+  <a href="#introspection-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Policy.html"><code class="inline">Ash.Policy.Policy</code></a></p><h3 id="introspection-10" class="section-heading">
+  <a href="#introspection-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.PolicyGroup.html"><code class="inline">Ash.Policy.PolicyGroup</code></a></p><h2 id="policies-bypass" class="section-heading">
+  <a href="#policies-bypass" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.bypass</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">bypass</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>A policy that, if passed, will skip all following policies. If failed, authorization moves on to the next policy</p><h3 id="nested-dsls-4" class="section-heading">
+  <a href="#nested-dsls-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#policies-bypass-authorize_if">authorize_if</a></li><li><a href="#policies-bypass-forbid_if">forbid_if</a></li><li><a href="#policies-bypass-authorize_unless">authorize_unless</a></li><li><a href="#policies-bypass-forbid_unless">forbid_unless</a></li></ul><h3 id="arguments-11" class="section-heading">
+  <a href="#arguments-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-bypass-condition" id="policies-bypass-condition"><code class="inline">condition</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A check or list of checks that must be true in order for this policy to apply.</td></tr></tbody></table><h3 id="options-11" class="section-heading">
+  <a href="#options-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-bypass-description" id="policies-bypass-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A description for the policy, used when explaining authorization results</td></tr><tr><td style="text-align: left;"><a href="#policies-bypass-access_type" id="policies-bypass-access_type"><code class="inline">access_type</code></a></td><td style="text-align: left;"><code class="inline">:strict | :filter | :runtime</code></td><td style="text-align: left;"></td><td style="text-align: left;">Determines how the policy is applied. See the guide for more.</td></tr></tbody></table><h2 id="policies-bypass-authorize_if" class="section-heading">
+  <a href="#policies-bypass-authorize_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.bypass.authorize_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-9" class="section-heading">
+  <a href="#examples-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="0877584166-1">(</span><span class="p" data-group-id="0877584166-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="4499599711-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="4499599711-1">)</span></code></pre><h3 id="arguments-12" class="section-heading">
+  <a href="#arguments-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-bypass-authorize_if-check" id="policies-bypass-authorize_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-12" class="section-heading">
+  <a href="#options-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-bypass-authorize_if-name" id="policies-bypass-authorize_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-11" class="section-heading">
+  <a href="#introspection-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-bypass-forbid_if" class="section-heading">
+  <a href="#policies-bypass-forbid_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.bypass.forbid_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-10" class="section-heading">
+  <a href="#examples-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="6949350697-1">(</span><span class="p" data-group-id="6949350697-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="6893776928-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="6893776928-1">)</span></code></pre><h3 id="arguments-13" class="section-heading">
+  <a href="#arguments-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-bypass-forbid_if-check" id="policies-bypass-forbid_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-13" class="section-heading">
+  <a href="#options-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-bypass-forbid_if-name" id="policies-bypass-forbid_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-12" class="section-heading">
+  <a href="#introspection-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-bypass-authorize_unless" class="section-heading">
+  <a href="#policies-bypass-authorize_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.bypass.authorize_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is false, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-11" class="section-heading">
+  <a href="#examples-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="5351281710-1">(</span><span class="p" data-group-id="5351281710-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="8991047283-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="8991047283-1">)</span></code></pre><h3 id="arguments-14" class="section-heading">
+  <a href="#arguments-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-bypass-authorize_unless-check" id="policies-bypass-authorize_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-14" class="section-heading">
+  <a href="#options-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-bypass-authorize_unless-name" id="policies-bypass-authorize_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-13" class="section-heading">
+  <a href="#introspection-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="policies-bypass-forbid_unless" class="section-heading">
+  <a href="#policies-bypass-forbid_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">policies.bypass.forbid_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-12" class="section-heading">
+  <a href="#examples-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="7821995955-1">(</span><span class="p" data-group-id="7821995955-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="5847634213-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="5847634213-1">)</span></code></pre><h3 id="arguments-15" class="section-heading">
+  <a href="#arguments-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#policies-bypass-forbid_unless-check" id="policies-bypass-forbid_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-15" class="section-heading">
+  <a href="#options-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#policies-bypass-forbid_unless-name" id="policies-bypass-forbid_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-14" class="section-heading">
+  <a href="#introspection-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h3 id="introspection-15" class="section-heading">
+  <a href="#introspection-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Policy.html"><code class="inline">Ash.Policy.Policy</code></a></p><h2 id="field_policies" class="section-heading">
+  <a href="#field_policies" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies</span>
+</h2>
+<p>Authorize access to specific fields via policies scoped to fields.</p><p>If <em>any</em> field policies exist then <em>all</em> fields must be authorized by a field policy.
+If you want a &quot;deny-list&quot; style, then you can add policies for specific fields
+and add a catch-all policy using the special field name <code class="inline">:*</code>. All policies that apply
+to a field must be authorized.</p><p>The only exception to the above behavior is primary keys, which can always be read by everyone.</p><p>Additionally, keep in mind that adding <a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a> will require that all actions
+pass policies. If you want to just add field policies, you will need to add a policy that allows
+all access explicitly, i.e</p><pre><code class="makeup elixir" translate="no"><span class="n">policies</span><span class="w"> </span><span class="k" data-group-id="9790598009-1">do</span><span class="w">
+</span><span class="n">policy</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="9790598009-2">(</span><span class="p" data-group-id="9790598009-2">)</span><span class="w"> </span><span class="k" data-group-id="9790598009-3">do</span><span class="w">
+</span><span class="n">authorize_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="9790598009-4">(</span><span class="p" data-group-id="9790598009-4">)</span><span class="w">
+</span><span class="k" data-group-id="9790598009-3">end</span><span class="w">
+</span><span class="k" data-group-id="9790598009-1">end</span></code></pre><p>Using expressions: unlike in regular policies, expressions in field policies cannot refer
+to related entities currently. Instead, you will need to create aggregates or expression calculations
+that return the results you want to reference.</p><p>In results, forbidden fields will be replaced with a special value: <code class="inline">%Ash.ForbiddenField{}</code>.</p><p>When these fields are referred to in filters, they will be replaced with an expression that evaluates
+to <code class="inline">nil</code>. To support this behavior, only expression/filter checks are allowed in field policies.</p><h3 id="nested-dsls-5" class="section-heading">
+  <a href="#nested-dsls-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#field_policies-field_policy_bypass">field_policy_bypass</a><ul><li>authorize_if</li><li>forbid_if</li><li>authorize_unless</li><li>forbid_unless</li></ul></li><li><a href="#field_policies-field_policy">field_policy</a><ul><li>authorize_if</li><li>forbid_if</li><li>authorize_unless</li><li>forbid_unless</li></ul></li></ul><h3 id="examples-13" class="section-heading">
+  <a href="#examples-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">field_policies</span><span class="w"> </span><span class="k" data-group-id="8085653187-1">do</span><span class="w">
+  </span><span class="n">field_policy</span><span class="w"> </span><span class="ss">:admin_only_field</span><span class="w"> </span><span class="k" data-group-id="8085653187-2">do</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_equals</span><span class="p" data-group-id="8085653187-3">(</span><span class="ss">:admin</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="8085653187-3">)</span><span class="w">
+  </span><span class="k" data-group-id="8085653187-2">end</span><span class="w">
+</span><span class="k" data-group-id="8085653187-1">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># Example of denylist style</span><span class="w">
+</span><span class="n">field_policies</span><span class="w"> </span><span class="k" data-group-id="6021557500-1">do</span><span class="w">
+  </span><span class="n">field_policy</span><span class="w"> </span><span class="p" data-group-id="6021557500-2">[</span><span class="ss">:sensitive</span><span class="p">,</span><span class="w"> </span><span class="ss">:fields</span><span class="p" data-group-id="6021557500-2">]</span><span class="w"> </span><span class="k" data-group-id="6021557500-3">do</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_equals</span><span class="p" data-group-id="6021557500-4">(</span><span class="ss">:admin</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="6021557500-4">)</span><span class="w">
+  </span><span class="k" data-group-id="6021557500-3">end</span><span class="w">
+
+  </span><span class="n">field_policy</span><span class="w"> </span><span class="ss">:*</span><span class="w"> </span><span class="k" data-group-id="6021557500-5">do</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="6021557500-6">(</span><span class="p" data-group-id="6021557500-6">)</span><span class="w">
+  </span><span class="k" data-group-id="6021557500-5">end</span><span class="w">
+</span><span class="k" data-group-id="6021557500-1">end</span><span class="w">
+</span></code></pre><h3 id="options-16" class="section-heading">
+  <a href="#options-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-private_fields" id="field_policies-private_fields"><code class="inline">private_fields</code></a></td><td style="text-align: left;"><code class="inline">:show | :hide | :include</code></td><td style="text-align: left;"><code class="inline">:show</code></td><td style="text-align: left;">How private fields should be handeled by field policies in internal functions. See the <a href="policies.html#field-policies">Policies guide</a> for more.</td></tr></tbody></table><h2 id="field_policies-field_policy_bypass" class="section-heading">
+  <a href="#field_policies-field_policy_bypass" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy_bypass</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">field_policy_bypass</span><span class="w"> </span><span class="n">fields</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>A field policy that, if passed, will skip all following field policies for that field or fields. If failed, field authorization moves on to the next policy</p><h3 id="nested-dsls-6" class="section-heading">
+  <a href="#nested-dsls-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#field_policies-field_policy_bypass-authorize_if">authorize_if</a></li><li><a href="#field_policies-field_policy_bypass-forbid_if">forbid_if</a></li><li><a href="#field_policies-field_policy_bypass-authorize_unless">authorize_unless</a></li><li><a href="#field_policies-field_policy_bypass-forbid_unless">forbid_unless</a></li></ul><h3 id="arguments-16" class="section-heading">
+  <a href="#arguments-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-fields" id="field_policies-field_policy_bypass-fields"><code class="inline">fields</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The field or fields that the policy applies to.</td></tr><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-condition" id="field_policies-field_policy_bypass-condition"><code class="inline">condition</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A check or list of checks that must be true in order for this field policy to apply. If not specified, it always applies.</td></tr></tbody></table><h3 id="options-17" class="section-heading">
+  <a href="#options-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-description" id="field_policies-field_policy_bypass-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A description for the policy, used when explaining authorization results</td></tr></tbody></table><h2 id="field_policies-field_policy_bypass-authorize_if" class="section-heading">
+  <a href="#field_policies-field_policy_bypass-authorize_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy_bypass.authorize_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-14" class="section-heading">
+  <a href="#examples-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="0299369681-1">(</span><span class="p" data-group-id="0299369681-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="9125245400-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="9125245400-1">)</span></code></pre><h3 id="arguments-17" class="section-heading">
+  <a href="#arguments-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy_bypass-authorize_if-check" id="field_policies-field_policy_bypass-authorize_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-18" class="section-heading">
+  <a href="#options-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-authorize_if-name" id="field_policies-field_policy_bypass-authorize_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-16" class="section-heading">
+  <a href="#introspection-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="field_policies-field_policy_bypass-forbid_if" class="section-heading">
+  <a href="#field_policies-field_policy_bypass-forbid_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy_bypass.forbid_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-15" class="section-heading">
+  <a href="#examples-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="6829042703-1">(</span><span class="p" data-group-id="6829042703-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="2699773335-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="2699773335-1">)</span></code></pre><h3 id="arguments-18" class="section-heading">
+  <a href="#arguments-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy_bypass-forbid_if-check" id="field_policies-field_policy_bypass-forbid_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-19" class="section-heading">
+  <a href="#options-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-forbid_if-name" id="field_policies-field_policy_bypass-forbid_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-17" class="section-heading">
+  <a href="#introspection-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="field_policies-field_policy_bypass-authorize_unless" class="section-heading">
+  <a href="#field_policies-field_policy_bypass-authorize_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy_bypass.authorize_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is false, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-16" class="section-heading">
+  <a href="#examples-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="3667678355-1">(</span><span class="p" data-group-id="3667678355-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="5525260553-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="5525260553-1">)</span></code></pre><h3 id="arguments-19" class="section-heading">
+  <a href="#arguments-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy_bypass-authorize_unless-check" id="field_policies-field_policy_bypass-authorize_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-20" class="section-heading">
+  <a href="#options-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-authorize_unless-name" id="field_policies-field_policy_bypass-authorize_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-18" class="section-heading">
+  <a href="#introspection-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="field_policies-field_policy_bypass-forbid_unless" class="section-heading">
+  <a href="#field_policies-field_policy_bypass-forbid_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy_bypass.forbid_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-17" class="section-heading">
+  <a href="#examples-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="7390175213-1">(</span><span class="p" data-group-id="7390175213-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="3176528251-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="3176528251-1">)</span></code></pre><h3 id="arguments-20" class="section-heading">
+  <a href="#arguments-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy_bypass-forbid_unless-check" id="field_policies-field_policy_bypass-forbid_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-21" class="section-heading">
+  <a href="#options-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy_bypass-forbid_unless-name" id="field_policies-field_policy_bypass-forbid_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-19" class="section-heading">
+  <a href="#introspection-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h3 id="introspection-20" class="section-heading">
+  <a href="#introspection-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.FieldPolicy.html"><code class="inline">Ash.Policy.FieldPolicy</code></a></p><h2 id="field_policies-field_policy" class="section-heading">
+  <a href="#field_policies-field_policy" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">field_policy</span><span class="w"> </span><span class="n">fields</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Field policies behave similarly to policies. See <code class="inline"><a href="dsl-ash-policy-authorizer.html#field_policies">Ash.Policy.Authorizer.field_policies</a></code>
+for more.</p><h3 id="nested-dsls-7" class="section-heading">
+  <a href="#nested-dsls-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#field_policies-field_policy-authorize_if">authorize_if</a></li><li><a href="#field_policies-field_policy-forbid_if">forbid_if</a></li><li><a href="#field_policies-field_policy-authorize_unless">authorize_unless</a></li><li><a href="#field_policies-field_policy-forbid_unless">forbid_unless</a></li></ul><h3 id="arguments-21" class="section-heading">
+  <a href="#arguments-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy-fields" id="field_policies-field_policy-fields"><code class="inline">fields</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The field or fields that the policy applies to.</td></tr><tr><td style="text-align: left;"><a href="#field_policies-field_policy-condition" id="field_policies-field_policy-condition"><code class="inline">condition</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">A check or list of checks that must be true in order for this field policy to apply. If not specified, it always applies.</td></tr></tbody></table><h3 id="options-22" class="section-heading">
+  <a href="#options-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy-description" id="field_policies-field_policy-description"><code class="inline">description</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A description for the policy, used when explaining authorization results</td></tr></tbody></table><h2 id="field_policies-field_policy-authorize_if" class="section-heading">
+  <a href="#field_policies-field_policy-authorize_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy.authorize_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-18" class="section-heading">
+  <a href="#examples-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="5616952341-1">(</span><span class="p" data-group-id="5616952341-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="2187783905-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="2187783905-1">)</span></code></pre><h3 id="arguments-22" class="section-heading">
+  <a href="#arguments-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy-authorize_if-check" id="field_policies-field_policy-authorize_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-23" class="section-heading">
+  <a href="#options-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy-authorize_if-name" id="field_policies-field_policy-authorize_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-21" class="section-heading">
+  <a href="#introspection-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="field_policies-field_policy-forbid_if" class="section-heading">
+  <a href="#field_policies-field_policy-forbid_if" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy.forbid_if</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-19" class="section-heading">
+  <a href="#examples-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="0060519003-1">(</span><span class="p" data-group-id="0060519003-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_if</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="1095686135-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="1095686135-1">)</span></code></pre><h3 id="arguments-23" class="section-heading">
+  <a href="#arguments-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy-forbid_if-check" id="field_policies-field_policy-forbid_if-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-24" class="section-heading">
+  <a href="#options-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy-forbid_if-name" id="field_policies-field_policy-forbid_if-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-22" class="section-heading">
+  <a href="#introspection-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="field_policies-field_policy-authorize_unless" class="section-heading">
+  <a href="#field_policies-field_policy-authorize_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy.authorize_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is false, the request is authorized, otherwise run remaining checks.</p><h3 id="examples-20" class="section-heading">
+  <a href="#examples-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">not_logged_in</span><span class="p" data-group-id="3998555939-1">(</span><span class="p" data-group-id="3998555939-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">authorize_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="6964036989-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:blacklisted_groups</span><span class="p" data-group-id="6964036989-1">)</span></code></pre><h3 id="arguments-24" class="section-heading">
+  <a href="#arguments-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy-authorize_unless-check" id="field_policies-field_policy-authorize_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-25" class="section-heading">
+  <a href="#options-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy-authorize_unless-name" id="field_policies-field_policy-authorize_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-23" class="section-heading">
+  <a href="#introspection-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h2 id="field_policies-field_policy-forbid_unless" class="section-heading">
+  <a href="#field_policies-field_policy-forbid_unless" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">field_policies.field_policy.forbid_unless</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">check</span></code></pre><p>If the check is true, the request is forbidden, otherwise run remaining checks.</p><h3 id="examples-21" class="section-heading">
+  <a href="#examples-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">logged_in</span><span class="p" data-group-id="0097343417-1">(</span><span class="p" data-group-id="0097343417-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">forbid_unless</span><span class="w"> </span><span class="n">actor_attribute_matches_record</span><span class="p" data-group-id="2522823901-1">(</span><span class="ss">:group</span><span class="p">,</span><span class="w"> </span><span class="ss">:group</span><span class="p" data-group-id="2522823901-1">)</span></code></pre><h3 id="arguments-25" class="section-heading">
+  <a href="#arguments-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#field_policies-field_policy-forbid_unless-check" id="field_policies-field_policy-forbid_unless-check"><code class="inline">check</code></a></td><td style="text-align: left;"><code class="inline">module | any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The check to run. See <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a> for more.</td></tr></tbody></table><h3 id="options-26" class="section-heading">
+  <a href="#options-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#field_policies-field_policy-forbid_unless-name" id="field_policies-field_policy-forbid_unless-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A short name or description for the check, used when explaining authorization results</td></tr></tbody></table><h3 id="introspection-24" class="section-heading">
+  <a href="#introspection-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.Check.html"><code class="inline">Ash.Policy.Check</code></a></p><h3 id="introspection-25" class="section-heading">
+  <a href="#introspection-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Ash.Policy.FieldPolicy.html"><code class="inline">Ash.Policy.FieldPolicy</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ash-notifier-pubsub.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: Ash.Notifier.PubSub
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ash-datalayer-ets.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: Ash.DataLayer.Ets
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/dsls/DSL:-Ash.Policy.Authorizer.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

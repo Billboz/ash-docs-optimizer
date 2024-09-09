@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_pagify v1.0.2">
+
+
+    <title>AshPagify.Components — ash_pagify v1.0.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-6F6CB061.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://hexdocs.pm/ash_pagify" class="sidebar-projectName" translate="no">
+ash_pagify
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_pagify</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">AshPagify.Components</span> 
+    <small class="app-vsn" translate="no">(ash_pagify v1.0.2)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Phoenix headless components for pagination and sortable tables with <a href="AshPagify.html"><code class="inline">AshPagify</code></a>.</p><h2 id="module-introduction" class="section-heading">
+  <a href="#module-introduction" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introduction</span>
+</h2>
+<p>Please refere to the <em>Usage</em> section in <a href="AshPagify.html"><code class="inline">AshPagify</code></a> for more information.</p><p>This module provides two components: <a href="AshPagify.Components.Pagination.html"><code class="inline">AshPagify.Components.Pagination</code></a> and
+<a href="AshPagify.Components.Table.html"><code class="inline">AshPagify.Components.Table</code></a>. The components are designed to work with
+<a href="AshPagify.html"><code class="inline">AshPagify</code></a> and <a href="https://hexdocs.pm/ash/3.3.3/Ash.Resource.html"><code class="inline">Ash.Resource</code></a> structs. They are by default unstyled components
+which add basic classes and attributes to the elements they render. However,
+you can customize the components by passing options.</p><p>Further, <a href="AshPagify.Components.html"><code class="inline">AshPagify.Components</code></a> provides helper functions to build paths for
+pagination and sorting links. The paths are built based on the current query
+parameters and the new parameters that are passed to the function.</p><h2 id="module-customization" class="section-heading">
+  <a href="#module-customization" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Customization</span>
+</h2>
+<p>The default classes, attributes, texts and symbols can be overridden by
+passing the <code class="inline">opts</code> assign. Since you probably will use the same <code class="inline">opts</code> in all
+your templates, you can globally configure an <code class="inline">opts</code> provider function for
+each component.</p><p>The functions have to return the options as a keyword list. The overrides
+are deep-merged into the default options.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAppWeb.CoreComponents</span><span class="w"> </span><span class="k" data-group-id="5958416444-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Phoenix.Component</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">pagination_opts</span><span class="w"> </span><span class="k" data-group-id="5958416444-2">do</span><span class="w">
+     </span><span class="p" data-group-id="5958416444-3">[</span><span class="w">
+      </span><span class="ss">ellipsis_attrs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5958416444-4">[</span><span class="ss">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ellipsis&quot;</span><span class="p" data-group-id="5958416444-4">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">ellipsis_content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;‥&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">next_link_attrs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5958416444-5">[</span><span class="ss">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;next&quot;</span><span class="p" data-group-id="5958416444-5">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">next_link_content</span><span class="p">:</span><span class="w"> </span><span class="n">next_icon</span><span class="p" data-group-id="5958416444-6">(</span><span class="p" data-group-id="5958416444-6">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">page_links</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5958416444-7">{</span><span class="ss">:ellipsis</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="5958416444-7">}</span><span class="p">,</span><span class="w">
+      </span><span class="ss">pagination_link_aria_label</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="s">&quot;</span><span class="si" data-group-id="5958416444-8">#{</span><span class="ni">&amp;1</span><span class="si" data-group-id="5958416444-8">}</span><span class="s">ページ目へ&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">previous_link_attrs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5958416444-9">[</span><span class="ss">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prev&quot;</span><span class="p" data-group-id="5958416444-9">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">previous_link_content</span><span class="p">:</span><span class="w"> </span><span class="n">previous_icon</span><span class="p" data-group-id="5958416444-10">(</span><span class="p" data-group-id="5958416444-10">)</span><span class="w">
+    </span><span class="p" data-group-id="5958416444-3">]</span><span class="w">
+  </span><span class="k" data-group-id="5958416444-2">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">next_icon</span><span class="w"> </span><span class="k" data-group-id="5958416444-11">do</span><span class="w">
+    </span><span class="n">assigns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5958416444-12">%{</span><span class="p" data-group-id="5958416444-12">}</span><span class="w">
+
+    </span><span class="sx">~H&quot;&quot;&quot;
+    &lt;i class=&quot;fas fa-chevron-right&quot;/&gt;
+    &quot;&quot;&quot;</span><span class="w">
+  </span><span class="k" data-group-id="5958416444-11">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">previous_icon</span><span class="w"> </span><span class="k" data-group-id="5958416444-13">do</span><span class="w">
+    </span><span class="n">assigns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5958416444-14">%{</span><span class="p" data-group-id="5958416444-14">}</span><span class="w">
+
+    </span><span class="sx">~H&quot;&quot;&quot;
+    &lt;i class=&quot;fas fa-chevron-left&quot;/&gt;
+    &quot;&quot;&quot;</span><span class="w">
+  </span><span class="k" data-group-id="5958416444-13">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">table_opts</span><span class="w"> </span><span class="k" data-group-id="5958416444-15">do</span><span class="w">
+    </span><span class="p" data-group-id="5958416444-16">[</span><span class="w">
+      </span><span class="ss">container</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+      </span><span class="ss">container_attrs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5958416444-17">[</span><span class="ss">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table-container&quot;</span><span class="p" data-group-id="5958416444-17">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">no_results_content</span><span class="p">:</span><span class="w"> </span><span class="n">no_results_content</span><span class="p" data-group-id="5958416444-18">(</span><span class="p" data-group-id="5958416444-18">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">table_attrs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5958416444-19">[</span><span class="ss">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table&quot;</span><span class="p" data-group-id="5958416444-19">]</span><span class="w">
+    </span><span class="p" data-group-id="5958416444-16">]</span><span class="w">
+  </span><span class="k" data-group-id="5958416444-15">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">no_results_content</span><span class="w"> </span><span class="k" data-group-id="5958416444-20">do</span><span class="w">
+    </span><span class="n">assigns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5958416444-21">%{</span><span class="p" data-group-id="5958416444-21">}</span><span class="w">
+
+    </span><span class="sx">~H&quot;&quot;&quot;
+    &lt;p&gt;Nothing found.&lt;/p&gt;
+    &quot;&quot;&quot;</span><span class="w">
+  </span><span class="k" data-group-id="5958416444-20">end</span><span class="w">
+</span><span class="k" data-group-id="5958416444-1">end</span></code></pre><p>Refer to <a href="#t:pagination_option/0"><code class="inline">pagination_option/0</code></a> and <a href="#t:table_option/0"><code class="inline">table_option/0</code></a> for a list of
+available options and defaults.</p><p>Once you have defined these functions, you can reference them with a
+module/function tuple in <code class="inline">config/config.exs</code>.</p><pre><code class="makeup elixir" translate="no"><span class="n">config</span><span class="w"> </span><span class="ss">:ash_pagify</span><span class="p">,</span><span class="w">
+  </span><span class="ss">pagination</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5354288871-1">[</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5354288871-2">{</span><span class="nc">MyAppWeb.CoreComponents</span><span class="p">,</span><span class="w"> </span><span class="ss">:pagination_opts</span><span class="p" data-group-id="5354288871-2">}</span><span class="p" data-group-id="5354288871-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">table</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5354288871-3">[</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5354288871-4">{</span><span class="nc">MyAppWeb.CoreComponents</span><span class="p">,</span><span class="w"> </span><span class="ss">:table_opts</span><span class="p" data-group-id="5354288871-4">}</span><span class="p" data-group-id="5354288871-3">]</span></code></pre><h2 id="module-hiding-default-parameters" class="section-heading">
+  <a href="#module-hiding-default-parameters" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Hiding default parameters</span>
+</h2>
+<p>Default values for scoping, pagination and ordering are omitted from the query
+parameters. AshPagify.Components function will pick up the default values
+from the <a href="https://hexdocs.pm/ash/3.3.3/Ash.Resource.html"><code class="inline">Ash.Resource</code></a> specifications.</p><h2 id="module-links" class="section-heading">
+  <a href="#module-links" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Links</span>
+</h2>
+<p>Links are generated with <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.Component.html#link/1"><code class="inline">Phoenix.Component.link/1</code></a>. This will
+lead to <code class="inline">&lt;a&gt;</code> tags with <code class="inline">data-phx-link</code> and <code class="inline">data-phx-link-state</code> attributes,
+which will be ignored outside of LiveViews and LiveComponents.</p><p>When used within a LiveView or LiveComponent, you will need to handle the new
+params in the <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.html#c:handle_params/3"><code class="inline">Phoenix.LiveView.handle_params/3</code></a> callback of your LiveView
+module.</p><h2 id="module-using-js-commands" class="section-heading">
+  <a href="#module-using-js-commands" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using JS commands</span>
+</h2>
+<p>You can pass a <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a> command as <code class="inline">on_paginate</code> and <code class="inline">on_sort</code>
+attributes.</p><p>If used with the <code class="inline">path</code> attribute, the URL will be patched <em>and</em> the given
+JS command will be executed.</p><p>If used without the <code class="inline">path</code> attribute, you will need to include a <code class="inline">push</code>
+command to trigger an event when a pagination or sort link is clicked.</p><p>You can set a different target by assigning a <code class="inline">:target</code>. The value
+will be used as the <code class="inline">phx-target</code> attribute.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="w">
+  </span><span class="n">items</span><span class="o">=</span><span class="p" data-group-id="0115855623-1">{</span><span class="na">@items</span><span class="p" data-group-id="0115855623-1">}</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="0115855623-2">{</span><span class="na">@meta</span><span class="p" data-group-id="0115855623-2">}</span><span class="w">
+  </span><span class="n">on_sort</span><span class="o">=</span><span class="p" data-group-id="0115855623-3">{</span><span class="nc">JS</span><span class="o">.</span><span class="n">push</span><span class="p" data-group-id="0115855623-4">(</span><span class="s">&quot;sort-posts&quot;</span><span class="p" data-group-id="0115855623-4">)</span><span class="p" data-group-id="0115855623-3">}</span><span class="w">
+  </span><span class="n">target</span><span class="o">=</span><span class="p" data-group-id="0115855623-5">{</span><span class="na">@myself</span><span class="p" data-group-id="0115855623-5">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span><span class="w">
+
+</span><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">pagination</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="0115855623-6">{</span><span class="na">@meta</span><span class="p" data-group-id="0115855623-6">}</span><span class="w">
+  </span><span class="n">on_paginate</span><span class="o">=</span><span class="p" data-group-id="0115855623-7">{</span><span class="nc">JS</span><span class="o">.</span><span class="n">push</span><span class="p" data-group-id="0115855623-8">(</span><span class="s">&quot;paginate-posts&quot;</span><span class="p" data-group-id="0115855623-8">)</span><span class="p" data-group-id="0115855623-7">}</span><span class="w">
+  </span><span class="n">target</span><span class="o">=</span><span class="p" data-group-id="0115855623-9">{</span><span class="na">@myself</span><span class="p" data-group-id="0115855623-9">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span></code></pre><p>You will need to handle the event in the <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.html#c:handle_event/3"><code class="inline">Phoenix.LiveView.handle_event/3</code></a>
+or <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveComponent.html#c:handle_event/3"><code class="inline">Phoenix.LiveComponent.handle_event/3</code></a> callback of your
+LiveView or LiveComponent module. The event name will be the one you set with
+the <code class="inline">:event</code> option.</p><pre><code class="makeup elixir" translate="no"><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="0433188781-1">(</span><span class="s">&quot;paginate-posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0433188781-2">%{</span><span class="s">&quot;offset&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">offset</span><span class="p" data-group-id="0433188781-2">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="0433188781-1">)</span><span class="w"> </span><span class="k" data-group-id="0433188781-3">do</span><span class="w">
+  </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_offset</span><span class="p" data-group-id="0433188781-4">(</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p" data-group-id="0433188781-4">)</span><span class="w">
+
+  </span><span class="k">with</span><span class="w"> </span><span class="p" data-group-id="0433188781-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0433188781-6">{</span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="0433188781-6">}</span><span class="p" data-group-id="0433188781-5">}</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">list_posts</span><span class="p" data-group-id="0433188781-7">(</span><span class="n">ash_pagify</span><span class="p" data-group-id="0433188781-7">)</span><span class="w"> </span><span class="k" data-group-id="0433188781-8">do</span><span class="w">
+    </span><span class="p" data-group-id="0433188781-9">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="0433188781-10">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">meta</span><span class="p">:</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="0433188781-10">)</span><span class="p" data-group-id="0433188781-9">}</span><span class="w">
+  </span><span class="k" data-group-id="0433188781-8">end</span><span class="w">
+</span><span class="k" data-group-id="0433188781-3">end</span><span class="w">
+
+</span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="0433188781-11">(</span><span class="s">&quot;sort-posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0433188781-12">%{</span><span class="s">&quot;order&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">order</span><span class="p" data-group-id="0433188781-12">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="0433188781-11">)</span><span class="w"> </span><span class="k" data-group-id="0433188781-13">do</span><span class="w">
+  </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">push_order</span><span class="p" data-group-id="0433188781-14">(</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p" data-group-id="0433188781-14">)</span><span class="w">
+
+  </span><span class="k">with</span><span class="w"> </span><span class="p" data-group-id="0433188781-15">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0433188781-16">{</span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="0433188781-16">}</span><span class="p" data-group-id="0433188781-15">}</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">list_posts</span><span class="p" data-group-id="0433188781-17">(</span><span class="n">ash_pagify</span><span class="p" data-group-id="0433188781-17">)</span><span class="w"> </span><span class="k" data-group-id="0433188781-18">do</span><span class="w">
+    </span><span class="p" data-group-id="0433188781-19">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="0433188781-20">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">meta</span><span class="p">:</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="0433188781-20">)</span><span class="p" data-group-id="0433188781-19">}</span><span class="w">
+  </span><span class="k" data-group-id="0433188781-18">end</span><span class="w">
+</span><span class="k" data-group-id="0433188781-13">end</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:pagination_option/0" data-no-tooltip translate="no">pagination_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Defines the available options for <a href="#pagination/1"><code class="inline">AshPagify.Components.pagination/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:pagination_path/0" data-no-tooltip translate="no">pagination_path()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Defines the available types for the <code class="inline">path</code> attribute of <a href="#pagination/1"><code class="inline">AshPagify.Components.pagination/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:table_option/0" data-no-tooltip translate="no">table_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Defines the available options for <a href="#table/1"><code class="inline">AshPagify.Components.table/1</code></a>.</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build_path/3" data-no-tooltip translate="no">build_path(path, meta_or_ash_pagify_or_params, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Builds a path that includes query parameters for the given <a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct
+using the referenced Components path helper function.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build_scope_path/4" data-no-tooltip translate="no">build_scope_path(path, meta, scope, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Wrapper around <a href="#build_path/3"><code class="inline">build_path/3</code></a> that builds a path with the updated scope.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#pagination/1" data-no-tooltip translate="no">pagination(assigns)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Generates a pagination element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#table/1" data-no-tooltip translate="no">table(assigns)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Generates a table with sortable columns.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_query/2" data-no-tooltip translate="no">to_query(ash_pagify, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Converts a AshPagify struct into a keyword list that can be used as a query with
+Phoenix verified routes or route helper functions.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:pagination_option/0">
+
+  <div class="detail-header">
+    <a href="#t:pagination_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">pagination_option()</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L202" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> pagination_option() ::
+  {:current_link_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:disabled_class, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
+  | {:ellipsis_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:ellipsis_content, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:next_link_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:next_link_content, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:page_links, :all | :hide | {:ellipsis, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()}}
+  | {:pagination_link_aria_label, (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())}
+  | {:pagination_link_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:previous_link_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:previous_link_content, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:wrapper_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}</pre>
+
+      </div>
+
+<p>Defines the available options for <a href="#pagination/1"><code class="inline">AshPagify.Components.pagination/1</code></a>.</p><ul><li><code class="inline">:current_link_attrs</code> - The attributes for the link to the current page.
+Default: <code class="inline">[class: &quot;pagination-link is-current&quot;, aria: [current: &quot;page&quot;]]</code>.</li><li><code class="inline">:disabled_class</code> - The class which is added to disabled links. Default:
+<code class="inline">&quot;disabled&quot;</code>.</li><li><code class="inline">:ellipsis_attrs</code> - The attributes for the <code class="inline">&lt;span&gt;</code> that wraps the
+ellipsis.
+Default: <code class="inline">[class: &quot;pagination-ellipsis&quot;]</code>.</li><li><code class="inline">:ellipsis_content</code> - The content for the ellipsis element.
+Default: <code class="inline">{:safe, &quot;&amp;hellip;&quot;}</code>.</li><li><code class="inline">:next_link_attrs</code> - The attributes for the link to the next page.
+Default: <code class="inline">[aria: [label: &quot;Go to next page&quot;], class: &quot;pagination-next&quot;]</code>.</li><li><code class="inline">:next_link_content</code> - The content for the link to the next page.
+Default: <code class="inline">&quot;Next&quot;</code>.</li><li><code class="inline">:page_links</code> - Specifies how many page links should be rendered.
+Default: <code class="inline">:all</code>.<ul><li><code class="inline">:all</code> - Renders all page links.</li><li><code class="inline">{:ellipsis, n}</code> - Renders <code class="inline">n</code> page links. Renders ellipsis elements if
+there are more pages than displayed.</li><li><code class="inline">:hide</code> - Does not render any page links.</li></ul></li><li><code class="inline">:pagination_link_aria_label</code> - 1-arity function that takes a page number
+and returns an aria label for the corresponding page link.
+Default: <code class="inline">&amp;&quot;Go to page #{&amp;1}&quot;</code>.</li><li><code class="inline">:pagination_link_attrs</code> - The attributes for the pagination links.
+Default: <code class="inline">[class: &quot;pagination-link&quot;]</code>.</li><li><code class="inline">:previous_link_attrs</code> - The attributes for the link to the previous page.
+Default: <code class="inline">[aria: [label: &quot;Go to previous page&quot;], class: &quot;pagination-previous&quot;]</code>.</li><li><code class="inline">:previous_link_content</code> - The content for the link to the previous page.
+Default: <code class="inline">&quot;Previous&quot;</code>.</li><li><code class="inline">:wrapper_attrs</code> - The attributes for the <code class="inline">&lt;nav&gt;</code> element that wraps the
+pagination links.
+Default: <code class="inline">[class: &quot;pagination&quot;, role: &quot;navigation&quot;, aria: [label: &quot;pagination&quot;]]</code>.</li></ul>
+  </section>
+</section>
+<section class="detail" id="t:pagination_path/0">
+
+  <div class="detail-header">
+    <a href="#t:pagination_path/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">pagination_path()</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L219" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> pagination_path() ::
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()
+  | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]}
+  | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">function</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]}
+  | (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>() -&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>())</pre>
+
+      </div>
+
+<p>Defines the available types for the <code class="inline">path</code> attribute of <a href="#pagination/1"><code class="inline">AshPagify.Components.pagination/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="t:table_option/0">
+
+  <div class="detail-header">
+    <a href="#t:table_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">table_option()</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L267" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> table_option() ::
+  {:container, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
+  | {:container_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:no_results_content, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:symbol_asc, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:symbol_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:symbol_desc, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:symbol_unsorted, <a href="https://hexdocs.pm/phoenix_html/4.1.1/Phoenix.HTML.html#t:safe/0">Phoenix.HTML.safe</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
+  | {:table_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:tbody_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:thead_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:tbody_td_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:tbody_tr_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>() | (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>())}
+  | {:th_wrapper_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:thead_th_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:thead_tr_attrs, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:limit_order_by, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()}</pre>
+
+      </div>
+
+<p>Defines the available options for <a href="#table/1"><code class="inline">AshPagify.Components.table/1</code></a>.</p><ul><li><code class="inline">:container</code> - Wraps the table in a <code class="inline">&lt;div&gt;</code> if <code class="inline">true</code>.
+Default: <code class="inline">false</code>.</li><li><code class="inline">:container_attrs</code> - The attributes for the table container.
+Default: <code class="inline">[class: &quot;table-container&quot;]</code>.</li><li><code class="inline">:no_results_content</code> - Any content that should be rendered if there are no
+results. Default: <code class="inline">&lt;p&gt;No results.&lt;/p&gt;</code>.</li><li><code class="inline">:table_attrs</code> - The attributes for the <code class="inline">&lt;table&gt;</code> element.
+Default: <code class="inline">[]</code>.</li><li><code class="inline">:th_wrapper_attrs</code> - The attributes for the <code class="inline">&lt;span&gt;</code> element that wraps the
+header link and the order direction symbol.
+Default: <code class="inline">[]</code>.</li><li><code class="inline">:symbol_asc</code> - The symbol that is used to indicate that the column is
+sorted in ascending order.
+Default: <code class="inline">&quot;▴&quot;</code>.</li><li><code class="inline">:symbol_attrs</code> - The attributes for the <code class="inline">&lt;span&gt;</code> element that wraps the
+order direction indicator in the header columns.
+Default: <code class="inline">[class: &quot;order-direction&quot;]</code>.</li><li><code class="inline">:symbol_desc</code> - The symbol that is used to indicate that the column is
+sorted in ascending order.
+Default: <code class="inline">&quot;▾&quot;</code>.</li><li><code class="inline">:symbol_unsorted</code> - The symbol that is used to indicate that the column is
+not sorted. Default: <code class="inline">nil</code>.</li><li><code class="inline">:tbody_attrs</code>: Attributes to be added to the <code class="inline">&lt;tbody&gt;</code> tag within the
+<code class="inline">&lt;table&gt;</code>. Default: <code class="inline">[]</code>.</li><li><code class="inline">:tbody_td_attrs</code>: Attributes to be added to each <code class="inline">&lt;td&gt;</code> tag within the
+<code class="inline">&lt;tbody&gt;</code>. Default: <code class="inline">[]</code>.</li><li><code class="inline">:thead_attrs</code>: Attributes to be added to the <code class="inline">&lt;thead&gt;</code> tag within the
+<code class="inline">&lt;table&gt;</code>. Default: <code class="inline">[]</code>.</li><li><code class="inline">:tbody_tr_attrs</code>: Attributes to be added to each <code class="inline">&lt;tr&gt;</code> tag within the
+<code class="inline">&lt;tbody&gt;</code>. A function with arity of 1 may be passed to dynamically generate
+the attrs based on row data.
+Default: <code class="inline">[]</code>.</li><li><code class="inline">:thead_th_attrs</code>: Attributes to be added to each <code class="inline">&lt;th&gt;</code> tag within the
+<code class="inline">&lt;thead&gt;</code>. Default: <code class="inline">[]</code>.</li><li><code class="inline">:thead_tr_attrs</code>: Attributes to be added to each <code class="inline">&lt;tr&gt;</code> tag within the
+<code class="inline">&lt;thead&gt;</code>. Default: <code class="inline">[]</code>.</li><li><code class="inline">:limit_order_by</code> - Limit the number of applied order_by fields.
+Default: <code class="inline">nil</code>.</li></ul>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="build_path/3">
+
+    <span id="build_path/2"></span>
+
+  <div class="detail-header">
+    <a href="#build_path/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build_path(path, meta_or_ash_pagify_or_params, opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L1176" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> build_path(
+  <a href="#t:pagination_path/0">pagination_path</a>(),
+  <a href="AshPagify.Meta.html#t:t/0">AshPagify.Meta.t</a>() | <a href="AshPagify.html#t:t/0">AshPagify.t</a>() | <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>(),
+  <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) ::
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Builds a path that includes query parameters for the given <a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct
+using the referenced Components path helper function.</p><p>The first argument can be either one of:</p><ul><li>an MFA tuple (module, function name as atom, arguments)</li><li>a 2-tuple (function, arguments)</li><li>a URL string, usually produced with a verified route (e.g. <code class="inline">~p&quot;/some/path&quot;</code>)</li><li>a function that takes the AshPagify parameters as a keyword list as an argument</li></ul><p>Default values for <code class="inline">scopes</code>, <code class="inline">limit</code> and <code class="inline">order_by</code> are omitted from the query parameters.
+To pick up the default parameters from an <a href="https://hexdocs.pm/ash/3.3.3/Ash.Resource.html"><code class="inline">Ash.Resource</code></a>, you need to pass the
+<code class="inline">:for</code> option. If you pass a <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> struct as the second argument,
+these options are retrieved from the struct automatically.</p><h2 id="build_path/3-examples" class="section-heading">
+  <a href="#build_path/3-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<h3 id="build_path/3-with-a-verified-route" class="section-heading">
+  <a href="#build_path/3-with-a-verified-route" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">With a verified route</span>
+</h3>
+<p>The examples below use plain URL strings without the p-sigil, so that the
+doc tests work, but in your application, you can use verified routes or
+anything else that produces a URL.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2491177993-1">%</span><span class="nc" data-group-id="2491177993-1">AshPagify</span><span class="p" data-group-id="2491177993-1">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="2491177993-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_path</span><span class="p" data-group-id="2491177993-2">(</span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="2491177993-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="2491177993-3">%</span><span class="nc" data-group-id="2491177993-3">URI</span><span class="p" data-group-id="2491177993-3">{</span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="n">parsed_path</span><span class="p">,</span><span class="w"> </span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">parsed_query</span><span class="p" data-group-id="2491177993-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">URI</span><span class="o">.</span><span class="n">parse</span><span class="p" data-group-id="2491177993-4">(</span><span class="n">path</span><span class="p" data-group-id="2491177993-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="2491177993-5">{</span><span class="n">parsed_path</span><span class="p">,</span><span class="w"> </span><span class="nc">URI</span><span class="o">.</span><span class="n">decode_query</span><span class="p" data-group-id="2491177993-6">(</span><span class="n">parsed_query</span><span class="p" data-group-id="2491177993-6">)</span><span class="p" data-group-id="2491177993-5">}</span><span class="w">
+</span><span class="p" data-group-id="2491177993-7">{</span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2491177993-8">%{</span><span class="s">&quot;offset&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;limit&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="p" data-group-id="2491177993-8">}</span><span class="p" data-group-id="2491177993-7">}</span></code></pre><p>The AshPagify query parameters will be merged into existing query parameters.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8165194439-1">%</span><span class="nc" data-group-id="8165194439-1">AshPagify</span><span class="p" data-group-id="8165194439-1">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="8165194439-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_path</span><span class="p" data-group-id="8165194439-2">(</span><span class="s">&quot;/posts?category=A&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="8165194439-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8165194439-3">%</span><span class="nc" data-group-id="8165194439-3">URI</span><span class="p" data-group-id="8165194439-3">{</span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="n">parsed_path</span><span class="p">,</span><span class="w"> </span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">parsed_query</span><span class="p" data-group-id="8165194439-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">URI</span><span class="o">.</span><span class="n">parse</span><span class="p" data-group-id="8165194439-4">(</span><span class="n">path</span><span class="p" data-group-id="8165194439-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8165194439-5">{</span><span class="n">parsed_path</span><span class="p">,</span><span class="w"> </span><span class="nc">URI</span><span class="o">.</span><span class="n">decode_query</span><span class="p" data-group-id="8165194439-6">(</span><span class="n">parsed_query</span><span class="p" data-group-id="8165194439-6">)</span><span class="p" data-group-id="8165194439-5">}</span><span class="w">
+</span><span class="p" data-group-id="8165194439-7">{</span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8165194439-8">%{</span><span class="s">&quot;offset&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;limit&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;category&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p" data-group-id="8165194439-8">}</span><span class="p" data-group-id="8165194439-7">}</span></code></pre><h3 id="build_path/3-with-an-mfa-tuple" class="section-heading">
+  <a href="#build_path/3-with-an-mfa-tuple" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">With an MFA tuple</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9421114820-1">%</span><span class="nc" data-group-id="9421114820-1">AshPagify</span><span class="p" data-group-id="9421114820-1">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9421114820-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="9421114820-2">(</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="9421114820-3">{</span><span class="nc">AshPagify.ComponentsTest</span><span class="p">,</span><span class="w"> </span><span class="ss">:route_helper</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9421114820-4">[</span><span class="p" data-group-id="9421114820-5">%</span><span class="nc" data-group-id="9421114820-5">Plug.Conn</span><span class="p" data-group-id="9421114820-5">{</span><span class="p" data-group-id="9421114820-5">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:posts</span><span class="p" data-group-id="9421114820-4">]</span><span class="p" data-group-id="9421114820-3">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="n">ash_pagify</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9421114820-2">)</span><span class="w">
+</span><span class="s">&quot;/posts?limit=10&amp;offset=20&quot;</span></code></pre><h3 id="build_path/3-with-a-function-arguments-tuple" class="section-heading">
+  <a href="#build_path/3-with-a-function-arguments-tuple" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">With a function/arguments tuple</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">post_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="0668084076-1">fn</span><span class="w"> </span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;/posts?&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="0668084076-2">(</span><span class="n">query</span><span class="p" data-group-id="0668084076-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="0668084076-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0668084076-3">%</span><span class="nc" data-group-id="0668084076-3">AshPagify</span><span class="p" data-group-id="0668084076-3">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0668084076-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="0668084076-4">(</span><span class="p" data-group-id="0668084076-5">{</span><span class="n">post_path</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0668084076-6">[</span><span class="p" data-group-id="0668084076-7">%</span><span class="nc" data-group-id="0668084076-7">Plug.Conn</span><span class="p" data-group-id="0668084076-7">{</span><span class="p" data-group-id="0668084076-7">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p" data-group-id="0668084076-6">]</span><span class="p" data-group-id="0668084076-5">}</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="0668084076-4">)</span><span class="w">
+</span><span class="s">&quot;/posts?limit=10&amp;offset=20&quot;</span></code></pre><p>We're defining fake path helpers for the scope of the doctests. In a real
+Phoenix application, you would pass something like
+<code class="inline">{Routes, :post_path, args}</code> or <code class="inline">{&amp;Routes.post_path/3, args}</code> as the
+first argument.</p><h3 id="build_path/3-passing-a-ashpagify-meta-struct-or-a-keyword-list" class="section-heading">
+  <a href="#build_path/3-passing-a-ashpagify-meta-struct-or-a-keyword-list" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Passing a <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> struct or a keyword list</span>
+</h3>
+<p>You can also pass a <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> struct or a keyword list as the third
+argument.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">post_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="5826740030-1">fn</span><span class="w"> </span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;/posts?&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="5826740030-2">(</span><span class="n">query</span><span class="p" data-group-id="5826740030-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="5826740030-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5826740030-3">%</span><span class="nc" data-group-id="5826740030-3">AshPagify</span><span class="p" data-group-id="5826740030-3">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="5826740030-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5826740030-4">%</span><span class="nc" data-group-id="5826740030-4">AshPagify.Meta</span><span class="p" data-group-id="5826740030-4">{</span><span class="ss">ash_pagify</span><span class="p">:</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="ss">resource</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPagify.Factory.Post</span><span class="p" data-group-id="5826740030-4">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="5826740030-5">(</span><span class="p" data-group-id="5826740030-6">{</span><span class="n">post_path</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5826740030-7">[</span><span class="p" data-group-id="5826740030-8">%</span><span class="nc" data-group-id="5826740030-8">Plug.Conn</span><span class="p" data-group-id="5826740030-8">{</span><span class="p" data-group-id="5826740030-8">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p" data-group-id="5826740030-7">]</span><span class="p" data-group-id="5826740030-6">}</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="5826740030-5">)</span><span class="w">
+</span><span class="s">&quot;/posts?limit=10&amp;offset=20&quot;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">query_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">to_query</span><span class="p" data-group-id="5826740030-9">(</span><span class="n">ash_pagify</span><span class="p" data-group-id="5826740030-9">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="5826740030-10">(</span><span class="p" data-group-id="5826740030-11">{</span><span class="n">post_path</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5826740030-12">[</span><span class="p" data-group-id="5826740030-13">%</span><span class="nc" data-group-id="5826740030-13">Plug.Conn</span><span class="p" data-group-id="5826740030-13">{</span><span class="p" data-group-id="5826740030-13">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p" data-group-id="5826740030-12">]</span><span class="p" data-group-id="5826740030-11">}</span><span class="p">,</span><span class="w"> </span><span class="n">query_params</span><span class="p" data-group-id="5826740030-10">)</span><span class="w">
+</span><span class="s">&quot;/posts?limit=10&amp;offset=20&quot;</span></code></pre><h3 id="build_path/3-additional-path-parameters" class="section-heading">
+  <a href="#build_path/3-additional-path-parameters" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Additional path parameters</span>
+</h3>
+<p>If the path helper takes additional path parameters, just add them to the
+second argument.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">user_post_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="3367896964-1">fn</span><span class="w"> </span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;/users/</span><span class="si" data-group-id="3367896964-2">#{</span><span class="n">id</span><span class="si" data-group-id="3367896964-2">}</span><span class="s">/posts?&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="3367896964-3">(</span><span class="n">query</span><span class="p" data-group-id="3367896964-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="3367896964-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3367896964-4">%</span><span class="nc" data-group-id="3367896964-4">AshPagify</span><span class="p" data-group-id="3367896964-4">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="3367896964-4">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="3367896964-5">(</span><span class="p" data-group-id="3367896964-6">{</span><span class="n">user_post_path</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3367896964-7">[</span><span class="p" data-group-id="3367896964-8">%</span><span class="nc" data-group-id="3367896964-8">Plug.Conn</span><span class="p" data-group-id="3367896964-8">{</span><span class="p" data-group-id="3367896964-8">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="mi">123</span><span class="p" data-group-id="3367896964-7">]</span><span class="p" data-group-id="3367896964-6">}</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="3367896964-5">)</span><span class="w">
+</span><span class="s">&quot;/users/123/posts?limit=10&amp;offset=20&quot;</span></code></pre><h3 id="build_path/3-additional-query-parameters" class="section-heading">
+  <a href="#build_path/3-additional-query-parameters" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Additional query parameters</span>
+</h3>
+<p>If the last path helper argument is a query parameter list, the AshPagify
+parameters are merged into it.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">post_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="5645224568-1">fn</span><span class="w"> </span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;https://posts.ash_pagify/posts?&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="5645224568-2">(</span><span class="n">query</span><span class="p" data-group-id="5645224568-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="5645224568-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5645224568-3">%</span><span class="nc" data-group-id="5645224568-3">AshPagify</span><span class="p" data-group-id="5645224568-3">{</span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5645224568-4">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p" data-group-id="5645224568-4">]</span><span class="p" data-group-id="5645224568-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="5645224568-5">(</span><span class="p" data-group-id="5645224568-6">{</span><span class="n">post_url</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5645224568-7">[</span><span class="p" data-group-id="5645224568-8">%</span><span class="nc" data-group-id="5645224568-8">Plug.Conn</span><span class="p" data-group-id="5645224568-8">{</span><span class="p" data-group-id="5645224568-8">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5645224568-9">[</span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p" data-group-id="5645224568-9">]</span><span class="p" data-group-id="5645224568-7">]</span><span class="p" data-group-id="5645224568-6">}</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="5645224568-5">)</span><span class="w">
+</span><span class="s">&quot;https://posts.ash_pagify/posts?user_id=123&amp;order_by[]=-name&quot;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="5645224568-10">(</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="5645224568-11">{</span><span class="n">post_url</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">   </span><span class="p" data-group-id="5645224568-12">[</span><span class="p" data-group-id="5645224568-13">%</span><span class="nc" data-group-id="5645224568-13">Plug.Conn</span><span class="p" data-group-id="5645224568-13">{</span><span class="p" data-group-id="5645224568-13">}</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5645224568-14">[</span><span class="ss">category</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;small&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p" data-group-id="5645224568-14">]</span><span class="p" data-group-id="5645224568-12">]</span><span class="p" data-group-id="5645224568-11">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="n">ash_pagify</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="5645224568-10">)</span><span class="w">
+</span><span class="s">&quot;https://posts.ash_pagify/posts?category=small&amp;user_id=123&amp;order_by[]=-name&quot;</span></code></pre><h3 id="build_path/3-set-page-as-path-parameter" class="section-heading">
+  <a href="#build_path/3-set-page-as-path-parameter" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Set page as path parameter</span>
+</h3>
+<p>Finally, you can also pass a function that takes the AshPagify parameters as
+a keyword list as an argument. Default values will not be included in the
+parameters passed to the function. You can use this if you need to set some
+of the parameters as path parameters instead of query parameters.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9727005811-1">%</span><span class="nc" data-group-id="9727005811-1">AshPagify</span><span class="p" data-group-id="9727005811-1">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9727005811-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="9727005811-2">(</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k" data-group-id="9727005811-3">fn</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="9727005811-4">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p" data-group-id="9727005811-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">pop</span><span class="p" data-group-id="9727005811-5">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="ss">:offset</span><span class="p" data-group-id="9727005811-5">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="9727005811-6">(</span><span class="n">params</span><span class="p" data-group-id="9727005811-6">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/posts/page/</span><span class="si" data-group-id="9727005811-7">#{</span><span class="n">offset</span><span class="si" data-group-id="9727005811-7">}</span><span class="s">?</span><span class="si" data-group-id="9727005811-8">#{</span><span class="n">query</span><span class="si" data-group-id="9727005811-8">}</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/posts?</span><span class="si" data-group-id="9727005811-9">#{</span><span class="n">query</span><span class="si" data-group-id="9727005811-9">}</span><span class="s">&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k" data-group-id="9727005811-3">end</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="n">ash_pagify</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9727005811-2">)</span><span class="w">
+</span><span class="s">&quot;/posts/page/20?limit=10&quot;</span></code></pre><p>Note that in this example, the anonymous function just returns a string. With
+Phoenix 1.7, you will be able to use verified routes.</p><pre><code class="makeup elixir" translate="no"><span class="n">build_path</span><span class="p" data-group-id="0105331277-1">(</span><span class="w">
+  </span><span class="k" data-group-id="0105331277-2">fn</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="0105331277-3">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p" data-group-id="0105331277-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">pop</span><span class="p" data-group-id="0105331277-4">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="ss">:offset</span><span class="p" data-group-id="0105331277-4">)</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="sx">~p&quot;/posts/page/</span><span class="si" data-group-id="0105331277-5">#{</span><span class="n">offset</span><span class="si" data-group-id="0105331277-5">}</span><span class="sx">?</span><span class="si" data-group-id="0105331277-6">#{</span><span class="n">query</span><span class="si" data-group-id="0105331277-6">}</span><span class="sx">&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="sx">~p&quot;/posts?</span><span class="si" data-group-id="0105331277-7">#{</span><span class="n">query</span><span class="si" data-group-id="0105331277-7">}</span><span class="sx">&quot;</span><span class="w">
+  </span><span class="k" data-group-id="0105331277-2">end</span><span class="p">,</span><span class="w">
+  </span><span class="n">ash_pagify</span><span class="w">
+</span><span class="p" data-group-id="0105331277-1">)</span></code></pre><p>Note that the keyword list passed to the path builder function is built using
+<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.Query.html#encode/2"><code class="inline">Plug.Conn.Query.encode/2</code></a>, which means filter_forms are formatted as maps.</p><h3 id="build_path/3-set-filter_form-value-as-path-parameter" class="section-heading">
+  <a href="#build_path/3-set-filter_form-value-as-path-parameter" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Set filter_form value as path parameter</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2140826287-1">%</span><span class="nc" data-group-id="2140826287-1">AshPagify</span><span class="p" data-group-id="2140826287-1">{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2140826287-2">[</span><span class="ss">:updated_at</span><span class="p" data-group-id="2140826287-2">]</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">filter_form</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2140826287-3">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;field&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;author&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;operator&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;eq&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="2140826287-3">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2140826287-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="2140826287-4">(</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k" data-group-id="2140826287-5">fn</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="2140826287-6">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p" data-group-id="2140826287-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">pop</span><span class="p" data-group-id="2140826287-7">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="ss">:offset</span><span class="p" data-group-id="2140826287-7">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="n">filter_form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="2140826287-8">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="ss">:filter_form</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2140826287-9">%{</span><span class="p" data-group-id="2140826287-9">}</span><span class="p" data-group-id="2140826287-8">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="2140826287-10">(</span><span class="n">filter_form</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="2140826287-10">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="2140826287-11">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="ss">:filter_form</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2140826287-12">%{</span><span class="p" data-group-id="2140826287-12">}</span><span class="p" data-group-id="2140826287-11">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="2140826287-13">(</span><span class="n">params</span><span class="p" data-group-id="2140826287-13">)</span><span class="w">
+</span><span class="gp unselectable">...&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p" data-group-id="2140826287-14">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p" data-group-id="2140826287-14">}</span><span class="w"> </span><span class="k" data-group-id="2140826287-15">do</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="p" data-group-id="2140826287-16">{</span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="2140826287-16">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;/posts?</span><span class="si" data-group-id="2140826287-17">#{</span><span class="n">query</span><span class="si" data-group-id="2140826287-17">}</span><span class="s">&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="p" data-group-id="2140826287-18">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="2140826287-18">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;/posts/page/</span><span class="si" data-group-id="2140826287-19">#{</span><span class="n">offset</span><span class="si" data-group-id="2140826287-19">}</span><span class="s">?</span><span class="si" data-group-id="2140826287-20">#{</span><span class="n">query</span><span class="si" data-group-id="2140826287-20">}</span><span class="s">&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="p" data-group-id="2140826287-21">{</span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p" data-group-id="2140826287-21">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;/posts/author/</span><span class="si" data-group-id="2140826287-22">#{</span><span class="n">author</span><span class="si" data-group-id="2140826287-22">}</span><span class="s">?</span><span class="si" data-group-id="2140826287-23">#{</span><span class="n">query</span><span class="si" data-group-id="2140826287-23">}</span><span class="s">&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="p" data-group-id="2140826287-24">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p" data-group-id="2140826287-24">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;/posts/author/</span><span class="si" data-group-id="2140826287-25">#{</span><span class="n">author</span><span class="si" data-group-id="2140826287-25">}</span><span class="s">/page/</span><span class="si" data-group-id="2140826287-26">#{</span><span class="n">offset</span><span class="si" data-group-id="2140826287-26">}</span><span class="s">?</span><span class="si" data-group-id="2140826287-27">#{</span><span class="n">query</span><span class="si" data-group-id="2140826287-27">}</span><span class="s">&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="k" data-group-id="2140826287-15">end</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k" data-group-id="2140826287-5">end</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="n">ash_pagify</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2140826287-4">)</span><span class="w">
+</span><span class="s">&quot;/posts/author/John/page/20?order_by[]=updated_at&quot;</span></code></pre><h3 id="build_path/3-if-only-path-is-set" class="section-heading">
+  <a href="#build_path/3-if-only-path-is-set" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">If only path is set</span>
+</h3>
+<p>If only the path is set, it is returned as is.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">build_path</span><span class="p" data-group-id="3660534444-1">(</span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="3660534444-1">)</span><span class="w">
+</span><span class="s">&quot;/posts&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="build_scope_path/4">
+
+    <span id="build_scope_path/3"></span>
+
+  <div class="detail-header">
+    <a href="#build_scope_path/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build_scope_path(path, meta, scope, opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L1254" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> build_scope_path(<a href="#t:pagination_path/0">pagination_path</a>(), <a href="AshPagify.Meta.html#t:t/0">AshPagify.Meta.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) ::
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Wrapper around <a href="#build_path/3"><code class="inline">build_path/3</code></a> that builds a path with the updated scope.</p><p>Examples</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0852246108-1">%</span><span class="nc" data-group-id="0852246108-1">AshPagify</span><span class="p" data-group-id="0852246108-1">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0852246108-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0852246108-2">%</span><span class="nc" data-group-id="0852246108-2">AshPagify.Meta</span><span class="p" data-group-id="0852246108-2">{</span><span class="ss">ash_pagify</span><span class="p">:</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="ss">resource</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPagify.Factory.Post</span><span class="p" data-group-id="0852246108-2">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">build_scope_path</span><span class="p" data-group-id="0852246108-3">(</span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0852246108-4">%{</span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="ss">:active</span><span class="p" data-group-id="0852246108-4">}</span><span class="p" data-group-id="0852246108-3">)</span><span class="w">
+</span><span class="s">&quot;/posts?limit=10&amp;scopes[status]=active&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="pagination/1">
+
+  <div class="detail-header">
+    <a href="#pagination/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">pagination(assigns)</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L393" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> pagination(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.Rendered.html#t:t/0">Phoenix.LiveView.Rendered.t</a>()</pre>
+
+      </div>
+
+<p>Generates a pagination element.</p><h2 id="pagination/1-examples" class="section-heading">
+  <a href="#pagination/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">pagination</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="8969579592-1">{</span><span class="na">@meta</span><span class="p" data-group-id="8969579592-1">}</span><span class="w">
+  </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="8969579592-2">{</span><span class="sx">~p&quot;/posts&quot;</span><span class="p" data-group-id="8969579592-2">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span><span class="w">
+
+</span><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">pagination</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="8969579592-3">{</span><span class="na">@meta</span><span class="p" data-group-id="8969579592-3">}</span><span class="w">
+  </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="8969579592-4">{</span><span class="p" data-group-id="8969579592-5">{</span><span class="nc">Routes</span><span class="p">,</span><span class="w"> </span><span class="ss">:post_path</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8969579592-6">[</span><span class="na">@socket</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p" data-group-id="8969579592-6">]</span><span class="p" data-group-id="8969579592-5">}</span><span class="p" data-group-id="8969579592-4">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span></code></pre><h2 id="pagination/1-page-link-options" class="section-heading">
+  <a href="#pagination/1-page-link-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Page link options</span>
+</h2>
+<p>By default, page links for all pages are shown. You can limit the number of
+page links or disable them altogether by passing the <code class="inline">:page_links</code> option.</p><ul><li><code class="inline">:all</code>: Show all page links.</li><li><code class="inline">:hide</code>: Don't show any page links. Only the previous/next links will be
+shown.</li><li><code class="inline">{:ellipsis, x}</code>: Limits the number of page links. The first and last page
+are always displayed. The <code class="inline">x</code> refers to the number of additional page links
+to show (default n=4).</li></ul><h2 id="pagination/1-attributes" class="section-heading">
+  <a href="#pagination/1-attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Attributes</span>
+</h2>
+<ul><li><p><code class="inline">meta</code> (<a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a>) (required) - The meta information of the query as returned by the <a href="AshPagify.html"><code class="inline">AshPagify</code></a> query functions.</p></li><li><p><code class="inline">path</code> (<code class="inline">:any</code>) - If set, the current view is patched with updated query parameters when a
+pagination link is clicked. In case the <code class="inline">on_paginate</code> attribute is set as
+well, the URL is patched <em>and</em> the given command is executed.</p><p>The value must be either a URI string (Phoenix verified route), an MFA or FA
+tuple (Phoenix route helper), or a 1-ary path builder function. See
+<a href="#build_path/3"><code class="inline">AshPagify.Components.build_path/3</code></a> for details.</p><p>Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">on_paginate</code> (<a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a>) - A <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a> command that is triggered when a pagination link is
+clicked.</p><p>If used without the <code class="inline">path</code> attribute, you should include a <code class="inline">push</code> operation
+to handle the event with the <code class="inline">handle_event</code> callback.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="o">.</span><span class="n">pagination</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="3843472860-1">{</span><span class="na">@meta</span><span class="p" data-group-id="3843472860-1">}</span><span class="w">
+  </span><span class="n">on_paginate</span><span class="o">=</span><span class="p" data-group-id="3843472860-2">{</span><span class="w">
+    </span><span class="nc">JS</span><span class="o">.</span><span class="n">dispatch</span><span class="p" data-group-id="3843472860-3">(</span><span class="s">&quot;my_app:scroll_to&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#post-table&quot;</span><span class="p" data-group-id="3843472860-3">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">JS</span><span class="o">.</span><span class="n">push</span><span class="p" data-group-id="3843472860-4">(</span><span class="s">&quot;paginate&quot;</span><span class="p" data-group-id="3843472860-4">)</span><span class="w">
+  </span><span class="p" data-group-id="3843472860-2">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span></code></pre><p>If used with the <code class="inline">path</code> attribute, the URL is patched <em>and</em> the given
+JS command is executed.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="o">.</span><span class="n">pagination</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="6375056647-1">{</span><span class="na">@meta</span><span class="p" data-group-id="6375056647-1">}</span><span class="w">
+  </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="6375056647-2">{</span><span class="err">~</span><span class="s">&quot;/posts&quot;</span><span class="p" data-group-id="6375056647-2">}</span><span class="w">
+  </span><span class="n">on_paginate</span><span class="o">=</span><span class="p" data-group-id="6375056647-3">{</span><span class="nc">JS</span><span class="o">.</span><span class="n">dispatch</span><span class="p" data-group-id="6375056647-4">(</span><span class="s">&quot;my_app:scroll_to&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#post-table&quot;</span><span class="p" data-group-id="6375056647-4">)</span><span class="p" data-group-id="6375056647-3">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span></code></pre><p>With the above attributes in place, you can add the following JavaScript to
+your application to scroll to the top of your table whenever a pagination
+link is clicked:</p><pre><code class="js">window.addEventListener(&quot;my_app:scroll_to&quot;, (e) =&gt; {
+  e.target.scrollIntoView();
+});</code></pre><p>You can use CSS to scroll to the new position smoothly.</p><pre><code class="css">html {
+  scroll-behavior: smooth;
+}</code></pre><p>Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">target</code> (<code class="inline">:string</code>) - Sets the <code class="inline">phx-target</code> attribute for the pagination links. Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">opts</code> (<code class="inline">:list</code>) - Options to customize the pagination. See
+<a href="#t:pagination_option/0"><code class="inline">AshPagify.Components.pagination_option/0</code></a>. Note that the options passed to the
+function are deep merged into the default options. Since these options will
+likely be the same for all the tables in a project, it is recommended to
+define them once in a function or set them in a wrapper function as
+described in the <code class="inline">Customization</code> section of the module documentation.</p><p>Defaults to <code class="inline">[]</code>.</p></li></ul>
+  </section>
+</section>
+<section class="detail" id="table/1">
+
+  <div class="detail-header">
+    <a href="#table/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">table(assigns)</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L823" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> table(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.Rendered.html#t:t/0">Phoenix.LiveView.Rendered.t</a>()</pre>
+
+      </div>
+
+<p>Generates a table with sortable columns.</p><h2 id="table/1-example" class="section-heading">
+  <a href="#table/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="w"> </span><span class="n">items</span><span class="o">=</span><span class="p" data-group-id="2331679531-1">{</span><span class="na">@posts</span><span class="p" data-group-id="2331679531-1">}</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="2331679531-2">{</span><span class="na">@meta</span><span class="p" data-group-id="2331679531-2">}</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="2331679531-3">{</span><span class="sx">~p&quot;/posts&quot;</span><span class="p" data-group-id="2331679531-3">}</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="ss">:col</span><span class="w"> </span><span class="ss">:let</span><span class="o">=</span><span class="p" data-group-id="2331679531-4">{</span><span class="n">post</span><span class="p" data-group-id="2331679531-4">}</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="p" data-group-id="2331679531-5">{</span><span class="ss">:name</span><span class="p" data-group-id="2331679531-5">}</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:col</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="ss">:col</span><span class="w"> </span><span class="ss">:let</span><span class="o">=</span><span class="p" data-group-id="2331679531-6">{</span><span class="n">post</span><span class="p" data-group-id="2331679531-6">}</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;Author&quot;</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="p" data-group-id="2331679531-7">{</span><span class="ss">:author</span><span class="p" data-group-id="2331679531-7">}</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:col</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="o">&gt;</span></code></pre><h2 id="table/1-attributes" class="section-heading">
+  <a href="#table/1-attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Attributes</span>
+</h2>
+<ul><li><p><code class="inline">id</code> (<code class="inline">:string</code>) - ID used on the table. If not set, an ID is chosen based on the resource
+module derived from the <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> struct.</p><p>The ID is necessary in case the table is fed with a LiveView stream.</p></li><li><p><code class="inline">items</code> (<code class="inline">:list</code>) (required) - The list of items to be displayed in rows. This is the result list returned
+by the query.</p></li><li><p><code class="inline">meta</code> (<a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a>) - The <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> struct returned by the query function. If omitted</p><pre><code class="makeup elixir" translate="no"><span class="n">the</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">order_by</span><span class="w"> </span><span class="n">links</span><span class="o">.</span></code></pre><p>Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">path</code> (<code class="inline">:any</code>) - If set, the current view is patched with updated query parameters when a
+header link for sorting is clicked. In case the <code class="inline">on_sort</code> attribute is
+set as well, the URL is patched <em>and</em> the given JS command is executed.</p><p>The value must be either a URI string (Phoenix verified route), an MFA or FA
+tuple (Phoenix route helper), or a 1-ary path builder function. See
+<a href="#build_path/3"><code class="inline">AshPagify.Components.build_path/3</code></a> for details.</p><p>Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">on_sort</code> (<a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a>) - A <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a> command that is triggered when a header link for
+sorting is clicked.</p><p>If used without the <code class="inline">path</code> attribute, you should include a <code class="inline">push</code> operation
+to handle the event with the <code class="inline">handle_event</code> callback.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="o">.</span><span class="n">table</span><span class="w">
+  </span><span class="n">items</span><span class="o">=</span><span class="p" data-group-id="1734550853-1">{</span><span class="na">@items</span><span class="p" data-group-id="1734550853-1">}</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="1734550853-2">{</span><span class="na">@meta</span><span class="p" data-group-id="1734550853-2">}</span><span class="w">
+  </span><span class="n">on_sort</span><span class="o">=</span><span class="p" data-group-id="1734550853-3">{</span><span class="w">
+    </span><span class="nc">JS</span><span class="o">.</span><span class="n">dispatch</span><span class="p" data-group-id="1734550853-4">(</span><span class="s">&quot;my_app:scroll_to&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#post-table&quot;</span><span class="p" data-group-id="1734550853-4">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">JS</span><span class="o">.</span><span class="n">push</span><span class="p" data-group-id="1734550853-5">(</span><span class="s">&quot;sort&quot;</span><span class="p" data-group-id="1734550853-5">)</span><span class="w">
+  </span><span class="p" data-group-id="1734550853-3">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span></code></pre><p>If used with the <code class="inline">path</code> attribute, the URL is patched <em>and</em> the given
+JS command is executed.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="o">.</span><span class="n">table</span><span class="w">
+  </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="3788667094-1">{</span><span class="na">@meta</span><span class="p" data-group-id="3788667094-1">}</span><span class="w">
+  </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="3788667094-2">{</span><span class="err">~</span><span class="s">&quot;/posts&quot;</span><span class="p" data-group-id="3788667094-2">}</span><span class="w">
+  </span><span class="n">on_sort</span><span class="o">=</span><span class="p" data-group-id="3788667094-3">{</span><span class="nc">JS</span><span class="o">.</span><span class="n">dispatch</span><span class="p" data-group-id="3788667094-4">(</span><span class="s">&quot;my_app:scroll_to&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#post-table&quot;</span><span class="p" data-group-id="3788667094-4">)</span><span class="p" data-group-id="3788667094-3">}</span><span class="w">
+</span><span class="o">/</span><span class="o">&gt;</span></code></pre><p>Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">target</code> (<code class="inline">:string</code>) - Sets the <code class="inline">phx-target</code> attribute for the header links. Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">caption_text</code> (<code class="inline">:string</code>) - Content for the <code class="inline">&lt;caption&gt;</code> element. Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">opts</code> (<code class="inline">:list</code>) - Keyword list with additional options (see <a href="#t:table_option/0"><code class="inline">AshPagify.Components.table_option/0</code></a>).
+Note that the options passed to the function are deep merged into the
+default options. Since these options will likely be the same for all
+the tables in a project, it is recommended to define them once in a
+function or set them in a wrapper function as described in the <code class="inline">Customization</code>
+section of the module documentation.</p><p>Defaults to <code class="inline">[]</code>.</p></li><li><p><code class="inline">row_id</code> (<code class="inline">:any</code>) - Overrides the default function that retrieves the row ID from a stream item. Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">row_click</code> (<a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a>) - Sets the <code class="inline">phx-click</code> function attribute for each row <code class="inline">td</code>. Expects to be a
+function that receives a row item as an argument. This does not add the
+<code class="inline">phx-click</code> attribute to the <code class="inline">action</code> slot.</p><p>Example:</p><pre><code class="makeup elixir" translate="no"><span class="n">row_click</span><span class="o">=</span><span class="p" data-group-id="3162489647-1">{</span><span class="o">&amp;</span><span class="nc">JS</span><span class="o">.</span><span class="n">navigate</span><span class="p" data-group-id="3162489647-2">(</span><span class="sx">~p&quot;/users/</span><span class="si" data-group-id="3162489647-3">#{</span><span class="ni">&amp;1</span><span class="si" data-group-id="3162489647-3">}</span><span class="sx">&quot;</span><span class="p" data-group-id="3162489647-2">)</span><span class="p" data-group-id="3162489647-1">}</span></code></pre><p>Defaults to <code class="inline">nil</code>.</p></li><li><p><code class="inline">row_item</code> (<code class="inline">:any</code>) - This function is called on the row item before it is passed to the :col
+and :action slots.</p><p>Defaults to <code class="inline">&amp;Function.identity/1</code>.</p></li></ul><h2 id="table/1-slots" class="section-heading">
+  <a href="#table/1-slots" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Slots</span>
+</h2>
+<ul><li><p><code class="inline">caption</code> - The slot for the table caption. If set, the content of the slot is rendered
+as the content of the <code class="inline">&lt;caption&gt;</code> element.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="ss">:caption</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="nc">Posts</span><span class="o">&lt;</span><span class="o">/</span><span class="n">h2</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:caption</span><span class="o">&gt;</span></code></pre></li><li><p><code class="inline">col</code> (required) - For each column to render, add one <code class="inline">&lt;:col&gt;</code> element.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="ss">:col</span><span class="w"> </span><span class="ss">:let</span><span class="o">=</span><span class="p" data-group-id="1649707926-1">{</span><span class="n">post</span><span class="p" data-group-id="1649707926-1">}</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="p" data-group-id="1649707926-2">{</span><span class="ss">:name</span><span class="p" data-group-id="1649707926-2">}</span><span class="w"> </span><span class="n">col_style</span><span class="o">=</span><span class="s">&quot;width: 20%;&quot;</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:col</span><span class="o">&gt;</span></code></pre><p>Any additional assigns will be added as attributes to the <code class="inline">&lt;td&gt;</code> elements.</p><p>Accepts attributes:</p><ul><li><p><code class="inline">label</code> (<code class="inline">:any</code>) - The content for the header column.</p></li><li><p><code class="inline">field</code> (<code class="inline">:atom</code>) - The field name for sorting. If set and the field is configured as sortable
+in the resource, the column header will be clickable, allowing the user to
+sort by that column. If the field is not marked as sortable or if the
+<code class="inline">field</code> attribute is omitted or set to <code class="inline">nil</code> or <code class="inline">false</code>, the column header
+will not be clickable.</p></li><li><p><code class="inline">directions</code> (<code class="inline">:any</code>) - An optional 2-element tuple used for custom ascending and descending sort
+behavior for the column, i.e. <code class="inline">{:asc_nils_last, :desc_nils_first}</code></p></li><li><p><code class="inline">col_style</code> (<code class="inline">:string</code>) - If set, a <code class="inline">&lt;colgroup&gt;</code> element is rendered and the value of the
+<code class="inline">col_style</code> assign is set as <code class="inline">style</code> attribute for the <code class="inline">&lt;col&gt;</code> element of
+the respective column. You can set the <code class="inline">width</code>, <code class="inline">background</code>, <code class="inline">border</code>,
+and <code class="inline">visibility</code> of a column this way.</p></li><li><p><code class="inline">col_class</code> (<code class="inline">:string</code>) - If set, a <code class="inline">&lt;colgroup&gt;</code> element is rendered and the value of the
+<code class="inline">col_class</code> assign is set as <code class="inline">class</code> attribute for the <code class="inline">&lt;col&gt;</code> element of
+the respective column. You can set the <code class="inline">width</code>, <code class="inline">background</code>, <code class="inline">border</code>,
+and <code class="inline">visibility</code> of a column this way.</p></li><li><p><code class="inline">class</code> (<code class="inline">:string</code>) - Additional classes to add to the <code class="inline">&lt;th&gt;</code> and <code class="inline">&lt;td&gt;</code> element. Will be merged with the
+<code class="inline">thead_attr_attrs</code> and <code class="inline">tbody_td_attrs</code> attributes.</p></li><li><p><code class="inline">thead_th_attrs</code> (<code class="inline">:list</code>) - Additional attributes to pass to the <code class="inline">&lt;th&gt;</code> element as a static keyword
+list. Note that these attributes will override any conflicting
+<code class="inline">thead_th_attrs</code> that are set at the table level.</p></li><li><p><code class="inline">th_wrapper_attrs</code> (<code class="inline">:list</code>) - Additional attributes for the <code class="inline">&lt;span&gt;</code> element that wraps the
+header link and the order direction symbol. Note that these attributes
+will override any conflicting <code class="inline">th_wrapper_attrs</code> that are set at the table
+level.</p></li><li><p><code class="inline">tbody_td_attrs</code> (<code class="inline">:any</code>) - Additional attributes to pass to the <code class="inline">&lt;td&gt;</code> element. May be provided as a
+static keyword list, or as a 1-arity function to dynamically generate the
+list using row data. Note that these attributes will override any
+conflicting <code class="inline">tbody_td_attrs</code> that are set at the table level.</p></li></ul></li><li><p><code class="inline">action</code> - The slot for showing user actions in the last table column. These columns
+do not receive the <code class="inline">row_click</code> attribute.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="ss">:action</span><span class="w"> </span><span class="ss">:let</span><span class="o">=</span><span class="p" data-group-id="9641866822-1">{</span><span class="n">user</span><span class="p" data-group-id="9641866822-1">}</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="o">.</span><span class="n">link</span><span class="w"> </span><span class="n">navigate</span><span class="o">=</span><span class="p" data-group-id="9641866822-2">{</span><span class="sx">~p&quot;/users/</span><span class="si" data-group-id="9641866822-3">#{</span><span class="n">user</span><span class="si" data-group-id="9641866822-3">}</span><span class="sx">&quot;</span><span class="p" data-group-id="9641866822-2">}</span><span class="o">&gt;</span><span class="nc">Show</span><span class="o">&lt;</span><span class="o">/</span><span class="o">.</span><span class="n">link</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:action</span><span class="o">&gt;</span></code></pre><p>Accepts attributes:</p><ul><li><p><code class="inline">label</code> (<code class="inline">:string</code>) - The content for the header column.</p></li><li><p><code class="inline">show</code> (<code class="inline">:boolean</code>) - Boolean value to conditionally show the column. Defaults to <code class="inline">true</code>.</p></li><li><p><code class="inline">hide</code> (<code class="inline">:boolean</code>) - Boolean value to conditionally hide the column. Defaults to <code class="inline">false</code>.</p></li><li><p><code class="inline">col_style</code> (<code class="inline">:string</code>) - If set, a <code class="inline">&lt;colgroup&gt;</code> element is rendered and the value of the
+<code class="inline">col_style</code> assign is set as <code class="inline">style</code> attribute for the <code class="inline">&lt;col&gt;</code> element of
+the respective column. You can set the <code class="inline">width</code>, <code class="inline">background</code>, <code class="inline">border</code>,
+and <code class="inline">visibility</code> of a column this way.</p></li><li><p><code class="inline">col_class</code> (<code class="inline">:string</code>) - If set, a <code class="inline">&lt;colgroup&gt;</code> element is rendered and the value of the
+<code class="inline">col_class</code> assign is set as <code class="inline">class</code> attribute for the <code class="inline">&lt;col&gt;</code> element of
+the respective column. You can set the <code class="inline">width</code>, <code class="inline">background</code>, <code class="inline">border</code>,
+and <code class="inline">visibility</code> of a column this way.</p></li><li><p><code class="inline">class</code> (<code class="inline">:string</code>) - Additional classes to add to the <code class="inline">&lt;th&gt;</code> and <code class="inline">&lt;td&gt;</code> element. Will be merged with the
+<code class="inline">thead_attr_attrs</code> and <code class="inline">tbody_td_attrs</code> attributes.</p></li><li><p><code class="inline">thead_th_attrs</code> (<code class="inline">:list</code>) - Any additional attributes to pass to the <code class="inline">&lt;th&gt;</code> as a keyword list.</p></li><li><p><code class="inline">tbody_td_attrs</code> (<code class="inline">:any</code>) - Any additional attributes to pass to the <code class="inline">&lt;td&gt;</code>. Can be a keyword list or
+a function that takes the current row item as an argument and returns a
+keyword list.</p></li></ul></li><li><p><code class="inline">foot</code> - You can optionally add a <code class="inline">foot</code>. The inner block will be rendered inside
+a <code class="inline">tfoot</code> element.</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="ss">:foot</span><span class="o">&gt;</span><span class="w">
+    </span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="ss">Total</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">span</span><span class="w"> </span><span class="n">class</span><span class="o">=</span><span class="s">&quot;total&quot;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="na">@total</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="n">span</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="n">td</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="n">tr</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:foot</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="o">&gt;</span></code></pre></li></ul>
+  </section>
+</section>
+<section class="detail" id="to_query/2">
+
+    <span id="to_query/1"></span>
+
+  <div class="detail-header">
+    <a href="#to_query/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">to_query(ash_pagify, opts \\ [])</h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/lib/ash_pagify/components.ex#L984" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> to_query(<a href="AshPagify.html#t:t/0">AshPagify.t</a>(), <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()</pre>
+
+      </div>
+
+<p>Converts a AshPagify struct into a keyword list that can be used as a query with
+Phoenix verified routes or route helper functions.</p><h2 id="to_query/2-encoded-parameters" class="section-heading">
+  <a href="#to_query/2-encoded-parameters" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Encoded parameters</span>
+</h2>
+<p>The following parameters are encoded as strings:</p><ul><li><code class="inline">:search</code></li><li><code class="inline">:scopes</code></li><li><code class="inline">:filter_form</code></li><li><code class="inline">:order_by</code></li><li><code class="inline">:limit</code></li><li><code class="inline">:offset</code></li></ul><h2 id="to_query/2-default-parameters" class="section-heading">
+  <a href="#to_query/2-default-parameters" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Default parameters</span>
+</h2>
+<p>Default parameters for the limit, scopes, filter_form and order parameters
+are omitted. The defaults are determined by calling <a href="AshPagify.html#get_option/3"><code class="inline">AshPagify.get_option/3</code></a>.</p><ul><li>Pass the <code class="inline">:for</code> option to pick up the default values from an <a href="https://hexdocs.pm/ash/3.3.3/Ash.Resource.html"><code class="inline">Ash.Resource</code></a>.</li><li>If the <a href="https://hexdocs.pm/ash/3.3.3/Ash.Resource.html"><code class="inline">Ash.Resource</code></a> has no default options set, the function will fall
+back to the application environment.</li></ul><h2 id="to_query/2-encoding-queries" class="section-heading">
+  <a href="#to_query/2-encoding-queries" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Encoding queries</span>
+</h2>
+<p>To encode the returned query as a string, you will need to use
+<a href="https://hexdocs.pm/plug/1.16.1/Plug.Conn.Query.html#encode/1"><code class="inline">Plug.Conn.Query.encode/1</code></a>. <a href="https://hexdocs.pm/elixir/URI.html#encode_query/1"><code class="inline">URI.encode_query/1</code></a> does not support bracket
+notation for arrays and maps.</p><h2 id="to_query/2-examples" class="section-heading">
+  <a href="#to_query/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="1218524684-1">(</span><span class="p" data-group-id="1218524684-2">%</span><span class="nc" data-group-id="1218524684-2">AshPagify</span><span class="p" data-group-id="1218524684-2">{</span><span class="p" data-group-id="1218524684-2">}</span><span class="p" data-group-id="1218524684-1">)</span><span class="w">
+</span><span class="p" data-group-id="1218524684-3">[</span><span class="p" data-group-id="1218524684-3">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1218524684-4">%</span><span class="nc" data-group-id="1218524684-4">AshPagify</span><span class="p" data-group-id="1218524684-4">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="1218524684-4">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="1218524684-5">(</span><span class="n">f</span><span class="p" data-group-id="1218524684-5">)</span><span class="w">
+</span><span class="p" data-group-id="1218524684-6">[</span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p" data-group-id="1218524684-6">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1218524684-7">%</span><span class="nc" data-group-id="1218524684-7">AshPagify</span><span class="p" data-group-id="1218524684-7">{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="1218524684-7">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="1218524684-8">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="ss">default_limit</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="1218524684-8">)</span><span class="w">
+</span><span class="p" data-group-id="1218524684-9">[</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p" data-group-id="1218524684-9">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1218524684-10">%</span><span class="nc" data-group-id="1218524684-10">AshPagify</span><span class="p" data-group-id="1218524684-10">{</span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1218524684-11">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:asc</span><span class="p" data-group-id="1218524684-11">]</span><span class="p" data-group-id="1218524684-10">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="1218524684-12">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPagify.Factory.Post</span><span class="p" data-group-id="1218524684-12">)</span><span class="w">
+</span><span class="p" data-group-id="1218524684-13">[</span><span class="p" data-group-id="1218524684-13">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1218524684-14">%</span><span class="nc" data-group-id="1218524684-14">AshPagify</span><span class="p" data-group-id="1218524684-14">{</span><span class="ss">scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1218524684-15">%{</span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="ss">:active</span><span class="p" data-group-id="1218524684-15">}</span><span class="p" data-group-id="1218524684-14">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="1218524684-16">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPagify.Factory.Post</span><span class="p" data-group-id="1218524684-16">)</span><span class="w">
+</span><span class="p" data-group-id="1218524684-17">[</span><span class="ss">scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1218524684-18">%{</span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="ss">:active</span><span class="p" data-group-id="1218524684-18">}</span><span class="p" data-group-id="1218524684-17">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1218524684-19">%</span><span class="nc" data-group-id="1218524684-19">AshPagify</span><span class="p" data-group-id="1218524684-19">{</span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="1218524684-19">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="1218524684-20">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPagify.Factory.Post</span><span class="p" data-group-id="1218524684-20">)</span><span class="w">
+</span><span class="p" data-group-id="1218524684-21">[</span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="1218524684-21">]</span></code></pre><p>Encoding the query as a string:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4997469154-1">%</span><span class="nc" data-group-id="4997469154-1">AshPagify</span><span class="p" data-group-id="4997469154-1">{</span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4997469154-2">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="ss">:asc</span><span class="p" data-group-id="4997469154-2">]</span><span class="p" data-group-id="4997469154-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="4997469154-3">(</span><span class="n">f</span><span class="p" data-group-id="4997469154-3">)</span><span class="w">
+</span><span class="p" data-group-id="4997469154-4">[</span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4997469154-5">[</span><span class="s">&quot;-name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;age&quot;</span><span class="p" data-group-id="4997469154-5">]</span><span class="p" data-group-id="4997469154-4">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_query</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="4997469154-6">(</span><span class="p" data-group-id="4997469154-6">)</span><span class="w">
+</span><span class="s">&quot;order_by[]=-name&amp;order_by[]=age&quot;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4997469154-7">%</span><span class="nc" data-group-id="4997469154-7">AshPagify</span><span class="p" data-group-id="4997469154-7">{</span><span class="ss">filter_form</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4997469154-8">%{</span><span class="s">&quot;field&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;comments_count&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;operator&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;gt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4997469154-8">}</span><span class="p" data-group-id="4997469154-7">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="4997469154-9">(</span><span class="n">f</span><span class="p" data-group-id="4997469154-9">)</span><span class="w">
+</span><span class="p" data-group-id="4997469154-10">[</span><span class="ss">filter_form</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4997469154-11">%{</span><span class="s">&quot;field&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;comments_count&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;operator&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;gt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4997469154-11">}</span><span class="p" data-group-id="4997469154-10">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_query</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="4997469154-12">(</span><span class="p" data-group-id="4997469154-12">)</span><span class="w">
+</span><span class="s">&quot;filter_form[field]=comments_count&amp;filter_form[operator]=gt&amp;filter_form[value]=2&quot;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4997469154-13">%</span><span class="nc" data-group-id="4997469154-13">AshPagify</span><span class="p" data-group-id="4997469154-13">{</span><span class="ss">scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4997469154-14">%{</span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="ss">:active</span><span class="p" data-group-id="4997469154-14">}</span><span class="p" data-group-id="4997469154-13">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="4997469154-15">(</span><span class="n">f</span><span class="p" data-group-id="4997469154-15">)</span><span class="w">
+</span><span class="p" data-group-id="4997469154-16">[</span><span class="ss">scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4997469154-17">%{</span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="ss">:active</span><span class="p" data-group-id="4997469154-17">}</span><span class="p" data-group-id="4997469154-16">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_query</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="4997469154-18">(</span><span class="p" data-group-id="4997469154-18">)</span><span class="w">
+</span><span class="s">&quot;scopes[status]=active&quot;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4997469154-19">%</span><span class="nc" data-group-id="4997469154-19">AshPagify</span><span class="p" data-group-id="4997469154-19">{</span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="4997469154-19">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">to_query</span><span class="p" data-group-id="4997469154-20">(</span><span class="n">f</span><span class="p" data-group-id="4997469154-20">)</span><span class="w">
+</span><span class="p" data-group-id="4997469154-21">[</span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="4997469154-21">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">f</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_query</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Plug.Conn.Query</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="4997469154-22">(</span><span class="p" data-group-id="4997469154-22">)</span><span class="w">
+</span><span class="s">&quot;search=foo&quot;</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_pagify/1.0.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_pagify/1.0.2">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_pagify.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.1">
+    <meta name="project" content="AshPyroComponents v0.1.0">
+
+
+    <title>Get Started — AshPyroComponents v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-FM2CSD74.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-43PMFBC7.js"></script>
+    <script src="dist/sidebar_items-EB2B762A.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-L4O5OK2K.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<div class="background-layer"></div>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="about.html" class="sidebar-projectName" translate="no">
+AshPyroComponents
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+      <div class="top-search">
+        <div class="search-settings">
+          <form class="search-bar" action="search.html">
+            <label class="search-label">
+              <span class="sr-only">Search documentation of AshPyroComponents</span>
+              <input name="q" type="text" class="search-input" placeholder="Search Documentation (press /)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            </label>
+            <button type="submit" class="search-button" aria-label="Submit Search">
+              <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+            </button>
+            <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+              <i class="ri-close-line ri-lg" title="Cancel search"></i>
+            </button>
+          </form>
+          <div class="autocomplete">
+          </div>
+          <button class="icon-settings display-settings">
+            <i class="ri-settings-3-line"></i>
+            <span class="sr-only">Settings</span>
+          </button>
+        </div>
+
+      </div>
+
+<h1>
+
+    <a href="https://github.com/frankdugan3/ash_pyro_components/blob/v0.1.0/documentation/tutorials/get-started.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Get Started</span>
+</h1>
+
+<p>This guide steps through the installation process for AshPyroComponents.</p><h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installation</span>
+</h2>
+<p>The installation process is pretty straightforward, and many of the steps can be customized depending on how you want to use AshPyroComponents.</p><h3 id="steps" class="section-heading">
+  <a href="#steps" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Steps</span>
+</h3>
+<p>These steps assume you are adding AshPyroComponents to an existing Phoenix LiveView app, as generated from the most recent version of <code class="inline">phx.new</code>.</p><ol><li><p>Add the appropriate dependencies:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="5990989102-1">do</span><span class="w">
+  </span><span class="p" data-group-id="5990989102-2">[</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-3">{</span><span class="ss">:ash_postgres</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.0&quot;</span><span class="p" data-group-id="5990989102-3">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-4">{</span><span class="ss">:ash_pyro_components</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="5990989102-4">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-5">{</span><span class="ss">:ash_pyro</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="5990989102-5">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-6">{</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 2.4&quot;</span><span class="p" data-group-id="5990989102-6">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-7">{</span><span class="ss">:pyro</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.2.0&quot;</span><span class="p" data-group-id="5990989102-7">}</span><span class="p">,</span><span class="w">
+
+ </span><span class="c1"># Heroicon support in components</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-8">{</span><span class="ss">:heroicons</span><span class="p">,</span><span class="w">
+   </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tailwindlabs/heroicons&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v2.1.1&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">app</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
+   </span><span class="ss">compile</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w">
+   </span><span class="ss">sparse</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;optimized&quot;</span><span class="p" data-group-id="5990989102-8">}</span><span class="p">,</span><span class="w">
+
+ </span><span class="c1">### OPTIONAL DEPS BELOW ###</span><span class="w">
+
+ </span><span class="c1"># Date/Time/Zone components &amp; tooling</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-9">{</span><span class="ss">:tz</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.26&quot;</span><span class="p" data-group-id="5990989102-9">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-10">{</span><span class="ss">:tz_extra</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.26&quot;</span><span class="p" data-group-id="5990989102-10">}</span><span class="p">,</span><span class="w">
+ </span><span class="c1">#   or</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-11">{</span><span class="ss">:tzdata</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.1&quot;</span><span class="p" data-group-id="5990989102-11">}</span><span class="p">,</span><span class="w">
+
+ </span><span class="c1"># Code highlighting components:</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-12">{</span><span class="ss">:makeup</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.1&quot;</span><span class="p" data-group-id="5990989102-12">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-13">{</span><span class="ss">:makeup_eex</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1&quot;</span><span class="p" data-group-id="5990989102-13">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-14">{</span><span class="ss">:makeup_elixir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.16&quot;</span><span class="p" data-group-id="5990989102-14">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-15">{</span><span class="ss">:makeup_html</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1&quot;</span><span class="p" data-group-id="5990989102-15">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-16">{</span><span class="ss">:makeup_js</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1&quot;</span><span class="p" data-group-id="5990989102-16">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="5990989102-17">{</span><span class="ss">:makeup_json</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1&quot;</span><span class="p" data-group-id="5990989102-17">}</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="5990989102-2">]</span><span class="w">
+</span><span class="k" data-group-id="5990989102-1">end</span></code></pre></li><li><p>Compare your <code class="inline">.formatter.exs</code> to this example and add anything you are missing:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5639875627-1">[</span><span class="w">
+  </span><span class="ss">import_deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5639875627-2">[</span><span class="ss">:phoenix</span><span class="p">,</span><span class="w"> </span><span class="ss">:pyro</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_pyro</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_postgres</span><span class="p" data-group-id="5639875627-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">subdirectories</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5639875627-3">[</span><span class="s">&quot;priv/*/migrations&quot;</span><span class="p" data-group-id="5639875627-3">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">plugins</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5639875627-4">[</span><span class="nc">Spark.Formatter</span><span class="p">,</span><span class="w"> </span><span class="nc">Phoenix.LiveView.HTMLFormatter</span><span class="p" data-group-id="5639875627-4">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">inputs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5639875627-5">[</span><span class="s">&quot;*.{heex,ex,exs}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{config,lib,test}/**/*.{heex,ex,exs}&quot;</span><span class="p" data-group-id="5639875627-5">]</span><span class="w">
+</span><span class="p" data-group-id="5639875627-1">]</span></code></pre></li><li><p>Add the following to your <code class="inline">config.exs</code>:</p><pre><code class="makeup elixir" translate="no"><span class="n">config</span><span class="w"> </span><span class="ss">:pyro</span><span class="p">,</span><span class="w"> </span><span class="ss">:overrides</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8940363037-1">[</span><span class="nc">AshPyroComponents.Overrides.BEM</span><span class="p">,</span><span class="w"> </span><span class="nc">PyroComponents.Overrides.BEM</span><span class="p" data-group-id="8940363037-1">]</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:pyro</span><span class="p">,</span><span class="w"> </span><span class="ss">gettext</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Gettext</span><span class="w"> </span><span class="c1"># optional</span></code></pre></li><li><p>Configure your <code class="inline">tailwind.config.js</code> according to this example:</p><pre><code class="js">const path = require('path')
+
+module.exports = {
+  // Dark mode support
+  darkMode: 'class',
+  content: [
+    // The usual defaults
+    './js/**/*.js',
+    '../lib/my_app_web.ex',
+    '../lib/my_app_web/**/*.*ex',
+
+    // Add the directory you will be keeping resources since
+    // we need to include any classes referenced in the UI DSL
+    '../lib/my_app/**/*.ex',
+
+    // Add your chosen Pyro overrides file(s)
+    '../deps/pyro_components/lib/pyro_components/overrides/bem.ex',
+    '../deps/ash_pyro_components/lib/ash_pyro_components/overrides/bem.ex',
+  ],
+  plugins: [
+    // Pyro expects the forms plugin
+    require('@tailwindcss/forms'),
+    // Add Pyro's Tailwind plugin
+    require(path.join(
+      __dirname,
+      '../deps/pyro/assets/js/tailwind-plugin.js',
+    ))({
+      heroIconsPath: path.join(__dirname, '../deps/heroicons/optimized'),
+      addBase: true,
+    }),
+
+    // Pyro replaces Phoenix's generated plugin stuff, you can delete it!
+  ],
+}</code></pre><blockquote><h4 class="warning">Note:</h4><p>Using <code class="inline">path.join(.__dirname, '...')</code> is important; Tailwind CLI will get confused without it!</p></blockquote></li><li><p>Add the following lines to <code class="inline">assets/js/app.js</code>:</p><pre><code class="js">import { hooks as pyro_components_hooks, getTimezone } from 'pyro_components'
+import { hooks as ash_pyro_components_hooks } from 'ash_pyro_components'
+
+let liveSocket = new LiveSocket('/live', Socket, {
+  params: { _csrf_token: csrfToken, timezone: getTimezone() },
+  hooks: { ...pyro_components_hooks, ...ash_pyro_components_hooks },
+})</code></pre></li><li><p>Edit your <code class="inline">assets/css.app.css</code> file to import the default styles:</p></li></ol><pre><code class="css">@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import '../../deps/pyro_components/assets/css/bem.css';
+@import '../../deps/ash_pyro_components/assets/css/bem.css';
+@import 'tailwindcss/utilities';</code></pre><ol start="6"><li><p>Edit your <code class="inline">my_app_web.ex</code> file, replacing:</p><ul><li><a href="https://hexdocs.pm/phoenix_live_view/0.20.3/Phoenix.Component.html"><code class="inline">Phoenix.Component</code></a> with <a href="AshPyroComponents.Component.html"><code class="inline">AshPyroComponents.Component</code></a></li><li><a href="https://hexdocs.pm/phoenix_live_view/0.20.3/Phoenix.LiveComponent.html"><code class="inline">Phoenix.LiveComponent</code></a> with <a href="AshPyroComponents.LiveComponent.html"><code class="inline">AshPyroComponents.LiveComponent</code></a></li><li><a href="https://hexdocs.pm/phoenix_live_view/0.20.3/Phoenix.LiveView.html"><code class="inline">Phoenix.LiveView</code></a> with <a href="AshPyroComponents.LiveView.html"><code class="inline">AshPyroComponents.LiveView</code></a></li></ul><p><strong>Note:</strong> <em>Only</em> replace those top-level modules, <em>do not</em> replace submodules, e.g. <a href="https://hexdocs.pm/phoenix_live_view/0.20.3/Phoenix.LiveView.Router.html"><code class="inline">Phoenix.LiveView.Router</code></a>.</p></li><li><p>(Optional) Import the Pyro components into your <code class="inline">my_app_web.ex</code> helpers to make the available in your views/components:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defp</span><span class="w"> </span><span class="nf">html_helpers</span><span class="w"> </span><span class="k" data-group-id="4250747202-1">do</span><span class="w">
+  </span><span class="k">quote</span><span class="w"> </span><span class="k" data-group-id="4250747202-2">do</span><span class="w">
+    </span><span class="c1"># Import all Pyro/AshPyro components</span><span class="w">
+    </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPyroComponents</span><span class="w">
+    </span><span class="c1"># Don&#39;t import CoreComponents since AshPyro replaces it and will conflict</span><span class="w">
+    </span><span class="c1"># import MyAppWeb.CoreComponents</span><span class="w">
+    </span><span class="c1"># ...</span></code></pre></li><li><p>(Optional) Add the color scheme JS to your <code class="inline">root.html.heex</code> template (prevents <a href="https://en.wikipedia.org/wiki/Flash_of_unstyled_content">FOUC</a>):</p><pre><code class="heex">&lt;head&gt;
+  &lt;.color_scheme_switcher_js /&gt;
+  &lt;script defer phx-track-static type=&quot;text/javascript&quot; src={~p&quot;/assets/app.js&quot;}&gt;
+&lt;/head&gt;</code></pre><p>At this point, you probably want to delete the old <code class="inline">core_components.ex</code> file, since AshPyro will replace that functionality (mostly API-compatible).</p></li><li><p>(Optional) configure some runtime options in <code class="inline">runtime.exs</code>:</p><pre><code class="makeup elixir" translate="no"><span class="n">config</span><span class="w"> </span><span class="ss">:pyro</span><span class="p">,</span><span class="w"> </span><span class="ss">default_timezone</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;America/Chicago&quot;</span></code></pre></li></ol>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="about.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+About
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+      <footer class="footer">
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ash_pyro_components/0.1.0" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ash_pyro_components/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ash_pyro_components/0.1.0/show/documentation/tutorials/get-started.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="AshPyroComponents.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

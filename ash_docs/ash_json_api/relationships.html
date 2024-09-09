@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_json_api v1.4.7">
+
+
+    <title>Relationships — ash_json_api v1.4.7</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-848724FA.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_json_api" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectName" translate="no">
+ash_json_api
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.7
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_json_api</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/documentation/topics/relationships.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Relationships</span>
+</h1>
+
+<p>You can specify which arguments will modify relationships using <code class="inline">relationship_arguments</code>, but there are some things to keep in mind.</p><p><code class="inline">relationship_arguments</code> is a list of arguments that can be edited in the <code class="inline">data.relationships</code> input.</p><p>This is primarily useful for those who want to keep their relationship changes in compliance with the <code class="inline">JSON:API</code> spec.
+If you are not focused on building a fully compliant JSON:API, it is likely far simpler to simply accept arguments
+in the <code class="inline">attributes</code> key and ignore the <code class="inline">data.relationships</code> input.</p><p>If the argument's type is <code class="inline">{:array, _}</code>, a list of data will be expected. Otherwise, it will expect a single item.</p><p>Everything in this guide applies to routs defined on the domain as well.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># On a tweets resource</span><span class="w">
+
+</span><span class="c1"># With a patch route that references the `authors` argument</span><span class="w">
+</span><span class="n">json_api</span><span class="w"> </span><span class="k" data-group-id="3095003381-1">do</span><span class="w">
+  </span><span class="n">routes</span><span class="w"> </span><span class="k" data-group-id="3095003381-2">do</span><span class="w">
+    </span><span class="n">patch</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="ss">relationship_arguments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3095003381-3">[</span><span class="ss">:authors</span><span class="p" data-group-id="3095003381-3">]</span><span class="w">
+  </span><span class="k" data-group-id="3095003381-2">end</span><span class="w">
+</span><span class="k" data-group-id="3095003381-1">end</span><span class="w">
+
+</span><span class="c1"># And an argument by that name in the action</span><span class="w">
+</span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="3095003381-4">do</span><span class="w">
+  </span><span class="n">update</span><span class="w"> </span><span class="ss">:update</span><span class="w"> </span><span class="k" data-group-id="3095003381-5">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:authors</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3095003381-6">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:map</span><span class="p" data-group-id="3095003381-6">}</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+
+    </span><span class="n">change</span><span class="w"> </span><span class="n">manage_relationship</span><span class="p" data-group-id="3095003381-7">(</span><span class="ss">:authors</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:append_and_remove</span><span class="p" data-group-id="3095003381-7">)</span><span class="w"> </span><span class="c1"># Use the authors argument to allow changing the related authors on update</span><span class="w">
+  </span><span class="k" data-group-id="3095003381-5">end</span><span class="w">
+</span><span class="k" data-group-id="3095003381-4">end</span></code></pre><p>You can then send the value for <code class="inline">authors</code> in the relationships key, e.g</p><pre><code class="json">{
+  data: {
+    attributes: {
+      ...
+    },
+    relationships: {
+      authors: {
+        data: [
+          {type: &quot;author&quot;, id: 1}, // the `type` key is removed when the value is placed into the action, so this input would be `%{&quot;id&quot; =&gt; 1}` (`type` is required by `JSON:API` specification)
+          {type: &quot;author&quot;, id: 2, meta: {arbitrary: 1, keys: 2}}, &lt;- `meta` is JSON:API spec freeform data, so this input would be `%{&quot;id&quot; =&gt; 2, &quot;arbitrary&quot; =&gt; 1, &quot;keys&quot; =&gt; 2}`
+        ]
+      }
+    }
+  }
+}</code></pre><p>If you do not include <code class="inline">:authors</code> in the <code class="inline">relationship_arguments</code> key, you would supply its value in <code class="inline">attributes</code>, e.g:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6124953736-1">{</span><span class="w">
+  </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6124953736-2">{</span><span class="w">
+    </span><span class="ss">attributes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6124953736-3">{</span><span class="w">
+      </span><span class="ss">authors</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6124953736-4">{</span><span class="w">
+        </span><span class="p" data-group-id="6124953736-5">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6124953736-5">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="6124953736-6">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">arbitrary</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">keys</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6124953736-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="6124953736-4">}</span><span class="w">
+    </span><span class="p" data-group-id="6124953736-3">}</span><span class="w">
+  </span><span class="p" data-group-id="6124953736-2">}</span><span class="w">
+</span><span class="p" data-group-id="6124953736-1">}</span></code></pre><p>Non-map argument types, e.g <code class="inline">argument :author, :integer</code> (expecting an author id) work with <code class="inline">manage_relationship</code>, but not with
+JSON:API, because it expects <code class="inline">{&quot;type&quot;: _type, &quot;id&quot; =&gt; id}</code> for relationship values. To support non-map arguments in <code class="inline">relationship_arguments</code>,
+instead of <code class="inline">:author</code>, use <code class="inline">{:id, :author}</code>. This works for <code class="inline">{:array, _}</code> type arguments as well, so the value would be a list of ids.</p><h2 id="relationship-manipulation-routes" class="section-heading">
+  <a href="#relationship-manipulation-routes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Relationship Manipulation Routes</span>
+</h2>
+<p>You can also specify routes that are dedicated to manipulating relationships. We generally suggest the above approach, but JSON:API spec also allows for dedicated relationship routes. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">routes</span><span class="w"> </span><span class="k" data-group-id="6467788409-1">do</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+  </span><span class="c1"># use `post_relationship` when the operation is additive</span><span class="w">
+  </span><span class="n">post_relationship</span><span class="w"> </span><span class="ss">:add_author</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:add_author</span><span class="w">
+  </span><span class="c1"># use `patch_relationship` when the operation is both additive and subtractive</span><span class="w">
+  </span><span class="c1"># use `delete_from_relationship` when the operation is subtractive</span><span class="w">
+</span><span class="k" data-group-id="6467788409-1">end</span></code></pre><p>This will use an action on the source resource, (by default the primary update), and expects it to take an argument with the corresponding name. Additionally, it must have a <code class="inline">change manage_relationship</code> that uses that attribute. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">update</span><span class="w"> </span><span class="ss">:add_author</span><span class="w"> </span><span class="k" data-group-id="5022172080-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:author</span><span class="p">,</span><span class="w"> </span><span class="ss">:map</span><span class="w">
+
+  </span><span class="n">change</span><span class="w"> </span><span class="n">manage_relationship</span><span class="p" data-group-id="5022172080-2">(</span><span class="ss">:add_author</span><span class="p">,</span><span class="w"> </span><span class="ss">:author</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:append</span><span class="p" data-group-id="5022172080-2">)</span><span class="w">
+</span><span class="k" data-group-id="5022172080-1">end</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="open-api.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Open API
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="links.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Links
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_json_api/1.4.7" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_json_api/1.4.7">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_json_api/1.4.7/show/documentation/topics/relationships.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_json_api.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

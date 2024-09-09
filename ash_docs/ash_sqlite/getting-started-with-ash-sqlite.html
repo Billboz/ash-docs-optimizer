@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.33.0">
+    <meta name="project" content="ash_sqlite v0.1.3">
+
+
+    <title>Getting Started With AshSqlite — ash_sqlite v0.1.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-EDCBE166.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-BHYOTRCH.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_sqlite" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_sqlite" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_sqlite" class="sidebar-projectName" translate="no">
+ash_sqlite
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_sqlite</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_sqlite/blob/v0.1.3/documentation/tutorials/getting-started-with-ash-sqlite.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Getting Started With AshSqlite</span>
+  </h1>
+
+<h2 id="goals" class="section-heading">
+  <a href="#goals" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Goals</span>
+</h2>
+<p>In this guide we will:</p><ol><li>Setup AshSqlite, which includes setting up <a href="https://hexdocs.pm/ecto/Ecto.html">Ecto</a></li><li>Add AshSqlite to the resources created in <a href="https://hexdocs.pm/ash/get-started.html">the Ash getting started guide</a></li><li>Show how the various features of AshSqlite can help you work quickly and cleanly against a sqlite database</li><li>Highlight some of the more advanced features you can use when using AshSqlite.</li><li>Point you to additional resources you may need on your journey</li></ol><h2 id="requirements" class="section-heading">
+  <a href="#requirements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Requirements</span>
+</h2>
+<ul><li>A working SQLite installation, with a sufficiently permissive user</li><li>If you would like to follow along, you will need to add begin with <a href="https://hexdocs.pm/ash/get-started.html">the Ash getting started guide</a></li></ul><h2 id="steps" class="section-heading">
+  <a href="#steps" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Steps</span>
+</h2>
+<h3 id="add-ashsqlite" class="section-heading">
+  <a href="#add-ashsqlite" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Add AshSqlite</span>
+</h3>
+<p>Add the <code class="inline">:ash_sqlite</code> dependency to your application</p><p><code class="inline">{:ash_sqlite, &quot;~&gt; 0.1.3&quot;}</code></p><p>Add <code class="inline">:ash_sqlite</code> to your <code class="inline">.formatter.exs</code> file</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3480185968-1">[</span><span class="w">
+  </span><span class="c1"># import the formatter rules from `:ash_sqlite`</span><span class="w">
+  </span><span class="ss">import_deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3480185968-2">[</span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_sqlite</span><span class="p" data-group-id="3480185968-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">inputs</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3480185968-3">[</span><span class="n">...</span><span class="p" data-group-id="3480185968-3">]</span><span class="w">
+</span><span class="p" data-group-id="3480185968-1">]</span></code></pre><h3 id="create-and-configure-your-repo" class="section-heading">
+  <a href="#create-and-configure-your-repo" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Create and configure your Repo</span>
+</h3>
+<p>Create <code class="inline">lib/helpdesk/repo.ex</code> with the following contents. <a href="AshSqlite.Repo.html"><code class="inline">AshSqlite.Repo</code></a> is a thin wrapper around <a href="https://hexdocs.pm/ecto/3.11.2/Ecto.Repo.html"><code class="inline">Ecto.Repo</code></a>, so see their documentation for how to use it if you need to use it directly. For standard Ash usage, all you will need to do is configure your resources to use your repo.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in lib/helpdesk/repo.ex</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Repo</span><span class="w"> </span><span class="k" data-group-id="3551647112-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshSqlite.Repo</span><span class="p">,</span><span class="w"> </span><span class="ss">otp_app</span><span class="p">:</span><span class="w"> </span><span class="ss">:helpdesk</span><span class="w">
+</span><span class="k" data-group-id="3551647112-1">end</span></code></pre><p>Next we will need to create configuration files for various environments. Run the following to create the configuration files we need.</p><pre><code class="makeup bash" translate="no"><span class="">mkdir -p config
+</span><span class="">touch config/config.exs
+</span><span class="">touch config/dev.exs
+</span><span class="">touch config/runtime.exs
+</span><span class="">touch config/test.exs
+</span></code></pre><p>Place the following contents in those files, ensuring that the credentials match the user you created for your database. For most conventional installations this will work out of the box. If you've followed other guides before this one, they may have had you create these files already, so just make sure these contents are there.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in config/config.exs</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
+
+</span><span class="c1"># This should already have been added in the first</span><span class="w">
+</span><span class="c1"># getting started guide</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:helpdesk</span><span class="p">,</span><span class="w">
+  </span><span class="ss">ash_apis</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0422575649-1">[</span><span class="nc">Helpdesk.Support</span><span class="p" data-group-id="0422575649-1">]</span><span class="w">
+
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:helpdesk</span><span class="p">,</span><span class="w">
+  </span><span class="ss">ecto_repos</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0422575649-2">[</span><span class="nc">Helpdesk.Repo</span><span class="p" data-group-id="0422575649-2">]</span><span class="w">
+
+</span><span class="c1"># Import environment specific config. This must remain at the bottom</span><span class="w">
+</span><span class="c1"># of this file so it overrides the configuration defined above.</span><span class="w">
+</span><span class="n">import_config</span><span class="w"> </span><span class="s">&quot;</span><span class="si" data-group-id="0422575649-3">#{</span><span class="n">config_env</span><span class="p" data-group-id="0422575649-4">(</span><span class="p" data-group-id="0422575649-4">)</span><span class="si" data-group-id="0422575649-3">}</span><span class="s">.exs&quot;</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># in config/dev.exs</span><span class="w">
+
+</span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
+
+</span><span class="c1"># Configure your database</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:helpdesk</span><span class="p">,</span><span class="w"> </span><span class="nc">Helpdesk.Repo</span><span class="p">,</span><span class="w">
+  </span><span class="ss">database</span><span class="p">:</span><span class="w"> </span><span class="nc">Path</span><span class="o">.</span><span class="n">join</span><span class="p" data-group-id="0420277679-1">(</span><span class="bp">__DIR__</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../path/to/your.db&quot;</span><span class="p" data-group-id="0420277679-1">)</span><span class="p">,</span><span class="w">
+  </span><span class="ss">port</span><span class="p">:</span><span class="w"> </span><span class="mi">5432</span><span class="p">,</span><span class="w">
+  </span><span class="ss">show_sensitive_data_on_connection_error</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+  </span><span class="ss">pool_size</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># in config/runtime.exs</span><span class="w">
+
+</span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
+
+</span><span class="k">if</span><span class="w"> </span><span class="n">config_env</span><span class="p" data-group-id="7896690873-1">(</span><span class="p" data-group-id="7896690873-1">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:prod</span><span class="w"> </span><span class="k" data-group-id="7896690873-2">do</span><span class="w">
+  </span><span class="n">config</span><span class="w"> </span><span class="ss">:helpdesk</span><span class="p">,</span><span class="w"> </span><span class="nc">Helpdesk.Repo</span><span class="p">,</span><span class="w">
+    </span><span class="ss">pool_size</span><span class="p">:</span><span class="w"> </span><span class="nc">String</span><span class="o">.</span><span class="n">to_integer</span><span class="p" data-group-id="7896690873-3">(</span><span class="nc">System</span><span class="o">.</span><span class="n">get_env</span><span class="p" data-group-id="7896690873-4">(</span><span class="s">&quot;POOL_SIZE&quot;</span><span class="p" data-group-id="7896690873-4">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="p" data-group-id="7896690873-3">)</span><span class="w">
+</span><span class="k" data-group-id="7896690873-2">end</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># in config/test.exs</span><span class="w">
+
+</span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
+
+</span><span class="c1"># Configure your database</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># The MIX_TEST_PARTITION environment variable can be used</span><span class="w">
+</span><span class="c1"># to provide built-in test partitioning in CI environment.</span><span class="w">
+</span><span class="c1"># Run `mix help test` for more information.</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:helpdesk</span><span class="p">,</span><span class="w"> </span><span class="nc">Helpdesk.Repo</span><span class="p">,</span><span class="w">
+  </span><span class="ss">database</span><span class="p">:</span><span class="w"> </span><span class="nc">Path</span><span class="o">.</span><span class="n">join</span><span class="p" data-group-id="3459104996-1">(</span><span class="bp">__DIR__</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../path/to/your</span><span class="si" data-group-id="3459104996-2">#{</span><span class="nc">System</span><span class="o">.</span><span class="n">get_env</span><span class="p" data-group-id="3459104996-3">(</span><span class="s">&quot;MIX_TEST_PARTITION&quot;</span><span class="p" data-group-id="3459104996-3">)</span><span class="si" data-group-id="3459104996-2">}</span><span class="s">.db&quot;</span><span class="p" data-group-id="3459104996-1">)</span><span class="p">,</span><span class="w">
+  </span><span class="ss">pool_size</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span></code></pre><p>And finally, add the repo to your application</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in lib/helpdesk/application.ex</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start</span><span class="p" data-group-id="5069076952-1">(</span><span class="c">_type</span><span class="p">,</span><span class="w"> </span><span class="c">_args</span><span class="p" data-group-id="5069076952-1">)</span><span class="w"> </span><span class="k" data-group-id="5069076952-2">do</span><span class="w">
+    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5069076952-3">[</span><span class="w">
+      </span><span class="c1"># Starts a worker by calling: Helpdesk.Worker.start_link(arg)</span><span class="w">
+      </span><span class="c1"># {Helpdesk.Worker, arg}</span><span class="w">
+      </span><span class="nc">Helpdesk.Repo</span><span class="w">
+    </span><span class="p" data-group-id="5069076952-3">]</span><span class="w">
+
+    </span><span class="n">...</span></code></pre><h3 id="add-ashsqlite-to-our-resources" class="section-heading">
+  <a href="#add-ashsqlite-to-our-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Add AshSqlite to our resources</span>
+</h3>
+<p>Now we can add the data layer to our resources. The basic configuration for a resource requires the <code class="inline"><a href="https://hexdocs.pm/ash/dsl-ashsqlite.html#sqlite-table">AshSqlite.sqlite.table</a></code> and the <code class="inline"><a href="https://hexdocs.pm/ash/dsl-ashsqlite.html#sqlite-repo">AshSqlite.sqlite.repo</a></code>.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in lib/helpdesk/support/resources/ticket.ex</span><span class="w">
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="nc">AshSqlite.DataLayer</span><span class="w">
+
+  </span><span class="n">sqlite</span><span class="w"> </span><span class="k" data-group-id="1038844231-1">do</span><span class="w">
+    </span><span class="n">table</span><span class="w"> </span><span class="s">&quot;tickets&quot;</span><span class="w">
+    </span><span class="n">repo</span><span class="w"> </span><span class="nc">Helpdesk.Repo</span><span class="w">
+  </span><span class="k" data-group-id="1038844231-1">end</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="c1"># in lib/helpdesk/support/resources/representative.ex</span><span class="w">
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="nc">AshSqlite.DataLayer</span><span class="w">
+
+  </span><span class="n">sqlite</span><span class="w"> </span><span class="k" data-group-id="8672598727-1">do</span><span class="w">
+    </span><span class="n">table</span><span class="w"> </span><span class="s">&quot;representatives&quot;</span><span class="w">
+    </span><span class="n">repo</span><span class="w"> </span><span class="nc">Helpdesk.Repo</span><span class="w">
+  </span><span class="k" data-group-id="8672598727-1">end</span></code></pre><h3 id="create-the-database-and-tables" class="section-heading">
+  <a href="#create-the-database-and-tables" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Create the database and tables</span>
+</h3>
+<p>First, we'll create the database with <a href="Mix.Tasks.AshSqlite.Create.html"><code class="inline">mix ash_sqlite.create</code></a>.</p><p>Then we will generate database migrations. This is one of the many ways that AshSqlite can save time and reduce complexity.</p><pre><code class="makeup bash" translate="no"><span class="">mix ash_sqlite.generate_migrations --name add_tickets_and_representatives
+</span></code></pre><p>If you are unfamiliar with database migrations, it is a good idea to get a rough idea of what they are and how they work. See the links at the bottom of this guide for more. A rough overview of how migrations work is that each time you need to make changes to your database, they are saved as small, reproducible scripts that can be applied in order. This is necessary both for clean deploys as well as working with multiple developers making changes to the structure of a single database.</p><p>Typically, you need to write these by hand. AshSqlite, however, will store snapshots each time you run the command to generate migrations and will figure out what migrations need to be created.</p><p>You should always look at the generated migrations to ensure that they look correct. Do so now by looking at the generated file in <code class="inline">priv/repo/migrations</code>.</p><p>Finally, we will create the local database and apply the generated migrations:</p><pre><code class="makeup bash" translate="no"><span class="">mix ash_sqlite.create
+</span><span class="">mix ash_sqlite.migrate
+</span></code></pre><h3 id="try-it-out" class="section-heading">
+  <a href="#try-it-out" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Try it out</span>
+</h3>
+<p>And now we're ready to try it out! Run the following in iex:</p><p>Lets create some data. We'll make a representative and give them some open and some closed tickets.</p><pre><code class="makeup elixir" translate="no"><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+
+</span><span class="n">representative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0375604506-1">(</span><span class="w">
+  </span><span class="nc">Helpdesk.Support.Representative</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_create</span><span class="p" data-group-id="0375604506-2">(</span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0375604506-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Joe Armstrong&quot;</span><span class="p" data-group-id="0375604506-3">}</span><span class="p" data-group-id="0375604506-2">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">create!</span><span class="p" data-group-id="0375604506-4">(</span><span class="p" data-group-id="0375604506-4">)</span><span class="w">
+</span><span class="p" data-group-id="0375604506-1">)</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">0</span><span class="o">..</span><span class="mi">5</span><span class="w"> </span><span class="k" data-group-id="0375604506-5">do</span><span class="w">
+  </span><span class="n">ticket</span><span class="w"> </span><span class="o">=</span><span class="w">
+    </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_create</span><span class="p" data-group-id="0375604506-6">(</span><span class="ss">:open</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0375604506-7">%{</span><span class="ss">subject</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Issue </span><span class="si" data-group-id="0375604506-8">#{</span><span class="n">i</span><span class="si" data-group-id="0375604506-8">}</span><span class="s">&quot;</span><span class="p" data-group-id="0375604506-7">}</span><span class="p" data-group-id="0375604506-6">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">create!</span><span class="p" data-group-id="0375604506-9">(</span><span class="p" data-group-id="0375604506-9">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="0375604506-10">(</span><span class="ss">:assign</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0375604506-11">%{</span><span class="ss">representative_id</span><span class="p">:</span><span class="w"> </span><span class="n">representative</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="0375604506-11">}</span><span class="p" data-group-id="0375604506-10">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="0375604506-12">(</span><span class="p" data-group-id="0375604506-12">)</span><span class="w">
+
+  </span><span class="k">if</span><span class="w"> </span><span class="n">rem</span><span class="p" data-group-id="0375604506-13">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0375604506-13">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k" data-group-id="0375604506-14">do</span><span class="w">
+    </span><span class="n">ticket</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="0375604506-15">(</span><span class="ss">:close</span><span class="p" data-group-id="0375604506-15">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="0375604506-16">(</span><span class="p" data-group-id="0375604506-16">)</span><span class="w">
+  </span><span class="k" data-group-id="0375604506-14">end</span><span class="w">
+</span><span class="k" data-group-id="0375604506-5">end</span></code></pre><p>And now we can read that data. You should see some debug logs that show the sql queries AshSqlite is generating.</p><pre><code class="makeup elixir" translate="no"><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+
+</span><span class="c1"># Show the tickets where the subject equals &quot;foobar&quot;</span><span class="w">
+</span><span class="nc">Helpdesk.Support.Ticket</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="8990290746-1">(</span><span class="n">subject</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;foobar&quot;</span><span class="p" data-group-id="8990290746-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="8990290746-2">(</span><span class="p" data-group-id="8990290746-2">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+
+</span><span class="c1"># Show the tickets that are closed and their subject does not equal &quot;barbaz&quot;</span><span class="w">
+</span><span class="nc">Helpdesk.Support.Ticket</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3188199401-1">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:closed</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="p" data-group-id="3188199401-2">(</span><span class="n">subject</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;barbaz&quot;</span><span class="p" data-group-id="3188199401-2">)</span><span class="p" data-group-id="3188199401-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="3188199401-3">(</span><span class="p" data-group-id="3188199401-3">)</span></code></pre><p>And, naturally, now that we are storing this in sqlite, this database is persisted even if we stop/start our application. The nice thing, however, is that this was the <em>exact</em> same code that we ran against our resources when they were backed by ETS.</p><h3 id="calculations" class="section-heading">
+  <a href="#calculations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Calculations</span>
+</h3>
+<p>Calculations can be pushed down into SQL using expressions.</p><p>For example, we can determine the percentage of tickets that are open:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in lib/helpdesk/support/resources/representative.ex</span><span class="w">
+
+  </span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="0412533698-1">do</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:percent_open</span><span class="p">,</span><span class="w"> </span><span class="ss">:float</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="0412533698-2">(</span><span class="n">open_tickets</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total_tickets</span><span class="w"> </span><span class="p" data-group-id="0412533698-2">)</span><span class="w">
+  </span><span class="k" data-group-id="0412533698-1">end</span></code></pre><p>Calculations can be loaded.</p><pre><code class="makeup elixir" translate="no"><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+
+</span><span class="nc">Helpdesk.Support.Representative</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="3409111642-1">(</span><span class="n">percent_open</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.25</span><span class="p" data-group-id="3409111642-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="3409111642-2">(</span><span class="ss">:percent_open</span><span class="p" data-group-id="3409111642-2">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="3409111642-3">(</span><span class="ss">:percent_open</span><span class="p" data-group-id="3409111642-3">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="3409111642-4">(</span><span class="p" data-group-id="3409111642-4">)</span></code></pre><h3 id="rich-configuration-options" class="section-heading">
+  <a href="#rich-configuration-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Rich Configuration Options</span>
+</h3>
+<p>Take a look at the DSL documentation for more information on what you can configure. You can add check constraints, configure the behavior of foreign keys and more!</p><h3 id="deployment" class="section-heading">
+  <a href="#deployment" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Deployment</span>
+</h3>
+<p>When deploying, you will need to ensure that the file you are using in production is persisted in some way (probably, unless you want it to disappear whenever your deployed system restarts). For example with fly.io this might mean adding a volume to your deployment.</p><h3 id="what-next" class="section-heading">
+  <a href="#what-next" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">What next?</span>
+</h3>
+<ul><li><p>Check out the data layer docs: <a href="AshSqlite.DataLayer.html"><code class="inline">AshSqlite.DataLayer</code></a></p></li><li><p><a href="https://hexdocs.pm/ecto/Ecto.html">Ecto's documentation</a>. AshSqlite (and much of Ash itself) is made possible by the amazing Ecto. If you find yourself looking for escape hatches when using Ash or ways to work directly with your database, you will want to know how Ecto works. Ash and AshSqlite intentionally do not hide Ecto, and in fact encourages its use whenever you need an escape hatch.</p></li><li><p><a href="https://hexdocs.pm/ecto_sql/Ecto.Migration.html">Ecto's Migration documentation</a> read more about migrations. Even with the ash_sqlite migration generator, you will very likely need to modify your own migrations some day.</p></li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="what-is-ash-sqlite.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+What is AshSqlite?
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_sqlite/0.1.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_sqlite/0.1.3">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_sqlite/0.1.3/show/documentation/tutorials/getting-started-with-ash-sqlite.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_sqlite.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.33.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

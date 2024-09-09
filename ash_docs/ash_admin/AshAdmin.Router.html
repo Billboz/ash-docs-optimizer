@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_admin v0.11.5">
+
+
+    <title>AshAdmin.Router — ash_admin v0.11.5</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-58676A5C.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_admin" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_admin" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_admin" class="sidebar-projectName" translate="no">
+ash_admin
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.11.5
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_admin</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_admin/blob/v0.11.5/lib/ash_admin/router.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">AshAdmin.Router</span> 
+    <small class="app-vsn" translate="no">(ash_admin v0.11.5)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Provides LiveView routing for AshAdmin.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#admin_browser_pipeline/1" data-no-tooltip translate="no">admin_browser_pipeline(name \\ :browser)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Can be used to create a <code class="inline">:browser</code> pipeline easily if you don't have one.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#ash_admin/2" data-no-tooltip translate="no">ash_admin(path, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Defines an AshAdmin route.
+It expects the <code class="inline">path</code> the admin dashboard will be mounted at
+and a set of options.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="admin_browser_pipeline/1">
+
+    <span id="admin_browser_pipeline/0"></span>
+
+  <div class="detail-header">
+    <a href="#admin_browser_pipeline/1" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">admin_browser_pipeline(name \\ :browser)</h1>
+
+      <a href="https://github.com/ash-project/ash_admin/blob/v0.11.5/lib/ash_admin/router.ex#L27" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Can be used to create a <code class="inline">:browser</code> pipeline easily if you don't have one.</p><p>By default it is called <code class="inline">:browser</code>, but you can rename it by supplying an argument,
+for example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAppWeb.Router</span><span class="w"> </span><span class="k" data-group-id="2799733443-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Phoenix.Router</span><span class="w">
+
+  </span><span class="kn">import</span><span class="w"> </span><span class="nc">AshAdmin.Router</span><span class="w">
+  </span><span class="n">admin_browser_pipeline</span><span class="w"> </span><span class="ss">:something</span><span class="w">
+
+  </span><span class="n">scope</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="k" data-group-id="2799733443-2">do</span><span class="w">
+
+    </span><span class="n">pipe_through</span><span class="w"> </span><span class="p" data-group-id="2799733443-3">[</span><span class="ss">:something</span><span class="p" data-group-id="2799733443-3">]</span><span class="w">
+    </span><span class="n">ash_admin</span><span class="w"> </span><span class="s">&quot;/admin&quot;</span><span class="w">
+  </span><span class="k" data-group-id="2799733443-2">end</span><span class="w">
+</span><span class="k" data-group-id="2799733443-1">end</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="ash_admin/2">
+
+    <span id="ash_admin/1"></span>
+
+  <div class="detail-header">
+    <a href="#ash_admin/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">ash_admin(path, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_admin/blob/v0.11.5/lib/ash_admin/router.ex#L79" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Defines an AshAdmin route.
+It expects the <code class="inline">path</code> the admin dashboard will be mounted at
+and a set of options.</p><h2 id="ash_admin/2-options" class="section-heading">
+  <a href="#ash_admin/2-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><p><code class="inline">:live_socket_path</code> - Optional override for the socket path. it must match
+the <code class="inline">socket &quot;/live&quot;, Phoenix.LiveView.Socket</code> in your endpoint. Defaults to <code class="inline">/live</code>.</p></li><li><p><code class="inline">:on_mount</code> - Optional list of hooks to attach to the mount lifecycle.</p></li><li><p><code class="inline">:session</code> - Optional extra session map or MFA tuple to be merged with the session.</p></li><li><p><code class="inline">:csp_nonce_assign_key</code> - Optional assign key to find the CSP nonce value used for assets
+Supports either <code class="inline">atom()</code> or
+  <code class="inline">%{optional(:img) =&gt; atom(), optional(:script) =&gt; atom(), optional(:style) =&gt; atom()}</code><br/>  Defaults to <code class="inline">ash_admin-Ed55GFnX</code> for backwards compatibility.</p></li><li><p><code class="inline">:live_session_name</code> - Optional atom to name the <code class="inline">live_session</code>. Defaults to <code class="inline">:ash_admin</code>.</p></li></ul><h2 id="ash_admin/2-examples" class="section-heading">
+  <a href="#ash_admin/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAppWeb.Router</span><span class="w"> </span><span class="k" data-group-id="6939316068-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Phoenix.Router</span><span class="w">
+
+  </span><span class="n">scope</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="k" data-group-id="6939316068-2">do</span><span class="w">
+    </span><span class="kn">import</span><span class="w"> </span><span class="nc">AshAdmin.Router</span><span class="w">
+
+    </span><span class="c1"># Make sure you are piping through the browser pipeline</span><span class="w">
+    </span><span class="c1"># If you don&#39;t have one, see `admin_browser_pipeline/1`</span><span class="w">
+    </span><span class="n">pipe_through</span><span class="w"> </span><span class="p" data-group-id="6939316068-3">[</span><span class="ss">:browser</span><span class="p" data-group-id="6939316068-3">]</span><span class="w">
+
+    </span><span class="n">ash_admin</span><span class="w"> </span><span class="s">&quot;/admin&quot;</span><span class="w">
+    </span><span class="n">ash_admin</span><span class="w"> </span><span class="s">&quot;/csp/admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">live_session_name</span><span class="p">:</span><span class="w"> </span><span class="ss">:ash_admin_csp</span><span class="p">,</span><span class="w"> </span><span class="ss">csp_nonce_assign_key</span><span class="p">:</span><span class="w"> </span><span class="ss">:csp_nonce_value</span><span class="w">
+  </span><span class="k" data-group-id="6939316068-2">end</span><span class="w">
+</span><span class="k" data-group-id="6939316068-1">end</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_admin/0.11.5" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_admin/0.11.5">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_admin.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

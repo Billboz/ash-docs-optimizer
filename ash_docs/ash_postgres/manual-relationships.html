@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_postgres v2.3.1">
+
+
+    <title>Manual Relationships — ash_postgres v2.3.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-59AEB2F8.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://ash-hq.org" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_postgres" />
+        </a>
+
+      <div>
+        <a href="https://ash-hq.org" class="sidebar-projectName" translate="no">
+ash_postgres
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.3.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_postgres</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/documentation/topics/advanced/manual-relationships.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Manual Relationships</span>
+  </h1>
+
+<p>See <a href="https://hexdocs.pm/ash/defining-manual-relationships.html">Defining Manual Relationships</a> for an idea of manual relationships in general.
+Manual relationships allow for expressing complex/non-typical relationships between resources in a standard way.
+Individual data layers may interact with manual relationships in their own way, so see their corresponding guides.</p><h2 id="example" class="section-heading">
+  <a href="#example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="c1"># in the resource</span><span class="w">
+
+</span><span class="n">relationships</span><span class="w"> </span><span class="k" data-group-id="0568191879-1">do</span><span class="w">
+  </span><span class="n">has_many</span><span class="w"> </span><span class="ss">:tickets_above_threshold</span><span class="p">,</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="0568191879-2">do</span><span class="w">
+    </span><span class="n">manual</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket.Relationships.TicketsAboveThreshold</span><span class="w">
+  </span><span class="k" data-group-id="0568191879-2">end</span><span class="w">
+</span><span class="k" data-group-id="0568191879-1">end</span><span class="w">
+
+</span><span class="c1"># implementation</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket.Relationships.TicketsAboveThreshold</span><span class="w"> </span><span class="k" data-group-id="0568191879-3">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.ManualRelationship</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPostgres.ManualRelationship</span><span class="w">
+
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ecto.Query</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">load</span><span class="p" data-group-id="0568191879-4">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0568191879-5">%{</span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="ss">authorize?</span><span class="p">:</span><span class="w"> </span><span class="n">authorize?</span><span class="p" data-group-id="0568191879-5">}</span><span class="p" data-group-id="0568191879-4">)</span><span class="w"> </span><span class="k" data-group-id="0568191879-6">do</span><span class="w">
+    </span><span class="c1"># Use existing records to limit resultds</span><span class="w">
+    </span><span class="n">rep_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="0568191879-7">(</span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="0568191879-7">)</span><span class="w">
+     </span><span class="c1"># Using Ash to get the destination records is ideal, so you can authorize access like normal</span><span class="w">
+     </span><span class="c1"># but if you need to use a raw ecto query here, you can. As long as you return the right structure.</span><span class="w">
+
+    </span><span class="p" data-group-id="0568191879-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+     </span><span class="n">query</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="0568191879-9">(</span><span class="n">representative_id</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">^</span><span class="n">rep_ids</span><span class="p" data-group-id="0568191879-9">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="0568191879-10">(</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">representative</span><span class="o">.</span><span class="n">priority_threshold</span><span class="p" data-group-id="0568191879-10">)</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="0568191879-11">(</span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="ss">authorize?</span><span class="p">:</span><span class="w"> </span><span class="n">authorize?</span><span class="p" data-group-id="0568191879-11">)</span><span class="w">
+     </span><span class="c1"># Return the items grouped by the primary key of the source, i.e representative.id =&gt; [...tickets above threshold]</span><span class="w">
+     </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">group_by</span><span class="p" data-group-id="0568191879-12">(</span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">representative_id</span><span class="p" data-group-id="0568191879-12">)</span><span class="p" data-group-id="0568191879-8">}</span><span class="w">
+  </span><span class="k" data-group-id="0568191879-6">end</span><span class="w">
+
+  </span><span class="c1"># query is the &quot;source&quot; query that is being built.</span><span class="w">
+
+  </span><span class="c1"># _opts are options provided to the manual relationship, i.e `{Manual, opt: :val}`</span><span class="w">
+
+  </span><span class="c1"># current_binding is what the source of the relationship is bound to. Access fields with `as(^current_binding).field`</span><span class="w">
+
+  </span><span class="c1"># as_binding is the binding that your join should create. When you join, make sure you say `as: ^as_binding` on the</span><span class="w">
+  </span><span class="c1"># part of the query that represents the destination of the relationship</span><span class="w">
+
+  </span><span class="c1"># type is `:inner` or `:left`.</span><span class="w">
+  </span><span class="c1"># destination_query is what you should join to to add the destination to the query, i.e `join: dest in ^destination-query`</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">ash_postgres_join</span><span class="p" data-group-id="0568191879-13">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="n">current_binding</span><span class="p">,</span><span class="w"> </span><span class="n">as_binding</span><span class="p">,</span><span class="w"> </span><span class="ss">:inner</span><span class="p">,</span><span class="w"> </span><span class="n">destination_query</span><span class="p" data-group-id="0568191879-13">)</span><span class="w"> </span><span class="k" data-group-id="0568191879-14">do</span><span class="w">
+    </span><span class="p" data-group-id="0568191879-15">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+     </span><span class="nc">Ecto.Query</span><span class="o">.</span><span class="n">from</span><span class="p" data-group-id="0568191879-16">(</span><span class="bp">_</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w">
+       </span><span class="ss">join</span><span class="p">:</span><span class="w"> </span><span class="n">dest</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">^</span><span class="n">destination_query</span><span class="p">,</span><span class="w">
+       </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="n">as_binding</span><span class="p">,</span><span class="w">
+       </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="n">dest</span><span class="o">.</span><span class="n">representative_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">as</span><span class="p" data-group-id="0568191879-17">(</span><span class="o">^</span><span class="n">current_binding</span><span class="p" data-group-id="0568191879-17">)</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w">
+       </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="n">dest</span><span class="o">.</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">as</span><span class="p" data-group-id="0568191879-18">(</span><span class="o">^</span><span class="n">current_binding</span><span class="p" data-group-id="0568191879-18">)</span><span class="o">.</span><span class="n">priority_threshold</span><span class="w">
+     </span><span class="p" data-group-id="0568191879-16">)</span><span class="p" data-group-id="0568191879-15">}</span><span class="w">
+  </span><span class="k" data-group-id="0568191879-14">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">ash_postgres_join</span><span class="p" data-group-id="0568191879-19">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="n">current_binding</span><span class="p">,</span><span class="w"> </span><span class="n">as_binding</span><span class="p">,</span><span class="w"> </span><span class="ss">:left</span><span class="p">,</span><span class="w"> </span><span class="n">destination_query</span><span class="p" data-group-id="0568191879-19">)</span><span class="w"> </span><span class="k" data-group-id="0568191879-20">do</span><span class="w">
+    </span><span class="p" data-group-id="0568191879-21">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+     </span><span class="nc">Ecto.Query</span><span class="o">.</span><span class="n">from</span><span class="p" data-group-id="0568191879-22">(</span><span class="bp">_</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w">
+       </span><span class="ss">left_join</span><span class="p">:</span><span class="w"> </span><span class="n">dest</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">^</span><span class="n">destination_query</span><span class="p">,</span><span class="w">
+       </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="n">as_binding</span><span class="p">,</span><span class="w">
+       </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="n">dest</span><span class="o">.</span><span class="n">representative_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">as</span><span class="p" data-group-id="0568191879-23">(</span><span class="o">^</span><span class="n">current_binding</span><span class="p" data-group-id="0568191879-23">)</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w">
+       </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="n">dest</span><span class="o">.</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">as</span><span class="p" data-group-id="0568191879-24">(</span><span class="o">^</span><span class="n">current_binding</span><span class="p" data-group-id="0568191879-24">)</span><span class="o">.</span><span class="n">priority_threshold</span><span class="w">
+     </span><span class="p" data-group-id="0568191879-22">)</span><span class="p" data-group-id="0568191879-21">}</span><span class="w">
+  </span><span class="k" data-group-id="0568191879-20">end</span><span class="w">
+
+  </span><span class="c1"># _opts are options provided to the manual relationship, i.e `{Manual, opt: :val}`</span><span class="w">
+
+  </span><span class="c1"># current_binding is what the source of the relationship is bound to. Access fields with `parent_as(^current_binding).field`</span><span class="w">
+
+  </span><span class="c1"># as_binding is the binding that has already been created for your join. Access fields on it via `as(^as_binding)`</span><span class="w">
+
+  </span><span class="c1"># destination_query is what you should use as the basis of your query</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">ash_postgres_subquery</span><span class="p" data-group-id="0568191879-25">(</span><span class="c">_opts</span><span class="p">,</span><span class="w"> </span><span class="n">current_binding</span><span class="p">,</span><span class="w"> </span><span class="n">as_binding</span><span class="p">,</span><span class="w"> </span><span class="n">destination_query</span><span class="p" data-group-id="0568191879-25">)</span><span class="w"> </span><span class="k" data-group-id="0568191879-26">do</span><span class="w">
+    </span><span class="p" data-group-id="0568191879-27">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+     </span><span class="nc">Ecto.Query</span><span class="o">.</span><span class="n">from</span><span class="p" data-group-id="0568191879-28">(</span><span class="bp">_</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">destination_query</span><span class="p">,</span><span class="w">
+       </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">parent_as</span><span class="p" data-group-id="0568191879-29">(</span><span class="o">^</span><span class="n">current_binding</span><span class="p" data-group-id="0568191879-29">)</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">as</span><span class="p" data-group-id="0568191879-30">(</span><span class="o">^</span><span class="n">as_binding</span><span class="p" data-group-id="0568191879-30">)</span><span class="o">.</span><span class="n">representative_id</span><span class="p">,</span><span class="w">
+       </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">as</span><span class="p" data-group-id="0568191879-31">(</span><span class="o">^</span><span class="n">as_binding</span><span class="p" data-group-id="0568191879-31">)</span><span class="o">.</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">parent_as</span><span class="p" data-group-id="0568191879-32">(</span><span class="o">^</span><span class="n">current_binding</span><span class="p" data-group-id="0568191879-32">)</span><span class="o">.</span><span class="n">priority_threshold</span><span class="w">
+     </span><span class="p" data-group-id="0568191879-28">)</span><span class="p" data-group-id="0568191879-27">}</span><span class="w">
+  </span><span class="k" data-group-id="0568191879-26">end</span><span class="w">
+</span><span class="k" data-group-id="0568191879-3">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="schema-based-multitenancy.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Schema Based Multitenancy
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Change Log
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_postgres/2.3.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_postgres/2.3.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_postgres/2.3.1/show/documentation/topics/advanced/manual-relationships.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_postgres.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

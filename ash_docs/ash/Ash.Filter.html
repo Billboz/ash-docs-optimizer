@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Ash.Filter — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Ash.Filter</span> 
+    <small class="app-vsn" translate="no">(ash v3.4.8)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The representation of a filter in Ash.</p><h2 id="module-security-concerns" class="section-heading">
+  <a href="#module-security-concerns" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Security Concerns</span>
+</h2>
+<p>If you are using a map with string keys, it is likely that you are parsing
+input. It is important to note that, instead of passing a filter supplied from
+an external source directly to <a href="Ash.Query.html#filter/2"><code class="inline">Ash.Query.filter/2</code></a>, you should call
+<a href="#parse_input/2"><code class="inline">Ash.Filter.parse_input/2</code></a>.  This ensures that the filter only uses public
+attributes, relationships, aggregates and calculations, honors field policies
+and any policies on related resources.</p><h2 id="module-writing-a-filter" class="section-heading">
+  <a href="#module-writing-a-filter" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Writing a filter</span>
+</h2>
+<h3 id="module-built-in-predicates" class="section-heading">
+  <a href="#module-built-in-predicates" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Built In Predicates</span>
+</h3>
+<ul><li><code class="inline">is_nil</code></li><li><code class="inline">==</code></li><li><code class="inline">!=</code></li><li><code class="inline">in</code></li><li><code class="inline">&lt;</code></li><li><code class="inline">&gt;</code></li><li><code class="inline">&lt;=</code></li><li><code class="inline">&gt;=</code></li><li><code class="inline">&amp;&amp;</code></li><li><code class="inline">||</code></li><li><code class="inline">&lt;&gt;</code></li><li><code class="inline">/</code></li><li><code class="inline">-</code></li><li><code class="inline">*</code></li><li><code class="inline">+</code></li><li><code class="inline">equals</code> (alias
+for <code class="inline">==</code>)</li><li><code class="inline">not_equals</code> (alias
+for <code class="inline">!=</code>)</li><li><code class="inline">gt</code> (alias
+for <code class="inline">&gt;</code>)</li><li><code class="inline">lt</code> (alias
+for <code class="inline">&lt;</code>)</li><li><code class="inline">gte</code> (alias
+for <code class="inline">&gt;=</code>)</li><li><code class="inline">lte</code> (alias
+for <code class="inline">&lt;=</code>)</li><li><code class="inline">eq</code> (alias
+for <code class="inline">==</code>)</li><li><code class="inline">not_eq</code> (alias
+for <code class="inline">!=</code>)</li><li><code class="inline">less_than</code> (alias
+for <code class="inline">&lt;</code>)</li><li><code class="inline">greater_than</code> (alias
+for <code class="inline">&gt;</code>)</li><li><code class="inline">less_than_or_equal</code> (alias
+for <code class="inline">&lt;=</code>)</li><li><code class="inline">greater_than_or_equal</code> (alias
+for <code class="inline">&gt;=</code>)</li><li><code class="inline">and</code> (alias
+for <code class="inline">&amp;&amp;</code>)</li><li><code class="inline">or</code> (alias
+for <code class="inline">||</code>)</li><li><code class="inline">concat</code> (alias
+for <code class="inline">&lt;&gt;</code>)</li><li><code class="inline">div</code> (alias
+for <code class="inline">/</code>)</li><li><code class="inline">minus</code> (alias
+for <code class="inline">-</code>)</li><li><code class="inline">times</code> (alias
+for <code class="inline">*</code>)</li><li><code class="inline">plus</code> (alias
+for <code class="inline">+</code>)</li></ul><h3 id="module-booleanexpression-syntax" class="section-heading">
+  <a href="#module-booleanexpression-syntax" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">BooleanExpression syntax</span>
+</h3>
+<p>The expression syntax ultimately just builds the keyword list style filter,
+but with lots of conveniences that would be very annoying to do manually.</p><p>Examples</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="7262401069-1">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Zardoz&quot;</span><span class="p" data-group-id="7262401069-1">)</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="7262401069-2">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Zar&quot;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Doz&quot;</span><span class="p" data-group-id="7262401069-2">)</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="7262401069-3">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Zar&quot;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p" data-group-id="7262401069-4">[</span><span class="s">&quot;Doz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Daz&quot;</span><span class="p" data-group-id="7262401069-4">]</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">high_score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="7262401069-3">)</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="7262401069-5">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Zar&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Doz&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p" data-group-id="7262401069-6">(</span><span class="n">high_score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">high_score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="p" data-group-id="7262401069-6">)</span><span class="p" data-group-id="7262401069-5">)</span></code></pre><h3 id="module-expressions" class="section-heading">
+  <a href="#module-expressions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Expressions</span>
+</h3>
+<p>More complex filters can be built using Ash Expressions.</p><p>Examples</p><pre><code class="makeup elixir" translate="no"><span class="c1"># Filter based on the contents of a string attribute</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2593108675-1">(</span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="n">contains</span><span class="p" data-group-id="2593108675-2">(</span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p" data-group-id="2593108675-2">)</span><span class="p" data-group-id="2593108675-1">)</span><span class="w">
+</span><span class="c1"># Filter based on the attribute of a joined relationship:</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2593108675-3">(</span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="n">representative</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">name</span><span class="p" data-group-id="2593108675-3">)</span></code></pre><p>See the <a href="expressions.html">Expressions guide</a>
+guide for more information.</p><h3 id="module-keyword-list-syntax" class="section-heading">
+  <a href="#module-keyword-list-syntax" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Keyword list syntax</span>
+</h3>
+<p>A filter is a nested keyword list (with some exceptions, like <code class="inline">true</code> for
+everything and <code class="inline">false</code> for nothing).</p><p>The key is the &quot;predicate&quot; (or &quot;condition&quot;) and the value is the parameter.
+You can use <code class="inline">and</code> and <code class="inline">or</code> to create nested filters. Data layers can expose
+custom predicates. Eventually, you will be able to define your own custom
+predicates, which will be a mechanism for you to attach complex filters
+supported by the data layer to your queries.</p><p><strong> Important </strong> In a given keyword list, all predicates are considered to be
+&quot;ands&quot;. So <code class="inline">[or: [first_name: &quot;Tom&quot;, last_name: &quot;Bombadil&quot;]]</code> doesn't mean
+'First name == &quot;tom&quot; or last_name == &quot;bombadil&quot;'. To say that, you want to
+provide a list of filters, like so: <code class="inline">[or: [[first_name: &quot;Tom&quot;], [last_name: &quot;Bombadil&quot;]]]</code></p><p>Some example filters:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="4912569317-1">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4912569317-2">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zardoz&quot;</span><span class="p" data-group-id="4912569317-2">]</span><span class="p" data-group-id="4912569317-1">)</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="4912569317-3">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4912569317-4">[</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zar&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Doz&quot;</span><span class="p" data-group-id="4912569317-4">]</span><span class="p" data-group-id="4912569317-3">)</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="4912569317-5">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4912569317-6">[</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zar&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-7">[</span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-8">[</span><span class="s">&quot;Doz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Daz&quot;</span><span class="p" data-group-id="4912569317-8">]</span><span class="p" data-group-id="4912569317-7">]</span><span class="p">,</span><span class="w"> </span><span class="ss">high_score</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-9">[</span><span class="ss">greater_than</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="4912569317-9">]</span><span class="p" data-group-id="4912569317-6">]</span><span class="p" data-group-id="4912569317-5">)</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="4912569317-10">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4912569317-11">[</span><span class="ss">or</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-12">[</span><span class="w">
+  </span><span class="p" data-group-id="4912569317-13">[</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Zar&quot;</span><span class="p" data-group-id="4912569317-13">]</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="4912569317-14">[</span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Doz&quot;</span><span class="p" data-group-id="4912569317-14">]</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="4912569317-15">[</span><span class="ss">or</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-16">[</span><span class="w">
+    </span><span class="p" data-group-id="4912569317-17">[</span><span class="ss">high_score</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-18">[</span><span class="ss">greater_than</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="4912569317-18">]</span><span class="p" data-group-id="4912569317-17">]</span><span class="p" data-group-id="4912569317-16">]</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4912569317-19">[</span><span class="ss">high_score</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4912569317-20">[</span><span class="ss">less_than</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="p" data-group-id="4912569317-20">]</span><span class="p" data-group-id="4912569317-19">]</span><span class="w">
+  </span><span class="p" data-group-id="4912569317-15">]</span><span class="w">
+</span><span class="p" data-group-id="4912569317-12">]</span><span class="p" data-group-id="4912569317-11">]</span><span class="p" data-group-id="4912569317-10">)</span></code></pre><h3 id="module-other-formats" class="section-heading">
+  <a href="#module-other-formats" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Other formats</span>
+</h3>
+<p>Maps are also accepted, as are maps with string keys. Technically, a list of
+<code class="inline">[{&quot;string_key&quot;, value}]</code> would also work.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_to_filter/6" data-no-tooltip translate="no">add_to_filter(base, addition, op \\ :and, aggregates \\ %{}, calculations \\ %{}, context \\ %{})</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_to_filter!/6" data-no-tooltip translate="no">add_to_filter!(base, addition, op \\ :and, aggregates \\ %{}, calculations \\ %{}, context \\ %{})</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#builtin_functions/0" data-no-tooltip translate="no">builtin_functions()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#builtin_operators/0" data-no-tooltip translate="no">builtin_operators()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#builtin_predicate_operators/0" data-no-tooltip translate="no">builtin_predicate_operators()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#builtins/0" data-no-tooltip translate="no">builtins()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#custom_expression/2" data-no-tooltip translate="no">custom_expression(name, args)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#do_hydrate_refs/2" data-no-tooltip translate="no">do_hydrate_refs(filter, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find/4" data-no-tooltip translate="no">find(expr, pred, ors? \\ true, ands? \\ true)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Find an expression inside of a filter that matches the provided predicate</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_simple_equality_predicate/2" data-no-tooltip translate="no">find_simple_equality_predicate(expression, attribute)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Can be used to find a simple equality predicate on an attribute</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_value/2" data-no-tooltip translate="no">find_value(expr, pred)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flat_map/2" data-no-tooltip translate="no">flat_map(expression, func)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_filter/2" data-no-tooltip translate="no">get_filter(resource, id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns a filter statement that would find a single record based on the input.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_function/3" data-no-tooltip translate="no">get_function(key, resource, public?)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_operator/1" data-no-tooltip translate="no">get_operator(key)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_predicate_function/3" data-no-tooltip translate="no">get_predicate_function(key, resource, public?)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#hydrate_refs/2" data-no-tooltip translate="no">hydrate_refs(value, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_predicates/1" data-no-tooltip translate="no">list_predicates(expression)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_refs/5" data-no-tooltip translate="no">list_refs(expression, no_longer_simple? \\ false, in_an_eq? \\ false, expand_calculations? \\ false, expand_get_path? \\ false)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#map/2" data-no-tooltip translate="no">map(filter, func)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_exprs_to_relationship_path/2" data-no-tooltip translate="no">move_exprs_to_relationship_path(refs, path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_relationship_path/2" data-no-tooltip translate="no">move_to_relationship_path(expression, relationship_path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#parse/3" data-no-tooltip translate="no">parse(resource, statement, context \\ %{})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Parses a filter statement</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#parse!/3" data-no-tooltip translate="no">parse!(resource, statement, context \\ %{})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Parses a filter statement</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#parse_input/2" data-no-tooltip translate="no">parse_input(resource, statement)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Parses a filter statement, accepting only public attributes/relationships,
+honoring field policies &amp; related resource policies.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#parse_input!/2" data-no-tooltip translate="no">parse_input!(resource, statement)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Parses a filter statement, accepting only public attributes/relationships,
+honoring field policies &amp; related resource policies, raising on errors.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prefix_refs/2" data-no-tooltip translate="no">prefix_refs(expr, path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#put_at_path/2" data-no-tooltip translate="no">put_at_path(value, list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#relationship_paths/4" data-no-tooltip translate="no">relationship_paths(filter_or_expression, include_exists? \\ false, with_refs? \\ false, expand_aggregates? \\ false)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_other_data_layer_filters/4" data-no-tooltip translate="no">run_other_data_layer_filters(domain, resource, filter, tenant)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#strict_subset_of/2" data-no-tooltip translate="no">strict_subset_of(filter, candidate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns true if the second argument is a strict subset (always returns the same or less data) of the first</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#strict_subset_of?/2" data-no-tooltip translate="no">strict_subset_of?(filter, candidate)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_simple_filter/2" data-no-tooltip translate="no">to_simple_filter(map, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Transform an expression based filter to a simple filter, which is just a list of predicates</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_aggregates/4" data-no-tooltip translate="no">update_aggregates(expression, mapper, nested_path \\ [], parent_paths \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#used_aggregates/3" data-no-tooltip translate="no">used_aggregates(filter, relationship_path \\ [], return_refs? \\ false)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#used_calculations/6" data-no-tooltip translate="no">used_calculations(filter, resource, relationship_path \\ [], calculations \\ %{}, aggregates \\ %{}, return_refs? \\ false)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L216" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Ash.Filter{expression: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), resource: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_to_filter/6">
+
+    <span id="add_to_filter/2"></span>
+
+    <span id="add_to_filter/3"></span>
+
+    <span id="add_to_filter/4"></span>
+
+    <span id="add_to_filter/5"></span>
+
+  <div class="detail-header">
+    <a href="#add_to_filter/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_to_filter(base, addition, op \\ :and, aggregates \\ %{}, calculations \\ %{}, context \\ %{})</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L836" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="add_to_filter!/6">
+
+    <span id="add_to_filter!/2"></span>
+
+    <span id="add_to_filter!/3"></span>
+
+    <span id="add_to_filter!/4"></span>
+
+    <span id="add_to_filter!/5"></span>
+
+  <div class="detail-header">
+    <a href="#add_to_filter!/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_to_filter!(base, addition, op \\ :and, aggregates \\ %{}, calculations \\ %{}, context \\ %{})</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L817" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="builtin_functions/0">
+
+  <div class="detail-header">
+    <a href="#builtin_functions/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">builtin_functions()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L219" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="builtin_operators/0">
+
+  <div class="detail-header">
+    <a href="#builtin_operators/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">builtin_operators()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L220" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="builtin_predicate_operators/0">
+
+  <div class="detail-header">
+    <a href="#builtin_predicate_operators/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">builtin_predicate_operators()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L221" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="builtins/0">
+
+  <div class="detail-header">
+    <a href="#builtins/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">builtins()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L218" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="custom_expression/2">
+
+  <div class="detail-header">
+    <a href="#custom_expression/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">custom_expression(name, args)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L3377" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="do_hydrate_refs/2">
+
+  <div class="detail-header">
+    <a href="#do_hydrate_refs/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">do_hydrate_refs(filter, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L3398" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="find/4">
+
+    <span id="find/2"></span>
+
+    <span id="find/3"></span>
+
+  <div class="detail-header">
+    <a href="#find/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find(expr, pred, ors? \\ true, ands? \\ true)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L642" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Find an expression inside of a filter that matches the provided predicate</p>
+  </section>
+</section>
+<section class="detail" id="find_simple_equality_predicate/2">
+
+  <div class="detail-header">
+    <a href="#find_simple_equality_predicate/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_simple_equality_predicate(expression, attribute)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L613" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Can be used to find a simple equality predicate on an attribute</p><p>Use this when your attribute is configured with <code class="inline">filterable? :simple_equality</code>, and you want to
+to find the value that it is being filtered on with (if any).</p>
+  </section>
+</section>
+<section class="detail" id="find_value/2">
+
+  <div class="detail-header">
+    <a href="#find_value/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_value(expr, pred)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L637" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="flat_map/2">
+
+  <div class="detail-header">
+    <a href="#flat_map/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flat_map(expression, func)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1227" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_filter/2">
+
+  <div class="detail-header">
+    <a href="#get_filter/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_filter(resource, id)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L450" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns a filter statement that would find a single record based on the input.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">get_filter</span><span class="p" data-group-id="0629181254-1">(</span><span class="nc">MyApp.Post</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0629181254-1">)</span><span class="w">
+</span><span class="p" data-group-id="0629181254-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0629181254-3">%{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0629181254-3">}</span><span class="p" data-group-id="0629181254-2">}</span><span class="w"> </span><span class="c1">#using primary key</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_filter</span><span class="p" data-group-id="0629181254-4">(</span><span class="nc">MyApp.Post</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0629181254-4">)</span><span class="w">
+</span><span class="p" data-group-id="0629181254-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0629181254-6">%{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0629181254-6">}</span><span class="p" data-group-id="0629181254-5">}</span><span class="w"> </span><span class="c1">#using primary key</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_filter</span><span class="p" data-group-id="0629181254-7">(</span><span class="nc">MyApp.Post</span><span class="p">,</span><span class="w"> </span><span class="ss">author_id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">publication_id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fred&quot;</span><span class="p" data-group-id="0629181254-7">)</span><span class="w">
+</span><span class="p" data-group-id="0629181254-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0629181254-9">%{</span><span class="ss">author_id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">publication_id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0629181254-9">}</span><span class="p" data-group-id="0629181254-8">}</span><span class="w"> </span><span class="c1"># using a unique identity</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_filter</span><span class="p" data-group-id="0629181254-10">(</span><span class="nc">MyApp.Post</span><span class="p">,</span><span class="w"> </span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fred&quot;</span><span class="p" data-group-id="0629181254-10">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w"> </span><span class="c1"># not enough information</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_function/3">
+
+  <div class="detail-header">
+    <a href="#get_function/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_function(key, resource, public?)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L4052" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_operator/1">
+
+  <div class="detail-header">
+    <a href="#get_operator/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_operator(key)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L4085" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_predicate_function/3">
+
+  <div class="detail-header">
+    <a href="#get_predicate_function/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_predicate_function(key, resource, public?)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L4042" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="hydrate_refs/2">
+
+  <div class="detail-header">
+    <a href="#hydrate_refs/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">hydrate_refs(value, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L3388" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="list_predicates/1">
+
+  <div class="detail-header">
+    <a href="#list_predicates/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">list_predicates(expression)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L2356" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="list_refs/5">
+
+    <span id="list_refs/1"></span>
+
+    <span id="list_refs/2"></span>
+
+    <span id="list_refs/3"></span>
+
+    <span id="list_refs/4"></span>
+
+  <div class="detail-header">
+    <a href="#list_refs/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">list_refs(expression, no_longer_simple? \\ false, in_an_eq? \\ false, expand_calculations? \\ false, expand_get_path? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L2202" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="map/2">
+
+  <div class="detail-header">
+    <a href="#map/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">map(filter, func)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1142" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="move_exprs_to_relationship_path/2">
+
+  <div class="detail-header">
+    <a href="#move_exprs_to_relationship_path/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_exprs_to_relationship_path(refs, path)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L3806" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="move_to_relationship_path/2">
+
+  <div class="detail-header">
+    <a href="#move_to_relationship_path/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_relationship_path(expression, relationship_path)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L3812" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="parse/3">
+
+    <span id="parse/2"></span>
+
+  <div class="detail-header">
+    <a href="#parse/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">parse(resource, statement, context \\ %{})</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L314" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Parses a filter statement</p><p>See the module documentation for more information on the supported formats for filter
+statements.</p><h3 id="parse/3-important" class="section-heading">
+  <a href="#parse/3-important" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Important</span>
+</h3>
+<p>If you are trying to validate a filter supplied from an external/untrusted source,
+be sure to use <a href="#parse_input/2"><code class="inline">parse_input/2</code></a> instead! The only difference is that it only accepts
+filters over public attributes/relationships.</p>
+  </section>
+</section>
+<section class="detail" id="parse!/3">
+
+    <span id="parse!/2"></span>
+
+  <div class="detail-header">
+    <a href="#parse!/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">parse!(resource, statement, context \\ %{})</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L290" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Parses a filter statement</p><p>See <a href="#parse/2"><code class="inline">parse/2</code></a> for more</p>
+  </section>
+</section>
+<section class="detail" id="parse_input/2">
+
+  <div class="detail-header">
+    <a href="#parse_input/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">parse_input(resource, statement)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L249" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Parses a filter statement, accepting only public attributes/relationships,
+honoring field policies &amp; related resource policies.</p><p>See <a href="#parse/2"><code class="inline">parse/2</code></a> for more</p>
+  </section>
+</section>
+<section class="detail" id="parse_input!/2">
+
+  <div class="detail-header">
+    <a href="#parse_input!/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">parse_input!(resource, statement)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L275" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Parses a filter statement, accepting only public attributes/relationships,
+honoring field policies &amp; related resource policies, raising on errors.</p><p>See <a href="#parse_input/2"><code class="inline">parse_input/2</code></a> for more</p>
+  </section>
+</section>
+<section class="detail" id="prefix_refs/2">
+
+  <div class="detail-header">
+    <a href="#prefix_refs/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prefix_refs(expr, path)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1543" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="put_at_path/2">
+
+  <div class="detail-header">
+    <a href="#put_at_path/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">put_at_path(value, list)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L814" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="relationship_paths/4">
+
+    <span id="relationship_paths/1"></span>
+
+    <span id="relationship_paths/2"></span>
+
+    <span id="relationship_paths/3"></span>
+
+  <div class="detail-header">
+    <a href="#relationship_paths/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">relationship_paths(filter_or_expression, include_exists? \\ false, with_refs? \\ false, expand_aggregates? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1760" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="run_other_data_layer_filters/4">
+
+  <div class="detail-header">
+    <a href="#run_other_data_layer_filters/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_other_data_layer_filters(domain, resource, filter, tenant)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1336" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="strict_subset_of/2">
+
+  <div class="detail-header">
+    <a href="#strict_subset_of/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">strict_subset_of(filter, candidate)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L883" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns true if the second argument is a strict subset (always returns the same or less data) of the first</p>
+  </section>
+</section>
+<section class="detail" id="strict_subset_of?/2">
+
+  <div class="detail-header">
+    <a href="#strict_subset_of?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">strict_subset_of?(filter, candidate)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L895" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="to_simple_filter/2">
+
+    <span id="to_simple_filter/1"></span>
+
+  <div class="detail-header">
+    <a href="#to_simple_filter/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">to_simple_filter(map, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L600" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Transform an expression based filter to a simple filter, which is just a list of predicates</p><p>Options:</p><ul><li><code class="inline">:skip_invalid?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - If an invalid filter expression is reached that can't be used with a simple filter (like an <code class="inline">or</code> statement, or a non-predicate expression), it will be ignored instead of raising an error. The default value is <code class="inline">false</code>.</li></ul>
+  </section>
+</section>
+<section class="detail" id="update_aggregates/4">
+
+    <span id="update_aggregates/2"></span>
+
+    <span id="update_aggregates/3"></span>
+
+  <div class="detail-header">
+    <a href="#update_aggregates/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_aggregates(expression, mapper, nested_path \\ [], parent_paths \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L1269" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="used_aggregates/3">
+
+    <span id="used_aggregates/1"></span>
+
+    <span id="used_aggregates/2"></span>
+
+  <div class="detail-header">
+    <a href="#used_aggregates/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">used_aggregates(filter, relationship_path \\ [], return_refs? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L780" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="used_calculations/6">
+
+    <span id="used_calculations/2"></span>
+
+    <span id="used_calculations/3"></span>
+
+    <span id="used_calculations/4"></span>
+
+    <span id="used_calculations/5"></span>
+
+  <div class="detail-header">
+    <a href="#used_calculations/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">used_calculations(filter, resource, relationship_path \\ [], calculations \\ %{}, aggregates \\ %{}, return_refs? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/filter/filter.ex#L716" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

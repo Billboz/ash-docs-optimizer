@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Project Structure — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/development/project-structure.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Project Structure</span>
+  </h1>
+
+<p>In this guide we'll discuss some best practices for how to structure your project. These recommendations align well with <a href="https://hexdocs.pm/elixir/1.16.2/naming-conventions.html#casing">Elixir conventions</a> around file and module naming. These conventions allow for a logical coupling of module and file names, and help keep your project organized and easy to navigate.</p><blockquote><h3 id="these-are-recommendations" class="info section-heading">
+  <a href="#these-are-recommendations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">These are recommendations</span>
+</h3>
+<p>None of the things we show you here are <em>requirements</em>, only recommendations.
+Feel free to plot your own course here. Ash avoids any pattern that requires
+you to name a  file or module in a specific way, or put them in a specific
+place. This ensures that all connections between one module and another
+module are <em>explicit</em> rather than <em>implicit</em>.</p></blockquote><pre><code class="makeup elixir" translate="no"><span class="n">lib</span><span class="o">/</span><span class="w"> </span><span class="c1"># top level lib folder for your whole project</span><span class="w">
+</span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">my_app</span><span class="o">/</span><span class="w"> </span><span class="c1"># your app&#39;s main namespace</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">accounts</span><span class="o">/</span><span class="w"> </span><span class="c1"># The Accounts context</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">user</span><span class="o">/</span><span class="w"> </span><span class="c1"># resource w/ additional files</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># The resource file</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">token</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># A resource without additional files</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">password_helper</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># A non-resource file</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">accounts</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># The Accounts domain module</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">helpdesk</span><span class="o">/</span><span class="w"> </span><span class="c1"># A Helpdesk context</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">notification</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># A resource without additional files</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">other_file</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># A non-resource file</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">ticket</span><span class="o">/</span><span class="w"> </span><span class="c1"># A resource with additional files</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">preparations</span><span class="o">/</span><span class="w"> </span><span class="c1"># Components of the resource, grouped by type</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">changes</span><span class="o">/</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">checks</span><span class="o">/</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">ticket</span><span class="o">.</span><span class="n">ex</span><span class="w"> </span><span class="c1"># The resource file</span></code></pre><p>Generally speaking, your Ash application lives in the standard place within your elixir application, i.e <code class="inline">lib/my_app</code>. Within that folder, you create one folder for each context that you have. Each context has an <a href="Ash.Domain.html"><code class="inline">Ash.Domain</code></a> module within it, and the resources that live within that context. All resource interaction ultimately goes through a domain module.</p><p>Alongside the domain module, you have your resources, as well as any other files used in the context. If a resource has any additional files that are used to implement it, they should be placed in a folder with the same name as the resource, in subfolders grouping the files by type. Feel free to choose another logical grouping, but we've found by-type to be effective.</p><h1>Where do I put X thing</h1><p>The purpose of Ash is to be both the model of and the interface to your domain logic (A.K.A business logic). Applying this generally looks like building as much of your domain logic &quot;behind&quot; your resources. This does not mean, however, that everything has to go <em>inside of</em> your resources. For example, if you have a <code class="inline">Purchase</code> resource, and you want to be able to display a list of purchases that were taxable, and also calculate the percentage of the purchase that was taxable. You might have an action called <code class="inline">:taxable</code> and a calculation called <code class="inline">:percentage_tax</code>.</p><h2 id="example-1-reads-calculations" class="section-heading">
+  <a href="#example-1-reads-calculations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example 1: Reads &amp; Calculations</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="7455504539-1">do</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+
+  </span><span class="n">read</span><span class="w"> </span><span class="ss">:taxable</span><span class="w"> </span><span class="k" data-group-id="7455504539-2">do</span><span class="w">
+    </span><span class="n">filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="7455504539-3">(</span><span class="n">taxable</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7455504539-3">)</span><span class="w">
+  </span><span class="k" data-group-id="7455504539-2">end</span><span class="w">
+</span><span class="k" data-group-id="7455504539-1">end</span><span class="w">
+
+</span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="7455504539-4">do</span><span class="w">
+  </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:percentage_tax</span><span class="p">,</span><span class="w"> </span><span class="ss">:decimal</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="7455504539-5">(</span><span class="w">
+    </span><span class="n">sum</span><span class="p" data-group-id="7455504539-6">(</span><span class="n">line_items</span><span class="p">,</span><span class="w"> </span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="ss">:amount</span><span class="p">,</span><span class="w"> </span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7455504539-7">[</span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="n">tax</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7455504539-7">]</span><span class="p" data-group-id="7455504539-6">)</span><span class="w"> </span><span class="o">/</span><span class="w">
+    </span><span class="n">sum</span><span class="p" data-group-id="7455504539-8">(</span><span class="n">line_items</span><span class="p">,</span><span class="w"> </span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="ss">:amount</span><span class="p" data-group-id="7455504539-8">)</span><span class="w">
+  </span><span class="p" data-group-id="7455504539-5">)</span><span class="w">
+</span><span class="k" data-group-id="7455504539-4">end</span></code></pre><p>In practice, you may not need the <code class="inline">taxable</code> action, i.e perhaps you simply want a &quot;taxable&quot; checkbox on a list view in your application, in which case you may use the primary read, or some other read like <code class="inline">:transaction_report</code>. You would then, on the consumer, provide the filter for <code class="inline">taxable == true</code>, and load the <code class="inline">:percentage_tax</code> calculation.</p><h2 id="example-2-using-external-data-in-create-actions" class="section-heading">
+  <a href="#example-2-using-external-data-in-create-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example 2: Using external data in create actions</span>
+</h2>
+<p>Lets say you want the user to fill in a github issue id, and you will fetch information from that github issue to use as part of creating a &quot;ticket&quot; in your system.. You might be tempted to do something like this in a LiveView:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="1099262565-1">(</span><span class="s">&quot;link_ticket&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1099262565-2">%{</span><span class="s">&quot;issue_id&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">issue_id</span><span class="p" data-group-id="1099262565-2">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="1099262565-1">)</span><span class="w"> </span><span class="k" data-group-id="1099262565-3">do</span><span class="w">
+  </span><span class="n">issue_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GithubApi</span><span class="o">.</span><span class="n">get_issue</span><span class="p" data-group-id="1099262565-4">(</span><span class="n">issue_id</span><span class="p" data-group-id="1099262565-4">)</span><span class="w">
+
+  </span><span class="nc">MyApp.Support</span><span class="o">.</span><span class="n">update_ticket</span><span class="p" data-group-id="1099262565-5">(</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">ticket_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1099262565-6">%{</span><span class="ss">issue_info</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1099262565-7">%{</span><span class="w">
+    </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="n">issue_info</span><span class="o">.</span><span class="n">title</span><span class="p">,</span><span class="w">
+    </span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="n">issue_info</span><span class="o">.</span><span class="n">body</span><span class="w">
+  </span><span class="p" data-group-id="1099262565-7">}</span><span class="p" data-group-id="1099262565-6">}</span><span class="p" data-group-id="1099262565-5">)</span><span class="w">
+</span><span class="k" data-group-id="1099262565-3">end</span></code></pre><p>But this is putting business logic inside of your UI/representation layer. Instead, you should write an action and put this logic inside of it.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Ticket.FetchIssueInfo</span><span class="w"> </span><span class="k" data-group-id="7087752185-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource.Change</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">change</span><span class="p" data-group-id="7087752185-2">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="7087752185-2">)</span><span class="w"> </span><span class="k" data-group-id="7087752185-3">do</span><span class="w">
+    </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">before_transaction</span><span class="p" data-group-id="7087752185-4">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7087752185-5">fn</span><span class="w"> </span><span class="n">changeset</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="n">issue_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GithubApi</span><span class="o">.</span><span class="n">get_issue</span><span class="p" data-group-id="7087752185-6">(</span><span class="n">changeset</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">issue_id</span><span class="p" data-group-id="7087752185-6">)</span><span class="w">
+
+      </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">force_change_attributes</span><span class="p" data-group-id="7087752185-7">(</span><span class="n">changeset</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7087752185-8">%{</span><span class="w">
+        </span><span class="ss">issue_info</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7087752185-9">%{</span><span class="w">
+          </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="n">issue_info</span><span class="o">.</span><span class="n">title</span><span class="p">,</span><span class="w">
+          </span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="n">issue_info</span><span class="o">.</span><span class="n">body</span><span class="w">
+        </span><span class="p" data-group-id="7087752185-9">}</span><span class="w">
+      </span><span class="p" data-group-id="7087752185-8">}</span><span class="p" data-group-id="7087752185-7">)</span><span class="w">
+    </span><span class="k" data-group-id="7087752185-5">end</span><span class="p" data-group-id="7087752185-4">)</span><span class="w">
+  </span><span class="k" data-group-id="7087752185-3">end</span><span class="w">
+</span><span class="k" data-group-id="7087752185-1">end</span></code></pre><p>Then you'd have an action like this:</p><pre><code class="makeup elixir" translate="no"><span class="n">update</span><span class="w"> </span><span class="ss">:link_ticket</span><span class="w"> </span><span class="k" data-group-id="3718529357-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:issue_id</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+
+  </span><span class="n">change</span><span class="w"> </span><span class="nc">MyApp.Ticket.FetchIssueInfo</span><span class="w">
+</span><span class="k" data-group-id="3718529357-1">end</span></code></pre><p>This cleanly encapsulates the operation behind the resource, even while the code for fetching the github issue still lives in a <code class="inline">GitHubApi</code> module.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="policies.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Policies
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="generators.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Generators
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/development/project-structure.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

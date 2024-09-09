@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Expressions — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/reference/expressions.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Expressions</span>
+  </h1>
+
+<p>Ash expressions are used in various places like calculations, filters, and policies, and are meant to be portable representations of elixir expressions. You can create an expression using the <a href="Ash.Expr.html#expr/1"><code class="inline">Ash.Expr.expr/1</code></a> macro, like so:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Expr</span><span class="o">.</span><span class="n">expr</span><span class="p" data-group-id="7456680622-1">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7456680622-1">)</span><span class="w">
+</span><span class="nc">Ash.Expr</span><span class="o">.</span><span class="n">expr</span><span class="p" data-group-id="7456680622-2">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p" data-group-id="7456680622-2">)</span><span class="w">
+</span><span class="nc">Ash.Expr</span><span class="o">.</span><span class="n">expr</span><span class="p" data-group-id="7456680622-3">(</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">subtitle</span><span class="p" data-group-id="7456680622-3">)</span></code></pre><blockquote><h3 id="ash-expressions-are-sql-ish" class="info section-heading">
+  <a href="#ash-expressions-are-sql-ish" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Ash Expressions are SQL-ish</span>
+</h3>
+<p>Ash expressions have some interesting properties in their evaluation, primarily because they are made to be
+portable, i.e executable in some data layer (like SQL) or executable in Elixir. In general, these expressions
+will behave the same way they do in Elixir. The primary difference is how <code class="inline">nil</code> values work. They behave the way
+that <code class="inline">NULL</code> values behave in SQL. This is primarily because this pattern is easier to replicate to various popular
+data layers, and is generally safer when using expressions for things like authentication. The practical
+implications of this are that <code class="inline">nil</code> values will &quot;poison&quot; many expressions, and cause them to return <code class="inline">nil</code>.
+For example, <code class="inline">x + nil</code> would always evaluate to <code class="inline">nil</code>. Additionally, <code class="inline">true and nil</code> will always result in
+<code class="inline">nil</code>, <em>this is also true with or and not</em>, i.e <code class="inline">true or nil</code> will return <code class="inline">nil</code>, and <code class="inline">not nil</code> will return <code class="inline">nil</code>.</p><p>Additionally, atoms and strings compare as if the atom was a string. This is because most external data layers
+do not know about atoms, and so they are converted to strings before comparison.</p></blockquote><h2 id="operators" class="section-heading">
+  <a href="#operators" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Operators</span>
+</h2>
+<p>The following operators are available and they behave the same as they do in Elixir, except for the <code class="inline">nil</code> addendum above.</p><ul><li><code class="inline">==</code></li><li><code class="inline">!=</code></li><li><code class="inline">&gt;</code></li><li><code class="inline">&gt;=</code></li><li><code class="inline">&lt;</code></li><li><code class="inline">&lt;=</code></li><li><code class="inline">in</code></li><li><code class="inline">*</code></li><li><code class="inline">-</code></li><li><code class="inline">/</code></li><li><code class="inline">&lt;&gt;</code></li><li><code class="inline">||</code></li><li><code class="inline">&amp;&amp;</code></li><li><p><code class="inline">is_nil</code> | Only works as an operator in maps/keyword list syntax. i.e <code class="inline">[x: [is_nil: true]]</code></p></li></ul><h2 id="functions" class="section-heading">
+  <a href="#functions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Functions</span>
+</h2>
+<p>The following functions are built in. Data Layers can add their own functions to expressions. For example, <code class="inline">AshPostgres</code> adds <code class="inline">trigram_similarity</code> function.</p><p>The following functions are built in:</p><ul><li><p><code class="inline">if</code> | Works like elixir's <code class="inline">if</code>.</p></li><li><p><a href="https://hexdocs.pm/elixir/Kernel.html#is_nil/1"><code class="inline">is_nil/1</code></a> | Works like elixir's <code class="inline">is_nil</code></p></li><li><p><code class="inline">get_path/2</code> | i.e <code class="inline">get_path(value, [&quot;foo&quot;, &quot;bar&quot;])</code>. This is what expressions like <code class="inline">value[:foo][&quot;bar&quot;]</code> are turned into under the hood.</p></li><li><p><code class="inline">contains/2</code> | if one string contains another string, i.e <code class="inline">contains(&quot;fred&quot;, &quot;red&quot;)</code></p></li><li><p><a href="https://hexdocs.pm/elixir/Kernel.html#length/1"><code class="inline">length/1</code></a> | the length of a list, i.e. <code class="inline">length([:foo, :bar])</code></p></li><li><p><code class="inline">type/2</code> | Cast a given value to a specific type, i.e <code class="inline">type(^arg(:id), :uuid)</code> or <code class="inline">type(integer_field, :string)</code></p></li><li><p><code class="inline">string_downcase/1</code> | Downcases a string</p></li><li><p><code class="inline">string_join/1</code> | Concatenates a list of strings, and ignores any nil values</p></li><li><p><code class="inline">string_join/2</code> | As above, but with a joiner</p></li><li><p><code class="inline">string_split/1</code> | Splits a string on spaces</p></li><li><p><code class="inline">string_split/2</code> | As above, but with a specific delimiter</p></li><li><p><code class="inline">string_split/3</code> | As above, but with options. See the function for the available options.</p></li><li><p><code class="inline">string_length/1</code> | Returns the length of a given string, as reported by <a href="https://hexdocs.pm/elixir/String.html#length/1"><code class="inline">String.length/1</code></a></p></li><li><p><code class="inline">string_trim/1</code> | Trims unicode whitespace from the beginning and the end of a string</p></li><li><p><code class="inline">at/2</code> | Get an element from a list, i.e <code class="inline">at(list, 1)</code></p></li><li><p><a href="https://hexdocs.pm/elixir/Kernel.html#round/1"><code class="inline">round/1</code></a> | Round a float, decimal or int to 0 precision, i.e <code class="inline">round(num)</code></p></li><li><p><code class="inline">round/2</code> | Round a float, decimal or int to the provided precision or less, i.e <code class="inline">round(1.1234, 3) == 1.1234</code> and <code class="inline">round(1.12, 3) == 1.12</code></p></li><li><p>String interpolation | <code class="inline">&quot;#{first_name} #{last_name}&quot;</code>, is remapped to the equivalent usage of <code class="inline">&lt;&gt;</code></p></li><li><p><code class="inline">fragment/*</code> | Creates a fragment of a data layer expression. See the section on fragments below.</p></li></ul><h2 id="fragments" class="section-heading">
+  <a href="#fragments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Fragments</span>
+</h2>
+<p>Fragments come in two forms.</p><h2 id="string-fragments" class="section-heading">
+  <a href="#string-fragments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">String Fragments</span>
+</h2>
+<p>For SQL/query-backed data layers, they will be a string with question marks for interpolation. For example: <code class="inline">fragment(&quot;(? + ?)&quot;, foo, bar)</code>.</p><h2 id="function-fragments" class="section-heading">
+  <a href="#function-fragments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Function Fragments</span>
+</h2>
+<p>For elixir-backed data layers, they will be a function or an MFA that will be called with the provided arguments. For example: <code class="inline">fragment(&amp;Module.add/2, foo, bar)</code> or <code class="inline">fragment({Module, :add, []}, foo, bar)</code>. When using anonymous functions, you can <em>only</em> use the format <code class="inline">&amp;Module.function/arity</code>. <code class="inline">&amp;Module.add/2</code> is okay, but <code class="inline">fn a, b -&gt; Module.add(a, b) end</code> is not.</p><h2 id="sub-expressions" class="section-heading">
+  <a href="#sub-expressions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Sub-expressions</span>
+</h2>
+<ul><li><p><code class="inline">exists/2</code> | <code class="inline">exists(foo.bar, name == &quot;fred&quot;)</code> takes an expression scoped to the destination resource, and checks if any related entry matches. See the section on <code class="inline">exists</code> below.</p></li><li><p><code class="inline">path.exists/2</code> | Same as <code class="inline">exists</code> but the source of the relationship is itself a nested relationship. See the section on <code class="inline">exists</code> below.</p></li><li><p><code class="inline">parent/1</code> | Allows an expression scoped to a resource to refer to the &quot;outer&quot; context. Used in relationship filters and <code class="inline">exists</code></p></li></ul><h2 id="datetime-functions" class="section-heading">
+  <a href="#datetime-functions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">DateTime Functions</span>
+</h2>
+<ul><li><p><code class="inline">now/0</code> | Evaluates to the current time when the expression is evaluated</p></li><li><p><code class="inline">today/0</code> | Evaluates to the current date when the expression is evaluated</p></li><li><p><code class="inline">ago/2</code> | i.e <code class="inline">deleted_at &gt; ago(7, :day)</code>. The available time intervals are documented in <a href="Ash.Type.DurationName.html"><code class="inline">Ash.Type.DurationName</code></a></p></li><li><p><code class="inline">from_now/2</code> | Same as <code class="inline">ago</code> but adds instead of subtracting</p></li><li><p><code class="inline">datetime_add/3</code> | add an interval to a datetime, i.e <code class="inline">datetime_add(^datetime, 10, :hour)</code></p></li><li><p><code class="inline">date/3</code> | add an interval to a date, i.e <code class="inline">datetime_add(^date, 3, :day)</code></p></li></ul><h2 id="primitives" class="section-heading">
+  <a href="#primitives" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Primitives</span>
+</h2>
+<ul><li><code class="inline">cond</code> - <code class="inline">cond</code> is transformed to a series of <code class="inline">if</code> expressions under the hood</li><li><code class="inline">item[:key] or item[&quot;key&quot;]</code> - accesses keys in a map. In both cases, it prefers a matching atom key, falling back to a matching string key. This is to aid with data stores that store embeds as JSON with string keys (like AshPostgres), so that this expression behaves the same in the data layer as it does in Elixir.</li></ul><h2 id="escape-hatches" class="section-heading">
+  <a href="#escape-hatches" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Escape Hatches</span>
+</h2>
+<ul><li><code class="inline">lazy/1</code> - Takes an MFA and evaluates it just before running the query. This is important for calculations, because the <code class="inline">expression/2</code> callback should be <em>stable</em> (returns the same value given the same input). For example <code class="inline">lazy({ULID, :generate, [timestamp_input]})</code></li></ul><h2 id="inline-aggregates" class="section-heading">
+  <a href="#inline-aggregates" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Inline Aggregates</span>
+</h2>
+<p>Aggregates can be referenced in-line, with their relationship path specified and any options provided that match the options given to <a href="Ash.Query.Aggregate.html#new/4"><code class="inline">Ash.Query.Aggregate.new/4</code></a>. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">calculate</span><span class="w"> </span><span class="ss">:grade</span><span class="p">,</span><span class="w"> </span><span class="ss">:decimal</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="4904371141-1">(</span><span class="w">
+  </span><span class="n">count</span><span class="p" data-group-id="4904371141-2">(</span><span class="n">answers</span><span class="p">,</span><span class="w"> </span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4904371141-3">[</span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="4904371141-4">(</span><span class="n">correct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="4904371141-4">)</span><span class="p" data-group-id="4904371141-3">]</span><span class="p" data-group-id="4904371141-2">)</span><span class="w"> </span><span class="o">/</span><span class="w">
+  </span><span class="n">count</span><span class="p" data-group-id="4904371141-5">(</span><span class="n">answers</span><span class="p">,</span><span class="w"> </span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4904371141-6">[</span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="4904371141-7">(</span><span class="n">correct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="4904371141-7">)</span><span class="p" data-group-id="4904371141-6">]</span><span class="p" data-group-id="4904371141-5">)</span><span class="w">
+</span><span class="p" data-group-id="4904371141-1">)</span></code></pre><p>The available aggregate kinds can also be seen in the <a href="Ash.Query.Aggregate.html"><code class="inline">Ash.Query.Aggregate</code></a> module documentation.</p><h2 id="templates" class="section-heading">
+  <a href="#templates" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Templates</span>
+</h2>
+<p>Most of the time, when you are using an expression, you will actually be creating a <code class="inline">template</code>. In this template, you have a few references that can be used, which will be replaced when before the expression is evaluated. The following references are available.</p><pre><code class="makeup elixir" translate="no"><span class="o">^</span><span class="n">actor</span><span class="p" data-group-id="0193536436-1">(</span><span class="ss">:key</span><span class="p" data-group-id="0193536436-1">)</span><span class="w"> </span><span class="c1"># equivalent to `get_in(actor || %{}, [:key])`</span><span class="w">
+</span><span class="o">^</span><span class="n">actor</span><span class="p" data-group-id="0193536436-2">(</span><span class="p" data-group-id="0193536436-3">[</span><span class="ss">:key1</span><span class="p">,</span><span class="w"> </span><span class="ss">:key2</span><span class="p" data-group-id="0193536436-3">]</span><span class="p" data-group-id="0193536436-2">)</span><span class="w"> </span><span class="c1"># equivalent to `get_in(actor || %{}, [:key, :key2])`</span><span class="w">
+</span><span class="o">^</span><span class="n">arg</span><span class="p" data-group-id="0193536436-4">(</span><span class="ss">:arg_name</span><span class="p" data-group-id="0193536436-4">)</span><span class="w"> </span><span class="c1"># equivalent to `Map.get(arguments, :arg_name)`</span><span class="w">
+</span><span class="o">^</span><span class="n">context</span><span class="p" data-group-id="0193536436-5">(</span><span class="ss">:key</span><span class="p" data-group-id="0193536436-5">)</span><span class="w"> </span><span class="c1"># equivalent to `get_in(context, :key)`</span><span class="w">
+</span><span class="o">^</span><span class="n">context</span><span class="p" data-group-id="0193536436-6">(</span><span class="p" data-group-id="0193536436-7">[</span><span class="ss">:key1</span><span class="p">,</span><span class="w"> </span><span class="ss">:key2</span><span class="p" data-group-id="0193536436-7">]</span><span class="p" data-group-id="0193536436-6">)</span><span class="w"> </span><span class="c1"># equivalent to `get_in(context, [:key1, :key2])`</span><span class="w">
+</span><span class="o">^</span><span class="n">ref</span><span class="p" data-group-id="0193536436-8">(</span><span class="ss">:key</span><span class="p" data-group-id="0193536436-8">)</span><span class="w"> </span><span class="c1"># equivalent to referring to `key`. Allows for dynamic references</span><span class="w">
+</span><span class="o">^</span><span class="n">ref</span><span class="p" data-group-id="0193536436-9">(</span><span class="p" data-group-id="0193536436-10">[</span><span class="ss">:path</span><span class="p" data-group-id="0193536436-10">]</span><span class="p">,</span><span class="w"> </span><span class="ss">:key</span><span class="p" data-group-id="0193536436-9">)</span><span class="w"> </span><span class="c1"># equivalent to referring to `path.key`. Allows for dynamic references with dynamic (or static) paths.</span></code></pre><h2 id="custom-expressions" class="section-heading">
+  <a href="#custom-expressions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Custom Expressions</span>
+</h2>
+<p>Custom expressions allow you to extend Ash's expression language with your own expressions. To see more, see <a href="Ash.CustomExpression.html"><code class="inline">Ash.CustomExpression</code></a>. To add a custom expression, configure it and recompile ash. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">config</span><span class="w"> </span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="ss">:custom_expressions</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1767971578-1">[</span><span class="w">
+  </span><span class="nc">MyApp.CustomExpression</span><span class="w">
+</span><span class="p" data-group-id="1767971578-1">]</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">deps</span><span class="o">.</span><span class="n">compile</span><span class="w"> </span><span class="n">ash</span><span class="w"> </span><span class="o">--</span><span class="n">force</span></code></pre><p>These expressions will be available across all usages of Ash expressions within your application.</p><h2 id="filter-semantics-joins" class="section-heading">
+  <a href="#filter-semantics-joins" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Filter semantics &amp; joins</span>
+</h2>
+<p>The semantics of Ash filters are probably slightly different than what you are used to, and they are important to understand. Every filter expression is always talking about a single row, potentially &quot;joined&quot; to single related rows. By referencing relationships, you are implicitly doing a join. For those familiar with SQL terminology, it is equivalent to a left join, although AshPostgres can detect when it is safe to do an inner join (for performance reasons). Lets use an example of <code class="inline">posts</code> and <code class="inline">comments</code>.</p><p>Given a filter like the following:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2782324770-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">comments</span><span class="o">.</span><span class="n">points</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">comments</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;elixir&quot;</span><span class="p" data-group-id="2782324770-1">)</span></code></pre><p>The filter refers to a <em>single post/comment/tag combination</em>. So in english, this is &quot;posts where they have a comment with more than 10 points and <em>that same comment</em> has a tag with the name <code class="inline">elixir</code>&quot;. What this also means is that filters like the above do not compose nicely when new filters are added. For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">has_comment_with_more_points_than</span><span class="p" data-group-id="9006560872-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">score</span><span class="p" data-group-id="9006560872-1">)</span><span class="w"> </span><span class="k" data-group-id="9006560872-2">do</span><span class="w">
+  </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="9006560872-3">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">comments</span><span class="o">.</span><span class="n">points</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">^</span><span class="n">score</span><span class="p" data-group-id="9006560872-3">)</span><span class="w">
+</span><span class="k" data-group-id="9006560872-2">end</span><span class="w">
+
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">has_comment_tagged</span><span class="p" data-group-id="9006560872-4">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p" data-group-id="9006560872-4">)</span><span class="w"> </span><span class="k" data-group-id="9006560872-5">do</span><span class="w">
+  </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="9006560872-6">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">comments</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">tag</span><span class="p" data-group-id="9006560872-6">)</span><span class="w">
+</span><span class="k" data-group-id="9006560872-5">end</span><span class="w">
+
+</span><span class="nc">Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="n">has_comment_with_more_points_than</span><span class="p" data-group-id="9006560872-7">(</span><span class="mi">10</span><span class="p" data-group-id="9006560872-7">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="n">has_comment_tagged</span><span class="p" data-group-id="9006560872-8">(</span><span class="s">&quot;elixir&quot;</span><span class="p" data-group-id="9006560872-8">)</span></code></pre><p>That code <em>seems</em> like it ought to produce a filter over <code class="inline">Post</code> that would give us any post with a comment having more than 10 points, <em>and</em> with a comment tagged <code class="inline">elixir</code>. That is not the same thing as having a <em>single</em> comment that meets both those criteria. So how do we make this better?</p><h3 id="exists" class="section-heading">
+  <a href="#exists" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Exists</span>
+</h3>
+<p>Lets rewrite the above using exists:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">has_comment_with_more_points_than</span><span class="p" data-group-id="5461955318-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">score</span><span class="p" data-group-id="5461955318-1">)</span><span class="w"> </span><span class="k" data-group-id="5461955318-2">do</span><span class="w">
+  </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="5461955318-3">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">exists</span><span class="p" data-group-id="5461955318-4">(</span><span class="n">comments</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">^</span><span class="n">score</span><span class="p" data-group-id="5461955318-4">)</span><span class="p" data-group-id="5461955318-3">)</span><span class="w">
+</span><span class="k" data-group-id="5461955318-2">end</span><span class="w">
+
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">has_comment_tagged</span><span class="p" data-group-id="5461955318-5">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p" data-group-id="5461955318-5">)</span><span class="w"> </span><span class="k" data-group-id="5461955318-6">do</span><span class="w">
+  </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="5461955318-7">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">exists</span><span class="p" data-group-id="5461955318-8">(</span><span class="n">comments</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">tag</span><span class="p" data-group-id="5461955318-8">)</span><span class="w">
+</span><span class="k">end</span><span class="w">
+
+</span><span class="nc">Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="n">has_comment_with_more_points_than</span><span class="p" data-group-id="5461955318-9">(</span><span class="mi">10</span><span class="p" data-group-id="5461955318-9">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="n">has_comment_tagged</span><span class="p" data-group-id="5461955318-10">(</span><span class="s">&quot;elixir&quot;</span><span class="p" data-group-id="5461955318-10">)</span></code></pre><p>Now, they will compose properly! Generally speaking, you should use exists when you are filtering across any relationships that are <code class="inline">to_many</code> relationships *even if you don't expect your filter to be composed. Currently, the filter syntax does not minimize(combine) these <code class="inline">exists/2</code> statements, but doing so is not complex and can be added. While unlikely, please lodge an issue if you see any performance issues with <code class="inline">exists</code>.</p><h3 id="exists-at-path" class="section-heading">
+  <a href="#exists-at-path" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Exists at path</span>
+</h3>
+<p>Sometimes, you want the ability to say that some given row must have an existing related entry matching a filter. For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="0029389441-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="o">.</span><span class="n">exists</span><span class="p" data-group-id="0029389441-2">(</span><span class="n">roles</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:admin</span><span class="p" data-group-id="0029389441-2">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">author</span><span class="o">.</span><span class="n">active</span><span class="p" data-group-id="0029389441-1">)</span></code></pre><p>While the above is not common, it can be useful in some specific circumstances, and is used under the hood by the policy authorizer when combining the filters of various resources to create a single filter.</p><h2 id="portability" class="section-heading">
+  <a href="#portability" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Portability</span>
+</h2>
+<p>Ash expressions being portable is more important than it sounds. For example, if you were using AshPostgres and had the following calculation, which is an expression capable of being run in elixir or translated to SQL:</p><pre><code class="makeup elixir" translate="no"><span class="n">calculate</span><span class="w"> </span><span class="ss">:full_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="9426790295-1">(</span><span class="n">first_name</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">last_name</span><span class="p" data-group-id="9426790295-1">)</span></code></pre><p>And you did something like the following:</p><pre><code class="makeup elixir" translate="no"><span class="nc">User</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="0704608985-1">(</span><span class="ss">:full_name</span><span class="p" data-group-id="0704608985-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="0704608985-2">(</span><span class="ss">:full_name</span><span class="p" data-group-id="0704608985-2">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Accounts</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="0704608985-3">(</span><span class="p" data-group-id="0704608985-3">)</span></code></pre><p>You would see that it ran a SQL query with the <code class="inline">full_name</code> calculation as SQL. This allows for sorting on that value. However, if you had something like this:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># data can be loaded in the query like above, or on demand later</span><span class="w">
+</span><span class="nc">Accounts</span><span class="o">.</span><span class="n">load!</span><span class="p" data-group-id="1660554355-1">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="ss">:full_name</span><span class="p">,</span><span class="w"> </span><span class="ss">reuse_values?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1660554355-1">)</span></code></pre><p>you would see that no SQL queries are run. The calculation is run directly in Elixir without needing to visit the database.</p><h2 id="parent" class="section-heading">
+  <a href="#parent" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Parent</span>
+</h2>
+<p><code class="inline">Parent</code> is a way to &quot;jump out&quot; of a scoped expression. Here are some examples:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="6631002811-1">(</span><span class="n">exists</span><span class="p" data-group-id="6631002811-2">(</span><span class="n">open_tickets</span><span class="p">,</span><span class="w"> </span><span class="n">severity</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">parent</span><span class="p" data-group-id="6631002811-3">(</span><span class="n">severity_threshold</span><span class="p" data-group-id="6631002811-3">)</span><span class="p" data-group-id="6631002811-2">)</span><span class="p" data-group-id="6631002811-1">)</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">has_many</span><span class="w"> </span><span class="ss">:relevant_tickets</span><span class="p">,</span><span class="w"> </span><span class="nc">Ticket</span><span class="w"> </span><span class="k" data-group-id="6184209616-1">do</span><span class="w">
+  </span><span class="n">no_attributes?</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="c1"># this says that there is no matching source_attribute and destination_attribute on this relationship</span><span class="w">
+  </span><span class="n">filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="6184209616-2">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:open</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">severity</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">parent</span><span class="p" data-group-id="6184209616-3">(</span><span class="n">severity_threshold</span><span class="p" data-group-id="6184209616-3">)</span><span class="p" data-group-id="6184209616-2">)</span><span class="w">
+</span><span class="k" data-group-id="6184209616-1">end</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">count</span><span class="w"> </span><span class="ss">:count_of_relevant_tickets</span><span class="p">,</span><span class="w"> </span><span class="ss">:open_tickets</span><span class="w"> </span><span class="k" data-group-id="9460654383-1">do</span><span class="w">
+  </span><span class="n">filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="9460654383-2">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:open</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">severity</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">parent</span><span class="p" data-group-id="9460654383-3">(</span><span class="n">severity_threshold</span><span class="p" data-group-id="9460654383-3">)</span><span class="p" data-group-id="9460654383-2">)</span><span class="w">
+</span><span class="k" data-group-id="9460654383-1">end</span></code></pre><h3 id="referencing-related-values" class="section-heading">
+  <a href="#referencing-related-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Referencing related values</span>
+</h3>
+<p>Related values can be references using dot delimiters, i.e <code class="inline">Ash.Query.filter(user.first_name == &quot;fred&quot;)</code>.
+When referencing related values in filters, if the reference is a <code class="inline">has_one</code> or <code class="inline">belongs_to</code>, the filter does exactly what it looks like (matches if the related value matches). If it is a <code class="inline">has_many</code> or a <code class="inline">many_to_many</code>, it matches if any of the related records match.</p><h3 id="referencing-aggregates-and-calculations" class="section-heading">
+  <a href="#referencing-aggregates-and-calculations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Referencing aggregates and calculations</span>
+</h3>
+<p>Aggregates are simple, as all aggregates can be referenced in filter expressions (if you are using a data layer that supports aggregates).</p><p>For calculations, only those that define an expression can be referenced in other expressions.</p><p>Here are some examples:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># given a `full_name` calculation</span><span class="w">
+
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2812391552-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="n">full_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Hob Goblin&quot;</span><span class="p" data-group-id="2812391552-1">)</span><span class="w">
+
+</span><span class="c1"># given a `full_name` calculation that accepts an argument called `delimiter`</span><span class="w">
+
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2812391552-2">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="n">full_name</span><span class="p" data-group-id="2812391552-3">(</span><span class="ss">delimiter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~&quot;</span><span class="p" data-group-id="2812391552-3">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Hob~Goblin&quot;</span><span class="p" data-group-id="2812391552-2">)</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="glossary.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Glossary
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ash-resource.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: Ash.Resource.Dsl
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/reference/expressions.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="project" content="ashton v0.4.1">
+    <title>Ashton — ashton v0.4.1</title>
+    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
+      <link rel="canonical" href="https://hexdocs.pm/ashton/readme.html" />
+    <script src="dist/sidebar_items-d8ff48abe4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="readme.html" class="sidebar-projectName">
+ashton      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.4.1
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Ashton</h1>
+<p>Ashton is forked from <code class="inline">albert-io/optimal</code>, which I developed while I worked there. I needed to own its development cycle, so I&#39;ve forked it here to <code class="inline">ashton</code>. All credit to those at albert.io who contributed to the development, and thanks to them for allowing it to be contributed to open source!</p>
+<p>Ashton is a schema based <code class="inline">opt</code> validator. It is verbose, but I&#39;ve tried many other data validation libraries, and their succinctness came with a cost when it came to features. There are still a lot of optimizations and improvements that can be made, so contributions are very welcome.</p>
+<p>This <code class="inline">opt</code> validator has a bit of a niche. It fits in just fine with validating any keyword list, but its especially useful for validating compile-time options, like ones provided to functions in a DSL.</p>
+<p>View the documentation: <a href="https://hexdocs.pm/ashton">https://hexdocs.pm/ashton</a></p>
+<h2 id="roadmap" class="section-heading">
+  <a href="#roadmap" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Roadmap
+</h2>
+
+<ul>
+<li>Better error messages, both for type mismatches and in general
+</li>
+<li>Optimize. The schema based design allows schemas to be declared at compile time (for instance in module attributes) and that should be leveraged as much as possible to ensure that validating a schema does no work that could be done when building the schema.
+</li>
+<li>Macro. We could potentially provide something that can partially validate opts at compile time. For instance, any literal values or known values could be validated at compile time.
+</li>
+</ul>
+<h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installation
+</h2>
+
+<p>If <a href="https://hex.pm/docs/publish">available in Hex</a>, the package can be installed
+by adding <code class="inline">ashton</code> to your list of dependencies in <code class="inline">mix.exs</code>:</p>
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="7359348453-1">do</span><span class="w">
+  </span><span class="p" data-group-id="7359348453-2">[</span><span class="w">
+    </span><span class="p" data-group-id="7359348453-3">{</span><span class="ss">:ashton</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.4.1&quot;</span><span class="p" data-group-id="7359348453-3">}</span><span class="w">
+  </span><span class="p" data-group-id="7359348453-2">]</span><span class="w">
+</span><span class="k" data-group-id="7359348453-1">end</span></code></pre>
+<h2 id="getting-started" class="section-heading">
+  <a href="#getting-started" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Getting Started
+</h2>
+
+<h3 id="validation-examples" class="section-heading">
+  <a href="#validation-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Validation Examples
+</h3>
+
+<p>To use Ashton, you define your validation rules as an Ashton schema and then validate input against it using the <a href="Ashton.html#validate/2"><code class="inline">Ashton.validate/2</code></a> or <a href="Ashton.html#validate!/2"><code class="inline">Ashton.validate!/2</code></a> functions.</p>
+<p>Validate a keyword list:</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="5058395056-1">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5058395056-2">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p">,</span><span class="w"> </span><span class="ss">:baz</span><span class="p" data-group-id="5058395056-2">]</span><span class="p" data-group-id="5058395056-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">my_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5058395056-3">[</span><span class="p" data-group-id="5058395056-4">{</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo val&quot;</span><span class="p" data-group-id="5058395056-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5058395056-5">{</span><span class="ss">:bar</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar val&quot;</span><span class="p" data-group-id="5058395056-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5058395056-6">{</span><span class="ss">:baz</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bazz val&quot;</span><span class="p" data-group-id="5058395056-6">}</span><span class="p" data-group-id="5058395056-3">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="5058395056-7">(</span><span class="n">my_list</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="5058395056-7">)</span><span class="w">
+</span><span class="p" data-group-id="5058395056-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5058395056-9">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bazz val&quot;</span><span class="p" data-group-id="5058395056-9">]</span><span class="p" data-group-id="5058395056-8">}</span></code></pre>
+<p>Or validate a map:</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">my_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5563752905-1">%{</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bazz val&quot;</span><span class="p" data-group-id="5563752905-1">}</span><span class="w">
+</span><span class="p" data-group-id="5563752905-2">%{</span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bazz val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo val&quot;</span><span class="p" data-group-id="5563752905-2">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="5563752905-3">(</span><span class="n">my_map</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="5563752905-3">)</span><span class="w">
+</span><span class="p" data-group-id="5563752905-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5563752905-5">[</span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bazz val&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo val&quot;</span><span class="p" data-group-id="5563752905-5">]</span><span class="p" data-group-id="5563752905-4">}</span></code></pre>
+<p>Notice that in both cases, a keyword list is returned.</p>
+<p>Use <a href="Ashton.html#validate!/2"><code class="inline">Ashton.validate!/2</code></a> to return an error instead of a tuple:</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">bad_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1841350108-1">%{</span><span class="ss">d</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;not allowed&quot;</span><span class="p" data-group-id="1841350108-1">}</span><span class="w">
+</span><span class="p" data-group-id="1841350108-2">%{</span><span class="ss">other</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stuff&quot;</span><span class="p" data-group-id="1841350108-2">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="1841350108-3">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1841350108-4">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="1841350108-4">]</span><span class="p" data-group-id="1841350108-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">validate!</span><span class="p" data-group-id="1841350108-5">(</span><span class="n">bad_map</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="1841350108-5">)</span><span class="w">
+</span><span class="gt">** (ArgumentError) Opt Validation Error: other - is not allowed (no extra keys)
+    (ashton) lib/ashton.ex:44: Ashton.validate!/2</span></code></pre>
+<p>You can require that your inputs be of a certain type:</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="5804706876-1">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5804706876-2">[</span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="5804706876-2">]</span><span class="p" data-group-id="5804706876-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">my_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5804706876-3">[</span><span class="p" data-group-id="5804706876-4">{</span><span class="ss">:age</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p" data-group-id="5804706876-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5804706876-5">{</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="5804706876-5">}</span><span class="p" data-group-id="5804706876-3">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="5804706876-6">(</span><span class="n">my_data</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="5804706876-6">)</span><span class="w">
+</span><span class="p" data-group-id="5804706876-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5804706876-8">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;must be string&quot;</span><span class="p" data-group-id="5804706876-8">]</span><span class="p" data-group-id="5804706876-7">}</span></code></pre>
+<h3 id="schema-examples" class="section-heading">
+  <a href="#schema-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Schema Examples
+</h3>
+
+<p>Define your validation rules in your schema.</p>
+<pre><code class="nohighlight makeup elixir"><span class="c1"># Allow no opts</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-1">(</span><span class="p" data-group-id="0514142758-1">)</span><span class="w">
+
+</span><span class="c1"># Allow any opts</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-2">(</span><span class="n">extra_keys?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0514142758-2">)</span><span class="w">
+
+</span><span class="c1"># Allow a specific set of opts</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-3">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-4">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p">,</span><span class="w"> </span><span class="ss">:baz</span><span class="p" data-group-id="0514142758-4">]</span><span class="p" data-group-id="0514142758-3">)</span><span class="w">
+
+</span><span class="c1"># Allow specific types</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-5">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-6">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="ss">:pid</span><span class="p" data-group-id="0514142758-6">]</span><span class="p" data-group-id="0514142758-5">)</span><span class="w">
+
+</span><span class="c1"># Require certain opts</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-7">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-8">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="ss">:pid</span><span class="p" data-group-id="0514142758-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-9">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p" data-group-id="0514142758-9">]</span><span class="p" data-group-id="0514142758-7">)</span><span class="w">
+
+</span><span class="c1"># Provide defaults for arguments (defaults will have to pass any type validation)</span><span class="w">
+</span><span class="c1"># If they provide they key, but a `nil` value, the default is *not* used.</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-10">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-11">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="ss">:boolean</span><span class="p" data-group-id="0514142758-11">]</span><span class="p">,</span><span class="w"> </span><span class="ss">defaults</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-12">[</span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0514142758-12">]</span><span class="p" data-group-id="0514142758-10">)</span><span class="w">
+
+</span><span class="c1"># Allow only specific values for certain opts</span><span class="w">
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-13">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-14">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-15">{</span><span class="ss">:enum</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0514142758-16">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0514142758-16">]</span><span class="p" data-group-id="0514142758-15">}</span><span class="p" data-group-id="0514142758-14">]</span><span class="p" data-group-id="0514142758-13">)</span><span class="w">
+
+</span><span class="c1"># Custom validations</span><span class="w">
+</span><span class="c1"># Read below for more info</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">custom</span><span class="p" data-group-id="0514142758-17">(</span><span class="n">field_value</span><span class="p">,</span><span class="w"> </span><span class="n">field_name</span><span class="p">,</span><span class="w"> </span><span class="n">all_opts</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="0514142758-17">)</span><span class="w"> </span><span class="k" data-group-id="0514142758-18">do</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="n">is_special</span><span class="p" data-group-id="0514142758-19">(</span><span class="n">field_value</span><span class="p" data-group-id="0514142758-19">)</span><span class="w"> </span><span class="k" data-group-id="0514142758-20">do</span><span class="w">
+    </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="0514142758-20">else</span><span class="w">
+    </span><span class="p" data-group-id="0514142758-21">[</span><span class="p" data-group-id="0514142758-22">{</span><span class="n">field_name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;must be special&quot;</span><span class="p" data-group-id="0514142758-22">}</span><span class="p" data-group-id="0514142758-21">]</span><span class="w">
+  </span><span class="k" data-group-id="0514142758-20">end</span><span class="w">
+</span><span class="k" data-group-id="0514142758-18">end</span><span class="w">
+
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0514142758-23">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-24">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="0514142758-24">]</span><span class="p">,</span><span class="w"> </span><span class="ss">custom</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0514142758-25">[</span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">custom</span><span class="o">/</span><span class="mi">4</span><span class="p" data-group-id="0514142758-25">]</span><span class="p" data-group-id="0514142758-23">)</span></code></pre>
+<h2 id="types" class="section-heading">
+  <a href="#types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Types
+</h2>
+
+<h3 id="scalar-types" class="section-heading">
+  <a href="#scalar-types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Scalar Types
+</h3>
+
+<ul>
+<li>:any
+</li>
+<li>:atom
+</li>
+<li>:binary
+</li>
+<li>:bitstring
+</li>
+<li>:boolean
+</li>
+<li>:float
+</li>
+<li>:function
+</li>
+<li>:int
+</li>
+<li>:integer
+</li>
+<li>:keyword
+</li>
+<li>:list
+</li>
+<li>:string
+</li>
+<li>:map
+</li>
+<li>:nil
+</li>
+<li>:number
+</li>
+<li>:pid
+</li>
+<li>:port
+</li>
+<li>:reference
+</li>
+<li>:tuple
+</li>
+<li>:struct
+</li>
+</ul>
+<h3 id="composite-complex-types" class="section-heading">
+  <a href="#composite-complex-types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Composite/Complex Types
+</h3>
+
+<ul>
+<li><code class="inline">{:keyword, value_type}</code> - Keyword where all values are of type <code class="inline">value_type</code>
+</li>
+<li><code class="inline">{:list, value_type}</code> - List where all values are of type <code class="inline">value_type</code>
+</li>
+<li><code class="inline">{:function, arity}</code> - A function with the arity given by <code class="inline">arity</code>
+</li>
+<li><code class="inline">{:struct, Some.Struct</code>} - An instance of <code class="inline">Some.Struct</code>
+</li>
+<li><code class="inline">%Some.Struct{}</code> - Same as <code class="inline">{:struct, Some.Struct}</code>
+</li>
+<li><code class="inline">{:enum, [value1, value2]}</code> - Allows any value in the list.
+</li>
+<li><code class="inline">{:tuple, tuple_size}</code> - Tuple with size <code class="inline">tuple_size</code>.
+</li>
+<li><code class="inline">{:tuple, {type1, type2, ...}}</code> - Tuple with given type structure, so the first element is of type <code class="inline">type1</code>, etc.
+</li>
+<li><code class="inline">{:tuple, tuple_size, value_type}</code> - Tuple with size <code class="inline">tuple_size</code> and every element of type <code class="inline">value_type</code>.
+</li>
+<li><code class="inline">{:const, value}</code> - Passes if the validating value exactly matches the type <code class="inline">value</code>
+</li>
+<li>A nested ashton schema - Will validate that the provided keyword list adheres to the schema.
+</li>
+</ul>
+<h2 id="custom-validations" class="section-heading">
+  <a href="#custom-validations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Custom Validations
+</h2>
+
+<p>Your custom validators are defined as keyword list added to the <code class="inline">custom:</code> atom, e.g.</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="3888289315-1">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3888289315-2">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="3888289315-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">custom</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3888289315-3">[</span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">my_custom_validator</span><span class="o">/</span><span class="mi">4</span><span class="p" data-group-id="3888289315-3">]</span><span class="p" data-group-id="3888289315-1">)</span></code></pre>
+<p>Custom validations have the ability to add arbitrary errors and can modify the <code class="inline">opts</code> as they pass through. They are run in order, and unlike all built in validations, they are only run on valid opts. In other words, the custom validators run <em>after</em> the other validators.</p>
+<p>Your custom validation functions should receive 4 arguments:</p>
+<ul>
+<li>field value
+</li>
+<li>field id (atom)
+</li>
+<li>options
+</li>
+<li>schema
+</li>
+</ul>
+<p>And they may return several different types of responses:</p>
+<ul>
+<li><code class="inline">true</code> / <code class="inline">false</code> to indicate whether it passed or failed validation
+</li>
+<li><code class="inline">:ok</code> to indicate that it passed validation
+</li>
+<li><code class="inline">{:ok, updated_options}</code> to provide modifications to the options before output
+</li>
+<li><code class="inline">{:error, error_or_errors}</code> to provide a custom message(s) about a failed validation
+</li>
+<li><code class="inline">[]</code> to indicate that it passed validation
+</li>
+<li>a list of errors to indicate why it failed validation
+</li>
+</ul>
+<h3 id="custom-validator-usage-example" class="section-heading">
+  <a href="#custom-validator-usage-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Custom Validator Usage Example
+</h3>
+
+<p>Because custom validators can modify the <code class="inline">opts</code>, we can change the final output to a map (arbitrarily, this validation rule is attached to the <code class="inline">c</code> field):</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">my_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6229996367-1">[</span><span class="p" data-group-id="6229996367-2">{</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Apple&quot;</span><span class="p" data-group-id="6229996367-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6229996367-3">{</span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Boy&quot;</span><span class="p" data-group-id="6229996367-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6229996367-4">{</span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cat&quot;</span><span class="p" data-group-id="6229996367-4">}</span><span class="p" data-group-id="6229996367-1">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="6229996367-5">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6229996367-6">[</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="6229996367-6">]</span><span class="p">,</span><span class="w"> </span><span class="ss">custom</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6229996367-7">[</span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="k" data-group-id="6229996367-8">fn</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="6229996367-9">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">into</span><span class="p" data-group-id="6229996367-10">(</span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6229996367-11">%{</span><span class="p" data-group-id="6229996367-11">}</span><span class="p" data-group-id="6229996367-10">)</span><span class="p" data-group-id="6229996367-9">}</span><span class="w"> </span><span class="k" data-group-id="6229996367-8">end</span><span class="p" data-group-id="6229996367-7">]</span><span class="p" data-group-id="6229996367-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="6229996367-12">(</span><span class="n">my_data</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="6229996367-12">)</span><span class="w">                                      
+</span><span class="err">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6229996367-13">%{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Apple&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Boy&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Cat&quot;</span><span class="p" data-group-id="6229996367-13">}</span></code></pre>
+<h3 id="custom-validation-function-examples" class="section-heading">
+  <a href="#custom-validation-function-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Custom Validation Function Examples
+</h3>
+
+<pre><code class="nohighlight makeup elixir"><span class="c1"># Simple (returning booleans)</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">is_ten</span><span class="p" data-group-id="0378835685-1">(</span><span class="n">field_value</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="0378835685-1">)</span><span class="w"> </span><span class="k" data-group-id="0378835685-2">do</span><span class="w">
+  </span><span class="n">field_value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="k" data-group-id="0378835685-2">end</span><span class="w">
+
+</span><span class="c1"># Custom errors (ok/error tuples)</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">is_ten</span><span class="p" data-group-id="0378835685-3">(</span><span class="n">field_value</span><span class="p">,</span><span class="w"> </span><span class="n">field</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="0378835685-3">)</span><span class="w"> </span><span class="k" data-group-id="0378835685-4">do</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="n">field_value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k" data-group-id="0378835685-5">do</span><span class="w">
+    </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="0378835685-5">else</span><span class="w">
+    </span><span class="p" data-group-id="0378835685-6">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0378835685-7">{</span><span class="n">field</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should really have equaled ten&quot;</span><span class="p" data-group-id="0378835685-7">}</span><span class="p" data-group-id="0378835685-6">}</span><span class="w">
+  </span><span class="k" data-group-id="0378835685-5">end</span><span class="w">
+</span><span class="k" data-group-id="0378835685-4">end</span><span class="w">
+
+</span><span class="c1"># Returning a list of errors</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">greater_than_1_and_even</span><span class="p" data-group-id="0378835685-8">(</span><span class="n">field_value</span><span class="p">,</span><span class="w"> </span><span class="n">field</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="0378835685-8">)</span><span class="w"> </span><span class="k" data-group-id="0378835685-9">do</span><span class="w">
+  </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">field_value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k" data-group-id="0378835685-10">do</span><span class="w">
+      </span><span class="p" data-group-id="0378835685-11">[</span><span class="p" data-group-id="0378835685-11">]</span><span class="w">
+    </span><span class="k" data-group-id="0378835685-10">else</span><span class="w">
+      </span><span class="p" data-group-id="0378835685-12">[</span><span class="p" data-group-id="0378835685-13">{</span><span class="n">field</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should be greater than 1&quot;</span><span class="p" data-group-id="0378835685-13">}</span><span class="p" data-group-id="0378835685-12">]</span><span class="w">
+    </span><span class="k" data-group-id="0378835685-10">end</span><span class="w">
+
+  </span><span class="k">if</span><span class="w"> </span><span class="nc">Integer</span><span class="o">.</span><span class="n">is_even</span><span class="p" data-group-id="0378835685-14">(</span><span class="n">field_value</span><span class="p" data-group-id="0378835685-14">)</span><span class="w"> </span><span class="k" data-group-id="0378835685-15">do</span><span class="w">
+    </span><span class="n">errors</span><span class="w">
+  </span><span class="k" data-group-id="0378835685-15">else</span><span class="w">
+    </span><span class="p" data-group-id="0378835685-16">[</span><span class="p" data-group-id="0378835685-17">{</span><span class="n">field</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should be even&quot;</span><span class="p" data-group-id="0378835685-17">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">errors</span><span class="p" data-group-id="0378835685-16">]</span><span class="w">
+  </span><span class="k" data-group-id="0378835685-15">end</span><span class="w">
+</span><span class="k" data-group-id="0378835685-9">end</span></code></pre>
+<h2 id="auto-documentation" class="section-heading">
+  <a href="#auto-documentation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Auto Documentation
+</h2>
+
+<p>If your schemas are defined at compile time, it is possible to interpolate a generated documentation for them into your docstrings.
+If you are doing this, you may also want to leverage the <code class="inline">describe</code> opt when building schemas, that lets you attach descriptions.</p>
+<p>For example:</p>
+<pre><code class="nohighlight makeup elixir"><span class="w">
+</span><span class="na">@opts</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="7083699846-1">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-2">[</span><span class="w">
+    </span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-3">[</span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="7083699846-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">bars</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-4">{</span><span class="ss">:list</span><span class="p">,</span><span class="w"> </span><span class="ss">:int</span><span class="p" data-group-id="7083699846-4">}</span><span class="w">
+  </span><span class="p" data-group-id="7083699846-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-5">[</span><span class="ss">:foo</span><span class="p" data-group-id="7083699846-5">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">describe</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-6">[</span><span class="w">
+    </span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The id of the foo you want&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">bars</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The ids of all of the bars you want&quot;</span><span class="w">
+  </span><span class="p" data-group-id="7083699846-6">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">defaults</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-7">[</span><span class="w">
+    </span><span class="ss">bars</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7083699846-8">[</span><span class="p" data-group-id="7083699846-8">]</span><span class="w">
+  </span><span class="p" data-group-id="7083699846-7">]</span><span class="p">,</span><span class="w">
+  </span><span class="n">extra_keys?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="p" data-group-id="7083699846-1">)</span><span class="w">
+
+</span><span class="na">@doc</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+This does a special thing.
+
+</span><span class="si" data-group-id="7083699846-9">#{</span><span class="nc">Ashton.Doc</span><span class="o">.</span><span class="n">document</span><span class="p" data-group-id="7083699846-10">(</span><span class="na">@opts</span><span class="p" data-group-id="7083699846-10">)</span><span class="si" data-group-id="7083699846-9">}</span><span class="s">
+
+More in-depth documentation
+&quot;&quot;&quot;</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">my_special_function</span><span class="p" data-group-id="7083699846-11">(</span><span class="n">opts</span><span class="p" data-group-id="7083699846-11">)</span><span class="w"> </span><span class="k" data-group-id="7083699846-12">do</span><span class="w">
+
+</span><span class="k" data-group-id="7083699846-12">end</span></code></pre>
+<p>This would generate a docstring that looks like:</p>
+<h3 id="doc-example" class="section-heading">
+  <a href="#doc-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Doc Example
+</h3>
+
+<p>This does a special thing.</p>
+<hr class="thin"/>
+<h2 id="opts" class="section-heading">
+  <a href="#opts" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Opts
+</h2>
+
+<ul>
+<li><code class="inline">foo</code>(<code class="inline">[:int, :string]</code>) <strong>Required</strong>: The id of the foo you want
+</li>
+<li><code class="inline">bars</code>(<code class="inline">{:list, :int}</code>): The ids of all of the bars you want - Default: []
+</li>
+</ul>
+<p>Also accepts extra opts that are not named here.</p>
+<hr class="thin"/>
+<p>More in-depth documentation</p>
+<h2 id="schema-merging" class="section-heading">
+  <a href="#schema-merging" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Schema merging
+</h2>
+
+<p>This behavior is not set in stone, and will probably need to take a <code class="inline">strategy</code> option to support different kinds of merging opt schemas. This is very useful when working with many functions that are more specific versions of some generic action, or that all eventually call into the same function and need to accept that function&#39;s opts as well.</p>
+<pre><code class="nohighlight makeup elixir"><span class="w">
+</span><span class="n">schema1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0430658578-1">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0430658578-2">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p" data-group-id="0430658578-2">]</span><span class="p" data-group-id="0430658578-1">)</span><span class="w">
+</span><span class="n">schema2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0430658578-3">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0430658578-4">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p" data-group-id="0430658578-4">]</span><span class="p" data-group-id="0430658578-3">)</span><span class="w">
+
+</span><span class="nc">Ashton</span><span class="o">.</span><span class="n">merge</span><span class="p" data-group-id="0430658578-5">(</span><span class="n">schema1</span><span class="p">,</span><span class="w"> </span><span class="n">schema2</span><span class="p" data-group-id="0430658578-5">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">Ashton</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="0430658578-6">(</span><span class="ss">opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0430658578-7">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0430658578-8">[</span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="0430658578-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:int</span><span class="p" data-group-id="0430658578-7">]</span><span class="p" data-group-id="0430658578-6">)</span></code></pre>
+<h3 id="merge-annotations" class="section-heading">
+  <a href="#merge-annotations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Merge annotations
+</h3>
+
+<p>You can provide an annotation when merging, and options will be further grouped by that annotation.</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Ashton</span><span class="o">.</span><span class="n">merge</span><span class="p" data-group-id="0826885851-1">(</span><span class="n">schema1</span><span class="p">,</span><span class="w"> </span><span class="n">schema2</span><span class="p">,</span><span class="w"> </span><span class="ss">annotate</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Shared&quot;</span><span class="p" data-group-id="0826885851-1">)</span></code></pre>
+<hr class="thin"/>
+<ul>
+<li><code class="inline">id</code>(<code class="inline">:int</code>) <strong>Required</strong>
+</li>
+<li><code class="inline">foo</code>(<code class="inline">:int</code>)
+</li>
+</ul>
+<h4>Shared</h4>
+<ul>
+<li><code class="inline">baz</code>(<code class="inline">:int</code>)
+</li>
+<li><code class="inline">bar</code>(<code class="inline">:int</code>)
+</li>
+</ul>
+<hr class="thin"/>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

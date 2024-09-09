@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.25.2">
+    <meta name="project" content="ash_policy_authorizer v0.16.5">
+
+    <title>AshPolicyAuthorizer — ash_policy_authorizer v0.16.5</title>
+    <link rel="stylesheet" href="dist/elixir-37545fd2f35b96531434.css" />
+
+    <script src="dist/sidebar_items-8be34f4263.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-f97730d45ef67f3e6188.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="https://github.com/ash-project/ash_policy_authorizer" class="sidebar-projectName">
+ash_policy_authorizer
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.16.5
+      </strong>
+    </div>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer">
+        <img src="assets/logo.png" alt="ash_policy_authorizer" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">GUIDES</a></li>
+
+      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+AshPolicyAuthorizer <small class="app-vsn">(ash_policy_authorizer v0.16.5)</small>
+
+          <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<p>An authorization extension for ash resources.</p><p>For more information, see <a href="AshPolicyAuthorizer.Authorizer.html"><code class="inline">AshPolicyAuthorizer.Authorizer</code></a></p>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:request/0">request()</a>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#default_access_type/1">default_access_type(resource)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#describe_resource/1">describe_resource(resource)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#log_policy_breakdowns/0">log_policy_breakdowns()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Whether or not ash policy authorizer is configured to show policy breakdowns in error messages</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#policies/1">policies(resource)</a>
+
+  </div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#show_policy_breakdowns?/0">show_policy_breakdowns?()</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Whether or not ash policy authorizer is configured to show policy breakdowns in error messages</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#strict_check/3">strict_check(actor, query, api)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A utility to determine if a given query/changeset would pass authorization.</p></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types
+          </h1>
+          <div class="types-list">
+<section class="detail" id="t:request/0">
+
+  <div class="detail-header">
+    <a href="#t:request/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">request()</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L7" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>request() :: <a href="https://hexdocs.pm/ash/1.50.14/Ash.Engine.Request.html#t:t/0">Ash.Engine.Request.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+          </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="default_access_type/1">
+
+  <div class="detail-header">
+    <a href="#default_access_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">default_access_type(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L132" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="describe_resource/1">
+
+  <div class="detail-header">
+    <a href="#describe_resource/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">describe_resource(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L82" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="log_policy_breakdowns/0">
+
+  <div class="detail-header">
+    <a href="#log_policy_breakdowns/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">log_policy_breakdowns()</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L17" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Whether or not ash policy authorizer is configured to show policy breakdowns in error messages</p>
+  </section>
+</section>
+<section class="detail" id="policies/1">
+
+  <div class="detail-header">
+    <a href="#policies/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">policies(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L126" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="show_policy_breakdowns?/0">
+
+  <div class="detail-header">
+    <a href="#show_policy_breakdowns?/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">show_policy_breakdowns?()</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L12" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Whether or not ash policy authorizer is configured to show policy breakdowns in error messages</p>
+  </section>
+</section>
+<section class="detail" id="strict_check/3">
+
+  <div class="detail-header">
+    <a href="#strict_check/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">strict_check(actor, query, api)</h1>
+
+      <a href="https://github.com/ash-project/ash_policy_authorizer/blob/v0.16.5/lib/ash_policy_authorizer.ex#L26" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A utility to determine if a given query/changeset would pass authorization.</p><p><em>This is still experimental.</em></p>
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+
+        <p>
+          Find it on Hex:
+          <a href="https://hex.pm/packages/ash_policy_authorizer/0.16.5" class="line footer-hex-package">Package</a>
+          <a href="https://preview.hex.pm/preview/ash_policy_authorizer/0.16.5" class="line">Preview</a>
+
+            <a href="https://preview.hex.pm/preview/ash_policy_authorizer/0.16.5/show/lib/ash_policy_authorizer.ex">(current file)</a>
+
+        </p>
+
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.25.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

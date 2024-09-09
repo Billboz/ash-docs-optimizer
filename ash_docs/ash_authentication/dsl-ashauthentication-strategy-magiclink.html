@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_authentication v4.0.4">
+
+
+    <title>DSL: AshAuthentication.Strategy.MagicLink — ash_authentication v4.0.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-BF9EDA45.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_authentication" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ash_authentication
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v4.0.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_authentication</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/team-alembic/ash_authentication/blob/main/documentation/dsls/DSL:-AshAuthentication.Strategy.MagicLink.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: AshAuthentication.Strategy.MagicLink</span>
+  </h1>
+
+<p>Strategy for authentication using a magic link.</p><p>In order to use magic link authentication your resource needs to meet the
+following minimum requirements:</p><ol><li>Have a primary key.</li><li>A uniquely constrained identity field (eg <code class="inline">username</code> or <code class="inline">email</code>)</li><li>Have tokens enabled.</li></ol><p>There are other options documented in the DSL.</p><h3 id="example" class="section-heading">
+  <a href="#example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="w"> </span><span class="k" data-group-id="6932770898-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6932770898-2">[</span><span class="nc">AshAuthentication</span><span class="p" data-group-id="6932770898-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Accounts</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="6932770898-3">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="ss">:ci_string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="6932770898-3">end</span><span class="w">
+
+  </span><span class="n">authentication</span><span class="w"> </span><span class="k" data-group-id="6932770898-4">do</span><span class="w">
+    </span><span class="n">strategies</span><span class="w"> </span><span class="k" data-group-id="6932770898-5">do</span><span class="w">
+      </span><span class="n">magic_link</span><span class="w"> </span><span class="k" data-group-id="6932770898-6">do</span><span class="w">
+        </span><span class="n">identity_field</span><span class="w"> </span><span class="ss">:email</span><span class="w">
+        </span><span class="n">sender</span><span class="w"> </span><span class="k" data-group-id="6932770898-7">fn</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+          </span><span class="nc">MyApp.Emails</span><span class="o">.</span><span class="n">deliver_magic_link</span><span class="p" data-group-id="6932770898-8">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="6932770898-8">)</span><span class="w">
+        </span><span class="k" data-group-id="6932770898-7">end</span><span class="w">
+      </span><span class="k" data-group-id="6932770898-6">end</span><span class="w">
+    </span><span class="k" data-group-id="6932770898-5">end</span><span class="w">
+  </span><span class="k" data-group-id="6932770898-4">end</span><span class="w">
+
+  </span><span class="n">identities</span><span class="w"> </span><span class="k" data-group-id="6932770898-9">do</span><span class="w">
+    </span><span class="n">identity</span><span class="w"> </span><span class="ss">:unique_email</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6932770898-10">[</span><span class="ss">:email</span><span class="p" data-group-id="6932770898-10">]</span><span class="w">
+  </span><span class="k" data-group-id="6932770898-9">end</span><span class="w">
+</span><span class="k" data-group-id="6932770898-1">end</span></code></pre><h2 id="actions" class="section-heading">
+  <a href="#actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Actions</span>
+</h2>
+<p>By default the magic link strategy will automatically generate the request and
+sign-in actions for you, however you're free to define them yourself.  If you
+do, then the action will be validated to ensure that all the needed
+configuration is present.</p><p>If you wish to work with the actions directly from your code you can do so via
+the <a href="AshAuthentication.Strategy.html"><code class="inline">AshAuthentication.Strategy</code></a> protocol.</p><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<p>Requesting that a magic link token is sent for a user:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Info</span><span class="o">.</span><span class="n">strategy!</span><span class="p" data-group-id="7917360860-1">(</span><span class="nc">Example.User</span><span class="p">,</span><span class="w"> </span><span class="ss">:magic_link</span><span class="p" data-group-id="7917360860-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_user</span><span class="p" data-group-id="7917360860-2">(</span><span class="p" data-group-id="7917360860-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Strategy</span><span class="o">.</span><span class="n">action</span><span class="p" data-group-id="7917360860-3">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="ss">:request</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7917360860-4">%{</span><span class="s">&quot;username&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p" data-group-id="7917360860-4">}</span><span class="p" data-group-id="7917360860-3">)</span><span class="w">
+</span><span class="ss">:ok</span></code></pre><p>Signing in using a magic link token:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2613822620-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="2613822620-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MagicLink</span><span class="o">.</span><span class="n">request_token_for</span><span class="p" data-group-id="2613822620-2">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p" data-group-id="2613822620-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2613822620-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">signed_in_user</span><span class="p" data-group-id="2613822620-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Strategy</span><span class="o">.</span><span class="n">action</span><span class="p" data-group-id="2613822620-4">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="ss">:sign_in</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2613822620-5">%{</span><span class="s">&quot;token&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="2613822620-5">}</span><span class="p" data-group-id="2613822620-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">signed_in_user</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">user</span><span class="w">
+</span><span class="no">true</span></code></pre><h2 id="plugs" class="section-heading">
+  <a href="#plugs" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Plugs</span>
+</h2>
+<p>The magic link strategy provides plug endpoints for both request and sign-in
+actions.</p><p>If you wish to work with the plugs directly, you can do so via the
+<a href="AshAuthentication.Strategy.html"><code class="inline">AshAuthentication.Strategy</code></a> protocol.</p><h3 id="examples-1" class="section-heading">
+  <a href="#examples-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples:</span>
+</h3>
+<p>Dispatching to plugs directly:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Info</span><span class="o">.</span><span class="n">strategy!</span><span class="p" data-group-id="7894973779-1">(</span><span class="nc">Example.User</span><span class="p">,</span><span class="w"> </span><span class="ss">:magic_link</span><span class="p" data-group-id="7894973779-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_user</span><span class="p" data-group-id="7894973779-2">(</span><span class="p" data-group-id="7894973779-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p" data-group-id="7894973779-3">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/user/magic_link/request&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7894973779-4">%{</span><span class="s">&quot;user&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="7894973779-5">%{</span><span class="s">&quot;username&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p" data-group-id="7894973779-5">}</span><span class="p" data-group-id="7894973779-4">}</span><span class="p" data-group-id="7894973779-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Strategy</span><span class="o">.</span><span class="n">plug</span><span class="p" data-group-id="7894973779-6">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="ss">:request</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p" data-group-id="7894973779-6">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="7894973779-7">{</span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7894973779-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="7894973779-8">}</span><span class="p" data-group-id="7894973779-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Plug.Helpers</span><span class="o">.</span><span class="n">get_authentication_result</span><span class="p" data-group-id="7894973779-9">(</span><span class="n">conn</span><span class="p" data-group-id="7894973779-9">)</span><span class="w">
+
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="7894973779-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="7894973779-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MagicLink</span><span class="o">.</span><span class="n">request_token_for</span><span class="p" data-group-id="7894973779-11">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p" data-group-id="7894973779-11">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p" data-group-id="7894973779-12">(</span><span class="ss">:get</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/user/magic_link&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7894973779-13">%{</span><span class="s">&quot;token&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="7894973779-13">}</span><span class="p" data-group-id="7894973779-12">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Strategy</span><span class="o">.</span><span class="n">plug</span><span class="p" data-group-id="7894973779-14">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="ss">:sign_in</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p" data-group-id="7894973779-14">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="7894973779-15">{</span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7894973779-16">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">signed_in_user</span><span class="p" data-group-id="7894973779-16">}</span><span class="p" data-group-id="7894973779-15">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Plug.Helpers</span><span class="o">.</span><span class="n">get_authentication_result</span><span class="p" data-group-id="7894973779-17">(</span><span class="n">conn</span><span class="p" data-group-id="7894973779-17">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">signed_in_user</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="no">true</span></code></pre><p>See the <a href="magic-links.html">Magic Link Tutorial</a> for more information.</p><h2 id="authentication-strategies-magic_link" class="section-heading">
+  <a href="#authentication-strategies-magic_link" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">authentication.strategies.magic_link</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">magic_link</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="ss">:magic_link</span></code></pre><p>Strategy for authenticating using local users with a magic link</p><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#authentication-strategies-magic_link-sender" id="authentication-strategies-magic_link-sender"><code class="inline">sender</code></a></td><td style="text-align: left;"><code class="inline">(any, any, any -&gt; any) | module</code></td><td style="text-align: left;"></td><td style="text-align: left;">How to send the magic link to the user.</td></tr><tr><td style="text-align: left;"><a href="#authentication-strategies-magic_link-identity_field" id="authentication-strategies-magic_link-identity_field"><code class="inline">identity_field</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:username</code></td><td style="text-align: left;">The name of the attribute which uniquely identifies the user, usually something like <code class="inline">username</code> or <code class="inline">email_address</code>.</td></tr><tr><td style="text-align: left;"><a href="#authentication-strategies-magic_link-token_lifetime" id="authentication-strategies-magic_link-token_lifetime"><code class="inline">token_lifetime</code></a></td><td style="text-align: left;"><code class="inline">pos_integer | {pos_integer, :days | :hours | :minutes | :seconds}</code></td><td style="text-align: left;"><code class="inline">{10, :minutes}</code></td><td style="text-align: left;">How long the sign in token is valid.  If no unit is provided, then <code class="inline">minutes</code> is assumed.</td></tr><tr><td style="text-align: left;"><a href="#authentication-strategies-magic_link-request_action_name" id="authentication-strategies-magic_link-request_action_name"><code class="inline">request_action_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name to use for the request action. Defaults to <code class="inline">request_&lt;strategy_name&gt;</code></td></tr><tr><td style="text-align: left;"><a href="#authentication-strategies-magic_link-single_use_token?" id="authentication-strategies-magic_link-single_use_token?"><code class="inline">single_use_token?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Automatically revoke the token once it's been used for sign in.</td></tr><tr><td style="text-align: left;"><a href="#authentication-strategies-magic_link-sign_in_action_name" id="authentication-strategies-magic_link-sign_in_action_name"><code class="inline">sign_in_action_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name to use for the sign in action. Defaults to <code class="inline">sign_in_with_&lt;strategy_name&gt;</code></td></tr><tr><td style="text-align: left;"><a href="#authentication-strategies-magic_link-token_param_name" id="authentication-strategies-magic_link-token_param_name"><code class="inline">token_param_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:token</code></td><td style="text-align: left;">The name of the token parameter in the incoming sign-in request.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshAuthentication.Strategy.MagicLink.html"><code class="inline">AshAuthentication.Strategy.MagicLink</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashauthentication-strategy-google.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: AshAuthentication.Strategy.Google
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashauthentication-strategy-oauth2.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: AshAuthentication.Strategy.OAuth2
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_authentication/4.0.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_authentication/4.0.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_authentication/4.0.4/show/documentation/dsls/DSL:-AshAuthentication.Strategy.MagicLink.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_authentication.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

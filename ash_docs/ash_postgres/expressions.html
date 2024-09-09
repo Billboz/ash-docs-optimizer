@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_postgres v2.3.1">
+
+
+    <title>Expressions — ash_postgres v2.3.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-59AEB2F8.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://ash-hq.org" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_postgres" />
+        </a>
+
+      <div>
+        <a href="https://ash-hq.org" class="sidebar-projectName" translate="no">
+ash_postgres
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.3.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_postgres</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/documentation/topics/advanced/expressions.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Expressions</span>
+  </h1>
+
+<p>In addition to the expressions listed in the <a href="https://hexdocs.pm/ash/expressions.html">Ash expressions guide</a>, AshPostgres provides the following expressions</p><h1>Fragments</h1><p>Fragments allow you to use arbitrary postgres expressions in your queries. Fragments can often be an escape hatch to allow you to do things that don't have something officially supported with Ash.</p><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<h4>Simple expressions</h4><pre><code class="makeup elixir" translate="no"><span class="n">fragment</span><span class="p" data-group-id="2365902210-1">(</span><span class="s">&quot;? / ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p" data-group-id="2365902210-1">)</span></code></pre><h4>Calling functions</h4><pre><code class="makeup elixir" translate="no"><span class="n">fragment</span><span class="p" data-group-id="4026055618-1">(</span><span class="s">&quot;repeat(&#39;hello&#39;, 4)&quot;</span><span class="p" data-group-id="4026055618-1">)</span></code></pre><h4>Using entire queries</h4><pre><code class="makeup elixir" translate="no"><span class="n">fragment</span><span class="p" data-group-id="5700243336-1">(</span><span class="s">&quot;points &gt; (SELECT SUM(points) FROM games WHERE user_id = ? AND id != ?)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="5700243336-1">)</span></code></pre><section role="note" class="admonition warning"><h3 id="a-last-resport" class="admonition-title warning section-heading">
+  <a href="#a-last-resport" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">a last resport</span>
+</h3>
+<p>Using entire queries as shown above is a last resort, but can sometimes be the best way to accomplish a given task.</p></section><h4>In calculations</h4><pre><code class="makeup elixir" translate="no"><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="9617069329-1">do</span><span class="w">
+  </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:lower_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="9617069329-2">(</span><span class="w">
+    </span><span class="n">fragment</span><span class="p" data-group-id="9617069329-3">(</span><span class="s">&quot;LOWER(?)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p" data-group-id="9617069329-3">)</span><span class="w">
+  </span><span class="p" data-group-id="9617069329-2">)</span><span class="w">
+</span><span class="k" data-group-id="9617069329-1">end</span></code></pre><h4>In migrations</h4><pre><code class="makeup elixir" translate="no"><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="1342222873-1">(</span><span class="ss">:managers</span><span class="p">,</span><span class="w"> </span><span class="ss">primary_key</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="1342222873-1">)</span><span class="w"> </span><span class="k" data-group-id="1342222873-2">do</span><span class="w">
+  </span><span class="n">add</span><span class="w"> </span><span class="ss">:id</span><span class="p">,</span><span class="w"> </span><span class="ss">:uuid</span><span class="p">,</span><span class="w"> </span><span class="ss">null</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="n">fragment</span><span class="p" data-group-id="1342222873-3">(</span><span class="s">&quot;UUID_GENERATE_V4()&quot;</span><span class="p" data-group-id="1342222873-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">primary_key</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="k" data-group-id="1342222873-2">end</span></code></pre><h2 id="like-and-ilike" class="section-heading">
+  <a href="#like-and-ilike" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Like and ILike</span>
+</h2>
+<p>These wrap the postgres builtin like and ilike operators.</p><p>Please be aware, these match <em>patterns</em> not raw text. Use <code class="inline">contains/1</code> if you want to match text without supporting patterns, i.e <code class="inline">%</code> and <code class="inline">_</code> have semantic meaning!</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="6789697120-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="n">like</span><span class="p" data-group-id="6789697120-2">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%obo%&quot;</span><span class="p" data-group-id="6789697120-2">)</span><span class="p" data-group-id="6789697120-1">)</span><span class="w"> </span><span class="c1"># name contains obo anywhere in the string, case sensitively</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="4391946605-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="n">ilike</span><span class="p" data-group-id="4391946605-2">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%ObO%&quot;</span><span class="p" data-group-id="4391946605-2">)</span><span class="p" data-group-id="4391946605-1">)</span><span class="w"> </span><span class="c1"># name contains ObO anywhere in the string, case insensitively</span></code></pre><h2 id="trigram-similarity" class="section-heading">
+  <a href="#trigram-similarity" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Trigram similarity</span>
+</h2>
+<p>To use this expression, you must have the <code class="inline">pg_trgm</code> extension in your repos <code class="inline">installed_extensions</code> list.</p><p>This calls the <code class="inline">similarity</code> function from that extension. See more in the <a href="https://www.postgresql.org/docs/current/pgtrgm.html">pgtrgm guide</a></p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="0332343575-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="n">trigram_similarity</span><span class="p" data-group-id="0332343575-2">(</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fred&quot;</span><span class="p" data-group-id="0332343575-2">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.8</span><span class="p" data-group-id="0332343575-1">)</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="upgrading-to-2-0.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrading to 2.0
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="schema-based-multitenancy.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Schema Based Multitenancy
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_postgres/2.3.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_postgres/2.3.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_postgres/2.3.1/show/documentation/topics/advanced/expressions.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_postgres.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_graphql v1.3.3">
+
+
+    <title>Getting Started With GraphQL — ash_graphql v1.3.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-515155DF.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_graphql" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectName" translate="no">
+ash_graphql
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.3.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_graphql</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/documentation/tutorials/getting-started-with-graphql.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Getting Started With GraphQL</span>
+</h1>
+
+<h2 id="get-familiar-with-ash-resources" class="section-heading">
+  <a href="#get-familiar-with-ash-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Get familiar with Ash resources</span>
+</h2>
+<p>If you haven't already, read the <a href="https://hexdocs.pm/ash/get-started.html">Ash Getting Started Guide</a>. This assumes that you already have resources set up, and only gives you the steps to <em>add</em> AshGraphql to your resources/domains.</p><h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installation</span>
+</h2>
+<!-- tabs-open --><h3 id="using-igniter-recommended" class="section-heading">
+  <a href="#using-igniter-recommended" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using Igniter (recommended)</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">igniter</span><span class="o">.</span><span class="n">install</span><span class="w"> </span><span class="n">ash_graphql</span></code></pre><h3 id="manual" class="section-heading">
+  <a href="#manual" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Manual</span>
+</h3>
+<h4>Bring in the <code class="inline">ash_graphql</code> dependency</h4><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="p" data-group-id="9475430832-1">(</span><span class="p" data-group-id="9475430832-1">)</span><span class="w">
+  </span><span class="p" data-group-id="9475430832-2">[</span><span class="w">
+    </span><span class="n">...</span><span class="w">
+    </span><span class="p" data-group-id="9475430832-3">{</span><span class="ss">:ash_graphql</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.3.3&quot;</span><span class="p" data-group-id="9475430832-3">}</span><span class="w">
+  </span><span class="p" data-group-id="9475430832-2">]</span><span class="w">
+</span><span class="k">end</span></code></pre><h4>Setting up your schema</h4><p>If you don't have an absinthe schema, you can create one just for ash.
+Replace <code class="inline">helpdesk</code> in the examples with your own application name.</p><p>See <a href="sdl-file.html">the SDL file guide</a> for more information on using the SDL file,
+or remove the <code class="inline">generate_sdl_file</code> option to skip generating it on calls to <a href="https://hexdocs.pm/ash/3.4.1/Mix.Tasks.Ash.Codegen.html"><code class="inline">mix ash.codegen</code></a>.</p><p>in <code class="inline">lib/helpdesk/schema.ex</code></p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.GraphqlSchema</span><span class="w"> </span><span class="k" data-group-id="8073573648-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Absinthe.Schema</span><span class="w">
+
+  </span><span class="c1"># Add your domains here</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshGraphql</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8073573648-2">[</span><span class="nc">Your.Domains</span><span class="p" data-group-id="8073573648-2">]</span><span class="w">
+
+  </span><span class="n">query</span><span class="w"> </span><span class="k" data-group-id="8073573648-3">do</span><span class="w">
+    </span><span class="c1"># Custom absinthe queries can be placed here</span><span class="w">
+    </span><span class="na">@desc</span><span class="w"> </span><span class="s">&quot;Remove me once you have a query of your own!&quot;</span><span class="w">
+    </span><span class="n">field</span><span class="w"> </span><span class="ss">:remove_me</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="8073573648-4">do</span><span class="w">
+      </span><span class="n">resolve</span><span class="w"> </span><span class="k" data-group-id="8073573648-5">fn</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="8073573648-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Remove me!&quot;</span><span class="p" data-group-id="8073573648-6">}</span><span class="w">
+      </span><span class="k" data-group-id="8073573648-5">end</span><span class="w">
+    </span><span class="k" data-group-id="8073573648-4">end</span><span class="w">
+  </span><span class="k" data-group-id="8073573648-3">end</span><span class="w">
+
+  </span><span class="n">mutation</span><span class="w"> </span><span class="k" data-group-id="8073573648-7">do</span><span class="w">
+    </span><span class="c1"># Custom absinthe mutations can be placed here</span><span class="w">
+  </span><span class="k" data-group-id="8073573648-7">end</span><span class="w">
+</span><span class="k" data-group-id="8073573648-1">end</span></code></pre><h4>Connect your schema</h4><h5>Using Phoenix</h5><p>Add the following code to your Phoenix router. It's useful to set up the Absinthe playground for trying things out, but it's optional.</p><pre><code class="makeup elixir" translate="no"><span class="n">pipeline</span><span class="w"> </span><span class="ss">:graphql</span><span class="w"> </span><span class="k" data-group-id="1522168377-1">do</span><span class="w">
+  </span><span class="n">plug</span><span class="w"> </span><span class="nc">AshGraphql.Plug</span><span class="w">
+</span><span class="k" data-group-id="1522168377-1">end</span><span class="w">
+
+</span><span class="n">scope</span><span class="w"> </span><span class="s">&quot;/gql&quot;</span><span class="w"> </span><span class="k" data-group-id="1522168377-2">do</span><span class="w">
+  </span><span class="n">pipe_through</span><span class="w"> </span><span class="p" data-group-id="1522168377-3">[</span><span class="ss">:graphql</span><span class="p" data-group-id="1522168377-3">]</span><span class="w">
+
+  </span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nc">Absinthe.Plug</span><span class="p">,</span><span class="w">
+    </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="1522168377-4">(</span><span class="p" data-group-id="1522168377-5">[</span><span class="s">&quot;Helpdesk.GraphqlSchema&quot;</span><span class="p" data-group-id="1522168377-5">]</span><span class="p" data-group-id="1522168377-4">)</span><span class="w">
+
+  </span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/playground&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nc">Absinthe.Plug.GraphiQL</span><span class="p">,</span><span class="w">
+          </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="1522168377-6">(</span><span class="p" data-group-id="1522168377-7">[</span><span class="s">&quot;Helpdesk.GraphqlSchema&quot;</span><span class="p" data-group-id="1522168377-7">]</span><span class="p" data-group-id="1522168377-6">)</span><span class="p">,</span><span class="w">
+          </span><span class="ss">interface</span><span class="p">:</span><span class="w"> </span><span class="ss">:playground</span><span class="w">
+</span><span class="k" data-group-id="1522168377-2">end</span></code></pre><blockquote><h3 id="whats-up-with-module-concat-1" class="info section-heading">
+  <a href="#whats-up-with-module-concat-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Whats up with <a href="https://hexdocs.pm/elixir/Module.html#concat/1"><code class="inline">Module.concat/1</code></a>?</span>
+</h3>
+<p>This <a href="https://hexdocs.pm/elixir/Module.html#concat/1"><code class="inline">Module.concat/1</code></a> prevents a <a href="https://dashbit.co/blog/speeding-up-re-compilation-of-elixir-projects">compile-time dependency</a> from this router module to the schema module. It is an implementation detail of how <code class="inline">forward/2</code> works that you end up with a compile-time dependency on the schema, but there is no need for this dependency, and that dependency can have <em>drastic</em> impacts on your compile times in certain scenarios.</p></blockquote><p>If you started with <code class="inline">mix new ...</code> instead of <code class="inline">mix phx.new ...</code> and you want to
+still use Phoenix, the fastest path that way is typically to just create a new
+Phoenix application and copy your resources/config over.</p><h5>Using Plug</h5><p>If you are unfamiliar with how plug works, this <a href="https://elixirschool.com/en/lessons/specifics/plug/#dependencies">guide</a>
+will be helpful for understanding it. It also guides you through adding plug to your application.</p><p>Then you can use a <a href="https://hexdocs.pm/plug/1.16.1/Plug.Router.html"><code class="inline">Plug.Router</code></a> and <a href="https://hexdocs.pm/plug/Plug.Router.html#forward/2">forward</a> to your plugs similar to how it is done for phoenix:</p><pre><code class="makeup elixir" translate="no"><span class="n">plug</span><span class="w"> </span><span class="nc">AshGraphql.Plug</span><span class="w">
+
+</span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/gql&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="nc">Absinthe.Plug</span><span class="p">,</span><span class="w">
+  </span><span class="ss">init_opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7523317567-1">[</span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="7523317567-2">(</span><span class="p" data-group-id="7523317567-3">[</span><span class="s">&quot;Helpdesk.GraphqlSchema&quot;</span><span class="p" data-group-id="7523317567-3">]</span><span class="p" data-group-id="7523317567-2">)</span><span class="p" data-group-id="7523317567-1">]</span><span class="w">
+
+</span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/playground&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="nc">Absinthe.Plug.GraphiQL</span><span class="p">,</span><span class="w">
+  </span><span class="ss">init_opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7523317567-4">[</span><span class="w">
+    </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="7523317567-5">(</span><span class="p" data-group-id="7523317567-6">[</span><span class="s">&quot;Helpdesk.GraphqlSchema&quot;</span><span class="p" data-group-id="7523317567-6">]</span><span class="p" data-group-id="7523317567-5">)</span><span class="p">,</span><span class="w">
+    </span><span class="ss">interface</span><span class="p">:</span><span class="w"> </span><span class="ss">:playground</span><span class="w">
+  </span><span class="p" data-group-id="7523317567-4">]</span></code></pre><p>For information on why we are using <a href="https://hexdocs.pm/elixir/Module.html#concat/1"><code class="inline">Module.concat/1</code></a>, see the note above in the Phoenix section.</p><!-- tabs-close --><h2 id="select-domains-to-show-in-your-graphql" class="section-heading">
+  <a href="#select-domains-to-show-in-your-graphql" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Select domains to show in your GraphQL</span>
+</h2>
+<p>In the <code class="inline">use AshGraphql</code> call in your schema, you specify which domains you want to expose in your GraphQL API. Add any domains that will have <a href="AshGraphql.html"><code class="inline">AshGraphql</code></a> queries/mutations to the <code class="inline">domains</code> list. For example:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">AshGraphql</span><span class="p">,</span><span class="w"> </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3554534927-1">[</span><span class="nc">Your.Domain1</span><span class="p">,</span><span class="w"> </span><span class="nc">Your.Domain2</span><span class="p" data-group-id="3554534927-1">]</span></code></pre><h2 id="adding-queries-and-mutations" class="section-heading">
+  <a href="#adding-queries-and-mutations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Adding Queries and Mutations</span>
+</h2>
+<p>Some example queries/mutations are shown below. If no queries/mutations are added, nothing will show up in the GraphQL API, so be sure to set one up if you want to try it out.</p><h3 id="queries-mutations-on-the-resource" class="section-heading">
+  <a href="#queries-mutations-on-the-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Queries &amp; Mutations on the Resource</span>
+</h3>
+<p>Here we show queries and mutations being added to the resource, but you can also define them on the <em>domain</em>. See below for an equivalent definition</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="1322905623-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="n">...</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1322905623-2">[</span><span class="w">
+      </span><span class="nc">AshGraphql.Resource</span><span class="w">
+    </span><span class="p" data-group-id="1322905623-2">]</span><span class="w">
+
+  </span><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="1322905623-3">do</span><span class="w">
+    </span><span class="n">type</span><span class="w"> </span><span class="ss">:ticket</span><span class="w">
+
+    </span><span class="n">queries</span><span class="w"> </span><span class="k" data-group-id="1322905623-4">do</span><span class="w">
+      </span><span class="c1"># Examples</span><span class="w">
+
+      </span><span class="c1"># create a field called `get_ticket` that uses the `read` read action to fetch a single ticke</span><span class="w">
+      </span><span class="n">get</span><span class="w"> </span><span class="ss">:get_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+      </span><span class="c1"># create a field called `most_important_ticket` that uses the `most_important` read action to fetch a single record</span><span class="w">
+      </span><span class="n">read_one</span><span class="w"> </span><span class="ss">:most_important_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:most_important</span><span class="w">
+
+      </span><span class="c1"># create a field called `list_tickets` that uses the `read` read action to fetch a list of tickets</span><span class="w">
+      </span><span class="n">list</span><span class="w"> </span><span class="ss">:list_tickets</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+    </span><span class="k" data-group-id="1322905623-4">end</span><span class="w">
+
+    </span><span class="n">mutations</span><span class="w"> </span><span class="k" data-group-id="1322905623-5">do</span><span class="w">
+      </span><span class="c1"># Examples</span><span class="w">
+
+      </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+      </span><span class="n">update</span><span class="w"> </span><span class="ss">:update_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+      </span><span class="n">destroy</span><span class="w"> </span><span class="ss">:destroy_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="w">
+    </span><span class="k" data-group-id="1322905623-5">end</span><span class="w">
+  </span><span class="k" data-group-id="1322905623-3">end</span><span class="w">
+
+  </span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="1322905623-1">end</span></code></pre><h3 id="queries-mutations-on-the-domain" class="section-heading">
+  <a href="#queries-mutations-on-the-domain" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Queries &amp; Mutations on the Domain</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="6853799330-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="n">...</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6853799330-2">[</span><span class="w">
+      </span><span class="nc">AshGraphql.Resource</span><span class="w">
+    </span><span class="p" data-group-id="6853799330-2">]</span><span class="w">
+
+  </span><span class="c1"># The resource still determines its type, and any other resource/type-based</span><span class="w">
+  </span><span class="c1"># configuration</span><span class="w">
+  </span><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="6853799330-3">do</span><span class="w">
+    </span><span class="n">type</span><span class="w"> </span><span class="ss">:ticket</span><span class="w">
+  </span><span class="k" data-group-id="6853799330-3">end</span><span class="w">
+
+  </span><span class="n">...</span><span class="w">
+</span><span class="k" data-group-id="6853799330-1">end</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="w"> </span><span class="k" data-group-id="6853799330-4">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6853799330-5">[</span><span class="w">
+      </span><span class="nc">AshGraphql.Domain</span><span class="w">
+    </span><span class="p" data-group-id="6853799330-5">]</span><span class="w">
+
+  </span><span class="n">...</span><span class="w">
+  </span><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="6853799330-6">do</span><span class="w">
+    </span><span class="c1"># equivalent queries and mutations, but the first argument</span><span class="w">
+    </span><span class="c1"># is the resource because the domain can define queries for</span><span class="w">
+    </span><span class="c1"># any of its resources</span><span class="w">
+    </span><span class="n">queries</span><span class="w"> </span><span class="k" data-group-id="6853799330-7">do</span><span class="w">
+      </span><span class="n">get</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:get_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+      </span><span class="n">read_one</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:most_important_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:most_important</span><span class="w">
+      </span><span class="n">list</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:list_tickets</span><span class="p">,</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+    </span><span class="k" data-group-id="6853799330-7">end</span><span class="w">
+
+    </span><span class="n">mutations</span><span class="w"> </span><span class="k" data-group-id="6853799330-8">do</span><span class="w">
+      </span><span class="n">create</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+      </span><span class="n">update</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:update_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+      </span><span class="n">destroy</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy_ticket</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="w">
+    </span><span class="k" data-group-id="6853799330-8">end</span><span class="w">
+</span><span class="k" data-group-id="6853799330-6">end</span></code></pre><h2 id="what-s-next" class="section-heading">
+  <a href="#what-s-next" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">What's next?</span>
+</h2>
+<p>Topics:</p><ul><li><a href="graphql-generation.html">GraphQL Generation</a></li></ul><p>How Tos:</p><ul><li><a href="authorize-with-graphql.html">Authorize With GraphQL</a></li><li><a href="handle-errors.html">Handle Errors</a></li><li><a href="use-enums-with-graphql.html">Use Enums with GraphQL</a></li><li><a href="use-json-with-graphql.html">Use JSON with GraphQL</a></li></ul>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="authorize-with-graphql.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Authorize with GraphQL
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_graphql/1.3.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_graphql/1.3.3">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_graphql/1.3.3/show/documentation/tutorials/getting-started-with-graphql.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_graphql.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

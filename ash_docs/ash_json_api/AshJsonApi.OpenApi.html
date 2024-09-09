@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_json_api v1.4.7">
+
+
+    <title>AshJsonApi.OpenApi — ash_json_api v1.4.7</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-848724FA.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_json_api" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectName" translate="no">
+ash_json_api
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.7
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_json_api</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L2" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">AshJsonApi.OpenApi</span> 
+  <small class="app-vsn" translate="no">(ash_json_api v1.4.7)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>Provides functions for generating schemas and operations for OpenApi definitions.</p><p>Add <code class="inline">open_api_spex</code> to your <code class="inline">mix.exs</code> deps for the required struct definitions.</p><h2 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.OpenApi</span><span class="w"> </span><span class="k" data-group-id="1546947047-1">do</span><span class="w">
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">OpenApiSpex</span><span class="o">.</span><span class="p" data-group-id="1546947047-2">{</span><span class="nc">OpenApi</span><span class="p">,</span><span class="w"> </span><span class="nc">Info</span><span class="p">,</span><span class="w"> </span><span class="nc">Server</span><span class="p">,</span><span class="w"> </span><span class="nc">Components</span><span class="p" data-group-id="1546947047-2">}</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">spec</span><span class="w"> </span><span class="k" data-group-id="1546947047-3">do</span><span class="w">
+    </span><span class="p" data-group-id="1546947047-4">%</span><span class="nc" data-group-id="1546947047-4">OpenApi</span><span class="p" data-group-id="1546947047-4">{</span><span class="w">
+      </span><span class="ss">info</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1546947047-5">%</span><span class="nc" data-group-id="1546947047-5">Info</span><span class="p" data-group-id="1546947047-5">{</span><span class="w">
+        </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MyApp JSON API&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.1&quot;</span><span class="w">
+      </span><span class="p" data-group-id="1546947047-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="ss">servers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1546947047-6">[</span><span class="w">
+        </span><span class="nc">Server</span><span class="o">.</span><span class="n">from_endpoint</span><span class="p" data-group-id="1546947047-7">(</span><span class="nc">MyAppWeb.Endpoint</span><span class="p" data-group-id="1546947047-7">)</span><span class="w">
+      </span><span class="p" data-group-id="1546947047-6">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">paths</span><span class="p">:</span><span class="w"> </span><span class="nc">AshJsonApi.OpenApi</span><span class="o">.</span><span class="n">paths</span><span class="p" data-group-id="1546947047-8">(</span><span class="nc">MyApp.Api</span><span class="p" data-group-id="1546947047-8">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">tags</span><span class="p">:</span><span class="w"> </span><span class="nc">AshJsonApi.OpenApi</span><span class="o">.</span><span class="n">tags</span><span class="p" data-group-id="1546947047-9">(</span><span class="nc">MyApp.Api</span><span class="p" data-group-id="1546947047-9">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">components</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1546947047-10">%</span><span class="nc" data-group-id="1546947047-10">Components</span><span class="p" data-group-id="1546947047-10">{</span><span class="w">
+        </span><span class="ss">responses</span><span class="p">:</span><span class="w"> </span><span class="nc">AshJsonApi.OpenApi</span><span class="o">.</span><span class="n">responses</span><span class="p" data-group-id="1546947047-11">(</span><span class="p" data-group-id="1546947047-11">)</span><span class="p">,</span><span class="w">
+        </span><span class="ss">schemas</span><span class="p">:</span><span class="w"> </span><span class="nc">AshJsonApi.OpenApi</span><span class="o">.</span><span class="n">schemas</span><span class="p" data-group-id="1546947047-12">(</span><span class="nc">MyApp.Api</span><span class="p" data-group-id="1546947047-12">)</span><span class="w">
+      </span><span class="p" data-group-id="1546947047-10">}</span><span class="w">
+    </span><span class="p" data-group-id="1546947047-4">}</span><span class="w">
+  </span><span class="k" data-group-id="1546947047-3">end</span><span class="w">
+</span><span class="k" data-group-id="1546947047-1">end</span></code></pre>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#define_filter?/2" translate="no">define_filter?(domains, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#paths/3" translate="no">paths(domains, all_domains, opts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Paths (routes) from the domain.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#raw_filter_type/2" translate="no">raw_filter_type(attribute_or_aggregate, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#resource_filter_fields_fields_only/1" translate="no">resource_filter_fields_fields_only(resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#responses/0" translate="no">responses()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Common responses to include in the API Spec.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#schemas/1" translate="no">schemas(domains)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Resource schemas to include in the API spec.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#spec/2" translate="no">spec(opts \\ [], conn \\ nil)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tags/1" translate="no">tags(domains)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Tags based on resource names to include in the API spec</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tags/2" translate="no">tags(domain, domains)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#write_attributes/5" translate="no">write_attributes(resource, arguments, action, route, format)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="define_filter?/2">
+
+  <div class="detail-header">
+    <a href="#define_filter?/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">define_filter?(domains, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L192" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="paths/3">
+
+  <div class="detail-header">
+    <a href="#paths/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">paths(domains, all_domains, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L997" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> paths(
+  domain :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()],
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()],
+  opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) ::
+  <a href="https://hexdocs.pm/open_api_spex/3.20.1/OpenApiSpex.Paths.html#t:t/0">OpenApiSpex.Paths.t</a>()</pre>
+
+      </div>
+
+<p>Paths (routes) from the domain.</p>
+  </section>
+</section>
+<section class="detail" id="raw_filter_type/2">
+
+  <div class="detail-header">
+    <a href="#raw_filter_type/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">raw_filter_type(attribute_or_aggregate, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L2008" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="resource_filter_fields_fields_only/1">
+
+  <div class="detail-header">
+    <a href="#resource_filter_fields_fields_only/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">resource_filter_fields_fields_only(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L2048" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="responses/0">
+
+  <div class="detail-header">
+    <a href="#responses/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">responses()</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L123" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> responses() :: <a href="https://hexdocs.pm/open_api_spex/3.20.1/OpenApiSpex.Components.html#t:responses_map/0">OpenApiSpex.Components.responses_map</a>()</pre>
+
+      </div>
+
+<p>Common responses to include in the API Spec.</p>
+  </section>
+</section>
+<section class="detail" id="schemas/1">
+
+  <div class="detail-header">
+    <a href="#schemas/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">schemas(domains)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L140" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> schemas(domain :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]) :: %{
+  required(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/open_api_spex/3.20.1/OpenApiSpex.Schema.html#t:t/0">OpenApiSpex.Schema.t</a>()
+}</pre>
+
+      </div>
+
+<p>Resource schemas to include in the API spec.</p>
+  </section>
+</section>
+<section class="detail" id="spec/2">
+
+    <span id="spec/0"></span>
+
+    <span id="spec/1"></span>
+
+  <div class="detail-header">
+    <a href="#spec/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">spec(opts \\ [], conn \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L59" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="tags/1">
+
+  <div class="detail-header">
+    <a href="#tags/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">tags(domains)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L963" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> tags(domain :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]) :: [<a href="https://hexdocs.pm/open_api_spex/3.20.1/OpenApiSpex.Tag.html#t:t/0">OpenApiSpex.Tag.t</a>()]</pre>
+
+      </div>
+
+<p>Tags based on resource names to include in the API spec</p>
+  </section>
+</section>
+<section class="detail" id="tags/2">
+
+  <div class="detail-header">
+    <a href="#tags/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">tags(domain, domains)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L967" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="write_attributes/5">
+
+  <div class="detail-header">
+    <a href="#write_attributes/5" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">write_attributes(resource, arguments, action, route, format)</h1>
+
+      <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/lib/ash_json_api/json_schema/open_api.ex#L1649" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> write_attributes(
+  resource :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  [<a href="https://hexdocs.pm/ash/3.4.1/Ash.Resource.Actions.Argument.html#t:t/0">Ash.Resource.Actions.Argument.t</a>()],
+  action :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  route :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  format :: content_type_format()
+) :: %{required(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; <a href="https://hexdocs.pm/open_api_spex/3.20.1/OpenApiSpex.Schema.html#t:t/0">OpenApiSpex.Schema.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_json_api/1.4.7" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_json_api/1.4.7">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_json_api.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

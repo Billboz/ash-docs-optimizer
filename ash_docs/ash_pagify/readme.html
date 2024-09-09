@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_pagify v1.0.2">
+
+
+    <title>Home — ash_pagify v1.0.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-6F6CB061.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://hexdocs.pm/ash_pagify" class="sidebar-projectName" translate="no">
+ash_pagify
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_pagify</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/zebbra/ash_pagify/blob/v1.0.2/README.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Home</span>
+  </h1>
+
+<p><img src="https://github.com/zebbra/ash_pagify/workflows/AshPagify%20CI/badge.svg" alt="Elixir CI"/>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/></a>
+<a href="https://hex.pm/packages/ash_pagify"><img src="https://img.shields.io/hexpm/v/ash_pagify.svg" alt="Hex version badge"/></a>
+<a href="https://hexdocs.pm/ash_pagify"><img src="https://img.shields.io/badge/docs-hexdocs-purple" alt="Hexdocs badge"/></a></p><h1>AshPagify</h1><!-- MDOC --><p>AshPagify is an Elixir library designed to easily add full-text search, scoping, filtering,
+ordering, and pagination APIs for the <a href="https://hexdocs.pm/ash">Ash Framework</a>.</p><p>It takes concepts from <code class="inline">Flop</code>, <code class="inline">Flop.Phoenix</code>, <a href="https://hexdocs.pm/ash/3.3.3/Ash.html"><code class="inline">Ash</code></a> and <a href="https://hexdocs.pm/ash_phoenix/2.1.1/AshPhoenix.FilterForm.html"><code class="inline">AshPhoenix.FilterForm</code></a> and
+combines them into a single library.</p><p>It's main purpose is to provide functions to convert user input for full-text search, scoping,
+filtering, ordering, and pagination into the following data structures:</p><ol><li><a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> a struct holding information of a db query result.</li><li>query parameters for url building and to restore the query parameters from the url.</li><li>a basic map syntax which for example can be stored in a session or database (and restore
+the information from it).</li></ol><p>Further, it provides headless components to build sortable tables and pagination links in your
+Phoenix LiveView with the <a href="AshPagify.Components.html"><code class="inline">AshPagify.Components</code></a> module. Finally, it provides a simple way to build
+filter forms for your LiveView with the <a href="AshPagify.FilterForm.html"><code class="inline">AshPagify.FilterForm</code></a> struct.</p><h2 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4939148384-1">%</span><span class="nc" data-group-id="4939148384-1">AshPagify</span><span class="p" data-group-id="4939148384-1">{</span><span class="w">
+  </span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4939148384-2">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p" data-group-id="4939148384-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">filters</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4939148384-3">%{</span><span class="s">&quot;comments_count&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4939148384-4">%{</span><span class="s">&quot;gt&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4939148384-4">}</span><span class="p" data-group-id="4939148384-3">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">filter_form</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4939148384-5">%{</span><span class="s">&quot;field&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;operator&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p" data-group-id="4939148384-5">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w">
+  </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p" data-group-id="4939148384-1">}</span><span class="w">
+</span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4939148384-6">[</span><span class="ss">full_text_search</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4939148384-7">[</span><span class="ss">tsvector</span><span class="p">:</span><span class="w"> </span><span class="ss">:custom_tsvector</span><span class="p" data-group-id="4939148384-7">]</span><span class="p" data-group-id="4939148384-6">]</span><span class="w">
+
+</span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">query_to_filters_map</span><span class="p" data-group-id="4939148384-8">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="4939148384-8">)</span><span class="o">.</span><span class="n">filters</span><span class="w">
+</span><span class="p" data-group-id="4939148384-9">%{</span><span class="w">
+  </span><span class="s">&quot;__full_text_search&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4939148384-10">%{</span><span class="w">
+    </span><span class="s">&quot;search&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;tsvector&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;custom_tsvector&quot;</span><span class="w">
+  </span><span class="p" data-group-id="4939148384-10">}</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;and&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4939148384-11">[</span><span class="w">
+    </span><span class="p" data-group-id="4939148384-12">%{</span><span class="s">&quot;comments_count&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4939148384-13">%{</span><span class="s">&quot;gt&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4939148384-13">}</span><span class="p" data-group-id="4939148384-12">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4939148384-14">%{</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4939148384-15">%{</span><span class="s">&quot;eq&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p" data-group-id="4939148384-15">}</span><span class="p" data-group-id="4939148384-14">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4939148384-16">%{</span><span class="s">&quot;author&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p" data-group-id="4939148384-16">}</span><span class="w">
+  </span><span class="p" data-group-id="4939148384-11">]</span><span class="w">
+</span><span class="p" data-group-id="4939148384-9">}</span><span class="w">
+
+</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">build_path</span><span class="p" data-group-id="4939148384-17">(</span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="4939148384-17">)</span><span class="w">
+</span><span class="s">&quot;/posts?search=Post+1&amp;limit=10&amp;scopes[role]=admin&amp;filter_form[field]=name&amp;filter_form[operator]=eq&amp;filter_form[value]=Post+1&amp;order_by[]=name&quot;</span></code></pre><h2 id="features" class="section-heading">
+  <a href="#features" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features</span>
+</h2>
+<ul><li><strong>Full-text search</strong>: AshPagify supports full-text search using the <code class="inline">tsvector</code> column in PostgreSQL.</li><li><strong>Offset-based pagination</strong>: AshPagify uses <code class="inline">OFFSET</code> and <code class="inline">LIMIT</code> to paginate your queries.</li><li><strong>Scoping</strong>: Apply predefined filters to your queries using a simple map syntax.</li><li><strong>Filtering</strong>: Apply user-input filters to your queries using a simple map syntax. Allows complex data filtering using multiple conditions, operators, and fields. Also incooperates with <a href="https://hexdocs.pm/ash_phoenix/2.1.1/AshPhoenix.FilterForm.html"><code class="inline">AshPhoenix.FilterForm</code></a> to provide a simple way to build complex filter user interfaces.</li><li><strong>Sorting</strong>: Sort your queries by multiple fields and any directions.</li><li><strong>UI helpers and URL builders</strong>: AshPagify provides a <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> struct with information about the current page, total pages, and more. This information can be used to build pagination links in your UI. Further, <a href="AshPagify.html"><code class="inline">AshPagify</code></a> provides the <a href="AshPagify.Components.html"><code class="inline">AshPagify.Components</code></a> module with headless table and pagination components to easily build sortable tables and pagination links in your Phoenix LiveView. The <a href="AshPagify.FilterForm.html"><code class="inline">AshPagify.FilterForm</code></a> module provides a simple way to build filter forms for your LiveView.</li></ul><h2 id="overview" class="section-heading">
+  <a href="#overview" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Overview</span>
+</h2>
+<ul><li><a href="#examples">Examples</a></li><li><a href="#features">Features</a></li><li><a href="#installation">Installation</a></li><li><a href="#global-configuration">Global configuration</a></li><li><a href="#resource-configuration">Resource configuration</a></li><li><a href="#liveview-configuration">LiveView configuration</a><ul><li><a href="#liveview-streams">LiveView streams</a></li><li><a href="#replace-invalid-params">Replace invalid params</a></li><li><a href="#custom-read-action">Custom read action</a></li></ul></li><li><a href="#full-text-search">Full-text search</a></li><li><a href="#sortable-tables-and-pagination">Sortable tables and pagination</a></li><li><a href="#parameter-format">Parameter format</a><ul><li><a href="#search-query">Search query</a></li><li><a href="#pagination">Pagination</a></li><li><a href="#scoping">Scoping</a></li><li><a href="#filter-forms">Filter forms</a></li><li><a href="#ordering">Ordering</a></li><li><a href="#internal-parameters">Internal parameters</a></li></ul></li><li><a href="#release-management">Release Management</a></li></ul><h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installation</span>
+</h2>
+<p>AshPagify requires the following dependencies to be installed:</p><ul><li><a href="https://hexdocs.pm/ash/3.3.3/Ash.html"><code class="inline">Ash</code></a> - The main library for building queries.</li><li><code class="inline">ash_phoenix</code> - The Phoenix integration for Ash.</li><li><a href="https://hexdocs.pm/ash_postgres/2.1.17/AshPostgres.html"><code class="inline">AshPostgres</code></a> - The PostgreSQL integration for Ash.</li><li><code class="inline">AshUUID</code> - The UUID integration for Ash.</li><li><a href="https://hexdocs.pm/phoenix/1.7.14/Phoenix.html"><code class="inline">Phoenix</code></a> - The Phoenix web framework.</li></ul><p>Then simply add <code class="inline">ash_pagify</code> to your list of dependencies in <code class="inline">mix.exs</code> and run
+<a href="https://hexdocs.pm/mix/Mix.Tasks.Deps.Get.html"><code class="inline">mix deps.get</code></a>:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="3072390705-1">do</span><span class="w">
+  </span><span class="p" data-group-id="3072390705-2">[</span><span class="w">
+    </span><span class="p" data-group-id="3072390705-3">{</span><span class="ss">:ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.0.2&quot;</span><span class="p" data-group-id="3072390705-3">}</span><span class="w">
+  </span><span class="p" data-group-id="3072390705-2">]</span><span class="w">
+</span><span class="k" data-group-id="3072390705-1">end</span></code></pre><h2 id="global-configuration" class="section-heading">
+  <a href="#global-configuration" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Global configuration</span>
+</h2>
+<p>You can set some global options like the default_limit via the application
+environment. All global options can be overridden by passing them directly to
+the functions.</p><pre><code class="makeup elixir" translate="no"><span class="n">config</span><span class="w"> </span><span class="ss">:ash_pagify</span><span class="p">,</span><span class="w">
+  </span><span class="ss">default_limit</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="ss">max_limit</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="ss">replace_invalid_params?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+  </span><span class="ss">ash_pagify_scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4229641159-1">%{</span><span class="w">
+    </span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4229641159-2">[</span><span class="w">
+      </span><span class="p" data-group-id="4229641159-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:all</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="4229641159-3">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="4229641159-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4229641159-5">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p" data-group-id="4229641159-5">}</span><span class="p" data-group-id="4229641159-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="4229641159-6">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4229641159-7">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p" data-group-id="4229641159-7">}</span><span class="p" data-group-id="4229641159-6">}</span><span class="w">
+    </span><span class="p" data-group-id="4229641159-2">]</span><span class="w">
+  </span><span class="p" data-group-id="4229641159-1">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">reset_on_filter?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+  </span><span class="ss">full_text_search</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4229641159-8">[</span><span class="w">
+    </span><span class="ss">negation</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+    </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+    </span><span class="ss">any_word</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="p" data-group-id="4229641159-8">]</span></code></pre><p>See <a href="AshPagify.html#t:option/0"><code class="inline">AshPagify.option/0</code></a> for a description of all available options.</p><h2 id="resource-configuration" class="section-heading">
+  <a href="#resource-configuration" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Resource configuration</span>
+</h2>
+<p>You need to add the <code class="inline">pagination macro</code> call to the action of the resource that you
+want to be paginated. The macro call is used to set the default limit, offset and
+other options for the pagination.</p><p>Furthermore, you can define scopes in the resource module. Scopes are predefined
+filters that can be applied to the query.</p><p>We allow full-text search using the <code class="inline">tsvector</code> column in PostgreSQL. To enable full-text search,
+you need to either <code class="inline">use AshPagify.Tsearch</code> in your module or implement the <code class="inline">full_text_search</code>,
+<code class="inline">full_text_search_rank</code>, <code class="inline">tsquery</code>, and <code class="inline">tsvector</code> calculations as described in <a href="AshPagify.Tsearch.html"><code class="inline">AshPagify.Tsearch</code></a>
+(tsvector calculation  is always mandatory).</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">YourApp.Resource.Post</span><span class="w">
+  </span><span class="c1"># only required if you want to implement full-text search</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPagify.Tsearch</span><span class="w">
+  </span><span class="kn">require</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="w">
+
+  </span><span class="na">@default_limit</span><span class="w"> </span><span class="mi">15</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">default_limit</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="na">@default_limit</span><span class="w">
+
+  </span><span class="na">@ash_pagify_scopes</span><span class="w"> </span><span class="p" data-group-id="5991099045-1">%{</span><span class="w">
+    </span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5991099045-2">[</span><span class="w">
+      </span><span class="p" data-group-id="5991099045-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:all</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="5991099045-3">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="5991099045-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5991099045-5">%{</span><span class="ss">author</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p" data-group-id="5991099045-5">}</span><span class="p" data-group-id="5991099045-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="5991099045-6">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5991099045-7">%{</span><span class="ss">author</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p" data-group-id="5991099045-7">}</span><span class="p" data-group-id="5991099045-6">}</span><span class="w">
+    </span><span class="p" data-group-id="5991099045-2">]</span><span class="w">
+  </span><span class="p" data-group-id="5991099045-1">}</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">ash_pagify_scopes</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="na">@ash_pagify_scopes</span><span class="w">
+
+  </span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="5991099045-8">do</span><span class="w">
+    </span><span class="n">read</span><span class="w"> </span><span class="ss">:read</span><span class="w"> </span><span class="k" data-group-id="5991099045-9">do</span><span class="w">
+      </span><span class="c1">#...</span><span class="w">
+      </span><span class="n">pagination</span><span class="w"> </span><span class="ss">offset?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+                </span><span class="ss">default_limit</span><span class="p">:</span><span class="w"> </span><span class="na">@default_limit</span><span class="p">,</span><span class="w">
+                </span><span class="ss">countable</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+                </span><span class="ss">required?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="k" data-group-id="5991099045-9">end</span><span class="w">
+  </span><span class="k" data-group-id="5991099045-8">end</span><span class="w">
+
+  </span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="5991099045-10">do</span><span class="w">
+    </span><span class="c1"># provide your default `tsvector` calculation for full-text search</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w">
+              </span><span class="n">expr</span><span class="p" data-group-id="5991099045-11">(</span><span class="w">
+                </span><span class="n">fragment</span><span class="p" data-group-id="5991099045-12">(</span><span class="w">
+                  </span><span class="s">&quot;to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;)) || to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;))&quot;</span><span class="p">,</span><span class="w">
+                  </span><span class="n">name</span><span class="p">,</span><span class="w">
+                  </span><span class="n">title</span><span class="w">
+                </span><span class="p" data-group-id="5991099045-12">)</span><span class="w">
+              </span><span class="p" data-group-id="5991099045-11">)</span><span class="p">,</span><span class="w">
+              </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="5991099045-10">end</span><span class="w">
+  </span><span class="c1">#...</span><span class="w">
+</span><span class="k">end</span></code></pre><h2 id="liveview-configuration" class="section-heading">
+  <a href="#liveview-configuration" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">LiveView configuration</span>
+</h2>
+<p>In your LiveView, fetch the data and assign it alongside the meta data to the socket.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">YourAppWeb.PostLive.IndexLive</span><span class="w"> </span><span class="k" data-group-id="8756656076-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">YourAppWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:live_view</span><span class="w">
+
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">YourApp.Resource.Post</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_params</span><span class="p" data-group-id="8756656076-2">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="8756656076-2">)</span><span class="w"> </span><span class="k" data-group-id="8756656076-3">do</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">list_posts</span><span class="p" data-group-id="8756656076-4">(</span><span class="n">params</span><span class="p" data-group-id="8756656076-4">)</span><span class="w"> </span><span class="k" data-group-id="8756656076-5">do</span><span class="w">
+      </span><span class="p" data-group-id="8756656076-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8756656076-7">{</span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="8756656076-7">}</span><span class="p" data-group-id="8756656076-6">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="8756656076-8">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="8756656076-9">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8756656076-10">%{</span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">meta</span><span class="p">:</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="8756656076-10">}</span><span class="p" data-group-id="8756656076-9">)</span><span class="p" data-group-id="8756656076-8">}</span><span class="w">
+      </span><span class="p" data-group-id="8756656076-11">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="c">_meta</span><span class="p" data-group-id="8756656076-11">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="c1"># This will reset invalid parameters. Alternatively, you can assign</span><span class="w">
+        </span><span class="c1"># only the meta and render the errors, or assign the validated params,</span><span class="w">
+        </span><span class="c1"># or you can ignore the error case entirely.</span><span class="w">
+        </span><span class="p" data-group-id="8756656076-12">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">push_navigate</span><span class="p" data-group-id="8756656076-13">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="sx">~p&quot;/posts&quot;</span><span class="p" data-group-id="8756656076-13">)</span><span class="p" data-group-id="8756656076-12">}</span><span class="w">
+    </span><span class="k" data-group-id="8756656076-5">end</span><span class="w">
+  </span><span class="k" data-group-id="8756656076-3">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">list_posts</span><span class="p" data-group-id="8756656076-14">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="8756656076-15">[</span><span class="p" data-group-id="8756656076-15">]</span><span class="p" data-group-id="8756656076-14">)</span><span class="w"> </span><span class="k" data-group-id="8756656076-16">do</span><span class="w">
+    </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">validate_and_run</span><span class="p" data-group-id="8756656076-17">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="8756656076-17">)</span><span class="w">
+  </span><span class="k" data-group-id="8756656076-16">end</span><span class="w">
+</span><span class="k" data-group-id="8756656076-1">end</span></code></pre><h3 id="liveview-streams" class="section-heading">
+  <a href="#liveview-streams" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">LiveView streams</span>
+</h3>
+<p>To use LiveView streams, you can change your <code class="inline">handle_params/3</code> function as follows:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_params</span><span class="p" data-group-id="2543368879-1">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="2543368879-1">)</span><span class="w"> </span><span class="k" data-group-id="2543368879-2">do</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">list_posts</span><span class="p" data-group-id="2543368879-3">(</span><span class="n">params</span><span class="p" data-group-id="2543368879-3">)</span><span class="w"> </span><span class="k" data-group-id="2543368879-4">do</span><span class="w">
+    </span><span class="p" data-group-id="2543368879-5">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w">
+        </span><span class="n">socket</span><span class="w">
+        </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="2543368879-6">(</span><span class="ss">:meta</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="2543368879-6">)</span><span class="w">
+        </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p" data-group-id="2543368879-7">(</span><span class="ss">:posts</span><span class="p">,</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">reset</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="2543368879-7">)</span><span class="p" data-group-id="2543368879-5">}</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+  </span><span class="k" data-group-id="2543368879-4">end</span><span class="w">
+</span><span class="k" data-group-id="2543368879-2">end</span></code></pre><h3 id="replace-invalid-params" class="section-heading">
+  <a href="#replace-invalid-params" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Replace invalid params</span>
+</h3>
+<p>To replace invalid ash_pagify parameters with their default values, you can use the <code class="inline">replace_invalid_params?</code> option. You can change your <code class="inline">handle_params/3</code> function as follows:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_params</span><span class="p" data-group-id="4427215703-1">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="4427215703-1">)</span><span class="w"> </span><span class="k" data-group-id="4427215703-2">do</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">list_posts</span><span class="p" data-group-id="4427215703-3">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="ss">replace_invalid_params?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="4427215703-3">)</span><span class="w"> </span><span class="k" data-group-id="4427215703-4">do</span><span class="w">
+      </span><span class="p" data-group-id="4427215703-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4427215703-6">{</span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="4427215703-6">}</span><span class="p" data-group-id="4427215703-5">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="4427215703-7">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="4427215703-8">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4427215703-9">%{</span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">meta</span><span class="p">:</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="4427215703-9">}</span><span class="p" data-group-id="4427215703-8">)</span><span class="p" data-group-id="4427215703-7">}</span><span class="w">
+      </span><span class="p" data-group-id="4427215703-10">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="4427215703-10">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="n">valid_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">build_path</span><span class="p" data-group-id="4427215703-11">(</span><span class="sx">~p&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="o">.</span><span class="n">params</span><span class="p" data-group-id="4427215703-11">)</span><span class="w">
+        </span><span class="p" data-group-id="4427215703-12">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">push_navigate</span><span class="p" data-group-id="4427215703-13">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="n">valid_path</span><span class="p" data-group-id="4427215703-13">)</span><span class="p" data-group-id="4427215703-12">}</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+  </span><span class="k" data-group-id="4427215703-4">end</span><span class="w">
+</span><span class="k" data-group-id="4427215703-2">end</span></code></pre><h3 id="custom-read-action" class="section-heading">
+  <a href="#custom-read-action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Custom read action</span>
+</h3>
+<p>If the <code class="inline">:action</code> option is set (to perform a custom read action), the fourth argument
+<code class="inline">args</code> will be passed to the action as arguments.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="4565685510-1">%</span><span class="nc" data-group-id="4565685510-1">Ash.Page.Offset</span><span class="p" data-group-id="4565685510-1">{</span><span class="ss">count</span><span class="p">:</span><span class="w"> </span><span class="n">count</span><span class="p" data-group-id="4565685510-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">all</span><span class="p" data-group-id="4565685510-2">(</span><span class="nc">Comment</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4565685510-3">%</span><span class="nc" data-group-id="4565685510-3">AshPagify</span><span class="p" data-group-id="4565685510-3">{</span><span class="p" data-group-id="4565685510-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4565685510-4">[</span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:by_post</span><span class="p" data-group-id="4565685510-4">]</span><span class="p">,</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="4565685510-2">)</span></code></pre><h2 id="full-text-search" class="section-heading">
+  <a href="#full-text-search" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Full-text search</span>
+</h2>
+<p>We allow full-text search using the <code class="inline">tsvector</code> column in PostgreSQL. To enable full-text search,
+you need to either <code class="inline">use AshPagify.Tsearch</code> in your module or implement the <code class="inline">full_text_search</code>,
+<code class="inline">full_text_search_rank</code>, <code class="inline">tsquery</code>, and <code class="inline">tsvector</code> calculations as described in <a href="AshPagify.Tsearch.html"><code class="inline">AshPagify.Tsearch</code></a>
+(tsvector calculation  is always mandatory).</p><pre><code class="makeup elixir" translate="no"><span class="c1"># provide the default tsvector calculation for full-text search</span><span class="w">
+</span><span class="n">calculate</span><span class="w"> </span><span class="ss">:tsvector</span><span class="p">,</span><span class="w">
+          </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w">
+          </span><span class="n">expr</span><span class="p" data-group-id="6091311850-1">(</span><span class="w">
+            </span><span class="n">fragment</span><span class="p" data-group-id="6091311850-2">(</span><span class="w">
+              </span><span class="s">&quot;to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;)) || to_tsvector(&#39;simple&#39;, coalesce(?, &#39;&#39;))&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="n">name</span><span class="p">,</span><span class="w">
+              </span><span class="n">title</span><span class="w">
+            </span><span class="p" data-group-id="6091311850-2">)</span><span class="w">
+          </span><span class="p" data-group-id="6091311850-1">)</span><span class="p">,</span><span class="w">
+          </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span></code></pre><p>Or if you want to use a generated tsvector column, you can replace the fields
+part with the name of your generated tsvector column:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># use a tsvector column from the database</span><span class="w">
+</span><span class="n">calculate</span><span class="w"> </span><span class="ss">:tsvector</span><span class="p">,</span><span class="w"> </span><span class="nc">AshPostgres.Tsvector</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="4699155479-1">(</span><span class="n">tsv</span><span class="p" data-group-id="4699155479-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span></code></pre><p>You can also configure <code class="inline">dynamic</code> tsvectors based on user input. Have a look at the
+<a href="AshPagify.Tsearch.html"><code class="inline">AshPagify.Tsearch</code></a> module for more information.</p><p>Once configured, you can use the <code class="inline">search</code> parameter to apply full-text search.</p><h2 id="sortable-tables-and-pagination" class="section-heading">
+  <a href="#sortable-tables-and-pagination" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Sortable tables and pagination</span>
+</h2>
+<p>To add a sortable table and pagination links, you can add the following to your template:</p><pre><code class="makeup elixir" translate="no"><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Posts</span><span class="o">&lt;</span><span class="o">/</span><span class="n">h1</span><span class="o">&gt;</span><span class="w">
+
+</span><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="w"> </span><span class="n">items</span><span class="o">=</span><span class="p" data-group-id="0066488114-1">{</span><span class="na">@posts</span><span class="p" data-group-id="0066488114-1">}</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="0066488114-2">{</span><span class="na">@meta</span><span class="p" data-group-id="0066488114-2">}</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="0066488114-3">{</span><span class="sx">~p&quot;/posts&quot;</span><span class="p" data-group-id="0066488114-3">}</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="ss">:col</span><span class="w"> </span><span class="ss">:let</span><span class="o">=</span><span class="p" data-group-id="0066488114-4">{</span><span class="n">post</span><span class="p" data-group-id="0066488114-4">}</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="p" data-group-id="0066488114-5">{</span><span class="ss">:name</span><span class="p" data-group-id="0066488114-5">}</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:col</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="ss">:col</span><span class="w"> </span><span class="ss">:let</span><span class="o">=</span><span class="p" data-group-id="0066488114-6">{</span><span class="n">post</span><span class="p" data-group-id="0066488114-6">}</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;Author&quot;</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="p" data-group-id="0066488114-7">{</span><span class="ss">:author</span><span class="p" data-group-id="0066488114-7">}</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="ss">:col</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">table</span><span class="o">&gt;</span><span class="w">
+
+</span><span class="o">&lt;</span><span class="nc">AshPagify.Components</span><span class="o">.</span><span class="n">pagination</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p" data-group-id="0066488114-8">{</span><span class="na">@meta</span><span class="p" data-group-id="0066488114-8">}</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="p" data-group-id="0066488114-9">{</span><span class="sx">~p&quot;/posts&quot;</span><span class="p" data-group-id="0066488114-9">}</span><span class="w"> </span><span class="o">/</span><span class="o">&gt;</span></code></pre><p>In this context, path points to the current route, and AshPagify Components appends
+full-text search, pagination, scoping, filtering, and sorting parameters to it.
+You can use verified routes, route helpers, or custom path builder functions.
+You'll find explanations for the different formats in the documentation for
+<a href="AshPagify.Components.html#build_path/3"><code class="inline">AshPagify.Components.build_path/3</code></a>.</p><p>Note that the field attribute in the <code class="inline">:col</code> slot is optional. If set and the
+corresponding field in the resource is defined as sortable, the table header for
+that column will be interactive, allowing users to sort by that column. However,
+if the field isn't defined as sortable, or if the field attribute is omitted, or
+set to <code class="inline">nil</code> or <code class="inline">false</code>, the table header will not be clickable.</p><p>You also have the option to pass a <a href="https://hexdocs.pm/phoenix_live_view/0.20.17/Phoenix.LiveView.JS.html"><code class="inline">Phoenix.LiveView.JS</code></a> command instead of or
+in addition to a path. For more details, please refer to the component
+documentation.</p><h2 id="parameter-format" class="section-heading">
+  <a href="#parameter-format" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Parameter format</span>
+</h2>
+<p>The AshPagify library requires parameters to be provided in a specific format as a map.
+This map can be translated into a URL query parameter string, typically for use in a
+web framework like Phoenix.</p><p>The following parameters are encoded as strings and handled by the library:</p><ul><li><code class="inline">search</code> - A string to search for in the full-text search column or in the searchable fields.</li><li><code class="inline">limit</code> - The number of records to return.</li><li><code class="inline">offset</code> - The number of records to skip.</li><li><code class="inline">scopes</code> - A map of predefined filters to apply to the query.</li><li><code class="inline">filter_form</code> - A map of filters provided by the <a href="AshPagify.FilterForm.html"><code class="inline">AshPagify.FilterForm</code></a> module.</li><li><code class="inline">order_by</code> - A list of fields to order by.</li></ul><h2 id="search-query" class="section-heading">
+  <a href="#search-query" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Search query</span>
+</h2>
+<p>You can search for a string in a full-text search column.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0285496984-1">%{</span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p" data-group-id="0285496984-1">}</span></code></pre><p>This translates to the following query parameter string:</p><pre><code class="URL">?search=John</code></pre><p>You can use the <a href="AshPagify.html#set_search/3"><code class="inline">AshPagify.set_search/3</code></a> function to set the search query in the
+<a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct.</p><pre><code class="makeup elixir" translate="no"><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_search</span><span class="p" data-group-id="0790091331-1">(</span><span class="p" data-group-id="0790091331-2">%</span><span class="nc" data-group-id="0790091331-2">AshPagify</span><span class="p" data-group-id="0790091331-2">{</span><span class="p" data-group-id="0790091331-2">}</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p" data-group-id="0790091331-1">)</span></code></pre><h2 id="pagination" class="section-heading">
+  <a href="#pagination" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Pagination</span>
+</h2>
+<p>You can specify an offset to start from and a limit to the number of results.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1714878129-1">%{</span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="1714878129-1">}</span></code></pre><p>This translates to the following query parameter string:</p><pre><code class="URL">?offset=100&amp;limit=20</code></pre><p>You can use the <a href="AshPagify.html#set_offset/2"><code class="inline">AshPagify.set_offset/2</code></a> and <a href="AshPagify.html#set_limit/3"><code class="inline">AshPagify.set_limit/3</code></a> functions to set
+the offset and limit in the <a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct.</p><pre><code class="makeup elixir" translate="no"><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_offset</span><span class="p" data-group-id="4309166154-1">(</span><span class="p" data-group-id="4309166154-2">%</span><span class="nc" data-group-id="4309166154-2">AshPagify</span><span class="p" data-group-id="4309166154-2">{</span><span class="p" data-group-id="4309166154-2">}</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="4309166154-1">)</span><span class="w">
+</span><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_limit</span><span class="p" data-group-id="4309166154-3">(</span><span class="n">ash_pagify</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="4309166154-3">)</span></code></pre><h2 id="scoping" class="section-heading">
+  <a href="#scoping" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Scoping</span>
+</h2>
+<p>To apply predefined filters to a query, you can set the <code class="inline">:scopes</code> parameter. <code class="inline">:scopes</code>
+should be a map of predefined filters (maps) available in your resource. The filter name
+is used to look up the predefined filter. If the filter is found, it is applied to
+the query. If the filter is not found, an error is raised.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="9053666720-1">%{</span><span class="ss">scopes</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9053666720-2">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p" data-group-id="9053666720-2">}</span><span class="p" data-group-id="9053666720-1">}</span></code></pre><p>This translates to the following query parameter string:</p><pre><code class="URL">?scopes[role]=admin</code></pre><p>You can use the <a href="AshPagify.html#set_scope/3"><code class="inline">AshPagify.set_scope/3</code></a> function to set the scopes in the <a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct.</p><pre><code class="makeup elixir" translate="no"><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_scope</span><span class="p" data-group-id="8762756963-1">(</span><span class="p" data-group-id="8762756963-2">%</span><span class="nc" data-group-id="8762756963-2">AshPagify</span><span class="p" data-group-id="8762756963-2">{</span><span class="p" data-group-id="8762756963-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8762756963-3">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p" data-group-id="8762756963-3">}</span><span class="p" data-group-id="8762756963-1">)</span></code></pre><h2 id="filter-forms" class="section-heading">
+  <a href="#filter-forms" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Filter forms</span>
+</h2>
+<p>Filter forms can be passed as a map of filter conditions. Usually, this map is generated
+by a filter form component using the <a href="AshPagify.FilterForm.html"><code class="inline">AshPagify.FilterForm</code></a> module. <a href="AshPagify.FilterForm.html#params_for_query/2"><code class="inline">AshPagify.FilterForm.params_for_query/2</code></a>
+can be used to convert the form filter map into a query map.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="8084268644-1">%{</span><span class="ss">filter_form</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8084268644-2">%{</span><span class="s">&quot;field&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;operator&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p" data-group-id="8084268644-2">}</span><span class="p" data-group-id="8084268644-1">}</span></code></pre><p>This translates to the following query parameter string:</p><pre><code class="URL">?filter_form[name][eq]=Post%201</code></pre><p>You can use the <a href="AshPagify.html#set_filter_form/3"><code class="inline">AshPagify.set_filter_form/3</code></a> function to set the filter form in the <a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct.</p><pre><code class="makeup elixir" translate="no"><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">set_filter_form</span><span class="p" data-group-id="8155802604-1">(</span><span class="p" data-group-id="8155802604-2">%</span><span class="nc" data-group-id="8155802604-2">AshPagify</span><span class="p" data-group-id="8155802604-2">{</span><span class="p" data-group-id="8155802604-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8155802604-3">%{</span><span class="s">&quot;field&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;operator&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Post 1&quot;</span><span class="p" data-group-id="8155802604-3">}</span><span class="p" data-group-id="8155802604-1">)</span></code></pre><p>Check the <a href="https://hexdocs.pm/ash_phoenix/2.1.1/AshPhoenix.FilterForm.html"><code class="inline">AshPhoenix.FilterForm</code></a> documentation for more information.
+See <a href="https://hexdocs.pm/ash/3.3.3/Ash.Query.html#filter/2"><code class="inline">Ash.Query.filter/2</code></a> for a list of all available filter operators.</p><h2 id="ordering" class="section-heading">
+  <a href="#ordering" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Ordering</span>
+</h2>
+<p>To add an ordering clause to a query, you need to set the <code class="inline">:order_by</code>
+parameter. <code class="inline">:order_by</code> should be a list of fields, aggregates, or calculations
+available in your resource. The order direction can be set by adding
+one of the following prefixes to the field name:</p><ul><li><code class="inline">&quot;&quot;</code> or <code class="inline">+</code> for ascending order</li><li><code class="inline">-</code> for descending order</li><li><code class="inline">++</code> for ascending order with nulls first</li><li><code class="inline">--</code> for descending order with nulls last</li></ul><p>If no order directions are given, <code class="inline">:asc</code> is used as default.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="9659498261-1">%{</span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9659498261-2">[</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--author&quot;</span><span class="p" data-group-id="9659498261-2">]</span><span class="p" data-group-id="9659498261-1">}</span></code></pre><p>This translates to the following query parameter string:</p><pre><code class="URL">?order_by=[]name&amp;oder_by[]=--author</code></pre><p>You can use the <a href="AshPagify.html#push_order/3"><code class="inline">AshPagify.push_order/3</code></a> function to set the order by clause in the <a href="AshPagify.html"><code class="inline">AshPagify</code></a> struct.</p><pre><code class="makeup elixir" translate="no"><span class="n">ash_pagify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">push_order</span><span class="p" data-group-id="9989427258-1">(</span><span class="p" data-group-id="9989427258-2">%</span><span class="nc" data-group-id="9989427258-2">AshPagify</span><span class="p" data-group-id="9989427258-2">{</span><span class="p" data-group-id="9989427258-2">}</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p" data-group-id="9989427258-1">)</span></code></pre><h2 id="internal-parameters" class="section-heading">
+  <a href="#internal-parameters" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Internal parameters</span>
+</h2>
+<p>AshPagify is designed to manage parameters that come from the user side. While it is
+possible to alter those parameters and append extra filters upon receiving them,
+it is advisable to clearly differentiate parameters coming from outside and the
+parameters that your application adds internally.</p><p>Consider the scenario where you need to scope a query based on the current user.
+In this case, it is better to create a separate function that introduces the
+necessary filter clauses:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">list_posts</span><span class="p" data-group-id="0246420983-1">(</span><span class="p" data-group-id="0246420983-2">%{</span><span class="p" data-group-id="0246420983-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0246420983-3">%</span><span class="nc" data-group-id="0246420983-3">User</span><span class="p" data-group-id="0246420983-3">{</span><span class="p" data-group-id="0246420983-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_user</span><span class="p" data-group-id="0246420983-1">)</span><span class="w"> </span><span class="k" data-group-id="0246420983-4">do</span><span class="w">
+  </span><span class="nc">Post</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">scope</span><span class="p" data-group-id="0246420983-5">(</span><span class="n">current_user</span><span class="p" data-group-id="0246420983-5">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">validate_and_run</span><span class="p" data-group-id="0246420983-6">(</span><span class="n">params</span><span class="p" data-group-id="0246420983-6">)</span><span class="w">
+</span><span class="k" data-group-id="0246420983-4">end</span><span class="w">
+
+</span><span class="kd">defp</span><span class="w"> </span><span class="nf">scope</span><span class="p" data-group-id="0246420983-7">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0246420983-8">%</span><span class="nc" data-group-id="0246420983-8">User</span><span class="p" data-group-id="0246420983-8">{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p" data-group-id="0246420983-8">}</span><span class="p" data-group-id="0246420983-7">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="w">
+</span><span class="kd">defp</span><span class="w"> </span><span class="nf">scope</span><span class="p" data-group-id="0246420983-9">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0246420983-10">%</span><span class="nc" data-group-id="0246420983-10">User</span><span class="p" data-group-id="0246420983-10">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">user_id</span><span class="p" data-group-id="0246420983-10">}</span><span class="p" data-group-id="0246420983-9">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter_input</span><span class="p" data-group-id="0246420983-11">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0246420983-12">%{</span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="n">user_id</span><span class="p" data-group-id="0246420983-12">}</span><span class="p" data-group-id="0246420983-11">)</span></code></pre><p>If you need to add extra filters that are only used internally and aren't exposed to the user,
+you can pass them as a separate argument. This same argument can be used to override certain
+options depending on the context in which the function is called.</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">list_posts</span><span class="p" data-group-id="5394671192-1">(</span><span class="p" data-group-id="5394671192-2">%{</span><span class="p" data-group-id="5394671192-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">\\</span><span class="o">\\</span><span class="w"> </span><span class="p" data-group-id="5394671192-3">[</span><span class="p" data-group-id="5394671192-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5394671192-4">%</span><span class="nc" data-group-id="5394671192-4">User</span><span class="p" data-group-id="5394671192-4">{</span><span class="p" data-group-id="5394671192-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_user</span><span class="p" data-group-id="5394671192-1">)</span><span class="w"> </span><span class="k" data-group-id="5394671192-5">do</span><span class="w">
+  </span><span class="n">ash_pagify_opts</span><span class="w"> </span><span class="o">=</span><span class="w">
+    </span><span class="n">opts</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="5394671192-6">(</span><span class="ss">:max_limit</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="5394671192-6">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="5394671192-7">(</span><span class="ss">:default_limit</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="5394671192-7">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Keyword</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="5394671192-8">(</span><span class="ss">:replace_invalid_params?</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="5394671192-8">)</span><span class="w">
+
+  </span><span class="nc">Post</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">scope</span><span class="p" data-group-id="5394671192-9">(</span><span class="n">current_user</span><span class="p" data-group-id="5394671192-9">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">apply_filters</span><span class="p" data-group-id="5394671192-10">(</span><span class="n">opts</span><span class="p" data-group-id="5394671192-10">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">validate_and_run</span><span class="p" data-group-id="5394671192-11">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify_opts</span><span class="p" data-group-id="5394671192-11">)</span><span class="w">
+</span><span class="k" data-group-id="5394671192-5">end</span><span class="w">
+
+</span><span class="kd">defp</span><span class="w"> </span><span class="nf">scope</span><span class="p" data-group-id="5394671192-12">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5394671192-13">%</span><span class="nc" data-group-id="5394671192-13">User</span><span class="p" data-group-id="5394671192-13">{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="ss">:admin</span><span class="p" data-group-id="5394671192-13">}</span><span class="p" data-group-id="5394671192-12">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="n">query</span><span class="w">
+</span><span class="kd">defp</span><span class="w"> </span><span class="nf">scope</span><span class="p" data-group-id="5394671192-14">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5394671192-15">%</span><span class="nc" data-group-id="5394671192-15">User</span><span class="p" data-group-id="5394671192-15">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">user_id</span><span class="p" data-group-id="5394671192-15">}</span><span class="p" data-group-id="5394671192-14">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter_input</span><span class="p" data-group-id="5394671192-16">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5394671192-17">%{</span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="n">user_id</span><span class="p" data-group-id="5394671192-17">}</span><span class="p" data-group-id="5394671192-16">)</span><span class="w">
+
+</span><span class="kd">defp</span><span class="w"> </span><span class="nf">apply_filters</span><span class="p" data-group-id="5394671192-18">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p" data-group-id="5394671192-18">)</span><span class="w"> </span><span class="k" data-group-id="5394671192-19">do</span><span class="w">
+  </span><span class="nc">Enum</span><span class="o">.</span><span class="n">reduce</span><span class="p" data-group-id="5394671192-20">(</span><span class="n">opts</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="5394671192-21">fn</span><span class="w">
+    </span><span class="p" data-group-id="5394671192-22">{</span><span class="ss">:updated_at</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p" data-group-id="5394671192-22">}</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter_input</span><span class="p" data-group-id="5394671192-23">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5394671192-24">%{</span><span class="ss">updated_at</span><span class="p">:</span><span class="w"> </span><span class="n">dt</span><span class="p" data-group-id="5394671192-24">}</span><span class="p" data-group-id="5394671192-23">)</span><span class="w">
+    </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">query</span><span class="w">
+  </span><span class="k" data-group-id="5394671192-21">end</span><span class="p" data-group-id="5394671192-20">)</span><span class="w">
+</span><span class="k" data-group-id="5394671192-19">end</span></code></pre><p>With this approach, you maintain a clean separation between user-driven parameters and
+system-driven parameters, leading to more maintainable and less error-prone code. Please be
+aware that in most cases it is better to use <code class="inline">Ash.Policy</code> to manage access control. This
+example is just to illustrate the concept.</p><p>Under the hood, the <a href="AshPagify.html#validate_and_run/4"><code class="inline">AshPagify.validate_and_run/4</code></a> or <a href="AshPagify.html#validate_and_run!/4"><code class="inline">AshPagify.validate_and_run!/4</code></a> functions
+just call <a href="AshPagify.html#validate/2"><code class="inline">AshPagify.validate/2</code></a> and <a href="AshPagify.html#run/4"><code class="inline">AshPagify.run/4</code></a>, which in turn calls <a href="AshPagify.html#all/4"><code class="inline">AshPagify.all/4</code></a> and
+<a href="AshPagify.html#meta/3"><code class="inline">AshPagify.meta/3</code></a>.</p><p>See <a href="AshPagify.Meta.html"><code class="inline">AshPagify.Meta</code></a> for descriptions of the meta fields.</p><p>Alternatively, you may separate parameter validation and data fetching into different
+steps using the <a href="AshPagify.html#validate/2"><code class="inline">AshPagify.validate/2</code></a>, <a href="AshPagify.html#validate!/2"><code class="inline">AshPagify.validate!/2</code></a>, and <a href="AshPagify.html#run/4"><code class="inline">AshPagify.run/4</code></a> functions.
+This allows you to manipulate the validated parameters, to modify the query depending on
+the parameters, or to move the parameter validation to a different layer of your application.</p><pre><code class="makeup elixir" translate="no"><span class="k">with</span><span class="w"> </span><span class="p" data-group-id="4845634499-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="4845634499-1">}</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="4845634499-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p" data-group-id="4845634499-2">)</span><span class="w"> </span><span class="k" data-group-id="4845634499-3">do</span><span class="w">
+  </span><span class="p" data-group-id="4845634499-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4845634499-5">{</span><span class="n">results</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p" data-group-id="4845634499-5">}</span><span class="p" data-group-id="4845634499-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">AshPagify</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="4845634499-6">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">ash_pagify</span><span class="p" data-group-id="4845634499-6">)</span><span class="w">
+</span><span class="k" data-group-id="4845634499-3">end</span></code></pre><p>The aforementioned functions internally call the lower-level functions <a href="AshPagify.html#all/4"><code class="inline">AshPagify.all/4</code></a> and
+<a href="AshPagify.html#meta/3"><code class="inline">AshPagify.meta/3</code></a>. If you have advanced requirements, you might prefer to use these functions
+directly. However, it's important to note that these lower-level functions do not validate
+the parameters. If parameters are generated based on user input, they should always be
+validated first using <a href="AshPagify.html#validate/2"><code class="inline">AshPagify.validate/2</code></a> or <a href="AshPagify.html#validate!/2"><code class="inline">AshPagify.validate!/2</code></a> to ensure safe execution.</p><h2 id="release-management" class="section-heading">
+  <a href="#release-management" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Release Management</span>
+</h2>
+<p>We use <a href="https://hexdocs.pm/git_ops/readme.html">git_opts</a> to manage our releases. To create a new release, run:</p><pre><code class="makeup bash" translate="no"><span class="">mix git_ops.release
+</span></code></pre><p>This will bump the version, create a new tag, and push the changes to the repository. The GitHub action will then build and publish the new version to Hex.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="api-reference.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+API Reference
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Change Log
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_pagify/1.0.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_pagify/1.0.2">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_pagify/1.0.2/show/README.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_pagify.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

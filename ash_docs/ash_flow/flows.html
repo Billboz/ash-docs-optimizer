@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_flow v0.1.1">
+
+
+    <title>Flows — ash_flow v0.1.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-ZVNZTSAB.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-8693CE30.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash_flow
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_flow</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash/blob/v0.1.1/documentation/topics/flows.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Flows</span>
+</h1>
+
+<p>A flow is a static definition of a set of steps to be run.</p><p>Flows are backed by <code class="inline">executors</code>, which determine how the workflow steps are performed.
+The executor can be overridden on invocation, but not all executors will be capable of running all flows.
+As of this writing, the default executor is the only one. It runs all steps in parallel unless values must be provided from one step to another, or in steps that are enclosed by a transaction.</p><p>Ash.Flow is still in its early days, so expect many features, step types, and executors to come in the future.</p><p>All explanations here pertain to the builtin executor, so be sure to read the documentation of any other executor you may use.</p><p>Flows are comprised of steps, which each have an <code class="inline">input</code> and an <code class="inline">result</code>. By default, each step is executed concurrently (or at least <em>may</em> be executed concurrently). When the result of one step is used in another, that will cause them to run in sequence. In the following flow, for example, the <code class="inline">:create_user</code> and <code class="inline">:create_blank_project</code> steps would happen concurrently, but both would wait on the <code class="inline">:create_org</code> step.</p><pre><code class="makeup elixir" translate="no"><span class="n">flow</span><span class="w"> </span><span class="k" data-group-id="0142006783-1">do</span><span class="w">
+  </span><span class="c1"># Flow arguments allow you to parameterize the flow</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:org_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="0142006783-2">do</span><span class="w">
+    </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="0142006783-2">end</span><span class="w">
+
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:user_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="0142006783-3">do</span><span class="w">
+    </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="0142006783-3">end</span><span class="w">
+
+  </span><span class="c1"># The flow returns the result of the `:create_user` step.</span><span class="w">
+  </span><span class="n">returns</span><span class="w"> </span><span class="ss">:create_user</span><span class="w">
+</span><span class="k" data-group-id="0142006783-1">end</span><span class="w">
+
+</span><span class="n">steps</span><span class="w"> </span><span class="k" data-group-id="0142006783-4">do</span><span class="w">
+  </span><span class="c1"># The step is called `:create_org`, and it creates an `Organization` using the `register_org` action.</span><span class="w">
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_org</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Accounts.Organization</span><span class="p">,</span><span class="w"> </span><span class="ss">:register_org</span><span class="w"> </span><span class="k" data-group-id="0142006783-5">do</span><span class="w">
+    </span><span class="c1"># The input to the action refers to an argument of the flow</span><span class="w">
+    </span><span class="n">input</span><span class="w"> </span><span class="p" data-group-id="0142006783-6">%{</span><span class="w">
+      </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">arg</span><span class="p" data-group-id="0142006783-7">(</span><span class="ss">:org_name</span><span class="p" data-group-id="0142006783-7">)</span><span class="w">
+    </span><span class="p" data-group-id="0142006783-6">}</span><span class="w">
+  </span><span class="k" data-group-id="0142006783-5">end</span><span class="w">
+
+  </span><span class="c1"># The step is called :create_user, and it creates a `User` using the `:register_user` action.</span><span class="w">
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="p">,</span><span class="w"> </span><span class="ss">:register_user</span><span class="w"> </span><span class="k" data-group-id="0142006783-8">do</span><span class="w">
+    </span><span class="n">input</span><span class="w"> </span><span class="p" data-group-id="0142006783-9">%{</span><span class="w">
+      </span><span class="c1"># The input refers to an argument of the flow</span><span class="w">
+      </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">arg</span><span class="p" data-group-id="0142006783-10">(</span><span class="ss">:user_name</span><span class="p" data-group-id="0142006783-10">)</span><span class="p">,</span><span class="w">
+      </span><span class="c1"># and to the result of another step</span><span class="w">
+      </span><span class="ss">org</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="0142006783-11">(</span><span class="ss">:create_org</span><span class="p" data-group-id="0142006783-11">)</span><span class="w">
+    </span><span class="p" data-group-id="0142006783-9">}</span><span class="w">
+  </span><span class="k" data-group-id="0142006783-8">end</span><span class="w">
+
+  </span><span class="c1"># The step is called :create_blank_project, and it creates a `Project` using the `:create_example` action.</span><span class="w">
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_blank_project</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Accounts.Project</span><span class="p">,</span><span class="w"> </span><span class="ss">:create_example</span><span class="w"> </span><span class="k" data-group-id="0142006783-12">do</span><span class="w">
+    </span><span class="n">input</span><span class="w"> </span><span class="p" data-group-id="0142006783-13">%{</span><span class="w">
+      </span><span class="c1"># The input refers to the result of another step</span><span class="w">
+      </span><span class="ss">org</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="0142006783-14">(</span><span class="ss">:create_org</span><span class="p" data-group-id="0142006783-14">)</span><span class="w">
+    </span><span class="p" data-group-id="0142006783-13">}</span><span class="w">
+  </span><span class="k" data-group-id="0142006783-12">end</span><span class="w">
+</span><span class="k" data-group-id="0142006783-4">end</span></code></pre><h2 id="return-values" class="section-heading">
+  <a href="#return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return Values</span>
+</h2>
+<p><code class="inline">returns</code> determines what the flow returns, and may be one of three things:</p><ul><li><code class="inline">:step_name</code> - will return the result of the configured step</li><li><code class="inline">%{step_name: :key}</code> will return a map of each key to the provided step name, i.e <code class="inline">%{key: &lt;step_name_result&gt;}</code></li><li><code class="inline">[:step_name]</code> - which is equivalent to <code class="inline">%{step_name: :step_name}</code></li></ul><p>A flow always returns an <code class="inline">%Ash.Flow.Result{}</code>, and the return value of a successful flow will be available in <code class="inline">%Ash.Flow.Result{result: result}</code> when the flow did not encounter an error.</p><p>If the flow resulted in an error, <code class="inline">error?</code> is set to <code class="inline">true</code>, and the result will be <code class="inline">nil</code>.</p><h2 id="halting-and-resuming-flows" class="section-heading">
+  <a href="#halting-and-resuming-flows" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Halting and Resuming Flows</span>
+</h2>
+<p>A flow can be halted by using the <code class="inline">halt_if</code> option on a step, or by a custom step returning <code class="inline">{:error, Ash.Flow.Error.Halted.exception(reason: reason)}</code></p><p>In this case, the flow will be marked as <code class="inline">complete?: false</code>. The result of each step up until this point is saved, and you can then rerun the flow with different inputs by passing the incomplete result into the <code class="inline">resume</code> option when running the flow again. Individual steps can be rerun by deleting them from the <code class="inline">data</code> field of the flow.</p><h2 id="errors" class="section-heading">
+  <a href="#errors" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Errors</span>
+</h2>
+<p>Currently, any error anywhere in the flow will fail the flow and will return an error. Over time, error handling behavior will be added, as well as the ability to customize how transactions are rolled back, and to handle errors in a custom way.</p><h2 id="custom-steps" class="section-heading">
+  <a href="#custom-steps" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Custom steps</span>
+</h2>
+<p>Custom steps allow you to implement any custom logic that you need. There aren't really any restrictions on what you do in a custom step, but there is one main consideration if you want your custom step to play nicely with transactions:</p><p>Generally speaking you should set the <code class="inline">touches_resources</code> if you set <code class="inline">async?</code> to true.
+This ensures that the custom step will be run synchronously if any of those resource's data
+layers is in a corresponding transaction. You don't necessarily need to set <em>all</em> of the
+resources that will be touched. For example, all AshPostgres resources that share the same
+repo share the same transaction state.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="api-reference.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+API Reference
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ash-flow.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: Ash.Flow.Dsl
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_flow/0.1.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_flow/0.1.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_flow/0.1.1/show/documentation/topics/flows.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_flow.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

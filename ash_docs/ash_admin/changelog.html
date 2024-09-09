@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_admin v0.11.5">
+
+
+    <title>Change Log — ash_admin v0.11.5</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-58676A5C.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_admin" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_admin" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_admin" class="sidebar-projectName" translate="no">
+ash_admin
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.11.5
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_admin</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_admin/blob/v0.11.5/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Change Log</span>
+  </h1>
+
+<p>All notable changes to this project will be documented in this file.
+See <a href="Https://conventionalcommits.org">Conventional Commits</a> for commit guidelines.</p><!-- changelog --><h2 id="v0-11-5-2024-08-26" class="section-heading">
+  <a href="#v0-11-5-2024-08-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.11.4...v0.11.5">v0.11.5</a> (2024-08-26)</span>
+</h2>
+<h3 id="improvements" class="section-heading">
+  <a href="#improvements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>remove tails</li></ul><h2 id="v0-11-4-2024-08-01" class="section-heading">
+  <a href="#v0-11-4-2024-08-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.11.3...v0.11.4">v0.11.4</a> (2024-08-01)</span>
+</h2>
+<h3 id="bug-fixes" class="section-heading">
+  <a href="#bug-fixes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly support adding embeds for nil values</p></li><li><p>upgrade <code class="inline">ash_phoenix</code> for fix on calculating values</p></li><li><p>use resource's configured domain before default domain</p></li><li><p>ensure <code class="inline">actor_tenant</code> is always set</p></li><li><p>ensure table columsn are loaded, bypassing (as yet) unknown bug</p></li></ul><h3 id="improvements-1" class="section-heading">
+  <a href="#improvements-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>don't log forbidden errors</li></ul><h2 id="v0-11-3-2024-06-25" class="section-heading">
+  <a href="#v0-11-3-2024-06-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.11.2...v0.11.3">v0.11.3</a> (2024-06-25)</span>
+</h2>
+<h3 id="bug-fixes-1" class="section-heading">
+  <a href="#bug-fixes-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>don't go to potentially non-existant create actions</li></ul><h2 id="v0-11-2-2024-06-25" class="section-heading">
+  <a href="#v0-11-2-2024-06-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.11.1...v0.11.2">v0.11.2</a> (2024-06-25)</span>
+</h2>
+<h3 id="bug-fixes-2" class="section-heading">
+  <a href="#bug-fixes-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly render errors data table forms</p></li><li><p>update to support 0.20 (#179)</p></li></ul><h2 id="v0-11-1-2024-06-13" class="section-heading">
+  <a href="#v0-11-1-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.11.0...v0.11.1">v0.11.1</a> (2024-06-13)</span>
+</h2>
+<h3 id="bug-fixes-3" class="section-heading">
+  <a href="#bug-fixes-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly support lists of embeds</p></li><li><p>render relationship inputs even when type is not a map</p></li><li><p>properly render tenant form on mobile sidebar</p></li></ul><h3 id="improvements-2" class="section-heading">
+  <a href="#improvements-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>various fixes around unions</p></li><li><p>support for unions</p></li></ul><h2 id="v0-11-0-2024-05-10" class="section-heading">
+  <a href="#v0-11-0-2024-05-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.10-rc.1...v0.11.0">v0.11.0</a> (2024-05-10)</span>
+</h2>
+<h3 id="bug-fixes-4" class="section-heading">
+  <a href="#bug-fixes-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>TopNav when in mobile view (size &lt; md) (#128)</p></li><li><p>properly accept private attributes in admin</p></li><li><p>clear actor_tenant cookie when clearing actor (#101)</p></li><li><p>small refactor in actor plug (#99)</p></li></ul><h3 id="improvements-3" class="section-heading">
+  <a href="#improvements-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>track actor tenant, use it for fetching actor</li></ul><h2 id="v0-10-10-rc-1-2024-04-03" class="section-heading">
+  <a href="#v0-10-10-rc-1-2024-04-03" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.10-rc.0...v0.10.10-rc.1">v0.10.10-rc.1</a> (2024-04-03)</span>
+</h2>
+<h3 id="bug-fixes-5" class="section-heading">
+  <a href="#bug-fixes-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>get checks passing, fix various bugs</p></li><li><p>loading multiple relationships with the same destination resource that has sensitive fields (#98)</p></li></ul><h2 id="v0-10-10-rc-0-2024-04-02" class="section-heading">
+  <a href="#v0-10-10-rc-0-2024-04-02" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.9...v0.10.10-rc.0">v0.10.10-rc.0</a> (2024-04-02)</span>
+</h2>
+<h3 id="bug-fixes-6" class="section-heading">
+  <a href="#bug-fixes-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly add indexes to embedded list attribtues</p></li><li><p>ensure action selection is accurate/consistent</p></li><li><p>only consider top-level targets for input pruning</p></li><li><p>only show forms for map type inputs</p></li></ul><h3 id="improvements-4" class="section-heading">
+  <a href="#improvements-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>upgrade to 3.0</li></ul><h2 id="v0-10-9-2024-03-29" class="section-heading">
+  <a href="#v0-10-9-2024-03-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.8...v0.10.9">v0.10.9</a> (2024-03-29)</span>
+</h2>
+<h3 id="bug-fixes-7" class="section-heading">
+  <a href="#bug-fixes-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>only show forms for map type inputs</li></ul><h3 id="improvements-5" class="section-heading">
+  <a href="#improvements-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>upgrade to 3.0</li></ul><h2 id="v0-10-8-2024-03-19" class="section-heading">
+  <a href="#v0-10-8-2024-03-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.7...v0.10.8">v0.10.8</a> (2024-03-19)</span>
+</h2>
+<h3 id="bug-fixes-8" class="section-heading">
+  <a href="#bug-fixes-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>missing handle event in read forms</p></li><li><p>Allow blank/nil default values in :atom inputs when allow_nil? is true (#93)</p></li><li><p>Allow blank/default default values in :atom inputs when allow_nil? is true</p></li></ul><h3 id="improvements-6" class="section-heading">
+  <a href="#improvements-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>Add :csp_nonce_assign_key to ash_admin options (fix for /issues/91) (#92)</li></ul><h2 id="v0-10-7-2024-02-26" class="section-heading">
+  <a href="#v0-10-7-2024-02-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.6...v0.10.7">v0.10.7</a> (2024-02-26)</span>
+</h2>
+<h3 id="bug-fixes-9" class="section-heading">
+  <a href="#bug-fixes-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly prevent access to actions not configured to be in the UI</li></ul><h2 id="v0-10-6-2024-02-20" class="section-heading">
+  <a href="#v0-10-6-2024-02-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.5...v0.10.6">v0.10.6</a> (2024-02-20)</span>
+</h2>
+<h3 id="bug-fixes-10" class="section-heading">
+  <a href="#bug-fixes-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix lists of values in deeply nested embeds</li></ul><h2 id="v0-10-5-2024-02-11" class="section-heading">
+  <a href="#v0-10-5-2024-02-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.4...v0.10.5">v0.10.5</a> (2024-02-11)</span>
+</h2>
+<h3 id="improvements-7" class="section-heading">
+  <a href="#improvements-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>show internal errors in ash_admin form</li></ul><h2 id="v0-10-4-2024-02-04" class="section-heading">
+  <a href="#v0-10-4-2024-02-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.3...v0.10.4">v0.10.4</a> (2024-02-04)</span>
+</h2>
+<h3 id="improvements-8" class="section-heading">
+  <a href="#improvements-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>fix large gap in header in safari</li></ul><h2 id="v0-10-3-2024-02-04" class="section-heading">
+  <a href="#v0-10-3-2024-02-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.2...v0.10.3">v0.10.3</a> (2024-02-04)</span>
+</h2>
+<h3 id="bug-fixes-11" class="section-heading">
+  <a href="#bug-fixes-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>ensure starting state of dropdowns is honored</li></ul><h3 id="improvements-9" class="section-heading">
+  <a href="#improvements-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>update to phoenix_html 4.0</p></li><li><p>support any sensitive value</p></li><li><p>support PhoenixHTML 4.0</p></li><li><p>Adds show_sensitive_fields option to Resource to allow unredacting seâ¦ (#86)</p></li></ul><h2 id="v0-10-2-2024-01-04" class="section-heading">
+  <a href="#v0-10-2-2024-01-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.1...v0.10.2">v0.10.2</a> (2024-01-04)</span>
+</h2>
+<h3 id="bug-fixes-12" class="section-heading">
+  <a href="#bug-fixes-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>ensure tenant stays set after navigating from page</li></ul><h2 id="v0-10-1-2023-12-27" class="section-heading">
+  <a href="#v0-10-1-2023-12-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.10.0...v0.10.1">v0.10.1</a> (2023-12-27)</span>
+</h2>
+<h3 id="bug-fixes-13" class="section-heading">
+  <a href="#bug-fixes-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>don't hide fields required for managing relationships</p></li><li><p>pass tenant to <code class="inline">Changeset.for_*</code> directly (#84)</p></li></ul><h2 id="v0-10-0-2023-11-30" class="section-heading">
+  <a href="#v0-10-0-2023-11-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.8...v0.10.0">v0.10.0</a> (2023-11-30)</span>
+</h2>
+<h3 id="features" class="section-heading">
+  <a href="#features" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>Hide sensitive attributes by default (#82)</li></ul><h3 id="bug-fixes-14" class="section-heading">
+  <a href="#bug-fixes-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>fix cases where data may not match expected patterns</p></li><li><p>allow nil values for all dropdowns to handle list behavior</p></li><li><p>Dropdown component has Surface hangover (#81)</p></li></ul><h3 id="improvements-10" class="section-heading">
+  <a href="#improvements-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>use prompt instead of adding a nil option for dropdowns</p></li><li><p>only ensure <code class="inline">nil</code> value is present on dropdowns when inside of lists</p></li><li><p>fix warnings on actor plug</p></li><li><p>use the first enum value as the default for dropdowns</p></li></ul><h2 id="v0-9-8-2023-11-17" class="section-heading">
+  <a href="#v0-9-8-2023-11-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.7...v0.9.8">v0.9.8</a> (2023-11-17)</span>
+</h2>
+<h3 id="bug-fixes-15" class="section-heading">
+  <a href="#bug-fixes-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>default table_columns to all attributes for proper selecting</li></ul><h2 id="v0-9-7-2023-11-16" class="section-heading">
+  <a href="#v0-9-7-2023-11-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.6...v0.9.7">v0.9.7</a> (2023-11-16)</span>
+</h2>
+<h3 id="bug-fixes-16" class="section-heading">
+  <a href="#bug-fixes-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly match on errored loads</li></ul><h2 id="v0-9-6-2023-11-15" class="section-heading">
+  <a href="#v0-9-6-2023-11-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.5...v0.9.6">v0.9.6</a> (2023-11-15)</span>
+</h2>
+<h3 id="bug-fixes-17" class="section-heading">
+  <a href="#bug-fixes-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>Fix JS syntax error and compile latest version of <code class="inline">app.js</code> (#77)</p></li><li><p>don't use nil as new {:array, type} value (#76)</p></li><li><p>load each to_one relationship independently and ignore it if it errors</p></li><li><p>allow showing false values for boolean selects (#74)</p></li><li><p>pass actor when fetching relationships attributes (#73)</p></li><li><p>properly provide <code class="inline">arguments</code> to read actions</p></li></ul><h3 id="improvements-11" class="section-heading">
+  <a href="#improvements-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support calculations &amp; aggregates in table columns</li></ul><h2 id="v0-9-5-2023-10-11" class="section-heading">
+  <a href="#v0-9-5-2023-10-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.4...v0.9.5">v0.9.5</a> (2023-10-11)</span>
+</h2>
+<h3 id="improvements-12" class="section-heading">
+  <a href="#improvements-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>force submit forms</li></ul><h2 id="v0-9-4-2023-08-04" class="section-heading">
+  <a href="#v0-9-4-2023-08-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.3...v0.9.4">v0.9.4</a> (2023-08-04)</span>
+</h2>
+<h3 id="bug-fixes-18" class="section-heading">
+  <a href="#bug-fixes-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly reassign form on update</li></ul><h2 id="v0-9-3-2023-08-02" class="section-heading">
+  <a href="#v0-9-3-2023-08-02" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.2...v0.9.3">v0.9.3</a> (2023-08-02)</span>
+</h2>
+<h3 id="bug-fixes-19" class="section-heading">
+  <a href="#bug-fixes-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>support cross-api relationships in show links</p></li><li><p>use <code class="inline">push_patch</code> instead of <code class="inline">push_redirect</code></p></li></ul><h3 id="improvements-13" class="section-heading">
+  <a href="#improvements-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>Ui consistency (#62)</li></ul><h2 id="v0-9-2-2023-08-02" class="section-heading">
+  <a href="#v0-9-2-2023-08-02" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.1...v0.9.2">v0.9.2</a> (2023-08-02)</span>
+</h2>
+<h3 id="bug-fixes-20" class="section-heading">
+  <a href="#bug-fixes-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix links to show related resources</li></ul><h2 id="v0-9-1-2023-08-02" class="section-heading">
+  <a href="#v0-9-1-2023-08-02" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.9.0...v0.9.1">v0.9.1</a> (2023-08-02)</span>
+</h2>
+<h3 id="bug-fixes-21" class="section-heading">
+  <a href="#bug-fixes-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>use connect params for persisted state</p></li><li><p>properly persist cookies</p></li><li><p>create-form: errors from removal of surface (#60)</p></li><li><p>properly detect update and destroy actions</p></li><li><p>revalidate with params on submit</p></li><li><p>send set tenant to parent liveview</p></li><li><p>set phx-target</p></li><li><p>set phx-target on tenant form</p></li><li><p>fix editing_tenant in top_nav</p></li></ul><h3 id="improvements-14" class="section-heading">
+  <a href="#improvements-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>loosen tails dependency</li></ul><h2 id="v0-9-0-2023-07-28" class="section-heading">
+  <a href="#v0-9-0-2023-07-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.8.2...v0.9.0">v0.9.0</a> (2023-07-28)</span>
+</h2>
+<h3 id="features-1" class="section-heading">
+  <a href="#features-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>Add seed with Admin, User, Customer, Organization and Ticket (#56)</li></ul><h3 id="bug-fixes-22" class="section-heading">
+  <a href="#bug-fixes-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>set assigns for show block</p></li><li><p>fix behaviour and support on_mount and session</p></li></ul><h3 id="improvements-15" class="section-heading">
+  <a href="#improvements-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>style the metadata tables consistently (#54)</p></li><li><p>remove surface</p></li><li><p>support setting an actor</p></li></ul><h2 id="v0-8-2-2023-07-25" class="section-heading">
+  <a href="#v0-8-2-2023-07-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.8.1...v0.8.2">v0.8.2</a> (2023-07-25)</span>
+</h2>
+<h3 id="bug-fixes-23" class="section-heading">
+  <a href="#bug-fixes-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>don't show create button if no create actions are configured</p></li><li><p>use <code class="inline">authorize?: false</code> when reading actor from session</p></li></ul><h3 id="improvements-16" class="section-heading">
+  <a href="#improvements-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>show all errors on form submit</p></li><li><p>Improve frontend a little bit (#52)</p></li><li><p>Use overflow-auto instead of overflow-scroll on table</p></li></ul><h2 id="v0-8-1-2023-04-22" class="section-heading">
+  <a href="#v0-8-1-2023-04-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.8.0...v0.8.1">v0.8.1</a> (2023-04-22)</span>
+</h2>
+<h3 id="bug-fixes-24" class="section-heading">
+  <a href="#bug-fixes-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>don't authorize actor read</p></li><li><p>Admin links are not aware of the scope where ash_admin is called (#49)</p></li><li><p>handle cases where actions of a given type don't exist</p></li></ul><h3 id="improvements-17" class="section-heading">
+  <a href="#improvements-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>Update Surface to 0.10.0 (#50)</li></ul><h2 id="v0-8-0-2023-03-01" class="section-heading">
+  <a href="#v0-8-0-2023-03-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.7.1...v0.8.0">v0.8.0</a> (2023-03-01)</span>
+</h2>
+<h3 id="features-2" class="section-heading">
+  <a href="#features-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li><p>Inline style nonce (#42)</p></li><li><p>Specify nonces on inline styles/JavaScript so they can be allowed by CSPs</p></li></ul><h3 id="bug-fixes-25" class="section-heading">
+  <a href="#bug-fixes-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>Add missing mix.lock changes (#43)</p></li><li><p>Add missing mix.lock changes</p></li></ul><h2 id="v0-7-1-2022-11-01" class="section-heading">
+  <a href="#v0-7-1-2022-11-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.7.0...v0.7.1">v0.7.1</a> (2022-11-01)</span>
+</h2>
+<h3 id="bug-fixes-26" class="section-heading">
+  <a href="#bug-fixes-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix markdown editor and make things cleaner</li></ul><h2 id="v0-7-0-2022-10-31" class="section-heading">
+  <a href="#v0-7-0-2022-10-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.6.2...v0.7.0">v0.7.0</a> (2022-10-31)</span>
+</h2>
+<h3 id="features-3" class="section-heading">
+  <a href="#features-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>add markdown attributes</li></ul><h3 id="improvements-18" class="section-heading">
+  <a href="#improvements-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add markdown editor</li></ul><h2 id="v0-6-2-2022-10-20" class="section-heading">
+  <a href="#v0-6-2-2022-10-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.6.1...v0.6.2">v0.6.2</a> (2022-10-20)</span>
+</h2>
+<h3 id="bug-fixes-27" class="section-heading">
+  <a href="#bug-fixes-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>handle missing api/resource better</p></li><li><p>if pagination is available but not required, opt to use it</p></li></ul><h2 id="v0-6-1-2022-10-20" class="section-heading">
+  <a href="#v0-6-1-2022-10-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.6.0-rc.2...v0.6.1">v0.6.1</a> (2022-10-20)</span>
+</h2>
+<h3 id="improvements-19" class="section-heading">
+  <a href="#improvements-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to latest ash</li></ul><h2 id="v0-6-0-rc-2-2022-09-28" class="section-heading">
+  <a href="#v0-6-0-rc-2-2022-09-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.6.0-rc.1...v0.6.0-rc.2">v0.6.0-rc.2</a> (2022-09-28)</span>
+</h2>
+<h3 id="improvements-20" class="section-heading">
+  <a href="#improvements-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>update to latest ash</p></li><li><p>unlock unused deps</p></li><li><p>support latest ash_phoenix</p></li><li><p>update to latest ash</p></li></ul><h2 id="v0-6-0-rc-1-2022-09-15" class="section-heading">
+  <a href="#v0-6-0-rc-1-2022-09-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.6.0-rc.0...v0.6.0-rc.1">v0.6.0-rc.1</a> (2022-09-15)</span>
+</h2>
+<h3 id="bug-fixes-28" class="section-heading">
+  <a href="#bug-fixes-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>don't call into ash_postgres for tables anymore</p></li><li><p>properly match on <code class="inline">Code.ensrue_compiled/1</code> output</p></li></ul><h3 id="improvements-21" class="section-heading">
+  <a href="#improvements-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to the latest ash</li></ul><h2 id="v0-5-2-2022-08-22" class="section-heading">
+  <a href="#v0-5-2-2022-08-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.5.1-rc.0...v0.5.2">v0.5.2</a> (2022-08-22)</span>
+</h2>
+<h3 id="improvements-22" class="section-heading">
+  <a href="#improvements-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>update to latest ash</p></li><li><p>support value-backed nested forms</p></li></ul><h2 id="v0-5-1-rc-0-2022-08-15" class="section-heading">
+  <a href="#v0-5-1-rc-0-2022-08-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.5.0...v0.5.1-rc.0">v0.5.1-rc.0</a> (2022-08-15)</span>
+</h2>
+<h3 id="bug-fixes-29" class="section-heading">
+  <a href="#bug-fixes-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>remove unnecessary code</p></li><li><p>fix data loading, change tracking (handled by AshPhoenix.Form)</p></li><li><p>changelog URL in release tweet (#24)</p></li></ul><h2 id="v0-5-0-2022-08-10" class="section-heading">
+  <a href="#v0-5-0-2022-08-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.5-rc.0...v0.5.0">v0.5.0</a> (2022-08-10)</span>
+</h2>
+<h3 id="features-4" class="section-heading">
+  <a href="#features-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>allow setting primary read action as default resource page (#19)</li></ul><h3 id="bug-fixes-30" class="section-heading">
+  <a href="#bug-fixes-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>failing error case for nested forms (#21)</li></ul><h3 id="improvements-23" class="section-heading">
+  <a href="#improvements-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>use new authorize? configuration</li></ul><h2 id="v0-4-5-rc-0-2022-05-23" class="section-heading">
+  <a href="#v0-4-5-rc-0-2022-05-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.4...v0.4.5-rc.0">v0.4.5-rc.0</a> (2022-05-23)</span>
+</h2>
+<h3 id="bug-fixes-31" class="section-heading">
+  <a href="#bug-fixes-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>update to latest ash for bugfix</p></li><li><p>get the original value using <a href="https://hexdocs.pm/ash_phoenix/2.1.1/AshPhoenix.Form.html#value/2"><code class="inline">AshPhoenix.Form.value/2</code></a></p></li></ul><h3 id="improvements-24" class="section-heading">
+  <a href="#improvements-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>Top nav resource grouping (#15)</p></li><li><p>update ash version and fix build</p></li><li><p>add DateInput for dates</p></li></ul><h2 id="v0-4-4-2022-03-17" class="section-heading">
+  <a href="#v0-4-4-2022-03-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.3...v0.4.4">v0.4.4</a> (2022-03-17)</span>
+</h2>
+<h3 id="bug-fixes-32" class="section-heading">
+  <a href="#bug-fixes-32" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>don't depend on an rc version</li></ul><h2 id="v0-4-3-2022-03-17" class="section-heading">
+  <a href="#v0-4-3-2022-03-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.2...v0.4.3">v0.4.3</a> (2022-03-17)</span>
+</h2>
+<h3 id="bug-fixes-33" class="section-heading">
+  <a href="#bug-fixes-33" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>a bunch of behavior fixes, getting the demo to snuff with new Ash</p></li><li><p>fix tenant/actor session w/ new phx version</p></li></ul><h3 id="improvements-25" class="section-heading">
+  <a href="#improvements-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update tons of dependencies</li></ul><h2 id="v0-4-2-2022-03-17" class="section-heading">
+  <a href="#v0-4-2-2022-03-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.1...v0.4.2">v0.4.2</a> (2022-03-17)</span>
+</h2>
+<h3 id="bug-fixes-34" class="section-heading">
+  <a href="#bug-fixes-34" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>a bunch of behavior fixes, getting the demo to snuff with new Ash</p></li><li><p>fix tenant/actor session w/ new phx version</p></li></ul><h3 id="improvements-26" class="section-heading">
+  <a href="#improvements-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update tons of dependencies</li></ul><h2 id="v0-4-2-2022-03-17-1" class="section-heading">
+  <a href="#v0-4-2-2022-03-17-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.1...v0.4.2">v0.4.2</a> (2022-03-17)</span>
+</h2>
+<h3 id="bug-fixes-35" class="section-heading">
+  <a href="#bug-fixes-35" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>don't lock phoenix version</li></ul><h2 id="v0-4-1-2022-03-17" class="section-heading">
+  <a href="#v0-4-1-2022-03-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.4.0...v0.4.1">v0.4.1</a> (2022-03-17)</span>
+</h2>
+<h3 id="bug-fixes-36" class="section-heading">
+  <a href="#bug-fixes-36" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>various other fixes for events and hooks</p></li><li><p>fix issues w/ admin UI not rendering</p></li></ul><h2 id="v0-4-0-2021-11-14" class="section-heading">
+  <a href="#v0-4-0-2021-11-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.3.0-rc.0...v0.4.0">v0.4.0</a> (2021-11-14)</span>
+</h2>
+<h3 id="bug-fixes-37" class="section-heading">
+  <a href="#bug-fixes-37" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>handle new liveview arg pattern</li></ul><h2 id="v0-3-0-rc-0-2021-09-01" class="section-heading">
+  <a href="#v0-3-0-rc-0-2021-09-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.22...v0.3.0-rc.0">v0.3.0-rc.0</a> (2021-09-01)</span>
+</h2>
+<h3 id="breaking-changes" class="section-heading">
+  <a href="#breaking-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Breaking Changes:</span>
+</h3>
+<ul><li>support latest surface/phoenix</li></ul><h3 id="improvements-27" class="section-heading">
+  <a href="#improvements-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>remove compile-time router, use params instead</li></ul><h2 id="v0-2-22-2021-07-24" class="section-heading">
+  <a href="#v0-2-22-2021-07-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.21...v0.2.22">v0.2.22</a> (2021-07-24)</span>
+</h2>
+<h3 id="bug-fixes-38" class="section-heading">
+  <a href="#bug-fixes-38" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>render values properly when no format set</li></ul><h2 id="v0-2-21-2021-07-24" class="section-heading">
+  <a href="#v0-2-21-2021-07-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.20...v0.2.21">v0.2.21</a> (2021-07-24)</span>
+</h2>
+<h3 id="improvements-28" class="section-heading">
+  <a href="#improvements-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>define custom formats for any field (#7)</li></ul><h2 id="v0-2-20-2021-07-23" class="section-heading">
+  <a href="#v0-2-20-2021-07-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.19...v0.2.20">v0.2.20</a> (2021-07-23)</span>
+</h2>
+<h3 id="improvements-29" class="section-heading">
+  <a href="#improvements-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>relationships in datatable (#6)</li></ul><h2 id="v0-2-19-2021-07-23" class="section-heading">
+  <a href="#v0-2-19-2021-07-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.18...v0.2.19">v0.2.19</a> (2021-07-23)</span>
+</h2>
+<h3 id="improvements-30" class="section-heading">
+  <a href="#improvements-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to latest ash</li></ul><h2 id="v0-2-18-2021-07-20" class="section-heading">
+  <a href="#v0-2-18-2021-07-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.17...v0.2.18">v0.2.18</a> (2021-07-20)</span>
+</h2>
+<h3 id="bug-fixes-39" class="section-heading">
+  <a href="#bug-fixes-39" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>digest assets</p></li><li><p>show proper values in update forms on initial render</p></li></ul><h2 id="v0-2-17-2021-07-20" class="section-heading">
+  <a href="#v0-2-17-2021-07-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.16-rc.1...v0.2.17">v0.2.17</a> (2021-07-20)</span>
+</h2>
+<h3 id="improvements-31" class="section-heading">
+  <a href="#improvements-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add json editor</li></ul><h2 id="v0-2-16-rc-1-2021-07-18" class="section-heading">
+  <a href="#v0-2-16-rc-1-2021-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.16-rc.0...v0.2.16-rc.1">v0.2.16-rc.1</a> (2021-07-18)</span>
+</h2>
+<h3 id="improvements-32" class="section-heading">
+  <a href="#improvements-32" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to latest ash</li></ul><h2 id="v0-2-16-rc-0-2021-07-18" class="section-heading">
+  <a href="#v0-2-16-rc-0-2021-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.15...v0.2.16-rc.0">v0.2.16-rc.0</a> (2021-07-18)</span>
+</h2>
+<h3 id="bug-fixes-40" class="section-heading">
+  <a href="#bug-fixes-40" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>show boolean default values better</li></ul><h3 id="improvements-33" class="section-heading">
+  <a href="#improvements-33" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to new form logic</li></ul><h2 id="v0-2-15-2021-05-18" class="section-heading">
+  <a href="#v0-2-15-2021-05-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.14...v0.2.15">v0.2.15</a> (2021-05-18)</span>
+</h2>
+<h3 id="bug-fixes-41" class="section-heading">
+  <a href="#bug-fixes-41" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>retain <code class="inline">manage_relationship_source</code> context where possible</li></ul><h2 id="v0-2-14-2021-05-14" class="section-heading">
+  <a href="#v0-2-14-2021-05-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.13...v0.2.14">v0.2.14</a> (2021-05-14)</span>
+</h2>
+<h3 id="improvements-34" class="section-heading">
+  <a href="#improvements-34" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>general manage relationship improvements</li></ul><h2 id="v0-2-13-2021-05-13" class="section-heading">
+  <a href="#v0-2-13-2021-05-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.12...v0.2.13">v0.2.13</a> (2021-05-13)</span>
+</h2>
+<h3 id="bug-fixes-42" class="section-heading">
+  <a href="#bug-fixes-42" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>track pkey of embeds when adding</li></ul><h2 id="v0-2-12-2021-05-10" class="section-heading">
+  <a href="#v0-2-12-2021-05-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.11...v0.2.12">v0.2.12</a> (2021-05-10)</span>
+</h2>
+<h3 id="improvements-35" class="section-heading">
+  <a href="#improvements-35" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support explicit enum types</li></ul><h2 id="v0-2-11-2021-05-06" class="section-heading">
+  <a href="#v0-2-11-2021-05-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.10...v0.2.11">v0.2.11</a> (2021-05-06)</span>
+</h2>
+<h3 id="bug-fixes-43" class="section-heading">
+  <a href="#bug-fixes-43" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix special text fields</li></ul><h3 id="improvements-36" class="section-heading">
+  <a href="#improvements-36" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>always show action dropdown</p></li><li><p>log on failures in the UI</p></li></ul><h2 id="v0-2-10-2021-04-17" class="section-heading">
+  <a href="#v0-2-10-2021-04-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.9...v0.2.10">v0.2.10</a> (2021-04-17)</span>
+</h2>
+<h3 id="bug-fixes-44" class="section-heading">
+  <a href="#bug-fixes-44" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>update to ash_phoenix, fix relationship embeds</li></ul><h2 id="v0-2-9-2021-04-16" class="section-heading">
+  <a href="#v0-2-9-2021-04-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.8...v0.2.9">v0.2.9</a> (2021-04-16)</span>
+</h2>
+<h3 id="improvements-37" class="section-heading">
+  <a href="#improvements-37" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support array attribute/arguments properly</li></ul><h2 id="v0-2-8-2021-04-15" class="section-heading">
+  <a href="#v0-2-8-2021-04-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.7...v0.2.8">v0.2.8</a> (2021-04-15)</span>
+</h2>
+<h3 id="bug-fixes-45" class="section-heading">
+  <a href="#bug-fixes-45" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly track embedded attribute targets</li></ul><h2 id="v0-2-7-2021-04-09" class="section-heading">
+  <a href="#v0-2-7-2021-04-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.6...v0.2.7">v0.2.7</a> (2021-04-09)</span>
+</h2>
+<h3 id="bug-fixes-46" class="section-heading">
+  <a href="#bug-fixes-46" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>set actor in datatable</li></ul><h2 id="v0-2-6-2021-04-09" class="section-heading">
+  <a href="#v0-2-6-2021-04-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.5...v0.2.6">v0.2.6</a> (2021-04-09)</span>
+</h2>
+<h3 id="bug-fixes-47" class="section-heading">
+  <a href="#bug-fixes-47" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>support binary data (by not showing it)</li></ul><h2 id="v0-2-5-2021-03-30" class="section-heading">
+  <a href="#v0-2-5-2021-03-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.4...v0.2.5">v0.2.5</a> (2021-03-30)</span>
+</h2>
+<h3 id="bug-fixes-48" class="section-heading">
+  <a href="#bug-fixes-48" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>don't send empty params on save</li></ul><h3 id="improvements-38" class="section-heading">
+  <a href="#improvements-38" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to latest ash_phoenix</li></ul><h2 id="v0-2-4-2021-03-30" class="section-heading">
+  <a href="#v0-2-4-2021-03-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.3...v0.2.4">v0.2.4</a> (2021-03-30)</span>
+</h2>
+<h3 id="bug-fixes-49" class="section-heading">
+  <a href="#bug-fixes-49" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>show add button on array input relationships</li></ul><h2 id="v0-2-3-2021-03-29" class="section-heading">
+  <a href="#v0-2-3-2021-03-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.2...v0.2.3">v0.2.3</a> (2021-03-29)</span>
+</h2>
+<h3 id="bug-fixes-50" class="section-heading">
+  <a href="#bug-fixes-50" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>remove path dependency on ash</li></ul><h2 id="v0-2-2-2021-03-29" class="section-heading">
+  <a href="#v0-2-2-2021-03-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.1...v0.2.2">v0.2.2</a> (2021-03-29)</span>
+</h2>
+<h3 id="bug-fixes-51" class="section-heading">
+  <a href="#bug-fixes-51" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>allow removing to_one relationships on creates</li></ul><h3 id="improvements-39" class="section-heading">
+  <a href="#improvements-39" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support lookup forms <em>or</em> create forms</li></ul><h2 id="v0-2-1-2021-03-28" class="section-heading">
+  <a href="#v0-2-1-2021-03-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.2.0...v0.2.1">v0.2.1</a> (2021-03-28)</span>
+</h2>
+<h3 id="bug-fixes-52" class="section-heading">
+  <a href="#bug-fixes-52" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>update ash_admin dependency</li></ul><h2 id="v0-2-0-2021-03-28" class="section-heading">
+  <a href="#v0-2-0-2021-03-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.6...v0.2.0">v0.2.0</a> (2021-03-28)</span>
+</h2>
+<h3 id="features-5" class="section-heading">
+  <a href="#features-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>more testing resources + relationship argument forms!</li></ul><h2 id="v0-1-6-2021-03-25" class="section-heading">
+  <a href="#v0-1-6-2021-03-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.5...v0.1.6">v0.1.6</a> (2021-03-25)</span>
+</h2>
+<h3 id="improvements-40" class="section-heading">
+  <a href="#improvements-40" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>use new relationship management logic</li></ul><h2 id="v0-1-5-2021-03-24" class="section-heading">
+  <a href="#v0-1-5-2021-03-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.4...v0.1.5">v0.1.5</a> (2021-03-24)</span>
+</h2>
+<h3 id="bug-fixes-53" class="section-heading">
+  <a href="#bug-fixes-53" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>remove inspect</p></li><li><p>properly only provide changing fields to actions</p></li></ul><h2 id="v0-1-4-2021-03-24" class="section-heading">
+  <a href="#v0-1-4-2021-03-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.3...v0.1.4">v0.1.4</a> (2021-03-24)</span>
+</h2>
+<h3 id="bug-fixes-54" class="section-heading">
+  <a href="#bug-fixes-54" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>support tenant on read actions</p></li><li><p>remove inspect</p></li></ul><h3 id="improvements-41" class="section-heading">
+  <a href="#improvements-41" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>only send changing fields</p></li><li><p>don't show <code class="inline">destination_field</code> on related tables</p></li></ul><h2 id="v0-1-3-2021-03-23" class="section-heading">
+  <a href="#v0-1-3-2021-03-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.2...v0.1.3">v0.1.3</a> (2021-03-23)</span>
+</h2>
+<h3 id="bug-fixes-55" class="section-heading">
+  <a href="#bug-fixes-55" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>use version properly</li></ul><h2 id="v0-1-2-2021-03-22" class="section-heading">
+  <a href="#v0-1-2-2021-03-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.1...v0.1.2">v0.1.2</a> (2021-03-22)</span>
+</h2>
+<h3 id="bug-fixes-56" class="section-heading">
+  <a href="#bug-fixes-56" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix build</li></ul><h2 id="v0-1-1-2021-03-22" class="section-heading">
+  <a href="#v0-1-1-2021-03-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.0...v0.1.1">v0.1.1</a> (2021-03-22)</span>
+</h2>
+<h3 id="bug-fixes-57" class="section-heading">
+  <a href="#bug-fixes-57" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>use static routes</li></ul><h2 id="v0-1-0-2021-03-22" class="section-heading">
+  <a href="#v0-1-0-2021-03-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_admin/compare/v0.1.0...v0.1.0">v0.1.0</a> (2021-03-22)</span>
+</h2>
+<h3 id="features-6" class="section-heading">
+  <a href="#features-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li><p>draw the rest of the owl</p></li><li><p>support fully managed relationships</p></li><li><p>set actor from show page</p></li><li><p>support destroy actions</p></li><li><p>lots of new features, including related id updates</p></li></ul><h3 id="bug-fixes-58" class="section-heading">
+  <a href="#bug-fixes-58" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>various fixes</p></li><li><p>various fixes/improvements</p></li><li><p>various bug fixes</p></li><li><p>update dep versions</p></li><li><p>fix action changing</p></li></ul><h3 id="improvements-42" class="section-heading">
+  <a href="#improvements-42" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>general fixes, configurable action lists</p></li><li><p>add pagination support</p></li><li><p>support read actions with arguments</p></li><li><p>add &quot;log in&quot; button</p></li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashadmin-resource.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: AshAdmin.Resource
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_admin/0.11.5" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_admin/0.11.5">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_admin/0.11.5/show/CHANGELOG.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_admin.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
