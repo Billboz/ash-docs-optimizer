@@ -1,9 +1,15 @@
-   __pycache__/
-   *.pyc
-   .DS_Store
-   .venv/
-   venv/
-   .Python
-   .pyd
-   .Python
-   env/
+# Existing entries
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Additional entries
+.DS_Store
+ash_env/
+*.pyc
+__pycache__/
