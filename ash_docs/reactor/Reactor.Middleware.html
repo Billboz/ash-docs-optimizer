@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>Reactor.Middleware — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Reactor.Middleware</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(reactor v0.9.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The Middleware behaviour.</p><p>By implementing this behaviour you can modify the internal state of the
+Reactor during startup, execution and shutdown.</p><p>Middlewares can be added to the reactor either with the <code class="inline">middlewares</code> DSL
+section or by the <code class="inline">add_middleware/2</code>, etc, functions in <a href="Reactor.Builder.html"><code class="inline">Reactor.Builder</code></a>.</p><p>All callbacks in this behaviour are optional so you can define only the parts
+you need for your feature.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:context/0" data-no-tooltip translate="no">context()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:error_or_errors/0" data-no-tooltip translate="no">error_or_errors()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:result/0" data-no-tooltip translate="no">result()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:step_event/0" data-no-tooltip translate="no">step_event()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:complete/2" data-no-tooltip translate="no">complete(result, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The complete callback will be called with the successful result of the
+Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:error/2" data-no-tooltip translate="no">error(error_or_errors, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The error callback will be called the final error value(s) of the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:event/3" data-no-tooltip translate="no">event(step_event, t, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Receive events about the execution of the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:get_process_context/0" data-no-tooltip translate="no">get_process_context()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Called before starting an asynchronous step in order to retrieve any context
+information that needs to be passed into the new process.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:halt/1" data-no-tooltip translate="no">halt(context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The halt callback will be called with the Reactor context when halting.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:init/1" data-no-tooltip translate="no">init(context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The init callback will be called with the Reactor context when starting up.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:set_process_context/1" data-no-tooltip translate="no">set_process_context(any)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Called inside a new asynchronous step in order to set context information into
+the new process.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:context/0">
+
+  <div class="detail-header">
+    <a href="#t:context/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">context()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L17" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> context() :: <a href="Reactor.html#t:context/0">Reactor.context</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:error_or_errors/0">
+
+  <div class="detail-header">
+    <a href="#t:error_or_errors/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">error_or_errors()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> error_or_errors() :: <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>() | [<a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:result/0">
+
+  <div class="detail-header">
+    <a href="#t:result/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">result()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L18" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> result() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:step_event/0">
+
+  <div class="detail-header">
+    <a href="#t:step_event/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">step_event()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L21" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> step_event() ::
+  :compensate_complete
+  | :compensate_retry
+  | :run_retry
+  | :undo_complete
+  | :undo_retry
+  | :undo_start
+  | {:compensate_continue, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | {:compensate_error, <a href="#t:error_or_errors/0">error_or_errors</a>()}
+  | {:compensate_retry, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | {:compensate_start, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | {:process_start, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()}
+  | {:process_terminate, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()}
+  | {:run_complete, <a href="#t:result/0">result</a>()}
+  | {:run_error, <a href="#t:error_or_errors/0">error_or_errors</a>()}
+  | {:run_halt, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | {:run_retry, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | {:run_start, arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>()}
+  | {:undo_error, <a href="#t:error_or_errors/0">error_or_errors</a>()}
+  | {:undo_retry, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L15" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:complete/2">
+
+  <div class="detail-header">
+    <a href="#c:complete/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">complete(result, context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L55" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> complete(<a href="#t:result/0">result</a>(), <a href="#t:context/0">context</a>()) :: {:ok, <a href="#t:result/0">result</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>The complete callback will be called with the successful result of the
+Reactor.</p><p>This gives you the opportunity to modify the return value or to perform clean
+up of any non-reactor-managed resources (eg notifications).</p><p>Note that these callbacks are called in an arbitrary order meaning that the
+result value passed may have already been altered by another callback.</p><p>If any callback returns an error then any remaining callbacks will not
+be called.</p>
+  </section>
+</section>
+<section class="detail" id="c:error/2">
+
+  <div class="detail-header">
+    <a href="#c:error/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">error(error_or_errors, context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L69" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> error(<a href="#t:error_or_errors/0">error_or_errors</a>(), <a href="#t:context/0">context</a>()) :: :ok | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>The error callback will be called the final error value(s) of the Reactor.</p><p>This gives you the opportunity to modify the return value or to perform clean
+up of any non-reactor-managed resources (eg notifications).</p><p>Note that these callbacks are called in an arbitrary order meaning that the
+error value passed may have already been altered by another callback.</p><p>Here a return value of <code class="inline">:ok</code> will continue calls to other callbacks without
+modifying the error value.</p>
+  </section>
+</section>
+<section class="detail" id="c:event/3">
+
+  <div class="detail-header">
+    <a href="#c:event/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">event(step_event, t, context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L111" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> event(<a href="#t:step_event/0">step_event</a>(), <a href="Reactor.Step.html#t:t/0">Reactor.Step.t</a>(), <a href="Reactor.html#t:context/0">Reactor.context</a>()) :: :ok</pre>
+
+      </div>
+
+<p>Receive events about the execution of the Reactor.</p><p>This callback will block the Reactor, so it's encouraged that you do anything
+expensive in another process.</p>
+  </section>
+</section>
+<section class="detail" id="c:get_process_context/0">
+
+  <div class="detail-header">
+    <a href="#c:get_process_context/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">get_process_context()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L94" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> get_process_context() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Called before starting an asynchronous step in order to retrieve any context
+information that needs to be passed into the new process.</p><p>This is most likely used by tracers to copy span information from the parent
+process to the child process.</p>
+  </section>
+</section>
+<section class="detail" id="c:halt/1">
+
+  <div class="detail-header">
+    <a href="#c:halt/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">halt(context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L77" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> halt(<a href="#t:context/0">context</a>()) :: {:ok, <a href="#t:context/0">context</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>The halt callback will be called with the Reactor context when halting.</p><p>This allows you to clean up any non-reactor-managed resources or modify the
+context for later re-use by a future <code class="inline">init/1</code> callback.</p>
+  </section>
+</section>
+<section class="detail" id="c:init/1">
+
+  <div class="detail-header">
+    <a href="#c:init/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">init(context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L85" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> init(<a href="#t:context/0">context</a>()) :: {:ok, <a href="#t:context/0">context</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>The init callback will be called with the Reactor context when starting up.</p><p>This gives you the opportunity to modify the context or to perform any
+initialisation of any non-reactor-managed resources (eg notifications).</p>
+  </section>
+</section>
+<section class="detail" id="c:set_process_context/1">
+
+  <div class="detail-header">
+    <a href="#c:set_process_context/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">set_process_context(any)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/middleware.ex/#L103" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> set_process_context(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: :ok</pre>
+
+      </div>
+
+<p>Called inside a new asynchronous step in order to set context information into
+the new process.</p><p>This is most likely used by tracers to copy span information from the parent
+process to the child process.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

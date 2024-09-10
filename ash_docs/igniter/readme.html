@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>Home — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/README.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Home</span>
+  </h1>
+
+<img src="https://github.com/ash-project/igniter/blob/main/logos/igniter-logo-small.png?raw=true#gh-light-mode-only" alt="Logo Light" width="250"/><img src="https://github.com/ash-project/igniter/blob/main/logos/igniter-logo-small.png?raw=true#gh-dark-mode-only" alt="Logo Dark" width="250"/><p><a href="https://github.com/ash-project/igniter/actions/workflows/elixir.yml"><img src="https://github.com/ash-project/igniter/actions/workflows/elixir.yml/badge.svg" alt="CI"/></a>
+<a href="https://hex.pm/packages/igniter"><img src="https://img.shields.io/hexpm/v/igniter.svg" alt="Hex version badge"/></a>
+<a href="https://hexdocs.pm/igniter"><img src="https://img.shields.io/badge/docs-hexdocs-purple" alt="Hexdocs badge"/></a></p><h1>Igniter</h1><p>Igniter is a code generation and project patching framework.</p><p>For library authors, this is a tool kit for writing smarter generators that can semantically modify existing files, and all sorts of useful tools for doing so.</p><p>For end-users, this means <code class="inline">mix igniter.install &lt;package&gt;</code>, which will <em>add it to your mix.exs automatically</em> and then run that library's installer if it has one. Even when libraries don't have an installer, or use igniter, this behavior makes it useful to keep around.</p><h2 id="state-of-the-project" class="section-heading">
+  <a href="#state-of-the-project" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">State of the project</span>
+</h2>
+<p>This project is in early beta. There is <em>so much to add</em>! There are lots of DX/UX things to improve, but it does already provide some great utility. Contributions welcome!</p><h2 id="limitations" class="section-heading">
+  <a href="#limitations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Limitations</span>
+</h2>
+<p>Right now, all files that are touched are formatted in their entirety. This may be a deal breaker for some users. I believe that we can solve this without changing the fundemental design of the project, but it is not a high priority in the early stages.</p><h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installation</span>
+</h2>
+<p>Igniter can be added to an existing elixir project by adding it to your dependencies:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1367279333-1">{</span><span class="ss">:igniter</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1&quot;</span><span class="p" data-group-id="1367279333-1">}</span></code></pre><p>You can also generate new projects with igniter preinstalled, and run installers in the same command.</p><p>First, install the archive:</p><pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">install</span><span class="w"> </span><span class="n">hex</span><span class="w"> </span><span class="n">igniter_new</span></code></pre><p>Then you can run <code class="inline">mix igniter.new</code></p><pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">igniter</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="n">app_name</span><span class="w"> </span><span class="o">--</span><span class="n">install</span><span class="w"> </span><span class="n">ash</span></code></pre><p>Or if you want to use a different project creator, specify the mix task name with the <code class="inline">--with</code> flag. Any arguments will be passed through to that task, with the exception of <code class="inline">--install</code> and <code class="inline">--example</code>.</p><pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">igniter</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="n">app_name</span><span class="w"> </span><span class="o">--</span><span class="n">install</span><span class="w"> </span><span class="n">ash</span><span class="w"> </span><span class="o">--</span><span class="k">with</span><span class="w"> </span><span class="n">phx</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ecto</span></code></pre><h2 id="patterns" class="section-heading">
+  <a href="#patterns" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Patterns</span>
+</h2>
+<p>Mix tasks built with igniter are both individually callable, <em>and</em> composable. This means that tasks can call eachother, and also end users can create and customize their own generators composing existing tasks.</p><h3 id="installers" class="section-heading">
+  <a href="#installers" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installers</span>
+</h3>
+<p>Igniter will look for a task called <code class="inline">&lt;your_package&gt;.install</code> when the user runs <code class="inline">mix igniter.install &lt;your_package&gt;</code>, and will run it after installing and fetching dependencies.</p><h3 id="generators-patchers" class="section-heading">
+  <a href="#generators-patchers" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Generators/Patchers</span>
+</h3>
+<p>These can be run like any other mix task, or composed together. For example, lets say that you wanted to have your own <code class="inline">Ash.Resource</code> generator, that starts with the default <code class="inline">mix ash.gen.resource</code> task, but then adds or modifies files:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in lib/mix/tasks/my_app.gen.resource.ex</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Mix.Tasks.MyApp.Gen.Resource</span><span class="w"> </span><span class="k" data-group-id="7229311068-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Igniter.Mix.Task</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">igniter</span><span class="p" data-group-id="7229311068-2">(</span><span class="n">igniter</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7229311068-3">[</span><span class="n">resource</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="7229311068-3">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argv</span><span class="p" data-group-id="7229311068-2">)</span><span class="w"> </span><span class="k" data-group-id="7229311068-4">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Igniter.Code.Module</span><span class="o">.</span><span class="n">parse</span><span class="p" data-group-id="7229311068-5">(</span><span class="n">resource</span><span class="p" data-group-id="7229311068-5">)</span><span class="w">
+    </span><span class="n">my_special_thing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="7229311068-6">(</span><span class="p" data-group-id="7229311068-7">[</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="nc">SpecialThing</span><span class="p" data-group-id="7229311068-7">]</span><span class="p" data-group-id="7229311068-6">)</span><span class="w">
+    </span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Igniter.Code.Module</span><span class="o">.</span><span class="n">proper_location</span><span class="p" data-group-id="7229311068-8">(</span><span class="n">my_special_thing</span><span class="p" data-group-id="7229311068-8">)</span><span class="w">
+
+    </span><span class="n">igniter</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Igniter</span><span class="o">.</span><span class="n">compose_task</span><span class="p" data-group-id="7229311068-9">(</span><span class="s">&quot;ash.gen.resource&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p" data-group-id="7229311068-9">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Igniter</span><span class="o">.</span><span class="n">create_new_elixir_file</span><span class="p" data-group-id="7229311068-10">(</span><span class="n">location</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+    defmodule </span><span class="si" data-group-id="7229311068-11">#{</span><span class="n">inspect</span><span class="p" data-group-id="7229311068-12">(</span><span class="n">my_special_thing</span><span class="p" data-group-id="7229311068-12">)</span><span class="si" data-group-id="7229311068-11">}</span><span class="s"> do
+      # this is the special thing for </span><span class="si" data-group-id="7229311068-13">#{</span><span class="n">inspect</span><span class="p" data-group-id="7229311068-14">(</span><span class="p" data-group-id="7229311068-14">)</span><span class="si" data-group-id="7229311068-13">}</span><span class="s">
+    end
+    &quot;&quot;&quot;</span><span class="p" data-group-id="7229311068-10">)</span><span class="w">
+  </span><span class="k" data-group-id="7229311068-4">end</span><span class="w">
+</span><span class="k" data-group-id="7229311068-1">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="api-reference.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+API Reference
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="writing-generators.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Writing Generators
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/igniter/0.3.29/show/README.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Igniter — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Igniter</span> 
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Helpers for patching Spark DSLs.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_extension/6" data-no-tooltip translate="no">add_extension(igniter, module, type, key, extension, singleton? \\ false)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds an extension to a DSL module.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_option/3" data-no-tooltip translate="no">get_option(igniter, module, path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets an option at a given path within a DSL.
+We will attempt to expand literals using the environment at the path
+but this is only guaranteed to return the <em>AST</em> at that option, <em>not</em> necessarily a value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#has_extension/5" data-no-tooltip translate="no">has_extension(igniter, module, type, key, extension)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns <code class="inline">{igniter, true}</code> if the module has the extension, or <code class="inline">{igniter, false}</code> otherwise.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prepend_to_section_order/3" data-no-tooltip translate="no">prepend_to_section_order(igniter, type, sections)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Prepends a new section or list of sections to the section order in a formatter configuration.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#remove_extension/6" data-no-tooltip translate="no">remove_extension(igniter, module, type, key, extension, singleton? \\ false)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Removes an extension from a DSL module.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_option/5" data-no-tooltip translate="no">set_option(igniter, module, path, value, updater \\ &amp;{:ok, &amp;1})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets an option at a given path within in a DSL.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_dsl/5" data-no-tooltip translate="no">update_dsl(igniter, module, path, value, func)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_extension/6">
+
+    <span id="add_extension/5"></span>
+
+  <div class="detail-header">
+    <a href="#add_extension/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_extension(igniter, module, type, key, extension, singleton? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L228" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_extension(<a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) ::
+  <a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>()</pre>
+
+      </div>
+
+<p>Adds an extension to a DSL module.</p>
+  </section>
+</section>
+<section class="detail" id="get_option/3">
+
+  <div class="detail-header">
+    <a href="#get_option/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_option(igniter, module, path)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L39" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_option(<a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) ::
+  {<a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(), {:ok, <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()} | :error}</pre>
+
+      </div>
+
+<p>Gets an option at a given path within a DSL.
+We will attempt to expand literals using the environment at the path
+but this is only guaranteed to return the <em>AST</em> at that option, <em>not</em> necessarily a value.</p><p>Additionally, this only finds options set explicitly in the body of the resource, not by an extension.</p>
+  </section>
+</section>
+<section class="detail" id="has_extension/5">
+
+  <div class="detail-header">
+    <a href="#has_extension/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">has_extension(igniter, module, type, key, extension)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L195" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> has_extension(<a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()) ::
+  {<a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}</pre>
+
+      </div>
+
+<p>Returns <code class="inline">{igniter, true}</code> if the module has the extension, or <code class="inline">{igniter, false}</code> otherwise.</p>
+  </section>
+</section>
+<section class="detail" id="prepend_to_section_order/3">
+
+  <div class="detail-header">
+    <a href="#prepend_to_section_order/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prepend_to_section_order(igniter, type, sections)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L9" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Prepends a new section or list of sections to the section order in a formatter configuration.</p>
+  </section>
+</section>
+<section class="detail" id="remove_extension/6">
+
+    <span id="remove_extension/5"></span>
+
+  <div class="detail-header">
+    <a href="#remove_extension/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">remove_extension(igniter, module, type, key, extension, singleton? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L150" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> remove_extension(<a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) ::
+  <a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>()</pre>
+
+      </div>
+
+<p>Removes an extension from a DSL module.</p>
+  </section>
+</section>
+<section class="detail" id="set_option/5">
+
+    <span id="set_option/4"></span>
+
+  <div class="detail-header">
+    <a href="#set_option/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_option(igniter, module, path, value, updater \\ &amp;{:ok, &amp;1})</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L79" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_option(
+  <a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  dsl_path :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt;
+     {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]} | :error)
+) :: <a href="https://hexdocs.pm/igniter/0.3.24/Igniter.html#t:t/0">Igniter.t</a>()</pre>
+
+      </div>
+
+<p>Sets an option at a given path within in a DSL.</p>
+  </section>
+</section>
+<section class="detail" id="update_dsl/5">
+
+  <div class="detail-header">
+    <a href="#update_dsl/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_dsl(igniter, module, path, value, func)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/igniter.ex#L86" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

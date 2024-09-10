@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_oban v0.2.4">
+
+
+    <title>Change Log — ash_oban v0.2.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-E490895E.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_oban" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_oban" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_oban" class="sidebar-projectName" translate="no">
+ash_oban
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_oban</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Change Log</span>
+  </h1>
+
+<p>All notable changes to this project will be documented in this file.
+See <a href="Https://conventionalcommits.org">Conventional Commits</a> for commit guidelines.</p><!-- changelog --><h2 id="v0-2-4-2024-07-19" class="section-heading">
+  <a href="#v0-2-4-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.2.3...v0.2.4">v0.2.4</a> (2024-07-19)</span>
+</h2>
+<h3 id="improvements" class="section-heading">
+  <a href="#improvements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>loosen postgrex version requirement</li></ul><h2 id="v0-2-3-2024-05-10" class="section-heading">
+  <a href="#v0-2-3-2024-05-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.2.3-rc.1...v0.2.3">v0.2.3</a> (2024-05-10)</span>
+</h2>
+<h3 id="bug-fixes" class="section-heading">
+  <a href="#bug-fixes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>plugins can just be modules</li></ul><h2 id="v0-2-3-rc-1-2024-04-03" class="section-heading">
+  <a href="#v0-2-3-rc-1-2024-04-03" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.2.3-rc.0...v0.2.3-rc.1">v0.2.3-rc.1</a> (2024-04-03)</span>
+</h2>
+<h3 id="bug-fixes-1" class="section-heading">
+  <a href="#bug-fixes-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>use <code class="inline">skip_unknown_inputs</code> to avoid unnecessary errors</p></li><li><p>oban pro state active (#22)</p></li><li><p>detect oban pro plugin usage and support dynamic queues (#20)</p></li></ul><h2 id="v0-2-3-rc-0-2024-03-29" class="section-heading">
+  <a href="#v0-2-3-rc-0-2024-03-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.2.2...v0.2.3-rc.0">v0.2.3-rc.0</a> (2024-03-29)</span>
+</h2>
+<h3 id="improvements-1" class="section-heading">
+  <a href="#improvements-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>update to ash 3.0</li></ul><h2 id="v0-2-2-2024-03-05" class="section-heading">
+  <a href="#v0-2-2-2024-03-05" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.2.1...v0.2.2">v0.2.2</a> (2024-03-05)</span>
+</h2>
+<h3 id="bug-fixes-2" class="section-heading">
+  <a href="#bug-fixes-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly catch when trigger no longer applies</li></ul><h3 id="improvements-2" class="section-heading">
+  <a href="#improvements-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>validate primary keys provided for job scheduling</p></li><li><p>builds_trigger/3 to enable job composition without execution (#18)</p></li></ul><h2 id="v0-2-1-2024-02-28" class="section-heading">
+  <a href="#v0-2-1-2024-02-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.2.0...v0.2.1">v0.2.1</a> (2024-02-28)</span>
+</h2>
+<h3 id="bug-fixes-3" class="section-heading">
+  <a href="#bug-fixes-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>only drain queues when oban is in testing mode</p></li><li><p>properly discard all non applicable jobs</p></li></ul><h3 id="improvements-3" class="section-heading">
+  <a href="#improvements-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support <code class="inline">Oban.Pro.Testing.drain_jobs</code></li></ul><h2 id="v0-2-0-2024-02-20" class="section-heading">
+  <a href="#v0-2-0-2024-02-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.14...v0.2.0">v0.2.0</a> (2024-02-20)</span>
+</h2>
+<h3 id="breaking-changes" class="section-heading">
+  <a href="#breaking-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Breaking Changes:</span>
+</h3>
+<ul><li>authorize always by default</li></ul><h3 id="improvements-4" class="section-heading">
+  <a href="#improvements-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>allow turning new authorization behavior off</p></li><li><p>add <code class="inline">actor_persister</code>, and use it automatically</p></li><li><p>authorize?: true always</p></li></ul><h2 id="v0-1-14-2024-02-16" class="section-heading">
+  <a href="#v0-1-14-2024-02-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.13...v0.1.14">v0.1.14</a> (2024-02-16)</span>
+</h2>
+<h3 id="improvements-5" class="section-heading">
+  <a href="#improvements-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>properly schedule scheduled actions</li></ul><h2 id="v0-1-13-2024-01-12" class="section-heading">
+  <a href="#v0-1-13-2024-01-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.12...v0.1.13">v0.1.13</a> (2024-01-12)</span>
+</h2>
+<h3 id="bug-fixes-4" class="section-heading">
+  <a href="#bug-fixes-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>Do not wrap <code class="inline">paused</code> and <code class="inline">delete</code> Cron options into <code class="inline">events</code> (#15)</p></li><li><p>properly honor the <code class="inline">drain_queues?</code> option</p></li></ul><h2 id="v0-1-12-2023-12-12" class="section-heading">
+  <a href="#v0-1-12-2023-12-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.11...v0.1.12">v0.1.12</a> (2023-12-12)</span>
+</h2>
+<h3 id="improvements-6" class="section-heading">
+  <a href="#improvements-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>make draining queues optional for <code class="inline">AshOban.schedule_and_run_triggers</code></li></ul><h2 id="v0-1-11-2023-12-12" class="section-heading">
+  <a href="#v0-1-11-2023-12-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.10...v0.1.11">v0.1.11</a> (2023-12-12)</span>
+</h2>
+<h3 id="improvements-7" class="section-heading">
+  <a href="#improvements-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>move schedule_and_run_triggers to <a href="AshOban.html"><code class="inline">AshOban</code></a></li></ul><h2 id="v0-1-10-2023-12-07" class="section-heading">
+  <a href="#v0-1-10-2023-12-07" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.9...v0.1.10">v0.1.10</a> (2023-12-07)</span>
+</h2>
+<h3 id="bug-fixes-5" class="section-heading">
+  <a href="#bug-fixes-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>fallback clause to match valid configurations</p></li><li><p>add <code class="inline">cron</code> to opt schema</p></li><li><p>reverted part of refactor in 82cb0f90d9c0550c98ca5a8081ef8bd581c66e0d (#14)</p></li><li><p>nested pausing states under <code class="inline">events</code> option</p></li><li><p>only supply metadata if <code class="inline">read_metadata</code> is set</p></li><li><p>pass metadata argument on the udpate action</p></li></ul><h3 id="improvements-8" class="section-heading">
+  <a href="#improvements-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>make <a href="AshOban.Test.html"><code class="inline">AshOban.Test</code></a> more configurable for scheduled actions</p></li><li><p>add <code class="inline">scheduled_action</code> for scheduling create/generic actions</p></li><li><p>log all errors by default, using <code class="inline">log_errors?</code> config</p></li><li><p>expose drain options to AshOban.Test.schedule_and_run_triggers (#12)</p></li><li><p>add <code class="inline">log_final_error?</code> and default it to <code class="inline">true</code></p></li><li><p>don't log on raised exception, for consistency</p></li><li><p>support <code class="inline">require?: false</code> option on <code class="inline">config/3</code>.</p></li><li><p>support <code class="inline">action_input</code> on triggers</p></li></ul><h2 id="v0-1-9-2023-10-04" class="section-heading">
+  <a href="#v0-1-9-2023-10-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.8...v0.1.9">v0.1.9</a> (2023-10-04)</span>
+</h2>
+<h3 id="improvements-9" class="section-heading">
+  <a href="#improvements-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>more granular &amp; more broad testing helpers</p></li><li><p>more debug logs, make debugging opt-in</p></li></ul><h2 id="v0-1-8-2023-09-16" class="section-heading">
+  <a href="#v0-1-8-2023-09-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.7...v0.1.8">v0.1.8</a> (2023-09-16)</span>
+</h2>
+<h3 id="improvements-10" class="section-heading">
+  <a href="#improvements-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>still validate queues even when no schedulers present</li></ul><h2 id="v0-1-7-2023-09-16" class="section-heading">
+  <a href="#v0-1-7-2023-09-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.6...v0.1.7">v0.1.7</a> (2023-09-16)</span>
+</h2>
+<h3 id="bug-fixes-6" class="section-heading">
+  <a href="#bug-fixes-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>don't schedule triggers with no scheduler</p></li><li><p>make override job options optional (#8)</p></li></ul><h3 id="improvements-11" class="section-heading">
+  <a href="#improvements-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>support providing an otp app to schedule and run triggers</p></li><li><p>support apis/resources for ash_oban</p></li><li><p>support overriding job opts in run_trigger (#7)</p></li><li><p>support destroy actions in the trigger action</p></li><li><p>debug logs</p></li></ul><h2 id="v0-1-6-2023-08-29" class="section-heading">
+  <a href="#v0-1-6-2023-08-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.5...v0.1.6">v0.1.6</a> (2023-08-29)</span>
+</h2>
+<h3 id="bug-fixes-7" class="section-heading">
+  <a href="#bug-fixes-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>verify trigger action exists in transformer</li></ul><h3 id="improvements-12" class="section-heading">
+  <a href="#improvements-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>use read_metadata when manually scheduling</p></li><li><p>allow <code class="inline">false</code> as the value for <code class="inline">scheduler_cron</code></p></li><li><p>add worker/scheduler priorities</p></li></ul><h2 id="v0-1-5-2023-08-15" class="section-heading">
+  <a href="#v0-1-5-2023-08-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.4...v0.1.5">v0.1.5</a> (2023-08-15)</span>
+</h2>
+<h3 id="bug-fixes-8" class="section-heading">
+  <a href="#bug-fixes-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>use same read_action in handle_error and in work</p></li><li><p>another syntax issue with <code class="inline">drain_queue/2</code></p></li><li><p>drain_queue syntax issue</p></li><li><p>Update base engine to support rename Oban.Pro.Engines.Smart</p></li></ul><h3 id="improvements-13" class="section-heading">
+  <a href="#improvements-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>only invoke error handler on last attempt</p></li><li><p>drain each queue twice</p></li><li><p>add test helper for running triggers</p></li><li><p>trigger_read_action, defaulting to read action</p></li><li><p>read with primary read for trigger</p></li><li><p>log error on scheduler failure</p></li></ul><h2 id="v0-1-4-2023-06-10" class="section-heading">
+  <a href="#v0-1-4-2023-06-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.3...v0.1.4">v0.1.4</a> (2023-06-10)</span>
+</h2>
+<h3 id="improvements-14" class="section-heading">
+  <a href="#improvements-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support <code class="inline">record_limit</code> to limit max processed records</li></ul><h2 id="v0-1-3-2023-05-18" class="section-heading">
+  <a href="#v0-1-3-2023-05-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.2...v0.1.3">v0.1.3</a> (2023-05-18)</span>
+</h2>
+<h3 id="bug-fixes-9" class="section-heading">
+  <a href="#bug-fixes-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly raise errors instead of swallowing them</p></li><li><p>don't use <code class="inline">authorize?: false</code> for operations.</p></li></ul><h2 id="v0-1-2-2023-05-08" class="section-heading">
+  <a href="#v0-1-2-2023-05-08" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.1...v0.1.2">v0.1.2</a> (2023-05-08)</span>
+</h2>
+<h3 id="improvements-15" class="section-heading">
+  <a href="#improvements-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>make scheduler default queue the same as worker</li></ul><h2 id="v0-1-1-2023-05-01" class="section-heading">
+  <a href="#v0-1-1-2023-05-01" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.0...v0.1.1">v0.1.1</a> (2023-05-01)</span>
+</h2>
+<h3 id="bug-fixes-10" class="section-heading">
+  <a href="#bug-fixes-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>add_error/1 does not exist</p></li><li><p><code class="inline">insert_all/1</code> not <code class="inline">insert_all!/1</code></p></li></ul><h3 id="improvements-16" class="section-heading">
+  <a href="#improvements-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>handle actions w/ before_transaction/after_transaction hooks better</li></ul><h2 id="v0-1-0-2023-04-28" class="section-heading">
+  <a href="#v0-1-0-2023-04-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_oban/compare/v0.1.0...v0.1.0">v0.1.0</a> (2023-04-28)</span>
+</h2>
+<h3 id="features" class="section-heading">
+  <a href="#features" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>initial feature set</li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashoban.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: AshOban
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_oban/0.2.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_oban/0.2.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_oban/0.2.4/show/CHANGELOG.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_oban.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

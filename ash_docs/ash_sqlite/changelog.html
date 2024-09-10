@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.33.0">
+    <meta name="project" content="ash_sqlite v0.1.3">
+
+
+    <title>Change Log — ash_sqlite v0.1.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-EDCBE166.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-BHYOTRCH.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_sqlite" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_sqlite" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_sqlite" class="sidebar-projectName" translate="no">
+ash_sqlite
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_sqlite</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_sqlite/blob/v0.1.3/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Change Log</span>
+  </h1>
+
+<p>All notable changes to this project will be documented in this file.
+See <a href="Https://conventionalcommits.org">Conventional Commits</a> for commit guidelines.</p><!-- changelog --><h2 id="v0-1-3-2024-05-31" class="section-heading">
+  <a href="#v0-1-3-2024-05-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_sqlite/compare/v0.1.2...v0.1.3">v0.1.3</a> (2024-05-31)</span>
+</h2>
+<h3 id="bug-fixes" class="section-heading">
+  <a href="#bug-fixes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>use <a href="https://hexdocs.pm/ecto/3.11.2/Ecto.ParameterizedType.html#init/2"><code class="inline">Ecto.ParameterizedType.init/2</code></a></p></li><li><p>handle new/old ecto parameterized type format</p></li></ul><h2 id="v0-1-2-2024-05-11" class="section-heading">
+  <a href="#v0-1-2-2024-05-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_sqlite/compare/v0.1.2-rc.1...v0.1.2">v0.1.2</a> (2024-05-11)</span>
+</h2>
+<h2 id="v0-1-2-rc-1-2024-05-06" class="section-heading">
+  <a href="#v0-1-2-rc-1-2024-05-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_sqlite/compare/v0.1.2-rc.0...v0.1.2-rc.1">v0.1.2-rc.1</a> (2024-05-06)</span>
+</h2>
+<h3 id="bug-fixes-1" class="section-heading">
+  <a href="#bug-fixes-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly scope deletes to the records in question</p></li><li><p>update ash_sqlite to get <code class="inline">ilike</code> behavior fix</p></li></ul><h3 id="improvements" class="section-heading">
+  <a href="#improvements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support <code class="inline">contains</code> function</li></ul><h2 id="v0-1-2-rc-0-2024-04-15" class="section-heading">
+  <a href="#v0-1-2-rc-0-2024-04-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_sqlite/compare/v0.1.1...v0.1.2-rc.0">v0.1.2-rc.0</a> (2024-04-15)</span>
+</h2>
+<h3 id="bug-fixes-2" class="section-heading">
+  <a href="#bug-fixes-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>reenable mix tasks that we need to call</li></ul><h3 id="improvements-1" class="section-heading">
+  <a href="#improvements-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>support <a href="https://hexdocs.pm/ash/3.0.8/Mix.Tasks.Ash.Rollback.html"><code class="inline">mix ash.rollback</code></a></p></li><li><p>support Ash 3.0, leverage <code class="inline">ash_sql</code> package</p></li><li><p>fix datetime migration type discovery</p></li></ul><h2 id="v0-1-1-2023-10-12" class="section-heading">
+  <a href="#v0-1-1-2023-10-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_sqlite/compare/v0.1.0...v0.1.1">v0.1.1</a> (2023-10-12)</span>
+</h2>
+<h3 id="improvements-2" class="section-heading">
+  <a href="#improvements-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>add <code class="inline">SqliteMigrationDefault</code></p></li><li><p>support query aggregates</p></li></ul><h2 id="v0-1-0-2023-10-12" class="section-heading">
+  <a href="#v0-1-0-2023-10-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_sqlite/compare/v0.1.0...v0.1.0">v0.1.0</a> (2023-10-12)</span>
+</h2>
+<h3 id="improvements-3" class="section-heading">
+  <a href="#improvements-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>Port and adjust <code class="inline">AshPostgres</code> to <a href="AshSqlite.html"><code class="inline">AshSqlite</code></a></li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashsqlite-datalayer.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: AshSqlite.DataLayer
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_sqlite/0.1.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_sqlite/0.1.3">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_sqlite/0.1.3/show/CHANGELOG.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_sqlite.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.33.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

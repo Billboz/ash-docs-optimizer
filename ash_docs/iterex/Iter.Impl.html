@@ -1,0 +1,2584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="iterex v0.1.2">
+
+
+    <title>Iter.Impl — iterex v0.1.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-E6B02732.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/iterex" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="iterex" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/iterex" class="sidebar-projectName" translate="no">
+iterex
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of iterex</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Iter.Impl</span> 
+    <small class="app-vsn" translate="no">(iterex v0.1.2)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The default implementations of all <a href="Iter.Iterable.html"><code class="inline">Iter.Iterable</code></a> callbacks except <code class="inline">next/1</code>.</p><p>By adding <code class="inline">use Iter.Impl</code> to your <a href="Iter.Iterable.html"><code class="inline">Iter.Iterable</code></a> definition all of the
+default functions will be automatically delegated and marked as overridable.</p><p>This allows you to implement only those callbacks which can reasonably be made
+faster for your particular iterable, and not have to implement all of them.</p><p>For example, here's a fictional implementation of iterable for <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defimpl</span><span class="w"> </span><span class="nc">Iter.Iterable</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="p">:</span><span class="w"> </span><span class="nc">List</span><span class="w"> </span><span class="k" data-group-id="4846514223-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Iter.Impl</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">next</span><span class="p" data-group-id="4846514223-2">(</span><span class="p" data-group-id="4846514223-3">[</span><span class="n">head</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tail</span><span class="p" data-group-id="4846514223-3">]</span><span class="p" data-group-id="4846514223-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4846514223-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="n">tail</span><span class="p" data-group-id="4846514223-4">}</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">next</span><span class="p" data-group-id="4846514223-5">(</span><span class="p" data-group-id="4846514223-6">[</span><span class="p" data-group-id="4846514223-6">]</span><span class="p" data-group-id="4846514223-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="ss">:done</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">peek</span><span class="p" data-group-id="4846514223-7">(</span><span class="p" data-group-id="4846514223-8">[</span><span class="p" data-group-id="4846514223-8">]</span><span class="p" data-group-id="4846514223-7">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="ss">:done</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">peek</span><span class="p" data-group-id="4846514223-9">(</span><span class="p" data-group-id="4846514223-10">[</span><span class="n">head</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="4846514223-10">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p" data-group-id="4846514223-9">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4846514223-11">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p" data-group-id="4846514223-11">}</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">empty?</span><span class="p" data-group-id="4846514223-12">(</span><span class="p" data-group-id="4846514223-13">[</span><span class="p" data-group-id="4846514223-13">]</span><span class="p" data-group-id="4846514223-12">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">empty?</span><span class="p" data-group-id="4846514223-14">(</span><span class="bp">_</span><span class="p" data-group-id="4846514223-14">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="k" data-group-id="4846514223-1">end</span></code></pre><p>Be aware that all the default implementations rely on your implementation of
+<code class="inline">next/1</code> which you always must provide.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:element/0" data-no-tooltip translate="no">element()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:iterable/0" data-no-tooltip translate="no">iterable()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:predicate/0" data-no-tooltip translate="no">predicate()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#__using__/1" data-no-tooltip translate="no">__using__(_)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Generate overridable delegations to the default iterable callbacks.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#all?/2" data-no-tooltip translate="no">all?(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Tests if every element in the iterable matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#any?/2" data-no-tooltip translate="no">any?(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Tests if any element in the iterable matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#append/2" data-no-tooltip translate="no">append(iterable, element)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that appends an element to the end of the iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#at/2" data-no-tooltip translate="no">at(iterable, n)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the element <code class="inline">index</code> items from the beginning of the iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#chunk_by/2" data-no-tooltip translate="no">chunk_by(iterable, chunker)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that chunks elements by subsequent return values of <code class="inline">fun</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#chunk_every/4" data-no-tooltip translate="no">chunk_every(iterable, count, step, leftover)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that chunks elements into <code class="inline">count</code> sized chunks of <code class="inline">step</code> spacing.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#chunk_while/4" data-no-tooltip translate="no">chunk_while(iterable, acc, chunk_fun, after_fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that chunks based on a chunk function.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#concat/1" data-no-tooltip translate="no">concat(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Takes an iterable and iterates each iterable in an iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#count/1" data-no-tooltip translate="no">count(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Consumes the iterable, returning the number of elements within</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#count/2" data-no-tooltip translate="no">count(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Consumes the iterable, returning the number of elements for which <code class="inline">fun</code> returns a truthy value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#cycle/1" data-no-tooltip translate="no">cycle(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterator that cycles it's elements eternally.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dedup/1" data-no-tooltip translate="no">dedup(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that only emits elements if they are different from the previous element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dedup_by/2" data-no-tooltip translate="no">dedup_by(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that only emits elements if they are different from the previous element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#drop/2" data-no-tooltip translate="no">drop(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which drops the first <code class="inline">how_many</code> elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#drop_every/2" data-no-tooltip translate="no">drop_every(iterable, nth)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns a new iterable with every <code class="inline">nth</code> element in the <code class="inline">iterable</code> dropped,
+starting with the first element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#drop_while/2" data-no-tooltip translate="no">drop_while(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Drops elements at the beginning of <code class="inline">iterable</code> while fun returns a truthy
+value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#each/2" data-no-tooltip translate="no">each(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Consumes the iterable and applies <code class="inline">fun</code> to each element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#empty?/1" data-no-tooltip translate="no">empty?(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Determines if the iterable is empty.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#filter/2" data-no-tooltip translate="no">filter(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which drops elements for which <code class="inline">predicate</code> doesn't return true.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find/2" data-no-tooltip translate="no">find(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Searches for the first element in the iterable which matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_index/2" data-no-tooltip translate="no">find_index(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the index of the first element in the iterable which matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_value/2" data-no-tooltip translate="no">find_value(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the first truthy value returned by <code class="inline">fun</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flat_map/2" data-no-tooltip translate="no">flat_map(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which works like <a href="#map/2"><code class="inline">map/2</code></a> but flattens nested iterables.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flatten/1" data-no-tooltip translate="no">flatten(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which flattens nested iterables.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#intersperse/2" data-no-tooltip translate="no">intersperse(iterable, separator)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which places <code class="inline">separator</code> between adjacent items of the original iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#map/2" data-no-tooltip translate="no">map(iterable, mapper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which applies <code class="inline">mapper</code> to each element and using it's
+result as the new element value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#map_every/3" data-no-tooltip translate="no">map_every(iterable, nth, mapper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which applies <code class="inline">mapper</code> on every <code class="inline">nth</code> element of the
+iterable, starting with the first element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#max/2" data-no-tooltip translate="no">max(iterable, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the maximal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#max_by/3" data-no-tooltip translate="no">max_by(iterable, mapper, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the maximal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#member?/2" data-no-tooltip translate="no">member?(iterable, element)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Is the element a member of the iterable?</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min/2" data-no-tooltip translate="no">min(iterable, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the minimal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min_by/3" data-no-tooltip translate="no">min_by(iterable, mapper, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the minimal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min_max/1" data-no-tooltip translate="no">min_max(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Finds the minimal and maximal elements in the iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#peek/1" data-no-tooltip translate="no">peek(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Peeks at the first element of the iterable, without consuming it.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#peek/2" data-no-tooltip translate="no">peek(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Peeks at the first <code class="inline">how_many</code> elements of the iterable, without consuming them.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prepend/2" data-no-tooltip translate="no">prepend(iterable, element)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which places <code class="inline">element</code> at the beginning of the iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#step_by/2" data-no-tooltip translate="no">step_by(iterable, step_size)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable starting at the same point, but stepping by <code class="inline">how_many</code> each iteration.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_chunk/2" data-no-tooltip translate="no">take_chunk(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Collects the first <code class="inline">how_many</code> elements into a new iterable and returns it
+along with the advanced initial iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_head/2" data-no-tooltip translate="no">take_head(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which takes the first <code class="inline">how_many</code> elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_tail/2" data-no-tooltip translate="no">take_tail(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which takes the last <code class="inline">how_many</code> elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_while/2" data-no-tooltip translate="no">take_while(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which emits elements until <code class="inline">predicate</code> returns <code class="inline">false</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_list/1" data-no-tooltip translate="no">to_list(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Convert the iterable into a list.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#uniq/1" data-no-tooltip translate="no">uniq(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that only emits unique elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#with_index/1" data-no-tooltip translate="no">with_index(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which emits the current iteration count as well as the
+next value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#zip/2" data-no-tooltip translate="no">zip(iterable, zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Zips corresponding elements from a finite collection of iterables into one iterable of results as computed by <code class="inline">zipper</code>.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:element/0">
+
+  <div class="detail-header">
+    <a href="#t:element/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">element()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L179" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> element() :: <a href="Iter.Iterable.html#t:element/0">Iter.Iterable.element</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:iterable/0">
+
+  <div class="detail-header">
+    <a href="#t:iterable/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">iterable()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L178" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> iterable() :: <a href="Iter.Iterable.html#t:t/0">Iter.Iterable.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:predicate/0">
+
+  <div class="detail-header">
+    <a href="#t:predicate/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">predicate()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L180" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> predicate() :: <a href="Iter.Iterable.html#t:predicate/0">Iter.Iterable.predicate</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="__using__/1">
+
+  <div class="detail-header">
+    <a href="#__using__/1" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">__using__(_)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L37" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Generate overridable delegations to the default iterable callbacks.</p>
+  </section>
+</section>
+<section class="detail" id="all?/2">
+
+  <div class="detail-header">
+    <a href="#all?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">all?(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L194" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> all?(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Tests if every element in the iterable matches <code class="inline">predicate</code>.</p><h2 id="all?/2-examples" class="section-heading">
+  <a href="#all?/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">all?</span><span class="p" data-group-id="5879919588-1">(</span><span class="p" data-group-id="5879919588-2">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="5879919588-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="5879919588-3">(</span><span class="n">rem</span><span class="p" data-group-id="5879919588-4">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5879919588-4">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="5879919588-3">)</span><span class="p" data-group-id="5879919588-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">all?</span><span class="p" data-group-id="5879919588-5">(</span><span class="p" data-group-id="5879919588-6">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="5879919588-6">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="5879919588-7">(</span><span class="n">rem</span><span class="p" data-group-id="5879919588-8">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5879919588-8">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="5879919588-7">)</span><span class="p" data-group-id="5879919588-5">)</span><span class="w">
+</span><span class="no">false</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="any?/2">
+
+  <div class="detail-header">
+    <a href="#any?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">any?(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L219" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> any?(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Tests if any element in the iterable matches <code class="inline">predicate</code>.</p><h2 id="any?/2-examples" class="section-heading">
+  <a href="#any?/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">any?</span><span class="p" data-group-id="5358428016-1">(</span><span class="p" data-group-id="5358428016-2">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="5358428016-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="5358428016-3">(</span><span class="n">rem</span><span class="p" data-group-id="5358428016-4">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5358428016-4">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5358428016-3">)</span><span class="p" data-group-id="5358428016-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">any?</span><span class="p" data-group-id="5358428016-5">(</span><span class="p" data-group-id="5358428016-6">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="5358428016-6">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="5358428016-7">(</span><span class="n">rem</span><span class="p" data-group-id="5358428016-8">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5358428016-8">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5358428016-7">)</span><span class="p" data-group-id="5358428016-5">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="append/2">
+
+  <div class="detail-header">
+    <a href="#append/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">append(iterable, element)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L241" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> append(<a href="#t:iterable/0">iterable</a>(), <a href="#t:element/0">element</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that appends an element to the end of the iterable.</p><h2 id="append/2-examples" class="section-heading">
+  <a href="#append/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">append</span><span class="p" data-group-id="8222514421-1">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8222514421-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="8222514421-2">(</span><span class="p" data-group-id="8222514421-2">)</span><span class="w">
+</span><span class="p" data-group-id="8222514421-3">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8222514421-3">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="at/2">
+
+  <div class="detail-header">
+    <a href="#at/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">at(iterable, n)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L252" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> at(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:iterable/0">iterable</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the element <code class="inline">index</code> items from the beginning of the iterable.</p><h2 id="at/2-example" class="section-heading">
+  <a href="#at/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">at</span><span class="p" data-group-id="2538537188-1">(</span><span class="p" data-group-id="2538537188-2">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="2538537188-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2538537188-1">)</span><span class="w">
+</span><span class="p" data-group-id="2538537188-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2538537188-4">[</span><span class="ss">:c</span><span class="p" data-group-id="2538537188-4">]</span><span class="p" data-group-id="2538537188-3">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="chunk_by/2">
+
+  <div class="detail-header">
+    <a href="#chunk_by/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">chunk_by(iterable, chunker)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L271" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> chunk_by(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that chunks elements by subsequent return values of <code class="inline">fun</code>.</p><h2 id="chunk_by/2-example" class="section-heading">
+  <a href="#chunk_by/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_by</span><span class="p" data-group-id="8060152717-1">(</span><span class="p" data-group-id="8060152717-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="8060152717-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="8060152717-3">(</span><span class="n">rem</span><span class="p" data-group-id="8060152717-4">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8060152717-4">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8060152717-3">)</span><span class="p" data-group-id="8060152717-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="8060152717-5">(</span><span class="p" data-group-id="8060152717-5">)</span><span class="w">
+</span><span class="p" data-group-id="8060152717-6">[</span><span class="p" data-group-id="8060152717-7">[</span><span class="mi">1</span><span class="p" data-group-id="8060152717-7">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8060152717-8">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8060152717-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8060152717-9">[</span><span class="mi">3</span><span class="p" data-group-id="8060152717-9">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8060152717-10">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="8060152717-10">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8060152717-11">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="8060152717-11">]</span><span class="p" data-group-id="8060152717-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="chunk_every/4">
+
+  <div class="detail-header">
+    <a href="#chunk_every/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">chunk_every(iterable, count, step, leftover)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L295" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> chunk_every(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), <a href="#t:iterable/0">iterable</a>() | :discard) ::
+  <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that chunks elements into <code class="inline">count</code> sized chunks of <code class="inline">step</code> spacing.</p><h2 id="chunk_every/4-examples" class="section-heading">
+  <a href="#chunk_every/4-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_every</span><span class="p" data-group-id="2418805938-1">(</span><span class="p" data-group-id="2418805938-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2418805938-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-3">[</span><span class="p" data-group-id="2418805938-3">]</span><span class="p" data-group-id="2418805938-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2418805938-4">(</span><span class="p" data-group-id="2418805938-4">)</span><span class="w">
+</span><span class="p" data-group-id="2418805938-5">[</span><span class="p" data-group-id="2418805938-6">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2418805938-6">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-7">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="2418805938-7">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-8">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2418805938-8">]</span><span class="p" data-group-id="2418805938-5">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_every</span><span class="p" data-group-id="2418805938-9">(</span><span class="p" data-group-id="2418805938-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2418805938-10">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">:discard</span><span class="p" data-group-id="2418805938-9">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2418805938-11">(</span><span class="p" data-group-id="2418805938-11">)</span><span class="w">
+</span><span class="p" data-group-id="2418805938-12">[</span><span class="p" data-group-id="2418805938-13">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2418805938-13">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-14">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2418805938-14">]</span><span class="p" data-group-id="2418805938-12">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_every</span><span class="p" data-group-id="2418805938-15">(</span><span class="p" data-group-id="2418805938-16">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2418805938-16">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-17">[</span><span class="mi">7</span><span class="p" data-group-id="2418805938-17">]</span><span class="p" data-group-id="2418805938-15">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2418805938-18">(</span><span class="p" data-group-id="2418805938-18">)</span><span class="w">
+</span><span class="p" data-group-id="2418805938-19">[</span><span class="p" data-group-id="2418805938-20">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2418805938-20">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-21">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2418805938-21">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-22">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="2418805938-22">]</span><span class="p" data-group-id="2418805938-19">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_every</span><span class="p" data-group-id="2418805938-23">(</span><span class="p" data-group-id="2418805938-24">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2418805938-24">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-25">[</span><span class="p" data-group-id="2418805938-25">]</span><span class="p" data-group-id="2418805938-23">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2418805938-26">(</span><span class="p" data-group-id="2418805938-26">)</span><span class="w">
+</span><span class="p" data-group-id="2418805938-27">[</span><span class="p" data-group-id="2418805938-28">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2418805938-28">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-29">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="2418805938-29">]</span><span class="p" data-group-id="2418805938-27">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">cycler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">cycle</span><span class="p" data-group-id="2418805938-30">(</span><span class="p" data-group-id="2418805938-31">[</span><span class="mi">0</span><span class="p" data-group-id="2418805938-31">]</span><span class="p" data-group-id="2418805938-30">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_every</span><span class="p" data-group-id="2418805938-32">(</span><span class="p" data-group-id="2418805938-33">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="2418805938-33">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">cycler</span><span class="p" data-group-id="2418805938-32">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2418805938-34">(</span><span class="p" data-group-id="2418805938-34">)</span><span class="w">
+</span><span class="p" data-group-id="2418805938-35">[</span><span class="p" data-group-id="2418805938-36">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2418805938-36">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2418805938-37">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2418805938-37">]</span><span class="p" data-group-id="2418805938-35">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="chunk_while/4">
+
+  <div class="detail-header">
+    <a href="#chunk_while/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">chunk_while(iterable, acc, chunk_fun, after_fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L325" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> chunk_while(
+  <a href="#t:iterable/0">iterable</a>(),
+  acc,
+  (<a href="#t:element/0">element</a>(), acc -&gt; {:cont, chunk, acc} | {:cont, acc} | {:halt, acc}),
+  (acc -&gt; {:cont, chunk, acc} | {:cont, acc})
+) :: <a href="#t:iterable/0">iterable</a>()
+when acc: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), chunk: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that chunks based on a chunk function.</p><h2 id="chunk_while/4-examples" class="section-heading">
+  <a href="#chunk_while/4-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">chunk_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="8778663407-1">fn</span><span class="w"> </span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">rem</span><span class="p" data-group-id="8778663407-2">(</span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8778663407-2">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k" data-group-id="8778663407-3">do</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="8778663407-4">{</span><span class="ss">:cont</span><span class="p">,</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">reverse</span><span class="p" data-group-id="8778663407-5">(</span><span class="p" data-group-id="8778663407-6">[</span><span class="n">element</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">acc</span><span class="p" data-group-id="8778663407-6">]</span><span class="p" data-group-id="8778663407-5">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-7">[</span><span class="p" data-group-id="8778663407-7">]</span><span class="p" data-group-id="8778663407-4">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k" data-group-id="8778663407-3">else</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="8778663407-8">{</span><span class="ss">:cont</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-9">[</span><span class="n">element</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">acc</span><span class="p" data-group-id="8778663407-9">]</span><span class="p" data-group-id="8778663407-8">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="k" data-group-id="8778663407-3">end</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="8778663407-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">after_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="8778663407-10">fn</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="8778663407-11">[</span><span class="p" data-group-id="8778663407-11">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="8778663407-12">{</span><span class="ss">:cont</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-13">[</span><span class="p" data-group-id="8778663407-13">]</span><span class="p" data-group-id="8778663407-12">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="n">acc</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="8778663407-14">{</span><span class="ss">:cont</span><span class="p">,</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">reverse</span><span class="p" data-group-id="8778663407-15">(</span><span class="n">acc</span><span class="p" data-group-id="8778663407-15">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-16">[</span><span class="p" data-group-id="8778663407-16">]</span><span class="p" data-group-id="8778663407-14">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="8778663407-10">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">chunk_while</span><span class="p" data-group-id="8778663407-17">(</span><span class="p" data-group-id="8778663407-18">[</span><span class="p" data-group-id="8778663407-18">]</span><span class="p">,</span><span class="w"> </span><span class="n">chunk_fun</span><span class="p">,</span><span class="w"> </span><span class="n">after_fun</span><span class="p" data-group-id="8778663407-17">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="8778663407-19">(</span><span class="n">iter</span><span class="p" data-group-id="8778663407-19">)</span><span class="w">
+</span><span class="p" data-group-id="8778663407-20">[</span><span class="p" data-group-id="8778663407-21">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8778663407-21">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-22">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8778663407-22">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-23">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="8778663407-23">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-24">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="8778663407-24">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8778663407-25">[</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="8778663407-25">]</span><span class="p" data-group-id="8778663407-20">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="concat/1">
+
+  <div class="detail-header">
+    <a href="#concat/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">concat(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L337" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> concat(<a href="#t:iterable/0">iterable</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Takes an iterable and iterates each iterable in an iterable.</p><h2 id="concat/1-example" class="section-heading">
+  <a href="#concat/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="6527069650-1">(</span><span class="p" data-group-id="6527069650-2">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">..</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">..</span><span class="mi">5</span><span class="p" data-group-id="6527069650-2">]</span><span class="p" data-group-id="6527069650-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="6527069650-3">(</span><span class="p" data-group-id="6527069650-3">)</span><span class="w">
+</span><span class="p" data-group-id="6527069650-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="6527069650-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="count/1">
+
+  <div class="detail-header">
+    <a href="#count/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">count(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L351" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> count(<a href="#t:iterable/0">iterable</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+      </div>
+
+<p>Consumes the iterable, returning the number of elements within</p><h2 id="count/1-examples" class="section-heading">
+  <a href="#count/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">count</span><span class="p" data-group-id="1829883847-1">(</span><span class="p" data-group-id="1829883847-2">[</span><span class="p" data-group-id="1829883847-2">]</span><span class="p" data-group-id="1829883847-1">)</span><span class="w">
+</span><span class="mi">0</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">count</span><span class="p" data-group-id="1829883847-3">(</span><span class="p" data-group-id="1829883847-4">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1829883847-4">]</span><span class="p" data-group-id="1829883847-3">)</span><span class="w">
+</span><span class="mi">3</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="count/2">
+
+  <div class="detail-header">
+    <a href="#count/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">count(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L370" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> count(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">as_boolean</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()))) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+      </div>
+
+<p>Consumes the iterable, returning the number of elements for which <code class="inline">fun</code> returns a truthy value.</p><h2 id="count/2-example" class="section-heading">
+  <a href="#count/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">count</span><span class="p" data-group-id="9938294079-1">(</span><span class="o">&amp;</span><span class="p" data-group-id="9938294079-2">(</span><span class="n">rem</span><span class="p" data-group-id="9938294079-3">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9938294079-3">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="9938294079-2">)</span><span class="p" data-group-id="9938294079-1">)</span><span class="w">
+</span><span class="mi">2</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="cycle/1">
+
+  <div class="detail-header">
+    <a href="#cycle/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">cycle(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L398" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> cycle(<a href="#t:iterable/0">iterable</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterator that cycles it's elements eternally.</p><h2 id="cycle/1-example" class="section-heading">
+  <a href="#cycle/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">cycle</span><span class="p" data-group-id="4107772008-1">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p" data-group-id="4107772008-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_head</span><span class="p" data-group-id="4107772008-2">(</span><span class="mi">5</span><span class="p" data-group-id="4107772008-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4107772008-3">(</span><span class="p" data-group-id="4107772008-3">)</span><span class="w">
+</span><span class="p" data-group-id="4107772008-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4107772008-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="dedup/1">
+
+  <div class="detail-header">
+    <a href="#dedup/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">dedup(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L425" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> dedup(<a href="#t:iterable/0">iterable</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that only emits elements if they are different from the previous element.</p><h2 id="dedup/1-example" class="section-heading">
+  <a href="#dedup/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">dedup</span><span class="p" data-group-id="3403379016-1">(</span><span class="p" data-group-id="3403379016-2">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:d</span><span class="p" data-group-id="3403379016-2">]</span><span class="p" data-group-id="3403379016-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="3403379016-3">(</span><span class="p" data-group-id="3403379016-3">)</span><span class="w">
+</span><span class="p" data-group-id="3403379016-4">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:d</span><span class="p" data-group-id="3403379016-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="dedup_by/2">
+
+  <div class="detail-header">
+    <a href="#dedup_by/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">dedup_by(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L413" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> dedup_by(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that only emits elements if they are different from the previous element.</p><p>The function <code class="inline">fun</code> maps every element to a term which is used to determine if two elements are duplicates.</p><h2 id="dedup_by/2-example" class="section-heading">
+  <a href="#dedup_by/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="0781149503-1">[</span><span class="p" data-group-id="0781149503-2">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p" data-group-id="0781149503-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0781149503-3">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p" data-group-id="0781149503-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0781149503-4">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="0781149503-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0781149503-5">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p" data-group-id="0781149503-5">}</span><span class="p" data-group-id="0781149503-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">dedup_by</span><span class="p" data-group-id="0781149503-6">(</span><span class="o">&amp;</span><span class="n">elem</span><span class="p" data-group-id="0781149503-7">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="0781149503-7">)</span><span class="p" data-group-id="0781149503-6">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="0781149503-8">(</span><span class="p" data-group-id="0781149503-8">)</span><span class="w">
+</span><span class="p" data-group-id="0781149503-9">[</span><span class="p" data-group-id="0781149503-10">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p" data-group-id="0781149503-10">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0781149503-11">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p" data-group-id="0781149503-11">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0781149503-12">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p" data-group-id="0781149503-12">}</span><span class="p" data-group-id="0781149503-9">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="drop/2">
+
+  <div class="detail-header">
+    <a href="#drop/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">drop(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L488" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> drop(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which drops the first <code class="inline">how_many</code> elements.</p><h2 id="drop/2-examples" class="section-heading">
+  <a href="#drop/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop</span><span class="p" data-group-id="7055155969-1">(</span><span class="p" data-group-id="7055155969-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7055155969-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7055155969-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="7055155969-3">(</span><span class="p" data-group-id="7055155969-3">)</span><span class="w">
+</span><span class="p" data-group-id="7055155969-4">[</span><span class="mi">3</span><span class="p" data-group-id="7055155969-4">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop</span><span class="p" data-group-id="7055155969-5">(</span><span class="p" data-group-id="7055155969-6">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7055155969-6">]</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="7055155969-5">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="7055155969-7">(</span><span class="p" data-group-id="7055155969-7">)</span><span class="w">
+</span><span class="p" data-group-id="7055155969-8">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7055155969-8">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop</span><span class="p" data-group-id="7055155969-9">(</span><span class="p" data-group-id="7055155969-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7055155969-10">]</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p" data-group-id="7055155969-9">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="7055155969-11">(</span><span class="p" data-group-id="7055155969-11">)</span><span class="w">
+</span><span class="p" data-group-id="7055155969-12">[</span><span class="mi">1</span><span class="p" data-group-id="7055155969-12">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="drop_every/2">
+
+  <div class="detail-header">
+    <a href="#drop_every/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">drop_every(iterable, nth)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L454" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> drop_every(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Returns a new iterable with every <code class="inline">nth</code> element in the <code class="inline">iterable</code> dropped,
+starting with the first element.</p><h2 id="drop_every/2-examples" class="section-heading">
+  <a href="#drop_every/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop_every</span><span class="p" data-group-id="9757630829-1">(</span><span class="mi">2</span><span class="p" data-group-id="9757630829-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9757630829-2">(</span><span class="p" data-group-id="9757630829-2">)</span><span class="w">
+</span><span class="p" data-group-id="9757630829-3">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9757630829-3">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="mi">1</span><span class="o">..</span><span class="mi">12</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop_every</span><span class="p" data-group-id="9757630829-4">(</span><span class="mi">3</span><span class="p" data-group-id="9757630829-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9757630829-5">(</span><span class="p" data-group-id="9757630829-5">)</span><span class="w">
+</span><span class="p" data-group-id="9757630829-6">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p" data-group-id="9757630829-6">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop_every</span><span class="p" data-group-id="9757630829-7">(</span><span class="mi">0</span><span class="p" data-group-id="9757630829-7">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9757630829-8">(</span><span class="p" data-group-id="9757630829-8">)</span><span class="w">
+</span><span class="p" data-group-id="9757630829-9">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9757630829-9">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="9757630829-10">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9757630829-10">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop_every</span><span class="p" data-group-id="9757630829-11">(</span><span class="mi">1</span><span class="p" data-group-id="9757630829-11">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9757630829-12">(</span><span class="p" data-group-id="9757630829-12">)</span><span class="w">
+</span><span class="p" data-group-id="9757630829-13">[</span><span class="p" data-group-id="9757630829-13">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="drop_while/2">
+
+  <div class="detail-header">
+    <a href="#drop_while/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">drop_while(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L468" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> drop_while(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Drops elements at the beginning of <code class="inline">iterable</code> while fun returns a truthy
+value.</p><h2 id="drop_while/2-example" class="section-heading">
+  <a href="#drop_while/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="1140323828-1">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1140323828-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">drop_while</span><span class="p" data-group-id="1140323828-2">(</span><span class="o">&amp;</span><span class="p" data-group-id="1140323828-3">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1140323828-3">)</span><span class="p" data-group-id="1140323828-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="1140323828-4">(</span><span class="p" data-group-id="1140323828-4">)</span><span class="w">
+</span><span class="p" data-group-id="1140323828-5">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1140323828-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="each/2">
+
+  <div class="detail-header">
+    <a href="#each/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">each(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L516" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> each(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: :done</pre>
+
+      </div>
+
+<p>Consumes the iterable and applies <code class="inline">fun</code> to each element.</p><p>Primarily used for side-effects.</p><p>Always returns <code class="inline">:done</code>.</p><h2 id="each/2-example" class="section-heading">
+  <a href="#each/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="nc">Impl</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="0510803912-1">(</span><span class="p" data-group-id="0510803912-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0510803912-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="0510803912-3">(</span><span class="s">&quot;</span><span class="si" data-group-id="0510803912-4">#{</span><span class="ni">&amp;1</span><span class="si" data-group-id="0510803912-4">}</span><span class="s">&quot;</span><span class="p" data-group-id="0510803912-3">)</span><span class="p" data-group-id="0510803912-1">)</span><span class="w">
+</span><span class="s">&quot;1&quot;</span><span class="w">
+</span><span class="s">&quot;2&quot;</span><span class="w">
+</span><span class="s">&quot;3&quot;</span><span class="w">
+</span><span class="c1">#=&gt; :done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="empty?/1">
+
+  <div class="detail-header">
+    <a href="#empty?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">empty?(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L535" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> empty?(<a href="#t:iterable/0">iterable</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Determines if the iterable is empty.</p><h2 id="empty?/1-example" class="section-heading">
+  <a href="#empty?/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="4698419951-1">(</span><span class="p" data-group-id="4698419951-2">[</span><span class="p" data-group-id="4698419951-2">]</span><span class="p" data-group-id="4698419951-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="4698419951-3">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">20</span><span class="p" data-group-id="4698419951-3">)</span><span class="w">
+</span><span class="no">false</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="filter/2">
+
+  <div class="detail-header">
+    <a href="#filter/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">filter(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L552" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> filter(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which drops elements for which <code class="inline">predicate</code> doesn't return true.</p><h2 id="filter/2-example" class="section-heading">
+  <a href="#filter/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="2628154590-1">(</span><span class="p" data-group-id="2628154590-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="2628154590-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="2628154590-3">(</span><span class="n">rem</span><span class="p" data-group-id="2628154590-4">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2628154590-4">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2628154590-3">)</span><span class="p" data-group-id="2628154590-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2628154590-5">(</span><span class="p" data-group-id="2628154590-5">)</span><span class="w">
+</span><span class="p" data-group-id="2628154590-6">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2628154590-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="find/2">
+
+  <div class="detail-header">
+    <a href="#find/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L616" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) :: {:ok, <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Searches for the first element in the iterable which matches <code class="inline">predicate</code>.</p><h2 id="find/2-example" class="section-heading">
+  <a href="#find/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">find</span><span class="p" data-group-id="8758288879-1">(</span><span class="p" data-group-id="8758288879-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8758288879-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="8758288879-3">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8758288879-3">)</span><span class="p" data-group-id="8758288879-1">)</span><span class="w">
+</span><span class="p" data-group-id="8758288879-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8758288879-5">[</span><span class="mi">4</span><span class="p" data-group-id="8758288879-5">]</span><span class="p" data-group-id="8758288879-4">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">find</span><span class="p" data-group-id="8758288879-6">(</span><span class="p" data-group-id="8758288879-7">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8758288879-7">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="8758288879-8">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8758288879-8">)</span><span class="p" data-group-id="8758288879-6">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="find_index/2">
+
+  <div class="detail-header">
+    <a href="#find_index/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_index(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L567" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find_index(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="#t:iterable/0">iterable</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the index of the first element in the iterable which matches <code class="inline">predicate</code>.</p><h2 id="find_index/2-examples" class="section-heading">
+  <a href="#find_index/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">find_index</span><span class="p" data-group-id="9176157251-1">(</span><span class="p" data-group-id="9176157251-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9176157251-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="9176157251-3">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9176157251-3">)</span><span class="p" data-group-id="9176157251-1">)</span><span class="w">
+</span><span class="p" data-group-id="9176157251-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9176157251-5">[</span><span class="mi">4</span><span class="p" data-group-id="9176157251-5">]</span><span class="p" data-group-id="9176157251-4">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">find_index</span><span class="p" data-group-id="9176157251-6">(</span><span class="p" data-group-id="9176157251-7">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9176157251-7">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="9176157251-8">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9176157251-8">)</span><span class="p" data-group-id="9176157251-6">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="find_value/2">
+
+  <div class="detail-header">
+    <a href="#find_value/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_value(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L592" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find_value(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; result)) ::
+  {:ok, result, <a href="#t:iterable/0">iterable</a>()} | :done
+when result: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Returns the first truthy value returned by <code class="inline">fun</code>.</p><h2 id="find_value/2-example" class="section-heading">
+  <a href="#find_value/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">find_value</span><span class="p" data-group-id="6494944227-1">(</span><span class="p" data-group-id="6494944227-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="6494944227-2">]</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="6494944227-3">fn</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="n">i</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">nil</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="6494944227-3">end</span><span class="p" data-group-id="6494944227-1">)</span><span class="w">
+</span><span class="p" data-group-id="6494944227-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6494944227-5">[</span><span class="mi">4</span><span class="p" data-group-id="6494944227-5">]</span><span class="p" data-group-id="6494944227-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="flat_map/2">
+
+  <div class="detail-header">
+    <a href="#flat_map/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flat_map(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L638" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> flat_map(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="#t:iterable/0">iterable</a>() | <a href="#t:element/0">element</a>())) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which works like <a href="#map/2"><code class="inline">map/2</code></a> but flattens nested iterables.</p><h2 id="flat_map/2-example" class="section-heading">
+  <a href="#flat_map/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8321312604-1">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="8321312604-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">flat_map</span><span class="p" data-group-id="8321312604-2">(</span><span class="o">&amp;</span><span class="p" data-group-id="8321312604-3">[</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="ni">&amp;1</span><span class="p" data-group-id="8321312604-3">]</span><span class="p" data-group-id="8321312604-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="8321312604-4">(</span><span class="p" data-group-id="8321312604-4">)</span><span class="w">
+</span><span class="p" data-group-id="8321312604-5">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="8321312604-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="flatten/1">
+
+  <div class="detail-header">
+    <a href="#flatten/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flatten(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L651" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> flatten(<a href="#t:iterable/0">iterable</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which flattens nested iterables.</p><h2 id="flatten/1-example" class="section-heading">
+  <a href="#flatten/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">flatten</span><span class="p" data-group-id="1901773374-1">(</span><span class="p" data-group-id="1901773374-2">[</span><span class="p" data-group-id="1901773374-3">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1901773374-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1901773374-4">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1901773374-5">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1901773374-6">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="1901773374-6">]</span><span class="p" data-group-id="1901773374-5">]</span><span class="p" data-group-id="1901773374-4">]</span><span class="p" data-group-id="1901773374-2">]</span><span class="p" data-group-id="1901773374-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="1901773374-7">(</span><span class="p" data-group-id="1901773374-7">)</span><span class="w">
+</span><span class="p" data-group-id="1901773374-8">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="1901773374-8">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="intersperse/2">
+
+  <div class="detail-header">
+    <a href="#intersperse/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">intersperse(iterable, separator)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L930" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> intersperse(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which places <code class="inline">separator</code> between adjacent items of the original iterable.</p><h2 id="intersperse/2-example" class="section-heading">
+  <a href="#intersperse/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">intersperse</span><span class="p" data-group-id="4580000221-1">(</span><span class="p" data-group-id="4580000221-2">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="4580000221-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">:wat</span><span class="p" data-group-id="4580000221-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4580000221-3">(</span><span class="p" data-group-id="4580000221-3">)</span><span class="w">
+</span><span class="p" data-group-id="4580000221-4">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:wat</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:wat</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="4580000221-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="map/2">
+
+  <div class="detail-header">
+    <a href="#map/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">map(iterable, mapper)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L694" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> map(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>() -&gt; new_element)) :: <a href="#t:iterable/0">iterable</a>()
+when new_element: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which applies <code class="inline">mapper</code> to each element and using it's
+result as the new element value.</p><h2 id="map/2-example" class="section-heading">
+  <a href="#map/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="6008034498-1">(</span><span class="p" data-group-id="6008034498-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="6008034498-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="6008034498-3">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="ni">&amp;1</span><span class="p" data-group-id="6008034498-3">)</span><span class="p" data-group-id="6008034498-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="6008034498-4">(</span><span class="p" data-group-id="6008034498-4">)</span><span class="w">
+</span><span class="p" data-group-id="6008034498-5">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p" data-group-id="6008034498-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="map_every/3">
+
+  <div class="detail-header">
+    <a href="#map_every/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">map_every(iterable, nth, mapper)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L679" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> map_every(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), (<a href="#t:element/0">element</a>() -&gt; new_element)) ::
+  <a href="#t:iterable/0">iterable</a>()
+when new_element: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which applies <code class="inline">mapper</code> on every <code class="inline">nth</code> element of the
+iterable, starting with the first element.</p><p>The first element is always mapped unless <code class="inline">nth</code> is <code class="inline">0</code>.</p><h2 id="map_every/3-examples" class="section-heading">
+  <a href="#map_every/3-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">map_every</span><span class="p" data-group-id="4286600153-1">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4286600153-2">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k" data-group-id="4286600153-2">end</span><span class="p" data-group-id="4286600153-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4286600153-3">(</span><span class="p" data-group-id="4286600153-3">)</span><span class="w">
+</span><span class="p" data-group-id="4286600153-4">[</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1003</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1005</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1007</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1009</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="4286600153-4">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">map_every</span><span class="p" data-group-id="4286600153-5">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4286600153-6">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k" data-group-id="4286600153-6">end</span><span class="p" data-group-id="4286600153-5">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4286600153-7">(</span><span class="p" data-group-id="4286600153-7">)</span><span class="w">
+</span><span class="p" data-group-id="4286600153-8">[</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1007</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">1010</span><span class="p" data-group-id="4286600153-8">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">map_every</span><span class="p" data-group-id="4286600153-9">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4286600153-10">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k" data-group-id="4286600153-10">end</span><span class="p" data-group-id="4286600153-9">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4286600153-11">(</span><span class="p" data-group-id="4286600153-11">)</span><span class="w">
+</span><span class="p" data-group-id="4286600153-12">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="4286600153-12">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">map_every</span><span class="p" data-group-id="4286600153-13">(</span><span class="p" data-group-id="4286600153-14">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="4286600153-14">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4286600153-15">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k" data-group-id="4286600153-15">end</span><span class="p" data-group-id="4286600153-13">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4286600153-16">(</span><span class="p" data-group-id="4286600153-16">)</span><span class="w">
+</span><span class="p" data-group-id="4286600153-17">[</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">1002</span><span class="p">,</span><span class="w"> </span><span class="mi">1003</span><span class="p" data-group-id="4286600153-17">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="max/2">
+
+  <div class="detail-header">
+    <a href="#max/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">max(iterable, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L744" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> max(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>(), <a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) :: {:ok, <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the maximal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p><h2 id="max/2-examples" class="section-heading">
+  <a href="#max/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">max</span><span class="p" data-group-id="0188232501-1">(</span><span class="p" data-group-id="0188232501-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0188232501-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&gt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="0188232501-1">)</span><span class="w">
+</span><span class="p" data-group-id="0188232501-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0188232501-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">max</span><span class="p" data-group-id="0188232501-4">(</span><span class="p" data-group-id="0188232501-5">[</span><span class="p" data-group-id="0188232501-5">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&gt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="0188232501-4">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="max_by/3">
+
+  <div class="detail-header">
+    <a href="#max_by/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">max_by(iterable, mapper, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L710" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> max_by(
+  <a href="#t:iterable/0">iterable</a>(),
+  (<a href="#t:element/0">element</a>() -&gt; new_element),
+  (new_element, new_element -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())
+) ::
+  {:ok, <a href="#t:element/0">element</a>()} | :done
+when new_element: <a href="#t:element/0">element</a>()</pre>
+
+      </div>
+
+<p>Returns the maximal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p><h2 id="max_by/3-example" class="section-heading">
+  <a href="#max_by/3-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">max_by</span><span class="p" data-group-id="6349336388-1">(</span><span class="p" data-group-id="6349336388-2">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aaa&quot;</span><span class="p" data-group-id="6349336388-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">length</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&gt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="6349336388-1">)</span><span class="w">
+</span><span class="p" data-group-id="6349336388-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aaa&quot;</span><span class="p" data-group-id="6349336388-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">max_by</span><span class="p" data-group-id="6349336388-4">(</span><span class="p" data-group-id="6349336388-5">[</span><span class="p" data-group-id="6349336388-5">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">length</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&gt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="6349336388-4">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="member?/2">
+
+  <div class="detail-header">
+    <a href="#member?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">member?(iterable, element)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L768" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> member?(<a href="#t:iterable/0">iterable</a>(), <a href="#t:element/0">element</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Is the element a member of the iterable?</p>
+  </section>
+</section>
+<section class="detail" id="min/2">
+
+  <div class="detail-header">
+    <a href="#min/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">min(iterable, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L850" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> min(<a href="#t:iterable/0">iterable</a>(), (<a href="#t:element/0">element</a>(), <a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) :: {:ok, <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the minimal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p><h2 id="min/2-examples" class="section-heading">
+  <a href="#min/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">min</span><span class="p" data-group-id="0009689847-1">(</span><span class="p" data-group-id="0009689847-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0009689847-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&lt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="0009689847-1">)</span><span class="w">
+</span><span class="p" data-group-id="0009689847-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0009689847-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">min</span><span class="p" data-group-id="0009689847-4">(</span><span class="p" data-group-id="0009689847-5">[</span><span class="p" data-group-id="0009689847-5">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&lt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="0009689847-4">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="min_by/3">
+
+  <div class="detail-header">
+    <a href="#min_by/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">min_by(iterable, mapper, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L784" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> min_by(
+  <a href="#t:iterable/0">iterable</a>(),
+  (<a href="#t:element/0">element</a>() -&gt; new_element),
+  (new_element, new_element -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())
+) ::
+  {:ok, <a href="#t:element/0">element</a>()} | :done
+when new_element: <a href="#t:element/0">element</a>()</pre>
+
+      </div>
+
+<p>Returns the minimal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p><h2 id="min_by/3-example" class="section-heading">
+  <a href="#min_by/3-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">min_by</span><span class="p" data-group-id="1874351888-1">(</span><span class="p" data-group-id="1874351888-2">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aaa&quot;</span><span class="p" data-group-id="1874351888-2">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">length</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&lt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="1874351888-1">)</span><span class="w">
+</span><span class="p" data-group-id="1874351888-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="1874351888-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">min_by</span><span class="p" data-group-id="1874351888-4">(</span><span class="p" data-group-id="1874351888-5">[</span><span class="p" data-group-id="1874351888-5">]</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">length</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="o">&lt;=</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="1874351888-4">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="min_max/1">
+
+  <div class="detail-header">
+    <a href="#min_max/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">min_max(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L818" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> min_max(<a href="#t:iterable/0">iterable</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Finds the minimal and maximal elements in the iterable.</p><h2 id="min_max/1-example" class="section-heading">
+  <a href="#min_max/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">min_max</span><span class="p" data-group-id="8930261943-1">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">12</span><span class="p" data-group-id="8930261943-1">)</span><span class="w">
+</span><span class="p" data-group-id="8930261943-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p" data-group-id="8930261943-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">min_max</span><span class="p" data-group-id="8930261943-3">(</span><span class="p" data-group-id="8930261943-4">[</span><span class="p" data-group-id="8930261943-4">]</span><span class="p" data-group-id="8930261943-3">)</span><span class="w">
+</span><span class="ss">:done</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="peek/1">
+
+  <div class="detail-header">
+    <a href="#peek/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">peek(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L885" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> peek(<a href="#t:iterable/0">iterable</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:iterable/0">iterable</a>()} | :done</pre>
+
+      </div>
+
+<p>Peeks at the first element of the iterable, without consuming it.</p><blockquote><h4 class="warning">Warning</h4><p>Many iterables cannot be peeked, so this function simulates peeking by
+consuming an element from the iterable and returning a new iterable which
+pushes that element back on to the front.</p></blockquote><h2 id="peek/1-example" class="section-heading">
+  <a href="#peek/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="6143024348-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="n">iterable</span><span class="p" data-group-id="6143024348-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">peek</span><span class="p" data-group-id="6143024348-2">(</span><span class="p" data-group-id="6143024348-3">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="6143024348-3">]</span><span class="p" data-group-id="6143024348-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="6143024348-4">(</span><span class="n">iterable</span><span class="p" data-group-id="6143024348-4">)</span><span class="w">
+</span><span class="p" data-group-id="6143024348-5">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="6143024348-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="peek/2">
+
+  <div class="detail-header">
+    <a href="#peek/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">peek(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L904" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> peek(<a href="#t:iterable/0">iterable</a>(), how_many :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) ::
+  {:ok, [<a href="#t:element/0">element</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="#t:iterable/0">iterable</a>()} | :done</pre>
+
+      </div>
+
+<p>Peeks at the first <code class="inline">how_many</code> elements of the iterable, without consuming them.</p><blockquote><h4 class="warning">Warning</h4><p>Many iterables cannot be peeked, so this function simulates peeking by
+consuming elements from the iterable and returning a new iterable which
+pushes those elements back on to the front.</p></blockquote><h2 id="peek/2-example" class="section-heading">
+  <a href="#peek/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="4211935501-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4211935501-2">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p" data-group-id="4211935501-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">iterable</span><span class="p" data-group-id="4211935501-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">peek</span><span class="p" data-group-id="4211935501-3">(</span><span class="p" data-group-id="4211935501-4">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:d</span><span class="p" data-group-id="4211935501-4">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="4211935501-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4211935501-5">(</span><span class="n">iterable</span><span class="p" data-group-id="4211935501-5">)</span><span class="w">
+</span><span class="p" data-group-id="4211935501-6">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:d</span><span class="p" data-group-id="4211935501-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="prepend/2">
+
+  <div class="detail-header">
+    <a href="#prepend/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prepend(iterable, element)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L918" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> prepend(<a href="#t:iterable/0">iterable</a>(), <a href="#t:element/0">element</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which places <code class="inline">element</code> at the beginning of the iterable.</p><h2 id="prepend/2-example" class="section-heading">
+  <a href="#prepend/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">prepend</span><span class="p" data-group-id="4860411407-1">(</span><span class="mi">6</span><span class="p" data-group-id="4860411407-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4860411407-2">(</span><span class="p" data-group-id="4860411407-2">)</span><span class="w">
+</span><span class="p" data-group-id="4860411407-3">[</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="4860411407-3">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="step_by/2">
+
+  <div class="detail-header">
+    <a href="#step_by/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">step_by(iterable, step_size)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L943" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> step_by(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable starting at the same point, but stepping by <code class="inline">how_many</code> each iteration.</p><h2 id="step_by/2-example" class="section-heading">
+  <a href="#step_by/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="3566619527-1">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="3566619527-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">step_by</span><span class="p" data-group-id="3566619527-2">(</span><span class="mi">2</span><span class="p" data-group-id="3566619527-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="3566619527-3">(</span><span class="p" data-group-id="3566619527-3">)</span><span class="w">
+</span><span class="p" data-group-id="3566619527-4">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="3566619527-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="take_chunk/2">
+
+  <div class="detail-header">
+    <a href="#take_chunk/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_chunk(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L961" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_chunk(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) ::
+  {:ok, <a href="#t:iterable/0">iterable</a>(), <a href="#t:iterable/0">iterable</a>()} | {:done, <a href="#t:iterable/0">iterable</a>()}</pre>
+
+      </div>
+
+<p>Collects the first <code class="inline">how_many</code> elements into a new iterable and returns it
+along with the advanced initial iterable.</p><p>This is very much like <code class="inline">take/2</code> except that it returns the remaining iterable
+so that it can be called repeatedly.</p><h2 id="take_chunk/2-example" class="section-heading">
+  <a href="#take_chunk/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">..</span><span class="mi">9</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="1197027642-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1197027642-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1197027642-2">]</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p" data-group-id="1197027642-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_chunk</span><span class="p" data-group-id="1197027642-3">(</span><span class="n">iter</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1197027642-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="1197027642-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1197027642-5">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="1197027642-5">]</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p" data-group-id="1197027642-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_chunk</span><span class="p" data-group-id="1197027642-6">(</span><span class="n">iter</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1197027642-6">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="1197027642-7">(</span><span class="n">iter</span><span class="p" data-group-id="1197027642-7">)</span><span class="w">
+</span><span class="p" data-group-id="1197027642-8">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p" data-group-id="1197027642-8">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="take_head/2">
+
+  <div class="detail-header">
+    <a href="#take_head/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_head(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L988" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_head(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which takes the first <code class="inline">how_many</code> elements.</p><h2 id="take_head/2-example" class="section-heading">
+  <a href="#take_head/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_head</span><span class="p" data-group-id="3563154953-1">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3563154953-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="3563154953-2">(</span><span class="p" data-group-id="3563154953-2">)</span><span class="w">
+</span><span class="p" data-group-id="3563154953-3">[</span><span class="p" data-group-id="3563154953-3">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_head</span><span class="p" data-group-id="3563154953-4">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3563154953-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="3563154953-5">(</span><span class="p" data-group-id="3563154953-5">)</span><span class="w">
+</span><span class="p" data-group-id="3563154953-6">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3563154953-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="take_tail/2">
+
+  <div class="detail-header">
+    <a href="#take_tail/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_tail(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1011" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_tail(<a href="#t:iterable/0">iterable</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which takes the last <code class="inline">how_many</code> elements.</p><h2 id="take_tail/2-example" class="section-heading">
+  <a href="#take_tail/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_tail</span><span class="p" data-group-id="9228948175-1">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="9228948175-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9228948175-2">(</span><span class="p" data-group-id="9228948175-2">)</span><span class="w">
+</span><span class="p" data-group-id="9228948175-3">[</span><span class="p" data-group-id="9228948175-3">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_tail</span><span class="p" data-group-id="9228948175-4">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9228948175-4">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9228948175-5">(</span><span class="p" data-group-id="9228948175-5">)</span><span class="w">
+</span><span class="p" data-group-id="9228948175-6">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="9228948175-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="take_while/2">
+
+  <div class="detail-header">
+    <a href="#take_while/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_while(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1030" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_while(<a href="#t:iterable/0">iterable</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which emits elements until <code class="inline">predicate</code> returns <code class="inline">false</code>.</p><h2 id="take_while/2-example" class="section-heading">
+  <a href="#take_while/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="9834847112-1">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9834847112-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">take_while</span><span class="p" data-group-id="9834847112-2">(</span><span class="o">&amp;</span><span class="p" data-group-id="9834847112-3">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9834847112-3">)</span><span class="p" data-group-id="9834847112-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9834847112-4">(</span><span class="p" data-group-id="9834847112-4">)</span><span class="w">
+</span><span class="p" data-group-id="9834847112-5">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9834847112-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="to_list/1">
+
+  <div class="detail-header">
+    <a href="#to_list/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">to_list(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1037" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> to_list(<a href="#t:iterable/0">iterable</a>()) :: [<a href="#t:element/0">element</a>()]</pre>
+
+      </div>
+
+<p>Convert the iterable into a list.</p>
+  </section>
+</section>
+<section class="detail" id="uniq/1">
+
+  <div class="detail-header">
+    <a href="#uniq/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">uniq(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1056" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> uniq(<a href="#t:iterable/0">iterable</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that only emits unique elements.</p><h2 id="uniq/1-example" class="section-heading">
+  <a href="#uniq/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Impl</span><span class="o">.</span><span class="n">uniq</span><span class="p" data-group-id="4032405929-1">(</span><span class="p" data-group-id="4032405929-2">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:d</span><span class="p" data-group-id="4032405929-2">]</span><span class="p" data-group-id="4032405929-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Impl</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="4032405929-3">(</span><span class="p" data-group-id="4032405929-3">)</span><span class="w">
+</span><span class="p" data-group-id="4032405929-4">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="p">,</span><span class="w"> </span><span class="ss">:d</span><span class="p" data-group-id="4032405929-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="with_index/1">
+
+  <div class="detail-header">
+    <a href="#with_index/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">with_index(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1079" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> with_index(<a href="#t:iterable/0">iterable</a>()) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which emits the current iteration count as well as the
+next value.</p><p>This is analogous to <a href="https://hexdocs.pm/elixir/Enum.html#with_index/1"><code class="inline">Enum.with_index/1</code></a> except that counting starts from the
+beginning of the iterable, meaning you can convert an iterable into an
+enumerator after consuming some if it.</p><h2 id="with_index/1-examples" class="section-heading">
+  <a href="#with_index/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<p>  iex&gt; Impl.with_index([:a, :b, :c])
+  ...&gt; |&gt; Impl.to_list()
+  [a: 0, b: 1, c: 2]</p><p>   iex&gt; [:a, :b, :c, :d]
+   ...&gt; |&gt; Impl.drop(2)
+   ...&gt; |&gt; Impl.with_index()
+   ...&gt; |&gt; Impl.to_list()
+   [c: 0, d: 1]</p>
+  </section>
+</section>
+<section class="detail" id="zip/2">
+
+  <div class="detail-header">
+    <a href="#zip/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">zip(iterable, zipper)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/impl.ex#L1091" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> zip(<a href="#t:iterable/0">iterable</a>(), ([<a href="#t:element/0">element</a>()] -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:iterable/0">iterable</a>()</pre>
+
+      </div>
+
+<p>Zips corresponding elements from a finite collection of iterables into one iterable of results as computed by <code class="inline">zipper</code>.</p><h2 id="zip/2-example" class="section-heading">
+  <a href="#zip/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<p>  iex&gt; Impl.zip([1..3, 4..6, 7..9], &amp;List.to_tuple/1)
+  ...&gt; |&gt; Impl.to_list()
+  [{1, 4, 7}, {2, 5, 8}, {3, 6, 9}]</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/iterex/0.1.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/iterex/0.1.2">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

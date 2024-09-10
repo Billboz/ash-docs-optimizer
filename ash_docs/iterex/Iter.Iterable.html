@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="iterex v0.1.2">
+
+
+    <title>Iter.Iterable — iterex v0.1.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-E6B02732.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-protocol">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/iterex" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="iterex" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/iterex" class="sidebar-projectName" translate="no">
+iterex
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of iterex</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Iter.Iterable</span> <small>protocol</small>
+    <small class="app-vsn" translate="no">(iterex v0.1.2)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>This is the main iterable protocol.</p><p>It is intentionally huge, however rte only function you have to implement is
+<a href="#next/1"><code class="inline">next/1</code></a>, for the remainder you can rely on the default implementations from
+<a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> unless your data structure can provide a more
+efficient method of generating the correct answer.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:element/0" data-no-tooltip translate="no">element()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:mapper/0" data-no-tooltip translate="no">mapper()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:predicate/0" data-no-tooltip translate="no">predicate()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#all?/2" data-no-tooltip translate="no">all?(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Tests if every element in the iterable matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#any?/2" data-no-tooltip translate="no">any?(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Tests if any element in the iterable matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#append/2" data-no-tooltip translate="no">append(iterable, element)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Append an element onto the end of the iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#at/2" data-no-tooltip translate="no">at(iterable, index)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the element <code class="inline">index</code> items from the beginning of the iterator.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#chunk_by/2" data-no-tooltip translate="no">chunk_by(iterable, chunker)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that only emits elements for which <code class="inline">fun</code> returns a new
+value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#chunk_every/4" data-no-tooltip translate="no">chunk_every(iterable, count, step, leftover)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that chunks into <code class="inline">count</code> size elements, where each new
+chunk starts <code class="inline">step</code> elements into the enumerable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#chunk_while/4" data-no-tooltip translate="no">chunk_while(iterable, acc, chunk_fun, after_fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that chunks based on a chunk function.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#concat/1" data-no-tooltip translate="no">concat(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that iterates each iterable in an iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#count/1" data-no-tooltip translate="no">count(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Consumes the iterable, counting the number of iterations remaining.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#count/2" data-no-tooltip translate="no">count(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Consumes the iterable, counting the number of elements for which <code class="inline">fun</code> returns a truthy value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#cycle/1" data-no-tooltip translate="no">cycle(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that cycles it's elements eternally.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dedup/1" data-no-tooltip translate="no">dedup(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that only emits elements if they are different from the previous element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dedup_by/2" data-no-tooltip translate="no">dedup_by(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that only emits elements if they are different from the previous element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#drop/2" data-no-tooltip translate="no">drop(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which drops the first <code class="inline">how_many</code> elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#drop_every/2" data-no-tooltip translate="no">drop_every(iterable, nth)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns a new iterable with every <code class="inline">nth</code> element in the <code class="inline">iterable</code> dropped,
+starting with the first element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#drop_while/2" data-no-tooltip translate="no">drop_while(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Drops elements at the beginning of the <code class="inline">iterable</code> while <code class="inline">predicate</code> returns a
+truthy value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#each/2" data-no-tooltip translate="no">each(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Consumes the iterable and applies <code class="inline">fun</code> to each element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#empty?/1" data-no-tooltip translate="no">empty?(iter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Determines if the iterable is empty.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#filter/2" data-no-tooltip translate="no">filter(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which drops elements for which <code class="inline">predicate</code> doesn't return
+a truthy value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find/2" data-no-tooltip translate="no">find(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Searches for the first element in the iterable which matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_index/2" data-no-tooltip translate="no">find_index(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the index of the first element in the iterable which matches <code class="inline">predicate</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_value/2" data-no-tooltip translate="no">find_value(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the first non-falsy result of <code class="inline">fun</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flat_map/2" data-no-tooltip translate="no">flat_map(iterable, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which works like <a href="#map/2"><code class="inline">map/2</code></a> but flattens nested iterables.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flatten/1" data-no-tooltip translate="no">flatten(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which flattens nested iterables.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#intersperse/2" data-no-tooltip translate="no">intersperse(iterable, separator)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which places <code class="inline">separator</code> between adjacent items of the original iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#map/2" data-no-tooltip translate="no">map(iterable, mapper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which applies <code class="inline">mapper</code> to each element and using it's
+result as the new element value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#map_every/3" data-no-tooltip translate="no">map_every(iterable, nth, mapper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new iterable which applies <code class="inline">mapper</code> on every <code class="inline">nth</code> element of the
+iterable, starting with the first element.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#max/2" data-no-tooltip translate="no">max(iterable, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the maximal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#max_by/3" data-no-tooltip translate="no">max_by(iterable, mapper, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the maximal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#member?/2" data-no-tooltip translate="no">member?(iterable, element)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Is the element a member of the iterable?</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min/2" data-no-tooltip translate="no">min(iterable, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the minimal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min_by/3" data-no-tooltip translate="no">min_by(iterable, mapper, sorter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the minimal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min_max/1" data-no-tooltip translate="no">min_max(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Return the minimal and maximal element of the iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#next/1" data-no-tooltip translate="no">next(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Advance the iterable and return the next value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#peek/1" data-no-tooltip translate="no">peek(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Peeks at the first element of the iterable, without consuming it.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#peek/2" data-no-tooltip translate="no">peek(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Peeks at the first n elements of the iterable, without consuming it.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prepend/2" data-no-tooltip translate="no">prepend(iterable, element)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which prepends an element to the beginning of another
+iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#step_by/2" data-no-tooltip translate="no">step_by(iterable, step_size)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable starting at the same point, but stepping by <code class="inline">step_size</code> each iteration.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_chunk/2" data-no-tooltip translate="no">take_chunk(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Collects <code class="inline">how_many</code> elements into a chunk and returns it as well as the
+remaining iterable.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_head/2" data-no-tooltip translate="no">take_head(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which takes the first <code class="inline">how_many</code> elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_tail/2" data-no-tooltip translate="no">take_tail(iterable, how_many)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which takes the last <code class="inline">how_many</code> elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#take_while/2" data-no-tooltip translate="no">take_while(iterable, predicate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which emits elements until <code class="inline">predicate</code> returns <code class="inline">false</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#to_list/1" data-no-tooltip translate="no">to_list(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Convert the iterable into a list.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#uniq/1" data-no-tooltip translate="no">uniq(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable that returns only unique elements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#with_index/1" data-no-tooltip translate="no">with_index(iterable)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates an iterable which emits the current iteration count as well as the next value.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#zip/2" data-no-tooltip translate="no">zip(t, zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Zips corresponding elements from a number of iterables into an iterable of
+results as computed by <code class="inline">zipper</code>.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:element/0">
+
+  <div class="detail-header">
+    <a href="#t:element/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">element()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L18" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> element() :: <a href="Iter.html#t:element/0">Iter.element</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:mapper/0">
+
+  <div class="detail-header">
+    <a href="#t:mapper/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">mapper()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L20" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> mapper() :: <a href="Iter.html#t:mapper/0">Iter.mapper</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:predicate/0">
+
+  <div class="detail-header">
+    <a href="#t:predicate/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">predicate()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> predicate() :: <a href="Iter.html#t:predicate/0">Iter.predicate</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L21" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="all?/2">
+
+  <div class="detail-header">
+    <a href="#all?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">all?(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L42" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> all?(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Tests if every element in the iterable matches <code class="inline">predicate</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="any?/2">
+
+  <div class="detail-header">
+    <a href="#any?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">any?(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L50" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> any?(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Tests if any element in the iterable matches <code class="inline">predicate</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="append/2">
+
+  <div class="detail-header">
+    <a href="#append/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">append(iterable, element)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L58" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> append(<a href="#t:t/0">t</a>(), <a href="#t:element/0">element</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Append an element onto the end of the iterable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="at/2">
+
+  <div class="detail-header">
+    <a href="#at/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">at(iterable, index)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L73" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> at(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="#t:t/0">t</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the element <code class="inline">index</code> items from the beginning of the iterator.</p><p>Note that all preceding elements, as well as the returned element, will be consumed from the iterable.</p><h2 id="at/2-return-values" class="section-heading">
+  <a href="#at/2-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">{:ok, element, new_iterable}</code> - the next element and an updated iterable.</li><li><code class="inline">:done</code> - the iterable was exhausted before the element was found.</li></ul><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="chunk_by/2">
+
+  <div class="detail-header">
+    <a href="#chunk_by/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">chunk_by(iterable, chunker)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L82" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> chunk_by(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that only emits elements for which <code class="inline">fun</code> returns a new
+value.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="chunk_every/4">
+
+  <div class="detail-header">
+    <a href="#chunk_every/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">chunk_every(iterable, count, step, leftover)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L91" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> chunk_every(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), <a href="#t:t/0">t</a>() | :discard) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that chunks into <code class="inline">count</code> size elements, where each new
+chunk starts <code class="inline">step</code> elements into the enumerable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="chunk_while/4">
+
+  <div class="detail-header">
+    <a href="#chunk_while/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">chunk_while(iterable, acc, chunk_fun, after_fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L105" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> chunk_while(
+  <a href="#t:t/0">t</a>(),
+  acc,
+  (<a href="#t:element/0">element</a>(), acc -&gt; {:cont, chunk, acc} | {:cont, acc} | {:halt, acc}),
+  (acc -&gt; {:cont, chunk, acc} | {:cont, acc})
+) :: <a href="#t:t/0">t</a>()
+when acc: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), chunk: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that chunks based on a chunk function.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="concat/1">
+
+  <div class="detail-header">
+    <a href="#concat/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">concat(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L113" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> concat(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that iterates each iterable in an iterable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="count/1">
+
+  <div class="detail-header">
+    <a href="#count/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">count(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L121" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> count(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+      </div>
+
+<p>Consumes the iterable, counting the number of iterations remaining.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="count/2">
+
+  <div class="detail-header">
+    <a href="#count/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">count(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L129" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> count(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">as_boolean</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()))) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+
+      </div>
+
+<p>Consumes the iterable, counting the number of elements for which <code class="inline">fun</code> returns a truthy value.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="cycle/1">
+
+  <div class="detail-header">
+    <a href="#cycle/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">cycle(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L137" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> cycle(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that cycles it's elements eternally.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="dedup/1">
+
+  <div class="detail-header">
+    <a href="#dedup/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">dedup(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L155" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> dedup(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that only emits elements if they are different from the previous element.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="dedup_by/2">
+
+  <div class="detail-header">
+    <a href="#dedup_by/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">dedup_by(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L147" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> dedup_by(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that only emits elements if they are different from the previous element.</p><p>The function <code class="inline">fun</code> maps every element to a term which is used to determine if two elements are duplicates.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="drop/2">
+
+  <div class="detail-header">
+    <a href="#drop/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">drop(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L181" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> drop(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which drops the first <code class="inline">how_many</code> elements.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="drop_every/2">
+
+  <div class="detail-header">
+    <a href="#drop_every/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">drop_every(iterable, nth)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L164" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> drop_every(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Returns a new iterable with every <code class="inline">nth</code> element in the <code class="inline">iterable</code> dropped,
+starting with the first element.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="drop_while/2">
+
+  <div class="detail-header">
+    <a href="#drop_while/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">drop_while(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L173" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> drop_while(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Drops elements at the beginning of the <code class="inline">iterable</code> while <code class="inline">predicate</code> returns a
+truthy value.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="each/2">
+
+  <div class="detail-header">
+    <a href="#each/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">each(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L193" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> each(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: :done</pre>
+
+      </div>
+
+<p>Consumes the iterable and applies <code class="inline">fun</code> to each element.</p><p>Primarily used for side-effects.</p><p>Always returns <code class="inline">:done</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="empty?/1">
+
+  <div class="detail-header">
+    <a href="#empty?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">empty?(iter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L201" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> empty?(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Determines if the iterable is empty.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="filter/2">
+
+  <div class="detail-header">
+    <a href="#filter/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">filter(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L210" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> filter(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which drops elements for which <code class="inline">predicate</code> doesn't return
+a truthy value.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="find/2">
+
+  <div class="detail-header">
+    <a href="#find/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L218" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:t/0">t</a>()} | :done</pre>
+
+      </div>
+
+<p>Searches for the first element in the iterable which matches <code class="inline">predicate</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="find_index/2">
+
+  <div class="detail-header">
+    <a href="#find_index/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_index(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L226" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find_index(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="#t:t/0">t</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the index of the first element in the iterable which matches <code class="inline">predicate</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="find_value/2">
+
+  <div class="detail-header">
+    <a href="#find_value/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_value(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L234" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find_value(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; result)) :: {:ok, result, <a href="#t:t/0">t</a>()} | :done
+when result: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Returns the first non-falsy result of <code class="inline">fun</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="flat_map/2">
+
+  <div class="detail-header">
+    <a href="#flat_map/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flat_map(iterable, fun)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L242" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> flat_map(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; <a href="#t:t/0">t</a>() | <a href="#t:element/0">element</a>())) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which works like <a href="#map/2"><code class="inline">map/2</code></a> but flattens nested iterables.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="flatten/1">
+
+  <div class="detail-header">
+    <a href="#flatten/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flatten(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L250" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> flatten(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which flattens nested iterables.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="intersperse/2">
+
+  <div class="detail-header">
+    <a href="#intersperse/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">intersperse(iterable, separator)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L258" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> intersperse(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which places <code class="inline">separator</code> between adjacent items of the original iterable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="map/2">
+
+  <div class="detail-header">
+    <a href="#map/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">map(iterable, mapper)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L278" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> map(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; new_element)) :: <a href="#t:t/0">t</a>() when new_element: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which applies <code class="inline">mapper</code> to each element and using it's
+result as the new element value.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="map_every/3">
+
+  <div class="detail-header">
+    <a href="#map_every/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">map_every(iterable, nth, mapper)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L269" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> map_every(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), (<a href="#t:element/0">element</a>() -&gt; new_element)) :: <a href="#t:t/0">t</a>()
+when new_element: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+
+      </div>
+
+<p>Creates a new iterable which applies <code class="inline">mapper</code> on every <code class="inline">nth</code> element of the
+iterable, starting with the first element.</p><p>The first element is always mapped unless <code class="inline">nth</code> is <code class="inline">0</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="max/2">
+
+  <div class="detail-header">
+    <a href="#max/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">max(iterable, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L286" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> max(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>(), <a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) :: {:ok, <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the maximal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="max_by/3">
+
+  <div class="detail-header">
+    <a href="#max_by/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">max_by(iterable, mapper, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L296" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> max_by(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; new_element), (new_element, new_element -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="#t:element/0">element</a>()} | :done
+when new_element: <a href="#t:element/0">element</a>()</pre>
+
+      </div>
+
+<p>Returns the maximal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="member?/2">
+
+  <div class="detail-header">
+    <a href="#member?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">member?(iterable, element)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L304" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> member?(<a href="#t:t/0">t</a>(), <a href="#t:element/0">element</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Is the element a member of the iterable?</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="min/2">
+
+  <div class="detail-header">
+    <a href="#min/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">min(iterable, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L312" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> min(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>(), <a href="#t:element/0">element</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) :: {:ok, <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Returns the minimal element in the <code class="inline">iterable</code> according to Erlang's term ordering.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="min_by/3">
+
+  <div class="detail-header">
+    <a href="#min_by/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">min_by(iterable, mapper, sorter)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L322" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> min_by(<a href="#t:t/0">t</a>(), (<a href="#t:element/0">element</a>() -&gt; new_element), (new_element, new_element -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="#t:element/0">element</a>()} | :done
+when new_element: <a href="#t:element/0">element</a>()</pre>
+
+      </div>
+
+<p>Returns the minimal element in the <code class="inline">iterable</code> as calculated by <code class="inline">mapper</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="min_max/1">
+
+  <div class="detail-header">
+    <a href="#min_max/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">min_max(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L330" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> min_max(<a href="#t:t/0">t</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:element/0">element</a>()} | :done</pre>
+
+      </div>
+
+<p>Return the minimal and maximal element of the iterable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="next/1">
+
+  <div class="detail-header">
+    <a href="#next/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">next(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L34" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> next(<a href="#t:t/0">t</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:t/0">t</a>()} | :done</pre>
+
+      </div>
+
+<p>Advance the iterable and return the next value.</p><p>This is the only required callback in the <code class="inline">Iterable</code> protocol.</p><h2 id="next/1-return-values" class="section-heading">
+  <a href="#next/1-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">{:ok, element, new_iterable}</code> - returns the next element and an updated iterable.</li><li><code class="inline">:done</code> - the iterable is exhausted.</li></ul>
+  </section>
+</section>
+<section class="detail" id="peek/1">
+
+  <div class="detail-header">
+    <a href="#peek/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">peek(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L343" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> peek(<a href="#t:t/0">t</a>()) :: {:ok, <a href="#t:element/0">element</a>(), <a href="#t:t/0">t</a>()} | :done</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> peek(<a href="#t:t/0">t</a>()) :: {:ok, [<a href="#t:element/0">element</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="#t:t/0">t</a>()} | :done</pre>
+
+      </div>
+
+<p>Peeks at the first element of the iterable, without consuming it.</p><h2 id="peek/1-return-values" class="section-heading">
+  <a href="#peek/1-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">{:ok, element, new_iterable}</code> - the next element and an updated iterable.</li><li><code class="inline">:done</code> - the iterable is exhausted.</li></ul><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="peek/2">
+
+  <div class="detail-header">
+    <a href="#peek/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">peek(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L358" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Peeks at the first n elements of the iterable, without consuming it.</p><h2 id="peek/2-return-values" class="section-heading">
+  <a href="#peek/2-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">{:ok, [element], how_many, new_iterable}</code> - the peekable elements and an
+updated iterable.  Note that <code class="inline">how_many</code> may not be the same as you asked
+for if the underlying iterable is exhausted.</li><li><code class="inline">:done</code> - the iterable is exhausted.</li></ul><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="prepend/2">
+
+  <div class="detail-header">
+    <a href="#prepend/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prepend(iterable, element)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L367" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> prepend(<a href="#t:t/0">t</a>(), <a href="#t:element/0">element</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which prepends an element to the beginning of another
+iterable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="step_by/2">
+
+  <div class="detail-header">
+    <a href="#step_by/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">step_by(iterable, step_size)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L377" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> step_by(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable starting at the same point, but stepping by <code class="inline">step_size</code> each iteration.</p><p>The first element of the iterable will always be returned, regardless of the step given.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="take_chunk/2">
+
+  <div class="detail-header">
+    <a href="#take_chunk/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_chunk(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L386" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_chunk(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: {:ok, <a href="#t:t/0">t</a>(), <a href="#t:t/0">t</a>()} | {:done, <a href="#t:t/0">t</a>()}</pre>
+
+      </div>
+
+<p>Collects <code class="inline">how_many</code> elements into a chunk and returns it as well as the
+remaining iterable.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="take_head/2">
+
+  <div class="detail-header">
+    <a href="#take_head/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_head(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L394" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_head(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which takes the first <code class="inline">how_many</code> elements.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="take_tail/2">
+
+  <div class="detail-header">
+    <a href="#take_tail/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_tail(iterable, how_many)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L402" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_tail(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which takes the last <code class="inline">how_many</code> elements.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="take_while/2">
+
+  <div class="detail-header">
+    <a href="#take_while/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">take_while(iterable, predicate)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L410" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> take_while(<a href="#t:t/0">t</a>(), <a href="#t:predicate/0">predicate</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which emits elements until <code class="inline">predicate</code> returns <code class="inline">false</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="to_list/1">
+
+  <div class="detail-header">
+    <a href="#to_list/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">to_list(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L418" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> to_list(<a href="#t:t/0">t</a>()) :: [<a href="#t:element/0">element</a>()]</pre>
+
+      </div>
+
+<p>Convert the iterable into a list.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="uniq/1">
+
+  <div class="detail-header">
+    <a href="#uniq/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">uniq(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L426" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> uniq(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable that returns only unique elements.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="with_index/1">
+
+  <div class="detail-header">
+    <a href="#with_index/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">with_index(iterable)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L434" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> with_index(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates an iterable which emits the current iteration count as well as the next value.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="zip/2">
+
+  <div class="detail-header">
+    <a href="#zip/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">zip(t, zipper)</h1>
+
+      <a href="https://github.com/ash-project/iterex/blob/main/lib/iter/iterable.ex#L443" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> zip(<a href="#t:t/0">t</a>(), ([<a href="#t:element/0">element</a>()] -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Zips corresponding elements from a number of iterables into an iterable of
+results as computed by <code class="inline">zipper</code>.</p><blockquote><h4 class="tip">Optional callback</h4><p>A default implementation of this function exists in the <a href="Iter.Impl.html"><code class="inline">Iter.Impl</code></a> module.</p><p>You can add it to your protocol implementation by adding <code class="inline">use Iter.Impl</code>.</p></blockquote>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/iterex/0.1.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/iterex/0.1.2">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

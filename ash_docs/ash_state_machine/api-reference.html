@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_state_machine v0.2.6">
+
+
+    <title>API Reference — ash_state_machine v0.2.6</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-F3630C7D.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_state_machine" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_state_machine" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_state_machine" class="sidebar-projectName" translate="no">
+ash_state_machine
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.6
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_state_machine</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_state_machine" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>API Reference <small class="app-vsn">ash_state_machine v0.2.6</small></span>
+  </h1>
+
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Modules</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.html" translate="no">AshStateMachine</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides tools for defining and working with resource-backed state machines.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.BuiltinChanges.html" translate="no">AshStateMachine.BuiltinChanges</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Changes for working with AshStateMachine resources.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Charts.html" translate="no">AshStateMachine.Charts</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Returns a mermaid flow chart of a given state machine resource.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Checks.ValidNextState.html" translate="no">AshStateMachine.Checks.ValidNextState</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A policy for pre_flight checking if a state transition is allowed.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Errors.InvalidInitialState.html" translate="no">AshStateMachine.Errors.InvalidInitialState</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Used when an initial state is set that is not a valid initial state</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Errors.NoMatchingTransition.html" translate="no">AshStateMachine.Errors.NoMatchingTransition</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Used when a state change occurs in an action with no matching transition</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Info.html" translate="no">AshStateMachine.Info</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Introspection helpers for <a href="AshStateMachine.html"><code class="inline">AshStateMachine</code></a></p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.StateMachine.Options.html" translate="no">AshStateMachine.StateMachine.Options</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Mod Docs</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.StateMachine.Transitions.Transition.html" translate="no">AshStateMachine.StateMachine.Transitions.Transition</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Mod docs</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.StateMachine.Transitions.Transition.Options.html" translate="no">AshStateMachine.StateMachine.Transitions.Transition.Options</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Mod Docs</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Transition.html" translate="no">AshStateMachine.Transition</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>The configuration for an transition.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshStateMachine.Transitions.html" translate="no">AshStateMachine.Transitions</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>MOD DOCS</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+
+  <section class="details-list">
+    <h2 id="mix-tasks" class="section-heading">
+  <a href="#mix-tasks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Mix Tasks</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.AshStateMachine.GenerateFlowCharts.html" translate="no">mix ash_state_machine.generate_flow_charts</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Generates a Mermaid Flow Chart for each <a href="https://hexdocs.pm/ash/3.4.1/Ash.Resource.html"><code class="inline">Ash.Resource</code></a> with the <a href="AshStateMachine.html"><code class="inline">AshStateMachine</code></a>
+extension alongside the resource.</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_state_machine/0.2.6" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_state_machine/0.2.6">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_state_machine.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </body>
+</html>

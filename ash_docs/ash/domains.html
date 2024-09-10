@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Domains — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/resources/domains.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Domains</span>
+  </h1>
+
+<p>Domains serve three primary purposes:</p><ol><li>They group related resources together, providing organization and structure to your project.</li><li>They allow you to define a centralized <a href="code-interfaces.html">code interface</a></li><li>They allow you to configure certain cross-cutting concerns of those resources in a single place.</li></ol><p>If you are familiar with a <a href="https://hexdocs.pm/phoenix/contexts.html">Phoenix Context</a>, you can think of a domain as the Ash equivalent.</p><h2 id="grouping-resources" class="section-heading">
+  <a href="#grouping-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Grouping Resources</span>
+</h2>
+<p>In an <a href="Ash.Domain.html"><code class="inline">Ash.Domain</code></a>, you will typically see something like this:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="w"> </span><span class="k" data-group-id="7120721838-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="7120721838-2">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Tweet</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Comment</span><span class="w">
+  </span><span class="k" data-group-id="7120721838-2">end</span><span class="w">
+</span><span class="k" data-group-id="7120721838-1">end</span></code></pre><p>With this definition, you can do things like placing all of these resources into a GraphQL Api with AshGraphql. You'd see a line like this:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">AshGraphql</span><span class="p">,</span><span class="w"> </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1188523863-1">[</span><span class="nc">MyApp.Tweets</span><span class="p" data-group-id="1188523863-1">]</span></code></pre><h2 id="centralized-code-interface" class="section-heading">
+  <a href="#centralized-code-interface" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Centralized <a href="code-interfaces.html">Code Interface</a></span>
+</h2>
+<p>Working with our domain &amp; resources in code <em>can</em> be done the long form way, by building changesets/queries/action inputs and calling the relevant function in <a href="Ash.html"><code class="inline">Ash</code></a>. However, we generally want to expose a well defined code API for working with our resources. This makes our code much clearer, and gives us nice things like auto complete and inline documentation.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="w"> </span><span class="k" data-group-id="7286173222-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="7286173222-2">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Tweet</span><span class="w"> </span><span class="k" data-group-id="7286173222-3">do</span><span class="w">
+      </span><span class="c1"># define a function called `tweet` that uses</span><span class="w">
+      </span><span class="c1"># the `:create` action on MyApp.Tweets.Tweet</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:tweet</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7286173222-4">[</span><span class="ss">:text</span><span class="p" data-group-id="7286173222-4">]</span><span class="w">
+    </span><span class="k" data-group-id="7286173222-3">end</span><span class="w">
+
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Comment</span><span class="w"> </span><span class="k" data-group-id="7286173222-5">do</span><span class="w">
+      </span><span class="c1"># define a function called `comment` that uses</span><span class="w">
+      </span><span class="c1"># the `:create` action on MyApp.Tweets.Comment</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:comment</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7286173222-6">[</span><span class="ss">:tweet_id</span><span class="p">,</span><span class="w"> </span><span class="ss">:text</span><span class="p" data-group-id="7286173222-6">]</span><span class="w">
+    </span><span class="k" data-group-id="7286173222-5">end</span><span class="w">
+  </span><span class="k" data-group-id="7286173222-2">end</span><span class="w">
+</span><span class="k" data-group-id="7286173222-1">end</span></code></pre><p>With these definitions, we can now do things like this:</p><pre><code class="makeup elixir" translate="no"><span class="n">tweet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="o">.</span><span class="n">tweet!</span><span class="p" data-group-id="9598346652-1">(</span><span class="s">&quot;My first tweet!&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">user1</span><span class="p" data-group-id="9598346652-1">)</span><span class="w">
+</span><span class="n">comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="o">.</span><span class="n">comment!</span><span class="p" data-group-id="9598346652-2">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;What a cool tweet!&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">user2</span><span class="p" data-group-id="9598346652-2">)</span></code></pre><h2 id="configuring-cross-cutting-concerns" class="section-heading">
+  <a href="#configuring-cross-cutting-concerns" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Configuring Cross-cutting Concerns</span>
+</h2>
+<h3 id="built-in-configuration" class="section-heading">
+  <a href="#built-in-configuration" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Built in configuration</span>
+</h3>
+<p><a href="Ash.Domain.html"><code class="inline">Ash.Domain</code></a> comes with a number of built-in configuration options. See <code class="inline"><a href="dsl-ash-domain.html#Ash-Domain">Ash.Domain</a></code> for more.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="w"> </span><span class="k" data-group-id="2904476380-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="2904476380-2">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Tweet</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Comment</span><span class="w">
+  </span><span class="k" data-group-id="2904476380-2">end</span><span class="w">
+
+  </span><span class="n">execution</span><span class="w"> </span><span class="k" data-group-id="2904476380-3">do</span><span class="w">
+    </span><span class="c1"># raise the default timeout for all actions in this domain from 30s to 60s</span><span class="w">
+    </span><span class="n">timeout</span><span class="w"> </span><span class="nc">:timer</span><span class="o">.</span><span class="n">seconds</span><span class="p" data-group-id="2904476380-4">(</span><span class="mi">60</span><span class="p" data-group-id="2904476380-4">)</span><span class="w">
+  </span><span class="k" data-group-id="2904476380-3">end</span><span class="w">
+
+  </span><span class="n">authorization</span><span class="w"> </span><span class="k" data-group-id="2904476380-5">do</span><span class="w">
+    </span><span class="c1"># disable using the authorize?: false flag when calling actions</span><span class="w">
+    </span><span class="n">authorize</span><span class="w"> </span><span class="ss">:always</span><span class="w">
+  </span><span class="k" data-group-id="2904476380-5">end</span><span class="w">
+</span><span class="k" data-group-id="2904476380-1">end</span></code></pre><h3 id="extensions" class="section-heading">
+  <a href="#extensions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Extensions</span>
+</h3>
+<p>Extensions will often come with &quot;domain extensions&quot; to allow you to configure the behavior of all resources within a domain, as it pertains to that extension. For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="w"> </span><span class="k" data-group-id="6575185948-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6575185948-2">[</span><span class="nc">AshGraphql.Domain</span><span class="p" data-group-id="6575185948-2">]</span><span class="w">
+
+  </span><span class="n">graphql</span><span class="w"> </span><span class="k" data-group-id="6575185948-3">do</span><span class="w">
+    </span><span class="c1"># skip authorization for these resources</span><span class="w">
+    </span><span class="n">authorize?</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="6575185948-3">end</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="6575185948-4">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Tweet</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Comment</span><span class="w">
+  </span><span class="k" data-group-id="6575185948-4">end</span><span class="w">
+</span><span class="k" data-group-id="6575185948-1">end</span></code></pre><h3 id="policies" class="section-heading">
+  <a href="#policies" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Policies</span>
+</h3>
+<p>You can also use <a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a> on your domains. This allows you to add policies that apply to <em>all</em> actions using this domain. For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tweets</span><span class="w"> </span><span class="k" data-group-id="7673825783-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7673825783-2">[</span><span class="nc">Ash.Policy.Authorizer</span><span class="p" data-group-id="7673825783-2">]</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="7673825783-3">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Tweet</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyApp.Tweets.Comment</span><span class="w">
+  </span><span class="k" data-group-id="7673825783-3">end</span><span class="w">
+
+  </span><span class="n">policies</span><span class="w"> </span><span class="k" data-group-id="7673825783-4">do</span><span class="w">
+    </span><span class="c1"># add a bypass up front to allow administrators to do whatever they want</span><span class="w">
+    </span><span class="n">bypass</span><span class="w"> </span><span class="n">actor_attribute_equals</span><span class="p" data-group-id="7673825783-5">(</span><span class="ss">:is_admin</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7673825783-5">)</span><span class="w"> </span><span class="k" data-group-id="7673825783-6">do</span><span class="w">
+      </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="7673825783-7">(</span><span class="p" data-group-id="7673825783-7">)</span><span class="w">
+    </span><span class="k" data-group-id="7673825783-6">end</span><span class="w">
+
+    </span><span class="c1"># forbid all access from disabled users</span><span class="w">
+    </span><span class="n">policy</span><span class="w"> </span><span class="n">actor_attribute_equals</span><span class="p" data-group-id="7673825783-8">(</span><span class="ss">:disabled</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7673825783-8">)</span><span class="w"> </span><span class="k" data-group-id="7673825783-9">do</span><span class="w">
+      </span><span class="n">forbid_if</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="7673825783-10">(</span><span class="p" data-group-id="7673825783-10">)</span><span class="w">
+    </span><span class="k" data-group-id="7673825783-9">end</span><span class="w">
+  </span><span class="k" data-group-id="7673825783-4">end</span><span class="w">
+</span><span class="k" data-group-id="7673825783-1">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Changelog
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="attributes.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Attributes
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/resources/domains.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

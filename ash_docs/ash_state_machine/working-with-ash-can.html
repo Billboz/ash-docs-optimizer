@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_state_machine v0.2.6">
+
+
+    <title>Working with Ash.can? — ash_state_machine v0.2.6</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-F3630C7D.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_state_machine" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_state_machine" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_state_machine" class="sidebar-projectName" translate="no">
+ash_state_machine
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.6
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_state_machine</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_state_machine/blob/v0.2.6/documentation/topics/working-with-ash-can.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Working with <code class="inline">Ash.can?</code></span>
+  </h1>
+
+<p>Using <a href="https://hexdocs.pm/ash/3.4.1/Ash.html#can?/3"><code class="inline">Ash.can?/3</code></a> won't return <code class="inline">false</code> if a given state machine transition is invalid. This is because <a href="https://hexdocs.pm/ash/3.4.1/Ash.html#can?/3"><code class="inline">Ash.can?/3</code></a> is only concerned with policies, not changes/validations. However, many folks use <a href="https://hexdocs.pm/ash/3.4.1/Ash.html#can?/3"><code class="inline">Ash.can?/3</code></a> in their UI to determine whether a given button/form/etc should be shown. To help with this you can add the following to your resource:</p><pre><code class="makeup elixir" translate="no"><span class="n">policies</span><span class="w"> </span><span class="k" data-group-id="2099938323-1">do</span><span class="w">
+  </span><span class="n">policy</span><span class="w"> </span><span class="n">always</span><span class="p" data-group-id="2099938323-2">(</span><span class="p" data-group-id="2099938323-2">)</span><span class="w"> </span><span class="k" data-group-id="2099938323-3">do</span><span class="w">
+    </span><span class="n">authorize_if</span><span class="w"> </span><span class="nc">AshStateMachine.Checks.ValidNextState</span><span class="w">
+  </span><span class="k" data-group-id="2099938323-3">end</span><span class="w">
+</span><span class="k" data-group-id="2099938323-1">end</span></code></pre><p>This check is only used in <em>pre_flight</em> authorization checks (i.e calling <a href="https://hexdocs.pm/ash/3.4.1/Ash.html#can?/3"><code class="inline">Ash.can?/3</code></a>), but it will return <code class="inline">true</code> in all cases when running real authorization checks. This is because the change is validated when you use the <code class="inline">transition_state/1</code> change and <a href="AshStateMachine.html#transition_state/2"><code class="inline">AshStateMachine.transition_state/2</code></a>, and so you would be doing extra work for no reason.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="charts.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Charts
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashstatemachine.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: AshStateMachine
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_state_machine/0.2.6" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_state_machine/0.2.6">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_state_machine/0.2.6/show/documentation/topics/working-with-ash-can.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_state_machine.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </body>
+</html>

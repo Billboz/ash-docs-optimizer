@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>Reactor.Step — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Reactor.Step</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(reactor v0.9.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The Step behaviour and struct.</p><p>Implement this behaviour to make steps for your Reactor.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:capability/0" data-no-tooltip translate="no">capability()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Optional capabilities which may be implemented by the step module.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:compensate_result/0" data-no-tooltip translate="no">compensate_result()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Possible valid return values for the <a href="#c:compensate/4"><code class="inline">compensate/4</code></a> callback.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:run_result/0" data-no-tooltip translate="no">run_result()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Possible valid return values for the <a href="#c:run/3"><code class="inline">run/3</code></a> callback.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:step/0" data-no-tooltip translate="no">step()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:undo_result/0" data-no-tooltip translate="no">undo_result()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Possible valid return values for the <a href="#c:undo/4"><code class="inline">undo/4</code></a> callback.</p></div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:async?/1" data-no-tooltip translate="no">async?(step)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Detect if the step can be run asynchronously at runtime.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:can?/2" data-no-tooltip translate="no">can?(step, capability)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Detect the capabilities of the step at runtime.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:compensate/4" data-no-tooltip translate="no">compensate(reason, arguments, context, options)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Compensate for the failure of the step.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:run/3" data-no-tooltip translate="no">run(arguments, context, options)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Execute the step.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:undo/4" data-no-tooltip translate="no">undo(value, arguments, context, options)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Undo a previously successful execution of the step.</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#async?/1" data-no-tooltip translate="no">async?(step)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Is the step able to be run asynchronously?</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#can?/2" data-no-tooltip translate="no">can?(step, capability)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Find out of a step has a capability.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compensate/4" data-no-tooltip translate="no">compensate(step, reason, arguments, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Compensate a step</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run/3" data-no-tooltip translate="no">run(step, arguments, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Execute a step.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#undo/4" data-no-tooltip translate="no">undo(step, value, arguments, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Undo a step</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:capability/0">
+
+  <div class="detail-header">
+    <a href="#t:capability/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">capability()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L37" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> capability() :: :compensate | :undo</pre>
+
+      </div>
+
+<p>Optional capabilities which may be implemented by the step module.</p><p>This allows us to optimise out calls steps which cannot be undone, etc.</p>
+  </section>
+</section>
+<section class="detail" id="t:compensate_result/0">
+
+  <div class="detail-header">
+    <a href="#t:compensate_result/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">compensate_result()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L51" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> compensate_result() ::
+  {:continue, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | :ok
+  | :retry
+  | {:error | :retry, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Possible valid return values for the <a href="#c:compensate/4"><code class="inline">compensate/4</code></a> callback.</p>
+  </section>
+</section>
+<section class="detail" id="t:run_result/0">
+
+  <div class="detail-header">
+    <a href="#t:run_result/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">run_result()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L42" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> run_result() ::
+  {:ok, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | {:ok, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), [<a href="#t:t/0">t</a>()]}
+  | :retry
+  | {:halt | :error | :retry, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Possible valid return values for the <a href="#c:run/3"><code class="inline">run/3</code></a> callback.</p>
+  </section>
+</section>
+<section class="detail" id="t:step/0">
+
+  <div class="detail-header">
+    <a href="#t:step/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">step()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L30" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> step() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Reactor.Step{
+  arguments: [<a href="Reactor.Argument.html#t:t/0">Reactor.Argument.t</a>()],
+  async?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+  context: %{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()},
+  impl: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()},
+  max_retries: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() | :infinity,
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  ref: nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">reference</a>(),
+  transform: nil | (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">mfa</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:undo_result/0">
+
+  <div class="detail-header">
+    <a href="#t:undo_result/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">undo_result()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L57" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> undo_result() :: :ok | :retry | {:retry | :error, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Possible valid return values for the <a href="#c:undo/4"><code class="inline">undo/4</code></a> callback.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:async?/1">
+
+  <div class="detail-header">
+    <a href="#c:async?/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">async?(step)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L190" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> async?(step :: <a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Detect if the step can be run asynchronously at runtime.</p><blockquote><p>This callback is automatically defined by <code class="inline">use Reactor.Step</code> however you're
+free to override it if you need a specific behaviour.</p></blockquote><p>This callback is called when Reactor is deciding whether to run a step
+asynchronously.</p><p>The default implementation of this callback checks returns the the value of
+the steps's <code class="inline">async?</code> key if it is boolean, or calls it with the steps's
+options if it is a function.</p>
+  </section>
+</section>
+<section class="detail" id="c:can?/2">
+
+  <div class="detail-header">
+    <a href="#c:can?/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">can?(step, capability)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L175" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> can?(step :: <a href="#t:t/0">t</a>(), <a href="#t:capability/0">capability</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Detect the capabilities of the step at runtime.</p><blockquote><p>This callback is automatically defined by <code class="inline">use Reactor.Step</code> however you're
+free to override it if you need specific behaviour.</p></blockquote><p>Whenever Reactor would like to either undo a change made by the step, or
+compensate a step failure this callback is called to detect whether the step
+module is capable of the desired action.</p><p>The default implementation of this callback checks to see if the optional
+callback is defined on the current module.</p>
+  </section>
+</section>
+<section class="detail" id="c:compensate/4">
+
+  <div class="detail-header">
+    <a href="#c:compensate/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">compensate(reason, arguments, context, options)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L124" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> compensate(
+  reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(),
+  context :: <a href="Reactor.html#t:context/0">Reactor.context</a>(),
+  options :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:compensate_result/0">compensate_result</a>()</pre>
+
+      </div>
+
+<p>Compensate for the failure of the step.</p><blockquote><p>Do not implement this callback if your step doesn't support compensation.</p></blockquote><p>If <a href="#run/3"><code class="inline">run/3</code></a> returned an error then this callback will be called the error
+reason and the original arguments.</p><p>This provides you the opportunity to handle the error in a number of ways and
+direct the reactor as to what to do next.</p><h2 id="c:compensate/4-arguments" class="section-heading">
+  <a href="#c:compensate/4-arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h2>
+<ul><li><code class="inline">reason</code> - the error reason returned from <a href="#c:run/3"><code class="inline">run/3</code></a>.</li><li><code class="inline">arguments</code> - the arguments passed to the step.</li><li><code class="inline">context</code> - the reactor context.</li><li><code class="inline">options</code> - a keyword list of options provided to the step (if any).</li></ul><h2 id="c:compensate/4-return-values" class="section-heading">
+  <a href="#c:compensate/4-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">{:continue, value}</code> if you're able to provide a valid result for the step
+(perhaps by re-running the original computation) then return that within a
+<code class="inline">:continue</code> tuple and execution will continue as planned.</li><li><code class="inline">:ok</code> the step was successfully compensated and the reactor should
+continue undoing upstream changes.</li><li><code class="inline">:retry</code> or <code class="inline">{:retry, reason}</code> if you would like the reactor to attempt to
+re-run the step. You can optionally supply an error reason which will be
+used in the event that the step runs out of retries, otherwise a
+<a href="Reactor.Error.Invalid.RetriesExceededError.html"><code class="inline">Reactor.Error.Invalid.RetriesExceededError</code></a> will be used.</li><li><code class="inline">{:error, reason}</code> if compensation was unsuccessful.</li></ul>
+  </section>
+</section>
+<section class="detail" id="c:run/3">
+
+  <div class="detail-header">
+    <a href="#c:run/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">run(arguments, context, options)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L88" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> run(
+  arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(),
+  context :: <a href="Reactor.html#t:context/0">Reactor.context</a>(),
+  options :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:run_result/0">run_result</a>()</pre>
+
+      </div>
+
+<p>Execute the step.</p><p>This is the function that implements the behaviour you wish to execute.  You
+will receive arguments as per the <code class="inline">t:Step.t</code> definition along with their
+corresponding values as a map and a copy of the current reactor context.</p><h2 id="c:run/3-arguments" class="section-heading">
+  <a href="#c:run/3-arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h2>
+<ul><li><code class="inline">arguments</code> - A map of arguments as per the <code class="inline">t:Step.t</code> definition we're
+called from.</li><li><code class="inline">context</code> - The reactor context.</li><li><code class="inline">options</code> - A keyword list of options provided to the step (if any).</li></ul><h2 id="c:run/3-return-values" class="section-heading">
+  <a href="#c:run/3-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">{:ok, value}</code> the step completed successfully it returns the value in an
+ok tuple.</li><li><code class="inline">{:ok, value, [step]}</code> the step completed successfully and wants to add
+new steps to the reactor.</li><li><code class="inline">{:error, reason}</code> the if step failed, return an error tuple.</li><li><code class="inline">:retry</code> or <code class="inline">{:retry, reason}</code> the step failed, but is retryable.  You can
+optionally supply an error reason which will be used in the event that the
+step runs out of retries, otherwise a <code class="inline">Reactor.Error.RetriesExceededError</code>
+will be used.</li><li><code class="inline">{:halt, reason}</code> terminate (or pause) reactor execution.  If there are
+actively running steps the reactor will wait for them to finish and then
+return the incomplete state for later resumption.</li></ul>
+  </section>
+</section>
+<section class="detail" id="c:undo/4">
+
+  <div class="detail-header">
+    <a href="#c:undo/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">undo(value, arguments, context, options)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L155" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> undo(
+  value :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(),
+  <a href="Reactor.html#t:context/0">Reactor.context</a>(),
+  options :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:undo_result/0">undo_result</a>()</pre>
+
+      </div>
+
+<p>Undo a previously successful execution of the step.</p><blockquote><p>Do not implement this callback if your step doesn't support undoing.</p></blockquote><p>This callback is called when the reactor encounters an unhandled error later
+in it's execution run and must undo the work previously done.</p><h2 id="c:undo/4-arguments" class="section-heading">
+  <a href="#c:undo/4-arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h2>
+<ul><li><code class="inline">value</code> - the return value of the previously successful call to <a href="#c:run/3"><code class="inline">run/3</code></a>.</li><li><code class="inline">arguments</code> - the arguments passed to the step.</li><li><code class="inline">context</code> - the reactor context.</li><li><code class="inline">options</code> - a keyword list of options provided to the step (if any).</li></ul><h2 id="c:undo/4-return-values" class="section-heading">
+  <a href="#c:undo/4-return-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return values</span>
+</h2>
+<ul><li><code class="inline">:ok</code> the step was successfully undo and the reactor should continue
+rolling back.</li><li><code class="inline">{:error, reason}</code> there was an error while attempting to compensate.  The
+reactor will collect the error and continue rolling back.</li><li><code class="inline">:retry</code> if you would like the reactor to attempt to undo the again later<ul><li>possibly in the case of a network failure for example.</li></ul></li></ul>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="async?/1">
+
+  <div class="detail-header">
+    <a href="#async?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">async?(step)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L242" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> async?(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Is the step able to be run asynchronously?</p>
+  </section>
+</section>
+<section class="detail" id="can?/2">
+
+  <div class="detail-header">
+    <a href="#can?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">can?(step, capability)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L198" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> can?(<a href="#t:t/0">t</a>(), <a href="#t:capability/0">capability</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Find out of a step has a capability.</p>
+  </section>
+</section>
+<section class="detail" id="compensate/4">
+
+  <div class="detail-header">
+    <a href="#compensate/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">compensate(step, reason, arguments, context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L221" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> compensate(
+  <a href="#t:t/0">t</a>(),
+  reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(),
+  context :: <a href="Reactor.html#t:context/0">Reactor.context</a>()
+) :: <a href="#t:compensate_result/0">compensate_result</a>()</pre>
+
+      </div>
+
+<p>Compensate a step</p>
+  </section>
+</section>
+<section class="detail" id="run/3">
+
+  <div class="detail-header">
+    <a href="#run/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run(step, arguments, context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L206" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> run(<a href="#t:t/0">t</a>(), arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(), context :: <a href="Reactor.html#t:context/0">Reactor.context</a>()) ::
+  <a href="#t:run_result/0">run_result</a>()</pre>
+
+      </div>
+
+<p>Execute a step.</p>
+  </section>
+</section>
+<section class="detail" id="undo/4">
+
+  <div class="detail-header">
+    <a href="#undo/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">undo(step, value, arguments, context)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step.ex/#L232" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> undo(
+  <a href="#t:t/0">t</a>(),
+  value :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  arguments :: <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(),
+  context :: <a href="Reactor.html#t:context/0">Reactor.context</a>()
+) ::
+  <a href="#t:undo_result/0">undo_result</a>()</pre>
+
+      </div>
+
+<p>Undo a step</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

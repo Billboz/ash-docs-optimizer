@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Glossary — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/reference/glossary.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Glossary</span>
+  </h1>
+
+<h2 id="action" class="section-heading">
+  <a href="#action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Action</span>
+</h2>
+<p>An action describes an operation that can be performed for a given resource; it is the <em>verb</em> to a resource's <em>noun</em>. Examples of actions:</p><ul><li>User.<em>create</em></li><li>Comment.<em>delete</em></li><li>BlogPost.<em>publish</em></li><li>Article.<em>search</em></li></ul><p>Ash supports five different types of actions. <code class="inline">create</code>, <code class="inline">read</code>, <code class="inline">update</code> and <code class="inline">destroy</code> (collectively often abbreviated as CRUD), and <code class="inline">action</code>, referring to a generic action with a custom return type. A resource can define multiple actions per action type, eg. a <em>publish</em> action would be considered an <code class="inline">update</code> because it is updating an existing instance of a resource. Actions are much more flexible than simple CRUD, but these five action types serve as templates for anything you might want to do.</p><p>See the <a href="actions.html">Actions guide</a> for more.</p><h2 id="actor" class="section-heading">
+  <a href="#actor" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Actor</span>
+</h2>
+<p>The entity that performs an action. Most actions are run on direct user request, eg. if a user presses a Create button on a page then the actor is the user; but an actor might also be an organization, a group, or even a device.</p><p>Actors can be used in a number of places, from modifying the behavior of an action to auditing who did what in your system. They are most prominent, however, when writing <a href="#policy">policies</a>.</p><p>See the <a href="actors-and-authorization.html">Actors &amp; Authorization guide</a> for more.</p><h2 id="aggregate" class="section-heading">
+  <a href="#aggregate" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Aggregate</span>
+</h2>
+<p>An aggregate is a special type of field for a resource, one that summarizes related information of the record. A more specialized type of a <a href="#calculation">calculation</a>.</p><p>If a Project resource has_many Ticket resources, an example of an aggregate on the Project might be to count the tickets associated to each project.</p><p>See the <a href="aggregates.html">Aggregates guide</a> for more.</p><h2 id="attribute" class="section-heading">
+  <a href="#attribute" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Attribute</span>
+</h2>
+<p>A piece of data belonging to a resource. The most basic building block; an attribute has a type and a value. For resources backed by a data layer, they typically represent a column in a database table, or a key in an object store, for example.</p><p>See the <a href="attributes.html">Attributes guide</a> for more.</p><h2 id="authorizer" class="section-heading">
+  <a href="#authorizer" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Authorizer</span>
+</h2>
+<p>An authorizer is an extension that can be added to a resource that will be given the opportunity to modify and/or prevent requests to a resource. In practice, you will almost always be using <a href="Ash.Policy.Authorizer.html"><code class="inline">Ash.Policy.Authorizer</code></a>, but you can still write your own if you need to.</p><p>See the <a href="actors-and-authorization.html">Actors &amp; Authorization</a> and <a href="policies.html">Policies</a> guides for more.</p><h2 id="calculation" class="section-heading">
+  <a href="#calculation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Calculation</span>
+</h2>
+<p>A calculation is a special type of field for a resource, one that is not directly stored in the data layer but generated on-demand. Typically it will derive from other information on the record, but it may come from some other data source entirely.</p><p>See the <a href="calculations.html">Calculations guide</a> for more.</p><h2 id="changeset" class="section-heading">
+  <a href="#changeset" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Changeset</span>
+</h2>
+<p>Changesets encapsulate data changes made while creating or updating an instance of a resource. Similarly to <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html">Ecto changesets</a>, they include data validations but they also have their own callback hook lifecycle.</p><p>See <a href="Ash.Changeset.html"><code class="inline">Ash.Changeset</code></a> for more.</p><h2 id="domain" class="section-heading">
+  <a href="#domain" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Domain</span>
+</h2>
+<p>A method of broadly separating resources into different <a href="<https://en.wikipedia.org/wiki/Domain_(software_engineering)>">domains</a>, A.K.A <a href="https://martinfowler.com/bliki/BoundedContext.html">bounded contexts</a>.</p><p>See the <a href="domains.html">Domains guide</a> for more.</p><h2 id="extension" class="section-heading">
+  <a href="#extension" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Extension</span>
+</h2>
+<p>A packaged bundle of code that can be included in a resource to provide additional functionality. Built-in functionality such as the resource DSL itself is provided by an extension, and libraries like AshPostgres and AshAdmin also provide extensions that you can add to your resources with just one line of code.</p><p>See <a href="writing-extensions.html">Extending Resources</a> for more.</p><h2 id="filter" class="section-heading">
+  <a href="#filter" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Filter</span>
+</h2>
+<p>Filters are applied to queries to limit the data returned. They can also be applied to changesets, to ensure only data matching a certain condition is updated. For example:</p><ul><li>Fetching Articles that include a certain search term in the title</li><li>Fetching Posts created by a specific user</li><li>Fetching Tickets updated in the last week</li><li>Updating a record only if it's version matches your in memory version (optimistic locking)</li></ul><p>See <a href="Ash.Filter.html"><code class="inline">Ash.Filter</code></a> for more.</p><h2 id="identity" class="section-heading">
+  <a href="#identity" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Identity</span>
+</h2>
+<p>A way to uniquely identify an instance of a resource. A primary key is an example of an identity that is automatically generated; you can manually add others such as a user's email address, or a URL slug for a post. If using AshPostgres, constraints will be created by the migration generator to enforce identities at the database level.</p><p>See the <a href="identities.html">Identities guide</a> for more.</p><h2 id="notifier" class="section-heading">
+  <a href="#notifier" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Notifier</span>
+</h2>
+<p>Notifiers are modules that are called for each action that occurs on a resource (except generic actions). They are called at the end of transactions, meaning that if a notifier is called, it is guaranteed that the action they pertain to has completed successfully.</p><p>See the <a href="notifiers.html">Notifiers guide</a> for more.</p><h2 id="policy" class="section-heading">
+  <a href="#policy" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Policy</span>
+</h2>
+<p>A set of rules defining who is authorized to perform specific actions on a resource. Common policy checks include rules such as:</p><ul><li>Forbidding anyone other than the user who wrote a blog post, from editing it</li><li>Allowing only admins to update site-wide settings</li></ul><p>See the <a href="policies.html">Policies guide</a> for more.</p><h2 id="query" class="section-heading">
+  <a href="#query" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Query</span>
+</h2>
+<p>The tools and functions used for reading and filtering stored data, from the data layer.</p><p>See <a href="Ash.Query.html"><code class="inline">Ash.Query</code></a> for more.</p><h2 id="record" class="section-heading">
+  <a href="#record" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Record</span>
+</h2>
+<p>A record is an &quot;instance&quot; of a resource. Keep in mind that this is not an &quot;instance&quot; in a mutable/object-oriented sense, but rather a snapshot of the data at a given point in time. When you call a read action, you get back records. You can provide a record to an update action to determine what data is being updated.</p><h2 id="relationship" class="section-heading">
+  <a href="#relationship" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Relationship</span>
+</h2>
+<p>Relationships are named links between resources, that define how they relate to each other. Relationships can be used to signify ownership of a record, membership of a group, or can be used in filtering and querying data.</p><p>See the <a href="relationships.html">Relationships guide</a> for more.</p><h2 id="resource" class="section-heading">
+  <a href="#resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Resource</span>
+</h2>
+<p>The central concept in Ash, a resource can be used to model all kinds of things. Most often, they will map to a data store, and represent things like rows of a database table. However, they can also be backed by external data sources, be used for validating data with no persistence at all, or even be simple containers for generic actions, completely stateless.</p><p>See the <a href="dsl-ash-resource.html">Resource DSL docs</a> for DSL documentation.</p><h2 id="tenant" class="section-heading">
+  <a href="#tenant" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Tenant</span>
+</h2>
+<p>Multitenancy is the siloing of your app's data into discrete non-overlapping groups, typically by customer or organization (the tenant). Ash supports multitenancy both at the code level and the data layer level (depending on the data layer; for example, AshPostgres uses schemas to fully separate data per tenant.)</p><p>See the <a href="multitenancy.html">Multitenancy guide</a> for more.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="wrap-external-apis.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Wrap External APIs
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="expressions.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Expressions
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/reference/glossary.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

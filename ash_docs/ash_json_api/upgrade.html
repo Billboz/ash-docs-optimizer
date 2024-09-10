@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_json_api v1.4.7">
+
+
+    <title>Upgrading to AshJsonApi to 1.0 — ash_json_api v1.4.7</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-848724FA.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_json_api" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectName" translate="no">
+ash_json_api
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.7
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_json_api</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/documentation/topics/upgrade.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Upgrading to AshJsonApi to 1.0</span>
+</h1>
+
+<p>Two major things have changed in <a href="AshJsonApi.html"><code class="inline">AshJsonApi</code></a> 1.0.</p><h2 id="errors" class="section-heading">
+  <a href="#errors" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Errors</span>
+</h2>
+<p>The error handling has been revamped to be more in line with patterns around Ash and AshGraphql. To implement custom errors, or to enable additional Ash errors to be displayed by AshJsonApi, you will implement the <a href="AshJsonApi.ToJsonApiError.html"><code class="inline">AshJsonApi.ToJsonApiError</code></a> protocol. Here is how its done for one of the builtin errors:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defimpl</span><span class="w"> </span><span class="nc">AshJsonApi.ToJsonApiError</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.Error.Changes.InvalidChanges</span><span class="w"> </span><span class="k" data-group-id="0474836215-1">do</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">to_json_api_error</span><span class="p" data-group-id="0474836215-2">(</span><span class="n">error</span><span class="p" data-group-id="0474836215-2">)</span><span class="w"> </span><span class="k" data-group-id="0474836215-3">do</span><span class="w">
+    </span><span class="p" data-group-id="0474836215-4">%</span><span class="nc" data-group-id="0474836215-4">AshJsonApi.Error</span><span class="p" data-group-id="0474836215-4">{</span><span class="w">
+      </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="nc">Ash.UUID</span><span class="o">.</span><span class="n">generate</span><span class="p" data-group-id="0474836215-5">(</span><span class="p" data-group-id="0474836215-5">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">status_code</span><span class="p">:</span><span class="w"> </span><span class="nc">AshJsonApi.Error</span><span class="o">.</span><span class="n">class_to_status</span><span class="p" data-group-id="0474836215-6">(</span><span class="n">error</span><span class="o">.</span><span class="n">class</span><span class="p" data-group-id="0474836215-6">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;invalid&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Invalid&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">source_parameter</span><span class="p">:</span><span class="w"> </span><span class="n">to_string</span><span class="p" data-group-id="0474836215-7">(</span><span class="n">error</span><span class="o">.</span><span class="n">field</span><span class="p" data-group-id="0474836215-7">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">detail</span><span class="p">:</span><span class="w"> </span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">,</span><span class="w">
+      </span><span class="ss">meta</span><span class="p">:</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="0474836215-8">(</span><span class="n">error</span><span class="o">.</span><span class="n">vars</span><span class="p" data-group-id="0474836215-8">)</span><span class="w">
+    </span><span class="p" data-group-id="0474836215-4">}</span><span class="w">
+  </span><span class="k" data-group-id="0474836215-3">end</span><span class="w">
+</span><span class="k" data-group-id="0474836215-1">end</span></code></pre><h2 id="relationship-routes" class="section-heading">
+  <a href="#relationship-routes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Relationship Routes</span>
+</h2>
+<p>Previously, AshJsonApi called <code class="inline">Ash.Changeset.manage_relationship</code> on the changeset built for the action. Now, <em>you</em> have to define the argument and manage_relationship yourself. See the relationships guide for more.</p><h2 id="ash-api-is-now-ash-domain-in-ash-3-0" class="section-heading">
+  <a href="#ash-api-is-now-ash-domain-in-ash-3-0" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><code class="inline">Ash.Api</code> is now <a href="https://hexdocs.pm/ash/3.4.1/Ash.Domain.html"><code class="inline">Ash.Domain</code></a> in Ash 3.0</span>
+</h2>
+<p>Your Router module file (the module that has <code class="inline">use AshJsonApi.Router</code> in it) will need all references to <code class="inline">api</code> updated to be <code class="inline">domain</code>. eg.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.MyApi.Router</span><span class="w"> </span><span class="k" data-group-id="6658947371-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6658947371-2">[</span><span class="nc">MyApp.Domain1</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Domain2</span><span class="p" data-group-id="6658947371-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="n">...</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="links.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Links
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="authorize-with-json-api.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Authorize with AshJsonApi
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_json_api/1.4.7" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_json_api/1.4.7">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_json_api/1.4.7/show/documentation/topics/upgrade.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_json_api.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

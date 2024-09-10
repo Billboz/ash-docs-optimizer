@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_json_api v1.4.7">
+
+
+    <title>Open API — ash_json_api v1.4.7</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-848724FA.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_json_api" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectName" translate="no">
+ash_json_api
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.7
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_json_api</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/documentation/topics/open-api.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Open API</span>
+</h1>
+
+<h2 id="use-with-phoenix" class="section-heading">
+  <a href="#use-with-phoenix" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Use with Phoenix</span>
+</h2>
+<p>To set up the Open API endpoints for your application, first include the <code class="inline">:open_api_spex</code> dependency:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6566571915-1">{</span><span class="ss">:open_api_spex</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 3.16&quot;</span><span class="p" data-group-id="6566571915-1">}</span><span class="p">,</span></code></pre><p>Then in the module where you call <code class="inline">use AshJsonApi.Router</code> add the following option:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w"> </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2625012445-1">[</span><span class="n">...</span><span class="p" data-group-id="2625012445-1">]</span><span class="p">,</span><span class="w"> </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span></code></pre><p>Finally, you can use utilities provided by <code class="inline">open_api_spex</code> to show UIs for your API. Be sure to put your <code class="inline">forward</code> call last, if you are putting your API at a sub-path.</p><pre><code class="makeup elixir" translate="no"><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/api/swaggerui&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nc">OpenApiSpex.Plug.SwaggerUI</span><span class="p">,</span><span class="w">
+  </span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/api/open_api&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">default_model_expand_depth</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+
+</span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/api/redoc&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nc">Redoc.Plug.RedocUI</span><span class="p">,</span><span class="w">
+  </span><span class="ss">spec_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/api/open_api&quot;</span><span class="w">
+
+</span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">YourApp.YourApiRouter</span></code></pre><p>Now you can go to <code class="inline">/api/swaggerui</code> and <code class="inline">/api/redoc</code>!</p><h2 id="use-with-plug" class="section-heading">
+  <a href="#use-with-plug" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Use with Plug</span>
+</h2>
+<p>To set up the open API endpoints for your application, first include the <code class="inline">:open_api_spex</code> and <code class="inline">:redoc_ui_plug</code> dependency:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3663090619-1">{</span><span class="ss">:open_api_spex</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 3.16&quot;</span><span class="p" data-group-id="3663090619-1">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="3663090619-2">{</span><span class="ss">:redoc_ui_plug</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.2.1&quot;</span><span class="p" data-group-id="3663090619-2">}</span><span class="p">,</span></code></pre><p>Then in the module where you call <code class="inline">use AshJsonApi.Router</code> add the following option:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w"> </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2379569032-1">[</span><span class="n">...</span><span class="p" data-group-id="2379569032-1">]</span><span class="p">,</span><span class="w"> </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span></code></pre><p>Finally, you can use utilities provided by <code class="inline">open_api_spex</code> to show UIs for your API. Be sure to put your <code class="inline">forward</code> call last, if you are putting your API at a sub-path.</p><pre><code class="makeup elixir" translate="no"><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/api/swaggerui&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="nc">OpenApiSpex.Plug.SwaggerUI</span><span class="p">,</span><span class="w">
+  </span><span class="ss">init_opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7551506924-1">[</span><span class="w">
+    </span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/api/open_api&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">default_model_expand_depth</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p" data-group-id="7551506924-1">]</span><span class="w">
+
+</span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/api/redoc&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="nc">Redoc.Plug.RedocUI</span><span class="p">,</span><span class="w">
+  </span><span class="ss">init_opts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7551506924-2">[</span><span class="w">
+    </span><span class="ss">spec_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/api/open_api&quot;</span><span class="w">
+  </span><span class="p" data-group-id="7551506924-2">]</span><span class="w">
+
+</span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">YourApp.YourApiRouter</span></code></pre><p>Now you can go to <code class="inline">/api/swaggerui</code> and <code class="inline">/api/redoc</code>!</p><h2 id="customize-values-in-the-openapi-documentation" class="section-heading">
+  <a href="#customize-values-in-the-openapi-documentation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Customize values in the OpenAPI documentation</span>
+</h2>
+<p>To customize the main values of the OpenAPI spec, a few options are available:</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7656519458-1">[</span><span class="n">...</span><span class="p" data-group-id="7656519458-1">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">open_api_title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Title&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">open_api_version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">open_api_servers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7656519458-2">[</span><span class="s">&quot;http://domain.com/api/v1&quot;</span><span class="p" data-group-id="7656519458-2">]</span></code></pre><p>If <code class="inline">:open_api_servers</code> is not specified, a default server is automatically derived from your app's Phoenix endpoint, as retrieved from inbound connections on the <code class="inline">open_api</code> HTTP route.</p><p>In case an active connection is not available, for example when generating the OpenAPI spec via CLI, you can explicitely specify a reference to the Phoenix endpoint:</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9453438339-1">[</span><span class="n">...</span><span class="p" data-group-id="9453438339-1">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">phoenix_endpoint</span><span class="p">:</span><span class="w"> </span><span class="nc">MyAppWeb.Endpoint</span></code></pre><p>To override any value in the OpenApi documentation you can use the <code class="inline">:modify_open_api</code> options key:</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6813752271-1">[</span><span class="n">...</span><span class="p" data-group-id="6813752271-1">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">modify_open_api</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6813752271-2">{</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="ss">:modify_open_api</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6813752271-3">[</span><span class="p" data-group-id="6813752271-3">]</span><span class="p" data-group-id="6813752271-2">}</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">modify_open_api</span><span class="p" data-group-id="6813752271-4">(</span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="6813752271-4">)</span><span class="w"> </span><span class="k" data-group-id="6813752271-5">do</span><span class="w">
+    </span><span class="p" data-group-id="6813752271-6">%{</span><span class="w">
+      </span><span class="n">spec</span><span class="w">
+      </span><span class="o">|</span><span class="w"> </span><span class="ss">info</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6813752271-7">%{</span><span class="n">spec</span><span class="o">.</span><span class="n">info</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MyApp Title JSON API&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">version</span><span class="p">:</span><span class="w"> </span><span class="nc">Application</span><span class="o">.</span><span class="n">spec</span><span class="p" data-group-id="6813752271-8">(</span><span class="ss">:my_app</span><span class="p">,</span><span class="w"> </span><span class="ss">:vsn</span><span class="p" data-group-id="6813752271-8">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_string</span><span class="p" data-group-id="6813752271-9">(</span><span class="p" data-group-id="6813752271-9">)</span><span class="p" data-group-id="6813752271-7">}</span><span class="w">
+    </span><span class="p" data-group-id="6813752271-6">}</span><span class="w">
+  </span><span class="k" data-group-id="6813752271-5">end</span></code></pre><h2 id="generate-spec-files-via-cli" class="section-heading">
+  <a href="#generate-spec-files-via-cli" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Generate spec files via CLI</span>
+</h2>
+<p>You can write the OpenAPI spec file to disk using the Mix tasks provided by <a href="https://github.com/open-api-spex/open_api_spex">OpenApiSpex</a>.</p><p>Supposing you have setup AshJsonApi as:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAppWeb.AshJsonApi</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w"> </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2926554408-1">[</span><span class="n">...</span><span class="p" data-group-id="2926554408-1">]</span><span class="p">,</span><span class="w"> </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span><span class="w">
+</span><span class="k">end</span></code></pre><p>you can generate the files with:</p><pre><code class="makeup sh" translate="no"><span class="">mix openapi.spec.json --spec MyAppWeb.AshJsonApi
+</span><span class="">mix openapi.spec.yaml --spec MyAppWeb.AshJsonApi
+</span></code></pre><blockquote><h3 id="setting-a-route-prefix-for-generated-files" class="warning section-heading">
+  <a href="#setting-a-route-prefix-for-generated-files" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Setting a route prefix for generated files</span>
+</h3>
+<p>The route prefix in normal usage is automatically inferred, but when generating files
+we will use the <code class="inline">prefix</code> option set in the <code class="inline">json_api</code> section of the relevant <a href="https://hexdocs.pm/ash/3.4.1/Ash.Domain.html"><code class="inline">Ash.Domain</code></a> module.</p></blockquote><p>To generate the YAML file you need to add the ymlr dependency.</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="7297213892-1">do</span><span class="w">
+  </span><span class="p" data-group-id="7297213892-2">[</span><span class="w">
+    </span><span class="p" data-group-id="7297213892-3">{</span><span class="ss">:ymlr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 2.0&quot;</span><span class="p" data-group-id="7297213892-3">}</span><span class="w">
+  </span><span class="p" data-group-id="7297213892-2">]</span><span class="w">
+</span><span class="k" data-group-id="7297213892-1">end</span></code></pre><p>You can also use the <code class="inline">--check</code> option to confirm that your checked in spec file(s) match.</p><pre><code class="makeup sh" translate="no"><span class="">mix openapi.spec.json --spec MyAppWeb.AshJsonApi --check
+</span><span class="">mix openapi.spec.yaml --spec MyAppWeb.AshJsonApi --check
+</span></code></pre><h2 id="known-issues-limitations" class="section-heading">
+  <a href="#known-issues-limitations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Known issues/limitations</span>
+</h2>
+<h3 id="swagger-ui" class="section-heading">
+  <a href="#swagger-ui" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Swagger UI</span>
+</h3>
+<p>SwaggerUI does not properly render recursive types. This affects the examples and type documentation for the <code class="inline">filter</code> parameter especially.</p><h3 id="redoc" class="section-heading">
+  <a href="#redoc" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Redoc</span>
+</h3>
+<p>Redoc does not show all available schemas in the sidebar. This means that some schemas that are referenced only but have no endpoints that refer to them are effectively un-discoverable without downloading the spec and hunting them down yourself.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="what-is-ash-json-api.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+What is AshJsonApi
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="relationships.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Relationships
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_json_api/1.4.7" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_json_api/1.4.7">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_json_api/1.4.7/show/documentation/topics/open-api.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_json_api.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

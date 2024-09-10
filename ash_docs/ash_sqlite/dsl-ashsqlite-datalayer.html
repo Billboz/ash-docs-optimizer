@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.33.0">
+    <meta name="project" content="ash_sqlite v0.1.3">
+
+
+    <title>DSL: AshSqlite.DataLayer — ash_sqlite v0.1.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-EDCBE166.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-BHYOTRCH.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_sqlite" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_sqlite" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_sqlite" class="sidebar-projectName" translate="no">
+ash_sqlite
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_sqlite</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_sqlite/blob/v0.1.3/documentation/dsls/DSL:-AshSqlite.DataLayer.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: AshSqlite.DataLayer</span>
+  </h1>
+
+<p>A sqlite data layer that leverages Ecto's sqlite capabilities.</p><h2 id="sqlite" class="section-heading">
+  <a href="#sqlite" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite</span>
+</h2>
+<p>Sqlite data layer configuration</p><h3 id="nested-dsls" class="section-heading">
+  <a href="#nested-dsls" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#sqlite-custom_indexes">custom_indexes</a><ul><li>index</li></ul></li><li><a href="#sqlite-custom_statements">custom_statements</a><ul><li>statement</li></ul></li><li><a href="#sqlite-references">references</a><ul><li>reference</li></ul></li></ul><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">sqlite</span><span class="w"> </span><span class="k" data-group-id="0139580924-1">do</span><span class="w">
+  </span><span class="n">repo</span><span class="w"> </span><span class="nc">MyApp.Repo</span><span class="w">
+  </span><span class="n">table</span><span class="w"> </span><span class="s">&quot;organizations&quot;</span><span class="w">
+</span><span class="k" data-group-id="0139580924-1">end</span><span class="w">
+</span></code></pre><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#sqlite-repo" id="sqlite-repo"><code class="inline">repo</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The repo that will be used to fetch your data. See the <a href="AshSqlite.Repo.html"><code class="inline">AshSqlite.Repo</code></a> documentation for more</td></tr><tr><td style="text-align: left;"><a href="#sqlite-migrate?" id="sqlite-migrate?"><code class="inline">migrate?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not to include this resource in the generated migrations with <code class="inline">mix ash.generate_migrations</code></td></tr><tr><td style="text-align: left;"><a href="#sqlite-migration_types" id="sqlite-migration_types"><code class="inline">migration_types</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list of attribute names to the ecto migration type that should be used for that attribute. Only necessary if you need to override the defaults.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-migration_defaults" id="sqlite-migration_defaults"><code class="inline">migration_defaults</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list of attribute names to the ecto migration default that should be used for that attribute. The string you use will be placed verbatim in the migration. Use fragments like <code class="inline">fragment(\\&quot;now()\\&quot;)</code>, or for <code class="inline">nil</code>, use <code class="inline">\\&quot;nil\\&quot;</code>.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-base_filter_sql" id="sqlite-base_filter_sql"><code class="inline">base_filter_sql</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A raw sql version of the base_filter, e.g <code class="inline">representative = true</code>. Required if trying to create a unique constraint on a resource with a base_filter</td></tr><tr><td style="text-align: left;"><a href="#sqlite-skip_unique_indexes" id="sqlite-skip_unique_indexes"><code class="inline">skip_unique_indexes</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Skip generating unique indexes when generating migrations</td></tr><tr><td style="text-align: left;"><a href="#sqlite-unique_index_names" id="sqlite-unique_index_names"><code class="inline">unique_index_names</code></a></td><td style="text-align: left;"><code class="inline">list({list(atom), String.t} | {list(atom), String.t, String.t})</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of unique index names that could raise errors that are not configured in identities, or an mfa to a function that takes a changeset and returns the list. In the format <code class="inline">{[:affected, :keys], &quot;name_of_constraint&quot;}</code> or <code class="inline">{[:affected, :keys], &quot;name_of_constraint&quot;, &quot;custom error message&quot;}</code></td></tr><tr><td style="text-align: left;"><a href="#sqlite-exclusion_constraint_names" id="sqlite-exclusion_constraint_names"><code class="inline">exclusion_constraint_names</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of exclusion constraint names that could raise errors. Must be in the format <code class="inline">{:affected_key, &quot;name_of_constraint&quot;}</code> or <code class="inline">{:affected_key, &quot;name_of_constraint&quot;, &quot;custom error message&quot;}</code></td></tr><tr><td style="text-align: left;"><a href="#sqlite-identity_index_names" id="sqlite-identity_index_names"><code class="inline">identity_index_names</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A keyword list of identity names to the unique index name that they should use when being managed by the migration generator.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-foreign_key_names" id="sqlite-foreign_key_names"><code class="inline">foreign_key_names</code></a></td><td style="text-align: left;"><code class="inline">list({atom, String.t} | {String.t, String.t})</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of foreign keys that could raise errors, or an mfa to a function that takes a changeset and returns a list. In the format: <code class="inline">{:key, &quot;name_of_constraint&quot;}</code> or <code class="inline">{:key, &quot;name_of_constraint&quot;, &quot;custom error message&quot;}</code></td></tr><tr><td style="text-align: left;"><a href="#sqlite-migration_ignore_attributes" id="sqlite-migration_ignore_attributes"><code class="inline">migration_ignore_attributes</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of attributes that will be ignored when generating migrations.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-table" id="sqlite-table"><code class="inline">table</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The table to store and read the resource from. If this is changed, the migration generator will not remove the old table.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-polymorphic?" id="sqlite-polymorphic?"><code class="inline">polymorphic?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Declares this resource as polymorphic. See the <a href="polymorphic-resources.html">polymorphic resources guide</a> for more.</td></tr></tbody></table><h2 id="sqlite-custom_indexes" class="section-heading">
+  <a href="#sqlite-custom_indexes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite.custom_indexes</span>
+</h2>
+<p>A section for configuring indexes to be created by the migration generator.</p><p>In general, prefer to use <code class="inline">identities</code> for simple unique constraints. This is a tool to allow
+for declaring more complex indexes.</p><h3 id="nested-dsls-1" class="section-heading">
+  <a href="#nested-dsls-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#sqlite-custom_indexes-index">index</a></li></ul><h3 id="examples-1" class="section-heading">
+  <a href="#examples-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">custom_indexes</span><span class="w"> </span><span class="k" data-group-id="8822676552-1">do</span><span class="w">
+  </span><span class="n">index</span><span class="w"> </span><span class="p" data-group-id="8822676552-2">[</span><span class="ss">:column1</span><span class="p">,</span><span class="w"> </span><span class="ss">:column2</span><span class="p" data-group-id="8822676552-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">unique</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;thing = TRUE&quot;</span><span class="w">
+</span><span class="k" data-group-id="8822676552-1">end</span><span class="w">
+</span></code></pre><h2 id="sqlite-custom_indexes-index" class="section-heading">
+  <a href="#sqlite-custom_indexes-index" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite.custom_indexes.index</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">index</span><span class="w"> </span><span class="n">fields</span></code></pre><p>Add an index to be managed by the migration generator.</p><h3 id="examples-2" class="section-heading">
+  <a href="#examples-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">index</span><span class="w"> </span><span class="p" data-group-id="9741891377-1">[</span><span class="s">&quot;column&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;column2&quot;</span><span class="p" data-group-id="9741891377-1">]</span><span class="p">,</span><span class="w"> </span><span class="ss">unique</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;thing = TRUE&quot;</span></code></pre><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-fields" id="sqlite-custom_indexes-index-fields"><code class="inline">fields</code></a></td><td style="text-align: left;"><code class="inline">atom | String.t | list(atom | String.t)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The fields to include in the index.</td></tr></tbody></table><h3 id="options-1" class="section-heading">
+  <a href="#options-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-name" id="sqlite-custom_indexes-index-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">the name of the index. Defaults to &quot;#{table}_#{column}_index&quot;.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-unique" id="sqlite-custom_indexes-index-unique"><code class="inline">unique</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">indicates whether the index should be unique.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-using" id="sqlite-custom_indexes-index-using"><code class="inline">using</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">configures the index type.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-where" id="sqlite-custom_indexes-index-where"><code class="inline">where</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">specify conditions for a partial index.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-message" id="sqlite-custom_indexes-index-message"><code class="inline">message</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">A custom message to use for unique indexes that have been violated</td></tr><tr><td style="text-align: left;"><a href="#sqlite-custom_indexes-index-include" id="sqlite-custom_indexes-index-include"><code class="inline">include</code></a></td><td style="text-align: left;"><code class="inline">list(String.t)</code></td><td style="text-align: left;"></td><td style="text-align: left;">specify fields for a covering index. This is not supported by all databases. For more information on SQLite support, please read the official docs.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshSqlite.CustomIndex.html"><code class="inline">AshSqlite.CustomIndex</code></a></p><h2 id="sqlite-custom_statements" class="section-heading">
+  <a href="#sqlite-custom_statements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite.custom_statements</span>
+</h2>
+<p>A section for configuring custom statements to be added to migrations.</p><p>Changing custom statements may require manual intervention, because Ash can't determine what order they should run
+in (i.e if they depend on table structure that you've added, or vice versa). As such, any <code class="inline">down</code> statements we run
+for custom statements happen first, and any <code class="inline">up</code> statements happen last.</p><p>Additionally, when changing a custom statement, we must make some assumptions, i.e that we should migrate
+the old structure down using the previously configured <code class="inline">down</code> and recreate it.</p><p>This may not be desired, and so what you may end up doing is simply modifying the old migration and deleting whatever was
+generated by the migration generator. As always: read your migrations after generating them!</p><h3 id="nested-dsls-2" class="section-heading">
+  <a href="#nested-dsls-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#sqlite-custom_statements-statement">statement</a></li></ul><h3 id="examples-3" class="section-heading">
+  <a href="#examples-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">custom_statements</span><span class="w"> </span><span class="k" data-group-id="4439548486-1">do</span><span class="w">
+  </span><span class="c1"># the name is used to detect if you remove or modify the statement</span><span class="w">
+  </span><span class="n">statement</span><span class="w"> </span><span class="ss">:pgweb_idx</span><span class="w"> </span><span class="k" data-group-id="4439548486-2">do</span><span class="w">
+    </span><span class="n">up</span><span class="w"> </span><span class="s">&quot;CREATE INDEX pgweb_idx ON pgweb USING GIN (to_tsvector(&#39;english&#39;, title || &#39; &#39; || body));&quot;</span><span class="w">
+    </span><span class="n">down</span><span class="w"> </span><span class="s">&quot;DROP INDEX pgweb_idx;&quot;</span><span class="w">
+  </span><span class="k" data-group-id="4439548486-2">end</span><span class="w">
+</span><span class="k" data-group-id="4439548486-1">end</span><span class="w">
+</span></code></pre><h2 id="sqlite-custom_statements-statement" class="section-heading">
+  <a href="#sqlite-custom_statements-statement" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite.custom_statements.statement</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">statement</span><span class="w"> </span><span class="n">name</span></code></pre><p>Add a custom statement for migrations.</p><h3 id="examples-4" class="section-heading">
+  <a href="#examples-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">statement</span><span class="w"> </span><span class="ss">:pgweb_idx</span><span class="w"> </span><span class="k" data-group-id="4039116013-1">do</span><span class="w">
+  </span><span class="n">up</span><span class="w"> </span><span class="s">&quot;CREATE INDEX pgweb_idx ON pgweb USING GIN (to_tsvector(&#39;english&#39;, title || &#39; &#39; || body));&quot;</span><span class="w">
+  </span><span class="n">down</span><span class="w"> </span><span class="s">&quot;DROP INDEX pgweb_idx;&quot;</span><span class="w">
+</span><span class="k" data-group-id="4039116013-1">end</span><span class="w">
+</span></code></pre><h3 id="arguments-1" class="section-heading">
+  <a href="#arguments-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#sqlite-custom_statements-statement-name" id="sqlite-custom_statements-statement-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the statement, must be unique within the resource</td></tr></tbody></table><h3 id="options-2" class="section-heading">
+  <a href="#options-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#sqlite-custom_statements-statement-up" id="sqlite-custom_statements-statement-up"><code class="inline">up</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">How to create the structure of the statement</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#sqlite-custom_statements-statement-down" id="sqlite-custom_statements-statement-down"><code class="inline">down</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">How to tear down the structure of the statement</td></tr><tr><td style="text-align: left;"><a href="#sqlite-custom_statements-statement-code?" id="sqlite-custom_statements-statement-code?"><code class="inline">code?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">By default, we place the strings inside of ecto migration's <code class="inline">execute/1</code> function and assume they are sql. Use this option if you want to provide custom elixir code to be placed directly in the migrations</td></tr></tbody></table><h3 id="introspection-1" class="section-heading">
+  <a href="#introspection-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshSqlite.Statement.html"><code class="inline">AshSqlite.Statement</code></a></p><h2 id="sqlite-references" class="section-heading">
+  <a href="#sqlite-references" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite.references</span>
+</h2>
+<p>A section for configuring the references (foreign keys) in resource migrations.</p><p>This section is only relevant if you are using the migration generator with this resource.
+Otherwise, it has no effect.</p><h3 id="nested-dsls-3" class="section-heading">
+  <a href="#nested-dsls-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#sqlite-references-reference">reference</a></li></ul><h3 id="examples-5" class="section-heading">
+  <a href="#examples-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">references</span><span class="w"> </span><span class="k" data-group-id="9030872948-1">do</span><span class="w">
+  </span><span class="n">reference</span><span class="w"> </span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="ss">on_delete</span><span class="p">:</span><span class="w"> </span><span class="ss">:delete</span><span class="p">,</span><span class="w"> </span><span class="ss">on_update</span><span class="p">:</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;comments_to_posts_fkey&quot;</span><span class="w">
+</span><span class="k" data-group-id="9030872948-1">end</span><span class="w">
+</span></code></pre><h3 id="options-3" class="section-heading">
+  <a href="#options-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#sqlite-references-polymorphic_on_delete" id="sqlite-references-polymorphic_on_delete"><code class="inline">polymorphic_on_delete</code></a></td><td style="text-align: left;"><code class="inline">:delete | :nilify | :nothing | :restrict</code></td><td style="text-align: left;"></td><td style="text-align: left;">For polymorphic resources, configures the on_delete behavior of the automatically generated foreign keys to source tables.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-references-polymorphic_on_update" id="sqlite-references-polymorphic_on_update"><code class="inline">polymorphic_on_update</code></a></td><td style="text-align: left;"><code class="inline">:update | :nilify | :nothing | :restrict</code></td><td style="text-align: left;"></td><td style="text-align: left;">For polymorphic resources, configures the on_update behavior of the automatically generated foreign keys to source tables.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-references-polymorphic_name" id="sqlite-references-polymorphic_name"><code class="inline">polymorphic_name</code></a></td><td style="text-align: left;"><code class="inline">:update | :nilify | :nothing | :restrict</code></td><td style="text-align: left;"></td><td style="text-align: left;">For polymorphic resources, configures the on_update behavior of the automatically generated foreign keys to source tables.</td></tr></tbody></table><h2 id="sqlite-references-reference" class="section-heading">
+  <a href="#sqlite-references-reference" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">sqlite.references.reference</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">reference</span><span class="w"> </span><span class="n">relationship</span></code></pre><p>Configures the reference for a relationship in resource migrations.</p><p>Keep in mind that multiple relationships can theoretically involve the same destination and foreign keys.
+In those cases, you only need to configure the <code class="inline">reference</code> behavior for one of them. Any conflicts will result
+in an error, across this resource and any other resources that share a table with this one. For this reason,
+instead of adding a reference configuration for <code class="inline">:nothing</code>, its best to just leave the configuration out, as that
+is the default behavior if <em>no</em> relationship anywhere has configured the behavior of that reference.</p><h3 id="examples-6" class="section-heading">
+  <a href="#examples-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">reference</span><span class="w"> </span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="ss">on_delete</span><span class="p">:</span><span class="w"> </span><span class="ss">:delete</span><span class="p">,</span><span class="w"> </span><span class="ss">on_update</span><span class="p">:</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;comments_to_posts_fkey&quot;</span></code></pre><h3 id="arguments-2" class="section-heading">
+  <a href="#arguments-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#sqlite-references-reference-relationship" id="sqlite-references-reference-relationship"><code class="inline">relationship</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The relationship to be configured</td></tr></tbody></table><h3 id="options-4" class="section-heading">
+  <a href="#options-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#sqlite-references-reference-ignore?" id="sqlite-references-reference-ignore?"><code class="inline">ignore?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"></td><td style="text-align: left;">If set to true, no reference is created for the given relationship. This is useful if you need to define it in some custom way</td></tr><tr><td style="text-align: left;"><a href="#sqlite-references-reference-on_delete" id="sqlite-references-reference-on_delete"><code class="inline">on_delete</code></a></td><td style="text-align: left;"><code class="inline">:delete | :nilify | :nothing | :restrict</code></td><td style="text-align: left;"></td><td style="text-align: left;">What should happen to records of this resource when the referenced record of the <em>destination</em> resource is deleted.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-references-reference-on_update" id="sqlite-references-reference-on_update"><code class="inline">on_update</code></a></td><td style="text-align: left;"><code class="inline">:update | :nilify | :nothing | :restrict</code></td><td style="text-align: left;"></td><td style="text-align: left;">What should happen to records of this resource when the referenced destination_attribute of the <em>destination</em> record is update.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-references-reference-deferrable" id="sqlite-references-reference-deferrable"><code class="inline">deferrable</code></a></td><td style="text-align: left;"><code class="inline">false | true | :initially</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Wether or not the constraint is deferrable. This only affects the migration generator.</td></tr><tr><td style="text-align: left;"><a href="#sqlite-references-reference-name" id="sqlite-references-reference-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the foreign key to generate in the database. Defaults to &lt;table&gt;_&lt;source_attribute&gt;_fkey</td></tr></tbody></table><h3 id="introspection-2" class="section-heading">
+  <a href="#introspection-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshSqlite.Reference.html"><code class="inline">AshSqlite.Reference</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="manual-relationships.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Join Manual Relationships
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Change Log
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_sqlite/0.1.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_sqlite/0.1.3">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_sqlite/0.1.3/show/documentation/dsls/DSL:-AshSqlite.DataLayer.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_sqlite.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.33.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_json_api v1.4.7">
+
+
+    <title>Getting started with AshJsonApi — ash_json_api v1.4.7</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-848724FA.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_json_api" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectName" translate="no">
+ash_json_api
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.7
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_json_api</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/documentation/tutorials/getting-started-with-ash-json-api.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Getting started with AshJsonApi</span>
+</h1>
+
+<h2 id="installing-ashjsonapi" class="section-heading">
+  <a href="#installing-ashjsonapi" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installing AshJsonApi</span>
+</h2>
+<!-- tabs-open --><h3 id="using-igniter-recommended" class="section-heading">
+  <a href="#using-igniter-recommended" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using Igniter (recommended)</span>
+</h3>
+<pre><code class="makeup sh" translate="no"><span class="">mix igniter.install ash_json_api
+</span></code></pre><h3 id="manually" class="section-heading">
+  <a href="#manually" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Manually</span>
+</h3>
+<p>This manual setup branches off from the <a href="https://hexdocs.pm/ash/get-started.html">Getting Started with Ash</a> guide.
+If you aren't starting from there, replace the application name, <code class="inline">Helpdesk</code>, with your application name,
+and replace the <a href="https://hexdocs.pm/ash/3.4.1/Ash.Domain.html"><code class="inline">Ash.Domain</code></a> name, <code class="inline">Helpdesk.Support</code> with a domain or domains from your own application.</p><h4>Add the ash_json_api dependency</h4><p>In your mix.exs, add the Ash JSON API dependency:</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="4407672334-1">do</span><span class="w">
+    </span><span class="p" data-group-id="4407672334-2">[</span><span class="w">
+      </span><span class="c1"># .. other dependencies</span><span class="w">
+      </span><span class="p" data-group-id="4407672334-3">{</span><span class="ss">:ash_json_api</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.0&quot;</span><span class="p" data-group-id="4407672334-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4407672334-2">]</span><span class="w">
+  </span><span class="k" data-group-id="4407672334-1">end</span></code></pre><h4>Accept json_api content type</h4><p>Add the following to your <code class="inline">config/config.exs</code>.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># config/config.exs</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:mime</span><span class="p">,</span><span class="w">
+  </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9305242032-1">%{</span><span class="s">&quot;json&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;application/vnd.api+json&quot;</span><span class="p" data-group-id="9305242032-1">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">types</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9305242032-2">%{</span><span class="s">&quot;application/vnd.api+json&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="9305242032-3">[</span><span class="s">&quot;json&quot;</span><span class="p" data-group-id="9305242032-3">]</span><span class="p" data-group-id="9305242032-2">}</span></code></pre><p>This configuration is required to support working with the JSON:API custom mime type.</p><p>After adding the configuration above, compiling the project might throw an error:</p><pre><code class="makeup elixir" translate="no"><span class="nc">ERROR</span><span class="o">!</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="ss">:mime</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="ss">:types</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">compared</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">compile</span><span class="w"> </span><span class="n">time</span><span class="o">.</span></code></pre><p>This can happen if <code class="inline">:mime</code> was already compiled before the configuration was changed and can be
+fixed by running</p><pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">deps</span><span class="o">.</span><span class="n">compile</span><span class="w"> </span><span class="n">mime</span><span class="w"> </span><span class="o">--</span><span class="n">force</span></code></pre><h4>Create a router</h4><p>Create a separate Router Module to work with your Domains. It will generate the routes for
+your Resources and provide the functions you would usually have in a Controller.</p><p>We will later forward requests from your Applications primary (Phoenix) Router to you Ash JSON API Router.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">HelpdeskWeb.JsonApiRouter</span><span class="w"> </span><span class="k" data-group-id="5545483945-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshJsonApi.Router</span><span class="p">,</span><span class="w">
+    </span><span class="c1"># The api modules you want to serve</span><span class="w">
+    </span><span class="ss">domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5545483945-2">[</span><span class="nc">Module</span><span class="o">.</span><span class="n">concat</span><span class="p" data-group-id="5545483945-3">(</span><span class="p" data-group-id="5545483945-4">[</span><span class="s">&quot;Helpdesk.Support&quot;</span><span class="p" data-group-id="5545483945-4">]</span><span class="p" data-group-id="5545483945-3">)</span><span class="p" data-group-id="5545483945-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="c1"># optionally an open_api route</span><span class="w">
+    </span><span class="ss">open_api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/open_api&quot;</span><span class="w">
+</span><span class="k" data-group-id="5545483945-1">end</span></code></pre><blockquote><h3 id="whats-up-with-module-concat-1" class="info section-heading">
+  <a href="#whats-up-with-module-concat-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Whats up with <a href="https://hexdocs.pm/elixir/Module.html#concat/1"><code class="inline">Module.concat/1</code></a>?</span>
+</h3>
+<p>This <a href="https://hexdocs.pm/elixir/Module.html#concat/1"><code class="inline">Module.concat/1</code></a> prevents a <a href="https://dashbit.co/blog/speeding-up-re-compilation-of-elixir-projects">compile-time dependency</a> from this router module to the domain modules. It is an implementation detail of how <code class="inline">forward/2</code> works that you end up with a compile-time dependency on the schema, but there is no need for this dependency, and that dependency can have <em>drastic</em> impacts on your compile times in certain scenarios.</p></blockquote><p>Additionally, your Resource requires a type, a base route and a set of allowed HTTP methods and what action they will trigger.</p><h4>Add <a href="AshJsonApi.Plug.Parser.html"><code class="inline">AshJsonApi.Plug.Parser</code></a> to your endpoint</h4><p>This handles any file uploads, if you have resource actions with the <code class="inline">:file</code> type.</p><pre><code class="makeup elixir" translate="no"><span class="n">plug</span><span class="w"> </span><span class="nc">Plug.Parsers</span><span class="p">,</span><span class="w">
+  </span><span class="ss">parsers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7931698933-1">[</span><span class="ss">:urlencoded</span><span class="p">,</span><span class="w"> </span><span class="ss">:multipart</span><span class="p">,</span><span class="w"> </span><span class="ss">:json</span><span class="p">,</span><span class="w"> </span><span class="nc">AshJsonApi.Plug.Parser</span><span class="p" data-group-id="7931698933-1">]</span><span class="p">,</span><span class="w"> </span><span class="c1"># &lt;- add it to this list.</span><span class="w">
+  </span><span class="ss">pass</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7931698933-2">[</span><span class="s">&quot;*/*&quot;</span><span class="p" data-group-id="7931698933-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">json_decoder</span><span class="p">:</span><span class="w"> </span><span class="nc">Jason</span></code></pre><p>You don't have to add this if you don't plan on doing any file uploads, but
+there is no cost to adding it, even if you don't use it.</p><h4>Add the routes from your domain module(s)</h4><p>To make your Resources accessible to the outside world, forward requests from your Phoenix router to the router you created for your domains.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">scope</span><span class="w"> </span><span class="s">&quot;/api/json&quot;</span><span class="w"> </span><span class="k" data-group-id="6165182561-1">do</span><span class="w">
+  </span><span class="n">pipe_through</span><span class="p" data-group-id="6165182561-2">(</span><span class="ss">:api</span><span class="p" data-group-id="6165182561-2">)</span><span class="w">
+
+  </span><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/helpdesk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">HelpdeskWeb.JsonApiRouter</span><span class="w">
+</span><span class="k" data-group-id="6165182561-1">end</span></code></pre><!-- tabs-close --><h2 id="configure-your-resources-and-domain-and-expose-actions" class="section-heading">
+  <a href="#configure-your-resources-and-domain-and-expose-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Configure your Resources and Domain and expose actions</span>
+</h2>
+<p>These examples are based off of the <a href="https://hexdocs.pm/ash/get-started.html">Getting Started with Ash</a> guide.</p><h3 id="add-the-ashjsonapi-extension-to-your-domain-and-resource" class="section-heading">
+  <a href="#add-the-ashjsonapi-extension-to-your-domain-and-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Add the AshJsonApi extension to your domain and resource</span>
+</h3>
+<!-- tabs-open --><h3 id="using-igniter-recommended-1" class="section-heading">
+  <a href="#using-igniter-recommended-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using Igniter (recommended)</span>
+</h3>
+<p>To set up an existing resource of your own with <a href="AshJsonApi.html"><code class="inline">AshJsonApi</code></a>, run:</p><pre><code class="makeup sh" translate="no"><span class="">mix ash.patch.extend Your.Resource.Name json_api
+</span></code></pre><h3 id="manually-1" class="section-heading">
+  <a href="#manually-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Manually</span>
+</h3>
+<p>Add to your domain:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="w"> </span><span class="k" data-group-id="0215863591-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0215863591-2">[</span><span class="nc">AshJsonApi.Domain</span><span class="p" data-group-id="0215863591-2">]</span><span class="w">
+  </span><span class="n">...</span></code></pre><p>And to your resource:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="9585497557-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9585497557-2">[</span><span class="nc">AshJsonApi.Resource</span><span class="p" data-group-id="9585497557-2">]</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+  </span><span class="n">json_api</span><span class="w"> </span><span class="k" data-group-id="9585497557-3">do</span><span class="w">
+    </span><span class="n">type</span><span class="w"> </span><span class="s">&quot;ticket&quot;</span><span class="w">
+  </span><span class="k" data-group-id="9585497557-3">end</span><span class="w">
+</span><span class="k" data-group-id="9585497557-1">end</span></code></pre><!-- tabs-close --><h2 id="define-routes" class="section-heading">
+  <a href="#define-routes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Define Routes</span>
+</h2>
+<p>Routes can be defined on the resource or the domain. If you define them on the domain (which is our default recommendation), the resource in question must still use the <a href="AshJsonApi.Resource.html"><code class="inline">AshJsonApi.Resource</code></a> extension, and define its own type.</p><h3 id="defining-routes-on-the-domain" class="section-heading">
+  <a href="#defining-routes-on-the-domain" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Defining routes on the domain</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support</span><span class="w"> </span><span class="k" data-group-id="4384905408-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="p">,</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4384905408-2">[</span><span class="nc">AshJsonApi.Domain</span><span class="p" data-group-id="4384905408-2">]</span><span class="w">
+
+  </span><span class="n">json_api</span><span class="w"> </span><span class="k" data-group-id="4384905408-3">do</span><span class="w">
+    </span><span class="n">routes</span><span class="w"> </span><span class="k" data-group-id="4384905408-4">do</span><span class="w">
+      </span><span class="c1"># in the domain `base_route` acts like a scope</span><span class="w">
+      </span><span class="n">base_route</span><span class="w"> </span><span class="s">&quot;/tickets&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="4384905408-5">do</span><span class="w">
+        </span><span class="n">get</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+        </span><span class="n">index</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+        </span><span class="n">post</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+      </span><span class="k" data-group-id="4384905408-5">end</span><span class="w">
+    </span><span class="k" data-group-id="4384905408-4">end</span><span class="w">
+  </span><span class="k" data-group-id="4384905408-3">end</span><span class="w">
+</span><span class="k" data-group-id="4384905408-1">end</span></code></pre><p>And then add the extension and type to the resource:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="0020634245-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0020634245-2">[</span><span class="nc">AshJsonApi.Resource</span><span class="p" data-group-id="0020634245-2">]</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+  </span><span class="n">json_api</span><span class="w"> </span><span class="k" data-group-id="0020634245-3">do</span><span class="w">
+    </span><span class="n">type</span><span class="w"> </span><span class="s">&quot;ticket&quot;</span><span class="w">
+  </span><span class="k" data-group-id="0020634245-3">end</span><span class="w">
+</span><span class="k" data-group-id="0020634245-1">end</span></code></pre><h3 id="defining-routes-on-the-resource" class="section-heading">
+  <a href="#defining-routes-on-the-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Defining routes on the resource</span>
+</h3>
+<p>Here we show an example of defining routes on the resource.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Helpdesk.Support.Ticket</span><span class="w"> </span><span class="k" data-group-id="6306619661-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6306619661-2">[</span><span class="nc">AshJsonApi.Resource</span><span class="p" data-group-id="6306619661-2">]</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+  </span><span class="n">json_api</span><span class="w"> </span><span class="k" data-group-id="6306619661-3">do</span><span class="w">
+    </span><span class="n">type</span><span class="w"> </span><span class="s">&quot;ticket&quot;</span><span class="w">
+
+    </span><span class="n">routes</span><span class="w"> </span><span class="k" data-group-id="6306619661-4">do</span><span class="w">
+      </span><span class="c1"># on the resource, the `base` applies to all routes</span><span class="w">
+      </span><span class="n">base</span><span class="w"> </span><span class="s">&quot;/tickets&quot;</span><span class="w">
+
+      </span><span class="n">get</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+      </span><span class="n">index</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+      </span><span class="n">post</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+      </span><span class="c1"># ...</span><span class="w">
+    </span><span class="k" data-group-id="6306619661-4">end</span><span class="w">
+  </span><span class="k" data-group-id="6306619661-3">end</span><span class="w">
+</span><span class="k" data-group-id="6306619661-1">end</span></code></pre><p>Check out the <a href="https://hexdocs.pm/ash_json_api/AshJsonApi.Resource.html">AshJsonApi.Resource documentation on
+Hex</a> for more information.</p><h2 id="run-your-api" class="section-heading">
+  <a href="#run-your-api" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Run your API</span>
+</h2>
+<p>From here on out its the standard Phoenix behavior. Start your application with <code class="inline">mix phx.server</code>
+and your API should be ready to try out. Should you be wondering what routes are available, you can
+print all available routes for each Resource:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Helpdesk.Support.Ticket</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">AshJsonApi.Resource.Info</span><span class="o">.</span><span class="n">routes</span><span class="p" data-group-id="7388115009-1">(</span><span class="nc">Helpdesk.Support</span><span class="p" data-group-id="7388115009-1">)</span></code></pre><p>Make sure that all requests you make to the API use the <code class="inline">application/vnd.api+json</code> type in both the
+<code class="inline">Accept</code> and <code class="inline">Content-Type</code> (where applicable) headers. The <code class="inline">Accept</code> header may be omitted.</p><p>Examples:</p><ol><li>Create a ticket<pre><code class="makeup bash" translate="no"><span class="">curl -X POST &#39;localhost:4000/api/json/helpdesk/tickets&#39; \
+</span><span class="">--header &#39;Accept: application/vnd.api+json&#39; \
+</span><span class="">--header &#39;Content-Type: application/vnd.api+json&#39; \
+</span><span class="">--data-raw &#39;{
+</span><span class="">  &quot;data&quot;: {
+</span><span class="">    &quot;type&quot;: &quot;ticket&quot;,
+</span><span class="">    &quot;attributes&quot;: {
+</span><span class="">      &quot;subject&quot;: &quot;This ticket was created through the JSON API&quot;
+</span><span class="">    }
+</span><span class="">  }
+</span><span class="">}&#39;
+</span></code></pre></li><li>Get all tickets<pre><code class="makeup bash" translate="no"><span class="">curl &#39;localhost:4000/api/json/helpdesk/tickets&#39;
+</span></code></pre></li><li>Get a specific ticket<pre><code class="makeup bash" translate="no"><span class=""># Add the uuid of a Ticket you created earlier
+</span><span class="">curl &#39;localhost:4000/api/json/helpdesk/tickets/&lt;uuid&gt;&#39;
+</span></code></pre></li></ol><h2 id="open-api" class="section-heading">
+  <a href="#open-api" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Open API</span>
+</h2>
+<p>If you want to expose your API via Swagger UI or Redoc, see <a href="open-api.html">the open api documentation</a>.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="what-is-ash-json-api.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+What is AshJsonApi
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_json_api/1.4.7" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_json_api/1.4.7">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_json_api/1.4.7/show/documentation/tutorials/getting-started-with-ash-json-api.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_json_api.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

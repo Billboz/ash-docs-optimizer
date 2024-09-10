@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_postgres v2.3.1">
+
+
+    <title>Change Log — ash_postgres v2.3.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-59AEB2F8.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://ash-hq.org" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_postgres" />
+        </a>
+
+      <div>
+        <a href="https://ash-hq.org" class="sidebar-projectName" translate="no">
+ash_postgres
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.3.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_postgres</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Change Log</span>
+  </h1>
+
+<p>All notable changes to this project will be documented in this file.
+See <a href="Https://conventionalcommits.org">Conventional Commits</a> for commit guidelines.</p><!-- changelog --><h2 id="v2-3-1-2024-09-05" class="section-heading">
+  <a href="#v2-3-1-2024-09-05" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.3.0...v2.3.1">v2.3.1</a> (2024-09-05)</span>
+</h2>
+<h3 id="improvements" class="section-heading">
+  <a href="#improvements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<code class="inline">mix ash_postgres.gen.migrations</code>] better imported index names</p></li><li><p>[<code class="inline">mix ash_postgres.gen.migrations</code>] add <code class="inline">--extend</code> option, forwarded to generated resource</p></li></ul><h2 id="v2-3-0-2024-09-05" class="section-heading">
+  <a href="#v2-3-0-2024-09-05" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.2.5...v2.3.0">v2.3.0</a> (2024-09-05)</span>
+</h2>
+<h3 id="features" class="section-heading">
+  <a href="#features" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[<a href="Mix.Tasks.AshPostgres.Gen.Resources.html"><code class="inline">mix ash_postgres.gen.resources</code></a>] Add <a href="Mix.Tasks.AshPostgres.Gen.Resources.html"><code class="inline">mix ash_postgres.gen.resources</code></a> for importing tables from an existing database as resources</li></ul><h2 id="v2-2-5-2024-09-04" class="section-heading">
+  <a href="#v2-2-5-2024-09-04" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.2.4...v2.2.5">v2.2.5</a> (2024-09-04)</span>
+</h2>
+<h3 id="improvements-1" class="section-heading">
+  <a href="#improvements-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="AshPostgres.DataLayer.html"><code class="inline">AshPostgres.DataLayer</code></a>] support ash main upsert_condition logic</li></ul><h2 id="v2-2-4-2024-09-03" class="section-heading">
+  <a href="#v2-2-4-2024-09-03" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.2.3...v2.2.4">v2.2.4</a> (2024-09-03)</span>
+</h2>
+<h3 id="bug-fixes" class="section-heading">
+  <a href="#bug-fixes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[<a href="AshPostgres.DataLayer.html"><code class="inline">AshPostgres.DataLayer</code></a>] ensure default bindings are present on data layer</p></li><li><p>[<a href="AshPostgres.DataLayer.html"><code class="inline">AshPostgres.DataLayer</code></a>] properly traverse newtypes when determining types</p></li></ul><h2 id="v2-2-3-2024-08-18" class="section-heading">
+  <a href="#v2-2-3-2024-08-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.2.2...v2.2.3">v2.2.3</a> (2024-08-18)</span>
+</h2>
+<h3 id="bug-fixes-1" class="section-heading">
+  <a href="#bug-fixes-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[<a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a>] was not adding ash_functions/min_pg_version</li></ul><h2 id="v2-2-2-2024-08-17" class="section-heading">
+  <a href="#v2-2-2-2024-08-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.2.1...v2.2.2">v2.2.2</a> (2024-08-17)</span>
+</h2>
+<h3 id="bug-fixes-2" class="section-heading">
+  <a href="#bug-fixes-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[<a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a>] properly handle new igniter installer functions</li></ul><h2 id="v2-2-1-2024-08-16" class="section-heading">
+  <a href="#v2-2-1-2024-08-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.2.0...v2.2.1">v2.2.1</a> (2024-08-16)</span>
+</h2>
+<h3 id="bug-fixes-3" class="section-heading">
+  <a href="#bug-fixes-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[<a href="AshPostgres.DataLayer.html"><code class="inline">AshPostgres.DataLayer</code></a>] set a proper default for <code class="inline">skip_unique_indexes</code></li></ul><h3 id="improvements-2" class="section-heading">
+  <a href="#improvements-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a>] include <code class="inline">min_pg_version</code> in new generators</li></ul><h2 id="v2-2-0-2024-08-13" class="section-heading">
+  <a href="#v2-2-0-2024-08-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.19...v2.2.0">v2.2.0</a> (2024-08-13)</span>
+</h2>
+<h3 id="bug-fixes-4" class="section-heading">
+  <a href="#bug-fixes-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[<a href="AshPostgres.Repo.html"><code class="inline">AshPostgres.Repo</code></a>] remove <a href="https://hexdocs.pm/elixir/Agent.html"><code class="inline">Agent</code></a> &quot;convenience&quot; for determining min pg version</li></ul><p>We need to require that users provide this function. To that end we're
+adding a warning in a minor release branch telling users to define this.
+The agent was acting as a bottleneck that all queries must go through,
+causing nontrivial performance issues at scale.</p><ul><li>[upserts] handle filter condition on create (#368)</li></ul><h2 id="v2-1-19-2024-08-12" class="section-heading">
+  <a href="#v2-1-19-2024-08-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.18...v2.1.19">v2.1.19</a> (2024-08-12)</span>
+</h2>
+<h3 id="bug-fixes-5" class="section-heading">
+  <a href="#bug-fixes-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[ecto compatibility] we missed a change when preparing for ecto 3.12 parameterized type changes</p></li><li><p>[exists aggregates] update ash_sql for exists aggregate fixes</p></li></ul><h2 id="v2-1-18-2024-08-09" class="section-heading">
+  <a href="#v2-1-18-2024-08-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.17...v2.1.18">v2.1.18</a> (2024-08-09)</span>
+</h2>
+<h3 id="improvements-3" class="section-heading">
+  <a href="#improvements-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<code class="inline">ash_postgres.gen.migration</code>] dynamically select and allow setting a repo</li></ul><h2 id="v2-1-17-2024-07-27" class="section-heading">
+  <a href="#v2-1-17-2024-07-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.16...v2.1.17">v2.1.17</a> (2024-07-27)</span>
+</h2>
+<h3 id="improvements-4" class="section-heading">
+  <a href="#improvements-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<code class="inline">ash_sql</code>] update ash &amp; ash_sql for various fixes</li></ul><h2 id="v2-1-16-2024-07-25" class="section-heading">
+  <a href="#v2-1-16-2024-07-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.15...v2.1.16">v2.1.16</a> (2024-07-25)</span>
+</h2>
+<h3 id="bug-fixes-6" class="section-heading">
+  <a href="#bug-fixes-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[updates] don't overwrite non-updated fields on update</p></li><li><p>[<a href="Mix.Tasks.AshPostgres.GenerateMigrations.html"><code class="inline">mix ash_postgres.generate_migrations</code></a>] ensure app is compiled before using repo modules</p></li></ul><h3 id="improvements-5" class="section-heading">
+  <a href="#improvements-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<code class="inline">ash_sql</code>] update ash_sql for cleaner queries</li></ul><h2 id="v2-1-15-2024-07-23" class="section-heading">
+  <a href="#v2-1-15-2024-07-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.14...v2.1.15">v2.1.15</a> (2024-07-23)</span>
+</h2>
+<h3 id="bug-fixes-7" class="section-heading">
+  <a href="#bug-fixes-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[query building] use a subquery if any exists aggregates are in play</li></ul><h2 id="v2-1-14-2024-07-22" class="section-heading">
+  <a href="#v2-1-14-2024-07-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.13...v2.1.14">v2.1.14</a> (2024-07-22)</span>
+</h2>
+<h3 id="bug-fixes-8" class="section-heading">
+  <a href="#bug-fixes-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[multitenancy] properly convert tenant to string when building lateral join</li></ul><h2 id="v2-1-13-2024-07-22" class="section-heading">
+  <a href="#v2-1-13-2024-07-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.12...v2.1.13">v2.1.13</a> (2024-07-22)</span>
+</h2>
+<h3 id="bug-fixes-9" class="section-heading">
+  <a href="#bug-fixes-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[atomic validations] update ash &amp; ash_sql for fixes, test atomic validations in destroys</li></ul><h2 id="v2-1-12-2024-07-19" class="section-heading">
+  <a href="#v2-1-12-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.11...v2.1.12">v2.1.12</a> (2024-07-19)</span>
+</h2>
+<h3 id="bug-fixes-10" class="section-heading">
+  <a href="#bug-fixes-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[<a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a>] properly add prod config in installer</li></ul><h3 id="bug-fixes-11" class="section-heading">
+  <a href="#bug-fixes-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[<a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a>] properly perform or don't perform configuration modification code</p></li><li><p>[<code class="inline">has_many</code> relationships] allow non-unique has_many source_attributes (#355)</p></li></ul><h3 id="improvements-6" class="section-heading">
+  <a href="#improvements-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a>] prepend <code class="inline">:postgres</code> to section order</p></li><li><p>[<a href="https://hexdocs.pm/ash/3.4.4/Mix.Tasks.Ash.Patch.Extend.html"><code class="inline">mix ash.patch.extend</code></a>] pluralize table name in extender</p></li></ul><h2 id="v2-1-10-2024-07-18" class="section-heading">
+  <a href="#v2-1-10-2024-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.9...v2.1.10">v2.1.10</a> (2024-07-18)</span>
+</h2>
+<h3 id="bug-fixes-12" class="section-heading">
+  <a href="#bug-fixes-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[lateral joins] allow non-unique has_many source_attributes (#355)</li></ul><h2 id="v2-1-9-2024-07-18" class="section-heading">
+  <a href="#v2-1-9-2024-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.8...v2.1.9">v2.1.9</a> (2024-07-18)</span>
+</h2>
+<h3 id="bug-fixes-13" class="section-heading">
+  <a href="#bug-fixes-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<h3 id="improvements-7" class="section-heading">
+  <a href="#improvements-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="https://hexdocs.pm/ash/3.4.4/Mix.Tasks.Ash.Gen.Resource.html"><code class="inline">mix ash.gen.resource</code></a>] pluralize table name in extender</li></ul><h2 id="v2-1-8-2024-07-17" class="section-heading">
+  <a href="#v2-1-8-2024-07-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.7...v2.1.8">v2.1.8</a> (2024-07-17)</span>
+</h2>
+<h3 id="bug-fixes-14" class="section-heading">
+  <a href="#bug-fixes-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[aggregates] update ash_sql &amp; ash for include_nil? fix (and test it)</p></li><li><p>[aggregates] ensure synthesized query aggregates have context set</p></li></ul><h3 id="improvements-8" class="section-heading">
+  <a href="#improvements-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[installers] update igniter dependencies</p></li><li><p>[expressions] add <code class="inline">binding()</code> expression, for referring to the current table</p></li></ul><h2 id="v2-1-7-2024-07-17" class="section-heading">
+  <a href="#v2-1-7-2024-07-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.6...v2.1.7">v2.1.7</a> (2024-07-17)</span>
+</h2>
+<h3 id="bug-fixes-15" class="section-heading">
+  <a href="#bug-fixes-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>update to latest ash version for aggregate fix</p></li><li><p>update ash_sql for include_nil? fix and test it</p></li><li><p>ensure synthesized query aggregates have context set</p></li></ul><h3 id="improvements-9" class="section-heading">
+  <a href="#improvements-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>update ash/igniter dependencies</p></li><li><p>add <code class="inline">binding()</code> expression</p></li><li><p>use latest type casting code from ash</p></li><li><p>support new type determination code</p></li></ul><h2 id="v2-1-6-2024-07-16" class="section-heading">
+  <a href="#v2-1-6-2024-07-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.5...v2.1.6">v2.1.6</a> (2024-07-16)</span>
+</h2>
+<h3 id="bug-fixes-16" class="section-heading">
+  <a href="#bug-fixes-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>ensure synthesized query aggregates have context set</li></ul><h3 id="improvements-10" class="section-heading">
+  <a href="#improvements-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>update ash/igniter dependencies</p></li><li><p>add <code class="inline">binding()</code> expression</p></li><li><p>use latest type casting code from ash</p></li><li><p>support new type determination code</p></li></ul><h2 id="v2-1-5-2024-07-15" class="section-heading">
+  <a href="#v2-1-5-2024-07-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.4...v2.1.5">v2.1.5</a> (2024-07-15)</span>
+</h2>
+<h3 id="bug-fixes-17" class="section-heading">
+  <a href="#bug-fixes-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>ensure synthesized query aggregates have context set</li></ul><h3 id="improvements-11" class="section-heading">
+  <a href="#improvements-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[<a href="https://hexdocs.pm/ash/3.4.4/Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] add <code class="inline">binding()</code> expression to refer to current table</p></li><li><p>[<a href="https://hexdocs.pm/ash/3.4.4/Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] use latest type casting code from ash</p></li></ul><h2 id="v2-1-4-2024-07-14" class="section-heading">
+  <a href="#v2-1-4-2024-07-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.3...v2.1.4">v2.1.4</a> (2024-07-14)</span>
+</h2>
+<h3 id="improvements-12" class="section-heading">
+  <a href="#improvements-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="https://hexdocs.pm/ash/3.4.4/Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] use latest type casting code from ash</li></ul><h2 id="v2-1-3-2024-07-14" class="section-heading">
+  <a href="#v2-1-3-2024-07-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.2...v2.1.3">v2.1.3</a> (2024-07-14)</span>
+</h2>
+<h3 id="improvements-13" class="section-heading">
+  <a href="#improvements-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[<a href="https://hexdocs.pm/ash/3.4.4/Ash.Expr.html"><code class="inline">Ash.Expr</code></a>] support new type determination code</li></ul><h2 id="v2-1-2-2024-07-13" class="section-heading">
+  <a href="#v2-1-2-2024-07-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.1...v2.1.2">v2.1.2</a> (2024-07-13)</span>
+</h2>
+<ul><li>[query builder] update ash &amp; improve type casting behavior</li></ul><h2 id="v2-1-1-2024-07-10" class="section-heading">
+  <a href="#v2-1-1-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.1.0...v2.1.1">v2.1.1</a> (2024-07-10)</span>
+</h2>
+<h3 id="bug-fixes-18" class="section-heading">
+  <a href="#bug-fixes-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[mix ash_postgres.install] properly interpolate module names in installer</li></ul><h2 id="v2-1-0-2024-07-10" class="section-heading">
+  <a href="#v2-1-0-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.12...v2.1.0">v2.1.0</a> (2024-07-10)</span>
+</h2>
+<h3 id="features-1" class="section-heading">
+  <a href="#features-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[AshPostgres.DataLayer] add <code class="inline">storage_types</code> configuration (#342)</li><li>[generators] add <a href="Mix.Tasks.AshPostgres.Install.html"><code class="inline">mix ash_postgres.install</code></a> (<code class="inline">mix igniter.install ash_postgres</code>)</li></ul><h3 id="bug-fixes-19" class="section-heading">
+  <a href="#bug-fixes-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[AshPostgres.DataLayer] ensure that <code class="inline">from_many?</code> relationships in lateral join have a limit applied</p></li><li><p>[migration generator] properly delete args passed from migrate to ecto</p></li></ul><h3 id="improvements-14" class="section-heading">
+  <a href="#improvements-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[Ash.Type.UUIDv7] add support for <code class="inline">:uuid_v7</code> type (#333)</p></li><li><p>[migration generator] order keys in snapshot json (#339)</p></li></ul><h2 id="v2-0-12-2024-06-20" class="section-heading">
+  <a href="#v2-0-12-2024-06-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.11...v2.0.12">v2.0.12</a> (2024-06-20)</span>
+</h2>
+<h3 id="bug-fixes-20" class="section-heading">
+  <a href="#bug-fixes-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[migration generator] only add references indexes if they've changed</li></ul><h2 id="v2-0-11-2024-06-19" class="section-heading">
+  <a href="#v2-0-11-2024-06-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.10...v2.0.11">v2.0.11</a> (2024-06-19)</span>
+</h2>
+<h3 id="bug-fixes-21" class="section-heading">
+  <a href="#bug-fixes-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[AshPostgres.DataLayer] rework expression type detection</p></li><li><p>[migration generator] ensure index keys are atoms in generated migrations (#332)</p></li></ul><h2 id="v2-0-10-2024-06-18" class="section-heading">
+  <a href="#v2-0-10-2024-06-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.9...v2.0.10">v2.0.10</a> (2024-06-18)</span>
+</h2>
+<h3 id="bug-fixes-22" class="section-heading">
+  <a href="#bug-fixes-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[AshPostgres.DataLayer] update ash_sql to fix query generation issues</p></li><li><p>[migration generator] ensure that parens are always added to calculation generated SQL</p></li><li><p>[migration generator] properly get calculation sql</p></li></ul><h3 id="improvements-15" class="section-heading">
+  <a href="#improvements-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[AshPostgres.DataLayer] better type handling using new type inference</p></li><li><p>[identities] identities w/ calculations and where clauses in upserts</p></li></ul><h2 id="v2-0-9-2024-06-13" class="section-heading">
+  <a href="#v2-0-9-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.8...v2.0.9">v2.0.9</a> (2024-06-13)</span>
+</h2>
+<h3 id="features-2" class="section-heading">
+  <a href="#features-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[migration generator] autogenerate index in references (#321)</li></ul><h3 id="bug-fixes-23" class="section-heading">
+  <a href="#bug-fixes-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[AshPostgres.DataLayer] fix invalid select on sorting by some calculations</p></li><li><p>[AshPostgres.DataLayer] fix error message displaying in identity verifier</p></li><li><p>[lateral joining] ensure that context multitenancy is properly applied to lateral many-to-many joins</p></li><li><p>[migration generator] don't assume old snapshots have <code class="inline">index?</code> key for attributes</p></li><li><p>[ash.rollback] <code class="inline">list_tenants</code> -&gt; <code class="inline">all_tenants</code></p></li><li><p>[ash.rollback] when checking for roll back-able migrations, only check <code class="inline">Path.basename</code></p></li></ul><h3 id="improvements-16" class="section-heading">
+  <a href="#improvements-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[migration generator] don't sort identity keys.</li></ul><h2 id="v2-0-8-2024-06-06" class="section-heading">
+  <a href="#v2-0-8-2024-06-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.7...v2.0.8">v2.0.8</a> (2024-06-06)</span>
+</h2>
+<h2 id="v2-0-7-2024-06-06" class="section-heading">
+  <a href="#v2-0-7-2024-06-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.6...v2.0.7">v2.0.7</a> (2024-06-06)</span>
+</h2>
+<h3 id="bug-fixes-24" class="section-heading">
+  <a href="#bug-fixes-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[fix] update ash_sql and fix issues retaining lateral join context</p></li><li><p>[fix] ensure that all current attribute values are selected on bulk update shifted root query</p></li></ul><h2 id="v2-0-6-2024-05-29" class="section-heading">
+  <a href="#v2-0-6-2024-05-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.5...v2.0.6">v2.0.6</a> (2024-05-29)</span>
+</h2>
+<h3 id="bug-fixes-25" class="section-heading">
+  <a href="#bug-fixes-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[atomic updates] properly support aggregate references in atomic updates</p></li><li><p>[migration generator] ensure that identities are dropped when where/nils_distinct? are changed</p></li><li><p>[migration generator] ensure that <code class="inline">where</code> is wrapped in parenthesis</p></li><li><p>[ecto compatibility] support old/new parameterized type format</p></li></ul><h3 id="improvements-17" class="section-heading">
+  <a href="#improvements-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>[identities] require clarification of index names &gt; 63 characters</p></li><li><p>[mix ash_postgres.squash_snapshots] add <code class="inline">ash_postgres.squash_snapshots</code> mix task (#302)</p></li></ul><h2 id="v2-0-5-2024-05-24" class="section-heading">
+  <a href="#v2-0-5-2024-05-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.4...v2.0.5">v2.0.5</a> (2024-05-24)</span>
+</h2>
+<h3 id="improvements-18" class="section-heading">
+  <a href="#improvements-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[idenities] update <code class="inline">ash</code> and support new <code class="inline">identity</code> features</li></ul><h2 id="v2-0-4-2024-05-23" class="section-heading">
+  <a href="#v2-0-4-2024-05-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.3...v2.0.4">v2.0.4</a> (2024-05-23)</span>
+</h2>
+<h3 id="bug-fixes-26" class="section-heading">
+  <a href="#bug-fixes-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<p>[updates] ensure update's reselect all changing values</p><h2 id="v2-0-3-2024-05-22" class="section-heading">
+  <a href="#v2-0-3-2024-05-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.2...v2.0.3">v2.0.3</a> (2024-05-22)</span>
+</h2>
+<h3 id="bug-fixes-27" class="section-heading">
+  <a href="#bug-fixes-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<p>[updates] handle complex maps/list on update</p><p>[Ash.Query] support anonymous aggregates in sorts</p><p>[exists] ensure parent_as bindings properly reference binding names</p><p>[migration generator] add and remove custom indexes in tandem properly</p><h3 id="improvements-19" class="section-heading">
+  <a href="#improvements-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<p>[references] support <code class="inline">on_delete: :nilify</code> for specific columns (#289)</p><h2 id="v2-0-2-2024-05-15" class="section-heading">
+  <a href="#v2-0-2-2024-05-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.1...v2.0.2">v2.0.2</a> (2024-05-15)</span>
+</h2>
+<h3 id="bug-fixes-28" class="section-heading">
+  <a href="#bug-fixes-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>[update_query/destroy_query] rework the update and destroy query builder to support multiple kinds of joining</p></li><li><p>[mix ash_postgres.migrate] remove duplicate repo flags (#285)</p></li><li><p>[Ash.Error.Changes.StaleRecord] ensure filter is included in stale record error messages we return</p></li><li><p>[AshPostgres.MigrationGenerator] properly parse previous version from migration generation</p></li></ul><h2 id="v2-0-1-2024-05-12" class="section-heading">
+  <a href="#v2-0-1-2024-05-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.0...v2.0.1">v2.0.1</a> (2024-05-12)</span>
+</h2>
+<h3 id="bug-fixes-29" class="section-heading">
+  <a href="#bug-fixes-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[AshPostgres.MigrationGenerator] properly parse previous version of custom extensions when generating migrations</li></ul><h2 id="v2-0-0" class="section-heading">
+  <a href="#v2-0-0" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/ash_postgres/compare/v2.0.0...2.0">v2.0.0</a></span>
+</h2>
+<p>The changelog is starting over. Please see <code class="inline">/documentation/1.0-CHANGELOG.md</code> in GitHub for previous changelogs.</p><h3 id="breaking-changes" class="section-heading">
+  <a href="#breaking-changes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Breaking Changes:</span>
+</h3>
+<ul><li>[Ash.Type.UUID] change defaults in migrations for uuids to <code class="inline">gen_random_uuid()</code></li><li>[Ash.Type.DateTime] Use UTC for default generated timestamps (#131)</li><li>[AshPostgres.DataLayer] must now know the min_pg_version that will be used. By default we check this at repo startup by asking the database, but you can also define it yourself.</li><li>[AshPostgres.DataLayer] Now requires postgres version 14 or higher</li></ul><h3 id="features-3" class="section-heading">
+  <a href="#features-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Features:</span>
+</h3>
+<ul><li>[AshPostgres.Timestamptz] add timestamptz types (#266)</li><li>[AshPostgres.Repo] add <code class="inline">create?</code> and <code class="inline">drop?</code> callbacks to <a href="AshPostgres.Repo.html"><code class="inline">AshPostgres.Repo</code></a> (#143)</li><li>[AshPostgres.DataLayer] support <code class="inline">c:AshDataLayer.calculate/3</code> capability</li></ul><h3 id="bug-fixes-30" class="section-heading">
+  <a href="#bug-fixes-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>[AshPostgres.MigrationGenerator] honor dry_run option in extension migrations</li><li>[AshPostgres.MigrationGenerator] don't wait for shell input when checking migrations</li><li>[AshPostgres.DataLayer] ensure limit/offset triggers joining for update/destroy query</li><li>[AshPostgres.DataLayer] properly honor <code class="inline">limit</code> in bulk operations</li><li>[AshPostgres.DataLayer] ensure that <code class="inline">exists</code> with a filter paired with <code class="inline">from_many?</code> functions properly</li></ul><h3 id="improvements-20" class="section-heading">
+  <a href="#improvements-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>[AshPostgres.Repo] warn on missing ash-functions at compile time</li><li>[AshPostgres.Repo] add default implementation for pg_version, and rename to <code class="inline">min_pg_version</code></li><li>[mix ash.rollback] support <a href="https://hexdocs.pm/ash/3.4.4/Mix.Tasks.Ash.Rollback.html"><code class="inline">mix ash.rollback</code></a> with interactive rollback</li><li>[AshSql] move many internals out to <code class="inline">AshSql</code> package to be shared</li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="manual-relationships.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Manual Relationships
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashpostgres-datalayer.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: AshPostgres.DataLayer
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_postgres/2.3.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_postgres/2.3.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_postgres/2.3.1/show/CHANGELOG.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_postgres.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

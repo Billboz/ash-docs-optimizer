@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Dsl.Section — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Dsl.Section</span> 
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Declares a DSL section.</p><p>A dsl section allows you to organize related configurations. All extensions
+configure sections, they cannot add DSL builders to the top level. This
+keeps things organized, and concerns separated.</p><p>A section may have nested sections, which will be configured the same as other sections.
+Getting the options/entities of a section is done by providing a path, so you would
+use the nested path to retrieve that configuration. See <a href="Spark.Dsl.Extension.html#get_entities/2"><code class="inline">Spark.Dsl.Extension.get_entities/2</code></a>
+and <a href="Spark.Dsl.Extension.html#get_opt/4"><code class="inline">Spark.Dsl.Extension.get_opt/4</code></a>.</p><p>A section may have entities, which are constructors that produce instances of structs.
+For more on entities, see <a href="Spark.Dsl.Entity.html"><code class="inline">Spark.Dsl.Entity</code></a>.</p><p>A section may also have a <code class="inline">schema</code>, which you can learn more about in <a href="Spark.Options.html"><code class="inline">Spark.Options</code></a>. Spark will produce
+builders for those options, so that they may be configured. They are retrieved with
+<a href="Spark.Dsl.Extension.html#get_opt/4"><code class="inline">Spark.Dsl.Extension.get_opt/4</code></a>.</p><p>To create a section that is available at the top level (i.e not  nested inside of its own name), use
+<code class="inline">top_level?: true</code>. Remember, however, that this has no effect on sections nested inside of other sections.</p><p>For a full example, see <a href="Spark.Dsl.Extension.html"><code class="inline">Spark.Dsl.Extension</code></a>.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:auto_set_fields/0" data-no-tooltip translate="no">auto_set_fields()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:describe/0" data-no-tooltip translate="no">describe()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>User provided documentation.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:docs/0" data-no-tooltip translate="no">docs()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Internal field. Not set by user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:entities/0" data-no-tooltip translate="no">entities()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:examples/0" data-no-tooltip translate="no">examples()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:imports/0" data-no-tooltip translate="no">imports()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:links/0" data-no-tooltip translate="no">links()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:modules/0" data-no-tooltip translate="no">modules()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:name/0" data-no-tooltip translate="no">name()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:no_depend_modules/0" data-no-tooltip translate="no">no_depend_modules()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:patchable?/0" data-no-tooltip translate="no">patchable?()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:sections/0" data-no-tooltip translate="no">sections()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:snippet/0" data-no-tooltip translate="no">snippet()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:top_level?/0" data-no-tooltip translate="no">top_level?()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Determines whether a section can be declared directly in a module.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:auto_set_fields/0">
+
+  <div class="detail-header">
+    <a href="#t:auto_set_fields/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">auto_set_fields()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L107" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> auto_set_fields() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:describe/0">
+
+  <div class="detail-header">
+    <a href="#t:describe/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">describe()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L59" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> describe() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>User provided documentation.</p><p>Documentation provided in a <code class="inline">Section</code>'s <code class="inline">describe</code> field will be included by <a href="Spark.html"><code class="inline">Spark</code></a> in any generated documentation that includes the <code class="inline">Section</code>.</p>
+  </section>
+</section>
+<section class="detail" id="t:docs/0">
+
+  <div class="detail-header">
+    <a href="#t:docs/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">docs()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L116" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> docs() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Internal field. Not set by user.</p>
+  </section>
+</section>
+<section class="detail" id="t:entities/0">
+
+  <div class="detail-header">
+    <a href="#t:entities/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">entities()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L109" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> entities() :: [<a href="Spark.Dsl.Entity.html#t:t/0">Spark.Dsl.Entity.t</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:examples/0">
+
+  <div class="detail-header">
+    <a href="#t:examples/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">examples()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L101" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> examples() :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:imports/0">
+
+  <div class="detail-header">
+    <a href="#t:imports/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">imports()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L52" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> imports() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:links/0">
+
+  <div class="detail-header">
+    <a href="#t:links/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">links()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L99" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> links() :: nil | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>([<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()])</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:modules/0">
+
+  <div class="detail-header">
+    <a href="#t:modules/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">modules()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L103" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> modules() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:name/0">
+
+  <div class="detail-header">
+    <a href="#t:name/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">name()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L50" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> name() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:no_depend_modules/0">
+
+  <div class="detail-header">
+    <a href="#t:no_depend_modules/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">no_depend_modules()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L105" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> no_depend_modules() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:patchable?/0">
+
+  <div class="detail-header">
+    <a href="#t:patchable?/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">patchable?()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L118" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> patchable?() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:sections/0">
+
+  <div class="detail-header">
+    <a href="#t:sections/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">sections()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L111" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> sections() :: [<a href="#t:t/0">t</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:snippet/0">
+
+  <div class="detail-header">
+    <a href="#t:snippet/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">snippet()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L61" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> snippet() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L120" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Spark.Dsl.Section{
+  auto_set_fields: <a href="#t:auto_set_fields/0">auto_set_fields</a>(),
+  deprecations: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  describe: <a href="#t:describe/0">describe</a>(),
+  docs: <a href="#t:docs/0">docs</a>(),
+  entities: <a href="#t:entities/0">entities</a>(),
+  examples: <a href="#t:examples/0">examples</a>(),
+  imports: <a href="#t:imports/0">imports</a>(),
+  links: <a href="#t:links/0">links</a>(),
+  modules: <a href="#t:modules/0">modules</a>(),
+  name: <a href="#t:name/0">name</a>(),
+  no_depend_modules: <a href="#t:no_depend_modules/0">no_depend_modules</a>(),
+  patchable?: <a href="#t:patchable?/0">patchable?</a>(),
+  schema: <a href="Spark.Options.html#t:schema/0">Spark.Options.schema</a>(),
+  sections: <a href="#t:sections/0">sections</a>(),
+  snippet: <a href="#t:snippet/0">snippet</a>(),
+  top_level?: <a href="#t:top_level?/0">top_level?</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:top_level?/0">
+
+  <div class="detail-header">
+    <a href="#t:top_level?/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">top_level?()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/section.ex#L97" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> top_level?() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Determines whether a section can be declared directly in a module.</p><p>When <code class="inline">top_level?: true</code>, that Section's DSL can be declared outside of a <code class="inline">do</code> block in a module.</p><h2 id="t:top_level?/0-example" class="section-heading">
+  <a href="#t:top_level?/0-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<p>A <code class="inline">Section</code> declared with <code class="inline">top_level?: true</code>:</p><pre><code class="makeup elixir" translate="no"><span class="na">@my_section</span><span class="w"> </span><span class="p" data-group-id="7169934104-1">%</span><span class="nc" data-group-id="7169934104-1">Spark.Dsl.Section</span><span class="p" data-group-id="7169934104-1">{</span><span class="w">
+  </span><span class="ss">top_level?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:my_section</span><span class="p">,</span><span class="w">
+  </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7169934104-2">[</span><span class="ss">my_field</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7169934104-3">[</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w"> </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7169934104-3">]</span><span class="p" data-group-id="7169934104-2">]</span><span class="w">
+</span><span class="p" data-group-id="7169934104-1">}</span></code></pre><p>Can be declared like this:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyDslModule</span><span class="w"> </span><span class="k" data-group-id="9786531481-1">do</span><span class="w">
+  </span><span class="n">my_field</span><span class="w"> </span><span class="ss">:value</span><span class="w">
+</span><span class="k" data-group-id="9786531481-1">end</span></code></pre><p>With <code class="inline">top_level?: false</code>, the DSL section would need to be declared explicitly/:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyDslModule</span><span class="w"> </span><span class="k" data-group-id="4705323441-1">do</span><span class="w">
+  </span><span class="n">my_section</span><span class="w"> </span><span class="k" data-group-id="4705323441-2">do</span><span class="w">
+    </span><span class="n">my_field</span><span class="w"> </span><span class="ss">:value</span><span class="w">
+  </span><span class="k" data-group-id="4705323441-2">end</span><span class="w">
+</span><span class="k" data-group-id="4705323441-1">end</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

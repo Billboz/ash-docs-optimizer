@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_json_api v1.4.7">
+
+
+    <title>Authorize with AshJsonApi — ash_json_api v1.4.7</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-848724FA.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_json_api" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_json_api" class="sidebar-projectName" translate="no">
+ash_json_api
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.7
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_json_api</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_json_api/blob/v1.4.7/documentation/topics/authorize-with-json-api.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Authorize with AshJsonApi</span>
+</h1>
+
+<p>By default, <code class="inline">authorize?</code> in the domain is set to true. To disable authorization entirely for a given domain in graphql, use:</p><pre><code class="makeup elixir" translate="no"><span class="n">json_api</span><span class="w"> </span><span class="k" data-group-id="3932071476-1">do</span><span class="w">
+  </span><span class="n">authorize?</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="k" data-group-id="3932071476-1">end</span></code></pre><p>This is typically only necessary for testing purposes.</p><p>If you are doing authorization, you'll need to provide an <code class="inline">actor</code>.</p><h2 id="setting-the-actor-manually" class="section-heading">
+  <a href="#setting-the-actor-manually" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Setting the actor manually</span>
+</h2>
+<p>If you are using AshAuthentication, this will be done for you. To set the <code class="inline">actor</code> for authorization, you'll need to add an <code class="inline">actor</code> key to the
+<code class="inline">conn</code>. Typically, you would have a plug that fetches the current user and uses <a href="https://hexdocs.pm/ash/3.4.1/Ash.PlugHelpers.html#set_actor/2"><code class="inline">Ash.PlugHelpers.set_actor/2</code></a> to set the actor in the <code class="inline">conn</code> (likewise with <a href="https://hexdocs.pm/ash/3.4.1/Ash.PlugHelpers.html#set_tenant/2"><code class="inline">Ash.PlugHelpers.set_tenant/2</code></a>).</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAppWeb.Router</span><span class="w"> </span><span class="k" data-group-id="5685864712-1">do</span><span class="w">
+  </span><span class="n">pipeline</span><span class="w"> </span><span class="ss">:api</span><span class="w"> </span><span class="k" data-group-id="5685864712-2">do</span><span class="w">
+    </span><span class="c1"># ...</span><span class="w">
+    </span><span class="n">plug</span><span class="w"> </span><span class="ss">:get_actor_from_token</span><span class="w">
+  </span><span class="k" data-group-id="5685864712-2">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">get_actor_from_token</span><span class="p" data-group-id="5685864712-3">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p" data-group-id="5685864712-3">)</span><span class="w"> </span><span class="k" data-group-id="5685864712-4">do</span><span class="w">
+     </span><span class="k">with</span><span class="w"> </span><span class="p" data-group-id="5685864712-5">[</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="5685864712-5">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">get_req_header</span><span class="p" data-group-id="5685864712-6">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;authorization&quot;</span><span class="p" data-group-id="5685864712-6">)</span><span class="p">,</span><span class="w">
+         </span><span class="p" data-group-id="5685864712-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="c">_claims</span><span class="p" data-group-id="5685864712-7">}</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">MyApp.Guardian</span><span class="o">.</span><span class="n">resource_from_token</span><span class="p" data-group-id="5685864712-8">(</span><span class="n">token</span><span class="p" data-group-id="5685864712-8">)</span><span class="w"> </span><span class="k" data-group-id="5685864712-9">do</span><span class="w">
+      </span><span class="n">conn</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.PlugHelpers</span><span class="o">.</span><span class="n">set_actor</span><span class="p" data-group-id="5685864712-10">(</span><span class="n">user</span><span class="p" data-group-id="5685864712-10">)</span><span class="w">
+    </span><span class="k" data-group-id="5685864712-9">else</span><span class="w">
+    </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">conn</span><span class="w">
+    </span><span class="k" data-group-id="5685864712-9">end</span><span class="w">
+  </span><span class="k" data-group-id="5685864712-4">end</span><span class="w">
+</span><span class="k" data-group-id="5685864712-1">end</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="upgrade.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrading to AshJsonApi to 1.0
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="authenticate-with-json-api.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Authenticating with AshJsonApi
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_json_api/1.4.7" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_json_api/1.4.7">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_json_api/1.4.7/show/documentation/topics/authorize-with-json-api.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_json_api.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

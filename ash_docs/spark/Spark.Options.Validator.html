@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Options.Validator — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/validator.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Options.Validator</span> 
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Defines a validator module for an option schema.</p><p>Validators create structs with keys for each option in their schema,
+and an optimized <code class="inline">validate</code>, and <code class="inline">validate!</code> function on that struct.</p><h2 id="module-upgrading-from-options-lists" class="section-heading">
+  <a href="#module-upgrading-from-options-lists" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Upgrading from options lists</span>
+</h2>
+<p>You can pass the option <code class="inline">define_deprecated_access?: true</code> to <code class="inline">use Spark.Options.Validator</code>,
+which will make it such that <code class="inline">options[:foo]</code> will still work, but will emit a deprecation warning.
+This cane help with smoother upgrades.</p><h2 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<p>Given a module like the following:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyOptions</span><span class="w"> </span><span class="k" data-group-id="6643010956-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Options.Validator</span><span class="p">,</span><span class="w"> </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6643010956-2">[</span><span class="w">
+    </span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6643010956-3">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w">
+      </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="p" data-group-id="6643010956-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6643010956-4">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+    </span><span class="p" data-group-id="6643010956-4">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6643010956-5">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="p">,</span><span class="w">
+      </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="p" data-group-id="6643010956-5">]</span><span class="w">
+  </span><span class="p" data-group-id="6643010956-2">]</span><span class="w">
+</span><span class="k" data-group-id="6643010956-1">end</span></code></pre><p>You can use it like so:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># validate options</span><span class="w">
+
+</span><span class="nc">MyOptions</span><span class="o">.</span><span class="n">validate!</span><span class="p" data-group-id="5324779747-1">(</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="5324779747-1">)</span><span class="w">
+</span><span class="c1"># %MyOptions{foo: &quot;foo&quot;, bar: nil, baz: 10}</span><span class="w">
+
+</span><span class="c1"># retrieve original schema</span><span class="w">
+</span><span class="nc">MyOptions</span><span class="o">.</span><span class="n">schema</span><span class="p" data-group-id="5324779747-2">(</span><span class="p" data-group-id="5324779747-2">)</span><span class="w">
+</span><span class="c1"># foo: [type: :string, required: true], bar: [type: :string], baz: [type: :integer, default: 10]</span></code></pre>
+    </section>
+
+</div>
+
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

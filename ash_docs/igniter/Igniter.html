@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>Igniter — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Igniter</span> 
+    <small class="app-vsn" translate="no">(igniter v0.3.29)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Tools for generating and patching code into an Elixir project.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:zipper_updater/0" data-no-tooltip translate="no">zipper_updater()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_issue/2" data-no-tooltip translate="no">add_issue(igniter, issue)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds an issue to the issues list. Any issues will prevent writing and be displayed to the user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_notice/2" data-no-tooltip translate="no">add_notice(igniter, notice)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a notice to the notices list. Notices are displayed to the user once the igniter finishes running.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_task/3" data-no-tooltip translate="no">add_task(igniter, task, argv \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a task to the tasks list. Tasks will be run after all changes have been commited</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_warning/2" data-no-tooltip translate="no">add_warning(igniter, warning)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a warning to the warnings list. Warnings will not prevent writing, but will be displayed to the user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#apply_and_fetch_dependencies/2" data-no-tooltip translate="no">apply_and_fetch_dependencies(igniter, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Applies the current changes to the <code class="inline">mix.exs</code> in the Igniter and fetches dependencies.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#assign/2" data-no-tooltip translate="no">assign(igniter, key_vals)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#assign/3" data-no-tooltip translate="no">assign(igniter, key, value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Stores the key/value pair in <code class="inline">igniter.assigns</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compose_task/4" data-no-tooltip translate="no">compose_task(igniter, task, argv \\ [], fallback \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Finds the <a href="Igniter.Mix.Task.html"><code class="inline">Igniter.Mix.Task</code></a> task by name and composes it (calls its <code class="inline">igniter/2</code>) into the current igniter.
+If the task doesn't exist, a fallback implementation may be provided as the last argument.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#copy_template/5" data-no-tooltip translate="no">copy_template(igniter, source, target, assigns, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Copies an EEx template file from  the source path to the target path.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_new_elixir_file/4" data-no-tooltip translate="no">create_new_elixir_file(igniter, path, contents \\ &quot;&quot;, opts \\ [])</a>
+
+          <span class="deprecated" title="Use `create_new_file/4`">deprecated</span>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_new_file/4" data-no-tooltip translate="no">create_new_file(igniter, path, contents \\ &quot;&quot;, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new file in the project with the provided string contents. Adds an error if it already exists.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_or_update_elixir_file/4" data-no-tooltip translate="no">create_or_update_elixir_file(igniter, path, contents, updater)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates the given file in the project with the provided string contents, or updates it with a function of type <code class="inline">zipper_updater()</code> if it already exists.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_or_update_file/4" data-no-tooltip translate="no">create_or_update_file(igniter, path, contents, updater)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates the given file in the project with the provided string contents, or updates it with a function as in <a href="#update_file/3"><code class="inline">update_file/3</code></a> (or with <code class="inline">zipper_updater()</code> for elixir files) if it already exists.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#do_or_dry_run/2" data-no-tooltip translate="no">do_or_dry_run(igniter, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Executes or dry-runs a given Igniter.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#exists?/2" data-no-tooltip translate="no">exists?(igniter, path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Checks if a file exists on the file system or in the igniter.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#has_changes?/2" data-no-tooltip translate="no">has_changes?(igniter, paths \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns whether the current Igniter has pending changes.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#include_all_elixir_files/1" data-no-tooltip translate="no">include_all_elixir_files(igniter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>This function stores in the igniter if its been run before, so it is only run once, which is expensive.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#include_existing_elixir_file/3" data-no-tooltip translate="no">include_existing_elixir_file(igniter, path, opts \\ [])</a>
+
+          <span class="deprecated" title="Use `include_existing_file/3` instead">deprecated</span>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#include_existing_file/3" data-no-tooltip translate="no">include_existing_file(igniter, path, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Includes the given file in the project, expecting it to exist. Does nothing if its already been added.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#include_glob/2" data-no-tooltip translate="no">include_glob(igniter, glob)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Includes all files matching the given glob, expecting them all (for now) to be elixir files.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#include_or_create_elixir_file/3" data-no-tooltip translate="no">include_or_create_elixir_file(igniter, path, contents \\ &quot;&quot;)</a>
+
+          <span class="deprecated" title="Use `include_or_create_file/3` instead">deprecated</span>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#include_or_create_file/3" data-no-tooltip translate="no">include_or_create_file(igniter, path, contents \\ &quot;&quot;)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Includes or creates the given file in the project with the provided contents. Does nothing if its already been added.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_file/4" data-no-tooltip translate="no">move_file(igniter, from, from, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new/0" data-no-tooltip translate="no">new()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns a new igniter</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_assign/4" data-no-tooltip translate="no">update_assign(igniter, key, default, fun)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_elixir_file/3" data-no-tooltip translate="no">update_elixir_file(igniter, path, func)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates the source code of the given elixir file</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_file/4" data-no-tooltip translate="no">update_file(igniter, path, updater, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates a given file's <a href="https://hexdocs.pm/rewrite/0.10.5/Rewrite.Source.html"><code class="inline">Rewrite.Source</code></a></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_glob/3" data-no-tooltip translate="no">update_glob(igniter, glob, func)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates all files matching the given glob with the given zipper function.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L10" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Igniter{
+  assigns: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+  issues: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
+  moves: %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()},
+  notices: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()],
+  rewrite: <a href="https://hexdocs.pm/rewrite/0.10.5/Rewrite.html#t:t/0">Rewrite.t</a>(),
+  tasks: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | {<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]}],
+  warnings: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:zipper_updater/0">
+
+  <div class="detail-header">
+    <a href="#t:zipper_updater/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">zipper_updater()</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L20" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> zipper_updater() :: (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt;
+                       {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()}
+                       | {:error, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]})</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_issue/2">
+
+  <div class="detail-header">
+    <a href="#add_issue/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_issue(igniter, issue)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L224" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_issue(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Adds an issue to the issues list. Any issues will prevent writing and be displayed to the user.</p>
+  </section>
+</section>
+<section class="detail" id="add_notice/2">
+
+  <div class="detail-header">
+    <a href="#add_notice/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_notice(igniter, notice)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L236" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_notice(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Adds a notice to the notices list. Notices are displayed to the user once the igniter finishes running.</p>
+  </section>
+</section>
+<section class="detail" id="add_task/3">
+
+    <span id="add_task/2"></span>
+
+  <div class="detail-header">
+    <a href="#add_task/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_task(igniter, task, argv \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L245" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Adds a task to the tasks list. Tasks will be run after all changes have been commited</p>
+  </section>
+</section>
+<section class="detail" id="add_warning/2">
+
+  <div class="detail-header">
+    <a href="#add_warning/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_warning(igniter, warning)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L230" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_warning(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Adds a warning to the warnings list. Warnings will not prevent writing, but will be displayed to the user.</p>
+  </section>
+</section>
+<section class="detail" id="apply_and_fetch_dependencies/2">
+
+    <span id="apply_and_fetch_dependencies/1"></span>
+
+  <div class="detail-header">
+    <a href="#apply_and_fetch_dependencies/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">apply_and_fetch_dependencies(igniter, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L605" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Applies the current changes to the <code class="inline">mix.exs</code> in the Igniter and fetches dependencies.</p><p>Returns the remaining changes in the Igniter if successful.</p><h2 id="apply_and_fetch_dependencies/2-options" class="section-heading">
+  <a href="#apply_and_fetch_dependencies/2-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><code class="inline">:error_on_abort?</code> - If <code class="inline">true</code>, raises an error if the user aborts the operation. Returns the original igniter if not.</li><li><code class="inline">:yes</code> - If <code class="inline">true</code>, automatically applies the changes without prompting the user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="assign/2">
+
+  <div class="detail-header">
+    <a href="#assign/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">assign(igniter, key_vals)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L140" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="assign/3">
+
+  <div class="detail-header">
+    <a href="#assign/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">assign(igniter, key, value)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L136" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> assign(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Stores the key/value pair in <code class="inline">igniter.assigns</code></p>
+  </section>
+</section>
+<section class="detail" id="compose_task/4">
+
+    <span id="compose_task/2"></span>
+
+    <span id="compose_task/3"></span>
+
+  <div class="detail-header">
+    <a href="#compose_task/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">compose_task(igniter, task, argv \\ [], fallback \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L253" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Finds the <a href="Igniter.Mix.Task.html"><code class="inline">Igniter.Mix.Task</code></a> task by name and composes it (calls its <code class="inline">igniter/2</code>) into the current igniter.
+If the task doesn't exist, a fallback implementation may be provided as the last argument.</p>
+  </section>
+</section>
+<section class="detail" id="copy_template/5">
+
+    <span id="copy_template/4"></span>
+
+  <div class="detail-header">
+    <a href="#copy_template/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">copy_template(igniter, source, target, assigns, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L507" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> copy_template(
+  igniter :: <a href="#t:t/0">t</a>(),
+  target :: <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(),
+  source :: <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(),
+  assigns :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>(),
+  opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Copies an EEx template file from  the source path to the target path.</p><p>Accepts the same options as <a href="#create_new_file/4"><code class="inline">create_new_file/4</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="create_new_elixir_file/4">
+
+    <span id="create_new_elixir_file/2"></span>
+
+    <span id="create_new_elixir_file/3"></span>
+
+  <div class="detail-header">
+    <a href="#create_new_elixir_file/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_new_elixir_file(igniter, path, contents \\ &quot;&quot;, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L486" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. Use `create_new_file/4`.
+    </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="create_new_file/4">
+
+    <span id="create_new_file/2"></span>
+
+    <span id="create_new_file/3"></span>
+
+  <div class="detail-header">
+    <a href="#create_new_file/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_new_file(igniter, path, contents \\ &quot;&quot;, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L524" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a new file in the project with the provided string contents. Adds an error if it already exists.</p><h2 id="create_new_file/4-options" class="section-heading">
+  <a href="#create_new_file/4-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><code class="inline">:on_exists</code> - The action to take if the file already exists. Can be<ul><li><code class="inline">:error</code> (default) - Adds an error that prevents any eventual write.</li><li><code class="inline">:warning</code> - Warns when writing but continues (without overwriting)</li><li><code class="inline">:skip</code> - Skips writing the file without a warning</li><li><code class="inline">:overwrite</code> - Warns when writing and overwrites the content with the new content</li></ul></li></ul>
+  </section>
+</section>
+<section class="detail" id="create_or_update_elixir_file/4">
+
+  <div class="detail-header">
+    <a href="#create_or_update_elixir_file/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_or_update_elixir_file(igniter, path, contents, updater)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L425" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> create_or_update_elixir_file(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="#t:zipper_updater/0">zipper_updater</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Creates the given file in the project with the provided string contents, or updates it with a function of type <code class="inline">zipper_updater()</code> if it already exists.</p>
+  </section>
+</section>
+<section class="detail" id="create_or_update_file/4">
+
+  <div class="detail-header">
+    <a href="#create_or_update_file/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create_or_update_file(igniter, path, contents, updater)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L454" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates the given file in the project with the provided string contents, or updates it with a function as in <a href="#update_file/3"><code class="inline">update_file/3</code></a> (or with <code class="inline">zipper_updater()</code> for elixir files) if it already exists.</p>
+  </section>
+</section>
+<section class="detail" id="do_or_dry_run/2">
+
+    <span id="do_or_dry_run/1"></span>
+
+  <div class="detail-header">
+    <a href="#do_or_dry_run/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">do_or_dry_run(igniter, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L743" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Executes or dry-runs a given Igniter.</p>
+  </section>
+</section>
+<section class="detail" id="exists?/2">
+
+  <div class="detail-header">
+    <a href="#exists?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">exists?(igniter, path)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L322" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> exists?(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Checks if a file exists on the file system or in the igniter.</p>
+  </section>
+</section>
+<section class="detail" id="has_changes?/2">
+
+    <span id="has_changes?/1"></span>
+
+  <div class="detail-header">
+    <a href="#has_changes?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">has_changes?(igniter, paths \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L719" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns whether the current Igniter has pending changes.</p>
+  </section>
+</section>
+<section class="detail" id="include_all_elixir_files/1">
+
+  <div class="detail-header">
+    <a href="#include_all_elixir_files/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">include_all_elixir_files(igniter)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L705" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>This function stores in the igniter if its been run before, so it is only run once, which is expensive.</p>
+  </section>
+</section>
+<section class="detail" id="include_existing_elixir_file/3">
+
+    <span id="include_existing_elixir_file/2"></span>
+
+  <div class="detail-header">
+    <a href="#include_existing_elixir_file/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">include_existing_elixir_file(igniter, path, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L366" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. Use `include_existing_file/3` instead.
+    </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> include_existing_elixir_file(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="include_existing_file/3">
+
+    <span id="include_existing_file/2"></span>
+
+  <div class="detail-header">
+    <a href="#include_existing_file/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">include_existing_file(igniter, path, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L372" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> include_existing_file(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Includes the given file in the project, expecting it to exist. Does nothing if its already been added.</p>
+  </section>
+</section>
+<section class="detail" id="include_glob/2">
+
+  <div class="detail-header">
+    <a href="#include_glob/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">include_glob(igniter, glob)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L159" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> include_glob(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>() | <a href="https://hexdocs.pm/glob_ex/0.1.8/GlobEx.html#t:t/0">GlobEx.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Includes all files matching the given glob, expecting them all (for now) to be elixir files.</p>
+  </section>
+</section>
+<section class="detail" id="include_or_create_elixir_file/3">
+
+    <span id="include_or_create_elixir_file/2"></span>
+
+  <div class="detail-header">
+    <a href="#include_or_create_elixir_file/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">include_or_create_elixir_file(igniter, path, contents \\ &quot;&quot;)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L396" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. Use `include_or_create_file/3` instead.
+    </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> include_or_create_elixir_file(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(), contents :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="include_or_create_file/3">
+
+    <span id="include_or_create_file/2"></span>
+
+  <div class="detail-header">
+    <a href="#include_or_create_file/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">include_or_create_file(igniter, path, contents \\ &quot;&quot;)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L402" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> include_or_create_file(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(), contents :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Includes or creates the given file in the project with the provided contents. Does nothing if its already been added.</p>
+  </section>
+</section>
+<section class="detail" id="move_file/4">
+
+    <span id="move_file/3"></span>
+
+  <div class="detail-header">
+    <a href="#move_file/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_file(igniter, from, from, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L100" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="new/0">
+
+  <div class="detail-header">
+    <a href="#new/0" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new()</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L94" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> new() :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Returns a new igniter</p>
+  </section>
+</section>
+<section class="detail" id="update_assign/4">
+
+  <div class="detail-header">
+    <a href="#update_assign/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_assign(igniter, key, default, fun)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L146" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="update_elixir_file/3">
+
+  <div class="detail-header">
+    <a href="#update_elixir_file/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_elixir_file(igniter, path, func)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L300" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_elixir_file(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(), <a href="#t:zipper_updater/0">zipper_updater</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Updates the source code of the given elixir file</p>
+  </section>
+</section>
+<section class="detail" id="update_file/4">
+
+    <span id="update_file/3"></span>
+
+  <div class="detail-header">
+    <a href="#update_file/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_file(igniter, path, updater, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L339" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Updates a given file's <a href="https://hexdocs.pm/rewrite/0.10.5/Rewrite.Source.html"><code class="inline">Rewrite.Source</code></a></p>
+  </section>
+</section>
+<section class="detail" id="update_glob/3">
+
+  <div class="detail-header">
+    <a href="#update_glob/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_glob(igniter, glob, func)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter.ex#L202" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_glob(
+  <a href="#t:t/0">t</a>(),
+  <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>() | <a href="https://hexdocs.pm/glob_ex/0.1.8/GlobEx.html#t:t/0">GlobEx.t</a>(),
+  <a href="#t:zipper_updater/0">zipper_updater</a>()
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Updates all files matching the given glob with the given zipper function.</p><p>Adds any new files matching that glob to the igniter first.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

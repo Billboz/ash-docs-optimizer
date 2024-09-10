@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>API Reference — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>API Reference <small class="app-vsn">spark v2.2.24</small></span>
+  </h1>
+
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Modules</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.html" translate="no">Spark</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Documentation for <a href="Spark.html"><code class="inline">Spark</code></a>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.CheatSheet.html" translate="no">Spark.CheatSheet</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tools to generate cheat sheets for spark DSLs</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.CodeHelpers.html" translate="no">Spark.CodeHelpers</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Helpers for meta programming around code and code snippets</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.html" translate="no">Spark.Dsl</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>The primary entry point for adding a DSL to a module.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Builder.html" translate="no">Spark.Dsl.Builder</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for building DSL objects programatically, generally used in transformers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Entity.html" translate="no">Spark.Dsl.Entity</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Declares a DSL entity.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Extension.html" translate="no">Spark.Dsl.Extension</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>An extension to the Spark DSL.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Fragment.html" translate="no">Spark.Dsl.Fragment</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Allows splitting up a DSL into multiple modules, potentially organizing large DSLs</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Patch.AddEntity.html" translate="no">Spark.Dsl.Patch.AddEntity</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Supply this when defining an extension to add entity builders to another extension's section.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Section.html" translate="no">Spark.Dsl.Section</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Declares a DSL section.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Transformer.html" translate="no">Spark.Dsl.Transformer</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A transformer manipulates and/or validates the entire DSL state of a resource.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Verifier.html" translate="no">Spark.Dsl.Verifier</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A verifier gets the dsl state and can return <code class="inline">:ok</code> or <code class="inline">:error</code>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Dsl.Verifiers.VerifyEntityUniqueness.html" translate="no">Spark.Dsl.Verifiers.VerifyEntityUniqueness</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Verifies that each entity that has an identifier is unique at each path.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Error.DslError.html" translate="no">Spark.Error.DslError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Used when a DSL is incorrectly configured.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Formatter.html" translate="no">Spark.Formatter</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Formats Spark modules.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Igniter.html" translate="no">Spark.Igniter</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Helpers for patching Spark DSLs.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.InfoGenerator.html" translate="no">Spark.InfoGenerator</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Used to dynamically generate configuration functions for Spark extensions
+based on their DSL.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Options.html" translate="no">Spark.Options</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Provides a standard API to handle keyword-list-based options.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Options.Helpers.html" translate="no">Spark.Options.Helpers</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Helpers for use with spark options</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Options.ValidationError.html" translate="no">Spark.Options.ValidationError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>An error that is returned (or raised) when options are invalid.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.Options.Validator.html" translate="no">Spark.Options.Validator</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Defines a validator module for an option schema.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Spark.OptionsHelpers.html" translate="no">Spark.OptionsHelpers</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Helpers for working with options lists.</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+
+  <section class="details-list">
+    <h2 id="mix-tasks" class="section-heading">
+  <a href="#mix-tasks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Mix Tasks</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Spark.CheatSheets.html" translate="no">mix spark.cheat_sheets</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Creates cheat sheets for each Extension provided. Useful for CI with <code class="inline">--check</code> flag.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Spark.CheatSheetsInSearch.html" translate="no">mix spark.cheat_sheets_in_search</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Includes generated cheat sheets in the search bar</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Spark.Formatter.html" translate="no">mix spark.formatter</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Manages a variable called <code class="inline">spark_locals_without_parens</code> in the .formatter.exs from a list of DSL extensions.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Spark.Install.html" translate="no">mix spark.install</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Installs spark by adding the <a href="Spark.Formatter.html"><code class="inline">Spark.Formatter</code></a> plugin, and providing a basic configuration for it in <code class="inline">config.exs</code>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Spark.ReplaceDocLinks.html" translate="no">mix spark.replace_doc_links</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Replaces any documentation links with text appropriate for hex docs.</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="upgrade-to-2-0.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Upgrading to 2.0
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

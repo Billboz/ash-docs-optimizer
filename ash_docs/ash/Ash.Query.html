@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Ash.Query — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Ash.Query</span> 
+    <small class="app-vsn" translate="no">(ash v3.4.8)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>A data structure for reading data from a resource.</p><p>Ash queries are used for read actions and loads, and ultimately
+map to queries to a resource's data layer.</p><p>Queries are run by calling <code class="inline">Ash.read</code>.</p><p>Examples:</p><pre><code class="makeup elixir" translate="no"><span class="nc">MyApp.Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="0039653700-1">(</span><span class="n">likes</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0039653700-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="0039653700-2">(</span><span class="p" data-group-id="0039653700-3">[</span><span class="ss">:title</span><span class="p" data-group-id="0039653700-3">]</span><span class="p" data-group-id="0039653700-2">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="0039653700-4">(</span><span class="p" data-group-id="0039653700-4">)</span><span class="w">
+
+</span><span class="nc">MyApp.Author</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">aggregate</span><span class="p" data-group-id="0039653700-5">(</span><span class="ss">:published_post_count</span><span class="p">,</span><span class="w"> </span><span class="ss">:posts</span><span class="p">,</span><span class="w"> </span><span class="ss">query</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0039653700-6">[</span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0039653700-7">[</span><span class="ss">published</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0039653700-7">]</span><span class="p" data-group-id="0039653700-6">]</span><span class="p" data-group-id="0039653700-5">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="0039653700-8">(</span><span class="ss">published_post_count</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p" data-group-id="0039653700-8">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">limit</span><span class="p" data-group-id="0039653700-9">(</span><span class="mi">10</span><span class="p" data-group-id="0039653700-9">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="0039653700-10">(</span><span class="p" data-group-id="0039653700-10">)</span><span class="w">
+
+</span><span class="nc">MyApp.Author</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="0039653700-11">(</span><span class="p" data-group-id="0039653700-12">[</span><span class="ss">:post_count</span><span class="p">,</span><span class="w"> </span><span class="ss">:comment_count</span><span class="p" data-group-id="0039653700-12">]</span><span class="p" data-group-id="0039653700-11">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="0039653700-13">(</span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0039653700-14">[</span><span class="ss">:comments</span><span class="p" data-group-id="0039653700-14">]</span><span class="p" data-group-id="0039653700-13">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="0039653700-15">(</span><span class="p" data-group-id="0039653700-15">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:around_action_fun/0" data-no-tooltip translate="no">around_action_fun()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:around_callback/0" data-no-tooltip translate="no">around_callback()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:around_result/0" data-no-tooltip translate="no">around_result()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:around_transaction_fun/0" data-no-tooltip translate="no">around_transaction_fun()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#accessing/3" data-no-tooltip translate="no">accessing(query, types \\ [:attributes, :relationships, :calculations, :aggregates], only_public? \\ true)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns a list of attributes, aggregates, relationships, and calculations that are being loaded</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_error/3" data-no-tooltip translate="no">add_error(query, keys \\ [], message)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#after_action/2" data-no-tooltip translate="no">after_action(query, func)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#aggregate/4" data-no-tooltip translate="no">aggregate(query, name, kind, relationship)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds an aggregation to the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#aggregate/5" data-no-tooltip translate="no">aggregate(query, name, kind, relationship, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#apply_to/3" data-no-tooltip translate="no">apply_to(query, records, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#around_transaction/2" data-no-tooltip translate="no">around_transaction(query, func)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds an around_transaction hook to the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#authorize_results/2" data-no-tooltip translate="no">authorize_results(query, func)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#before_action/3" data-no-tooltip translate="no">before_action(query, func, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a before_action hook to the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build/3" data-no-tooltip translate="no">build(resource, domain \\ nil, keyword)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Builds a query from a keyword list.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#calculate/8" data-no-tooltip translate="no">calculate(query, name, type, module_and_opts, arguments \\ %{}, constraints \\ [], extra_context \\ %{}, new_calculation_opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a calculation to the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#clear_result/1" data-no-tooltip translate="no">clear_result(query)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Removes a result set previously with <a href="#set_result/2"><code class="inline">set_result/2</code></a></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#data_layer_query/2" data-no-tooltip translate="no">data_layer_query(ash_query, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Return the underlying data layer query for an ash query</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_argument/2" data-no-tooltip translate="no">delete_argument(query, argument_or_arguments)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Remove an argument from the query</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#deselect/2" data-no-tooltip translate="no">deselect(query, fields)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Ensure the the specified attributes are <code class="inline">nil</code> in the query results.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#distinct/2" data-no-tooltip translate="no">distinct(query, distincts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Get results distinct on the provided fields.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#distinct_sort/3" data-no-tooltip translate="no">distinct_sort(query, sorts, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Set a sort to determine how distinct records are selected.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#ensure_selected/2" data-no-tooltip translate="no">ensure_selected(query, fields)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Ensures that the given attributes are selected.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#equivalent_to/2" data-no-tooltip translate="no">equivalent_to(query, expr)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Determines if the filter statement of a query is equivalent to the provided expression.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#equivalent_to?/2" data-no-tooltip translate="no">equivalent_to?(query, expr)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#equivalent_to/2"><code class="inline">equivalent_to/2</code></a> but always returns a boolean. <code class="inline">:maybe</code> returns <code class="inline">false</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#fetch_argument/2" data-no-tooltip translate="no">fetch_argument(query, argument)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>fetches the value of an argument provided to the query or <code class="inline">:error</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#filter/2" data-no-tooltip translate="no">filter(query, filter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Attach a filter statement to the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#filter_input/2" data-no-tooltip translate="no">filter_input(query, filter)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Attach a filter statement to the query labelled as user input.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#for_read/4" data-no-tooltip translate="no">for_read(query, action_name, args \\ %{}, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a query for a given read action and prepares it.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_argument/2" data-no-tooltip translate="no">get_argument(query, argument)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets the value of an argument provided to the query</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#limit/2" data-no-tooltip translate="no">limit(query, limit)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Limit the results returned from the query</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#load/3" data-no-tooltip translate="no">load(query, load_statement, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Loads relationships, calculations, or aggregates on the resource.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#load_calculation_as/5" data-no-tooltip translate="no">load_calculation_as(query, calc_name, as_name, opts_or_args \\ %{}, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a resource calculation to the query as a custom calculation with the provided name.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#load_through/4" data-no-tooltip translate="no">load_through(query, type, name, load)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds a load statement to the result of an attribute or calculation.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#loading?/2" data-no-tooltip translate="no">loading?(query, item)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns true if the field/relationship or path to field/relationship is being loaded.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#lock/2" data-no-tooltip translate="no">lock(query, lock_type)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Lock the query results.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#merge_query_load/3" data-no-tooltip translate="no">merge_query_load(left, right, context)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Merges two query's load statements, for the purpose of handling calculation requirements.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new/2" data-no-tooltip translate="no">new(resource, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Create a new query</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#offset/2" data-no-tooltip translate="no">offset(query, offset)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Skip the first n records</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#page/2" data-no-tooltip translate="no">page(query, page_opts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets the pagination options of the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#put_context/3" data-no-tooltip translate="no">put_context(query, key, value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets a specific context key to a specific value</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#select/3" data-no-tooltip translate="no">select(query, fields, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Ensure that only the specified <em>attributes</em> are present in the results.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#selecting?/2" data-no-tooltip translate="no">selecting?(query, field)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_argument/3" data-no-tooltip translate="no">set_argument(query, argument, value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add an argument to the query, which can be used in filter templates on actions</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_arguments/2" data-no-tooltip translate="no">set_arguments(query, map)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Merge a map of arguments to the arguments list</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_context/2" data-no-tooltip translate="no">set_context(query, map)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Merge a map of values into the query context</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_domain/2" data-no-tooltip translate="no">set_domain(query, domain)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Set the query's domain, and any loaded query's domain</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_result/2" data-no-tooltip translate="no">set_result(query, result)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Set the result of the action. This will prevent running the underlying datalayer behavior</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_tenant/2" data-no-tooltip translate="no">set_tenant(query, tenant)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#sort/3" data-no-tooltip translate="no">sort(query, sorts, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sort the results based on attributes, aggregates or calculations.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#sort_input/3" data-no-tooltip translate="no">sort_input(query, sorts, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Attach a sort statement to the query labelled as user input.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#struct?/1" data-no-tooltip translate="no">struct?(arg1)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#subset_of/2" data-no-tooltip translate="no">subset_of(query, expr)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Determines if the provided expression would return data that is a suprset of the data returned by the filter on the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#subset_of?/2" data-no-tooltip translate="no">subset_of?(query, expr)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#subset_of/2"><code class="inline">subset_of/2</code></a> but always returns a boolean. <code class="inline">:maybe</code> returns <code class="inline">false</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#superset_of/2" data-no-tooltip translate="no">superset_of(query, expr)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Determines if the provided expression would return data that is a subset of the data returned by the filter on the query.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#superset_of?/2" data-no-tooltip translate="no">superset_of?(query, expr)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#superset_of/2"><code class="inline">superset_of/2</code></a> but always returns a boolean. <code class="inline">:maybe</code> returns <code class="inline">false</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#timeout/2" data-no-tooltip translate="no">timeout(query, timeout)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unload/2" data-no-tooltip translate="no">unload(query, fields)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Removes a field from the list of fields to load</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unset/2" data-no-tooltip translate="no">unset(query, keys)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:around_action_fun/0">
+
+  <div class="detail-header">
+    <a href="#t:around_action_fun/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">around_action_fun()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L109" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> around_action_fun() :: (<a href="#t:t/0">t</a>(), <a href="#t:around_callback/0">around_callback</a>() -&gt; <a href="#t:around_result/0">around_result</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:around_callback/0">
+
+  <div class="detail-header">
+    <a href="#t:around_callback/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">around_callback()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L108" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> around_callback() :: (<a href="#t:t/0">t</a>() -&gt; <a href="#t:around_result/0">around_result</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:around_result/0">
+
+  <div class="detail-header">
+    <a href="#t:around_result/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">around_result()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L105" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> around_result() :: {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]} | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:around_transaction_fun/0">
+
+  <div class="detail-header">
+    <a href="#t:around_transaction_fun/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">around_transaction_fun()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L111" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> around_transaction_fun() :: (<a href="#t:t/0">t</a>() -&gt;
+                               {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()})</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L67" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Ash.Query{
+  __validated_for_action__: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | nil,
+  action: <a href="Ash.Resource.Actions.Read.html#t:t/0">Ash.Resource.Actions.Read.t</a>() | nil,
+  action_failed?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  after_action: [
+    (<a href="#t:t/0">t</a>(), [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()] -&gt;
+       {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]}
+       | {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()], [<a href="Ash.Notifier.Notification.html#t:t/0">Ash.Notifier.Notification.t</a>()]}
+       | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()})
+  ],
+  aggregates: %{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; <a href="Ash.Filter.html#t:t/0">Ash.Filter.t</a>()},
+  arguments: %{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()},
+  around_transaction: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  authorize_results: [
+    (<a href="#t:t/0">t</a>(), [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()] -&gt;
+       {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()})
+  ],
+  before_action: [(<a href="#t:t/0">t</a>() -&gt; <a href="#t:t/0">t</a>())],
+  calculations: %{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; :wat},
+  context: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+  distinct: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  distinct_sort: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  domain: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | nil,
+  errors: [<a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()],
+  filter: <a href="Ash.Filter.html#t:t/0">Ash.Filter.t</a>() | nil,
+  invalid_keys: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  limit: nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  load: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()),
+  load_through: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  lock: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  offset: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  page: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>() | nil,
+  params: %{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()},
+  phase: :preparing | :before_action | :after_action | :executing,
+  resource: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  select: nil | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  sort: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), :asc | :desc}],
+  sort_input_indices: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  tenant: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  timeout: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>() | nil,
+  to_tenant: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  valid?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="accessing/3">
+
+    <span id="accessing/1"></span>
+
+    <span id="accessing/2"></span>
+
+  <div class="detail-header">
+    <a href="#accessing/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">accessing(query, types \\ [:attributes, :relationships, :calculations, :aggregates], only_public? \\ true)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1038" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns a list of attributes, aggregates, relationships, and calculations that are being loaded</p><p>Provide a list of field types to narrow down the returned results.</p>
+  </section>
+</section>
+<section class="detail" id="add_error/3">
+
+    <span id="add_error/2"></span>
+
+  <div class="detail-header">
+    <a href="#add_error/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_error(query, keys \\ [], message)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L3062" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="after_action/2">
+
+  <div class="detail-header">
+    <a href="#after_action/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">after_action(query, func)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L805" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> after_action(
+  <a href="#t:t/0">t</a>(),
+  (<a href="#t:t/0">t</a>(), [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()] -&gt;
+     {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]}
+     | {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()], [<a href="Ash.Notifier.Notification.html#t:t/0">Ash.Notifier.Notification.t</a>()]}
+     | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()})
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="aggregate/4">
+
+  <div class="detail-header">
+    <a href="#aggregate/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">aggregate(query, name, kind, relationship)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2299" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Adds an aggregation to the query.</p><p>Aggregations are made available on the <code class="inline">aggregates</code> field of the records returned</p><p>The filter option accepts either a filter or a keyword list of options to supply to build a limiting query for that aggregate.
+See the DSL docs for each aggregate type in the <a href="dsl-ash-resource.html#aggregates">Resource DSL docs</a> for more information.</p><p>Options:</p><ul><li>query: The query over the destination resource to use as a base for aggregation</li><li>default: The default value to use if the aggregate returns nil</li><li>filterable?: Whether or not this aggregate may be referenced in filters</li><li>type: The type of the aggregate</li><li>constraints: Type constraints for the aggregate's type</li><li>implementation: An implementation used when the aggregate kind is custom</li><li>read_action: The read action to use on the destination resource</li><li>authorize?: Whether or not to authorize access to this aggregate</li><li>join_filters: A map of relationship paths to filter expressions. See the aggregates guide for more.</li></ul>
+  </section>
+</section>
+<section class="detail" id="aggregate/5">
+
+  <div class="detail-header">
+    <a href="#aggregate/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">aggregate(query, name, kind, relationship, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2303" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="apply_to/3">
+
+    <span id="apply_to/2"></span>
+
+  <div class="detail-header">
+    <a href="#apply_to/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">apply_to(query, records, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2908" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> apply_to(<a href="#t:t/0">t</a>(), records :: [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()], opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) ::
+  {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="around_transaction/2">
+
+  <div class="detail-header">
+    <a href="#around_transaction/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">around_transaction(query, func)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L759" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> around_transaction(<a href="#t:t/0">t</a>(), <a href="#t:around_transaction_fun/0">around_transaction_fun</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Adds an around_transaction hook to the query.</p><p>Your function will get the query, and a callback that must be called with a query (that may be modified).
+The callback will return <code class="inline">{:ok, results}</code> or <code class="inline">{:error, error}</code>. You can modify these values, but the return value
+must be one of those types.</p><p>The around_transaction calls happen first, and then (after they each resolve their callbacks) the <code class="inline">before_action</code>
+hooks are called, followed by the <code class="inline">after_action</code> hooks being run. Then, the code that appeared <em>after</em> the callbacks were called is then run.</p><p>Warning: using this without understanding how it works can cause big problems.
+You <em>must</em> call the callback function that is provided to your hook, and the return value must
+contain the same structure that was given to you, i.e <code class="inline">{:ok, result_of_action}</code>.</p>
+  </section>
+</section>
+<section class="detail" id="authorize_results/2">
+
+  <div class="detail-header">
+    <a href="#authorize_results/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">authorize_results(query, func)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L793" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> authorize_results(
+  <a href="#t:t/0">t</a>(),
+  (<a href="#t:t/0">t</a>(), [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()] -&gt;
+     {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]}
+     | {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()], [<a href="Ash.Notifier.Notification.html#t:t/0">Ash.Notifier.Notification.t</a>()]}
+     | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()})
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="before_action/3">
+
+    <span id="before_action/2"></span>
+
+  <div class="detail-header">
+    <a href="#before_action/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">before_action(query, func, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L776" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> before_action(
+  query :: <a href="#t:t/0">t</a>(),
+  fun :: (<a href="#t:t/0">t</a>() -&gt; <a href="#t:t/0">t</a>() | {<a href="#t:t/0">t</a>(), [<a href="Ash.Notifier.Notification.html#t:t/0">Ash.Notifier.Notification.t</a>()]}),
+  opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Adds a before_action hook to the query.</p><p>Provide the option <code class="inline">prepend?: true</code> to place the hook before all
+other hooks instead of after.</p>
+  </section>
+</section>
+<section class="detail" id="build/3">
+
+    <span id="build/2"></span>
+
+  <div class="detail-header">
+    <a href="#build/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build(resource, domain \\ nil, keyword)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2204" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> build(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="#t:t/0">t</a>(), <a href="Ash.Domain.html#t:t/0">Ash.Domain.t</a>() | nil, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Builds a query from a keyword list.</p><p>This is used by certain query constructs like aggregates. It can also be used to manipulate a data structure
+before passing it to an ash query. It allows for building an entire query struct using only a keyword list.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">build</span><span class="p" data-group-id="1365558784-1">(</span><span class="nc">MyResource</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1365558784-2">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fred&quot;</span><span class="p" data-group-id="1365558784-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">sort</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1365558784-3">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:asc</span><span class="p" data-group-id="1365558784-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">load</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1365558784-4">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p" data-group-id="1365558784-4">]</span><span class="p">,</span><span class="w"> </span><span class="ss">offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="1365558784-1">)</span></code></pre><p>If you want to use the expression style filters, you can use <code class="inline">expr/1</code>.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="kn">import</span><span class="w"> </span><span class="nc">Ash.Expr</span><span class="p">,</span><span class="w"> </span><span class="ss">only</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3979550736-1">[</span><span class="ss">expr</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3979550736-1">]</span><span class="w">
+
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">build</span><span class="p" data-group-id="3979550736-2">(</span><span class="nc">Myresource</span><span class="p">,</span><span class="w"> </span><span class="ss">filter</span><span class="p">:</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="3979550736-3">(</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;marge&quot;</span><span class="p" data-group-id="3979550736-3">)</span><span class="p" data-group-id="3979550736-2">)</span></code></pre><h2 id="build/3-options" class="section-heading">
+  <a href="#build/3-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><p><code class="inline">:filter</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A filter keyword, map or expression</p></li><li><p><code class="inline">:filter_input</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A filter keyword or map, provided as input from an external source</p></li><li><p><code class="inline">:sort</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A sort list or keyword</p></li><li><p><code class="inline">:sort_input</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A sort list or keyword, provided as input from an external source</p></li><li><p><code class="inline">:distinct_sort</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A distinct_sort list or keyword</p></li><li><p><code class="inline">:limit</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">integer/0</code></a>) - A limit to apply</p></li><li><p><code class="inline">:offset</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">integer/0</code></a>) - An offset to apply</p></li><li><p><code class="inline">:load</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A load statement to add to the query</p></li><li><p><code class="inline">:select</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A select statement to add to the query</p></li><li><p><code class="inline">:ensure_selected</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - An ensure_selected statement to add to the query</p></li><li><p><code class="inline">:aggregate</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A custom aggregate to add to the query. Can be <code class="inline">{name, type, relationship}</code> or <code class="inline">{name, type, relationship, build_opts}</code></p></li><li><p><code class="inline">:calculate</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A custom calculation to add to the query. Can be <code class="inline">{name, module_and_opts}</code> or <code class="inline">{name, module_and_opts, context}</code></p></li><li><p><code class="inline">:distinct</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - A distinct clause to add to the query</p></li><li><p><code class="inline">:context</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">map/0</code></a>) - A map to merge into the query context</p></li></ul>
+  </section>
+</section>
+<section class="detail" id="calculate/8">
+
+    <span id="calculate/4"></span>
+
+    <span id="calculate/5"></span>
+
+    <span id="calculate/6"></span>
+
+    <span id="calculate/7"></span>
+
+  <div class="detail-header">
+    <a href="#calculate/8" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">calculate(query, name, type, module_and_opts, arguments \\ %{}, constraints \\ [], extra_context \\ %{}, new_calculation_opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2397" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Adds a calculation to the query.</p><p>Calculations are made available on the <code class="inline">calculations</code> field of the records returned</p><p>The <code class="inline">module_and_opts</code> argument accepts either a <code class="inline">module</code> or a <code class="inline">{module, opts}</code>. For more information
+on what that module should look like, see <a href="Ash.Resource.Calculation.html"><code class="inline">Ash.Resource.Calculation</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="clear_result/1">
+
+  <div class="detail-header">
+    <a href="#clear_result/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">clear_result(query)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1879" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> clear_result(<a href="#t:t/0">t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Removes a result set previously with <a href="#set_result/2"><code class="inline">set_result/2</code></a></p>
+  </section>
+</section>
+<section class="detail" id="data_layer_query/2">
+
+    <span id="data_layer_query/1"></span>
+
+  <div class="detail-header">
+    <a href="#data_layer_query/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">data_layer_query(ash_query, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2977" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Return the underlying data layer query for an ash query</p>
+  </section>
+</section>
+<section class="detail" id="delete_argument/2">
+
+  <div class="detail-header">
+    <a href="#delete_argument/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">delete_argument(query, argument_or_arguments)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1995" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Remove an argument from the query</p>
+  </section>
+</section>
+<section class="detail" id="deselect/2">
+
+  <div class="detail-header">
+    <a href="#deselect/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">deselect(query, fields)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1059" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Ensure the the specified attributes are <code class="inline">nil</code> in the query results.</p>
+  </section>
+</section>
+<section class="detail" id="distinct/2">
+
+  <div class="detail-header">
+    <a href="#distinct/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">distinct(query, distincts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2847" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> distinct(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Get results distinct on the provided fields.</p><p>Takes a list of fields to distinct on. Each call is additive, so to remove the <code class="inline">distinct</code> use
+<a href="#unset/2"><code class="inline">unset/2</code></a>.</p><p>Examples:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">distinct</span><span class="p" data-group-id="6002555792-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6002555792-2">[</span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:last_name</span><span class="p" data-group-id="6002555792-2">]</span><span class="p" data-group-id="6002555792-1">)</span><span class="w">
+
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">distinct</span><span class="p" data-group-id="6002555792-3">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">:email</span><span class="p" data-group-id="6002555792-3">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="distinct_sort/3">
+
+    <span id="distinct_sort/2"></span>
+
+  <div class="detail-header">
+    <a href="#distinct_sort/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">distinct_sort(query, sorts, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2874" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Set a sort to determine how distinct records are selected.</p><p>If none is set, any sort applied to the query will be used.</p><p>This is useful if you want to control how the <code class="inline">distinct</code> records
+are selected without affecting (necessarily, it may affect it if
+there is no sort applied) the overall sort of the query</p>
+  </section>
+</section>
+<section class="detail" id="ensure_selected/2">
+
+  <div class="detail-header">
+    <a href="#ensure_selected/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">ensure_selected(query, fields)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1018" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Ensures that the given attributes are selected.</p><p>The first call to <a href="#select/2"><code class="inline">select/2</code></a> will <em>limit</em> the fields to only the provided fields.
+Use <a href="#ensure_selected/2"><code class="inline">ensure_selected/2</code></a> to say &quot;select this field (or these fields) without deselecting anything else&quot;.</p><p>See <a href="#select/2"><code class="inline">select/2</code></a> for more.</p>
+  </section>
+</section>
+<section class="detail" id="equivalent_to/2">
+
+  <div class="detail-header">
+    <a href="#equivalent_to/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">equivalent_to(query, expr)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L888" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Determines if the filter statement of a query is equivalent to the provided expression.</p><p>This uses the satisfiability solver that is used when solving for policy authorizations. In complex scenarios, or when using
+custom database expressions, (like fragments in ash_postgres), this function may return <code class="inline">:maybe</code>. Use <code class="inline">supserset_of?</code> to always return
+a boolean.</p>
+  </section>
+</section>
+<section class="detail" id="equivalent_to?/2">
+
+  <div class="detail-header">
+    <a href="#equivalent_to?/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">equivalent_to?(query, expr)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L911" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Same as <a href="#equivalent_to/2"><code class="inline">equivalent_to/2</code></a> but always returns a boolean. <code class="inline">:maybe</code> returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="fetch_argument/2">
+
+  <div class="detail-header">
+    <a href="#fetch_argument/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">fetch_argument(query, argument)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1906" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> fetch_argument(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | :error</pre>
+
+      </div>
+
+<p>fetches the value of an argument provided to the query or <code class="inline">:error</code></p>
+  </section>
+</section>
+<section class="detail" id="filter/2">
+
+  <div class="detail-header">
+    <a href="#filter/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">filter(query, filter)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L373" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Attach a filter statement to the query.</p><p>The filter is applied as an &quot;and&quot; to any filters currently on the query.
+For more information on writing filters, see: <a href="Ash.Filter.html"><code class="inline">Ash.Filter</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="filter_input/2">
+
+  <div class="detail-header">
+    <a href="#filter_input/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">filter_input(query, filter)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L274" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Attach a filter statement to the query labelled as user input.</p><p>Filters added as user input (or filters constructed with <code class="inline">Ash.Filter.parse_input</code>)
+will honor any field policies on resources by replacing any references to the field
+with <code class="inline">nil</code> in cases where the actor should not be able to see the given field.</p><p>This function does not expect the expression style filter (because an external source
+could never reasonably provide that). Instead, use the keyword/map style syntax. For
+example:</p><p><code class="inline">expr(name == &quot;fred&quot;)</code></p><p>could be any of</p><ul><li>map syntax: <code class="inline">%{&quot;name&quot; =&gt; %{&quot;eq&quot; =&gt; &quot;fred&quot;}}</code></li><li>keyword syntax: <code class="inline">[name: [eq: &quot;fred&quot;]]</code></li></ul><p>See <a href="Ash.Filter.html"><code class="inline">Ash.Filter</code></a> for more.</p>
+  </section>
+</section>
+<section class="detail" id="for_read/4">
+
+    <span id="for_read/2"></span>
+
+    <span id="for_read/3"></span>
+
+  <div class="detail-header">
+    <a href="#for_read/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">for_read(query, action_name, args \\ %{}, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L498" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a query for a given read action and prepares it.</p><p>Multitenancy is <em>not</em> validated until an action is called. This allows you to avoid specifying a tenant until just before calling
+the domain action.</p><h3 id="for_read/4-arguments" class="section-heading">
+  <a href="#for_read/4-arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<p>Provide a map or keyword list of arguments for the read action</p><h3 id="for_read/4-opts" class="section-heading">
+  <a href="#for_read/4-opts" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Opts</span>
+</h3>
+<ul><li><p><code class="inline">:actor</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - set the actor, which can be used in any <a href="Ash.Resource.Change.html"><code class="inline">Ash.Resource.Change</code></a>s configured on the action. (in the <code class="inline">context</code> argument)</p></li><li><p><code class="inline">:authorize?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - set authorize?, which can be used in any <a href="Ash.Resource.Change.html"><code class="inline">Ash.Resource.Change</code></a>s configured on the action. (in the <code class="inline">context</code> argument)</p></li><li><p><code class="inline">:tracer</code> (one or a list of module that adopts <a href="Ash.Tracer.html"><code class="inline">Ash.Tracer</code></a>) - A tracer to use. Will be carried over to the action. For more information see <a href="Ash.Tracer.html"><code class="inline">Ash.Tracer</code></a>.</p></li><li><p><code class="inline">:tenant</code> (value that implements the <a href="Ash.ToTenant.html"><code class="inline">Ash.ToTenant</code></a> protocol) - set the tenant on the query</p></li><li><p><code class="inline">:skip_unknown_inputs</code> - A list of inputs that, if provided, will be ignored if they are not recognized by the action. Use <code class="inline">:*</code> to indicate all unknown keys.</p></li></ul>
+  </section>
+</section>
+<section class="detail" id="get_argument/2">
+
+  <div class="detail-header">
+    <a href="#get_argument/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_argument(query, argument)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1900" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_argument(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Gets the value of an argument provided to the query</p>
+  </section>
+</section>
+<section class="detail" id="limit/2">
+
+  <div class="detail-header">
+    <a href="#limit/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">limit(query, limit)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2493" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> limit(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Limit the results returned from the query</p>
+  </section>
+</section>
+<section class="detail" id="load/3">
+
+    <span id="load/2"></span>
+
+  <div class="detail-header">
+    <a href="#load/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">load(query, load_statement, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1291" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> load(
+  <a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()
+  | <a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>()
+  | <a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()
+  | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>() | <a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()]
+  | [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>() | <a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}],
+  <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Loads relationships, calculations, or aggregates on the resource.</p><p>By default, loading attributes has no effects, as all attributes are returned.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># Loading nested relationships</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1229859832-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1229859832-2">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1229859832-3">[</span><span class="ss">:author</span><span class="p">,</span><span class="w"> </span><span class="ss">:ratings</span><span class="p" data-group-id="1229859832-3">]</span><span class="p" data-group-id="1229859832-2">]</span><span class="p" data-group-id="1229859832-1">)</span><span class="w">
+
+</span><span class="c1"># Loading relationships with a query</span><span class="w">
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1229859832-4">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1229859832-5">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1229859832-6">[</span><span class="ss">author</span><span class="p">:</span><span class="w"> </span><span class="n">author_query</span><span class="p" data-group-id="1229859832-6">]</span><span class="p" data-group-id="1229859832-5">]</span><span class="p" data-group-id="1229859832-4">)</span></code></pre><p>By passing the <code class="inline">strict?: true</code> option, only specified attributes will be loaded when passing
+a list of fields to fetch on a relationship, which allows for more optimized data-fetching.</p><p>The select statement of any queries inside the load statement will not be affected.</p><p>Example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="2797219400-1">(</span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2797219400-2">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2797219400-3">[</span><span class="ss">:title</span><span class="p">,</span><span class="w"> </span><span class="ss">:published_at</span><span class="p" data-group-id="2797219400-3">]</span><span class="p" data-group-id="2797219400-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">strict?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="2797219400-1">)</span></code></pre><p>Here, the only fields that will be loaded on the <code class="inline">posts</code> relationship are <code class="inline">title</code> and
+<code class="inline">published_at</code>, in addition to any other fields that are required to be loaded, like the
+primary and relevant foreign keys.
+This entails that when using <code class="inline">strict?: true</code> and loading nested relationships, you will also
+always have to specify all the attributes you want to load alongside the nested relationships.</p><p>Example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1146361504-1">(</span><span class="n">post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1146361504-2">[</span><span class="ss">:title</span><span class="p">,</span><span class="w"> </span><span class="ss">:published_at</span><span class="p">,</span><span class="w"> </span><span class="ss">:other_needed_attribute</span><span class="p">,</span><span class="w"> </span><span class="ss">category</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1146361504-3">[</span><span class="ss">:name</span><span class="p" data-group-id="1146361504-3">]</span><span class="p" data-group-id="1146361504-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">strict?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1146361504-1">)</span></code></pre><p>If no fields are specified on a relationship when using <code class="inline">strict?: true</code>, all attributes will be
+loaded by default.</p><p>Example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="8509106237-1">(</span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8509106237-2">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:posts</span><span class="p" data-group-id="8509106237-2">]</span><span class="p">,</span><span class="w"> </span><span class="ss">strict?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="8509106237-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="load_calculation_as/5">
+
+    <span id="load_calculation_as/3"></span>
+
+    <span id="load_calculation_as/4"></span>
+
+  <div class="detail-header">
+    <a href="#load_calculation_as/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">load_calculation_as(query, calc_name, as_name, opts_or_args \\ %{}, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2468" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Adds a resource calculation to the query as a custom calculation with the provided name.</p><p>Example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load_calculation_as</span><span class="p" data-group-id="8580129646-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">:calculation</span><span class="p">,</span><span class="w"> </span><span class="ss">:some_name</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8580129646-2">%{</span><span class="p" data-group-id="8580129646-2">}</span><span class="p">,</span><span class="w"> </span><span class="ss">load_through</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8580129646-3">[</span><span class="ss">:foo</span><span class="p" data-group-id="8580129646-3">]</span><span class="p" data-group-id="8580129646-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="load_through/4">
+
+  <div class="detail-header">
+    <a href="#load_through/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">load_through(query, type, name, load)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1176" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Adds a load statement to the result of an attribute or calculation.</p><p>Uses <a href="Ash.Type.html#load/5"><code class="inline">Ash.Type.load/5</code></a> to request that the type load nested data.</p>
+  </section>
+</section>
+<section class="detail" id="loading?/2">
+
+  <div class="detail-header">
+    <a href="#loading?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">loading?(query, item)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1108" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns true if the field/relationship or path to field/relationship is being loaded.</p><p>It accepts an atom or a list of atoms, which is treated for as a &quot;path&quot;, i.e:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Resource</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="2688346664-1">(</span><span class="ss">friends</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2688346664-2">[</span><span class="ss">enemies</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2688346664-3">[</span><span class="ss">:score</span><span class="p" data-group-id="2688346664-3">]</span><span class="p" data-group-id="2688346664-2">]</span><span class="p" data-group-id="2688346664-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">loading?</span><span class="p" data-group-id="2688346664-4">(</span><span class="p" data-group-id="2688346664-5">[</span><span class="ss">:friends</span><span class="p">,</span><span class="w"> </span><span class="ss">:enemies</span><span class="p">,</span><span class="w"> </span><span class="ss">:score</span><span class="p" data-group-id="2688346664-5">]</span><span class="p" data-group-id="2688346664-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="no">true</span><span class="w">
+
+</span><span class="nc">Resource</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="2688346664-6">(</span><span class="ss">friends</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2688346664-7">[</span><span class="ss">enemies</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2688346664-8">[</span><span class="ss">:score</span><span class="p" data-group-id="2688346664-8">]</span><span class="p" data-group-id="2688346664-7">]</span><span class="p" data-group-id="2688346664-6">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">loading?</span><span class="p" data-group-id="2688346664-9">(</span><span class="p" data-group-id="2688346664-10">[</span><span class="ss">:friends</span><span class="p">,</span><span class="w"> </span><span class="ss">:score</span><span class="p" data-group-id="2688346664-10">]</span><span class="p" data-group-id="2688346664-9">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="no">false</span><span class="w">
+
+</span><span class="nc">Resource</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="2688346664-11">(</span><span class="ss">friends</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2688346664-12">[</span><span class="ss">enemies</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2688346664-13">[</span><span class="ss">:score</span><span class="p" data-group-id="2688346664-13">]</span><span class="p" data-group-id="2688346664-12">]</span><span class="p" data-group-id="2688346664-11">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">loading?</span><span class="p" data-group-id="2688346664-14">(</span><span class="ss">:friends</span><span class="p" data-group-id="2688346664-14">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="no">true</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="lock/2">
+
+  <div class="detail-header">
+    <a href="#lock/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">lock(query, lock_type)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2752" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> lock(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.DataLayer.html#t:lock_type/0">Ash.DataLayer.lock_type</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Lock the query results.</p><p>This must be run while in a transaction, and is not supported by all data layers.</p>
+  </section>
+</section>
+<section class="detail" id="merge_query_load/3">
+
+  <div class="detail-header">
+    <a href="#merge_query_load/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">merge_query_load(left, right, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1218" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Merges two query's load statements, for the purpose of handling calculation requirements.</p><p>This should only be used if you are writing a custom type that is loadable.
+See the callback documentation for <a href="Ash.Type.html#c:merge_load/4"><code class="inline">Ash.Type.merge_load/4</code></a> for more.</p>
+  </section>
+</section>
+<section class="detail" id="new/2">
+
+    <span id="new/1"></span>
+
+  <div class="detail-header">
+    <a href="#new/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new(resource, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L411" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> new(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="#t:t/0">t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Create a new query</p>
+  </section>
+</section>
+<section class="detail" id="offset/2">
+
+  <div class="detail-header">
+    <a href="#offset/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">offset(query, offset)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2512" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> offset(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Skip the first n records</p>
+  </section>
+</section>
+<section class="detail" id="page/2">
+
+  <div class="detail-header">
+    <a href="#page/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">page(query, page_opts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2037" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> page(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Sets the pagination options of the query.</p><p>Pass <code class="inline">nil</code> to disable pagination.</p><h3 id="page/2-limit-offset-pagination" class="section-heading">
+  <a href="#page/2-limit-offset-pagination" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Limit/offset pagination</span>
+</h3>
+<ul><li><p><code class="inline">:offset</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">non_neg_integer/0</code></a>) - The number of records to skip from the beginning of the query</p></li><li><p><code class="inline">:limit</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">pos_integer/0</code></a>) - The number of records to include in the page</p></li><li><p><code class="inline">:filter</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A filter to apply for pagination purposes, that should not be considered in the full count.<br/>This is used by the liveview paginator to only fetch the records that were <em>already</em> on the
+page when refreshing data, to avoid pages jittering.</p></li><li><p><code class="inline">:count</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Whether or not to return the page with a full count of all records</p></li></ul><h3 id="page/2-keyset-pagination" class="section-heading">
+  <a href="#page/2-keyset-pagination" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Keyset pagination</span>
+</h3>
+<ul><li><p><code class="inline">:before</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Get records that appear before the provided keyset (mutually exclusive with <code class="inline">after</code>)</p></li><li><p><code class="inline">:after</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Get records that appear after the provided keyset (mutually exclusive with <code class="inline">before</code>)</p></li><li><p><code class="inline">:limit</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">pos_integer/0</code></a>) - How many records to include in the page</p></li><li><p><code class="inline">:filter</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - See the <code class="inline">filter</code> option for offset pagination, this behaves the same.</p></li><li><p><code class="inline">:count</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Whether or not to return the page with a full count of all records</p></li></ul>
+  </section>
+</section>
+<section class="detail" id="put_context/3">
+
+  <div class="detail-header">
+    <a href="#put_context/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">put_context(query, key, value)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1862" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> put_context(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Sets a specific context key to a specific value</p><p>See <a href="#set_context/2"><code class="inline">set_context/2</code></a> for more information.</p>
+  </section>
+</section>
+<section class="detail" id="select/3">
+
+    <span id="select/2"></span>
+
+  <div class="detail-header">
+    <a href="#select/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">select(query, fields, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L846" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Ensure that only the specified <em>attributes</em> are present in the results.</p><p>The first call to <a href="#select/2"><code class="inline">select/2</code></a> will replace the default behavior of selecting
+all attributes. Subsequent calls to <a href="#select/2"><code class="inline">select/2</code></a> will combine the provided
+fields unless the <code class="inline">replace?</code> option is provided with a value of <code class="inline">true</code>.</p><p>If a field has been deselected, selecting it again will override that (because a single list of fields is tracked for selection)</p><p>Primary key attributes are always selected and cannot be deselected.</p><p>When attempting to load a relationship (or manage it with <a href="Ash.Changeset.html#manage_relationship/3"><code class="inline">Ash.Changeset.manage_relationship/3</code></a>),
+if the source field is not selected on the query/provided data an error will be produced. If loading
+a relationship with a query, an error is produced if the query does not select the destination field
+of the relationship.</p><p>Use <a href="#ensure_selected/2"><code class="inline">ensure_selected/2</code></a> if you wish to make sure a field has been selected, without deselecting any other fields.</p>
+  </section>
+</section>
+<section class="detail" id="selecting?/2">
+
+  <div class="detail-header">
+    <a href="#selecting?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">selecting?(query, field)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1078" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="set_argument/3">
+
+  <div class="detail-header">
+    <a href="#set_argument/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_argument(query, argument, value)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1922" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Add an argument to the query, which can be used in filter templates on actions</p>
+  </section>
+</section>
+<section class="detail" id="set_arguments/2">
+
+  <div class="detail-header">
+    <a href="#set_arguments/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_arguments(query, map)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2008" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Merge a map of arguments to the arguments list</p>
+  </section>
+</section>
+<section class="detail" id="set_context/2">
+
+  <div class="detail-header">
+    <a href="#set_context/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_context(query, map)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1890" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_context(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>() | nil) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Merge a map of values into the query context</p>
+  </section>
+</section>
+<section class="detail" id="set_domain/2">
+
+  <div class="detail-header">
+    <a href="#set_domain/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_domain(query, domain)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2274" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Set the query's domain, and any loaded query's domain</p>
+  </section>
+</section>
+<section class="detail" id="set_result/2">
+
+  <div class="detail-header">
+    <a href="#set_result/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_result(query, result)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1871" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_result(<a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Set the result of the action. This will prevent running the underlying datalayer behavior</p>
+  </section>
+</section>
+<section class="detail" id="set_tenant/2">
+
+  <div class="detail-header">
+    <a href="#set_tenant/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_tenant(query, tenant)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2020" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_tenant(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.ToTenant.html#t:t/0">Ash.ToTenant.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="sort/3">
+
+    <span id="sort/2"></span>
+
+  <div class="detail-header">
+    <a href="#sort/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">sort(query, sorts, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2795" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> sort(<a href="#t:t/0">t</a>() | <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Sort the results based on attributes, aggregates or calculations.</p><p>Calculations are supported if they are defined with expressions, which can be done one of two ways.</p><ol><li>with the shorthand <code class="inline">calculate :calc, :type, expr(a + b)</code></li><li>By defining <code class="inline">expression/2</code> in a custom calculation module</li></ol><p>See the guide on calculations for more.</p><p>Takes a list of fields to sort on, or a keyword list/mixed keyword list of fields and sort directions.
+The default sort direction is <code class="inline">:asc</code>.</p><p>Examples:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="4243757934-1">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4243757934-2">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p" data-group-id="4243757934-2">]</span><span class="p" data-group-id="4243757934-1">)</span><span class="w">
+
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="4243757934-3">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4243757934-4">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p" data-group-id="4243757934-4">]</span><span class="p" data-group-id="4243757934-3">)</span><span class="w">
+
+</span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="4243757934-5">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4243757934-6">[</span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="ss">:desc</span><span class="p">,</span><span class="w"> </span><span class="ss">bar</span><span class="p">:</span><span class="w"> </span><span class="ss">:asc</span><span class="p" data-group-id="4243757934-6">]</span><span class="p" data-group-id="4243757934-5">)</span></code></pre><h2 id="sort/3-options" class="section-heading">
+  <a href="#sort/3-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><code class="inline">prepend?</code> - set to <code class="inline">true</code> to put your sort at the front of the list of a sort is already specified</li></ul>
+  </section>
+</section>
+<section class="detail" id="sort_input/3">
+
+    <span id="sort_input/2"></span>
+
+  <div class="detail-header">
+    <a href="#sort_input/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">sort_input(query, sorts, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L293" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Attach a sort statement to the query labelled as user input.</p><p>Sorts added as user input (or filters constructed with <code class="inline">Ash.Filter.parse_input</code>)
+will honor any field policies on resources by replacing any references to the field
+with <code class="inline">nil</code> in cases where the actor should not be able to see the given field.</p>
+  </section>
+</section>
+<section class="detail" id="struct?/1">
+
+  <div class="detail-header">
+    <a href="#struct?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">struct?(arg1)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2016" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="subset_of/2">
+
+  <div class="detail-header">
+    <a href="#subset_of/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">subset_of(query, expr)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L971" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Determines if the provided expression would return data that is a suprset of the data returned by the filter on the query.</p><p>This uses the satisfiability solver that is used when solving for policy authorizations. In complex scenarios, or when using
+custom database expressions, (like fragments in ash_postgres), this function may return <code class="inline">:maybe</code>. Use <code class="inline">subset_of?</code> to always return
+a boolean.</p>
+  </section>
+</section>
+<section class="detail" id="subset_of?/2">
+
+  <div class="detail-header">
+    <a href="#subset_of?/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">subset_of?(query, expr)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L1004" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Same as <a href="#subset_of/2"><code class="inline">subset_of/2</code></a> but always returns a boolean. <code class="inline">:maybe</code> returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="superset_of/2">
+
+  <div class="detail-header">
+    <a href="#superset_of/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">superset_of(query, expr)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L924" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Determines if the provided expression would return data that is a subset of the data returned by the filter on the query.</p><p>This uses the satisfiability solver that is used when solving for policy authorizations. In complex scenarios, or when using
+custom database expressions, (like fragments in ash_postgres), this function may return <code class="inline">:maybe</code>. Use <code class="inline">supserset_of?</code> to always return
+a boolean.</p>
+  </section>
+</section>
+<section class="detail" id="superset_of?/2">
+
+  <div class="detail-header">
+    <a href="#superset_of?/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">superset_of?(query, expr)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L958" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Same as <a href="#superset_of/2"><code class="inline">superset_of/2</code></a> but always returns a boolean. <code class="inline">:maybe</code> returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="timeout/2">
+
+  <div class="detail-header">
+    <a href="#timeout/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">timeout(query, timeout)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L568" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="unload/2">
+
+  <div class="detail-header">
+    <a href="#unload/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">unload(query, fields)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2048" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> unload(<a href="#t:t/0">t</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Removes a field from the list of fields to load</p>
+  </section>
+</section>
+<section class="detail" id="unset/2">
+
+  <div class="detail-header">
+    <a href="#unset/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">unset(query, keys)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/query/query.ex#L2938" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> unset(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="#t:t/0">t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

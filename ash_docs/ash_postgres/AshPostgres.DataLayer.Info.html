@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_postgres v2.3.1">
+
+
+    <title>AshPostgres.DataLayer.Info — ash_postgres v2.3.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-59AEB2F8.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://ash-hq.org" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_postgres" />
+        </a>
+
+      <div>
+        <a href="https://ash-hq.org" class="sidebar-projectName" translate="no">
+ash_postgres
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.3.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_postgres</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">AshPostgres.DataLayer.Info</span> 
+    <small class="app-vsn" translate="no">(ash_postgres v2.3.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Introspection functions for </p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#base_filter_sql/1" data-no-tooltip translate="no">base_filter_sql(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A stringified version of the base_filter, to be used in a where clause when generating unique indexes</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#calculation_to_sql/2" data-no-tooltip translate="no">calculation_to_sql(resource, calc)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#calculations_to_sql/1" data-no-tooltip translate="no">calculations_to_sql(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A keyword list of calculations to their sql representation</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#check_constraints/1" data-no-tooltip translate="no">check_constraints(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured check_constraints for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#custom_indexes/1" data-no-tooltip translate="no">custom_indexes(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured custom_indexes for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#custom_statements/1" data-no-tooltip translate="no">custom_statements(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured custom_statements for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#exclusion_constraint_names/1" data-no-tooltip translate="no">exclusion_constraint_names(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured exclusion_constraint_names</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#foreign_key_names/1" data-no-tooltip translate="no">foreign_key_names(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured foreign_key_names</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#global_upsert_keys/1" data-no-tooltip translate="no">global_upsert_keys(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A list of keys to always include in upserts.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#identity_index_names/1" data-no-tooltip translate="no">identity_index_names(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured identity_index_names</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#identity_where_to_sql/2" data-no-tooltip translate="no">identity_where_to_sql(resource, identity)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#identity_wheres_to_sql/1" data-no-tooltip translate="no">identity_wheres_to_sql(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A keyword list of identity names to the sql representation of their where clauses</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#manage_tenant_create?/1" data-no-tooltip translate="no">manage_tenant_create?(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Whether or not to create a tenant for a given resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#manage_tenant_template/1" data-no-tooltip translate="no">manage_tenant_template(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The template for a managed tenant</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#manage_tenant_update?/1" data-no-tooltip translate="no">manage_tenant_update?(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Whether or not to update a tenant for a given resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#migrate?/1" data-no-tooltip translate="no">migrate?(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Whether or not the resource should be included when generating migrations</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#migration_defaults/1" data-no-tooltip translate="no">migration_defaults(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A keyword list of customized migration defaults</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#migration_ignore_attributes/1" data-no-tooltip translate="no">migration_ignore_attributes(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A list of attributes to be ignored when generating migrations</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#migration_types/1" data-no-tooltip translate="no">migration_types(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A keyword list of customized migration types</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#min_pg_version/1" data-no-tooltip translate="no">min_pg_version(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets the resource's repo's postgres version</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#pg_version_matches?/2" data-no-tooltip translate="no">pg_version_matches?(resource, requirement)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Checks a version requirement against the resource's repo's postgres version</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#polymorphic?/1" data-no-tooltip translate="no">polymorphic?(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured polymorphic? for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#polymorphic_name/1" data-no-tooltip translate="no">polymorphic_name(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured polymorphic_reference_name for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#polymorphic_on_delete/1" data-no-tooltip translate="no">polymorphic_on_delete(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured polymorphic_reference_on_delete for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#polymorphic_on_update/1" data-no-tooltip translate="no">polymorphic_on_update(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured polymorphic_reference_on_update for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#reference/2" data-no-tooltip translate="no">reference(resource, relationship)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured reference for a given relationship of a  resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#references/1" data-no-tooltip translate="no">references(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured references for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#repo/2" data-no-tooltip translate="no">repo(resource, type \\ :mutate)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured repo for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#schema/1" data-no-tooltip translate="no">schema(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured schema for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#simple_join_first_aggregates/1" data-no-tooltip translate="no">simple_join_first_aggregates(resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#skip_identities/1" data-no-tooltip translate="no">skip_identities(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Identities not to include in the migrations</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#skip_unique_indexes/1" data-no-tooltip translate="no">skip_unique_indexes(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Skip generating unique indexes when generating migrations</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#storage_types/1" data-no-tooltip translate="no">storage_types(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A keyword list of customized storage types</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#table/1" data-no-tooltip translate="no">table(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured table for a resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unique_index_names/1" data-no-tooltip translate="no">unique_index_names(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The configured unique_index_names</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="base_filter_sql/1">
+
+  <div class="detail-header">
+    <a href="#base_filter_sql/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">base_filter_sql(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L174" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A stringified version of the base_filter, to be used in a where clause when generating unique indexes</p>
+  </section>
+</section>
+<section class="detail" id="calculation_to_sql/2">
+
+  <div class="detail-header">
+    <a href="#calculation_to_sql/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">calculation_to_sql(resource, calc)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L22" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="calculations_to_sql/1">
+
+  <div class="detail-header">
+    <a href="#calculations_to_sql/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">calculations_to_sql(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L18" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A keyword list of calculations to their sql representation</p>
+  </section>
+</section>
+<section class="detail" id="check_constraints/1">
+
+  <div class="detail-header">
+    <a href="#check_constraints/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">check_constraints(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L104" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured check_constraints for a resource</p>
+  </section>
+</section>
+<section class="detail" id="custom_indexes/1">
+
+  <div class="detail-header">
+    <a href="#custom_indexes/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">custom_indexes(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L109" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured custom_indexes for a resource</p>
+  </section>
+</section>
+<section class="detail" id="custom_statements/1">
+
+  <div class="detail-header">
+    <a href="#custom_statements/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">custom_statements(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L114" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured custom_statements for a resource</p>
+  </section>
+</section>
+<section class="detail" id="exclusion_constraint_names/1">
+
+  <div class="detail-header">
+    <a href="#exclusion_constraint_names/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">exclusion_constraint_names(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L144" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured exclusion_constraint_names</p>
+  </section>
+</section>
+<section class="detail" id="foreign_key_names/1">
+
+  <div class="detail-header">
+    <a href="#foreign_key_names/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">foreign_key_names(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L159" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured foreign_key_names</p>
+  </section>
+</section>
+<section class="detail" id="global_upsert_keys/1">
+
+  <div class="detail-header">
+    <a href="#global_upsert_keys/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">global_upsert_keys(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L169" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A list of keys to always include in upserts.</p>
+  </section>
+</section>
+<section class="detail" id="identity_index_names/1">
+
+  <div class="detail-header">
+    <a href="#identity_index_names/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">identity_index_names(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L149" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured identity_index_names</p>
+  </section>
+</section>
+<section class="detail" id="identity_where_to_sql/2">
+
+  <div class="detail-header">
+    <a href="#identity_where_to_sql/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">identity_where_to_sql(resource, identity)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L31" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="identity_wheres_to_sql/1">
+
+  <div class="detail-header">
+    <a href="#identity_wheres_to_sql/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">identity_wheres_to_sql(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L27" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A keyword list of identity names to the sql representation of their where clauses</p>
+  </section>
+</section>
+<section class="detail" id="manage_tenant_create?/1">
+
+  <div class="detail-header">
+    <a href="#manage_tenant_create?/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">manage_tenant_create?(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L189" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Whether or not to create a tenant for a given resource</p>
+  </section>
+</section>
+<section class="detail" id="manage_tenant_template/1">
+
+  <div class="detail-header">
+    <a href="#manage_tenant_template/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">manage_tenant_template(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L184" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The template for a managed tenant</p>
+  </section>
+</section>
+<section class="detail" id="manage_tenant_update?/1">
+
+  <div class="detail-header">
+    <a href="#manage_tenant_update?/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">manage_tenant_update?(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L194" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Whether or not to update a tenant for a given resource</p>
+  </section>
+</section>
+<section class="detail" id="migrate?/1">
+
+  <div class="detail-header">
+    <a href="#migrate?/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">migrate?(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L164" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Whether or not the resource should be included when generating migrations</p>
+  </section>
+</section>
+<section class="detail" id="migration_defaults/1">
+
+  <div class="detail-header">
+    <a href="#migration_defaults/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">migration_defaults(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L94" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A keyword list of customized migration defaults</p>
+  </section>
+</section>
+<section class="detail" id="migration_ignore_attributes/1">
+
+  <div class="detail-header">
+    <a href="#migration_ignore_attributes/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">migration_ignore_attributes(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L99" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A list of attributes to be ignored when generating migrations</p>
+  </section>
+</section>
+<section class="detail" id="migration_types/1">
+
+  <div class="detail-header">
+    <a href="#migration_types/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">migration_types(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L84" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A keyword list of customized migration types</p>
+  </section>
+</section>
+<section class="detail" id="min_pg_version/1">
+
+  <div class="detail-header">
+    <a href="#min_pg_version/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">min_pg_version(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L43" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Gets the resource's repo's postgres version</p>
+  </section>
+</section>
+<section class="detail" id="pg_version_matches?/2">
+
+  <div class="detail-header">
+    <a href="#pg_version_matches?/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">pg_version_matches?(resource, requirement)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L36" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Checks a version requirement against the resource's repo's postgres version</p>
+  </section>
+</section>
+<section class="detail" id="polymorphic?/1">
+
+  <div class="detail-header">
+    <a href="#polymorphic?/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">polymorphic?(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L134" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured polymorphic? for a resource</p>
+  </section>
+</section>
+<section class="detail" id="polymorphic_name/1">
+
+  <div class="detail-header">
+    <a href="#polymorphic_name/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">polymorphic_name(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L129" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured polymorphic_reference_name for a resource</p>
+  </section>
+</section>
+<section class="detail" id="polymorphic_on_delete/1">
+
+  <div class="detail-header">
+    <a href="#polymorphic_on_delete/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">polymorphic_on_delete(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L119" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured polymorphic_reference_on_delete for a resource</p>
+  </section>
+</section>
+<section class="detail" id="polymorphic_on_update/1">
+
+  <div class="detail-header">
+    <a href="#polymorphic_on_update/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">polymorphic_on_update(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L124" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured polymorphic_reference_on_update for a resource</p>
+  </section>
+</section>
+<section class="detail" id="reference/2">
+
+  <div class="detail-header">
+    <a href="#reference/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">reference(resource, relationship)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L77" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured reference for a given relationship of a  resource</p>
+  </section>
+</section>
+<section class="detail" id="references/1">
+
+  <div class="detail-header">
+    <a href="#references/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">references(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L72" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured references for a resource</p>
+  </section>
+</section>
+<section class="detail" id="repo/2">
+
+    <span id="repo/1"></span>
+
+  <div class="detail-header">
+    <a href="#repo/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">repo(resource, type \\ :mutate)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L7" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured repo for a resource</p>
+  </section>
+</section>
+<section class="detail" id="schema/1">
+
+  <div class="detail-header">
+    <a href="#schema/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">schema(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L67" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured schema for a resource</p>
+  </section>
+</section>
+<section class="detail" id="simple_join_first_aggregates/1">
+
+  <div class="detail-header">
+    <a href="#simple_join_first_aggregates/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">simple_join_first_aggregates(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L62" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="skip_identities/1">
+
+  <div class="detail-header">
+    <a href="#skip_identities/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">skip_identities(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L154" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Identities not to include in the migrations</p>
+  </section>
+</section>
+<section class="detail" id="skip_unique_indexes/1">
+
+  <div class="detail-header">
+    <a href="#skip_unique_indexes/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">skip_unique_indexes(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L179" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Skip generating unique indexes when generating migrations</p>
+  </section>
+</section>
+<section class="detail" id="storage_types/1">
+
+  <div class="detail-header">
+    <a href="#storage_types/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">storage_types(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>A keyword list of customized storage types</p>
+  </section>
+</section>
+<section class="detail" id="table/1">
+
+  <div class="detail-header">
+    <a href="#table/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">table(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L58" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured table for a resource</p>
+  </section>
+</section>
+<section class="detail" id="unique_index_names/1">
+
+  <div class="detail-header">
+    <a href="#unique_index_names/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">unique_index_names(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/data_layer/info.ex#L139" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>The configured unique_index_names</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_postgres/2.3.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_postgres/2.3.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_postgres.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

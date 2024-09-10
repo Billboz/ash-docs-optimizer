@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_phoenix v2.1.2">
+
+
+    <title>API Reference — ash_phoenix v2.1.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-D13E551C.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_phoenix" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_phoenix" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_phoenix" class="sidebar-projectName" translate="no">
+ash_phoenix
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.1.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_phoenix</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_phoenix" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>API Reference <small class="app-vsn">ash_phoenix v2.1.2</small></span>
+  </h1>
+
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Modules</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.FilterForm.html" translate="no">AshPhoenix.FilterForm</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A module to help you create complex forms that generate Ash filters.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.FilterForm.Arguments.html" translate="no">AshPhoenix.FilterForm.Arguments</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents the arguments to a calculation being filtered on</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.FilterForm.Predicate.html" translate="no">AshPhoenix.FilterForm.Predicate</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an individual predicate appearing in a filter form.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.html" translate="no">AshPhoenix.Form</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A module to allow you to fluidly use resources with Phoenix forms.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.Auto.html" translate="no">AshPhoenix.Form.Auto</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A tool to automatically generate available nested forms based on a resource and action.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.InvalidPath.html" translate="no">AshPhoenix.Form.InvalidPath</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Raised when an invalid path is used to find, update or remove a form</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.NoActionConfigured.html" translate="no">AshPhoenix.Form.NoActionConfigured</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Raised when a form action should happen but no action of the appropriate type has been configured</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.NoDataLoaded.html" translate="no">AshPhoenix.Form.NoDataLoaded</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Raised when a data needed to be used but the required data was not loaded</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.NoFormConfigured.html" translate="no">AshPhoenix.Form.NoFormConfigured</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Raised when attempting to refer to a form but no nested form with that name was configured.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.NoResourceConfigured.html" translate="no">AshPhoenix.Form.NoResourceConfigured</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Raised when a form needed to be constructed but the resource for that form could not be determined</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.Form.WrappedValue.html" translate="no">AshPhoenix.Form.WrappedValue</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A sentinal value used when editing a union that has non-map values</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.FormData.Error.html" translate="no">AshPhoenix.FormData.Error</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A protocol for allowing errors to be rendered into a form.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.LiveView.html" translate="no">AshPhoenix.LiveView</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for keeping Ash query results up to date in a LiveView.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="AshPhoenix.SubdomainPlug.html" translate="no">AshPhoenix.SubdomainPlug</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>This is a basic plug that loads the current tenant assign from a given
+value set on subdomain.</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+
+  <section class="details-list">
+    <h2 id="mix-tasks" class="section-heading">
+  <a href="#mix-tasks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Mix Tasks</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.AshPhoenix.Gen.Html.html" translate="no">mix ash_phoenix.gen.html</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>This task renders .ex and .heex templates and copies them to specified directories.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.AshPhoenix.Gen.Live.html" translate="no">mix ash_phoenix.gen.live</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Generates liveviews for a given domain and resource.</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_phoenix/2.1.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_phoenix/2.1.2">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_phoenix.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

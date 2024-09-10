@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_authentication v4.0.4">
+
+
+    <title>DSL: AshAuthentication.AddOn.Confirmation — ash_authentication v4.0.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-BF9EDA45.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_authentication" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ash_authentication
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v4.0.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_authentication</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/team-alembic/ash_authentication/blob/main/documentation/dsls/DSL:-AshAuthentication.AddOn.Confirmation.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: AshAuthentication.AddOn.Confirmation</span>
+  </h1>
+
+<p>Confirmation support.</p><p>Sometimes when creating a new user, or changing a sensitive attribute (such as
+their email address) you may want to wait for the user to confirm by way of
+sending them a confirmation token to prove that it was really them that took
+the action.</p><p>In order to add confirmation to your resource, it must been the following
+minimum requirements:</p><ol><li>Have a primary key</li><li>Have at least one attribute you wish to confirm</li><li>Tokens must be enabled</li></ol><h2 id="example" class="section-heading">
+  <a href="#example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="w"> </span><span class="k" data-group-id="8421233623-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8421233623-2">[</span><span class="nc">AshAuthentication</span><span class="p" data-group-id="8421233623-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Accounts</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="8421233623-3">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="ss">:ci_string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="8421233623-3">end</span><span class="w">
+
+  </span><span class="n">authentication</span><span class="w"> </span><span class="k" data-group-id="8421233623-4">do</span><span class="w">
+    </span><span class="n">add_ons</span><span class="w"> </span><span class="k" data-group-id="8421233623-5">do</span><span class="w">
+      </span><span class="n">confirmation</span><span class="w"> </span><span class="ss">:confirm</span><span class="w"> </span><span class="k" data-group-id="8421233623-6">do</span><span class="w">
+        </span><span class="n">monitor_fields</span><span class="w"> </span><span class="p" data-group-id="8421233623-7">[</span><span class="ss">:email</span><span class="p" data-group-id="8421233623-7">]</span><span class="w">
+        </span><span class="n">sender</span><span class="w"> </span><span class="nc">MyApp.ConfirmationSender</span><span class="w">
+      </span><span class="k" data-group-id="8421233623-6">end</span><span class="w">
+    </span><span class="k" data-group-id="8421233623-5">end</span><span class="w">
+
+    </span><span class="n">strategies</span><span class="w"> </span><span class="k" data-group-id="8421233623-8">do</span><span class="w">
+      </span><span class="c1"># ...</span><span class="w">
+    </span><span class="k" data-group-id="8421233623-8">end</span><span class="w">
+  </span><span class="k" data-group-id="8421233623-4">end</span><span class="w">
+
+  </span><span class="n">identities</span><span class="w"> </span><span class="k" data-group-id="8421233623-9">do</span><span class="w">
+    </span><span class="n">identity</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8421233623-10">[</span><span class="ss">:email</span><span class="p" data-group-id="8421233623-10">]</span><span class="w"> </span><span class="k" data-group-id="8421233623-11">do</span><span class="w">
+      </span><span class="n">eager_check_with</span><span class="w"> </span><span class="nc">MyApp.Accounts</span><span class="w">
+    </span><span class="k" data-group-id="8421233623-11">end</span><span class="w">
+  </span><span class="k" data-group-id="8421233623-9">end</span><span class="w">
+</span><span class="k" data-group-id="8421233623-1">end</span></code></pre><h2 id="attributes" class="section-heading">
+  <a href="#attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Attributes</span>
+</h2>
+<p>A <code class="inline">confirmed_at</code> attribute will be added to your resource if it's not already
+present (see <code class="inline">confirmed_at_field</code> in the DSL documentation).</p><h2 id="actions" class="section-heading">
+  <a href="#actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Actions</span>
+</h2>
+<p>By default confirmation will add an action which updates the <code class="inline">confirmed_at</code>
+attribute as well as retrieving previously stored changes and applying them to
+the resource.</p><p>If you wish to perform the confirm action directly from your code you can do
+so via the <a href="AshAuthentication.Strategy.html"><code class="inline">AshAuthentication.Strategy</code></a> protocol.</p><h3 id="example-1" class="section-heading">
+  <a href="#example-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Info</span><span class="o">.</span><span class="n">strategy!</span><span class="p" data-group-id="9648548255-1">(</span><span class="nc">Example.User</span><span class="p">,</span><span class="w"> </span><span class="ss">:confirm</span><span class="p" data-group-id="9648548255-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9648548255-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p" data-group-id="9648548255-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Strategy</span><span class="o">.</span><span class="n">action</span><span class="p" data-group-id="9648548255-3">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="ss">:confirm</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9648548255-4">%{</span><span class="s">&quot;confirm&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">confirmation_token</span><span class="p" data-group-id="9648548255-5">(</span><span class="p" data-group-id="9648548255-5">)</span><span class="p" data-group-id="9648548255-4">}</span><span class="p" data-group-id="9648548255-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">user</span><span class="o">.</span><span class="n">confirmed_at</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">one_second_ago</span><span class="p" data-group-id="9648548255-6">(</span><span class="p" data-group-id="9648548255-6">)</span><span class="w">
+</span><span class="no">true</span></code></pre><h2 id="plugs" class="section-heading">
+  <a href="#plugs" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Plugs</span>
+</h2>
+<p>Confirmation provides a single endpoint for the <code class="inline">:confirm</code> phase.  If you wish
+to interact with the plugs directly, you can do so via the
+<a href="AshAuthentication.Strategy.html"><code class="inline">AshAuthentication.Strategy</code></a> protocol.</p><h3 id="example-2" class="section-heading">
+  <a href="#example-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Info</span><span class="o">.</span><span class="n">strategy!</span><span class="p" data-group-id="6532938312-1">(</span><span class="nc">Example.User</span><span class="p">,</span><span class="w"> </span><span class="ss">:confirm</span><span class="p" data-group-id="6532938312-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p" data-group-id="6532938312-2">(</span><span class="ss">:get</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/user/confirm&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6532938312-3">%{</span><span class="s">&quot;confirm&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">confirmation_token</span><span class="p" data-group-id="6532938312-4">(</span><span class="p" data-group-id="6532938312-4">)</span><span class="p" data-group-id="6532938312-3">}</span><span class="p" data-group-id="6532938312-2">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Strategy</span><span class="o">.</span><span class="n">plug</span><span class="p" data-group-id="6532938312-5">(</span><span class="n">strategy</span><span class="p">,</span><span class="w"> </span><span class="ss">:confirm</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p" data-group-id="6532938312-5">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="6532938312-6">{</span><span class="c">_conn</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6532938312-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p" data-group-id="6532938312-7">}</span><span class="p" data-group-id="6532938312-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Plug.Helpers</span><span class="o">.</span><span class="n">get_authentication_result</span><span class="p" data-group-id="6532938312-8">(</span><span class="n">conn</span><span class="p" data-group-id="6532938312-8">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">user</span><span class="o">.</span><span class="n">confirmed_at</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">one_second_ago</span><span class="p" data-group-id="6532938312-9">(</span><span class="p" data-group-id="6532938312-9">)</span><span class="w">
+</span><span class="no">true</span></code></pre><h2 id="authentication-add_ons-confirmation" class="section-heading">
+  <a href="#authentication-add_ons-confirmation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">authentication.add_ons.confirmation</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">confirmation</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="ss">:confirm</span></code></pre><p>User confirmation flow</p><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#authentication-add_ons-confirmation-name" id="authentication-add_ons-confirmation-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Uniquely identifies the add-on.</td></tr></tbody></table><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#authentication-add_ons-confirmation-monitor_fields" id="authentication-add_ons-confirmation-monitor_fields"><code class="inline">monitor_fields</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">A list of fields to monitor for changes. Confirmation will be sent when one of these fields are changed.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#authentication-add_ons-confirmation-sender" id="authentication-add_ons-confirmation-sender"><code class="inline">sender</code></a></td><td style="text-align: left;"><code class="inline">(any, any, any -&gt; any) | module</code></td><td style="text-align: left;"></td><td style="text-align: left;">How to send the confirmation instructions to the user.</td></tr><tr><td style="text-align: left;"><a href="#authentication-add_ons-confirmation-token_lifetime" id="authentication-add_ons-confirmation-token_lifetime"><code class="inline">token_lifetime</code></a></td><td style="text-align: left;"><code class="inline">pos_integer | {pos_integer, :days | :hours | :minutes | :seconds}</code></td><td style="text-align: left;"><code class="inline">{3, :days}</code></td><td style="text-align: left;">How long should the confirmation token be valid.  If no unit is provided, then hours is assumed.</td></tr><tr><td style="text-align: left;"><a href="#authentication-add_ons-confirmation-confirmed_at_field" id="authentication-add_ons-confirmation-confirmed_at_field"><code class="inline">confirmed_at_field</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:confirmed_at</code></td><td style="text-align: left;">The name of the field to store the time that the last confirmation took place. Created if it does not exist.</td></tr><tr><td style="text-align: left;"><a href="#authentication-add_ons-confirmation-confirm_on_create?" id="authentication-add_ons-confirmation-confirm_on_create?"><code class="inline">confirm_on_create?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Generate and send a confirmation token when a new resource is created. Triggers when a create action is executed <em>and</em> one of the monitored fields is being set.</td></tr><tr><td style="text-align: left;"><a href="#authentication-add_ons-confirmation-confirm_on_update?" id="authentication-add_ons-confirmation-confirm_on_update?"><code class="inline">confirm_on_update?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Generate and send a confirmation token when a resource is changed.  Triggers when an update action is executed <em>and</em> one of the monitored fields is being set.</td></tr><tr><td style="text-align: left;"><a href="#authentication-add_ons-confirmation-inhibit_updates?" id="authentication-add_ons-confirmation-inhibit_updates?"><code class="inline">inhibit_updates?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not to wait until confirmation is received before actually changing a monitored field. See <a href="confirmation.html">the confirmation guide</a> for more.</td></tr><tr><td style="text-align: left;"><a href="#authentication-add_ons-confirmation-confirm_action_name" id="authentication-add_ons-confirmation-confirm_action_name"><code class="inline">confirm_action_name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"><code class="inline">:confirm</code></td><td style="text-align: left;">The name of the action to use when performing confirmation. Will be created if it does not already exist.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshAuthentication.AddOn.Confirmation.html"><code class="inline">AshAuthentication.AddOn.Confirmation</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashauthentication.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+DSL: AshAuthentication
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashauthentication-strategy-auth0.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: AshAuthentication.Strategy.Auth0
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_authentication/4.0.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_authentication/4.0.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_authentication/4.0.4/show/documentation/dsls/DSL:-AshAuthentication.AddOn.Confirmation.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_authentication.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

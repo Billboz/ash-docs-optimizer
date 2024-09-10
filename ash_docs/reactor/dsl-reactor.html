@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>DSL: Reactor.Dsl — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/documentation/dsls/DSL:-Reactor.md/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: Reactor.Dsl</span>
+  </h1>
+
+<h2 id="reactor" class="section-heading">
+  <a href="#reactor" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor</span>
+</h2>
+<p>The top-level reactor DSL</p><h3 id="nested-dsls" class="section-heading">
+  <a href="#nested-dsls" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-middlewares">middlewares</a><ul><li>middleware</li></ul></li><li><a href="#reactor-around">around</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-collect">collect</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-compose">compose</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-debug">debug</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-group">group</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-input">input</a></li><li><a href="#reactor-map">map</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-step">step</a><ul><li>argument</li><li>wait_for</li></ul></li><li><a href="#reactor-switch">switch</a><ul><li><p>matches?</p></li><li><p>default</p></li></ul></li></ul><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-return" id="reactor-return"><code class="inline">return</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Specify which step result to return upon completion.</td></tr></tbody></table><h2 id="reactor-middlewares" class="section-heading">
+  <a href="#reactor-middlewares" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.middlewares</span>
+</h2>
+<p>Middleware to be added to the Reactor</p><h3 id="nested-dsls-1" class="section-heading">
+  <a href="#nested-dsls-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-middlewares-middleware">middleware</a></li></ul><h2 id="reactor-middlewares-middleware" class="section-heading">
+  <a href="#reactor-middlewares-middleware" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.middlewares.middleware</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">middleware</span><span class="w"> </span><span class="n">module</span></code></pre><p>Name a middleware to be added to the Reactor.</p><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-middlewares-middleware-module" id="reactor-middlewares-middleware-module"><code class="inline">module</code></a></td><td style="text-align: left;"><code class="inline">module</code></td><td style="text-align: left;"></td><td style="text-align: left;">The middleware to be added to the Reactor.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Middleware.html"><code class="inline">Reactor.Dsl.Middleware</code></a></p><h2 id="reactor-around" class="section-heading">
+  <a href="#reactor-around" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.around</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">around</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Wrap a function around a group of steps.</p><h3 id="nested-dsls-2" class="section-heading">
+  <a href="#nested-dsls-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-around-argument">argument</a></li><li><a href="#reactor-around-wait_for">wait_for</a></li></ul><h3 id="arguments-1" class="section-heading">
+  <a href="#arguments-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-around-name" id="reactor-around-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the group of steps.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-around-fun" id="reactor-around-fun"><code class="inline">fun</code></a></td><td style="text-align: left;"><code class="inline">(any, any, any, any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">The around function. See <a href="Reactor.Step.Around.html"><code class="inline">Reactor.Step.Around</code></a> for more information.</td></tr></tbody></table><h3 id="options-1" class="section-heading">
+  <a href="#options-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-around-allow_async?" id="reactor-around-allow_async?"><code class="inline">allow_async?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Whether the emitted steps should be allowed to run asynchronously.</td></tr></tbody></table><h2 id="reactor-around-argument" class="section-heading">
+  <a href="#reactor-around-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.around.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="8074795975-1">(</span><span class="ss">:name</span><span class="p" data-group-id="8074795975-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="1190903409-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1190903409-2">[</span><span class="ss">:year</span><span class="p" data-group-id="1190903409-2">]</span><span class="p" data-group-id="1190903409-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7987109009-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="7987109009-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="8593931027-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="8593931027-1">)</span><span class="w"> </span><span class="k" data-group-id="8593931027-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="8593931027-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="8639323676-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8639323676-2">[</span><span class="ss">:id</span><span class="p" data-group-id="8639323676-2">]</span><span class="p" data-group-id="8639323676-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="4557381990-1">(</span><span class="mi">3</span><span class="p" data-group-id="4557381990-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-2" class="section-heading">
+  <a href="#arguments-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-around-argument-name" id="reactor-around-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-around-argument-source" id="reactor-around-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-2" class="section-heading">
+  <a href="#options-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-around-argument-transform" id="reactor-around-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-1" class="section-heading">
+  <a href="#introspection-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-around-wait_for" class="section-heading">
+  <a href="#reactor-around-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.around.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-1" class="section-heading">
+  <a href="#examples-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-3" class="section-heading">
+  <a href="#arguments-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-around-wait_for-names" id="reactor-around-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-2" class="section-heading">
+  <a href="#introspection-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-3" class="section-heading">
+  <a href="#introspection-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Around.html"><code class="inline">Reactor.Dsl.Around</code></a></p><h2 id="reactor-collect" class="section-heading">
+  <a href="#reactor-collect" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.collect</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">collect</span><span class="w"> </span><span class="n">name</span></code></pre><p>A Reactor step which simply collects and returns it's arguments.</p><p>Arguments can optionally be transformed before returning.</p><h3 id="nested-dsls-3" class="section-heading">
+  <a href="#nested-dsls-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-collect-argument">argument</a></li><li><a href="#reactor-collect-wait_for">wait_for</a></li></ul><h3 id="examples-2" class="section-heading">
+  <a href="#examples-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">collect</span><span class="w"> </span><span class="ss">:latest_release_uri</span><span class="w"> </span><span class="k" data-group-id="7753159384-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:repository</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7753159384-2">(</span><span class="ss">:repository</span><span class="p" data-group-id="7753159384-2">)</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:organisation</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7753159384-3">(</span><span class="ss">:organisation</span><span class="p" data-group-id="7753159384-3">)</span><span class="w">
+
+  </span><span class="n">transform</span><span class="w"> </span><span class="k" data-group-id="7753159384-4">fn</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="7753159384-5">%{</span><span class="ss">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.github.com/repos/</span><span class="si" data-group-id="7753159384-6">#{</span><span class="n">inputs</span><span class="o">.</span><span class="n">organisation</span><span class="si" data-group-id="7753159384-6">}</span><span class="s">/</span><span class="si" data-group-id="7753159384-7">#{</span><span class="n">inputs</span><span class="o">.</span><span class="n">repository</span><span class="si" data-group-id="7753159384-7">}</span><span class="s">/releases/latest&quot;</span><span class="p" data-group-id="7753159384-5">}</span><span class="w">
+  </span><span class="k" data-group-id="7753159384-4">end</span><span class="w">
+</span><span class="k" data-group-id="7753159384-1">end</span><span class="w">
+</span></code></pre><h3 id="arguments-4" class="section-heading">
+  <a href="#arguments-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-collect-name" id="reactor-collect-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the step. Used when choosing the return value of the Reactor and for arguments into other steps.</td></tr></tbody></table><h3 id="options-3" class="section-heading">
+  <a href="#options-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-collect-transform" id="reactor-collect-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the entire argument map before it is returned.</td></tr></tbody></table><h2 id="reactor-collect-argument" class="section-heading">
+  <a href="#reactor-collect-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.collect.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples-3" class="section-heading">
+  <a href="#examples-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7342307478-1">(</span><span class="ss">:name</span><span class="p" data-group-id="7342307478-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7168170198-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7168170198-2">[</span><span class="ss">:year</span><span class="p" data-group-id="7168170198-2">]</span><span class="p" data-group-id="7168170198-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="1715922517-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="1715922517-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="5719567886-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="5719567886-1">)</span><span class="w"> </span><span class="k" data-group-id="5719567886-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="5719567886-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="0857439887-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0857439887-2">[</span><span class="ss">:id</span><span class="p" data-group-id="0857439887-2">]</span><span class="p" data-group-id="0857439887-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="8212527535-1">(</span><span class="mi">3</span><span class="p" data-group-id="8212527535-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-5" class="section-heading">
+  <a href="#arguments-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-collect-argument-name" id="reactor-collect-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-collect-argument-source" id="reactor-collect-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-4" class="section-heading">
+  <a href="#options-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-collect-argument-transform" id="reactor-collect-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-4" class="section-heading">
+  <a href="#introspection-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-collect-wait_for" class="section-heading">
+  <a href="#reactor-collect-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.collect.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-4" class="section-heading">
+  <a href="#examples-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-6" class="section-heading">
+  <a href="#arguments-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-collect-wait_for-names" id="reactor-collect-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-5" class="section-heading">
+  <a href="#introspection-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-6" class="section-heading">
+  <a href="#introspection-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Collect.html"><code class="inline">Reactor.Dsl.Collect</code></a></p><h2 id="reactor-compose" class="section-heading">
+  <a href="#reactor-compose" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.compose</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">compose</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span></code></pre><p>Compose another Reactor into this one.</p><p>Allows place another Reactor into this one as if it were a single step.</p><h3 id="nested-dsls-4" class="section-heading">
+  <a href="#nested-dsls-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-compose-argument">argument</a></li><li><a href="#reactor-compose-wait_for">wait_for</a></li></ul><h3 id="arguments-7" class="section-heading">
+  <a href="#arguments-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-compose-name" id="reactor-compose-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the step. Allows the result of the composed reactor to be depended upon by steps in this reactor.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-compose-reactor" id="reactor-compose-reactor"><code class="inline">reactor</code></a></td><td style="text-align: left;"><code class="inline">Reactor | module</code></td><td style="text-align: left;"></td><td style="text-align: left;">The reactor module or struct to compose upon.</td></tr></tbody></table><h2 id="reactor-compose-argument" class="section-heading">
+  <a href="#reactor-compose-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.compose.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples-5" class="section-heading">
+  <a href="#examples-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7069693768-1">(</span><span class="ss">:name</span><span class="p" data-group-id="7069693768-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="3296850839-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3296850839-2">[</span><span class="ss">:year</span><span class="p" data-group-id="3296850839-2">]</span><span class="p" data-group-id="3296850839-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="0688376558-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="0688376558-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="2174724431-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="2174724431-1">)</span><span class="w"> </span><span class="k" data-group-id="2174724431-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="2174724431-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="3251946046-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3251946046-2">[</span><span class="ss">:id</span><span class="p" data-group-id="3251946046-2">]</span><span class="p" data-group-id="3251946046-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="7250909351-1">(</span><span class="mi">3</span><span class="p" data-group-id="7250909351-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-8" class="section-heading">
+  <a href="#arguments-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-compose-argument-name" id="reactor-compose-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-compose-argument-source" id="reactor-compose-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-5" class="section-heading">
+  <a href="#options-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-compose-argument-transform" id="reactor-compose-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-7" class="section-heading">
+  <a href="#introspection-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-compose-wait_for" class="section-heading">
+  <a href="#reactor-compose-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.compose.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-6" class="section-heading">
+  <a href="#examples-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-9" class="section-heading">
+  <a href="#arguments-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-compose-wait_for-names" id="reactor-compose-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-8" class="section-heading">
+  <a href="#introspection-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-9" class="section-heading">
+  <a href="#introspection-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Compose.html"><code class="inline">Reactor.Dsl.Compose</code></a></p><h2 id="reactor-debug" class="section-heading">
+  <a href="#reactor-debug" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.debug</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">debug</span><span class="w"> </span><span class="n">name</span></code></pre><p>Inserts a step which will send debug information to the <a href="https://hexdocs.pm/logger/Logger.html"><code class="inline">Logger</code></a>.</p><h3 id="nested-dsls-5" class="section-heading">
+  <a href="#nested-dsls-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-debug-argument">argument</a></li><li><a href="#reactor-debug-wait_for">wait_for</a></li></ul><h3 id="examples-7" class="section-heading">
+  <a href="#examples-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">debug</span><span class="w"> </span><span class="ss">:debug</span><span class="w"> </span><span class="k" data-group-id="5294895069-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:suss</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="5294895069-2">(</span><span class="ss">:suss_step</span><span class="p" data-group-id="5294895069-2">)</span><span class="w">
+</span><span class="k" data-group-id="5294895069-1">end</span><span class="w">
+</span></code></pre><h3 id="arguments-10" class="section-heading">
+  <a href="#arguments-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-debug-name" id="reactor-debug-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique identifier for the step.</td></tr></tbody></table><h3 id="options-6" class="section-heading">
+  <a href="#options-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-debug-level" id="reactor-debug-level"><code class="inline">level</code></a></td><td style="text-align: left;"><code class="inline">:emergency | :alert | :critical | :error | :warning | :notice | :info | :debug</code></td><td style="text-align: left;"><code class="inline">:debug</code></td><td style="text-align: left;">The log level to send the debug information to.</td></tr></tbody></table><h2 id="reactor-debug-argument" class="section-heading">
+  <a href="#reactor-debug-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.debug.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples-8" class="section-heading">
+  <a href="#examples-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="6526046403-1">(</span><span class="ss">:name</span><span class="p" data-group-id="6526046403-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="3699113618-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3699113618-2">[</span><span class="ss">:year</span><span class="p" data-group-id="3699113618-2">]</span><span class="p" data-group-id="3699113618-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="6637689641-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="6637689641-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="6770825020-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="6770825020-1">)</span><span class="w"> </span><span class="k" data-group-id="6770825020-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="6770825020-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="0615606282-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615606282-2">[</span><span class="ss">:id</span><span class="p" data-group-id="0615606282-2">]</span><span class="p" data-group-id="0615606282-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="2664515721-1">(</span><span class="mi">3</span><span class="p" data-group-id="2664515721-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-11" class="section-heading">
+  <a href="#arguments-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-debug-argument-name" id="reactor-debug-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-debug-argument-source" id="reactor-debug-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-7" class="section-heading">
+  <a href="#options-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-debug-argument-transform" id="reactor-debug-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-10" class="section-heading">
+  <a href="#introspection-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-debug-wait_for" class="section-heading">
+  <a href="#reactor-debug-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.debug.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-9" class="section-heading">
+  <a href="#examples-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-12" class="section-heading">
+  <a href="#arguments-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-debug-wait_for-names" id="reactor-debug-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-11" class="section-heading">
+  <a href="#introspection-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-12" class="section-heading">
+  <a href="#introspection-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Debug.html"><code class="inline">Reactor.Dsl.Debug</code></a></p><h2 id="reactor-group" class="section-heading">
+  <a href="#reactor-group" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.group</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">group</span><span class="w"> </span><span class="n">name</span></code></pre><p>Call functions before and after a group of steps.</p><h3 id="nested-dsls-6" class="section-heading">
+  <a href="#nested-dsls-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-group-argument">argument</a></li><li><a href="#reactor-group-wait_for">wait_for</a></li></ul><h3 id="arguments-13" class="section-heading">
+  <a href="#arguments-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-group-name" id="reactor-group-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the group of steps.</td></tr></tbody></table><h3 id="options-8" class="section-heading">
+  <a href="#options-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-group-before_all" id="reactor-group-before_all"><code class="inline">before_all</code></a></td><td style="text-align: left;"><code class="inline">(any, any, any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">The before function. See <a href="Reactor.Step.Group.html"><code class="inline">Reactor.Step.Group</code></a> for more information.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-group-after_all" id="reactor-group-after_all"><code class="inline">after_all</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">The after function. See <a href="Reactor.Step.Group.html"><code class="inline">Reactor.Step.Group</code></a> for more information.</td></tr><tr><td style="text-align: left;"><a href="#reactor-group-allow_async?" id="reactor-group-allow_async?"><code class="inline">allow_async?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether the emitted steps should be allowed to run asynchronously.</td></tr></tbody></table><h2 id="reactor-group-argument" class="section-heading">
+  <a href="#reactor-group-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.group.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples-10" class="section-heading">
+  <a href="#examples-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="6506181173-1">(</span><span class="ss">:name</span><span class="p" data-group-id="6506181173-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="2394445156-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2394445156-2">[</span><span class="ss">:year</span><span class="p" data-group-id="2394445156-2">]</span><span class="p" data-group-id="2394445156-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="8720701531-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="8720701531-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="6470783370-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="6470783370-1">)</span><span class="w"> </span><span class="k" data-group-id="6470783370-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="6470783370-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="8549962782-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8549962782-2">[</span><span class="ss">:id</span><span class="p" data-group-id="8549962782-2">]</span><span class="p" data-group-id="8549962782-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="0845785130-1">(</span><span class="mi">3</span><span class="p" data-group-id="0845785130-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-14" class="section-heading">
+  <a href="#arguments-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-group-argument-name" id="reactor-group-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-group-argument-source" id="reactor-group-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-9" class="section-heading">
+  <a href="#options-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-group-argument-transform" id="reactor-group-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-13" class="section-heading">
+  <a href="#introspection-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-group-wait_for" class="section-heading">
+  <a href="#reactor-group-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.group.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-11" class="section-heading">
+  <a href="#examples-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-15" class="section-heading">
+  <a href="#arguments-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-group-wait_for-names" id="reactor-group-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-14" class="section-heading">
+  <a href="#introspection-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-15" class="section-heading">
+  <a href="#introspection-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Group.html"><code class="inline">Reactor.Dsl.Group</code></a></p><h2 id="reactor-input" class="section-heading">
+  <a href="#reactor-input" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.input</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">input</span><span class="w"> </span><span class="n">name</span></code></pre><p>Specifies an input to the Reactor.</p><p>An input is a value passed in to the Reactor when executing.
+If a Reactor were a function, these would be it's arguments.</p><p>Inputs can be transformed with an arbitrary function before being passed
+to any steps.</p><h3 id="examples-12" class="section-heading">
+  <a href="#examples-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">input</span><span class="w"> </span><span class="ss">:name</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">input</span><span class="w"> </span><span class="ss">:age</span><span class="w"> </span><span class="k" data-group-id="6432399017-1">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">String</span><span class="o">.</span><span class="n">to_integer</span><span class="o">/</span><span class="mi">1</span><span class="w">
+</span><span class="k" data-group-id="6432399017-1">end</span><span class="w">
+</span></code></pre><h3 id="arguments-16" class="section-heading">
+  <a href="#arguments-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-input-name" id="reactor-input-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for this input. Used to allow steps to depend on it.</td></tr></tbody></table><h3 id="options-10" class="section-heading">
+  <a href="#options-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-input-transform" id="reactor-input-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the input before it is passed to any steps.</td></tr></tbody></table><h3 id="introspection-16" class="section-heading">
+  <a href="#introspection-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Input.html"><code class="inline">Reactor.Dsl.Input</code></a></p><h2 id="reactor-map" class="section-heading">
+  <a href="#reactor-map" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.map</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">map</span><span class="w"> </span><span class="n">name</span></code></pre><p>Execute nested steps for every item of an iterator.</p><p>Allows you to &quot;map over&quot; a collection applying a some steps to each element,
+returning a list of new values.  The input collection must be bounded - ie you
+cannot pass infinite streams into this step or it will just loop forever - and
+because it has to keep the results from each batch will eventually just use up
+all available RAM.</p><p>Under the hood we use <a href="https://hexdocs.pm/iterex/0.1.1/Iter.html"><code class="inline">Iter</code></a> to handle lazy iteration of the collection.  This
+means that you can pass an <code class="inline">Iter.t</code> or any value for which <a href="https://hexdocs.pm/iterex/0.1.1/Iter.IntoIterable.html"><code class="inline">Iter.IntoIterable</code></a>
+is implemented.</p><blockquote><h4 class="tip">A note on ordering</h4><p>If your application doesn't need the results back in the same order that they
+were provided then setting <code class="inline">strict_ordering?</code> to <code class="inline">false</code> will increase
+performance - especially on large input sets.</p></blockquote><h3 id="nested-dsls-7" class="section-heading">
+  <a href="#nested-dsls-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-map-argument">argument</a></li><li><a href="#reactor-map-wait_for">wait_for</a></li></ul><h3 id="examples-13" class="section-heading">
+  <a href="#examples-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">map</span><span class="w"> </span><span class="ss">:double_numbers</span><span class="w"> </span><span class="k" data-group-id="2718859737-1">do</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="2718859737-2">(</span><span class="ss">:numbers</span><span class="p" data-group-id="2718859737-2">)</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:double</span><span class="w"> </span><span class="k" data-group-id="2718859737-3">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:number</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p" data-group-id="2718859737-4">(</span><span class="ss">:double_numbers</span><span class="p" data-group-id="2718859737-4">)</span><span class="w">
+
+    </span><span class="n">run</span><span class="w"> </span><span class="p" data-group-id="2718859737-5">%{</span><span class="ss">number</span><span class="p">:</span><span class="w"> </span><span class="n">number</span><span class="p" data-group-id="2718859737-5">}</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="p" data-group-id="2718859737-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2718859737-6">}</span><span class="w">
+    </span><span class="k" data-group-id="2718859737-3">end</span><span class="w">
+  </span><span class="k" data-group-id="2718859737-1">end</span><span class="w">
+</span><span class="k">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">step</span><span class="w"> </span><span class="ss">:get_subscriptions</span><span class="w"> </span><span class="k" data-group-id="2527939810-1">do</span><span class="w">
+  </span><span class="n">run</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="nc">Stripe.Subscription</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2527939810-2">(</span><span class="p" data-group-id="2527939810-2">)</span><span class="w">
+  </span><span class="k" data-group-id="2527939810-1">end</span><span class="w">
+</span><span class="k">end</span><span class="w">
+
+</span><span class="n">map</span><span class="w"> </span><span class="ss">:cancel_subscriptions</span><span class="w"> </span><span class="k" data-group-id="2527939810-3">do</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="2527939810-4">(</span><span class="ss">:get_subscriptions</span><span class="p" data-group-id="2527939810-4">)</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:cancel</span><span class="w"> </span><span class="k" data-group-id="2527939810-5">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:sub_id</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p" data-group-id="2527939810-6">(</span><span class="ss">:cancel_subscriptions</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2527939810-7">[</span><span class="ss">:id</span><span class="p" data-group-id="2527939810-7">]</span><span class="p" data-group-id="2527939810-6">)</span><span class="w">
+
+    </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="2527939810-8">fn</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="nc">Stripe.Subscription</span><span class="o">.</span><span class="n">cancel</span><span class="p" data-group-id="2527939810-9">(</span><span class="n">arg</span><span class="o">.</span><span class="n">sub_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2527939810-10">%{</span><span class="ss">prorate</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">invoice_now</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="2527939810-10">}</span><span class="p" data-group-id="2527939810-9">)</span><span class="w">
+    </span><span class="k" data-group-id="2527939810-8">end</span><span class="w">
+  </span><span class="k" data-group-id="2527939810-5">end</span><span class="w">
+
+  </span><span class="n">return</span><span class="w"> </span><span class="ss">:cancel</span><span class="w">
+</span><span class="k" data-group-id="2527939810-3">end</span><span class="w">
+</span></code></pre><h3 id="arguments-17" class="section-heading">
+  <a href="#arguments-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-map-name" id="reactor-map-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the step.</td></tr></tbody></table><h3 id="options-11" class="section-heading">
+  <a href="#options-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-map-source" id="reactor-map-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">The iterator or enumerable to use as the source of the iteration.</td></tr><tr><td style="text-align: left;"><a href="#reactor-map-allow_async?" id="reactor-map-allow_async?"><code class="inline">allow_async?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Whether the emitted steps should be allowed to run asynchronously.</td></tr><tr><td style="text-align: left;"><a href="#reactor-map-batch_size" id="reactor-map-batch_size"><code class="inline">batch_size</code></a></td><td style="text-align: left;"><code class="inline">pos_integer</code></td><td style="text-align: left;"><code class="inline">100</code></td><td style="text-align: left;">The number of items to consume off the source when emitting steps.</td></tr><tr><td style="text-align: left;"><a href="#reactor-map-return" id="reactor-map-return"><code class="inline">return</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the nested step to use as the return value.</td></tr><tr><td style="text-align: left;"><a href="#reactor-map-strict_ordering?" id="reactor-map-strict_ordering?"><code class="inline">strict_ordering?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether the mapped values must be returned in the same order that they were provided.</td></tr></tbody></table><h2 id="reactor-map-argument" class="section-heading">
+  <a href="#reactor-map-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.map.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples-14" class="section-heading">
+  <a href="#examples-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="9223687223-1">(</span><span class="ss">:name</span><span class="p" data-group-id="9223687223-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="8894145009-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8894145009-2">[</span><span class="ss">:year</span><span class="p" data-group-id="8894145009-2">]</span><span class="p" data-group-id="8894145009-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="3899356936-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="3899356936-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="8707581515-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="8707581515-1">)</span><span class="w"> </span><span class="k" data-group-id="8707581515-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="8707581515-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="2945729131-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2945729131-2">[</span><span class="ss">:id</span><span class="p" data-group-id="2945729131-2">]</span><span class="p" data-group-id="2945729131-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="2382636031-1">(</span><span class="mi">3</span><span class="p" data-group-id="2382636031-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-18" class="section-heading">
+  <a href="#arguments-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-map-argument-name" id="reactor-map-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-map-argument-source" id="reactor-map-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-12" class="section-heading">
+  <a href="#options-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-map-argument-transform" id="reactor-map-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-17" class="section-heading">
+  <a href="#introspection-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-map-wait_for" class="section-heading">
+  <a href="#reactor-map-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.map.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-15" class="section-heading">
+  <a href="#examples-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-19" class="section-heading">
+  <a href="#arguments-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-map-wait_for-names" id="reactor-map-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-18" class="section-heading">
+  <a href="#introspection-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-19" class="section-heading">
+  <a href="#introspection-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Map.html"><code class="inline">Reactor.Dsl.Map</code></a></p><h2 id="reactor-step" class="section-heading">
+  <a href="#reactor-step" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.step</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">step</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">impl</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies a Reactor step.</p><p>Steps are the unit of work in a Reactor.  Reactor will calculate the
+dependencies graph between the steps and execute as many as it can in each
+iteration.</p><p>See the <a href="Reactor.Step.html"><code class="inline">Reactor.Step</code></a> behaviour for more information.</p><h3 id="nested-dsls-8" class="section-heading">
+  <a href="#nested-dsls-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#reactor-step-argument">argument</a></li><li><a href="#reactor-step-wait_for">wait_for</a></li></ul><h3 id="examples-16" class="section-heading">
+  <a href="#examples-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">step</span><span class="w"> </span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Steps.CreateUser</span><span class="w"> </span><span class="k" data-group-id="5496197899-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:username</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="5496197899-2">(</span><span class="ss">:username</span><span class="p" data-group-id="5496197899-2">)</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:password_hash</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="5496197899-3">(</span><span class="ss">:hash_password</span><span class="p" data-group-id="5496197899-3">)</span><span class="w">
+</span><span class="k" data-group-id="5496197899-1">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">step</span><span class="w"> </span><span class="ss">:hash_password</span><span class="w"> </span><span class="k" data-group-id="9689911133-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:password</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="9689911133-2">(</span><span class="ss">:password</span><span class="p" data-group-id="9689911133-2">)</span><span class="w">
+
+  </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="9689911133-3">fn</span><span class="w"> </span><span class="p" data-group-id="9689911133-4">%{</span><span class="ss">password</span><span class="p">:</span><span class="w"> </span><span class="n">password</span><span class="p" data-group-id="9689911133-4">}</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="9689911133-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="nc">Bcrypt</span><span class="o">.</span><span class="n">hash_pwd_salt</span><span class="p" data-group-id="9689911133-6">(</span><span class="n">password</span><span class="p" data-group-id="9689911133-6">)</span><span class="p" data-group-id="9689911133-5">}</span><span class="w">
+  </span><span class="k" data-group-id="9689911133-3">end</span><span class="w">
+</span><span class="k" data-group-id="9689911133-1">end</span><span class="w">
+</span></code></pre><h3 id="arguments-20" class="section-heading">
+  <a href="#arguments-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-step-name" id="reactor-step-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the step. Used when choosing the return value of the Reactor and for arguments into other steps.</td></tr><tr><td style="text-align: left;"><a href="#reactor-step-impl" id="reactor-step-impl"><code class="inline">impl</code></a></td><td style="text-align: left;"><code class="inline">module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">A module that implements the <a href="Reactor.Step.html"><code class="inline">Reactor.Step</code></a> behaviour that provides the implementation.</td></tr></tbody></table><h3 id="options-13" class="section-heading">
+  <a href="#options-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-step-run" id="reactor-step-run"><code class="inline">run</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | mfa | (any, any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">Provide an anonymous function which implements the <code class="inline">run/3</code> callback. Cannot be provided at the same time as the <code class="inline">impl</code> argument.</td></tr><tr><td style="text-align: left;"><a href="#reactor-step-undo" id="reactor-step-undo"><code class="inline">undo</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | mfa | (any, any -&gt; any) | mfa | (any, any, any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">Provide an anonymous function which implements the <code class="inline">undo/4</code> callback. Cannot be provided at the same time as the <code class="inline">impl</code> argument.</td></tr><tr><td style="text-align: left;"><a href="#reactor-step-compensate" id="reactor-step-compensate"><code class="inline">compensate</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | mfa | (any, any -&gt; any) | mfa | (any, any, any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">Provide an anonymous function which implements the <code class="inline">undo/4</code> callback. Cannot be provided at the same time as the <code class="inline">impl</code> argument.</td></tr><tr><td style="text-align: left;"><a href="#reactor-step-max_retries" id="reactor-step-max_retries"><code class="inline">max_retries</code></a></td><td style="text-align: left;"><code class="inline">:infinity | non_neg_integer</code></td><td style="text-align: left;"><code class="inline">:infinity</code></td><td style="text-align: left;">The maximum number of times that the step can be retried before failing. Only used when the result of the <code class="inline">compensate/4</code> callback is <code class="inline">:retry</code>.</td></tr><tr><td style="text-align: left;"><a href="#reactor-step-async?" id="reactor-step-async?"><code class="inline">async?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">When set to true the step will be executed asynchronously via Reactor's <code class="inline">TaskSupervisor</code>.</td></tr><tr><td style="text-align: left;"><a href="#reactor-step-transform" id="reactor-step-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the entire argument map before it is passed to the step.</td></tr></tbody></table><h2 id="reactor-step-argument" class="section-heading">
+  <a href="#reactor-step-argument" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.step.argument</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">\\</span><span class="w"> </span><span class="no">nil</span></code></pre><p>Specifies an argument to a Reactor step.</p><p>Each argument is a value which is either the result of another step, or an input value.</p><p>Individual arguments can be transformed with an arbitrary function before
+being passed to any steps.</p><h3 id="examples-17" class="section-heading">
+  <a href="#examples-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4735431183-1">(</span><span class="ss">:name</span><span class="p" data-group-id="4735431183-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:year</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="0751110989-1">(</span><span class="ss">:date</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0751110989-2">[</span><span class="ss">:year</span><span class="p" data-group-id="0751110989-2">]</span><span class="p" data-group-id="0751110989-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="2774767457-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="2774767457-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7679638652-1">(</span><span class="ss">:create_user</span><span class="p" data-group-id="7679638652-1">)</span><span class="w"> </span><span class="k" data-group-id="7679638652-2">do</span><span class="w">
+  </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="w">
+</span><span class="k" data-group-id="7679638652-2">end</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:user_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="6882575850-1">(</span><span class="ss">:create_user</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6882575850-2">[</span><span class="ss">:id</span><span class="p" data-group-id="6882575850-2">]</span><span class="p" data-group-id="6882575850-1">)</span><span class="w">
+</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="n">argument</span><span class="w"> </span><span class="ss">:three</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="1913740349-1">(</span><span class="mi">3</span><span class="p" data-group-id="1913740349-1">)</span><span class="w">
+</span></code></pre><h3 id="arguments-21" class="section-heading">
+  <a href="#arguments-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-step-argument-name" id="reactor-step-argument-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the argument which will be used as the key in the <code class="inline">arguments</code> map passed to the implementation.</td></tr><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-step-argument-source" id="reactor-step-argument-source"><code class="inline">source</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">What to use as the source of the argument. See <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a> for more information.</td></tr></tbody></table><h3 id="options-14" class="section-heading">
+  <a href="#options-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-step-argument-transform" id="reactor-step-argument-transform"><code class="inline">transform</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | module | nil</code></td><td style="text-align: left;"></td><td style="text-align: left;">An optional transformation function which can be used to modify the argument before it is passed to the step.</td></tr></tbody></table><h3 id="introspection-20" class="section-heading">
+  <a href="#introspection-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Argument.html"><code class="inline">Reactor.Dsl.Argument</code></a></p><h2 id="reactor-step-wait_for" class="section-heading">
+  <a href="#reactor-step-wait_for" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.step.wait_for</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="n">names</span></code></pre><p>Wait for the named step to complete before allowing this one to start.</p><p>Desugars to <code class="inline">argument :_, result(step_to_wait_for)</code></p><h3 id="examples-18" class="section-heading">
+  <a href="#examples-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_user</span></code></pre><h3 id="arguments-22" class="section-heading">
+  <a href="#arguments-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-step-wait_for-names" id="reactor-step-wait_for-names"><code class="inline">names</code></a></td><td style="text-align: left;"><code class="inline">atom | list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the step to wait for.</td></tr></tbody></table><h3 id="introspection-21" class="section-heading">
+  <a href="#introspection-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.WaitFor.html"><code class="inline">Reactor.Dsl.WaitFor</code></a></p><h3 id="introspection-22" class="section-heading">
+  <a href="#introspection-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Step.html"><code class="inline">Reactor.Dsl.Step</code></a></p><h2 id="reactor-switch" class="section-heading">
+  <a href="#reactor-switch" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.switch</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">switch</span><span class="w"> </span><span class="n">name</span></code></pre><p>Use a predicate to determine which steps should be executed.</p><h3 id="nested-dsls-9" class="section-heading">
+  <a href="#nested-dsls-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><p><a href="#reactor-switch-matches?">matches?</a></p></li><li><p><a href="#reactor-switch-default">default</a></p></li></ul><h3 id="arguments-23" class="section-heading">
+  <a href="#arguments-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-switch-name" id="reactor-switch-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique name for the switch.</td></tr></tbody></table><h3 id="options-15" class="section-heading">
+  <a href="#options-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-switch-on" id="reactor-switch-on"><code class="inline">on</code></a></td><td style="text-align: left;"><code class="inline">Reactor.Template.Element | Reactor.Template.Input | Reactor.Template.Result | Reactor.Template.Value</code></td><td style="text-align: left;"></td><td style="text-align: left;">The value to match against.</td></tr><tr><td style="text-align: left;"><a href="#reactor-switch-allow_async?" id="reactor-switch-allow_async?"><code class="inline">allow_async?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether the emitted steps should be allowed to run asynchronously.</td></tr></tbody></table><h2 id="reactor-switch-matches" class="section-heading">
+  <a href="#reactor-switch-matches" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.switch.matches?</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">matches?</span><span class="w"> </span><span class="n">predicate</span></code></pre><p>A group of steps to run when the predicate matches.</p><h3 id="arguments-24" class="section-heading">
+  <a href="#arguments-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#reactor-switch-matches?-predicate" id="reactor-switch-matches?-predicate"><code class="inline">predicate</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any) | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">A one-arity function which is used to match the switch input. If the switch returns a truthy value, then the nested steps will be run.</td></tr></tbody></table><h3 id="options-16" class="section-heading">
+  <a href="#options-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-switch-matches?-allow_async?" id="reactor-switch-matches?-allow_async?"><code class="inline">allow_async?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether the emitted steps should be allowed to run asynchronously.</td></tr><tr><td style="text-align: left;"><a href="#reactor-switch-matches?-return" id="reactor-switch-matches?-return"><code class="inline">return</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Specify which step result to return upon completion.</td></tr></tbody></table><h3 id="introspection-23" class="section-heading">
+  <a href="#introspection-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Switch.Match.html"><code class="inline">Reactor.Dsl.Switch.Match</code></a></p><h2 id="reactor-switch-default" class="section-heading">
+  <a href="#reactor-switch-default" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">reactor.switch.default</span>
+</h2>
+<p>If none of the <code class="inline">matches?</code> branches match the input, then the <code class="inline">default</code>
+steps will be run if provided.</p><h3 id="options-17" class="section-heading">
+  <a href="#options-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#reactor-switch-default-return" id="reactor-switch-default-return"><code class="inline">return</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">Specify which step result to return upon completion.</td></tr></tbody></table><h3 id="introspection-24" class="section-heading">
+  <a href="#introspection-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Switch.Default.html"><code class="inline">Reactor.Dsl.Switch.Default</code></a></p><h3 id="introspection-25" class="section-heading">
+  <a href="#introspection-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="Reactor.Dsl.Switch.html"><code class="inline">Reactor.Dsl.Switch</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="getting-started-with-reactor.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Getting started with Reactor
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/reactor/0.9.1/show/documentation/dsls/DSL:-Reactor.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

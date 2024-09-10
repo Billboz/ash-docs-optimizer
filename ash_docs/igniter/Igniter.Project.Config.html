@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>Igniter.Project.Config — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Igniter.Project.Config</span> 
+    <small class="app-vsn" translate="no">(igniter v0.3.29)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Codemods and utilities for modifying Elixir config files.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configure/6" data-no-tooltip translate="no">configure(igniter, file_name, app_name, config_path, value, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets a config value in the given configuration file, updating it with <code class="inline">updater</code> if it is already set.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configure_new/6" data-no-tooltip translate="no">configure_new(igniter, file_path, app_name, config_path, value, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Sets a config value in the given configuration file, if it is not already set.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configure_runtime_env/6" data-no-tooltip translate="no">configure_runtime_env(igniter, env, app_name, config_path, value, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configures?/3" data-no-tooltip translate="no">configures?(zipper, path, app_name)</a>
+
+          <span class="deprecated" title="Use configures_root_key?/2 or configures_key?/3 instead.">deprecated</span>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configures?/4" data-no-tooltip translate="no">configures?(igniter, config_file_name, path, app_name)</a>
+
+          <span class="deprecated" title="Use configures_root_key?/3 or configures_key?/4 instead.">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if the given configuration path is set somewhere after the provided zipper, or in the given configuration file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configures_key?/3" data-no-tooltip translate="no">configures_key?(zipper, root_key, key_or_path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#configures_key?/4"><code class="inline">configures_key?/4</code></a> but accepts a Zipper.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configures_key?/4" data-no-tooltip translate="no">configures_key?(igniter, config_file_name, root_key, key_or_path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>If the last argument is key, checks if either <code class="inline">config :root_key, :key, ...</code>
+or <code class="inline">config :root_key, key: ...</code> is set.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configures_root_key?/2" data-no-tooltip translate="no">configures_root_key?(zipper, root_key)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Same as <a href="#configures_root_key?/3"><code class="inline">configures_root_key?/3</code></a> but accepts a Zipper instead.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#configures_root_key?/3" data-no-tooltip translate="no">configures_root_key?(igniter, config_file_name, root_key)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Checks if either <code class="inline">config :root_key, _</code> or <code class="inline">config :root_key, _, _</code> is present
+in the provided config file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#modify_configuration_code/5" data-no-tooltip translate="no">modify_configuration_code(zipper, config_path, app_name, value, updater \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Modifies elixir configuration code starting at the configured zipper.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="configure/6">
+
+    <span id="configure/5"></span>
+
+  <div class="detail-header">
+    <a href="#configure/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configure(igniter, file_name, app_name, config_path, value, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L155" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configure(
+  <a href="Igniter.html#t:t/0">Igniter.t</a>(),
+  <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) :: <a href="Igniter.html#t:t/0">Igniter.t</a>()</pre>
+
+      </div>
+
+<p>Sets a config value in the given configuration file, updating it with <code class="inline">updater</code> if it is already set.</p><p>If the value is source code, pass <code class="inline">{:code, value}</code>, otherwise pass just the value.</p><p>To produce this source code, we suggest using <code class="inline">Sourceror.parse_string!</code>. For example:</p><pre><code class="makeup elixir" translate="no"><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Igniter.Project.Config</span><span class="o">.</span><span class="n">configure</span><span class="p" data-group-id="0983643977-1">(</span><span class="w">
+  </span><span class="s">&quot;fake.exs&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">:tailwind</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="0983643977-2">[</span><span class="ss">:default</span><span class="p">,</span><span class="w"> </span><span class="ss">:args</span><span class="p" data-group-id="0983643977-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="0983643977-3">{</span><span class="ss">:code</span><span class="p">,</span><span class="w">
+   </span><span class="nc">Sourceror</span><span class="o">.</span><span class="n">parse_string!</span><span class="p" data-group-id="0983643977-4">(</span><span class="s">&quot;&quot;&quot;
+   ~w(--config=tailwind.config.js --input=css/app.css --output=../output/assets/app.css)
+   &quot;&quot;&quot;</span><span class="p" data-group-id="0983643977-4">)</span><span class="p" data-group-id="0983643977-3">}</span><span class="w">
+</span><span class="p" data-group-id="0983643977-1">)</span></code></pre><h2 id="configure/6-opts" class="section-heading">
+  <a href="#configure/6-opts" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Opts</span>
+</h2>
+<ul><li><code class="inline">:updater</code> - A function that takes a zipper at a currently configured value and returns a new zipper with the value updated.</li><li><code class="inline">failure_message</code> - A message to display to the user if the configuration change is unsuccessful.</li></ul>
+  </section>
+</section>
+<section class="detail" id="configure_new/6">
+
+    <span id="configure_new/5"></span>
+
+  <div class="detail-header">
+    <a href="#configure_new/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configure_new(igniter, file_path, app_name, config_path, value, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configure_new(
+  <a href="Igniter.html#t:t/0">Igniter.t</a>(),
+  <a href="https://hexdocs.pm/elixir/Path.html#t:t/0">Path.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) :: <a href="Igniter.html#t:t/0">Igniter.t</a>()</pre>
+
+      </div>
+
+<p>Sets a config value in the given configuration file, if it is not already set.</p><p>See <a href="#configure/6"><code class="inline">configure/6</code></a> for more.</p><h2 id="configure_new/6-opts" class="section-heading">
+  <a href="#configure_new/6-opts" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Opts</span>
+</h2>
+<ul><li><code class="inline">failure_message</code> - A message to display to the user if the configuration change is unsuccessful.</li></ul>
+  </section>
+</section>
+<section class="detail" id="configure_runtime_env/6">
+
+    <span id="configure_runtime_env/5"></span>
+
+  <div class="detail-header">
+    <a href="#configure_runtime_env/6" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configure_runtime_env(igniter, env, app_name, config_path, value, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L39" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configure_runtime_env(
+  <a href="Igniter.html#t:t/0">Igniter.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()
+) :: <a href="Igniter.html#t:t/0">Igniter.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="configures?/3">
+
+  <div class="detail-header">
+    <a href="#configures?/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configures?(zipper, path, app_name)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L478" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. Use configures_root_key?/2 or configures_key?/3 instead..
+    </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configures?(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="configures?/4">
+
+  <div class="detail-header">
+    <a href="#configures?/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configures?(igniter, config_file_name, path, app_name)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L469" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. Use configures_root_key?/3 or configures_key?/4 instead..
+    </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configures?(<a href="Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Returns <code class="inline">true</code> if the given configuration path is set somewhere after the provided zipper, or in the given configuration file.</p>
+  </section>
+</section>
+<section class="detail" id="configures_key?/3">
+
+  <div class="detail-header">
+    <a href="#configures_key?/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configures_key?(zipper, root_key, key_or_path)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L413" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configures_key?(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Same as <a href="#configures_key?/4"><code class="inline">configures_key?/4</code></a> but accepts a Zipper.</p>
+  </section>
+</section>
+<section class="detail" id="configures_key?/4">
+
+  <div class="detail-header">
+    <a href="#configures_key?/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configures_key?(igniter, config_file_name, root_key, key_or_path)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L402" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configures_key?(
+  <a href="Igniter.html#t:t/0">Igniter.t</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>If the last argument is key, checks if either <code class="inline">config :root_key, :key, ...</code>
+or <code class="inline">config :root_key, key: ...</code> is set.</p><p>If the last argument is a keyword path, checks if
+<code class="inline">config :root_key, path_head, [...]</code> defines <code class="inline">path_rest</code> or if
+<code class="inline">config :root_key, [...]</code> defines <code class="inline">path</code>, where <code class="inline">path_head</code> is the first
+element of <code class="inline">path</code> and <code class="inline">path_rest</code> are the remaining elements.</p><p>Note: <code class="inline">config_file_name</code> should <em>not</em> include the <code class="inline">config/</code> prefix.</p>
+  </section>
+</section>
+<section class="detail" id="configures_root_key?/2">
+
+  <div class="detail-header">
+    <a href="#configures_root_key?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configures_root_key?(zipper, root_key)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L364" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configures_root_key?(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Same as <a href="#configures_root_key?/3"><code class="inline">configures_root_key?/3</code></a> but accepts a Zipper instead.</p>
+  </section>
+</section>
+<section class="detail" id="configures_root_key?/3">
+
+  <div class="detail-header">
+    <a href="#configures_root_key?/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">configures_root_key?(igniter, config_file_name, root_key)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L353" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> configures_root_key?(<a href="Igniter.html#t:t/0">Igniter.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Checks if either <code class="inline">config :root_key, _</code> or <code class="inline">config :root_key, _, _</code> is present
+in the provided config file.</p><p>Note: The config file name should <em>not</em> include the <code class="inline">config/</code> prefix.</p>
+  </section>
+</section>
+<section class="detail" id="modify_configuration_code/5">
+
+    <span id="modify_configuration_code/4"></span>
+
+  <div class="detail-header">
+    <a href="#modify_configuration_code/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">modify_configuration_code(zipper, config_path, app_name, value, updater \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/project/config.ex#L278" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> modify_configuration_code(
+  <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(),
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error) | nil
+) :: <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+<p>Modifies elixir configuration code starting at the configured zipper.</p><p>If you want to set configuration, use <a href="#configure/6"><code class="inline">configure/6</code></a> or <a href="#configure_new/5"><code class="inline">configure_new/5</code></a> instead. This is a lower-level
+tool for modifying configuration files when you need to adjust some specific part of them.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,3557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Ash.DataLayer — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Ash.DataLayer</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(ash v3.4.8)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The behaviour for backing resource actions with persistence layers.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bulk_create_options/0" data-no-tooltip translate="no">bulk_create_options()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:bulk_update_options/0" data-no-tooltip translate="no">bulk_update_options()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:data_layer_query/0" data-no-tooltip translate="no">data_layer_query()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:feature/0" data-no-tooltip translate="no">feature()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:lateral_join_link/0" data-no-tooltip translate="no">lateral_join_link()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:lock_type/0" data-no-tooltip translate="no">lock_type()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:transaction_reason/0" data-no-tooltip translate="no">transaction_reason()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:add_aggregate/3" data-no-tooltip translate="no">add_aggregate(data_layer_query, t, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:add_aggregates/3" data-no-tooltip translate="no">add_aggregates(data_layer_query, list, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:add_calculation/4" data-no-tooltip translate="no">add_calculation(data_layer_query, t, expression, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:add_calculations/3" data-no-tooltip translate="no">add_calculations(data_layer_query, list, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:bulk_create/3" data-no-tooltip translate="no">bulk_create(t, t, options)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:calculate/3" data-no-tooltip translate="no">calculate(t, list, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:can?/2" data-no-tooltip translate="no">can?(arg1, feature)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:create/2" data-no-tooltip translate="no">create(t, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:destroy/2" data-no-tooltip translate="no">destroy(t, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:destroy_query/4" data-no-tooltip translate="no">destroy_query(data_layer_query, t, t, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:distinct/3" data-no-tooltip translate="no">distinct(data_layer_query, list, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:distinct_sort/3" data-no-tooltip translate="no">distinct_sort(data_layer_query, t, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:filter/3" data-no-tooltip translate="no">filter(data_layer_query, t, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:functions/1" data-no-tooltip translate="no">functions(t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:in_transaction?/1" data-no-tooltip translate="no">in_transaction?(t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:limit/3" data-no-tooltip translate="no">limit(data_layer_query, limit, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:lock/3" data-no-tooltip translate="no">lock(data_layer_query, lock_type, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:offset/3" data-no-tooltip translate="no">offset(data_layer_query, offset, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:prefer_lateral_join_for_many_to_many?/0" data-no-tooltip translate="no">prefer_lateral_join_for_many_to_many?()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:resource_to_query/2" data-no-tooltip translate="no">resource_to_query(t, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:return_query/2" data-no-tooltip translate="no">return_query(data_layer_query, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:rollback/2" data-no-tooltip translate="no">rollback(t, term)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:run_aggregate_query/3" data-no-tooltip translate="no">run_aggregate_query(data_layer_query, list, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:run_aggregate_query_with_lateral_join/5" data-no-tooltip translate="no">run_aggregate_query_with_lateral_join(data_layer_query, list, list, destination_resource, list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:run_query/2" data-no-tooltip translate="no">run_query(data_layer_query, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:run_query_with_lateral_join/4" data-no-tooltip translate="no">run_query_with_lateral_join(data_layer_query, list, source_resource, list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:select/3" data-no-tooltip translate="no">select(data_layer_query, select, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:set_context/3" data-no-tooltip translate="no">set_context(t, data_layer_query, map)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:set_tenant/3" data-no-tooltip translate="no">set_tenant(t, data_layer_query, term)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:sort/3" data-no-tooltip translate="no">sort(data_layer_query, t, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:source/1" data-no-tooltip translate="no">source(t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:transaction/4" data-no-tooltip translate="no">transaction(t, function, arg3, reason)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:transform_query/1" data-no-tooltip translate="no">transform_query(t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:update/2" data-no-tooltip translate="no">update(t, t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:update_query/4" data-no-tooltip translate="no">update_query(data_layer_query, t, t, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:upsert/3" data-no-tooltip translate="no">upsert(t, t, list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:upsert/4" data-no-tooltip translate="no">upsert(t, t, list, arg4)</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_aggregates/3" data-no-tooltip translate="no">add_aggregates(query, aggregates, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_calculations/3" data-no-tooltip translate="no">add_calculations(query, calculations, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#bulk_create/3" data-no-tooltip translate="no">bulk_create(resource, changesets, options)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#calculate/3" data-no-tooltip translate="no">calculate(resource, exprs, context)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#can?/2" data-no-tooltip translate="no">can?(feature, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create/2" data-no-tooltip translate="no">create(resource, changeset)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#data_layer/1" data-no-tooltip translate="no">data_layer(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The data layer of the resource, or nil if it does not have one</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#data_layer_can?/2" data-no-tooltip translate="no">data_layer_can?(resource, feature)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Whether or not the data layer supports a specific feature</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#data_layer_functions/1" data-no-tooltip translate="no">data_layer_functions(resource)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Custom functions supported by the data layer of the resource</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#destroy/2" data-no-tooltip translate="no">destroy(resource, changeset)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#destroy_query/3" data-no-tooltip translate="no">destroy_query(query, changeset, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#distinct/3" data-no-tooltip translate="no">distinct(query, distinct, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#distinct_sort/3" data-no-tooltip translate="no">distinct_sort(query, sort, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#filter/3" data-no-tooltip translate="no">filter(query, filter, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#functions/1" data-no-tooltip translate="no">functions(resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#in_transaction?/1" data-no-tooltip translate="no">in_transaction?(resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#limit/3" data-no-tooltip translate="no">limit(query, limit, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#lock/3" data-no-tooltip translate="no">lock(query, lock_type, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#offset/3" data-no-tooltip translate="no">offset(query, offset, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prefer_lateral_join_for_many_to_many?/1" data-no-tooltip translate="no">prefer_lateral_join_for_many_to_many?(data_layer)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Whether or not lateral joins should be used for many to many relationships by default</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#resource_to_query/2" data-no-tooltip translate="no">resource_to_query(resource, domain)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#return_query/2" data-no-tooltip translate="no">return_query(query, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#rollback/2" data-no-tooltip translate="no">rollback(resource, term)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Rolls back the current transaction</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_aggregate_query/3" data-no-tooltip translate="no">run_aggregate_query(query, aggregates, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_aggregate_query_with_lateral_join/5" data-no-tooltip translate="no">run_aggregate_query_with_lateral_join(query, aggregates, root_data, destination_resource, path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_query/2" data-no-tooltip translate="no">run_query(query, central_resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_query_with_lateral_join/4" data-no-tooltip translate="no">run_query_with_lateral_join(query, root_data, destination_resource, path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#select/3" data-no-tooltip translate="no">select(query, select, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_context/3" data-no-tooltip translate="no">set_context(resource, query, map)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_tenant/3" data-no-tooltip translate="no">set_tenant(resource, query, term)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#sort/3" data-no-tooltip translate="no">sort(query, sort, resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#source/1" data-no-tooltip translate="no">source(resource)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transaction/4" data-no-tooltip translate="no">transaction(resource_or_resources, func, timeout \\ nil, reason \\ %{type: :custom, metadata: %{}})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Wraps the execution of the function in a transaction with the resource's data_layer</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transform_query/1" data-no-tooltip translate="no">transform_query(query)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update/2" data-no-tooltip translate="no">update(resource, changeset)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_query/3" data-no-tooltip translate="no">update_query(query, changeset, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#upsert/4" data-no-tooltip translate="no">upsert(resource, changeset, keys, identity \\ nil)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:bulk_create_options/0">
+
+  <div class="detail-header">
+    <a href="#t:bulk_create_options/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">bulk_create_options()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L167" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> bulk_create_options() :: %{
+  batch_size: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+  return_records?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  upsert?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  upsert_keys: nil | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  upsert_condition: <a href="Ash.Expr.html#t:t/0">Ash.Expr.t</a>() | nil,
+  identity: <a href="Ash.Resource.Identity.html#t:t/0">Ash.Resource.Identity.t</a>() | nil,
+  select: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  upsert_fields:
+    nil
+    | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]
+    | :replace_all
+    | {:replace, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]}
+    | {:replace_all_except, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]},
+  tenant: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:bulk_update_options/0">
+
+  <div class="detail-header">
+    <a href="#t:bulk_update_options/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">bulk_update_options()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L184" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> bulk_update_options() :: %{
+  return_records?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  calculations: [{<a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>(), <a href="Ash.Expr.html#t:t/0">Ash.Expr.t</a>()}],
+  select: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  tenant: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:data_layer_query/0">
+
+  <div class="detail-header">
+    <a href="#t:data_layer_query/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">data_layer_query()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L9" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> data_layer_query() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:feature/0">
+
+  <div class="detail-header">
+    <a href="#t:feature/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">feature()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L68" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> feature() ::
+  :transact
+  | :multitenancy
+  | {:atomic, :update}
+  | {:atomic, :upsert}
+  | {:lateral_join, [<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()]}
+  | {:join, <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()}
+  | {:aggregate, <a href="Ash.Query.Aggregate.html#t:kind/0">Ash.Query.Aggregate.kind</a>()}
+  | {:aggregate_relationship, <a href="Ash.Resource.Relationships.html#t:relationship/0">Ash.Resource.Relationships.relationship</a>()}
+  | {:query_aggregate, <a href="Ash.Query.Aggregate.html#t:kind/0">Ash.Query.Aggregate.kind</a>()}
+  | :select
+  | :expr_error
+  | :expression_calculation_sort
+  | :aggregate_filter
+  | :aggregate_sort
+  | :boolean_filter
+  | :async_engine
+  | :bulk_create
+  | :update_query
+  | :destroy_query
+  | :create
+  | :read
+  | :update
+  | :destroy
+  | :limit
+  | :offset
+  | :transact
+  | :filter
+  | :composite_type
+  | {:lock, <a href="#t:lock_type/0">lock_type</a>()}
+  | {:filter_expr, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()}
+  | {:filter_relationship, <a href="Ash.Resource.Relationships.html#t:relationship/0">Ash.Resource.Relationships.relationship</a>()}
+  | :sort
+  | {:sort, <a href="Ash.Type.html#t:t/0">Ash.Type.t</a>()}
+  | :upsert
+  | :composite_primary_key</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:lateral_join_link/0">
+
+  <div class="detail-header">
+    <a href="#t:lateral_join_link/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">lateral_join_link()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L105" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> lateral_join_link() ::
+  {<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="Ash.Resource.Relationships.html#t:relationship/0">Ash.Resource.Relationships.relationship</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:lock_type/0">
+
+  <div class="detail-header">
+    <a href="#t:lock_type/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">lock_type()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L10" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> lock_type() :: :for_update | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L8" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:transaction_reason/0">
+
+  <div class="detail-header">
+    <a href="#t:transaction_reason/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">transaction_reason()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L11" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> transaction_reason() ::
+  %{
+    :type =&gt; :create,
+    :metadata =&gt; %{resource: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), action: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
+    optional(:data_layer_context) =&gt; %{}
+  }
+  | %{
+      :type =&gt; :update,
+      :metadata =&gt; %{
+        resource: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+        action: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+        record: <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>(),
+        actor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+      },
+      optional(:data_layer_context) =&gt; %{}
+    }
+  | %{
+      :type =&gt; :destroy,
+      :metadata =&gt; %{
+        resource: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+        action: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+        record: <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>(),
+        actor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+      },
+      optional(:data_layer_context) =&gt; %{}
+    }
+  | %{
+      :type =&gt; :read,
+      :metadata =&gt; %{
+        resource: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+        query: <a href="Ash.Query.html#t:t/0">Ash.Query.t</a>(),
+        actor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+      },
+      optional(:data_layer_context) =&gt; %{}
+    }
+  | %{
+      :type =&gt; :flow_transaction,
+      :metadata =&gt; %{
+        resource: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+        input: <a href="Ash.ActionInput.html#t:t/0">Ash.ActionInput.t</a>(),
+        action: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+        actor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+      },
+      optional(:data_layer_context) =&gt; %{}
+    }
+  | %{
+      :type =&gt; :generic,
+      :metadata =&gt; %{
+        step_name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+        flow: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+        actor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+      },
+      optional(:data_layer_context) =&gt; %{}
+    }
+  | %{type: :custom, metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()}
+  | %{type: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), metadata: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:add_aggregate/3">
+
+  <div class="detail-header">
+    <a href="#c:add_aggregate/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">add_aggregate(data_layer_query, t, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L236" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> add_aggregate(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  <a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>(),
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:add_aggregates/3">
+
+  <div class="detail-header">
+    <a href="#c:add_aggregates/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">add_aggregates(data_layer_query, list, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L243" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> add_aggregates(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [<a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()],
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:add_calculation/4">
+
+  <div class="detail-header">
+    <a href="#c:add_calculation/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">add_calculation(data_layer_query, t, expression, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L250" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> add_calculation(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  <a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>(),
+  expression :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:add_calculations/3">
+
+  <div class="detail-header">
+    <a href="#c:add_calculations/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">add_calculations(data_layer_query, list, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L258" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> add_calculations(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [{<a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>(), expression :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}],
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:bulk_create/3">
+
+  <div class="detail-header">
+    <a href="#c:bulk_create/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">bulk_create(t, t, options)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L191" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> bulk_create(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()),
+  options :: <a href="#t:bulk_create_options/0">bulk_create_options</a>()
+) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())}
+  | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}
+  | {:error, :no_rollback, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:calculate/3">
+
+  <div class="detail-header">
+    <a href="#c:calculate/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">calculate(t, list, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L275" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> calculate(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), [<a href="Ash.Expr.html#t:t/0">Ash.Expr.t</a>()], context :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:can?/2">
+
+  <div class="detail-header">
+    <a href="#c:can?/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">can?(arg1, feature)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L277" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> can?(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="https://hexdocs.pm/spark/2.2.24/Spark.Dsl.html#t:t/0">Spark.Dsl.t</a>(), <a href="#t:feature/0">feature</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:create/2">
+
+  <div class="detail-header">
+    <a href="#c:create/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">create(t, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L200" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> create(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()) ::
+  {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:destroy/2">
+
+  <div class="detail-header">
+    <a href="#c:destroy/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">destroy(t, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L264" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> destroy(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()) :: :ok | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:destroy_query/4">
+
+  <div class="detail-header">
+    <a href="#c:destroy_query/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">destroy_query(data_layer_query, t, t, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L225" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> destroy_query(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(),
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  opts :: <a href="#t:bulk_update_options/0">bulk_update_options</a>()
+) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())}
+  | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}
+  | {:error, :no_rollback, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:distinct/3">
+
+  <div class="detail-header">
+    <a href="#c:distinct/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">distinct(data_layer_query, list, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L115" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> distinct(<a href="#t:data_layer_query/0">data_layer_query</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()], resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:distinct_sort/3">
+
+  <div class="detail-header">
+    <a href="#c:distinct_sort/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">distinct_sort(data_layer_query, t, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L113" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> distinct_sort(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>(), resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:filter/3">
+
+  <div class="detail-header">
+    <a href="#c:filter/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">filter(data_layer_query, t, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L109" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> filter(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Filter.html#t:t/0">Ash.Filter.t</a>(), resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:functions/1">
+
+  <div class="detail-header">
+    <a href="#c:functions/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">functions(t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L108" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> functions(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:in_transaction?/1">
+
+  <div class="detail-header">
+    <a href="#c:in_transaction?/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">in_transaction?(t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L272" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> in_transaction?(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:limit/3">
+
+  <div class="detail-header">
+    <a href="#c:limit/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">limit(data_layer_query, limit, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L118" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> limit(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  limit :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:lock/3">
+
+  <div class="detail-header">
+    <a href="#c:lock/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">lock(data_layer_query, lock_type, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L140" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> lock(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="#t:lock_type/0">lock_type</a>(), resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:offset/3">
+
+  <div class="detail-header">
+    <a href="#c:offset/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">offset(data_layer_query, offset, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L124" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> offset(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  offset :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:prefer_lateral_join_for_many_to_many?/0">
+
+  <div class="detail-header">
+    <a href="#c:prefer_lateral_join_for_many_to_many?/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">prefer_lateral_join_for_many_to_many?()</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L117" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> prefer_lateral_join_for_many_to_many?() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:resource_to_query/2">
+
+  <div class="detail-header">
+    <a href="#c:resource_to_query/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">resource_to_query(t, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L136" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> resource_to_query(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Domain.html#t:t/0">Ash.Domain.t</a>()) :: <a href="#t:data_layer_query/0">data_layer_query</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:return_query/2">
+
+  <div class="detail-header">
+    <a href="#c:return_query/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">return_query(data_layer_query, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L164" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> return_query(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:rollback/2">
+
+  <div class="detail-header">
+    <a href="#c:rollback/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">rollback(t, term)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L274" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> rollback(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:run_aggregate_query/3">
+
+  <div class="detail-header">
+    <a href="#c:run_aggregate_query/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">run_aggregate_query(data_layer_query, list, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L142" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> run_aggregate_query(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [<a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()],
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:run_aggregate_query_with_lateral_join/5">
+
+  <div class="detail-header">
+    <a href="#c:run_aggregate_query_with_lateral_join/5" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">run_aggregate_query_with_lateral_join(data_layer_query, list, list, destination_resource, list)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L148" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> run_aggregate_query_with_lateral_join(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [<a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()],
+  [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()],
+  destination_resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  [<a href="#t:lateral_join_link/0">lateral_join_link</a>()]
+) :: {:ok, [<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()]} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:run_query/2">
+
+  <div class="detail-header">
+    <a href="#c:run_query/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">run_query(data_layer_query, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L138" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> run_query(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:run_query_with_lateral_join/4">
+
+  <div class="detail-header">
+    <a href="#c:run_query_with_lateral_join/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">run_query_with_lateral_join(data_layer_query, list, source_resource, list)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L156" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> run_query_with_lateral_join(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()],
+  source_resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  [<a href="#t:lateral_join_link/0">lateral_join_link</a>()]
+) :: {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:select/3">
+
+  <div class="detail-header">
+    <a href="#c:select/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">select(data_layer_query, select, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L129" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> select(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  select :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:set_context/3">
+
+  <div class="detail-header">
+    <a href="#c:set_context/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">set_context(t, data_layer_query, map)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L278" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> set_context(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:set_tenant/3">
+
+  <div class="detail-header">
+    <a href="#c:set_tenant/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">set_tenant(t, data_layer_query, term)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L134" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> set_tenant(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:sort/3">
+
+  <div class="detail-header">
+    <a href="#c:sort/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">sort(data_layer_query, t, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L111" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> sort(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>(), resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:source/1">
+
+  <div class="detail-header">
+    <a href="#c:source/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">source(t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L273" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> source(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:transaction/4">
+
+  <div class="detail-header">
+    <a href="#c:transaction/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">transaction(t, function, arg3, reason)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L265" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> transaction(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  (-&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()),
+  nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+  reason :: <a href="#t:transaction_reason/0">transaction_reason</a>()
+) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:transform_query/1">
+
+  <div class="detail-header">
+    <a href="#c:transform_query/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">transform_query(t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L137" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> transform_query(<a href="Ash.Query.html#t:t/0">Ash.Query.t</a>()) :: <a href="Ash.Query.html#t:t/0">Ash.Query.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:update/2">
+
+  <div class="detail-header">
+    <a href="#c:update/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">update(t, t)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L211" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> update(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()) ::
+  {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:update_query/4">
+
+  <div class="detail-header">
+    <a href="#c:update_query/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">update_query(data_layer_query, t, t, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L214" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> update_query(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(),
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  opts :: <a href="#t:bulk_update_options/0">bulk_update_options</a>()
+) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())}
+  | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}
+  | {:error, :no_rollback, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:upsert/3">
+
+  <div class="detail-header">
+    <a href="#c:upsert/3" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">upsert(t, t, list)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L202" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> upsert(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) ::
+  {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:upsert/4">
+
+  <div class="detail-header">
+    <a href="#c:upsert/4" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">upsert(t, t, list, arg4)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L204" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> upsert(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(),
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  <a href="Ash.Resource.Identity.html#t:t/0">Ash.Resource.Identity.t</a>() | nil
+) ::
+  {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_aggregates/3">
+
+  <div class="detail-header">
+    <a href="#add_aggregates/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_aggregates(query, aggregates, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L652" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_aggregates(<a href="#t:data_layer_query/0">data_layer_query</a>(), [<a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()], <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="add_calculations/3">
+
+  <div class="detail-header">
+    <a href="#add_calculations/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_calculations(query, calculations, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L677" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_calculations(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [{<a href="Ash.Query.Calculation.html#t:t/0">Ash.Query.Calculation.t</a>(), expression :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}],
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="bulk_create/3">
+
+  <div class="detail-header">
+    <a href="#bulk_create/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">bulk_create(resource, changesets, options)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L498" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> bulk_create(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()),
+  options :: <a href="#t:bulk_create_options/0">bulk_create_options</a>()
+) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())}
+  | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}
+  | {:error, :no_rollback, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="calculate/3">
+
+  <div class="detail-header">
+    <a href="#calculate/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">calculate(resource, exprs, context)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L349" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> calculate(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), [<a href="Ash.Expr.html#t:t/0">Ash.Expr.t</a>()], context :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]} | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="can?/2">
+
+  <div class="detail-header">
+    <a href="#can?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">can?(feature, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L697" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> can?(<a href="#t:feature/0">feature</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="https://hexdocs.pm/spark/2.2.24/Spark.Dsl.html#t:t/0">Spark.Dsl.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="create/2">
+
+  <div class="detail-header">
+    <a href="#create/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">create(resource, changeset)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L472" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> create(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()) ::
+  {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="data_layer/1">
+
+  <div class="detail-header">
+    <a href="#data_layer/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">data_layer(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L319" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> data_layer(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="https://hexdocs.pm/spark/2.2.24/Spark.Dsl.html#t:t/0">Spark.Dsl.t</a>()) :: <a href="#t:t/0">t</a>() | nil</pre>
+
+      </div>
+
+<p>The data layer of the resource, or nil if it does not have one</p>
+  </section>
+</section>
+<section class="detail" id="data_layer_can?/2">
+
+  <div class="detail-header">
+    <a href="#data_layer_can?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">data_layer_can?(resource, feature)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L335" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> data_layer_can?(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | <a href="https://hexdocs.pm/spark/2.2.24/Spark.Dsl.html#t:t/0">Spark.Dsl.t</a>(), <a href="#t:feature/0">feature</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Whether or not the data layer supports a specific feature</p>
+  </section>
+</section>
+<section class="detail" id="data_layer_functions/1">
+
+  <div class="detail-header">
+    <a href="#data_layer_functions/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">data_layer_functions(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L343" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> data_layer_functions(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+<p>Custom functions supported by the data layer of the resource</p>
+  </section>
+</section>
+<section class="detail" id="destroy/2">
+
+  <div class="detail-header">
+    <a href="#destroy/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">destroy(resource, changeset)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L504" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> destroy(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()) ::
+  :ok | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="destroy_query/3">
+
+  <div class="detail-header">
+    <a href="#destroy_query/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">destroy_query(query, changeset, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L459" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> destroy_query(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(),
+  opts :: <a href="#t:bulk_update_options/0">bulk_update_options</a>()
+) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())}
+  | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}
+  | {:error, :no_rollback, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="distinct/3">
+
+  <div class="detail-header">
+    <a href="#distinct/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">distinct(query, distinct, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L591" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> distinct(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="distinct_sort/3">
+
+  <div class="detail-header">
+    <a href="#distinct_sort/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">distinct_sort(query, sort, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L602" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> distinct_sort(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="filter/3">
+
+  <div class="detail-header">
+    <a href="#filter/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">filter(query, filter, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L561" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> filter(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Filter.html#t:t/0">Ash.Filter.t</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="functions/1">
+
+  <div class="detail-header">
+    <a href="#functions/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">functions(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L771" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="in_transaction?/1">
+
+  <div class="detail-header">
+    <a href="#in_transaction?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">in_transaction?(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L762" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="limit/3">
+
+  <div class="detail-header">
+    <a href="#limit/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">limit(query, limit, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L613" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> limit(<a href="#t:data_layer_query/0">data_layer_query</a>(), limit :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="lock/3">
+
+  <div class="detail-header">
+    <a href="#lock/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">lock(query, lock_type, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L726" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> lock(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  lock_type :: <a href="#t:lock_type/0">lock_type</a>() | nil,
+  resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="offset/3">
+
+  <div class="detail-header">
+    <a href="#offset/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">offset(query, offset, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L626" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> offset(<a href="#t:data_layer_query/0">data_layer_query</a>(), offset :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="prefer_lateral_join_for_many_to_many?/1">
+
+  <div class="detail-header">
+    <a href="#prefer_lateral_join_for_many_to_many?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prefer_lateral_join_for_many_to_many?(data_layer)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L325" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> prefer_lateral_join_for_many_to_many?(<a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Whether or not lateral joins should be used for many to many relationships by default</p>
+  </section>
+</section>
+<section class="detail" id="resource_to_query/2">
+
+  <div class="detail-header">
+    <a href="#resource_to_query/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">resource_to_query(resource, domain)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L427" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> resource_to_query(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Domain.html#t:t/0">Ash.Domain.t</a>()) :: <a href="#t:data_layer_query/0">data_layer_query</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="return_query/2">
+
+  <div class="detail-header">
+    <a href="#return_query/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">return_query(query, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L479" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> return_query(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="rollback/2">
+
+  <div class="detail-header">
+    <a href="#rollback/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">rollback(resource, term)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L418" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> rollback(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | [<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Rolls back the current transaction</p>
+  </section>
+</section>
+<section class="detail" id="run_aggregate_query/3">
+
+  <div class="detail-header">
+    <a href="#run_aggregate_query/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_aggregate_query(query, aggregates, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L708" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> run_aggregate_query(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  [<a href="Ash.Query.Aggregate.html#t:t/0">Ash.Query.Aggregate.t</a>()],
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()
+) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="run_aggregate_query_with_lateral_join/5">
+
+  <div class="detail-header">
+    <a href="#run_aggregate_query_with_lateral_join/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_aggregate_query_with_lateral_join(query, aggregates, root_data, destination_resource, path)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L732" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="run_query/2">
+
+  <div class="detail-header">
+    <a href="#run_query/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_query(query, central_resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L720" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> run_query(<a href="#t:data_layer_query/0">data_layer_query</a>(), central_resource :: <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, [<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()]}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="run_query_with_lateral_join/4">
+
+  <div class="detail-header">
+    <a href="#run_query_with_lateral_join/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_query_with_lateral_join(query, root_data, destination_resource, path)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L748" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="select/3">
+
+  <div class="detail-header">
+    <a href="#select/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">select(query, select, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L639" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> select(<a href="#t:data_layer_query/0">data_layer_query</a>(), select :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()], <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="set_context/3">
+
+  <div class="detail-header">
+    <a href="#set_context/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_context(resource, query, map)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L549" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_context(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="set_tenant/3">
+
+  <div class="detail-header">
+    <a href="#set_tenant/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_tenant(resource, query, term)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L525" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> set_tenant(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="sort/3">
+
+  <div class="detail-header">
+    <a href="#sort/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">sort(query, sort, resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L580" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> sort(<a href="#t:data_layer_query/0">data_layer_query</a>(), <a href="Ash.Sort.html#t:t/0">Ash.Sort.t</a>(), <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) ::
+  {:ok, <a href="#t:data_layer_query/0">data_layer_query</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="source/1">
+
+  <div class="detail-header">
+    <a href="#source/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">source(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L511" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> source(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="transaction/4">
+
+    <span id="transaction/2"></span>
+
+    <span id="transaction/3"></span>
+
+  <div class="detail-header">
+    <a href="#transaction/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transaction(resource_or_resources, func, timeout \\ nil, reason \\ %{type: :custom, metadata: %{}})</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L361" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> transaction(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>() | [<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>()],
+  (-&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()),
+  nil | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+  reason :: <a href="#t:transaction_reason/0">transaction_reason</a>()
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Wraps the execution of the function in a transaction with the resource's data_layer</p>
+  </section>
+</section>
+<section class="detail" id="transform_query/1">
+
+  <div class="detail-header">
+    <a href="#transform_query/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transform_query(query)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L781" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="update/2">
+
+  <div class="detail-header">
+    <a href="#update/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update(resource, changeset)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L433" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update(<a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(), <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>()) ::
+  {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:error, :no_rollback, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="update_query/3">
+
+  <div class="detail-header">
+    <a href="#update_query/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_query(query, changeset, opts)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L443" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_query(
+  <a href="#t:data_layer_query/0">data_layer_query</a>(),
+  <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(),
+  opts :: <a href="#t:bulk_update_options/0">bulk_update_options</a>()
+) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/1">Enumerable.t</a>(<a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>())}
+  | {:error, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}
+  | {:error, :no_rollback, <a href="Ash.Error.html#t:t/0">Ash.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="upsert/4">
+
+    <span id="upsert/3"></span>
+
+  <div class="detail-header">
+    <a href="#upsert/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">upsert(resource, changeset, keys, identity \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/lib/ash/data_layer/data_layer.ex#L536" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> upsert(
+  <a href="Ash.Resource.html#t:t/0">Ash.Resource.t</a>(),
+  <a href="Ash.Changeset.html#t:t/0">Ash.Changeset.t</a>(),
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  identity :: <a href="Ash.Resource.Identity.html#t:t/0">Ash.Resource.Identity.t</a>() | nil
+) :: {:ok, <a href="Ash.Resource.html#t:record/0">Ash.Resource.record</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

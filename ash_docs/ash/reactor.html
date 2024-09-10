@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Reactor — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/advanced/reactor.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Reactor</span>
+  </h1>
+
+<p><a href="Ash.Reactor.html"><code class="inline">Ash.Reactor</code></a> is an extension for <a href="https://github.com/ash-project/reactor"><code class="inline">Reactor</code></a> which adds explicit support for interacting with resources via their defined actions.</p><p>See <a href="https://hexdocs.pm/reactor/getting-started-with-reactor.html">Getting started with Reactor</a> for more information about Reactor.</p><h2 id="usage" class="section-heading">
+  <a href="#usage" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Usage</span>
+</h2>
+<p>You can either add the <a href="Ash.Reactor.html"><code class="inline">Ash.Reactor</code></a> extension to your existing reactors eg:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyExistingReactor</span><span class="w"> </span><span class="k" data-group-id="2118486467-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2118486467-2">[</span><span class="nc">Ash.Reactor</span><span class="p" data-group-id="2118486467-2">]</span><span class="w">
+</span><span class="k" data-group-id="2118486467-1">end</span></code></pre><p>or for your convenience you can use <code class="inline">use Ash.Reactor</code> which expands to exactly the same as above.</p><h2 id="example" class="section-heading">
+  <a href="#example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<p>An example is worth 1000 words of prose:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ExampleReactor</span><span class="w"> </span><span class="k" data-group-id="4908179529-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Reactor</span><span class="w">
+
+  </span><span class="n">ash</span><span class="w"> </span><span class="k" data-group-id="4908179529-2">do</span><span class="w">
+    </span><span class="n">default_domain</span><span class="w"> </span><span class="nc">ExampleDomain</span><span class="w">
+  </span><span class="k" data-group-id="4908179529-2">end</span><span class="w">
+
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:customer_name</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:customer_email</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:plan_name</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:payment_nonce</span><span class="w">
+
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:create_customer</span><span class="p">,</span><span class="w"> </span><span class="nc">Customer</span><span class="w"> </span><span class="k" data-group-id="4908179529-3">do</span><span class="w">
+    </span><span class="n">inputs</span><span class="w"> </span><span class="p" data-group-id="4908179529-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4908179529-5">(</span><span class="ss">:customer_name</span><span class="p" data-group-id="4908179529-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4908179529-6">(</span><span class="ss">:customer_email</span><span class="p" data-group-id="4908179529-6">)</span><span class="p" data-group-id="4908179529-4">}</span><span class="w">
+  </span><span class="k" data-group-id="4908179529-3">end</span><span class="w">
+
+  </span><span class="n">read_one</span><span class="w"> </span><span class="ss">:get_plan</span><span class="p">,</span><span class="w"> </span><span class="nc">Plan</span><span class="p">,</span><span class="w"> </span><span class="ss">:get_plan_by_name</span><span class="w"> </span><span class="k" data-group-id="4908179529-7">do</span><span class="w">
+    </span><span class="n">inputs</span><span class="w"> </span><span class="p" data-group-id="4908179529-8">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4908179529-9">(</span><span class="ss">:plan_name</span><span class="p" data-group-id="4908179529-9">)</span><span class="p" data-group-id="4908179529-8">}</span><span class="w">
+    </span><span class="n">fail_on_not_found?</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="4908179529-7">end</span><span class="w">
+
+  </span><span class="n">action</span><span class="w"> </span><span class="ss">:take_payment</span><span class="p">,</span><span class="w"> </span><span class="nc">PaymentProvider</span><span class="w"> </span><span class="k" data-group-id="4908179529-10">do</span><span class="w">
+    </span><span class="n">inputs</span><span class="w"> </span><span class="p" data-group-id="4908179529-11">%{</span><span class="w">
+      </span><span class="ss">nonce</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4908179529-12">(</span><span class="ss">:payment_nonce</span><span class="p" data-group-id="4908179529-12">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">amount</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="4908179529-13">(</span><span class="ss">:get_plan</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4908179529-14">[</span><span class="ss">:price</span><span class="p" data-group-id="4908179529-14">]</span><span class="p" data-group-id="4908179529-13">)</span><span class="w">
+    </span><span class="p" data-group-id="4908179529-11">}</span><span class="w">
+  </span><span class="k" data-group-id="4908179529-10">end</span><span class="w">
+
+  </span><span class="n">create</span><span class="w"> </span><span class="ss">:subscription</span><span class="p">,</span><span class="w"> </span><span class="nc">Subscription</span><span class="w"> </span><span class="k" data-group-id="4908179529-15">do</span><span class="w">
+    </span><span class="n">inputs</span><span class="w"> </span><span class="p" data-group-id="4908179529-16">%{</span><span class="w">
+      </span><span class="ss">plan_id</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="4908179529-17">(</span><span class="ss">:get_plan</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4908179529-18">[</span><span class="ss">:id</span><span class="p" data-group-id="4908179529-18">]</span><span class="p" data-group-id="4908179529-17">)</span><span class="p">,</span><span class="w">
+      </span><span class="ss">payment_provider_id</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="4908179529-19">(</span><span class="ss">:take_payment</span><span class="p">,</span><span class="w"> </span><span class="ss">:id</span><span class="p" data-group-id="4908179529-19">)</span><span class="w">
+    </span><span class="p" data-group-id="4908179529-16">}</span><span class="w">
+  </span><span class="k" data-group-id="4908179529-15">end</span><span class="w">
+</span><span class="k" data-group-id="4908179529-1">end</span></code></pre><h2 id="actions" class="section-heading">
+  <a href="#actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Actions</span>
+</h2>
+<p>For each action type there is a corresponding step DSL, which needs a name (used
+to refer to the result of the step by other steps), a resource and optional
+action name (defaults to the primary action if one is not provided).</p><p>Actions have several common options and some specific to their particular type.
+See the <a href="dsl-ash-reactor.html">DSL documentation</a> for
+details.</p><h3 id="action-inputs" class="section-heading">
+  <a href="#action-inputs" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Action inputs</span>
+</h3>
+<p>Ash actions take a map of input parameters which are usually a combination of
+resource attributes and action arguments. You can provide these values as a
+single map using the <a href="dsl-ash-reactor.html#reactor-action-inputs"><code class="inline">inputs</code> DSL entity</a> with a map or keyword list which refers to Reactor inputs, results and hard-coded values via Reactor's <a href="https://hexdocs.pm/reactor/Reactor.Dsl.Argument.html#functions">predefined template functions</a>.</p><p>For action types that act on a specific resource (ie <code class="inline">update</code> and <code class="inline">destroy</code>) you can provide the value using the <a href="dsl-ash-reactor.html#reactor-update-initial"><code class="inline">initial</code> DSL option</a>.</p><h4>Example</h4><pre><code class="makeup elixir" translate="no"><span class="n">input</span><span class="w"> </span><span class="ss">:blog_title</span><span class="w">
+</span><span class="n">input</span><span class="w"> </span><span class="ss">:blog_body</span><span class="w">
+</span><span class="n">input</span><span class="w"> </span><span class="ss">:author_email</span><span class="w">
+
+</span><span class="n">read</span><span class="w"> </span><span class="ss">:get_author</span><span class="p">,</span><span class="w"> </span><span class="nc">MyBlog.Author</span><span class="p">,</span><span class="w"> </span><span class="ss">:get_author_by_email</span><span class="w"> </span><span class="k" data-group-id="6389041052-1">do</span><span class="w">
+  </span><span class="n">inputs</span><span class="w"> </span><span class="p" data-group-id="6389041052-2">%{</span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="6389041052-3">(</span><span class="ss">:author_email</span><span class="p" data-group-id="6389041052-3">)</span><span class="p" data-group-id="6389041052-2">}</span><span class="w">
+</span><span class="k" data-group-id="6389041052-1">end</span><span class="w">
+
+</span><span class="n">create</span><span class="w"> </span><span class="ss">:create_post</span><span class="p">,</span><span class="w"> </span><span class="nc">MyBlog.Post</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span><span class="w"> </span><span class="k" data-group-id="6389041052-4">do</span><span class="w">
+  </span><span class="n">inputs</span><span class="w"> </span><span class="p" data-group-id="6389041052-5">%{</span><span class="w">
+    </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="6389041052-6">(</span><span class="ss">:blog</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6389041052-7">[</span><span class="ss">:title</span><span class="p" data-group-id="6389041052-7">]</span><span class="p" data-group-id="6389041052-6">)</span><span class="p">,</span><span class="w">
+    </span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="6389041052-8">(</span><span class="ss">:blog</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6389041052-9">[</span><span class="ss">:body</span><span class="p" data-group-id="6389041052-9">]</span><span class="p" data-group-id="6389041052-8">)</span><span class="p">,</span><span class="w">
+    </span><span class="ss">author_id</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="6389041052-10">(</span><span class="ss">:get_author</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6389041052-11">[</span><span class="ss">:email</span><span class="p" data-group-id="6389041052-11">]</span><span class="p" data-group-id="6389041052-10">)</span><span class="w">
+  </span><span class="p" data-group-id="6389041052-5">}</span><span class="w">
+</span><span class="k" data-group-id="6389041052-4">end</span><span class="w">
+
+</span><span class="n">update</span><span class="w"> </span><span class="ss">:author_post_count</span><span class="p">,</span><span class="w"> </span><span class="nc">MyBlog.Author</span><span class="p">,</span><span class="w"> </span><span class="ss">:update_post_count</span><span class="w"> </span><span class="k" data-group-id="6389041052-12">do</span><span class="w">
+  </span><span class="n">wait_for</span><span class="w"> </span><span class="ss">:create_post</span><span class="w">
+  </span><span class="n">initial</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="6389041052-13">(</span><span class="ss">:get_author</span><span class="p" data-group-id="6389041052-13">)</span><span class="w">
+</span><span class="k" data-group-id="6389041052-12">end</span><span class="w">
+
+</span><span class="n">return</span><span class="w"> </span><span class="ss">:create_post</span></code></pre><h2 id="handling-failure" class="section-heading">
+  <a href="#handling-failure" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Handling failure.</span>
+</h2>
+<p>Reactor is a saga executor, which means that when failure occurs it tries to
+clean up any intermediate state left behind. By default the <code class="inline">create</code>, <code class="inline">update</code>
+and <code class="inline">destroy</code> steps do not specify any behaviour for what to do when there is a
+failure downstream in the reactor. This can be changed by providing both an
+<code class="inline">undo_action</code> and changing the step's <code class="inline">undo</code> option to either
+<code class="inline">:outside_transaction</code> or <code class="inline">:always</code> depending on your resource and datalayer
+semantics.</p><h3 id="the-undo-option" class="section-heading">
+  <a href="#the-undo-option" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">The <code class="inline">undo</code> option.</span>
+</h3>
+<ul><li><code class="inline">:never</code> - this is the default, and means that the reactor will never try and
+undo the action's work. This is the most performant option, as it means that
+the reactor doesn't need to store as many intermediate values.</li><li><code class="inline">:outside_transaction</code> - this option allows the step to decide at runtime
+whether it should support undo based on whether the action is being run within
+a transaction. If it is, then no undo is required because the transaction
+will rollback.</li><li><code class="inline">:always</code> - this forces the step to always undo it's work on failure.</li></ul><h3 id="the-undo_action-option" class="section-heading">
+  <a href="#the-undo_action-option" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">The <code class="inline">undo_action</code> option.</span>
+</h3>
+<p>The behaviour of the <code class="inline">undo_action</code> is action specific:</p><ul><li>For <code class="inline">create</code> actions, the <code class="inline">undo_action</code> should be the name of a <code class="inline">destroy</code>
+action with no specific requirements.</li><li>For <code class="inline">update</code> actions, the <code class="inline">undo_action</code> should also be an <code class="inline">update</code> action
+which takes a <code class="inline">changeset</code> argument, which will contain the <a href="Ash.Changeset.html"><code class="inline">Ash.Changeset</code></a>
+which was used to execute the original update.</li><li>For <code class="inline">destroy</code> actions, the <code class="inline">undo_action</code> should be the name of a <code class="inline">create</code>
+action which takes a <code class="inline">record</code> argument, which will contain the
+resource record which was used destroyed.</li></ul><h3 id="transactions" class="section-heading">
+  <a href="#transactions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Transactions</span>
+</h3>
+<p>You can use the <code class="inline">transaction</code> step type to wrap a group of steps inside a data layer transaction, however the following caveats apply:</p><ul><li>All steps inside a transaction must happen in the same process, so the steps
+inside the transaction will only ever be executed synchronously.</li><li>Notifications will be sent only when the transaction is committed.</li></ul><h2 id="notifications" class="section-heading">
+  <a href="#notifications" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Notifications</span>
+</h2>
+<p>Because a reactor has transaction-like semantics notifications are automatically batched and only sent upon successful completion of the reactor.</p><h2 id="running-reactors-as-an-action" class="section-heading">
+  <a href="#running-reactors-as-an-action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Running Reactors as an action</span>
+</h2>
+<p>Ash's <a href="actions.html#generic-actions">generic actions</a> now support providing a Reactor module directly as their <code class="inline">run</code> option.</p><p>Notes:</p><ul><li>Every Reactor input must have a corresponding action argument.</li><li>Ash's action context is passed in as the Reactor's context (including things like actor, tenant, etc).</li><li><a href="https://hexdocs.pm/reactor/0.9.1/Reactor.html#t:options/0">Reactor runtime options</a> can be set by setting <code class="inline">run {MyReactor, opts}</code> instead of just <code class="inline">run MyReactor</code>.</li><li>If you set the <code class="inline">transaction?</code> action DSL option to true then the Reactor will be run synchronously - regardless of the value of the <code class="inline">async?</code> runtime option.</li></ul><h3 id="example-1" class="section-heading">
+  <a href="#example-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:run_reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:struct</span><span class="w"> </span><span class="k" data-group-id="5743705101-1">do</span><span class="w">
+  </span><span class="n">constraints</span><span class="w"> </span><span class="ss">instance_of</span><span class="p">:</span><span class="w"> </span><span class="nc">MyBlog.Post</span><span class="w">
+
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:blog_title</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:blog_body</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:author_email</span><span class="p">,</span><span class="w"> </span><span class="ss">:ci_string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+
+  </span><span class="n">run</span><span class="w"> </span><span class="nc">MyBlog.CreatePostReactor</span><span class="w">
+</span><span class="k" data-group-id="5743705101-1">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="upgrading-to-3-0.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrade
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="monitoring.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Monitoring
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/advanced/reactor.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

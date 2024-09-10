@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>API Reference — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>API Reference <small class="app-vsn">igniter v0.3.29</small></span>
+  </h1>
+
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Modules</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.html" translate="no">Igniter</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tools for generating and patching code into an Elixir project.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.Common.html" translate="no">Igniter.Code.Common</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>General purpose utilities for working with <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html"><code class="inline">Sourceror.Zipper</code></a>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.Function.html" translate="no">Igniter.Code.Function</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working with functions.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.Keyword.html" translate="no">Igniter.Code.Keyword</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working with keyword.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.List.html" translate="no">Igniter.Code.List</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working with lists.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.Map.html" translate="no">Igniter.Code.Map</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working with maps.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.Module.html" translate="no">Igniter.Code.Module</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working with Elixir modules</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Code.Tuple.html" translate="no">Igniter.Code.Tuple</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working with tuples.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Libs.Phoenix.html" translate="no">Igniter.Libs.Phoenix</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Codemods &amp; utilities for working with Phoenix</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Mix.Task.html" translate="no">Igniter.Mix.Task</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A behaviour for implementing a Mix task that is enriched to be composable with other Igniter tasks.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Mix.Task.Info.html" translate="no">Igniter.Mix.Task.Info</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Info for an <a href="Igniter.Mix.Task.html"><code class="inline">Igniter.Mix.Task</code></a>, returned from the <code class="inline">info/2</code> callback</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Project.Application.html" translate="no">Igniter.Project.Application</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Codemods and tools for working with Application modules.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Project.Config.html" translate="no">Igniter.Project.Config</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Codemods and utilities for modifying Elixir config files.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Project.Deps.html" translate="no">Igniter.Project.Deps</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Codemods and utilities for managing dependencies declared in mix.exs</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Project.Formatter.html" translate="no">Igniter.Project.Formatter</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Codemods and utilities for interacting with <code class="inline">.formatter.exs</code> files</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Project.IgniterConfig.html" translate="no">Igniter.Project.IgniterConfig</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tools for reading and modifying the <code class="inline">.igniter.exs</code> file.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Project.Test.html" translate="no">Igniter.Project.Test</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Codemods and utilities for interacting with test and test support files</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Test.html" translate="no">Igniter.Test</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tools for testing with igniter.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Util.Debug.html" translate="no">Igniter.Util.Debug</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tools for debugging zippers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Util.Install.html" translate="no">Igniter.Util.Install</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tools for installing packages and running their associated
+installers, if present.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Util.Version.html" translate="no">Igniter.Util.Version</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for working versions and version requirements</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Igniter.Util.Warning.html" translate="no">Igniter.Util.Warning</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Utilities for emitting well formatted warnings</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+
+  <section class="details-list">
+    <h2 id="mix-tasks" class="section-heading">
+  <a href="#mix-tasks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Mix Tasks</span>
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Igniter.Gen.Task.html" translate="no">mix igniter.gen.task</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Generates a new igniter task</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Igniter.Install.html" translate="no">mix igniter.install</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Install a package or packages, and run any associated installers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Igniter.MoveFiles.html" translate="no">mix igniter.move_files</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Moves any relavant files to their 'correct' location.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Igniter.Setup.html" translate="no">mix igniter.setup</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Creates or updates a .igniter.exs file, used to configure Igniter for end user's preferences.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Mix.Tasks.Igniter.UpdateGettext.html" translate="no">mix igniter.update_gettext</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Applies changes to resolve a warning introduced in gettext 0.26.0</p></div>
+
+</div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

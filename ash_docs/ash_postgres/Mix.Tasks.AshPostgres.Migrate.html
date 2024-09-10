@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_postgres v2.3.1">
+
+
+    <title>mix ash_postgres.migrate — ash_postgres v2.3.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-59AEB2F8.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="tasks" class="page-task">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://ash-hq.org" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_postgres" />
+        </a>
+
+      <div>
+        <a href="https://ash-hq.org" class="sidebar-projectName" translate="no">
+ash_postgres
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.3.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_postgres</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/lib/mix/tasks/ash_postgres.migrate.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">mix ash_postgres.migrate</span> 
+    <small class="app-vsn" translate="no">(ash_postgres v2.3.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Runs the pending migrations for the given repository.</p><p>Migrations are expected at &quot;priv/YOUR_REPO/migrations&quot; directory
+of the current application (or <code class="inline">tenant_migrations</code> for multitenancy),
+where &quot;YOUR_REPO&quot; is the last segment
+in your repository name. For example, the repository <code class="inline">MyApp.Repo</code>
+will use &quot;priv/repo/migrations&quot;. The repository <code class="inline">Whatever.MyRepo</code>
+will use &quot;priv/my_repo/migrations&quot;.</p><p>This task runs all pending migrations by default. To migrate up to a
+specific version number, supply <code class="inline">--to version_number</code>. To migrate a
+specific number of times, use <code class="inline">--step n</code>.</p><p>If you have multiple repos and you want to run a single migration and/or
+migrate them to different points, you will need to use the ecto specific task,
+<a href="https://hexdocs.pm/ecto_sql/3.12.0/Mix.Tasks.Ecto.Migrate.html"><code class="inline">mix ecto.migrate</code></a> and provide your repo name.</p><p>If a repository has not yet been started, one will be started outside
+your application supervision tree and shutdown afterwards.</p><h2 id="module-examples" class="section-heading">
+  <a href="#module-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">mix</span><span class="w"> </span><span class="n">ash_postgres</span><span class="o">.</span><span class="n">migrate</span><span class="w">
+</span><span class="n">mix</span><span class="w"> </span><span class="n">ash_postgres</span><span class="o">.</span><span class="n">migrate</span><span class="w"> </span><span class="o">--</span><span class="n">domains</span><span class="w"> </span><span class="nc">MyApp.Domain1</span><span class="p">,</span><span class="nc">MyApp.Domain2</span><span class="w">
+
+</span><span class="n">mix</span><span class="w"> </span><span class="n">ash_postgres</span><span class="o">.</span><span class="n">migrate</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="n">mix</span><span class="w"> </span><span class="n">ash_postgres</span><span class="o">.</span><span class="n">migrate</span><span class="w"> </span><span class="o">--</span><span class="n">step</span><span class="w"> </span><span class="mi">3</span><span class="w">
+
+</span><span class="n">mix</span><span class="w"> </span><span class="n">ash_postgres</span><span class="o">.</span><span class="n">migrate</span><span class="w"> </span><span class="o">--</span><span class="n">to</span><span class="w"> </span><span class="mi">20080906120000</span></code></pre><h2 id="module-command-line-options" class="section-heading">
+  <a href="#module-command-line-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Command line options</span>
+</h2>
+<ul><li><p><code class="inline">--domains</code> - the domains who's repos should be migrated</p></li><li><p><code class="inline">--tenants</code> - Run the tenant migrations</p></li><li><p><code class="inline">--only-tenants</code> - in combo with <code class="inline">--tenants</code>, only runs migrations for the provided tenants, e.g <code class="inline">tenant1,tenant2,tenant3</code></p></li><li><p><code class="inline">--except-tenants</code> - in combo with <code class="inline">--tenants</code>, does not run migrations for the provided tenants, e.g <code class="inline">tenant1,tenant2,tenant3</code></p></li><li><p><code class="inline">--all</code> - run all pending migrations</p></li><li><p><code class="inline">--step</code>, <code class="inline">-n</code> - run n number of pending migrations</p></li><li><p><code class="inline">--to</code> - run all migrations up to and including version</p></li><li><p><code class="inline">--quiet</code> - do not log migration commands</p></li><li><p><code class="inline">--prefix</code> - the prefix to run migrations on. This is ignored if <code class="inline">--tenants</code> is provided.</p></li><li><p><code class="inline">--pool-size</code> - the pool size if the repository is started only for the task (defaults to 2)</p></li><li><p><code class="inline">--log-sql</code> - log the raw sql migrations are running</p></li><li><p><code class="inline">--strict-version-order</code> - abort when applying a migration with old timestamp</p></li><li><p><code class="inline">--no-compile</code> - does not compile applications before migrating</p></li><li><p><code class="inline">--no-deps-check</code> - does not check depedendencies before migrating</p></li><li><p><code class="inline">--migrations-path</code> - the path to load the migrations from, defaults to
+<code class="inline">&quot;priv/repo/migrations&quot;</code>. This option may be given multiple times in which case the migrations
+are loaded from all the given directories and sorted as if they were in the same one.</p><p>Note, if you have migrations paths e.g. <code class="inline">a/</code> and <code class="inline">b/</code>, and run
+<code class="inline">mix ecto.migrate --migrations-path a/</code>, the latest migrations from <code class="inline">a/</code> will be run (even
+if <code class="inline">b/</code> contains the overall latest migrations.)</p></li></ul>
+    </section>
+
+</div>
+
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_postgres/2.3.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_postgres/2.3.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_postgres.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

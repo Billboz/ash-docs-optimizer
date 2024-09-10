@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>Igniter.Code.List — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Igniter.Code.List</span> 
+    <small class="app-vsn" translate="no">(igniter v0.3.29)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Utilities for working with lists.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:equality_pred/0" data-no-tooltip translate="no">equality_pred()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#append_new_to_list/3" data-no-tooltip translate="no">append_new_to_list(zipper, quoted, equality_pred \\ &amp;Common.nodes_equal?/2)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Appends <code class="inline">quoted</code> to the list unless it is already present, determined by <code class="inline">equality_pred</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#append_to_list/2" data-no-tooltip translate="no">append_to_list(zipper, quoted)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Appends <code class="inline">quoted</code> to the list</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#find_list_item_index/2" data-no-tooltip translate="no">find_list_item_index(zipper, pred)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Finds the index of the first list item that satisfies <code class="inline">pred</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list?/1" data-no-tooltip translate="no">list?(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns true if the <code class="inline">zipper</code> is at a list literal</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_list_item/2" data-no-tooltip translate="no">move_to_list_item(zipper, pred)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves to the list item matching the given predicate</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prepend_new_to_list/3" data-no-tooltip translate="no">prepend_new_to_list(zipper, quoted, equality_pred \\ &amp;Common.nodes_equal?/2)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Prepends <code class="inline">quoted</code> to the list unless it is already present, determined by <code class="inline">equality_pred</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prepend_to_list/2" data-no-tooltip translate="no">prepend_to_list(zipper, quoted)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Prepends <code class="inline">quoted</code> to the list</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#remove_from_list/2" data-no-tooltip translate="no">remove_from_list(zipper, predicate)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#remove_index/2" data-no-tooltip translate="no">remove_index(zipper, index)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Removes the item at the given index, returning <code class="inline">:error</code> if nothing is at that index</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:equality_pred/0">
+
+  <div class="detail-header">
+    <a href="#t:equality_pred/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">equality_pred()</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L10" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> equality_pred() :: (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="append_new_to_list/3">
+
+    <span id="append_new_to_list/2"></span>
+
+  <div class="detail-header">
+    <a href="#append_new_to_list/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">append_new_to_list(zipper, quoted, equality_pred \\ &amp;Common.nodes_equal?/2)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L44" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> append_new_to_list(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), quoted :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>(), <a href="#t:equality_pred/0">equality_pred</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Appends <code class="inline">quoted</code> to the list unless it is already present, determined by <code class="inline">equality_pred</code>.</p>
+  </section>
+</section>
+<section class="detail" id="append_to_list/2">
+
+  <div class="detail-header">
+    <a href="#append_to_list/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">append_to_list(zipper, quoted)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L77" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> append_to_list(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), quoted :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Appends <code class="inline">quoted</code> to the list</p>
+  </section>
+</section>
+<section class="detail" id="find_list_item_index/2">
+
+  <div class="detail-header">
+    <a href="#find_list_item_index/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">find_list_item_index(zipper, pred)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L140" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> find_list_item_index(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | nil</pre>
+
+      </div>
+
+<p>Finds the index of the first list item that satisfies <code class="inline">pred</code></p>
+  </section>
+</section>
+<section class="detail" id="list?/1">
+
+  <div class="detail-header">
+    <a href="#list?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">list?(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L14" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list?(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Returns true if the <code class="inline">zipper</code> is at a list literal</p>
+  </section>
+</section>
+<section class="detail" id="move_to_list_item/2">
+
+  <div class="detail-header">
+    <a href="#move_to_list_item/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_list_item(zipper, pred)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L156" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_to_list_item(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves to the list item matching the given predicate</p>
+  </section>
+</section>
+<section class="detail" id="prepend_new_to_list/3">
+
+    <span id="prepend_new_to_list/2"></span>
+
+  <div class="detail-header">
+    <a href="#prepend_new_to_list/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prepend_new_to_list(zipper, quoted, equality_pred \\ &amp;Common.nodes_equal?/2)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L21" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> prepend_new_to_list(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), quoted :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>(), <a href="#t:equality_pred/0">equality_pred</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Prepends <code class="inline">quoted</code> to the list unless it is already present, determined by <code class="inline">equality_pred</code>.</p>
+  </section>
+</section>
+<section class="detail" id="prepend_to_list/2">
+
+  <div class="detail-header">
+    <a href="#prepend_to_list/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prepend_to_list(zipper, quoted)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L64" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> prepend_to_list(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), quoted :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Prepends <code class="inline">quoted</code> to the list</p>
+  </section>
+</section>
+<section class="detail" id="remove_from_list/2">
+
+  <div class="detail-header">
+    <a href="#remove_from_list/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">remove_from_list(zipper, predicate)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L90" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> remove_from_list(
+  <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(),
+  predicate :: (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())
+) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="remove_index/2">
+
+  <div class="detail-header">
+    <a href="#remove_index/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">remove_index(zipper, index)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/list.ex#L118" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> remove_index(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), index :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Removes the item at the given index, returning <code class="inline">:error</code> if nothing is at that index</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

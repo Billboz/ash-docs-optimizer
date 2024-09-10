@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>Reactor.Builder — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Reactor.Builder</span> 
+    <small class="app-vsn" translate="no">(reactor v0.9.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Build a new Reactor programmatically.</p><p>You don't <em>have</em> to use the Reactor DSL to create a Reactor.  The functions in
+this module allow you to define a Reactor programmatically.  This is
+especially useful if you need to create a reactor dynamically (maybe based on
+a UI such as <a href="https://reactflow.dev/">React Flow</a>).</p><h2 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">reactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Builder</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="1473383604-1">(</span><span class="p" data-group-id="1473383604-1">)</span><span class="w">
+</span><span class="p" data-group-id="1473383604-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="1473383604-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Builder</span><span class="o">.</span><span class="n">add_input</span><span class="p" data-group-id="1473383604-3">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:name</span><span class="p" data-group-id="1473383604-3">)</span><span class="w">
+</span><span class="n">argument</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Argument</span><span class="o">.</span><span class="n">from_input</span><span class="p" data-group-id="1473383604-4">(</span><span class="ss">:name</span><span class="p" data-group-id="1473383604-4">)</span><span class="w">
+</span><span class="p" data-group-id="1473383604-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="1473383604-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Builder</span><span class="o">.</span><span class="n">add_step</span><span class="p" data-group-id="1473383604-6">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:greet</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1473383604-7">[</span><span class="n">argument</span><span class="p" data-group-id="1473383604-7">]</span><span class="p" data-group-id="1473383604-6">)</span><span class="w">
+</span><span class="p" data-group-id="1473383604-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="1473383604-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Builder</span><span class="o">.</span><span class="n">return</span><span class="p" data-group-id="1473383604-9">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:greet</span><span class="p" data-group-id="1473383604-9">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:arguments_transform/0" data-no-tooltip translate="no">arguments_transform()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Optionally transform all the arguments into new arguments</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:async?/0" data-no-tooltip translate="no">async?()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Should the step be run asynchronously?</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:context/0" data-no-tooltip translate="no">context()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Optional context which will be merged with the reactor context when calling this step.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:impl/0" data-no-tooltip translate="no">impl()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:max_retries/0" data-no-tooltip translate="no">max_retries()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>How many times is the step allowed to retry?</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:ref/0" data-no-tooltip translate="no">ref()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:step_argument/0" data-no-tooltip translate="no">step_argument()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:step_options/0" data-no-tooltip translate="no">step_options()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_input/3" data-no-tooltip translate="no">add_input(reactor, name, transform \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add a named input to the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_input!/3" data-no-tooltip translate="no">add_input!(reactor, name, transform \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <code class="inline">add_input/2..3</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_middleware/2" data-no-tooltip translate="no">add_middleware(reactor, middleware)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add a middleware to the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_middleware!/2" data-no-tooltip translate="no">add_middleware!(reactor, middleware)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <a href="#add_middleware/2"><code class="inline">add_middleware/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_step/5" data-no-tooltip translate="no">add_step(reactor, name, impl, arguments \\ [], options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add a step to the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_step!/5" data-no-tooltip translate="no">add_step!(reactor, name, impl, arguments \\ [], options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <code class="inline">add_step/3..5</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compose/4" data-no-tooltip translate="no">compose(reactor, name, inner_reactor, arguments)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Compose another Reactor inside this one.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compose!/4" data-no-tooltip translate="no">compose!(reactor, name, inner_reactor, arguments)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <a href="#compose/4"><code class="inline">compose/4</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#ensure_middleware/2" data-no-tooltip translate="no">ensure_middleware(reactor, middleware)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Ensure that a middleware is present on the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#ensure_middleware!/2" data-no-tooltip translate="no">ensure_middleware!(reactor, middleware)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <a href="#ensure_middleware/2"><code class="inline">ensure_middleware/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new/1" data-no-tooltip translate="no">new(id \\ make_ref())</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a new, empty Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new_step/4" data-no-tooltip translate="no">new_step(name, impl, arguments \\ [], options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a step which can be added to a reactor at runtime.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new_step!/4" data-no-tooltip translate="no">new_step!(name, impl, arguments \\ [], options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <code class="inline">new_step/2..4</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#return/2" data-no-tooltip translate="no">return(reactor, name)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Specify the return value of the Reactor.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#return!/2" data-no-tooltip translate="no">return!(reactor, name)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Raising version of <a href="#return/2"><code class="inline">return/2</code></a>.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:arguments_transform/0">
+
+  <div class="detail-header">
+    <a href="#t:arguments_transform/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">arguments_transform()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L34" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> arguments_transform() ::
+  {:transform,
+   nil
+   | (%{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()} -&gt; %{optional(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()})
+   | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+   | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">mfa</a>()}</pre>
+
+      </div>
+
+<p>Optionally transform all the arguments into new arguments</p>
+  </section>
+</section>
+<section class="detail" id="t:async?/0">
+
+  <div class="detail-header">
+    <a href="#t:async?/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">async?()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L28" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> async?() :: {:async?, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())}</pre>
+
+      </div>
+
+<p>Should the step be run asynchronously?</p>
+  </section>
+</section>
+<section class="detail" id="t:context/0">
+
+  <div class="detail-header">
+    <a href="#t:context/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">context()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L41" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> context() :: <a href="Reactor.html#t:context/0">Reactor.context</a>()</pre>
+
+      </div>
+
+<p>Optional context which will be merged with the reactor context when calling this step.</p>
+  </section>
+</section>
+<section class="detail" id="t:impl/0">
+
+  <div class="detail-header">
+    <a href="#t:impl/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">impl()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L44" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> impl() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:max_retries/0">
+
+  <div class="detail-header">
+    <a href="#t:max_retries/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">max_retries()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L31" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> max_retries() :: {:max_retries, :infinity | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}</pre>
+
+      </div>
+
+<p>How many times is the step allowed to retry?</p>
+  </section>
+</section>
+<section class="detail" id="t:ref/0">
+
+  <div class="detail-header">
+    <a href="#t:ref/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">ref()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L38" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> ref() :: {:ref, :step_name | :make_ref}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:step_argument/0">
+
+  <div class="detail-header">
+    <a href="#t:step_argument/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">step_argument()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L43" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> step_argument() :: <a href="Reactor.Argument.html#t:t/0">Reactor.Argument.t</a>() | {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), {:input | :result, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:step_options/0">
+
+  <div class="detail-header">
+    <a href="#t:step_options/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">step_options()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L25" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> step_options() :: [
+  <a href="#t:async?/0">async?</a>() | <a href="#t:max_retries/0">max_retries</a>() | <a href="#t:arguments_transform/0">arguments_transform</a>() | <a href="#t:context/0">context</a>() | <a href="#t:ref/0">ref</a>()
+]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_input/3">
+
+    <span id="add_input/2"></span>
+
+  <div class="detail-header">
+    <a href="#add_input/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_input(reactor, name, transform \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L63" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_input(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), nil | (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) ::
+  {:ok, <a href="Reactor.html#t:t/0">Reactor.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Add a named input to the Reactor.</p><p>This both places the input in the Reactor for later input validation and adds
+steps to the Reactor which will emit and (possibly) transform the input.</p>
+  </section>
+</section>
+<section class="detail" id="add_input!/3">
+
+    <span id="add_input!/2"></span>
+
+  <div class="detail-header">
+    <a href="#add_input!/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_input!(reactor, name, transform \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L75" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_input!(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), nil | (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())) ::
+  <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <code class="inline">add_input/2..3</code>.</p>
+  </section>
+</section>
+<section class="detail" id="add_middleware/2">
+
+  <div class="detail-header">
+    <a href="#add_middleware/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_middleware(reactor, middleware)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L234" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_middleware(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="Reactor.Middleware.html#t:t/0">Reactor.Middleware.t</a>()) ::
+  {:ok, <a href="Reactor.html#t:t/0">Reactor.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Add a middleware to the Reactor.</p><p>Returns an error if the middleware is already present on the Reactor.</p>
+  </section>
+</section>
+<section class="detail" id="add_middleware!/2">
+
+  <div class="detail-header">
+    <a href="#add_middleware!/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_middleware!(reactor, middleware)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L245" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_middleware!(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="Reactor.Middleware.html#t:t/0">Reactor.Middleware.t</a>()) ::
+  <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <a href="#add_middleware/2"><code class="inline">add_middleware/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="add_step/5">
+
+    <span id="add_step/3"></span>
+
+    <span id="add_step/4"></span>
+
+  <div class="detail-header">
+    <a href="#add_step/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_step(reactor, name, impl, arguments \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L98" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_step(
+  <a href="Reactor.html#t:t/0">Reactor.t</a>(),
+  name :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  <a href="#t:impl/0">impl</a>(),
+  [<a href="#t:step_argument/0">step_argument</a>()],
+  <a href="#t:step_options/0">step_options</a>()
+) :: {:ok, <a href="Reactor.html#t:t/0">Reactor.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Add a step to the Reactor.</p><p>Add a new step to the Reactor.  Rewrites input arguments to use the result of
+the input steps and injects transformation steps as required.</p>
+  </section>
+</section>
+<section class="detail" id="add_step!/5">
+
+    <span id="add_step!/3"></span>
+
+    <span id="add_step!/4"></span>
+
+  <div class="detail-header">
+    <a href="#add_step!/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_step!(reactor, name, impl, arguments \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L117" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_step!(<a href="Reactor.html#t:t/0">Reactor.t</a>(), name :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), <a href="#t:impl/0">impl</a>(), [<a href="#t:step_argument/0">step_argument</a>()], <a href="#t:step_options/0">step_options</a>()) ::
+  <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <code class="inline">add_step/3..5</code>.</p>
+  </section>
+</section>
+<section class="detail" id="compose/4">
+
+  <div class="detail-header">
+    <a href="#compose/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">compose(reactor, name, inner_reactor, arguments)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L200" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> compose(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [<a href="#t:step_argument/0">step_argument</a>()]) ::
+  {:ok, <a href="Reactor.html#t:t/0">Reactor.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Compose another Reactor inside this one.</p><p>Whenever possible this function will extract the steps from inner Reactor and
+place them inside the parent Reactor.  In order to achieve this the composer
+will rename the steps to ensure that there are no conflicts.</p><p>If you're attempting to create a recursive Reactor (ie compose a Reactor
+within itself) then this will be detected and runtime composition will be used
+instead.  See <a href="Reactor.Step.Compose.html"><code class="inline">Reactor.Step.Compose</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="compose!/4">
+
+  <div class="detail-header">
+    <a href="#compose!/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">compose!(reactor, name, inner_reactor, arguments)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L221" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> compose!(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [<a href="#t:step_argument/0">step_argument</a>()]) ::
+  <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <a href="#compose/4"><code class="inline">compose/4</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="ensure_middleware/2">
+
+  <div class="detail-header">
+    <a href="#ensure_middleware/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">ensure_middleware(reactor, middleware)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L256" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> ensure_middleware(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="Reactor.Middleware.html#t:t/0">Reactor.Middleware.t</a>()) ::
+  {:ok, <a href="Reactor.html#t:t/0">Reactor.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Ensure that a middleware is present on the Reactor.</p>
+  </section>
+</section>
+<section class="detail" id="ensure_middleware!/2">
+
+  <div class="detail-header">
+    <a href="#ensure_middleware!/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">ensure_middleware!(reactor, middleware)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L270" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> ensure_middleware!(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="Reactor.Middleware.html#t:t/0">Reactor.Middleware.t</a>()) ::
+  <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <a href="#ensure_middleware/2"><code class="inline">ensure_middleware/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="new/1">
+
+    <span id="new/0"></span>
+
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new(id \\ make_ref())</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L53" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> new(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="Reactor.html#t:t/0">Reactor.t</a>()</pre>
+
+      </div>
+
+<p>Build a new, empty Reactor.</p><p>Optionally an identifier for the Reactor. This is primarily used for recursive
+composition tracking.</p>
+  </section>
+</section>
+<section class="detail" id="new_step/4">
+
+    <span id="new_step/2"></span>
+
+    <span id="new_step/3"></span>
+
+  <div class="detail-header">
+    <a href="#new_step/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new_step(name, impl, arguments \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L134" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> new_step(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), <a href="#t:impl/0">impl</a>(), [<a href="#t:step_argument/0">step_argument</a>()], <a href="#t:step_options/0">step_options</a>()) ::
+  {:ok, <a href="Reactor.Step.html#t:t/0">Reactor.Step.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Build a step which can be added to a reactor at runtime.</p><p>Note that the built step doesn't support transformations - you should add an
+additional step to do the transformation needed (this is what <a href="#add_step/5"><code class="inline">add_step/5</code></a>
+does anyway).</p>
+  </section>
+</section>
+<section class="detail" id="new_step!/4">
+
+    <span id="new_step!/2"></span>
+
+    <span id="new_step!/3"></span>
+
+  <div class="detail-header">
+    <a href="#new_step!/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new_step!(name, impl, arguments \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L149" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> new_step!(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), <a href="#t:impl/0">impl</a>(), [<a href="#t:step_argument/0">step_argument</a>()], <a href="#t:step_options/0">step_options</a>()) ::
+  <a href="Reactor.Step.html#t:t/0">Reactor.Step.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <code class="inline">new_step/2..4</code>.</p>
+  </section>
+</section>
+<section class="detail" id="return/2">
+
+  <div class="detail-header">
+    <a href="#return/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">return(reactor, name)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L164" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> return(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: {:ok, <a href="Reactor.html#t:t/0">Reactor.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+
+      </div>
+
+<p>Specify the return value of the Reactor.</p><p>The return value must be the name of a step.</p>
+  </section>
+</section>
+<section class="detail" id="return!/2">
+
+  <div class="detail-header">
+    <a href="#return!/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">return!(reactor, name)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/builder.ex/#L180" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> return!(<a href="Reactor.html#t:t/0">Reactor.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="Reactor.html#t:t/0">Reactor.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+
+      </div>
+
+<p>Raising version of <a href="#return/2"><code class="inline">return/2</code></a>.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.1">
+    <meta name="project" content="ash_archival v1.0.3">
+
+
+    <title>Get Started with AshArchival — ash_archival v1.0.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-2O34B7FU.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-8FAF5068.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-GFE2JU6H.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<div class="background-layer"></div>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/ash_archival" class="sidebar-projectName" translate="no">
+ash_archival
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+      <div class="top-search">
+        <div class="search-settings">
+          <form class="search-bar" action="search.html">
+            <label class="search-label">
+              <span class="sr-only">Search documentation of ash_archival</span>
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            </label>
+            <button type="submit" class="search-button" aria-label="Submit Search">
+              <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+            </button>
+            <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+              <i class="ri-close-line ri-lg" title="Cancel search"></i>
+            </button>
+          </form>
+          <div class="autocomplete">
+          </div>
+          <button class="icon-settings display-settings">
+            <i class="ri-settings-3-line"></i>
+            <span class="sr-only">Settings</span>
+          </button>
+        </div>
+
+      </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_archival/blob/v1.0.3/documentation/tutorials/get-started-with-ash-archival.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Get Started with AshArchival</span>
+</h1>
+
+<h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Installation</span>
+</h2>
+<p>First, add the dependency to your <code class="inline">mix.exs</code> file</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="2527180726-1">{</span><span class="ss">:ash_archival</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.0.3&quot;</span><span class="p" data-group-id="2527180726-1">}</span></code></pre><p>and add <code class="inline">:ash_archival</code> to your <code class="inline">.formatter.exs</code></p><pre><code class="makeup elixir" translate="no"><span class="ss">import_deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5908352606-1">[</span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_archival</span><span class="p" data-group-id="5908352606-1">]</span></code></pre><h2 id="adding-to-a-resource" class="section-heading">
+  <a href="#adding-to-a-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Adding to a resource</span>
+</h2>
+<p>To add archival to a resource, add the extension to the resource:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+  </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6344485229-1">[</span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="nc">AshArchival.Resource</span><span class="p" data-group-id="6344485229-1">]</span></code></pre><p>And thats it! Now, when you destroy a record, it will be archived instead, using an <code class="inline">archived_at</code> attribute.</p><p>See <a href="get-started-with-ash-archival.html">How Does Ash Archival Work?</a> for what modifications are made to a resource, and read on for info on the tradeoffs of leveraging <code class="inline"><a href="https://hexdocs.pm/ash/dsl-ash-resource.html#resource-base_filter">Ash.Resource.Dsl.resource.base_filter</a></code>.</p><h2 id="base-filter" class="section-heading">
+  <a href="#base-filter" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Base Filter</span>
+</h2>
+<p>Using a <code class="inline"><a href="https://hexdocs.pm/ash/dsl-ash-resource.html#resource-base_filter">Ash.Resource.Dsl.resource.base_filter</a></code> for your <code class="inline">archived_at</code> field has a lot of benefits if you are using <code class="inline">ash_postgres</code>, but comes with one major drawback, which is that it is not possible to exclude certain read actions from archival. If you wish to use a base filter, you will need to create a separate resource to read from the archived items. We may introduce a way to bypass the base filter at some point in the future.</p><p>To add a <code class="inline">base_filter</code> and <code class="inline">base_filter_sql</code> to your resource:</p><pre><code class="makeup elixir" translate="no"><span class="n">resource</span><span class="w"> </span><span class="k" data-group-id="6397701118-1">do</span><span class="w">
+  </span><span class="n">base_filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="6397701118-2">(</span><span class="n">is_nil</span><span class="p" data-group-id="6397701118-3">(</span><span class="n">archived_at</span><span class="p" data-group-id="6397701118-3">)</span><span class="p" data-group-id="6397701118-2">)</span><span class="w">
+</span><span class="k" data-group-id="6397701118-1">end</span><span class="w">
+
+</span><span class="n">postgres</span><span class="w"> </span><span class="k" data-group-id="6397701118-4">do</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+  </span><span class="n">base_filter_sql</span><span class="w"> </span><span class="s">&quot;(archived_at IS NULL)&quot;</span><span class="w">
+</span><span class="k" data-group-id="6397701118-4">end</span></code></pre><p>Add <code class="inline">base_filter? true</code> to the <code class="inline">archive</code> configuration of your resource to tell it that it doesn't need to add the filter itself.</p><h3 id="benefits-of-base_filter" class="section-heading">
+  <a href="#benefits-of-base_filter" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Benefits of base_filter</span>
+</h3>
+<ol><li>unique indexes will exclude archived items</li><li>custom indexes will exclude archived items</li><li>check constraints will not be applied to archived items</li></ol><p>If you want these benefits, add the appropriate <code class="inline">base_filter</code>.</p><h2 id="more" class="section-heading">
+  <a href="#more" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">More</span>
+</h2>
+<p>See the <a href="unarchiving.html">Unarchiving guide</a> For more.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Change Log
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="unarchiving.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Un-archiving
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ash_archival/1.0.3" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ash_archival/1.0.3">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ash_archival/1.0.3/show/documentation/tutorials/get-started-with-ash-archival.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="ash_archival.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+      </footer>
+    </div>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

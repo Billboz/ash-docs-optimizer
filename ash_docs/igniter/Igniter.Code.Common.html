@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>Igniter.Code.Common — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Igniter.Code.Common</span> 
+    <small class="app-vsn" translate="no">(igniter v0.3.29)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>General purpose utilities for working with <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html"><code class="inline">Sourceror.Zipper</code></a>.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_code/3" data-no-tooltip translate="no">add_code(zipper, new_code, placement \\ :after)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Adds the provided code to the zipper.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#current_env/1" data-no-tooltip translate="no">current_env(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Expands the environment at the current zipper position and returns the
+expanded environment. Currently used for properly working with aliases.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#expand_alias/1" data-no-tooltip translate="no">expand_alias(zipper)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#expand_aliases/1" data-no-tooltip translate="no">expand_aliases(zipper)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#expand_literal/1" data-no-tooltip translate="no">expand_literal(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Expands a literal value using the env at the cursor, if possible</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#extendable_block?/1" data-no-tooltip translate="no">extendable_block?(arg1)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#maybe_move_to_block/1" data-no-tooltip translate="no">maybe_move_to_block(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Enters a block, and moves to the first child, or returns the zipper unmodified.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#maybe_move_to_single_child_block/1" data-no-tooltip translate="no">maybe_move_to_single_child_block(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Enters a block with a single child, and moves to that child,
+or returns the zipper unmodified</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_next/2" data-no-tooltip translate="no">move_next(zipper, pred)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves nextwards (depth-first), until the provided predicate returns <code class="inline">true</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_right/2" data-no-tooltip translate="no">move_right(zipper, pred)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves rightwards, entering blocks (and exiting them if no match is found), until the provided predicate returns <code class="inline">true</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to/2" data-no-tooltip translate="no">move_to(zipper, pred)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves to the next node that matches the predicate.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_cursor/2" data-no-tooltip translate="no">move_to_cursor(zipper, pattern)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Matches and moves to the location of a <code class="inline">__cursor__</code> in provided source code.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_cursor_match_in_scope/2" data-no-tooltip translate="no">move_to_cursor_match_in_scope(zipper, patterns)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves to the cursor that matches the provided pattern or one of the provided patterns, in the current scope.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_do_block/1" data-no-tooltip translate="no">move_to_do_block(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves to a do block for the current call.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_pattern/2" data-no-tooltip translate="no">move_to_pattern(zipper, pattern)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves to the next node that matches the given pattern.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move_to_zipper/2" data-no-tooltip translate="no">move_to_zipper(zipper, pred)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves to the next zipper that matches the predicate.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#node_matches_pattern?/2" data-no-tooltip translate="no">node_matches_pattern?(zipper, pattern)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if the current node matches the given pattern.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#nodes_equal?/2" data-no-tooltip translate="no">nodes_equal?(left, right)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#nth_right/2" data-no-tooltip translate="no">nth_right(zipper, n)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves the zipper right n times, returning <code class="inline">:error</code> if it can't move that many times.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#replace_code/2" data-no-tooltip translate="no">replace_code(zipper, code)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#rightmost/1" data-no-tooltip translate="no">rightmost(zipper)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Moves the zipper all the way to the right, potentially entering a single value block.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_all_matches/3" data-no-tooltip translate="no">update_all_matches(zipper, pred, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates all nodes matching the given predicate with the given function.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#use_aliases/2" data-no-tooltip translate="no">use_aliases(new_code, current_code)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Replaces full module names in <code class="inline">new_code</code> with any aliases for that
+module found in the <code class="inline">current_code</code> environment.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#within/2" data-no-tooltip translate="no">within(top_zipper, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Runs the function <code class="inline">fun</code> on the subtree of the currently focused <code class="inline">node</code> and
+returns the updated <code class="inline">zipper</code>.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_code/3">
+
+    <span id="add_code/2"></span>
+
+  <div class="detail-header">
+    <a href="#add_code/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_code(zipper, new_code, placement \\ :after)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L137" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> add_code(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>(), :after | :before) ::
+  <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+<p>Adds the provided code to the zipper.</p><p>Use <code class="inline">placement</code> to determine if the code goes <code class="inline">:after</code> or <code class="inline">:before</code> the current node.</p><h2 id="add_code/3-example" class="section-heading">
+  <a href="#add_code/3-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example:</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">existing_zipper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+IO.inspect(&quot;Hello, world!&quot;)
+&quot;&quot;&quot;</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror</span><span class="o">.</span><span class="n">parse_string!</span><span class="p" data-group-id="6875932529-1">(</span><span class="p" data-group-id="6875932529-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror.Zipper</span><span class="o">.</span><span class="n">zip</span><span class="p" data-group-id="6875932529-2">(</span><span class="p" data-group-id="6875932529-2">)</span><span class="w">
+
+</span><span class="n">new_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+IO.inspect(&quot;Goodbye, world!&quot;)
+&quot;&quot;&quot;</span><span class="w">
+
+</span><span class="n">existing_zipper</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Igniter.Common</span><span class="o">.</span><span class="n">add_code</span><span class="p" data-group-id="6875932529-3">(</span><span class="n">new_code</span><span class="p" data-group-id="6875932529-3">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror.Zipper</span><span class="o">.</span><span class="n">root</span><span class="p" data-group-id="6875932529-4">(</span><span class="p" data-group-id="6875932529-4">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror</span><span class="o">.</span><span class="n">to_string</span><span class="p" data-group-id="6875932529-5">(</span><span class="p" data-group-id="6875932529-5">)</span></code></pre><p>Which will produce</p><pre><code class="makeup elixir" translate="no"><span class="s">&quot;&quot;&quot;
+IO.inspect(&quot;Hello, world!&quot;)
+IO.inspect(&quot;Goodbye, world!&quot;)
+&quot;&quot;&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="current_env/1">
+
+  <div class="detail-header">
+    <a href="#current_env/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">current_env(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L685" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Expands the environment at the current zipper position and returns the
+expanded environment. Currently used for properly working with aliases.</p>
+  </section>
+</section>
+<section class="detail" id="expand_alias/1">
+
+  <div class="detail-header">
+    <a href="#expand_alias/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">expand_alias(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L791" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> expand_alias(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="expand_aliases/1">
+
+  <div class="detail-header">
+    <a href="#expand_aliases/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">expand_aliases(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L827" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> expand_aliases(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="expand_literal/1">
+
+  <div class="detail-header">
+    <a href="#expand_literal/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">expand_literal(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L88" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> expand_literal(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()} | :error</pre>
+
+      </div>
+
+<p>Expands a literal value using the env at the cursor, if possible</p>
+  </section>
+</section>
+<section class="detail" id="extendable_block?/1">
+
+  <div class="detail-header">
+    <a href="#extendable_block?/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">extendable_block?(arg1)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L337" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="maybe_move_to_block/1">
+
+  <div class="detail-header">
+    <a href="#maybe_move_to_block/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">maybe_move_to_block(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L470" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> maybe_move_to_block(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+<p>Enters a block, and moves to the first child, or returns the zipper unmodified.</p>
+  </section>
+</section>
+<section class="detail" id="maybe_move_to_single_child_block/1">
+
+  <div class="detail-header">
+    <a href="#maybe_move_to_single_child_block/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">maybe_move_to_single_child_block(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L442" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> maybe_move_to_single_child_block(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+<p>Enters a block with a single child, and moves to that child,
+or returns the zipper unmodified</p>
+  </section>
+</section>
+<section class="detail" id="move_next/2">
+
+  <div class="detail-header">
+    <a href="#move_next/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_next(zipper, pred)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L630" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_next(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves nextwards (depth-first), until the provided predicate returns <code class="inline">true</code>.</p><p>Returns <code class="inline">:error</code> if the end is reached without finding a match.</p>
+  </section>
+</section>
+<section class="detail" id="move_right/2">
+
+  <div class="detail-header">
+    <a href="#move_right/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_right(zipper, pred)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L574" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_right(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves rightwards, entering blocks (and exiting them if no match is found), until the provided predicate returns <code class="inline">true</code>.</p><p>Returns <code class="inline">:error</code> if the end is reached without finding a match.</p>
+  </section>
+</section>
+<section class="detail" id="move_to/2">
+
+  <div class="detail-header">
+    <a href="#move_to/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to(zipper, pred)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L11" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_to(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+          <pre translate="no"><span class="attribute">@spec</span> move_to(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>())) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves to the next node that matches the predicate.</p>
+  </section>
+</section>
+<section class="detail" id="move_to_cursor/2">
+
+  <div class="detail-header">
+    <a href="#move_to_cursor/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_cursor(zipper, pattern)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L674" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_to_cursor(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Matches and moves to the location of a <code class="inline">__cursor__</code> in provided source code.</p><p>Use <code class="inline">__cursor__()</code> to match a cursor in the provided source code. Use <code class="inline">__</code> to skip any code at a point.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">zipper</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="s">&quot;&quot;&quot;
+  if true do
+    10
+  end
+  &quot;&quot;&quot;</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror.Zipper</span><span class="o">.</span><span class="n">zip</span><span class="p" data-group-id="9996226291-1">(</span><span class="p" data-group-id="9996226291-1">)</span><span class="w">
+
+</span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="s">&quot;&quot;&quot;
+  if __ do
+    __cursor__()
+  end
+  &quot;&quot;&quot;</span><span class="w">
+
+</span><span class="n">zipper</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Igniter.Code.Common</span><span class="o">.</span><span class="n">move_to_cursor</span><span class="p" data-group-id="9996226291-2">(</span><span class="n">pattern</span><span class="p" data-group-id="9996226291-2">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Zipper</span><span class="o">.</span><span class="n">node</span><span class="p" data-group-id="9996226291-3">(</span><span class="p" data-group-id="9996226291-3">)</span><span class="w">
+</span><span class="c1"># =&gt; 10</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="move_to_cursor_match_in_scope/2">
+
+  <div class="detail-header">
+    <a href="#move_to_cursor_match_in_scope/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_cursor_match_in_scope(zipper, patterns)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L515" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_to_cursor_match_in_scope(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves to the cursor that matches the provided pattern or one of the provided patterns, in the current scope.</p><p>See <a href="#move_to_cursor/2"><code class="inline">move_to_cursor/2</code></a> for an example of a pattern</p>
+  </section>
+</section>
+<section class="detail" id="move_to_do_block/1">
+
+  <div class="detail-header">
+    <a href="#move_to_do_block/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_do_block(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L417" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move_to_do_block(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves to a do block for the current call.</p><p>For example, at a node like:</p><pre><code class="makeup elixir" translate="no"><span class="n">foo</span><span class="w"> </span><span class="k" data-group-id="2299808619-1">do</span><span class="w">
+  </span><span class="mi">10</span><span class="w">
+</span><span class="k" data-group-id="2299808619-1">end</span></code></pre><p>You would get a zipper back at <code class="inline">10</code>.</p>
+  </section>
+</section>
+<section class="detail" id="move_to_pattern/2">
+
+  <div class="detail-header">
+    <a href="#move_to_pattern/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_pattern(zipper, pattern)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L69" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Moves to the next node that matches the given pattern.</p>
+  </section>
+</section>
+<section class="detail" id="move_to_zipper/2">
+
+  <div class="detail-header">
+    <a href="#move_to_zipper/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">move_to_zipper(zipper, pred)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L29" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Moves to the next zipper that matches the predicate.</p>
+  </section>
+</section>
+<section class="detail" id="node_matches_pattern?/2">
+
+  <div class="detail-header">
+    <a href="#node_matches_pattern?/2" class="detail-link" data-no-tooltip title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">node_matches_pattern?(zipper, pattern)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L55" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns <code class="inline">true</code> if the current node matches the given pattern.</p><h2 id="node_matches_pattern?/2-examples" class="section-heading">
+  <a href="#node_matches_pattern?/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples:</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">list_zipper</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="s">&quot;[1, 2, 3]&quot;</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror</span><span class="o">.</span><span class="n">parse_string!</span><span class="p" data-group-id="1188115232-1">(</span><span class="p" data-group-id="1188115232-1">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Sourceror.Zipper</span><span class="o">.</span><span class="n">zip</span><span class="p" data-group-id="1188115232-2">(</span><span class="p" data-group-id="1188115232-2">)</span><span class="w">
+
+</span><span class="nc">Common</span><span class="o">.</span><span class="n">node_matches_pattern?</span><span class="p" data-group-id="1188115232-3">(</span><span class="n">list_zipper</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">is_list</span><span class="p" data-group-id="1188115232-4">(</span><span class="n">value</span><span class="p" data-group-id="1188115232-4">)</span><span class="p" data-group-id="1188115232-3">)</span><span class="w"> </span><span class="c1"># true</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="nodes_equal?/2">
+
+  <div class="detail-header">
+    <a href="#nodes_equal?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">nodes_equal?(left, right)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L728" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> nodes_equal?(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() | <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>(), <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="nth_right/2">
+
+  <div class="detail-header">
+    <a href="#nth_right/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">nth_right(zipper, n)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L492" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> nth_right(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | :error</pre>
+
+      </div>
+
+<p>Moves the zipper right n times, returning <code class="inline">:error</code> if it can't move that many times.</p>
+  </section>
+</section>
+<section class="detail" id="replace_code/2">
+
+  <div class="detail-header">
+    <a href="#replace_code/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">replace_code(zipper, code)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L328" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="rightmost/1">
+
+  <div class="detail-header">
+    <a href="#rightmost/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">rightmost(zipper)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L558" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> rightmost(<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()) :: <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()</pre>
+
+      </div>
+
+<p>Moves the zipper all the way to the right, potentially entering a single value block.</p>
+  </section>
+</section>
+<section class="detail" id="update_all_matches/3">
+
+  <div class="detail-header">
+    <a href="#update_all_matches/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">update_all_matches(zipper, pred, fun)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L297" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_all_matches(
+  <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>(),
+  (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+  (<a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() -&gt;
+     {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>() | {:code, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}} | {:warning | :error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()})
+) :: {:ok, <a href="https://hexdocs.pm/sourceror/1.6.0/Sourceror.Zipper.html#t:t/0">Sourceror.Zipper.t</a>()} | {:warning | :error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Updates all nodes matching the given predicate with the given function.</p><p>Recurses until the predicate no longer returns false</p>
+  </section>
+</section>
+<section class="detail" id="use_aliases/2">
+
+  <div class="detail-header">
+    <a href="#use_aliases/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">use_aliases(new_code, current_code)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L347" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Replaces full module names in <code class="inline">new_code</code> with any aliases for that
+module found in the <code class="inline">current_code</code> environment.</p>
+  </section>
+</section>
+<section class="detail" id="within/2">
+
+  <div class="detail-header">
+    <a href="#within/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">within(top_zipper, fun)</h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/lib/igniter/code/common.ex#L711" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Runs the function <code class="inline">fun</code> on the subtree of the currently focused <code class="inline">node</code> and
+returns the updated <code class="inline">zipper</code>.</p><p><code class="inline">fun</code> must return {:ok, zipper} or <code class="inline">:error</code>, which may be positioned at the top of the subtree.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

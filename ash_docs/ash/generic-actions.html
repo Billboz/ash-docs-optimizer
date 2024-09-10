@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Generic Actions — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/actions/generic-actions.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Generic Actions</span>
+  </h1>
+
+<p>Generic actions are so named because there are no special rules about how they work. A generic action takes arguments and returns a value. The struct used for building input for a generic action is <a href="Ash.ActionInput.html"><code class="inline">Ash.ActionInput</code></a>.</p><pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:say_hello</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="9317425485-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+
+  </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="9317425485-2">fn</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="9317425485-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello: </span><span class="si" data-group-id="9317425485-4">#{</span><span class="n">input</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="9317425485-4">}</span><span class="s">&quot;</span><span class="p" data-group-id="9317425485-3">}</span><span class="w">
+  </span><span class="k" data-group-id="9317425485-2">end</span><span class="w">
+</span><span class="k" data-group-id="9317425485-1">end</span></code></pre><p>A generic action declares its arguments, return type, and implementation, as illustrated above.</p><blockquote><h3 id="no-return-no-problem" class="tip section-heading">
+  <a href="#no-return-no-problem" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">No return? No problem!</span>
+</h3>
+<p>Generic actions can omit a return type, in which case running them returns <code class="inline">:ok</code> if successful.</p><pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:schedule_job</span><span class="w"> </span><span class="k" data-group-id="7854831352-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:job_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="7854831352-2">fn</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="c1"># Schedule the job</span><span class="w">
+    </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="7854831352-2">end</span><span class="w">
+</span><span class="k" data-group-id="7854831352-1">end</span></code></pre></blockquote><h2 id="why-use-generic-actions" class="section-heading">
+  <a href="#why-use-generic-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Why use generic actions?</span>
+</h2>
+<p>The example above could be written as a normal function in elixir, i.e</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p" data-group-id="6436388455-1">(</span><span class="n">name</span><span class="p" data-group-id="6436388455-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello: </span><span class="si" data-group-id="6436388455-2">#{</span><span class="n">name</span><span class="si" data-group-id="6436388455-2">}</span><span class="s">&quot;</span></code></pre><p>The benefit of using generic actions instead of defining normal functions:</p><ul><li>They can be used with api extensions like <code class="inline">ash_json_api</code> and <code class="inline">ash_graphql</code></li><li>Their inputs are type checked and casted</li><li>They support Ash authorization patterns (i.e policies)</li><li>They can be included in the code interface of a resource</li><li>They can be made transactional with a single option (<code class="inline">transaction? true</code>)</li></ul><p>If you don't need any of the above, then there is no problem with writing regular Elixir functions!</p><h2 id="return-types-and-constraints" class="section-heading">
+  <a href="#return-types-and-constraints" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Return types and constraints</span>
+</h2>
+<p>Generic actions do not cast their return types. It is expected that the action return a valid value for the type that they declare. However, declaring additional constraints can inform API usage, and make the action more clear. For example:</p><pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:priority</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="w"> </span><span class="k" data-group-id="0821946415-1">do</span><span class="w">
+  </span><span class="n">constraints</span><span class="w"> </span><span class="p" data-group-id="0821946415-2">[</span><span class="ss">min</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">max</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0821946415-2">]</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:status</span><span class="p">,</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w"> </span><span class="ss">constraints</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0821946415-3">[</span><span class="ss">one_of</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0821946415-4">[</span><span class="ss">:high</span><span class="p">,</span><span class="w"> </span><span class="ss">:medium</span><span class="p">,</span><span class="w"> </span><span class="ss">:low</span><span class="p" data-group-id="0821946415-4">]</span><span class="p" data-group-id="0821946415-3">]</span><span class="w">
+
+  </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="0821946415-5">fn</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="n">input</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">status</span><span class="w"> </span><span class="k" data-group-id="0821946415-6">do</span><span class="w">
+      </span><span class="ss">:high</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="0821946415-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0821946415-7">}</span><span class="w">
+      </span><span class="ss">:medium</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="0821946415-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0821946415-8">}</span><span class="w">
+      </span><span class="ss">:low</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="0821946415-9">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0821946415-9">}</span><span class="w">
+    </span><span class="k" data-group-id="0821946415-6">end</span><span class="w">
+  </span><span class="k" data-group-id="0821946415-5">end</span><span class="w">
+</span><span class="k" data-group-id="0821946415-1">end</span></code></pre><blockquote><h4 class="info">Returning resource instances</h4><p>It sometimes happens that you want to make a generic action which returns an
+instance or instances of the resource. It's natural to assume that you can
+set your action's return type to the name of your resource. This won't work
+as resources do not define a type, unless they are embedded. In embedded resources, this won't work because the module is still being compiled, so referencing yourself as a type causes a compile error. Instead, use the <code class="inline">:struct</code> type and the <code class="inline">instance_of</code> constraint, like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:get</span><span class="p">,</span><span class="w"> </span><span class="ss">:struct</span><span class="w"> </span><span class="k" data-group-id="7633874391-1">do</span><span class="w">
+  </span><span class="n">constraints</span><span class="w"> </span><span class="ss">instance_of</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="w">
+
+  </span><span class="n">run</span><span class="w"> </span><span class="c1"># ...</span><span class="w">
+</span><span class="k" data-group-id="7633874391-1">end</span></code></pre></blockquote><h2 id="calling-generic-actions" class="section-heading">
+  <a href="#calling-generic-actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Calling Generic Actions</span>
+</h2>
+<p>To execute a generic action in Ash, follow these steps:</p><ol><li><strong>Prepare the action input:</strong> Use <a href="Ash.ActionInput.html#for_action/4"><code class="inline">Ash.ActionInput.for_action/4</code></a> to specify the resource, the action and its arguments.</li><li><strong>Run the action:</strong> Use <a href="Ash.html#run_action/2"><code class="inline">Ash.run_action/2</code></a> to execute the action with the prepared input.</li></ol><h3 id="example-usage" class="section-heading">
+  <a href="#example-usage" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example Usage</span>
+</h3>
+<p>Consider an <a href="Ash.Resource.html"><code class="inline">Ash.Resource</code></a> with the action <code class="inline">:say_hello</code>:</p><pre><code class="makeup elixir" translate="no"><span class="n">action</span><span class="w"> </span><span class="ss">:say_hello</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="8482993179-1">do</span><span class="w">
+  </span><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+
+  </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="8482993179-2">fn</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="8482993179-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello: </span><span class="si" data-group-id="8482993179-4">#{</span><span class="n">input</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="8482993179-4">}</span><span class="s">&quot;</span><span class="p" data-group-id="8482993179-3">}</span><span class="w">
+  </span><span class="k" data-group-id="8482993179-2">end</span><span class="w">
+</span><span class="k" data-group-id="8482993179-1">end</span></code></pre><p>Call this action:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="7625052682-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">greeting</span><span class="p" data-group-id="7625052682-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Resource</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.ActionInput</span><span class="o">.</span><span class="n">for_action</span><span class="p" data-group-id="7625052682-2">(</span><span class="ss">:say_hello</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7625052682-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p" data-group-id="7625052682-3">}</span><span class="p" data-group-id="7625052682-2">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">run_action</span><span class="p" data-group-id="7625052682-4">(</span><span class="p" data-group-id="7625052682-4">)</span><span class="w">
+
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="7625052682-5">(</span><span class="n">greeting</span><span class="p" data-group-id="7625052682-5">)</span><span class="w">  </span><span class="c1"># Output: Hello: Alice</span></code></pre><h3 id="using-code-interface" class="section-heading">
+  <a href="#using-code-interface" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Using Code Interface</span>
+</h3>
+<p>You can also use <a href="code-interfaces.html">Code Interfaces</a> to call actions:</p><p>Given a definition like:</p><pre><code class="makeup elixir" translate="no"><span class="n">define</span><span class="w"> </span><span class="ss">:say_hello</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6304664255-1">[</span><span class="ss">:name</span><span class="p" data-group-id="6304664255-1">]</span></code></pre><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="9159609789-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">greeting</span><span class="p" data-group-id="9159609789-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Resource</span><span class="o">.</span><span class="n">say_hello</span><span class="p" data-group-id="9159609789-2">(</span><span class="s">&quot;Alice&quot;</span><span class="p" data-group-id="9159609789-2">)</span><span class="w">
+</span><span class="n">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Resource</span><span class="o">.</span><span class="n">say_hello!</span><span class="p" data-group-id="9159609789-3">(</span><span class="s">&quot;Alice&quot;</span><span class="p" data-group-id="9159609789-3">)</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="destroy-actions.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Destroy Actions
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="manual-actions.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Manual Actions
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/actions/generic-actions.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

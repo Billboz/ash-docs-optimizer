@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>Reactor.Step.Group — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Reactor.Step.Group</span> 
+    <small class="app-vsn" translate="no">(reactor v0.9.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Wrap the execution of a number of steps with before/after functions.</p><p>Unlike <a href="Reactor.Step.Around.html"><code class="inline">Reactor.Step.Around</code></a>, this step doesn't need to run a nested Reactor
+instance, but instead can emit the steps directly into the parent Reactor.</p><h2 id="module-options" class="section-heading">
+  <a href="#module-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><code class="inline">before</code> - a three-arity function that will be called before running any
+child steps.</li><li><code class="inline">after</code> - a three-arity function that will be called after running any
+emitted steps.</li><li><code class="inline">allow_async?</code> - a boolean indicating whether the emitted steps can be
+executed asynchronously or must remain within the current process.</li></ul><h2 id="module-before-function" class="section-heading">
+  <a href="#module-before-function" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Before function</span>
+</h2>
+<p>The before function will be passed the following arguments:</p><ol><li><code class="inline">arguments</code> - the values of any step arguments needed by the group.</li><li><code class="inline">context</code> - the Reactor context.</li><li><code class="inline">steps</code> - the list of steps passed in the options.</li></ol><p>This provides you the opportunity to modify the arguments, context and list of
+steps to be executed.</p><p>The successful return value should be <code class="inline">{:ok, arguments, context, steps}</code>.  The
+returned arguments will be used to provide any <code class="inline">input</code> arguments to nested
+steps.</p><h3 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">no_time_travel</span><span class="p" data-group-id="8539877942-1">(</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">steps</span><span class="p" data-group-id="8539877942-1">)</span><span class="w"> </span><span class="k" data-group-id="8539877942-2">do</span><span class="w">
+  </span><span class="n">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">steps</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="8539877942-3">(</span><span class="o">&amp;</span><span class="p" data-group-id="8539877942-4">(</span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">:program_time_circuits</span><span class="p" data-group-id="8539877942-4">)</span><span class="p" data-group-id="8539877942-3">)</span><span class="w">
+
+  </span><span class="n">arguments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arguments</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="8539877942-5">(</span><span class="ss">:destination_time</span><span class="p" data-group-id="8539877942-5">)</span><span class="w">
+
+  </span><span class="p" data-group-id="8539877942-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">steps</span><span class="p" data-group-id="8539877942-6">}</span><span class="w">
+</span><span class="k" data-group-id="8539877942-2">end</span></code></pre><h2 id="module-after-function" class="section-heading">
+  <a href="#module-after-function" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">After function</span>
+</h2>
+<p>The after function will be called with a single argument; a map of the nested
+step results.</p><p>The successful return value should be <code class="inline">{:ok, any}</code> where <code class="inline">any</code> will be treated
+as the result of the group.</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">find_current_year</span><span class="p" data-group-id="2107525614-1">(</span><span class="n">results</span><span class="p" data-group-id="2107525614-1">)</span><span class="w"> </span><span class="k" data-group-id="2107525614-2">do</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">fetch</span><span class="p" data-group-id="2107525614-3">(</span><span class="n">results</span><span class="p">,</span><span class="w"> </span><span class="ss">:time_circuits</span><span class="p" data-group-id="2107525614-3">)</span><span class="w"> </span><span class="k" data-group-id="2107525614-4">do</span><span class="w">
+    </span><span class="p" data-group-id="2107525614-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2107525614-6">%{</span><span class="ss">present_time</span><span class="p">:</span><span class="w"> </span><span class="n">present_time</span><span class="p" data-group-id="2107525614-6">}</span><span class="p" data-group-id="2107525614-5">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="2107525614-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">present_time</span><span class="o">.</span><span class="n">year</span><span class="p" data-group-id="2107525614-7">}</span><span class="w">
+    </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="2107525614-8">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Unable to read the present time from the time circuits&quot;</span><span class="p" data-group-id="2107525614-8">}</span><span class="w">
+  </span><span class="k" data-group-id="2107525614-4">end</span><span class="w">
+</span><span class="k" data-group-id="2107525614-2">end</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:after_fun/0" data-no-tooltip translate="no">after_fun()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The after function.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:after_option/0" data-no-tooltip translate="no">after_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The MFA or 1-arity function which this step will call after successfully
+running the steps.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:allow_async_option/0" data-no-tooltip translate="no">allow_async_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Should the emitted steps be allowed to run asynchronously?</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:before_fun/0" data-no-tooltip translate="no">before_fun()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The before function.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:before_option/0" data-no-tooltip translate="no">before_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The MFA or 3-arity function which this step will call before running any
+steps.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:options/0" data-no-tooltip translate="no">options()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:steps_option/0" data-no-tooltip translate="no">steps_option()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The initial steps to pass into the &quot;before&quot; function.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:after_fun/0">
+
+  <div class="detail-header">
+    <a href="#t:after_fun/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">after_fun()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L79" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> after_fun() :: (<a href="Reactor.html#t:inputs/0">Reactor.inputs</a>() -&gt; {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()})</pre>
+
+      </div>
+
+<p>The after function.</p>
+  </section>
+</section>
+<section class="detail" id="t:after_option/0">
+
+  <div class="detail-header">
+    <a href="#t:after_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">after_option()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L93" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> after_option() :: {:after, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">mfa</a>() | <a href="#t:after_fun/0">after_fun</a>()}</pre>
+
+      </div>
+
+<p>The MFA or 1-arity function which this step will call after successfully
+running the steps.</p>
+  </section>
+</section>
+<section class="detail" id="t:allow_async_option/0">
+
+  <div class="detail-header">
+    <a href="#t:allow_async_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">allow_async_option()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L107" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> allow_async_option() :: {:allow_async?, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}</pre>
+
+      </div>
+
+<p>Should the emitted steps be allowed to run asynchronously?</p><p>Optional. Defaults to <code class="inline">true</code>.</p>
+  </section>
+</section>
+<section class="detail" id="t:before_fun/0">
+
+  <div class="detail-header">
+    <a href="#t:before_fun/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">before_fun()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L72" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> before_fun() ::
+  (<a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(), <a href="Reactor.html#t:context/0">Reactor.context</a>(), [<a href="Reactor.Step.html#t:t/0">Reactor.Step.t</a>()] -&gt;
+     {:ok, <a href="Reactor.html#t:inputs/0">Reactor.inputs</a>(), <a href="Reactor.html#t:context/0">Reactor.context</a>(), [<a href="Reactor.Step.html#t:t/0">Reactor.Step.t</a>()]}
+     | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()})</pre>
+
+      </div>
+
+<p>The before function.</p>
+  </section>
+</section>
+<section class="detail" id="t:before_option/0">
+
+  <div class="detail-header">
+    <a href="#t:before_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">before_option()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L87" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> before_option() :: {:before, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">mfa</a>() | <a href="#t:before_fun/0">before_fun</a>()}</pre>
+
+      </div>
+
+<p>The MFA or 3-arity function which this step will call before running any
+steps.</p>
+  </section>
+</section>
+<section class="detail" id="t:options/0">
+
+  <div class="detail-header">
+    <a href="#t:options/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">options()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L81" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> options() :: [
+  <a href="#t:before_option/0">before_option</a>() | <a href="#t:after_option/0">after_option</a>() | <a href="#t:allow_async_option/0">allow_async_option</a>() | <a href="#t:steps_option/0">steps_option</a>()
+]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:steps_option/0">
+
+  <div class="detail-header">
+    <a href="#t:steps_option/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">steps_option()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/step/group.ex/#L100" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> steps_option() :: {:steps, [<a href="Reactor.Step.html#t:t/0">Reactor.Step.t</a>()]}</pre>
+
+      </div>
+
+<p>The initial steps to pass into the &quot;before&quot; function.</p><p>Optional.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

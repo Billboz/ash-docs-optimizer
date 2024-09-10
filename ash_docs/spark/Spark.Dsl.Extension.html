@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Dsl.Extension — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Dsl.Extension</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>An extension to the Spark DSL.</p><p>This allows configuring custom DSL components, whose configurations
+can then be read back. This guide is still a work in progress, but should
+serve as a decent example of what is possible. Open issues on Github if you
+have any issues/something is unclear.</p><p>The example at the bottom shows how you might build a (not very contextually
+relevant) DSL extension that would be used like so:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Vehicle</span><span class="w"> </span><span class="k" data-group-id="5877882295-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Dsl</span><span class="w">
+</span><span class="k" data-group-id="5877882295-1">end</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.MyResource</span><span class="w"> </span><span class="k" data-group-id="5877882295-2">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">MyApp.Vehicle</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5877882295-3">[</span><span class="nc">MyApp.CarExtension</span><span class="p" data-group-id="5877882295-3">]</span><span class="w">
+
+  </span><span class="n">cars</span><span class="w"> </span><span class="k" data-group-id="5877882295-4">do</span><span class="w">
+    </span><span class="n">car</span><span class="w"> </span><span class="ss">:ford</span><span class="p">,</span><span class="w"> </span><span class="ss">:focus</span><span class="p">,</span><span class="w"> </span><span class="ss">trim</span><span class="p">:</span><span class="w"> </span><span class="ss">:sedan</span><span class="w">
+    </span><span class="n">car</span><span class="w"> </span><span class="ss">:toyota</span><span class="p">,</span><span class="w"> </span><span class="ss">:corolla</span><span class="w">
+  </span><span class="k" data-group-id="5877882295-4">end</span><span class="w">
+</span><span class="k" data-group-id="5877882295-2">end</span></code></pre><p>The extension:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.CarExtension</span><span class="w"> </span><span class="k" data-group-id="8558762491-1">do</span><span class="w">
+  </span><span class="na">@car_schema</span><span class="w"> </span><span class="p" data-group-id="8558762491-2">[</span><span class="w">
+    </span><span class="ss">make</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-3">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w">
+      </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+      </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The make of the car&quot;</span><span class="w">
+    </span><span class="p" data-group-id="8558762491-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-4">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w">
+      </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+      </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The model of the car&quot;</span><span class="w">
+    </span><span class="p" data-group-id="8558762491-4">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-5">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w">
+      </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+      </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The type of the car&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="ss">:sedan</span><span class="w">
+    </span><span class="p" data-group-id="8558762491-5">]</span><span class="w">
+  </span><span class="p" data-group-id="8558762491-2">]</span><span class="w">
+
+  </span><span class="na">@car</span><span class="w"> </span><span class="p" data-group-id="8558762491-6">%</span><span class="nc" data-group-id="8558762491-6">Spark.Dsl.Entity</span><span class="p" data-group-id="8558762491-6">{</span><span class="w">
+    </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:car</span><span class="p">,</span><span class="w">
+    </span><span class="ss">describe</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Adds a car&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">examples</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-7">[</span><span class="w">
+      </span><span class="s">&quot;car :ford, :focus&quot;</span><span class="w">
+    </span><span class="p" data-group-id="8558762491-7">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">target</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Car</span><span class="p">,</span><span class="w">
+    </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-8">[</span><span class="ss">:make</span><span class="p">,</span><span class="w"> </span><span class="ss">:model</span><span class="p" data-group-id="8558762491-8">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="na">@car_schema</span><span class="w">
+  </span><span class="p" data-group-id="8558762491-6">}</span><span class="w">
+
+  </span><span class="na">@cars</span><span class="w"> </span><span class="p" data-group-id="8558762491-9">%</span><span class="nc" data-group-id="8558762491-9">Spark.Dsl.Section</span><span class="p" data-group-id="8558762491-9">{</span><span class="w">
+    </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:cars</span><span class="p">,</span><span class="w"> </span><span class="c1"># The DSL constructor will be `cars`</span><span class="w">
+    </span><span class="ss">describe</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+    Configure what cars are available.
+
+    More, deeper explanation. Always have a short one liner explanation,
+    an empty line, and then a longer explanation.
+    &quot;&quot;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">entities</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-10">[</span><span class="w">
+      </span><span class="na">@car</span><span class="w"> </span><span class="c1"># See `Spark.Dsl.Entity` docs</span><span class="w">
+    </span><span class="p" data-group-id="8558762491-10">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-11">[</span><span class="w">
+      </span><span class="ss">default_manufacturer</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-12">[</span><span class="w">
+        </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:atom</span><span class="p">,</span><span class="w">
+        </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The default manufacturer&quot;</span><span class="w">
+      </span><span class="p" data-group-id="8558762491-12">]</span><span class="w">
+    </span><span class="p" data-group-id="8558762491-11">]</span><span class="w">
+  </span><span class="p" data-group-id="8558762491-9">}</span><span class="w">
+
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Dsl.Extension</span><span class="p">,</span><span class="w"> </span><span class="ss">sections</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8558762491-13">[</span><span class="na">@cars</span><span class="p" data-group-id="8558762491-13">]</span><span class="w">
+</span><span class="k" data-group-id="8558762491-1">end</span></code></pre><p>Often, we will need to do complex validation/validate based on the configuration
+of other resources. Due to the nature of building compile time DSLs, there are
+many restrictions around that process. To support these complex use cases, extensions
+can include <code class="inline">transformers</code> which can validate/transform the DSL state after all basic
+sections/entities have been created. See <a href="Spark.Dsl.Transformer.html"><code class="inline">Spark.Dsl.Transformer</code></a> for more information.
+Transformers are provided as an option to <code class="inline">use</code>, like so:</p><pre><code class="makeup elixir" translate="no"><span class="kn">use</span><span class="w"> </span><span class="nc">Spark.Dsl.Extension</span><span class="p">,</span><span class="w"> </span><span class="ss">sections</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0119482754-1">[</span><span class="na">@cars</span><span class="p" data-group-id="0119482754-1">]</span><span class="p">,</span><span class="w"> </span><span class="ss">transformers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0119482754-2">[</span><span class="w">
+  </span><span class="nc">MyApp.Transformers.ValidateNoOverlappingMakesAndModels</span><span class="w">
+</span><span class="p" data-group-id="0119482754-2">]</span></code></pre><p>By default, the generated modules will have names like <code class="inline">__MODULE__.SectionName.EntityName</code>, and that could
+potentially conflict with modules you are defining, so you can specify the <code class="inline">module_prefix</code> option, which would allow
+you to prefix the modules with something like <code class="inline">__MODULE__.Dsl</code>, so that the module path generated might be something like
+<code class="inline">__MODULE__.Dsl.SectionName.EntityName</code>, and you could then have the entity struct be <code class="inline">__MODULE__.SectionName.EntityName</code>
+without conflicts.</p><p>To expose the configuration of your DSL, define functions that use the
+helpers like <a href="#get_entities/2"><code class="inline">get_entities/2</code></a> and <a href="#get_opt/3"><code class="inline">get_opt/3</code></a>. For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Cars</span><span class="w"> </span><span class="k" data-group-id="6896346969-1">do</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">cars</span><span class="p" data-group-id="6896346969-2">(</span><span class="n">resource</span><span class="p" data-group-id="6896346969-2">)</span><span class="w"> </span><span class="k" data-group-id="6896346969-3">do</span><span class="w">
+    </span><span class="nc">Spark.Dsl.Extension</span><span class="o">.</span><span class="n">get_entities</span><span class="p" data-group-id="6896346969-4">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6896346969-5">[</span><span class="ss">:cars</span><span class="p" data-group-id="6896346969-5">]</span><span class="p" data-group-id="6896346969-4">)</span><span class="w">
+  </span><span class="k" data-group-id="6896346969-3">end</span><span class="w">
+</span><span class="k" data-group-id="6896346969-1">end</span><span class="w">
+
+</span><span class="nc">MyApp.Cars</span><span class="o">.</span><span class="n">cars</span><span class="p" data-group-id="6896346969-6">(</span><span class="nc">MyResource</span><span class="p" data-group-id="6896346969-6">)</span><span class="w">
+</span><span class="c1"># [%MyApp.Car{...}, %MyApp.Car{...}]</span></code></pre><p>See the documentation for <a href="Spark.Dsl.Section.html"><code class="inline">Spark.Dsl.Section</code></a> and <a href="Spark.Dsl.Entity.html"><code class="inline">Spark.Dsl.Entity</code></a> for more information</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:add_extensions/0" data-no-tooltip translate="no">add_extensions()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:explain/1" data-no-tooltip translate="no">explain(map)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:module_imports/0" data-no-tooltip translate="no">module_imports()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:persisters/0" data-no-tooltip translate="no">persisters()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:sections/0" data-no-tooltip translate="no">sections()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:transformers/0" data-no-tooltip translate="no">transformers()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:verifiers/0" data-no-tooltip translate="no">verifiers()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#doc/2" data-no-tooltip translate="no">doc(sections, depth \\ 1)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="Spark.CheatSheet.html#doc/2"><code class="inline">Spark.CheatSheet.doc/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#doc_index/2" data-no-tooltip translate="no">doc_index(sections, depth \\ 1)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="Spark.CheatSheet.html#doc_index/2"><code class="inline">Spark.CheatSheet.doc_index/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#expand_alias/2" data-no-tooltip translate="no">expand_alias(ast, env)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#expand_alias_no_require/2" data-no-tooltip translate="no">expand_alias_no_require(ast, env)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#expand_literals/3" data-no-tooltip translate="no">expand_literals(ast, acc, fun)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#fetch_opt/4" data-no-tooltip translate="no">fetch_opt(resource, path, value, configurable? \\ false)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#fetch_persisted/2" data-no-tooltip translate="no">fetch_persisted(map, key)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Fetch a value that was persisted while transforming or compiling the resource, e.g <code class="inline">:primary_key</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_entities/2" data-no-tooltip translate="no">get_entities(map, path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Get the entities configured for a given section</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_entity_dsl_patches/2" data-no-tooltip translate="no">get_entity_dsl_patches(extensions, section_path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_opt/5" data-no-tooltip translate="no">get_opt(resource, path, value, default \\ nil, configurable? \\ false)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Get an option value for a section at a given path.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_opt_config/3" data-no-tooltip translate="no">get_opt_config(resource, path, value)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_persisted/3" data-no-tooltip translate="no">get_persisted(resource, key, default \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Get a value that was persisted while transforming or compiling the resource, e.g <code class="inline">:primary_key</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_recursive_entities_for_path/2" data-no-tooltip translate="no">get_recursive_entities_for_path(sections, list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#module_concat/1" data-no-tooltip translate="no">module_concat(values)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#monotonic_number/1" data-no-tooltip translate="no">monotonic_number(key)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_transformers/4" data-no-tooltip translate="no">run_transformers(mod, transformers, spark_dsl_config, env)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#shuffle_opts_to_end/5" data-no-tooltip translate="no">shuffle_opts_to_end(keyword, entity_args, schema, entities, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#spark_function_info/1" data-no-tooltip translate="no">spark_function_info(arg1)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L115" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:add_extensions/0">
+
+  <div class="detail-header">
+    <a href="#c:add_extensions/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">add_extensions()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L123" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> add_extensions() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:explain/1">
+
+  <div class="detail-header">
+    <a href="#c:explain/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">explain(map)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L122" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(optional)</span>
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> explain(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:module_imports/0">
+
+  <div class="detail-header">
+    <a href="#c:module_imports/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">module_imports()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L118" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> module_imports() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:persisters/0">
+
+  <div class="detail-header">
+    <a href="#c:persisters/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">persisters()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L121" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> persisters() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:sections/0">
+
+  <div class="detail-header">
+    <a href="#c:sections/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">sections()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L117" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> sections() :: [<a href="Spark.Dsl.html#t:section/0">Spark.Dsl.section</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:transformers/0">
+
+  <div class="detail-header">
+    <a href="#c:transformers/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">transformers()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L119" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> transformers() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:verifiers/0">
+
+  <div class="detail-header">
+    <a href="#c:verifiers/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">verifiers()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L120" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> verifiers() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="doc/2">
+
+    <span id="doc/1"></span>
+
+  <div class="detail-header">
+    <a href="#doc/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">doc(sections, depth \\ 1)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L322" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>See <a href="Spark.CheatSheet.html#doc/2"><code class="inline">Spark.CheatSheet.doc/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="doc_index/2">
+
+    <span id="doc_index/1"></span>
+
+  <div class="detail-header">
+    <a href="#doc_index/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">doc_index(sections, depth \\ 1)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L323" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>See <a href="Spark.CheatSheet.html#doc_index/2"><code class="inline">Spark.CheatSheet.doc_index/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="expand_alias/2">
+
+  <div class="detail-header">
+    <a href="#expand_alias/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">expand_alias(ast, env)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1478" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="expand_alias_no_require/2">
+
+  <div class="detail-header">
+    <a href="#expand_alias_no_require/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">expand_alias_no_require(ast, env)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1492" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="expand_literals/3">
+
+  <div class="detail-header">
+    <a href="#expand_literals/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">expand_literals(ast, acc, fun)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1541" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="fetch_opt/4">
+
+    <span id="fetch_opt/3"></span>
+
+  <div class="detail-header">
+    <a href="#fetch_opt/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">fetch_opt(resource, path, value, configurable? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L262" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="fetch_persisted/2">
+
+  <div class="detail-header">
+    <a href="#fetch_persisted/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">fetch_persisted(map, key)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L234" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Fetch a value that was persisted while transforming or compiling the resource, e.g <code class="inline">:primary_key</code></p>
+  </section>
+</section>
+<section class="detail" id="get_entities/2">
+
+  <div class="detail-header">
+    <a href="#get_entities/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_entities(map, path)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L180" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Get the entities configured for a given section</p>
+  </section>
+</section>
+<section class="detail" id="get_entity_dsl_patches/2">
+
+  <div class="detail-header">
+    <a href="#get_entity_dsl_patches/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_entity_dsl_patches(extensions, section_path)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1835" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_opt/5">
+
+    <span id="get_opt/3"></span>
+
+    <span id="get_opt/4"></span>
+
+  <div class="detail-header">
+    <a href="#get_opt/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_opt(resource, path, value, default \\ nil, configurable? \\ false)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L255" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Get an option value for a section at a given path.</p><p>Checks to see if it has been overridden via configuration.</p>
+  </section>
+</section>
+<section class="detail" id="get_opt_config/3">
+
+  <div class="detail-header">
+    <a href="#get_opt_config/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_opt_config(resource, path, value)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L329" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_persisted/3">
+
+    <span id="get_persisted/2"></span>
+
+  <div class="detail-header">
+    <a href="#get_persisted/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_persisted(resource, key, default \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L215" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Get a value that was persisted while transforming or compiling the resource, e.g <code class="inline">:primary_key</code></p>
+  </section>
+</section>
+<section class="detail" id="get_recursive_entities_for_path/2">
+
+  <div class="detail-header">
+    <a href="#get_recursive_entities_for_path/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_recursive_entities_for_path(sections, list)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1875" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="module_concat/1">
+
+  <div class="detail-header">
+    <a href="#module_concat/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">module_concat(values)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1812" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="monotonic_number/1">
+
+  <div class="detail-header">
+    <a href="#monotonic_number/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">monotonic_number(key)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1595" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="run_transformers/4">
+
+  <div class="detail-header">
+    <a href="#run_transformers/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_transformers(mod, transformers, spark_dsl_config, env)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L633" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="shuffle_opts_to_end/5">
+
+  <div class="detail-header">
+    <a href="#shuffle_opts_to_end/5" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">shuffle_opts_to_end(keyword, entity_args, schema, entities, opts)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1615" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="spark_function_info/1">
+
+  <div class="detail-header">
+    <a href="#spark_function_info/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">spark_function_info(arg1)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/extension.ex#L1599" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

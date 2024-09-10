@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_oban v0.2.4">
+
+
+    <title>DSL: AshOban — ash_oban v0.2.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-E490895E.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_oban" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_oban" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_oban" class="sidebar-projectName" translate="no">
+ash_oban
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_oban</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_oban/blob/v0.2.4/documentation/dsls/DSL:-AshOban.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: AshOban</span>
+  </h1>
+
+<p>Tools for working with AshOban triggers.</p><h2 id="oban" class="section-heading">
+  <a href="#oban" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">oban</span>
+</h2>
+<h3 id="nested-dsls" class="section-heading">
+  <a href="#nested-dsls" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#oban-triggers">triggers</a><ul><li>trigger</li></ul></li><li><a href="#oban-scheduled_actions">scheduled_actions</a><ul><li>schedule</li></ul></li></ul><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">oban</span><span class="w"> </span><span class="k" data-group-id="8778307090-1">do</span><span class="w">
+  </span><span class="n">triggers</span><span class="w"> </span><span class="k" data-group-id="8778307090-2">do</span><span class="w">
+    </span><span class="n">trigger</span><span class="w"> </span><span class="ss">:process</span><span class="w"> </span><span class="k" data-group-id="8778307090-3">do</span><span class="w">
+      </span><span class="n">action</span><span class="w"> </span><span class="ss">:process</span><span class="w">
+      </span><span class="n">where</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="8778307090-4">(</span><span class="n">processed</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="8778307090-4">)</span><span class="w">
+      </span><span class="n">worker_read_action</span><span class="p" data-group-id="8778307090-5">(</span><span class="ss">:read</span><span class="p" data-group-id="8778307090-5">)</span><span class="w">
+    </span><span class="k" data-group-id="8778307090-3">end</span><span class="w">
+  </span><span class="k" data-group-id="8778307090-2">end</span><span class="w">
+</span><span class="k" data-group-id="8778307090-1">end</span><span class="w">
+</span></code></pre><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#oban-domain" id="oban-domain"><code class="inline">domain</code></a></td><td style="text-align: left;"><code class="inline">module</code></td><td style="text-align: left;"></td><td style="text-align: left;">The Domain to use when calling actions on this resource. Defaults to the resource's domain.</td></tr></tbody></table><h2 id="oban-triggers" class="section-heading">
+  <a href="#oban-triggers" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">oban.triggers</span>
+</h2>
+<h3 id="nested-dsls-1" class="section-heading">
+  <a href="#nested-dsls-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#oban-triggers-trigger">trigger</a></li></ul><h3 id="examples-1" class="section-heading">
+  <a href="#examples-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">triggers</span><span class="w"> </span><span class="k" data-group-id="2877611466-1">do</span><span class="w">
+  </span><span class="n">trigger</span><span class="w"> </span><span class="ss">:process</span><span class="w"> </span><span class="k" data-group-id="2877611466-2">do</span><span class="w">
+    </span><span class="n">action</span><span class="w"> </span><span class="ss">:process</span><span class="w">
+    </span><span class="n">where</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="2877611466-3">(</span><span class="n">processed</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="2877611466-3">)</span><span class="w">
+    </span><span class="n">worker_read_action</span><span class="p" data-group-id="2877611466-4">(</span><span class="ss">:read</span><span class="p" data-group-id="2877611466-4">)</span><span class="w">
+  </span><span class="k" data-group-id="2877611466-2">end</span><span class="w">
+</span><span class="k" data-group-id="2877611466-1">end</span><span class="w">
+</span></code></pre><h2 id="oban-triggers-trigger" class="section-heading">
+  <a href="#oban-triggers-trigger" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">oban.triggers.trigger</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">trigger</span><span class="w"> </span><span class="n">name</span></code></pre><h3 id="examples-2" class="section-heading">
+  <a href="#examples-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">trigger</span><span class="w"> </span><span class="ss">:process</span><span class="w"> </span><span class="k" data-group-id="1251599923-1">do</span><span class="w">
+  </span><span class="n">action</span><span class="w"> </span><span class="ss">:process</span><span class="w">
+  </span><span class="n">where</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="1251599923-2">(</span><span class="n">processed</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="1251599923-2">)</span><span class="w">
+  </span><span class="n">worker_read_action</span><span class="p" data-group-id="1251599923-3">(</span><span class="ss">:read</span><span class="p" data-group-id="1251599923-3">)</span><span class="w">
+</span><span class="k" data-group-id="1251599923-1">end</span><span class="w">
+</span></code></pre><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-name" id="oban-triggers-trigger-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique identifier for this trigger.</td></tr></tbody></table><h3 id="options-1" class="section-heading">
+  <a href="#options-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#oban-triggers-trigger-action" id="oban-triggers-trigger-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The action to be triggered. Defaults to the identifier of the resource plus the name of the trigger</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-action_input" id="oban-triggers-trigger-action_input"><code class="inline">action_input</code></a></td><td style="text-align: left;"><code class="inline">map</code></td><td style="text-align: left;"></td><td style="text-align: left;">Static inputs to supply to the update/destroy action when it is called. Any metadata produced by <code class="inline">read_metadata</code> will overwrite these values.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-scheduler_queue" id="oban-triggers-trigger-scheduler_queue"><code class="inline">scheduler_queue</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The queue to place the scheduler job in. The same queue as job is used by default (but with a priority of 1 so schedulers run first).</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-debug?" id="oban-triggers-trigger-debug?"><code class="inline">debug?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">If set to <code class="inline">true</code>, detailed debug logging will be enabled for this trigger. You can also set <code class="inline">config :ash_oban, debug_all_triggers?: true</code> to enable debug logging for all triggers.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-scheduler_cron" id="oban-triggers-trigger-scheduler_cron"><code class="inline">scheduler_cron</code></a></td><td style="text-align: left;"><code class="inline">String.t | false</code></td><td style="text-align: left;"><code class="inline">&quot;* * * * *&quot;</code></td><td style="text-align: left;">A crontab configuration for when the job should run. Defaults to once per minute (&quot;<em> </em> <em> </em> *&quot;). Use <code class="inline">false</code> to disable the scheduler entirely.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-stream_batch_size" id="oban-triggers-trigger-stream_batch_size"><code class="inline">stream_batch_size</code></a></td><td style="text-align: left;"><code class="inline">pos_integer</code></td><td style="text-align: left;"></td><td style="text-align: left;">The batch size to pass when streaming records from using <a href="https://hexdocs.pm/ash/3.2.2/Ash.html#stream!/2"><code class="inline">Ash.stream!/2</code></a>. No batch size is passed if none is provided here, so the default is used.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-queue" id="oban-triggers-trigger-queue"><code class="inline">queue</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The queue to place the worker job in. The trigger name is used by default.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-record_limit" id="oban-triggers-trigger-record_limit"><code class="inline">record_limit</code></a></td><td style="text-align: left;"><code class="inline">pos_integer</code></td><td style="text-align: left;"></td><td style="text-align: left;">If set, any given run of the scheduler will only ever schedule this many items maximum</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-log_errors?" id="oban-triggers-trigger-log_errors?"><code class="inline">log_errors?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not to log errors that occur when performing an action.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-log_final_error?" id="oban-triggers-trigger-log_final_error?"><code class="inline">log_final_error?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">If true, logs that an error occurred on the final attempt to perform an action even if <code class="inline">log_errors?</code> is set to false.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-worker_priority" id="oban-triggers-trigger-worker_priority"><code class="inline">worker_priority</code></a></td><td style="text-align: left;"><code class="inline">non_neg_integer</code></td><td style="text-align: left;"><code class="inline">2</code></td><td style="text-align: left;">A number from 0 to 3, where 0 is the highest priority and 3 is the lowest.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-scheduler_priority" id="oban-triggers-trigger-scheduler_priority"><code class="inline">scheduler_priority</code></a></td><td style="text-align: left;"><code class="inline">non_neg_integer</code></td><td style="text-align: left;"><code class="inline">3</code></td><td style="text-align: left;">A number from 0 to 3, where 0 is the highest priority and 3 is the lowest.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-max_scheduler_attempts" id="oban-triggers-trigger-max_scheduler_attempts"><code class="inline">max_scheduler_attempts</code></a></td><td style="text-align: left;"><code class="inline">pos_integer</code></td><td style="text-align: left;"><code class="inline">1</code></td><td style="text-align: left;">How many times to attempt scheduling of the triggered action.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-max_attempts" id="oban-triggers-trigger-max_attempts"><code class="inline">max_attempts</code></a></td><td style="text-align: left;"><code class="inline">pos_integer</code></td><td style="text-align: left;"><code class="inline">1</code></td><td style="text-align: left;">How many times to attempt the job. After all attempts have been exhausted, the scheduler may just reschedule it. Use the <code class="inline">on_error</code> action to update the record to make the scheduler no longer apply.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-read_metadata" id="oban-triggers-trigger-read_metadata"><code class="inline">read_metadata</code></a></td><td style="text-align: left;"><code class="inline">(any -&gt; any)</code></td><td style="text-align: left;"></td><td style="text-align: left;">Takes a record, and returns metadata to be given to the update action as an argument called <code class="inline">metadata</code>.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-state" id="oban-triggers-trigger-state"><code class="inline">state</code></a></td><td style="text-align: left;"><code class="inline">:active | :paused | :deleted</code></td><td style="text-align: left;"><code class="inline">:active</code></td><td style="text-align: left;">Describes the state of the cron job. See the getting started guide for more information. The most important thing is that you <em>do not remove a trigger from a resource if you are using oban pro</em>.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-read_action" id="oban-triggers-trigger-read_action"><code class="inline">read_action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The read action to use when querying records. Defaults to the primary read. This action <em>must</em> support keyset pagination.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-worker_read_action" id="oban-triggers-trigger-worker_read_action"><code class="inline">worker_read_action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The read action to use when fetching the individual records for the trigger. Defaults to <code class="inline">read_action</code>. If you customize this, ensure your action handles scenarios where the trigger is no longer relevant.</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-where" id="oban-triggers-trigger-where"><code class="inline">where</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"></td><td style="text-align: left;">The filter expression to determine if something should be triggered</td></tr><tr><td style="text-align: left;"><a href="#oban-triggers-trigger-on_error" id="oban-triggers-trigger-on_error"><code class="inline">on_error</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">An update action to call after the last attempt has failed. See the getting started guide for more.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshOban.Trigger.html"><code class="inline">AshOban.Trigger</code></a></p><h2 id="oban-scheduled_actions" class="section-heading">
+  <a href="#oban-scheduled_actions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">oban.scheduled_actions</span>
+</h2>
+<p>A section for configured scheduled actions. Supports generic and create actions.</p><h3 id="nested-dsls-2" class="section-heading">
+  <a href="#nested-dsls-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#oban-scheduled_actions-schedule">schedule</a></li></ul><h3 id="examples-3" class="section-heading">
+  <a href="#examples-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">scheduled_actions</span><span class="w"> </span><span class="k" data-group-id="8329135296-1">do</span><span class="w">
+  </span><span class="n">schedule</span><span class="w"> </span><span class="ss">:import</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;0 */6 * * *&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:import</span><span class="w">
+</span><span class="k" data-group-id="8329135296-1">end</span><span class="w">
+</span></code></pre><h2 id="oban-scheduled_actions-schedule" class="section-heading">
+  <a href="#oban-scheduled_actions-schedule" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">oban.scheduled_actions.schedule</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">schedule</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">cron</span></code></pre><h3 id="arguments-1" class="section-heading">
+  <a href="#arguments-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-name" id="oban-scheduled_actions-schedule-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">A unique identifier for this scheduled action.</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-cron" id="oban-scheduled_actions-schedule-cron"><code class="inline">cron</code></a></td><td style="text-align: left;"><code class="inline">String.t</code></td><td style="text-align: left;"></td><td style="text-align: left;">The schedule in crontab notation</td></tr></tbody></table><h3 id="options-2" class="section-heading">
+  <a href="#options-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-action_input" id="oban-scheduled_actions-schedule-action_input"><code class="inline">action_input</code></a></td><td style="text-align: left;"><code class="inline">map</code></td><td style="text-align: left;"></td><td style="text-align: left;">Inputs to supply to the action when it is called.</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-action" id="oban-scheduled_actions-schedule-action"><code class="inline">action</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The generic or create action to call when the schedule is triggered.</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-queue" id="oban-scheduled_actions-schedule-queue"><code class="inline">queue</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The queue to place the job in. Defaults to the resources short name plus the name of the scheduled action (not the action name).</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-state" id="oban-scheduled_actions-schedule-state"><code class="inline">state</code></a></td><td style="text-align: left;"><code class="inline">:active | :paused | :deleted</code></td><td style="text-align: left;"><code class="inline">:active</code></td><td style="text-align: left;">Describes the state of the cron job. See the getting started guide for more information. The most important thing is that you <em>do not remove a scheduled action from a resource if you are using oban pro</em>.</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-max_attempts" id="oban-scheduled_actions-schedule-max_attempts"><code class="inline">max_attempts</code></a></td><td style="text-align: left;"><code class="inline">pos_integer</code></td><td style="text-align: left;"><code class="inline">1</code></td><td style="text-align: left;">How many times to attempt the job. The action will receive a <code class="inline">last_oban_attempt?</code> argument on the last attempt, and you should handle errors accordingly.</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-priority" id="oban-scheduled_actions-schedule-priority"><code class="inline">priority</code></a></td><td style="text-align: left;"><code class="inline">non_neg_integer</code></td><td style="text-align: left;"><code class="inline">3</code></td><td style="text-align: left;">A number from 0 to 3, where 0 is the highest priority and 3 is the lowest.</td></tr><tr><td style="text-align: left;"><a href="#oban-scheduled_actions-schedule-debug?" id="oban-scheduled_actions-schedule-debug?"><code class="inline">debug?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">If set to <code class="inline">true</code>, detailed debug logging will be enabled for this trigger. You can also set <code class="inline">config :ash_oban, debug_all_triggers?: true</code> to enable debug logging for all triggers.</td></tr></tbody></table><h3 id="introspection-1" class="section-heading">
+  <a href="#introspection-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshOban.Schedule.html"><code class="inline">AshOban.Schedule</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="getting-started-with-ash-oban.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Getting Started With Ash Oban
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Change Log
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_oban/0.2.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_oban/0.2.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_oban/0.2.4/show/documentation/dsls/DSL:-AshOban.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_oban.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

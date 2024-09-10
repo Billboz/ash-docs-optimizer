@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash v3.4.8">
+
+
+    <title>Embedded Resources — ash v3.4.8</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-370365CE.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<style>
+  .livebook-badge-container + pre {
+    display: none;
+  }
+</style>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad: true})</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash" class="sidebar-projectName" translate="no">
+ash
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v3.4.8
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash/blob/v3.4.8/documentation/topics/resources/embedded-resources.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Embedded Resources</span>
+  </h1>
+
+<p>Embedded resources are stored as maps in attributes of other resources. They are great for storing structured data, and support a whole range of useful features that resources support. For example, you can have calculations, validations, policies and even relationships on embedded resources. Here is an example of a simple embedded resource:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Profile</span><span class="w"> </span><span class="k" data-group-id="5209450720-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="ss">:embedded</span><span class="w"> </span><span class="c1"># Use the atom `:embedded` as the data layer.</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="5209450720-2">do</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:last_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="5209450720-2">end</span><span class="w">
+</span><span class="k" data-group-id="5209450720-1">end</span></code></pre><blockquote><h3 id="embedded-resources-can-t-do-everything" class="info section-heading">
+  <a href="#embedded-resources-can-t-do-everything" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Embedded resources can't do everything</span>
+</h3>
+<p>Embedded resources cannot have aggregates, or expression calculations that rely on data-layer-specific capabilities.</p></blockquote><h2 id="adding-embedded-resource-attributes" class="section-heading">
+  <a href="#adding-embedded-resource-attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Adding embedded resource attributes</span>
+</h2>
+<p>Embedded resources define an <a href="Ash.Type.html"><code class="inline">Ash.Type</code></a> under the hood, meaning you can use them anywhere you would use an Ash type.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.User</span><span class="w"> </span><span class="k" data-group-id="7930485567-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="7930485567-2">do</span><span class="w">
+    </span><span class="n">...</span><span class="w">
+
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:profile</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Profile</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:profiles</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7930485567-3">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Profile</span><span class="p" data-group-id="7930485567-3">}</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w"> </span><span class="c1"># You can also have an array of embeds</span><span class="w">
+  </span><span class="k" data-group-id="7930485567-2">end</span><span class="w">
+</span><span class="k" data-group-id="7930485567-1">end</span></code></pre><h2 id="handling-nil-values" class="section-heading">
+  <a href="#handling-nil-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Handling nil values</span>
+</h2>
+<p>By default, all fields on an embedded resource will be included in the data layer, including keys with nil values. To prevent this, add the <code class="inline">embed_nil_values?</code> option to <code class="inline">use Ash.Resource</code>. For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">YourEmbed</span><span class="w"> </span><span class="k" data-group-id="9058792793-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="ss">:embedded</span><span class="p">,</span><span class="w">
+    </span><span class="ss">embed_nil_values?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="k" data-group-id="9058792793-1">end</span></code></pre><h2 id="editing-embedded-attributes" class="section-heading">
+  <a href="#editing-embedded-attributes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Editing embedded attributes</span>
+</h2>
+<p>If you manually supply instances of the embedded structs, the structs you provide are used with no validation. For example:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="0774417733-1">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0774417733-2">%{</span><span class="ss">profile</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0774417733-3">%</span><span class="nc" data-group-id="0774417733-3">MyApp.Profile</span><span class="p" data-group-id="0774417733-3">{</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;first_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;last_name&quot;</span><span class="p" data-group-id="0774417733-3">}</span><span class="p" data-group-id="0774417733-2">}</span><span class="p" data-group-id="0774417733-1">)</span></code></pre><p>However, you can also treat embedded resources like regular resources that can be &quot;created&quot;, &quot;updated&quot;, and &quot;destroyed&quot;.
+To do this, provide maps as the input, instead of structs. In the example above, if you just wanted to change the <code class="inline">first_name</code>, you'd provide:</p><pre><code class="makeup elixir" translate="no"><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="6298492319-1">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6298492319-2">%{</span><span class="ss">profile</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6298492319-3">%{</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;first_name&quot;</span><span class="p" data-group-id="6298492319-3">}</span><span class="p" data-group-id="6298492319-2">}</span><span class="p" data-group-id="6298492319-1">)</span></code></pre><p>This will call the primary <code class="inline">update</code> action on the resource. This allows you to define an action on the embed, and add validations to it. For example, you might have something like this:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Profile</span><span class="w"> </span><span class="k" data-group-id="0573731944-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="ss">:embedded</span><span class="w"> </span><span class="c1"># Use the atom `:embedded` as the data layer.</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="0573731944-2">do</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:last_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="0573731944-2">end</span><span class="w">
+
+  </span><span class="n">validations</span><span class="w"> </span><span class="k" data-group-id="0573731944-3">do</span><span class="w">
+    </span><span class="n">validate</span><span class="w"> </span><span class="n">present</span><span class="p" data-group-id="0573731944-4">(</span><span class="p" data-group-id="0573731944-5">[</span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:last_name</span><span class="p" data-group-id="0573731944-5">]</span><span class="p">,</span><span class="w"> </span><span class="ss">at_least</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0573731944-4">)</span><span class="w">
+  </span><span class="k" data-group-id="0573731944-3">end</span><span class="w">
+</span><span class="k" data-group-id="0573731944-1">end</span></code></pre><h2 id="calculations" class="section-heading">
+  <a href="#calculations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Calculations</span>
+</h2>
+<p>Calculations can be added to embedded resources. When you use an embedded resource, you declare what calculations to load via a <code class="inline">constraint</code>.
+For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Profile</span><span class="w"> </span><span class="k" data-group-id="7570485083-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="ss">:embedded</span><span class="w"> </span><span class="c1"># Use the atom `:embedded` as the data layer.</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="7570485083-2">do</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:last_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="7570485083-2">end</span><span class="w">
+
+  </span><span class="n">calculations</span><span class="w"> </span><span class="k" data-group-id="7570485083-3">do</span><span class="w">
+    </span><span class="n">calculate</span><span class="w"> </span><span class="ss">:full_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="n">concat</span><span class="p" data-group-id="7570485083-4">(</span><span class="p" data-group-id="7570485083-5">[</span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:last_name</span><span class="p" data-group-id="7570485083-5">]</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p" data-group-id="7570485083-4">)</span><span class="w">
+  </span><span class="k" data-group-id="7570485083-3">end</span><span class="w">
+</span><span class="k" data-group-id="7570485083-1">end</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.User</span><span class="w"> </span><span class="k" data-group-id="7570485083-6">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="n">...</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="7570485083-7">do</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:profile</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Profile</span><span class="w"> </span><span class="k" data-group-id="7570485083-8">do</span><span class="w">
+      </span><span class="n">public?</span><span class="w"> </span><span class="no">true</span><span class="w">
+      </span><span class="n">constraints</span><span class="w"> </span><span class="p" data-group-id="7570485083-9">[</span><span class="ss">load</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7570485083-10">[</span><span class="ss">:full_name</span><span class="p" data-group-id="7570485083-10">]</span><span class="p" data-group-id="7570485083-9">]</span><span class="w">
+    </span><span class="k" data-group-id="7570485083-8">end</span><span class="w">
+  </span><span class="k" data-group-id="7570485083-7">end</span><span class="w">
+</span><span class="k" data-group-id="7570485083-6">end</span></code></pre><h2 id="determining-what-action-s-will-be-called" class="section-heading">
+  <a href="#determining-what-action-s-will-be-called" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Determining what action(s) will be called:</span>
+</h2>
+<p>Remember: default actions are already implemented for a resource, with no need to add them. They are called <code class="inline">:create</code>, <code class="inline">:update</code>, <code class="inline">:destroy</code>, and <code class="inline">:read</code>. You can use those without defining them. You only need to define them if you wish to override their configuration.</p><h3 id="single-embeds" class="section-heading">
+  <a href="#single-embeds" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Single Embeds</span>
+</h3>
+<ul><li>If the current value is <code class="inline">nil</code> - a <code class="inline">create</code> with the provided values</li><li>If the current value is not <code class="inline">nil</code> - an <code class="inline">update</code> with the provided values</li><li>If the current value is not <code class="inline">nil</code> and the <em>new value</em> is <code class="inline">nil</code> - a <code class="inline">destroy</code> with the original value</li></ul><h3 id="array-embeds" class="section-heading">
+  <a href="#array-embeds" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Array Embeds</span>
+</h3>
+<p>All values in the original array are destroyed, and all maps in the new array are used to <code class="inline">create</code> new records.</p><h2 id="adding-a-primary-key" class="section-heading">
+  <a href="#adding-a-primary-key" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Adding a primary key</span>
+</h2>
+<p>Adding a primary key to your embedded resources is especially useful when managing lists of data. Specifically, it allows you to consider changes to elements with matching primary key values as <code class="inline">updates</code>.</p><p>For example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Tag</span><span class="w"> </span><span class="k" data-group-id="7494802707-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="ss">:embedded</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="7494802707-2">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:counter</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="7494802707-2">end</span><span class="w">
+
+  </span><span class="n">validations</span><span class="w"> </span><span class="k" data-group-id="7494802707-3">do</span><span class="w">
+    </span><span class="n">validate</span><span class="w"> </span><span class="p" data-group-id="7494802707-4">{</span><span class="nc">Increasing</span><span class="p">,</span><span class="w"> </span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="ss">:counter</span><span class="p" data-group-id="7494802707-4">}</span><span class="p">,</span><span class="w"> </span><span class="ss">on</span><span class="p">:</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+  </span><span class="k" data-group-id="7494802707-3">end</span><span class="w">
+</span><span class="k" data-group-id="7494802707-1">end</span></code></pre><p>Now, you can accept input meant to <code class="inline">update</code> individual list items. The entire list must still be provided, but any items with a matching id will be considered an <code class="inline">update</code> instead of a <code class="inline">destroy</code> + <code class="inline">create</code>.</p><h3 id="determining-what-action-s-will-be-called-with-a-primary-key" class="section-heading">
+  <a href="#determining-what-action-s-will-be-called-with-a-primary-key" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Determining what action(s) will be called with a primary key:</span>
+</h3>
+<h4>Single Embeds with primary keys</h4><ul><li>If you provide a struct, instead of a map, the value provided is used as the new relationship value directly.</li><li>If the current value is <code class="inline">nil</code> - a <code class="inline">create</code> with the provided values</li><li>If the current value is not <code class="inline">nil</code> and the primary keys match - an <code class="inline">update</code> with the provided values</li><li>If the current value is not <code class="inline">nil</code> and the primary keys <em>don't</em> match - a <code class="inline">destroy</code> of the original value and a <code class="inline">create</code> of the new value</li><li>If the current value is not <code class="inline">nil</code> and the <em>new value</em> is <code class="inline">nil</code> - a <code class="inline">destroy</code> with the original value</li></ul><h4>Array Embeds with primary keys</h4><ul><li>If you provide structs, instead of maps, the value provided is used as the new relationship value directly.</li><li>Any values in the original list with no primary key matching in the new list are <code class="inline">destroy</code>ed.</li><li>Any values in the new list with no primary key matching in the original list are <code class="inline">create</code>d.</li><li>Any values with a primary key match in the original list and the new list are <code class="inline">update</code>d</li></ul><h2 id="identities" class="section-heading">
+  <a href="#identities" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Identities</span>
+</h2>
+<p>Identities can be added on an embedded resource, which will ensure that for any given list, they are unique on that identity. For example, if you had an embedded resource called <code class="inline">Tag</code>, you could add an identity on <code class="inline">name</code> to ensure that nothing has duplicate tag names.</p><h2 id="usage-in-extensions" class="section-heading">
+  <a href="#usage-in-extensions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Usage in Extensions</span>
+</h2>
+<p>The AshJsonApi extension exposes these attributes as maps. However, the AshGraphql extension allows you
+to specify a type (but not queries/mutations) for an embedded resource. If you do, instead of being treated as a <code class="inline">:json</code> type it will get its own named input object type and field type.</p><h2 id="accessing-the-source-changeset" class="section-heading">
+  <a href="#accessing-the-source-changeset" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Accessing the source changeset</span>
+</h2>
+<p>When building changesets for embedded resources, the source changeset will be available in action changes under <code class="inline">changeset.context.__source__</code>.
+This allows you to customize the action based on the details of the parent changeset.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="code-interfaces.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Code Interface
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="identities.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Identities
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash/3.4.8" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash/3.4.8">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash/3.4.8/show/documentation/topics/resources/embedded-resources.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

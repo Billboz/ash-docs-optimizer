@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>Reactor.Dsl.Argument — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/dsl/argument.ex/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Reactor.Dsl.Argument</span> 
+    <small class="app-vsn" translate="no">(reactor v0.9.1)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The struct used to store <code class="inline">argument</code> DSL entities.</p><p>See <code class="inline">Reactor.step.argument</code>.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#element/2" data-no-tooltip translate="no">element(name, sub_path \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <code class="inline">element</code> template helper for the Reactor DSL.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#input/2" data-no-tooltip translate="no">input(input_name, sub_path \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <code class="inline">input</code> template helper for the Reactor DSL.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#result/2" data-no-tooltip translate="no">result(step_name, sub_path \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <code class="inline">result</code> template helper for the Reactor DSL.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#value/1" data-no-tooltip translate="no">value(value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <code class="inline">value</code> template helper for the Reactor DSL.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/dsl/argument.ex/#L15" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Reactor.Dsl.Argument{
+  __identifier__: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  source: <a href="Reactor.Template.html#t:t/0">Reactor.Template.t</a>(),
+  transform: nil | (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">mfa</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="element/2">
+
+    <span id="element/1"></span>
+
+  <div class="detail-header">
+    <a href="#element/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">element(name, sub_path \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/dsl/argument.ex/#L148" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> element(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]) :: <a href="Reactor.Template.Element.html#t:t/0">Reactor.Template.Element.t</a>()</pre>
+
+      </div>
+
+<p>The <code class="inline">element</code> template helper for the Reactor DSL.</p><h2 id="element/2-example" class="section-heading">
+  <a href="#element/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ExampleReactor</span><span class="w"> </span><span class="k" data-group-id="4697869822-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor</span><span class="w">
+
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:numbers</span><span class="w">
+
+  </span><span class="n">map</span><span class="w"> </span><span class="ss">:double_numbers</span><span class="w"> </span><span class="k" data-group-id="4697869822-2">do</span><span class="w">
+    </span><span class="n">source</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4697869822-3">(</span><span class="ss">:numbers</span><span class="p" data-group-id="4697869822-3">)</span><span class="w">
+
+    </span><span class="n">step</span><span class="w"> </span><span class="ss">:double</span><span class="w"> </span><span class="k" data-group-id="4697869822-4">do</span><span class="w">
+      </span><span class="n">argument</span><span class="w"> </span><span class="ss">:number</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p" data-group-id="4697869822-5">(</span><span class="ss">:double_numbers</span><span class="p" data-group-id="4697869822-5">)</span><span class="w">
+
+      </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="4697869822-6">fn</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="4697869822-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">number</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4697869822-7">}</span><span class="w">
+      </span><span class="k" data-group-id="4697869822-6">end</span><span class="w">
+    </span><span class="k" data-group-id="4697869822-4">end</span><span class="w">
+
+    </span><span class="n">return</span><span class="w"> </span><span class="ss">:double</span><span class="w">
+  </span><span class="k" data-group-id="4697869822-2">end</span><span class="w">
+</span><span class="k" data-group-id="4697869822-1">end</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="input/2">
+
+    <span id="input/1"></span>
+
+  <div class="detail-header">
+    <a href="#input/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">input(input_name, sub_path \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/dsl/argument.ex/#L51" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> input(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]) :: <a href="Reactor.Template.Input.html#t:t/0">Reactor.Template.Input.t</a>()</pre>
+
+      </div>
+
+<p>The <code class="inline">input</code> template helper for the Reactor DSL.</p><h2 id="input/2-example" class="section-heading">
+  <a href="#input/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ExampleReactor</span><span class="w"> </span><span class="k" data-group-id="2250156320-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor</span><span class="w">
+
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:name</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:greet</span><span class="w"> </span><span class="k" data-group-id="2250156320-2">do</span><span class="w">
+    </span><span class="c1"># here: --------↓↓↓↓↓</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="2250156320-3">(</span><span class="ss">:name</span><span class="p" data-group-id="2250156320-3">)</span><span class="w">
+    </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="2250156320-4">fn</span><span class="w">
+      </span><span class="p" data-group-id="2250156320-5">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="2250156320-5">}</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="2250156320-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span><span class="p" data-group-id="2250156320-6">}</span><span class="w">
+      </span><span class="p" data-group-id="2250156320-7">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p" data-group-id="2250156320-7">}</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="2250156320-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, </span><span class="si" data-group-id="2250156320-9">#{</span><span class="n">name</span><span class="si" data-group-id="2250156320-9">}</span><span class="s">!&quot;</span><span class="p" data-group-id="2250156320-8">}</span><span class="w">
+    </span><span class="k" data-group-id="2250156320-4">end</span><span class="w">
+  </span><span class="k" data-group-id="2250156320-2">end</span><span class="w">
+</span><span class="k" data-group-id="2250156320-1">end</span></code></pre><h2 id="input/2-extracting-nested-values" class="section-heading">
+  <a href="#input/2-extracting-nested-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Extracting nested values</span>
+</h2>
+<p>You can provide a list of keys to extract from a data structure, similar to
+<a href="https://hexdocs.pm/elixir/Kernel.html#get_in/2"><code class="inline">Kernel.get_in/2</code></a> with the condition that the input value is either a struct
+or implements the <a href="https://hexdocs.pm/elixir/Access.html"><code class="inline">Access</code></a> protocol.</p>
+  </section>
+</section>
+<section class="detail" id="result/2">
+
+    <span id="result/1"></span>
+
+  <div class="detail-header">
+    <a href="#result/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">result(step_name, sub_path \\ [])</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/dsl/argument.ex/#L89" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> result(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]) :: <a href="Reactor.Template.Result.html#t:t/0">Reactor.Template.Result.t</a>()</pre>
+
+      </div>
+
+<p>The <code class="inline">result</code> template helper for the Reactor DSL.</p><h2 id="result/2-example" class="section-heading">
+  <a href="#result/2-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ExampleReactor</span><span class="w"> </span><span class="k" data-group-id="7626963020-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:whom</span><span class="w"> </span><span class="k" data-group-id="7626963020-2">do</span><span class="w">
+    </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="7626963020-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="p" data-group-id="7626963020-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">random</span><span class="p" data-group-id="7626963020-5">(</span><span class="p" data-group-id="7626963020-6">[</span><span class="s">&quot;Marty&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Doc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jennifer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Lorraine&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;George&quot;</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="7626963020-6">]</span><span class="p" data-group-id="7626963020-5">)</span><span class="p" data-group-id="7626963020-4">}</span><span class="w">
+    </span><span class="k" data-group-id="7626963020-3">end</span><span class="w">
+  </span><span class="k" data-group-id="7626963020-2">end</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:greet</span><span class="w"> </span><span class="k" data-group-id="7626963020-7">do</span><span class="w">
+    </span><span class="c1"># here: --------↓↓↓↓↓↓</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7626963020-8">(</span><span class="ss">:whom</span><span class="p" data-group-id="7626963020-8">)</span><span class="w">
+    </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="7626963020-9">fn</span><span class="w">
+      </span><span class="p" data-group-id="7626963020-10">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="7626963020-10">}</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="7626963020-11">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span><span class="p" data-group-id="7626963020-11">}</span><span class="w">
+      </span><span class="p" data-group-id="7626963020-12">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p" data-group-id="7626963020-12">}</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="7626963020-13">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, </span><span class="si" data-group-id="7626963020-14">#{</span><span class="n">name</span><span class="si" data-group-id="7626963020-14">}</span><span class="s">!&quot;</span><span class="p" data-group-id="7626963020-13">}</span><span class="w">
+    </span><span class="k" data-group-id="7626963020-9">end</span><span class="w">
+  </span><span class="k" data-group-id="7626963020-7">end</span><span class="w">
+</span><span class="k" data-group-id="7626963020-1">end</span></code></pre><h2 id="result/2-extracting-nested-values" class="section-heading">
+  <a href="#result/2-extracting-nested-values" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Extracting nested values</span>
+</h2>
+<p>You can provide a list of keys to extract from a data structure, similar to
+<a href="https://hexdocs.pm/elixir/Kernel.html#get_in/2"><code class="inline">Kernel.get_in/2</code></a> with the condition that the result is either a struct or
+implements the <a href="https://hexdocs.pm/elixir/Access.html"><code class="inline">Access</code></a> protocol.</p>
+  </section>
+</section>
+<section class="detail" id="value/1">
+
+  <div class="detail-header">
+    <a href="#value/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">value(value)</h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/lib/reactor/dsl/argument.ex/#L118" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> value(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="Reactor.Template.Value.html#t:t/0">Reactor.Template.Value.t</a>()</pre>
+
+      </div>
+
+<p>The <code class="inline">value</code> template helper for the Reactor DSL.</p><h2 id="value/1-example" class="section-heading">
+  <a href="#value/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">ExampleReactor</span><span class="w"> </span><span class="k" data-group-id="4655261752-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor</span><span class="w">
+
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:number</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:times_three</span><span class="w"> </span><span class="k" data-group-id="4655261752-2">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:lhs</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="4655261752-3">(</span><span class="ss">:number</span><span class="p" data-group-id="4655261752-3">)</span><span class="w">
+    </span><span class="c1"># here: -------↓↓↓↓↓</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:rhs</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="4655261752-4">(</span><span class="mi">3</span><span class="p" data-group-id="4655261752-4">)</span><span class="w">
+
+    </span><span class="n">run</span><span class="w"> </span><span class="k" data-group-id="4655261752-5">fn</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="p" data-group-id="4655261752-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">lhs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">rhs</span><span class="p" data-group-id="4655261752-6">}</span><span class="w">
+    </span><span class="k" data-group-id="4655261752-5">end</span><span class="w">
+  </span><span class="k" data-group-id="4655261752-2">end</span><span class="w">
+</span><span class="k" data-group-id="4655261752-1">end</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

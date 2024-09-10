@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_postgres v2.3.1">
+
+
+    <title>Migrations — ash_postgres v2.3.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-59AEB2F8.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-K6B4O7EW.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://ash-hq.org" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_postgres" />
+        </a>
+
+      <div>
+        <a href="https://ash-hq.org" class="sidebar-projectName" translate="no">
+ash_postgres
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.3.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_postgres</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_postgres/blob/v2.3.1/documentation/topics/development/migrations-and-tasks.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Migrations</span>
+  </h1>
+
+<h2 id="tasks" class="section-heading">
+  <a href="#tasks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Tasks</span>
+</h2>
+<p>Ash comes with its own tasks, and AshPostgres exposes lower level tasks that you can use if necessary. This guide shows the process using <code class="inline">ash.*</code> tasks, and the <code class="inline">ash_postgres.*</code> tasks are illustrated at the bottom.</p><h2 id="basic-workflow" class="section-heading">
+  <a href="#basic-workflow" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Basic Workflow</span>
+</h2>
+<ul><li>Make resource changes</li><li>Run <code class="inline">mix ash.codegen --name add_a_combobulator</code> to generate migrations and resource snapshots</li><li>Run <a href="https://hexdocs.pm/ash/3.4.4/Mix.Tasks.Ash.Migrate.html"><code class="inline">mix ash.migrate</code></a> to run those migrations</li></ul><p>For more information on generating migrations, run <a href="Mix.Tasks.AshPostgres.GenerateMigrations.html"><code class="inline">mix help ash_postgres.generate_migrations</code></a> (the underlying task that is called by <a href="https://hexdocs.pm/ash/3.4.4/Mix.Tasks.Ash.Migrate.html"><code class="inline">mix ash.migrate</code></a>)</p><section role="note" class="admonition info"><h3 id="list_tenants-0" class="admonition-title info section-heading">
+  <a href="#list_tenants-0" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">list_tenants/0</span>
+</h3>
+<p>If you have are using schema-based multitenancy, you will also need to define a <code class="inline">list_tenants/0</code> function in your repo module. See <a href="AshPostgres.Repo.html"><code class="inline">AshPostgres.Repo</code></a> for more.</p></section><h3 id="regenerating-migrations" class="section-heading">
+  <a href="#regenerating-migrations" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Regenerating Migrations</span>
+</h3>
+<p>Often, you will run into a situation where you want to make a slight change to a resource after you've already generated and run migrations. If you are using git and would like to undo those changes, then regenerate the migrations, this script may prove useful:</p><pre><code class="makeup bash" translate="no"><span class="">#!/bin/bash
+</span><span class="">
+</span><span class=""># Get count of untracked migrations
+</span><span class="">N_MIGRATIONS=$(git ls-files --others priv/repo/migrations | wc -l)
+</span><span class="">
+</span><span class=""># Rollback untracked migrations
+</span><span class="">mix ash_postgres.rollback -n $N_MIGRATIONS
+</span><span class="">
+</span><span class=""># Delete untracked migrations and snapshots
+</span><span class="">git ls-files --others priv/repo/migrations | xargs rm
+</span><span class="">git ls-files --others priv/resource_snapshots | xargs rm
+</span><span class="">
+</span><span class=""># Regenerate migrations
+</span><span class="">mix ash.codegen --name $1
+</span><span class="">
+</span><span class=""># Run migrations if flag
+</span><span class="">if echo $* | grep -e &quot;-m&quot; -q
+</span><span class="">then
+</span><span class="">  mix ash.migrate
+</span><span class="">fi
+</span></code></pre><p>After saving this file to something like <code class="inline">regen.sh</code>, make it executable with <code class="inline">chmod +x regen.sh</code>. Now you can run it with <code class="inline">./regen.sh name_of_operation</code>. If you would like the migrations to automatically run after regeneration, add the <code class="inline">-m</code> flag: <code class="inline">./regen.sh name_of_operation -m</code>.</p><h2 id="running-migrations-in-production" class="section-heading">
+  <a href="#running-migrations-in-production" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Running Migrations in Production</span>
+</h2>
+<p>Define a module similar to the following:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Release</span><span class="w"> </span><span class="k" data-group-id="8739851868-1">do</span><span class="w">
+  </span><span class="na">@moduledoc</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+Tasks that need to be executed in the released application (because mix is not present in releases).
+  &quot;&quot;&quot;</span><span class="w">
+  </span><span class="na">@app</span><span class="w"> </span><span class="ss">:my_app</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">migrate</span><span class="w"> </span><span class="k" data-group-id="8739851868-2">do</span><span class="w">
+    </span><span class="n">load_app</span><span class="p" data-group-id="8739851868-3">(</span><span class="p" data-group-id="8739851868-3">)</span><span class="w">
+
+    </span><span class="k">for</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">repos</span><span class="p" data-group-id="8739851868-4">(</span><span class="p" data-group-id="8739851868-4">)</span><span class="w"> </span><span class="k" data-group-id="8739851868-5">do</span><span class="w">
+      </span><span class="p" data-group-id="8739851868-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="8739851868-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">with_repo</span><span class="p" data-group-id="8739851868-7">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8739851868-8">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="ss">:up</span><span class="p">,</span><span class="w"> </span><span class="ss">all</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="8739851868-8">)</span><span class="p" data-group-id="8739851868-7">)</span><span class="w">
+    </span><span class="k" data-group-id="8739851868-5">end</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-2">end</span><span class="w">
+
+  </span><span class="c1"># only needed if you are using postgres multitenancy</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">migrate_tenants</span><span class="w"> </span><span class="k" data-group-id="8739851868-9">do</span><span class="w">
+    </span><span class="n">load_app</span><span class="p" data-group-id="8739851868-10">(</span><span class="p" data-group-id="8739851868-10">)</span><span class="w">
+
+    </span><span class="k">for</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">repos</span><span class="p" data-group-id="8739851868-11">(</span><span class="p" data-group-id="8739851868-11">)</span><span class="w"> </span><span class="k" data-group-id="8739851868-12">do</span><span class="w">
+      </span><span class="n">repo_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">split</span><span class="p" data-group-id="8739851868-13">(</span><span class="p" data-group-id="8739851868-13">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">List</span><span class="o">.</span><span class="n">last</span><span class="p" data-group-id="8739851868-14">(</span><span class="p" data-group-id="8739851868-14">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Macro</span><span class="o">.</span><span class="n">underscore</span><span class="p" data-group-id="8739851868-15">(</span><span class="p" data-group-id="8739851868-15">)</span><span class="w">
+
+      </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w">
+        </span><span class="s">&quot;priv/&quot;</span><span class="w">
+        </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Path</span><span class="o">.</span><span class="n">join</span><span class="p" data-group-id="8739851868-16">(</span><span class="n">repo_name</span><span class="p" data-group-id="8739851868-16">)</span><span class="w">
+        </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Path</span><span class="o">.</span><span class="n">join</span><span class="p" data-group-id="8739851868-17">(</span><span class="s">&quot;tenant_migrations&quot;</span><span class="p" data-group-id="8739851868-17">)</span><span class="w">
+        </span><span class="c1"># This may be different for you if you are not using the default tenant migrations</span><span class="w">
+
+      </span><span class="p" data-group-id="8739851868-18">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="8739851868-18">}</span><span class="w"> </span><span class="o">=</span><span class="w">
+        </span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">with_repo</span><span class="p" data-group-id="8739851868-19">(</span><span class="w">
+          </span><span class="n">repo</span><span class="p">,</span><span class="w">
+          </span><span class="k" data-group-id="8739851868-20">fn</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+            </span><span class="k">for</span><span class="w"> </span><span class="n">tenant</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">repo</span><span class="o">.</span><span class="n">all_tenants</span><span class="p" data-group-id="8739851868-21">(</span><span class="p" data-group-id="8739851868-21">)</span><span class="w"> </span><span class="k" data-group-id="8739851868-22">do</span><span class="w">
+              </span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8739851868-23">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="ss">:up</span><span class="p">,</span><span class="w"> </span><span class="ss">all</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="n">tenant</span><span class="p" data-group-id="8739851868-23">)</span><span class="w">
+            </span><span class="k" data-group-id="8739851868-22">end</span><span class="w">
+          </span><span class="k" data-group-id="8739851868-20">end</span><span class="w">
+        </span><span class="p" data-group-id="8739851868-19">)</span><span class="w">
+    </span><span class="k" data-group-id="8739851868-12">end</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-9">end</span><span class="w">
+
+  </span><span class="c1"># only needed if you are using postgres multitenancy</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">migrate_all</span><span class="w"> </span><span class="k" data-group-id="8739851868-24">do</span><span class="w">
+    </span><span class="n">load_app</span><span class="p" data-group-id="8739851868-25">(</span><span class="p" data-group-id="8739851868-25">)</span><span class="w">
+    </span><span class="n">migrate</span><span class="p" data-group-id="8739851868-26">(</span><span class="p" data-group-id="8739851868-26">)</span><span class="w">
+    </span><span class="n">migrate_tenants</span><span class="p" data-group-id="8739851868-27">(</span><span class="p" data-group-id="8739851868-27">)</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-24">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">rollback</span><span class="p" data-group-id="8739851868-28">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p" data-group-id="8739851868-28">)</span><span class="w"> </span><span class="k" data-group-id="8739851868-29">do</span><span class="w">
+    </span><span class="n">load_app</span><span class="p" data-group-id="8739851868-30">(</span><span class="p" data-group-id="8739851868-30">)</span><span class="w">
+    </span><span class="p" data-group-id="8739851868-31">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="8739851868-31">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">with_repo</span><span class="p" data-group-id="8739851868-32">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8739851868-33">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="ss">:down</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="n">version</span><span class="p" data-group-id="8739851868-33">)</span><span class="p" data-group-id="8739851868-32">)</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-29">end</span><span class="w">
+
+  </span><span class="c1"># only needed if you are using postgres multitenancy</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">rollback_tenants</span><span class="p" data-group-id="8739851868-34">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p" data-group-id="8739851868-34">)</span><span class="w"> </span><span class="k" data-group-id="8739851868-35">do</span><span class="w">
+    </span><span class="n">load_app</span><span class="p" data-group-id="8739851868-36">(</span><span class="p" data-group-id="8739851868-36">)</span><span class="w">
+    </span><span class="n">repo_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Module</span><span class="o">.</span><span class="n">split</span><span class="p" data-group-id="8739851868-37">(</span><span class="p" data-group-id="8739851868-37">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">List</span><span class="o">.</span><span class="n">last</span><span class="p" data-group-id="8739851868-38">(</span><span class="p" data-group-id="8739851868-38">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Macro</span><span class="o">.</span><span class="n">underscore</span><span class="p" data-group-id="8739851868-39">(</span><span class="p" data-group-id="8739851868-39">)</span><span class="w">
+
+    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w">
+      </span><span class="s">&quot;priv/&quot;</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Path</span><span class="o">.</span><span class="n">join</span><span class="p" data-group-id="8739851868-40">(</span><span class="n">repo_name</span><span class="p" data-group-id="8739851868-40">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Path</span><span class="o">.</span><span class="n">join</span><span class="p" data-group-id="8739851868-41">(</span><span class="s">&quot;tenant_migrations&quot;</span><span class="p" data-group-id="8739851868-41">)</span><span class="w">
+      </span><span class="c1"># This may be different for you if you are not using the default tenant migrations</span><span class="w">
+
+    </span><span class="k">for</span><span class="w"> </span><span class="n">tenant</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">repo</span><span class="o">.</span><span class="n">all_tenants</span><span class="p" data-group-id="8739851868-42">(</span><span class="p" data-group-id="8739851868-42">)</span><span class="w"> </span><span class="k" data-group-id="8739851868-43">do</span><span class="w">
+      </span><span class="p" data-group-id="8739851868-44">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="8739851868-44">}</span><span class="w"> </span><span class="o">=</span><span class="w">
+        </span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">with_repo</span><span class="p" data-group-id="8739851868-45">(</span><span class="w">
+          </span><span class="n">repo</span><span class="p">,</span><span class="w">
+          </span><span class="o">&amp;</span><span class="nc">Ecto.Migrator</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8739851868-46">(</span><span class="ni">&amp;1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="ss">:down</span><span class="p">,</span><span class="w">
+            </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w">
+            </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="n">tenant</span><span class="w">
+          </span><span class="p" data-group-id="8739851868-46">)</span><span class="w">
+        </span><span class="p" data-group-id="8739851868-45">)</span><span class="w">
+    </span><span class="k" data-group-id="8739851868-43">end</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-35">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">repos</span><span class="w"> </span><span class="k" data-group-id="8739851868-47">do</span><span class="w">
+    </span><span class="n">domains</span><span class="p" data-group-id="8739851868-48">(</span><span class="p" data-group-id="8739851868-48">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">flat_map</span><span class="p" data-group-id="8739851868-49">(</span><span class="k" data-group-id="8739851868-50">fn</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="n">domain</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Domain.Info</span><span class="o">.</span><span class="n">resources</span><span class="p" data-group-id="8739851868-51">(</span><span class="p" data-group-id="8739851868-51">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="8739851868-52">(</span><span class="o">&amp;</span><span class="nc">AshPostgres.DataLayer.Info</span><span class="o">.</span><span class="n">repo</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="8739851868-52">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">reject</span><span class="p" data-group-id="8739851868-53">(</span><span class="o">&amp;</span><span class="n">is_nil</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="8739851868-53">)</span><span class="w">
+    </span><span class="k" data-group-id="8739851868-50">end</span><span class="p" data-group-id="8739851868-49">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">uniq</span><span class="p" data-group-id="8739851868-54">(</span><span class="p" data-group-id="8739851868-54">)</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-47">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">domains</span><span class="w"> </span><span class="k" data-group-id="8739851868-55">do</span><span class="w">
+    </span><span class="nc">Application</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="8739851868-56">(</span><span class="na">@app</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_domains</span><span class="p" data-group-id="8739851868-56">)</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-55">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">load_app</span><span class="w"> </span><span class="k" data-group-id="8739851868-57">do</span><span class="w">
+    </span><span class="nc">Application</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="8739851868-58">(</span><span class="na">@app</span><span class="p" data-group-id="8739851868-58">)</span><span class="w">
+  </span><span class="k" data-group-id="8739851868-57">end</span><span class="w">
+</span><span class="k" data-group-id="8739851868-1">end</span></code></pre><h3 id="ashpostgres-specific-mix-tasks" class="section-heading">
+  <a href="#ashpostgres-specific-mix-tasks" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">AshPostgres-specific mix tasks</span>
+</h3>
+<ul><li><a href="Mix.Tasks.AshPostgres.GenerateMigrations.html"><code class="inline">mix ash_postgres.generate_migrations</code></a></li><li><a href="Mix.Tasks.AshPostgres.Create.html"><code class="inline">mix ash_postgres.create</code></a></li><li><a href="Mix.Tasks.AshPostgres.Drop.html"><code class="inline">mix ash_postgres.drop</code></a></li><li><a href="Mix.Tasks.AshPostgres.Migrate.html"><code class="inline">mix ash_postgres.migrate</code></a> (use <code class="inline">mix ash_postgres.migrate --tenants</code> to run tenant migrations)</li><li><a href="Mix.Tasks.AshPostgres.Rollback.html"><code class="inline">mix ash_postgres.rollback</code></a> (use <code class="inline">mix ash_postgres.rollback --tenants</code> to rollback tenant migrations)</li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="polymorphic-resources.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Polymorphic Resources
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="testing.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Testing with AshPostgres
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_postgres/2.3.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_postgres/2.3.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_postgres/2.3.1/show/documentation/topics/development/migrations-and-tasks.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_postgres.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_graphql v1.3.3">
+
+
+    <title>AshGraphql.Resource — ash_graphql v1.3.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-515155DF.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_graphql" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectName" translate="no">
+ash_graphql
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.3.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_graphql</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">AshGraphql.Resource</span> 
+  <small class="app-vsn" translate="no">(ash_graphql v1.3.3)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>This Ash resource extension adds configuration for exposing a resource in a graphql.</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#codegen/1" translate="no">codegen(argv)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#decode_id/3" translate="no">decode_id(resource, id, relay_ids?)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#decode_primary_key/2" translate="no">decode_primary_key(resource, value)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#decode_relay_id/1" translate="no">decode_relay_id(id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#define_type?/2" translate="no">define_type?(type, constraints)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#embedded?/1" translate="no">embedded?(resource_or_type)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#encode_id/2" translate="no">encode_id(record, relay_ids?)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#encode_primary_key/1" translate="no">encode_primary_key(record)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#encode_relay_id/1" translate="no">encode_relay_id(record)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#enum_definitions/3" translate="no">enum_definitions(resource, schema, env)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#generate_object?/1" translate="no">generate_object?(resource)</a>
+
+          <span class="deprecated" title="See `AshGraphql.Resource.Info.generate_object?/1`">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="AshGraphql.Resource.Info.html#generate_object?/1"><code class="inline">AshGraphql.Resource.Info.generate_object?/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#graphql/1" translate="no">graphql(body)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Hello!</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#install/5" translate="no">install(igniter, module, arg, path, argv)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#managed_relationship_definitions/2" translate="no">managed_relationship_definitions(used, schema)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#managed_relationships/1" translate="no">managed_relationships(resource)</a>
+
+          <span class="deprecated" title="See `AshGraphql.Resource.Info.managed_relationships/1`">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="AshGraphql.Resource.Info.html#managed_relationships/1"><code class="inline">AshGraphql.Resource.Info.managed_relationships/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#map_definitions/4" translate="no">map_definitions(resource, all_domains, schema, env)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mutations/0" translate="no">mutations()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mutations/2" translate="no">mutations(resource, domain \\ [])</a>
+
+          <span class="deprecated" title="See `AshGraphql.Resource.Info.mutations/1`">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="AshGraphql.Resource.Info.html#mutations/2"><code class="inline">AshGraphql.Resource.Info.mutations/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#no_graphql_types/2" translate="no">no_graphql_types(resource, schema)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#node_type?/1" translate="no">node_type?(type)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#primary_key_delimiter/1" translate="no">primary_key_delimiter(resource)</a>
+
+          <span class="deprecated" title="See `AshGraphql.Resource.Info.primary_key_delimiter/1`">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="AshGraphql.Resource.Info.html#primary_key_delimiter/1"><code class="inline">AshGraphql.Resource.Info.primary_key_delimiter/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#primary_key_get_query/2" translate="no">primary_key_get_query(resource, all_domains)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#queries/0" translate="no">queries()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#queries/2" translate="no">queries(resource, domain \\ [])</a>
+
+          <span class="deprecated" title="See `AshGraphql.Resource.Info.queries/1`">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="AshGraphql.Resource.Info.html#queries/2"><code class="inline">AshGraphql.Resource.Info.queries/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#query_type_definitions/5" translate="no">query_type_definitions(resource, domain, all_domains, schema, relay_ids?)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#ref/1" translate="no">ref(env)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#type/1" translate="no">type(resource)</a>
+
+          <span class="deprecated" title="See `AshGraphql.Resource.Info.type/1`">deprecated</span>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a href="AshGraphql.Resource.Info.html#type/1"><code class="inline">AshGraphql.Resource.Info.type/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#type_definition/5" translate="no">type_definition(resource, domain, all_domains, schema, relay_ids?)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="codegen/1">
+
+  <div class="detail-header">
+    <a href="#codegen/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">codegen(argv)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L455" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="decode_id/3">
+
+  <div class="detail-header">
+    <a href="#decode_id/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">decode_id(resource, id, relay_ids?)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L526" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="decode_primary_key/2">
+
+  <div class="detail-header">
+    <a href="#decode_primary_key/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">decode_primary_key(resource, value)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L542" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="decode_relay_id/1">
+
+  <div class="detail-header">
+    <a href="#decode_relay_id/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">decode_relay_id(id)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L559" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="define_type?/2">
+
+  <div class="detail-header">
+    <a href="#define_type?/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">define_type?(type, constraints)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L3379" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> define_type?(<a href="https://hexdocs.pm/ash/3.4.1/Ash.Type.html#t:t/0">Ash.Type.t</a>(), <a href="https://hexdocs.pm/ash/3.4.1/Ash.Type.html#t:constraints/0">Ash.Type.constraints</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="embedded?/1">
+
+  <div class="detail-header">
+    <a href="#embedded?/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">embedded?(resource_or_type)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L4446" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="encode_id/2">
+
+  <div class="detail-header">
+    <a href="#encode_id/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">encode_id(record, relay_ids?)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L493" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="encode_primary_key/1">
+
+  <div class="detail-header">
+    <a href="#encode_primary_key/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">encode_primary_key(record)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L501" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="encode_relay_id/1">
+
+  <div class="detail-header">
+    <a href="#encode_relay_id/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">encode_relay_id(record)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L518" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="enum_definitions/3">
+
+  <div class="detail-header">
+    <a href="#enum_definitions/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">enum_definitions(resource, schema, env)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L3209" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="generate_object?/1">
+
+  <div class="detail-header">
+    <a href="#generate_object?/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">generate_object?(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L449" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. See `AshGraphql.Resource.Info.generate_object?/1`.
+    </div>
+
+  <section class="docstring">
+
+<p>See <a href="AshGraphql.Resource.Info.html#generate_object?/1"><code class="inline">AshGraphql.Resource.Info.generate_object?/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="graphql/1">
+
+  <div class="detail-header">
+    <a href="#graphql/1" class="detail-link" title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">graphql(body)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L431" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p>Hello!</p>
+  </section>
+</section>
+<section class="detail" id="install/5">
+
+  <div class="detail-header">
+    <a href="#install/5" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">install(igniter, module, arg, path, argv)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L466" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="managed_relationship_definitions/2">
+
+  <div class="detail-header">
+    <a href="#managed_relationship_definitions/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">managed_relationship_definitions(used, schema)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L1840" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="managed_relationships/1">
+
+  <div class="detail-header">
+    <a href="#managed_relationships/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">managed_relationships(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L440" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. See `AshGraphql.Resource.Info.managed_relationships/1`.
+    </div>
+
+  <section class="docstring">
+
+<p>See <a href="AshGraphql.Resource.Info.html#managed_relationships/1"><code class="inline">AshGraphql.Resource.Info.managed_relationships/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="map_definitions/4">
+
+  <div class="detail-header">
+    <a href="#map_definitions/4" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">map_definitions(resource, all_domains, schema, env)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L2951" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="mutations/0">
+
+  <div class="detail-header">
+    <a href="#mutations/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">mutations()</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L273" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="mutations/2">
+
+    <span id="mutations/1"></span>
+
+  <div class="detail-header">
+    <a href="#mutations/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">mutations(resource, domain \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L437" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. See `AshGraphql.Resource.Info.mutations/1`.
+    </div>
+
+  <section class="docstring">
+
+<p>See <a href="AshGraphql.Resource.Info.html#mutations/2"><code class="inline">AshGraphql.Resource.Info.mutations/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="no_graphql_types/2">
+
+  <div class="detail-header">
+    <a href="#no_graphql_types/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">no_graphql_types(resource, schema)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L1836" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="node_type?/1">
+
+  <div class="detail-header">
+    <a href="#node_type?/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">node_type?(type)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L3613" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="primary_key_delimiter/1">
+
+  <div class="detail-header">
+    <a href="#primary_key_delimiter/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">primary_key_delimiter(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L446" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. See `AshGraphql.Resource.Info.primary_key_delimiter/1`.
+    </div>
+
+  <section class="docstring">
+
+<p>See <a href="AshGraphql.Resource.Info.html#primary_key_delimiter/1"><code class="inline">AshGraphql.Resource.Info.primary_key_delimiter/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="primary_key_get_query/2">
+
+  <div class="detail-header">
+    <a href="#primary_key_get_query/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">primary_key_get_query(resource, all_domains)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L4439" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="queries/0">
+
+  <div class="detail-header">
+    <a href="#queries/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">queries()</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L171" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="queries/2">
+
+    <span id="queries/1"></span>
+
+  <div class="detail-header">
+    <a href="#queries/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">queries(resource, domain \\ [])</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L434" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. See `AshGraphql.Resource.Info.queries/1`.
+    </div>
+
+  <section class="docstring">
+
+<p>See <a href="AshGraphql.Resource.Info.html#queries/2"><code class="inline">AshGraphql.Resource.Info.queries/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="query_type_definitions/5">
+
+  <div class="detail-header">
+    <a href="#query_type_definitions/5" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">query_type_definitions(resource, domain, all_domains, schema, relay_ids?)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L3617" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="ref/1">
+
+  <div class="detail-header">
+    <a href="#ref/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">ref(env)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L451" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="type/1">
+
+  <div class="detail-header">
+    <a href="#type/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">type(resource)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L443" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+    <div class="deprecated">
+      This function is deprecated. See `AshGraphql.Resource.Info.type/1`.
+    </div>
+
+  <section class="docstring">
+
+<p>See <a href="AshGraphql.Resource.Info.html#type/1"><code class="inline">AshGraphql.Resource.Info.type/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="type_definition/5">
+
+  <div class="detail-header">
+    <a href="#type_definition/5" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">type_definition(resource, domain, all_domains, schema, relay_ids?)</h1>
+
+      <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/lib/resource/resource.ex#L3647" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_graphql/1.3.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_graphql/1.3.3">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_graphql.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>

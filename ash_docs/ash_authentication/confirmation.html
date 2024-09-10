@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_authentication v4.0.4">
+
+
+    <title>Confirmation Tutorial — ash_authentication v4.0.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-BF9EDA45.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_authentication" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ash_authentication
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v4.0.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_authentication</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/team-alembic/ash_authentication/blob/main/documentation/tutorials/confirmation.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Confirmation Tutorial</span>
+  </h1>
+
+<p>This is a quick tutorial on how to configure your application to enable confirmation.</p><p>In this tutorial we'll assume that you have a <code class="inline">User</code> resource which uses <code class="inline">email</code> as it's user identifier. We'll show you how to confirm a new user on sign-up and also require them to confirm if they wish to change their email address.</p><p>Here's the user resource we'll be starting with:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="w"> </span><span class="k" data-group-id="1885191329-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1885191329-2">[</span><span class="nc">AshAuthentication</span><span class="p" data-group-id="1885191329-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Accounts</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="1885191329-3">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="ss">:ci_string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">sensitive?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:hashed_password</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">sensitive?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="k" data-group-id="1885191329-3">end</span><span class="w">
+
+  </span><span class="n">authentication</span><span class="w"> </span><span class="k" data-group-id="1885191329-4">do</span><span class="w">
+    </span><span class="n">strategies</span><span class="w"> </span><span class="k" data-group-id="1885191329-5">do</span><span class="w">
+      </span><span class="n">password</span><span class="w"> </span><span class="ss">:password</span><span class="w"> </span><span class="k" data-group-id="1885191329-6">do</span><span class="w">
+        </span><span class="n">identity_field</span><span class="w"> </span><span class="ss">:email</span><span class="w">
+        </span><span class="n">hashed_password_field</span><span class="w"> </span><span class="ss">:hashed_password</span><span class="w">
+      </span><span class="k" data-group-id="1885191329-6">end</span><span class="w">
+    </span><span class="k" data-group-id="1885191329-5">end</span><span class="w">
+  </span><span class="k" data-group-id="1885191329-4">end</span><span class="w">
+
+  </span><span class="n">identities</span><span class="w"> </span><span class="k" data-group-id="1885191329-7">do</span><span class="w">
+    </span><span class="n">identity</span><span class="w"> </span><span class="ss">:unique_email</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1885191329-8">[</span><span class="ss">:email</span><span class="p" data-group-id="1885191329-8">]</span><span class="w">
+  </span><span class="k" data-group-id="1885191329-7">end</span><span class="w">
+</span><span class="k" data-group-id="1885191329-1">end</span></code></pre><h2 id="confirming-newly-registered-users" class="section-heading">
+  <a href="#confirming-newly-registered-users" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Confirming newly registered users</span>
+</h2>
+<p>First we start by adding the confirmation add-on to your existing authentication DSL:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="w"> </span><span class="k" data-group-id="3097072058-1">do</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+
+  </span><span class="n">authentication</span><span class="w"> </span><span class="k" data-group-id="3097072058-2">do</span><span class="w">
+    </span><span class="c1"># ...</span><span class="w">
+
+    </span><span class="n">add_ons</span><span class="w"> </span><span class="k" data-group-id="3097072058-3">do</span><span class="w">
+      </span><span class="n">confirmation</span><span class="w"> </span><span class="ss">:confirm_new_user</span><span class="w"> </span><span class="k" data-group-id="3097072058-4">do</span><span class="w">
+        </span><span class="n">monitor_fields</span><span class="w"> </span><span class="p" data-group-id="3097072058-5">[</span><span class="ss">:email</span><span class="p" data-group-id="3097072058-5">]</span><span class="w">
+        </span><span class="n">confirm_on_create?</span><span class="w"> </span><span class="no">true</span><span class="w">
+        </span><span class="n">confirm_on_update?</span><span class="w"> </span><span class="no">false</span><span class="w">
+        </span><span class="n">confirm_action_name</span><span class="w"> </span><span class="ss">:confirm_new_user</span><span class="w">
+        </span><span class="n">sender</span><span class="w"> </span><span class="nc">MyApp.Accounts.User.Senders.SendNewUserConfirmationEmail</span><span class="w">
+      </span><span class="k" data-group-id="3097072058-4">end</span><span class="w">
+    </span><span class="k" data-group-id="3097072058-3">end</span><span class="w">
+  </span><span class="k" data-group-id="3097072058-2">end</span><span class="w">
+</span><span class="k" data-group-id="3097072058-1">end</span></code></pre><p>Next we will have to generate and run migrations to add confirmed_at column to user resource</p><pre><code class="makeup bash" translate="no"><span class="">mix ash.codegen account_confirmation
+</span></code></pre><p>To make this work we need to create a new module <code class="inline">MyApp.Accounts.User.Senders.SendPasswordResetEmail</code>:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User.Senders.SendNewUserConfirmationEmail</span><span class="w"> </span><span class="k" data-group-id="4278267113-1">do</span><span class="w">
+  </span><span class="na">@moduledoc</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+  Sends an email confirmation email
+  &quot;&quot;&quot;</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshAuthentication.Sender</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">MyAppWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:verified_routes</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="nc">AshAuthentication.Sender</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">send</span><span class="p" data-group-id="4278267113-2">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p" data-group-id="4278267113-2">)</span><span class="w"> </span><span class="k" data-group-id="4278267113-3">do</span><span class="w">
+    </span><span class="nc">MyApp.Accounts.Emails</span><span class="o">.</span><span class="n">deliver_email_confirmation_instructions</span><span class="p" data-group-id="4278267113-4">(</span><span class="w">
+      </span><span class="n">user</span><span class="p">,</span><span class="w">
+      </span><span class="n">url</span><span class="p" data-group-id="4278267113-5">(</span><span class="sx">~p&quot;/auth/user/confirm_new_user?</span><span class="si" data-group-id="4278267113-6">#{</span><span class="p" data-group-id="4278267113-7">[</span><span class="ss">confirm</span><span class="p">:</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="4278267113-7">]</span><span class="si" data-group-id="4278267113-6">}</span><span class="sx">&quot;</span><span class="p" data-group-id="4278267113-5">)</span><span class="w">
+    </span><span class="p" data-group-id="4278267113-4">)</span><span class="w">
+  </span><span class="k" data-group-id="4278267113-3">end</span><span class="w">
+</span><span class="k" data-group-id="4278267113-1">end</span></code></pre><p>We also need to create a new email template:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Example.Accounts.Emails</span><span class="w"> </span><span class="k" data-group-id="5167497766-1">do</span><span class="w">
+  </span><span class="na">@moduledoc</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+  Delivers emails.
+  &quot;&quot;&quot;</span><span class="w">
+
+  </span><span class="kn">import</span><span class="w"> </span><span class="nc">Swoosh.Email</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">deliver_email_confirmation_instructions</span><span class="p" data-group-id="5167497766-2">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p" data-group-id="5167497766-2">)</span><span class="w"> </span><span class="k" data-group-id="5167497766-3">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">url</span><span class="w"> </span><span class="k" data-group-id="5167497766-4">do</span><span class="w">
+      </span><span class="k">raise</span><span class="w"> </span><span class="s">&quot;Cannot deliver confirmation instructions without a url&quot;</span><span class="w">
+    </span><span class="k" data-group-id="5167497766-4">end</span><span class="w">
+
+    </span><span class="n">deliver</span><span class="p" data-group-id="5167497766-5">(</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Confirm your email address&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+      &lt;p&gt;
+        Hi </span><span class="si" data-group-id="5167497766-6">#{</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="si" data-group-id="5167497766-6">}</span><span class="s">,
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        Someone has tried to register a new account using this email address.
+        If it was you, then please click the link below to confirm your identity. If you did not initiate this request then please ignore this email.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        &lt;a href=&quot;</span><span class="si" data-group-id="5167497766-7">#{</span><span class="n">url</span><span class="si" data-group-id="5167497766-7">}</span><span class="s">&quot;&gt;Click here to confirm your account&lt;/a&gt;
+      &lt;/p&gt;
+    &quot;&quot;&quot;</span><span class="p" data-group-id="5167497766-5">)</span><span class="w">
+  </span><span class="k" data-group-id="5167497766-3">end</span><span class="w">
+
+  </span><span class="c1"># For simplicity, this module simply logs messages to the terminal.</span><span class="w">
+  </span><span class="c1"># You should replace it by a proper email or notification tool, such as:</span><span class="w">
+  </span><span class="c1">#</span><span class="w">
+  </span><span class="c1">#   * Swoosh - https://hexdocs.pm/swoosh</span><span class="w">
+  </span><span class="c1">#   * Bamboo - https://hexdocs.pm/bamboo</span><span class="w">
+  </span><span class="c1">#</span><span class="w">
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">deliver</span><span class="p" data-group-id="5167497766-8">(</span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p" data-group-id="5167497766-8">)</span><span class="w"> </span><span class="k" data-group-id="5167497766-9">do</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5167497766-10">(</span><span class="s">&quot;Sending email to </span><span class="si" data-group-id="5167497766-11">#{</span><span class="n">to</span><span class="si" data-group-id="5167497766-11">}</span><span class="s"> with subject </span><span class="si" data-group-id="5167497766-12">#{</span><span class="n">subject</span><span class="si" data-group-id="5167497766-12">}</span><span class="s"> and body </span><span class="si" data-group-id="5167497766-13">#{</span><span class="n">body</span><span class="si" data-group-id="5167497766-13">}</span><span class="s">&quot;</span><span class="p" data-group-id="5167497766-10">)</span><span class="w">
+
+    </span><span class="n">new</span><span class="p" data-group-id="5167497766-14">(</span><span class="p" data-group-id="5167497766-14">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">from</span><span class="p" data-group-id="5167497766-15">(</span><span class="p" data-group-id="5167497766-16">{</span><span class="s">&quot;Zach&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;zach@ash-hq.org&quot;</span><span class="p" data-group-id="5167497766-16">}</span><span class="p" data-group-id="5167497766-15">)</span><span class="w"> </span><span class="c1"># TODO: Replace with your email</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to</span><span class="p" data-group-id="5167497766-17">(</span><span class="n">to_string</span><span class="p" data-group-id="5167497766-18">(</span><span class="n">to</span><span class="p" data-group-id="5167497766-18">)</span><span class="p" data-group-id="5167497766-17">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">subject</span><span class="p" data-group-id="5167497766-19">(</span><span class="n">subject</span><span class="p" data-group-id="5167497766-19">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">put_provider_option</span><span class="p" data-group-id="5167497766-20">(</span><span class="ss">:track_links</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;None&quot;</span><span class="p" data-group-id="5167497766-20">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">html_body</span><span class="p" data-group-id="5167497766-21">(</span><span class="n">body</span><span class="p" data-group-id="5167497766-21">)</span><span class="w">
+    </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyApp.Mailer</span><span class="o">.</span><span class="n">deliver!</span><span class="p" data-group-id="5167497766-22">(</span><span class="p" data-group-id="5167497766-22">)</span><span class="w">
+  </span><span class="k" data-group-id="5167497766-9">end</span><span class="w">
+</span><span class="k" data-group-id="5167497766-1">end</span></code></pre><p>Provided you have your authentication routes hooked up either via <a href="AshAuthentication.Plug.html"><code class="inline">AshAuthentication.Plug</code></a> or <a href="https://hexdocs.pm/ash_authentication_phoenix/AshAuthentication.Phoenix.Router.html"><code class="inline">AshAuthentication.Phoenix.Router</code></a> then the user will be confirmed when the token is submitted.</p><h2 id="confirming-changes-to-monitored-fields" class="section-heading">
+  <a href="#confirming-changes-to-monitored-fields" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Confirming changes to monitored fields</span>
+</h2>
+<p>You may want to require a user to perform a confirmation when a certain field changes. For example if a user changes their email address we can send them a new confirmation request.</p><p>First, let's start by defining a new confirmation add-on in our resource:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="w"> </span><span class="k" data-group-id="1834092817-1">do</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+
+  </span><span class="n">authentication</span><span class="w"> </span><span class="k" data-group-id="1834092817-2">do</span><span class="w">
+    </span><span class="c1"># ...</span><span class="w">
+
+    </span><span class="n">add_ons</span><span class="w"> </span><span class="k" data-group-id="1834092817-3">do</span><span class="w">
+      </span><span class="n">confirmation</span><span class="w"> </span><span class="ss">:confirm_change</span><span class="w"> </span><span class="k" data-group-id="1834092817-4">do</span><span class="w">
+        </span><span class="n">monitor_fields</span><span class="w"> </span><span class="p" data-group-id="1834092817-5">[</span><span class="ss">:email</span><span class="p" data-group-id="1834092817-5">]</span><span class="w">
+        </span><span class="n">confirm_on_create?</span><span class="w"> </span><span class="no">false</span><span class="w">
+        </span><span class="n">confirm_on_update?</span><span class="w"> </span><span class="no">true</span><span class="w">
+        </span><span class="n">confirm_action_name</span><span class="w"> </span><span class="ss">:confirm_change</span><span class="w">
+        </span><span class="n">sender</span><span class="w"> </span><span class="nc">MyApp.Accounts.User.Senders.SendEmailChangeConfirmationEmail</span><span class="w">
+      </span><span class="k" data-group-id="1834092817-4">end</span><span class="w">
+    </span><span class="k" data-group-id="1834092817-3">end</span><span class="w">
+  </span><span class="k" data-group-id="1834092817-2">end</span><span class="w">
+</span><span class="k" data-group-id="1834092817-1">end</span></code></pre><blockquote><h4 class="info">Why two confirmation configurations?</h4><p>While you can perform both of these confirmations with a single confirmation add-on, in general the Ash philosophy is to be more explicit. Each confirmation will have it's own URL (based on the name) and tokens for one will not be able to be used for the other.</p></blockquote><p>Next, let's define our new sender:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User.Senders.SendEmailChangeConfirmationEmail</span><span class="w"> </span><span class="k" data-group-id="6216699887-1">do</span><span class="w">
+  </span><span class="na">@moduledoc</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+  Sends an email change confirmation email
+  &quot;&quot;&quot;</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshAuthentication.Sender</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">MyAppWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:verified_routes</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="nc">AshAuthentication.Sender</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">send</span><span class="p" data-group-id="6216699887-2">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="c">_opts</span><span class="p" data-group-id="6216699887-2">)</span><span class="w"> </span><span class="k" data-group-id="6216699887-3">do</span><span class="w">
+    </span><span class="nc">MyApp.Accounts.Emails</span><span class="o">.</span><span class="n">deliver_email_change_confirmation_instructions</span><span class="p" data-group-id="6216699887-4">(</span><span class="w">
+      </span><span class="n">user</span><span class="p">,</span><span class="w">
+      </span><span class="n">url</span><span class="p" data-group-id="6216699887-5">(</span><span class="sx">~p&quot;/auth/user/confirm_change?</span><span class="si" data-group-id="6216699887-6">#{</span><span class="p" data-group-id="6216699887-7">[</span><span class="ss">confirm</span><span class="p">:</span><span class="w"> </span><span class="n">token</span><span class="p" data-group-id="6216699887-7">]</span><span class="si" data-group-id="6216699887-6">}</span><span class="sx">&quot;</span><span class="p" data-group-id="6216699887-5">)</span><span class="w">
+    </span><span class="p" data-group-id="6216699887-4">)</span><span class="w">
+  </span><span class="k" data-group-id="6216699887-3">end</span><span class="w">
+</span><span class="k" data-group-id="6216699887-1">end</span></code></pre><p>And our new email template:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.Emails</span><span class="w"> </span><span class="k" data-group-id="0687050110-1">do</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">deliver_email_change_confirmation_instructions</span><span class="p" data-group-id="0687050110-2">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p" data-group-id="0687050110-2">)</span><span class="w"> </span><span class="k" data-group-id="0687050110-3">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">url</span><span class="w"> </span><span class="k" data-group-id="0687050110-4">do</span><span class="w">
+      </span><span class="k">raise</span><span class="w"> </span><span class="s">&quot;Cannot deliver confirmation instructions without a url&quot;</span><span class="w">
+    </span><span class="k" data-group-id="0687050110-4">end</span><span class="w">
+
+    </span><span class="n">deliver</span><span class="p" data-group-id="0687050110-5">(</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Confirm your new email address&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+      &lt;p&gt;
+        Hi </span><span class="si" data-group-id="0687050110-6">#{</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="si" data-group-id="0687050110-6">}</span><span class="s">,
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        You recently changed your email address. Please confirm it.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        &lt;a href=&quot;</span><span class="si" data-group-id="0687050110-7">#{</span><span class="n">url</span><span class="si" data-group-id="0687050110-7">}</span><span class="s">&quot;&gt;Click here to confirm your new email address&lt;/a&gt;
+      &lt;/p&gt;
+    &quot;&quot;&quot;</span><span class="p" data-group-id="0687050110-5">)</span><span class="w">
+  </span><span class="k" data-group-id="0687050110-3">end</span><span class="w">
+
+  </span><span class="c1"># ...</span><span class="w">
+</span><span class="k" data-group-id="0687050110-1">end</span></code></pre><blockquote><h4 class="tip">Inhibiting changes</h4><p>Depending on whether you want the user's changes to be applied <em>before</em> or <em>after</em> confirmation, you can enable the <a href="dsl-ashauthentication-addon-confirmation.html#authentication-add_ons-confirmation-inhibit_updates?"><code class="inline">inhibit_updates?</code> DSL option</a>.</p><p>When this option is enabled, then any potential changes to monitored fields are instead temporarily stored in the <a href="dsl-ashauthentication-tokenresource.html">token resource</a> and applied when the confirmation action is run.</p></blockquote><h2 id="customising-the-confirmation-action" class="section-heading">
+  <a href="#customising-the-confirmation-action" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Customising the confirmation action</span>
+</h2>
+<p>By default Ash Authentication will generate an update action for confirmation automatically (named <code class="inline">:confirm</code> unless you change it). You can manually implement this action in order to change it's behaviour and AshAuthentication will validate that the required changes are also present.</p><p>For example, here's an implementation of the <code class="inline">:confirm_change</code> action mentioned above, which adds a custom change that updates a remote CRM system with the user's new address.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Accounts.User</span><span class="w"> </span><span class="k" data-group-id="7383519499-1">do</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+
+  </span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="7383519499-2">do</span><span class="w">
+    </span><span class="c1"># ...</span><span class="w">
+
+    </span><span class="n">update</span><span class="w"> </span><span class="ss">:confirm_change</span><span class="w"> </span><span class="k" data-group-id="7383519499-3">do</span><span class="w">
+      </span><span class="n">argument</span><span class="w"> </span><span class="ss">:confirm</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">public?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+      </span><span class="n">accept</span><span class="w"> </span><span class="p" data-group-id="7383519499-4">[</span><span class="ss">:email</span><span class="p" data-group-id="7383519499-4">]</span><span class="w">
+      </span><span class="n">require_atomic?</span><span class="w"> </span><span class="no">false</span><span class="w">
+      </span><span class="n">change</span><span class="w"> </span><span class="nc">AshAuthentication.AddOn.Confirmation.ConfirmChange</span><span class="w">
+      </span><span class="n">change</span><span class="w"> </span><span class="nc">AshAuthentication.GenerateTokenChange</span><span class="w">
+      </span><span class="n">change</span><span class="w"> </span><span class="nc">MyApp.UpdateCrmSystem</span><span class="p">,</span><span class="w"> </span><span class="ss">only_when_valid?</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="k" data-group-id="7383519499-3">end</span><span class="w">
+  </span><span class="k" data-group-id="7383519499-2">end</span><span class="w">
+</span><span class="k" data-group-id="7383519499-1">end</span></code></pre>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="magic-links.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Magic Links Tutorial
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="custom-strategy.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Defining Custom Authentication Strategies
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_authentication/4.0.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_authentication/4.0.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_authentication/4.0.4/show/documentation/tutorials/confirmation.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_authentication.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_paper_trail v0.1.4">
+
+
+    <title>DSL: AshPaperTrail.Resource — ash_paper_trail v0.1.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-BBCDF6F3.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_paper_trail" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_paper_trail" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_paper_trail" class="sidebar-projectName" translate="no">
+ash_paper_trail
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.4
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_paper_trail</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_paper_trail/blob/v0.1.4/documentation/dsls/DSL:-AshPaperTrail.Resource.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>DSL: AshPaperTrail.Resource</span>
+  </h1>
+
+<p>Documentation for <a href="AshPaperTrail.Resource.html"><code class="inline">AshPaperTrail.Resource</code></a>.</p><h2 id="paper_trail" class="section-heading">
+  <a href="#paper_trail" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">paper_trail</span>
+</h2>
+<p>A section for configuring how versioning is derived for the resource.</p><h3 id="nested-dsls" class="section-heading">
+  <a href="#nested-dsls" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested DSLs</span>
+</h3>
+<ul><li><a href="#paper_trail-belongs_to_actor">belongs_to_actor</a></li></ul><h3 id="options" class="section-heading">
+  <a href="#options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#paper_trail-attributes_as_attributes" id="paper_trail-attributes_as_attributes"><code class="inline">attributes_as_attributes</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A set of attributes that should be set as attributes on the version resource, instead of stored in the freeform <code class="inline">changes</code> map attribute.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-change_tracking_mode" id="paper_trail-change_tracking_mode"><code class="inline">change_tracking_mode</code></a></td><td style="text-align: left;"><code class="inline">:snapshot | :changes_only | :full_diff</code></td><td style="text-align: left;"><code class="inline">:snapshot</code></td><td style="text-align: left;">Changes are stored in a map attribute called <code class="inline">changes</code>.  The <code class="inline">change_tracking_mode</code> determines what's stored. See the getting started guide for more.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-ignore_attributes" id="paper_trail-ignore_attributes"><code class="inline">ignore_attributes</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">A list of attributes that should be ignored. Typically you'll want to ignore your timestamps. The primary key is always ignored.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-mixin" id="paper_trail-mixin"><code class="inline">mixin</code></a></td><td style="text-align: left;"><code class="inline">atom | mfa</code></td><td style="text-align: left;"></td><td style="text-align: left;">A module that defines a <code class="inline">using</code> macro or {module, function, arguments} tuple that will be mixed into the version resource.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-on_actions" id="paper_trail-on_actions"><code class="inline">on_actions</code></a></td><td style="text-align: left;"><code class="inline">list(atom)</code></td><td style="text-align: left;"></td><td style="text-align: left;">Which actions should produce new versions. By default, all create/update actions will produce new versions.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-reference_source?" id="paper_trail-reference_source?"><code class="inline">reference_source?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether or not to create a foreign key reference from the version to the source.  This should be set to <code class="inline">false</code> if you are allowing actual deletion of data. Only relevant for resources using the AshPostgres data layer.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-relationship_opts" id="paper_trail-relationship_opts"><code class="inline">relationship_opts</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"></td><td style="text-align: left;">Options to pass to the has_many :paper_trail_versions relationship that is created on this resource. For example, <code class="inline">public?: true</code> to expose the relationship over graphql. See <code class="inline"><a href="https://hexdocs.pm/ash/dsl-ash-resource.html#relationships-has_many">Ash.Resource.Dsl.relationships.has_many</a></code>.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-store_action_name?" id="paper_trail-store_action_name?"><code class="inline">store_action_name?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Whether or not to add the <code class="inline">version_action_name</code> attribute to the  version resource. This is useful for auditing purposes. The <code class="inline">version_action_type</code> attribute is always stored.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-version_extensions" id="paper_trail-version_extensions"><code class="inline">version_extensions</code></a></td><td style="text-align: left;"><code class="inline">keyword</code></td><td style="text-align: left;"><code class="inline">[]</code></td><td style="text-align: left;">Extensions that should be used by the version resource. For example: <code class="inline">extensions: [AshGraphql.Resource], notifier: [Ash.Notifiers.PubSub]</code></td></tr></tbody></table><h2 id="paper_trail-belongs_to_actor" class="section-heading">
+  <a href="#paper_trail-belongs_to_actor" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">paper_trail.belongs_to_actor</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">belongs_to_actor</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span></code></pre><p>Creates a belongs_to relationship for the actor resource. When creating a new version, if the actor on the action is set and
+matches the resource type, the version will be related to the actor. If your actors are polymorphic or varying types, declare a
+belongs_to_actor for each type.</p><p>A reference is also created with <code class="inline">on_delete: :nilify</code> and <code class="inline">on_update: :update</code></p><p>If you need more complex relationships, set <code class="inline">define_attribute? false</code> and add the relationship via a mixin.</p><p>If your actor is not a resource, add a mixin and with a change for all creates that sets the actor's to one your attributes.
+The actor on the version changeset is set.</p><h3 id="examples" class="section-heading">
+  <a href="#examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="n">belongs_to_actor</span><span class="w"> </span><span class="ss">:user</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.Users.User</span><span class="p">,</span><span class="w"> </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Users</span></code></pre><h3 id="arguments" class="section-heading">
+  <a href="#arguments" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Arguments</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a class="spark-required" href="#paper_trail-belongs_to_actor-name" id="paper_trail-belongs_to_actor-name"><code class="inline">name</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The name of the relationship to use for the actor (e.g. :user)</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-belongs_to_actor-destination" id="paper_trail-belongs_to_actor-destination"><code class="inline">destination</code></a></td><td style="text-align: left;"><code class="inline">module</code></td><td style="text-align: left;"></td><td style="text-align: left;">The resource of the actor (e.g. MyApp.Users.User)</td></tr></tbody></table><h3 id="options-1" class="section-heading">
+  <a href="#options-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h3>
+<table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Type</th><th style="text-align: left;">Default</th><th style="text-align: left;">Docs</th></tr></thead><tbody><tr><td style="text-align: left;"><a href="#paper_trail-belongs_to_actor-allow_nil?" id="paper_trail-belongs_to_actor-allow_nil?"><code class="inline">allow_nil?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">Whether this relationship must always be present, e.g: must be included on creation, and never removed (it may be modified). The generated attribute will not allow nil values.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-belongs_to_actor-domain" id="paper_trail-belongs_to_actor-domain"><code class="inline">domain</code></a></td><td style="text-align: left;"><code class="inline">atom</code></td><td style="text-align: left;"></td><td style="text-align: left;">The Domain module to use when working with the related entity.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-belongs_to_actor-attribute_type" id="paper_trail-belongs_to_actor-attribute_type"><code class="inline">attribute_type</code></a></td><td style="text-align: left;"><code class="inline">any</code></td><td style="text-align: left;"><code class="inline">:uuid</code></td><td style="text-align: left;">The type of the generated created attribute. See <a href="https://hexdocs.pm/ash/3.1.2/Ash.Type.html"><code class="inline">Ash.Type</code></a> for more.</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-belongs_to_actor-public?" id="paper_trail-belongs_to_actor-public?"><code class="inline">public?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">false</code></td><td style="text-align: left;">Whether this relationship should be included in public interfaces</td></tr><tr><td style="text-align: left;"><a href="#paper_trail-belongs_to_actor-define_attribute?" id="paper_trail-belongs_to_actor-define_attribute?"><code class="inline">define_attribute?</code></a></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;"><code class="inline">true</code></td><td style="text-align: left;">If set to <code class="inline">false</code> an attribute is not created on the resource for this relationship, and one must be manually added in <code class="inline">attributes</code>, invalidating many other options.</td></tr></tbody></table><h3 id="introspection" class="section-heading">
+  <a href="#introspection" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Introspection</span>
+</h3>
+<p>Target: <a href="AshPaperTrail.Resource.BelongsToActor.html"><code class="inline">AshPaperTrail.Resource.BelongsToActor</code></a></p><style type="text/css">.spark-required::after { content: "*"; color: red !important; }</style>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="getting-started-with-ash-paper-trail.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Getting started with AshPaperTrail
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-ashpapertrail-domain.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: AshPaperTrail.Domain
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_paper_trail/0.1.4" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_paper_trail/0.1.4">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_paper_trail/0.1.4/show/documentation/dsls/DSL:-AshPaperTrail.Resource.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_paper_trail.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

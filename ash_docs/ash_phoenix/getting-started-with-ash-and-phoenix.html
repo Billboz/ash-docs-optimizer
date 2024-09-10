@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="ash_phoenix v2.1.2">
+
+
+    <title>Get Started with Ash and Phoenix — ash_phoenix v2.1.2</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-D13E551C.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_phoenix" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_phoenix" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_phoenix" class="sidebar-projectName" translate="no">
+ash_phoenix
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.1.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_phoenix</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/ash_phoenix/blob/v2.1.2/documentation/tutorials/getting-started-with-ash-and-phoenix.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Get Started with Ash and Phoenix</span>
+  </h1>
+
+<h2 id="goals" class="section-heading">
+  <a href="#goals" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Goals</span>
+</h2>
+<p>In this guide we will:</p><ol><li>Create a new Phoenix project</li><li>Setup Ash, AshPhoenix and AshPostgres as dependencies</li><li>Create a basic <code class="inline">Blog.Post</code> resource</li><li>Create and migrate the database</li><li>Learn how to interact with your resource</li><li>Integrate a minimal Phoenix LiveView with Ash</li></ol><h2 id="preparation" class="section-heading">
+  <a href="#preparation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Preparation</span>
+</h2>
+<ul><li><a href="https://elixir-lang.org/install.html">Install Elixir</a></li><li><a href="https://hexdocs.pm/phoenix/up_and_running.html">Phoenix - Up and Running Guide</a></li><li><a href="https://hexdocs.pm/ash/design-principles.html">Design Principles</a></li></ul><h2 id="requirements" class="section-heading">
+  <a href="#requirements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Requirements</span>
+</h2>
+<p>If you want to follow along yourself, you will need the following things:</p><ol><li>Elixir (1.12 or later) and Erlang (22 or later) installed</li><li>PostgreSQL installed</li><li>A text editor</li><li>A terminal to run the examples</li></ol><h2 id="setup" class="section-heading">
+  <a href="#setup" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Setup</span>
+</h2>
+<h3 id="create-a-new-phoenix-project" class="section-heading">
+  <a href="#create-a-new-phoenix-project" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Create a New Phoenix Project</span>
+</h3>
+<blockquote><h3 id="install-phoenix" class="info section-heading">
+  <a href="#install-phoenix" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Install Phoenix</span>
+</h3>
+<p><em>This section is based on the <a href="https://hexdocs.pm/phoenix/installation.html">Phoenix installation docs</a>. For more details go there.</em></p></blockquote><p>First we need to install the Phoenix project generator, then we'll run the generator to create our new project.</p><pre><code class="makeup bash" translate="no"><span class=""># install Phoenix project generator
+</span><span class="gp unselectable">$ </span><span class="">mix archive.install hex phx_new
+</span><span class="">
+</span><span class=""># generate Phoenix project
+</span><span class="gp unselectable">$ </span><span class="">mix phx.new my_ash_phoenix_app
+</span><span class="">
+</span><span class=""># cd into project
+</span><span class="gp unselectable">$ </span><span class="">cd my_ash_phoenix_app
+</span></code></pre><blockquote><h3 id="don-t-run-mix-ecto-create" class="warning section-heading">
+  <a href="#don-t-run-mix-ecto-create" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Don't run <a href="https://hexdocs.pm/ecto/3.12.1/Mix.Tasks.Ecto.Create.html"><code class="inline">mix ecto.create</code></a></span>
+</h3>
+<p>Do <em>not</em> run <a href="https://hexdocs.pm/ecto/3.12.1/Mix.Tasks.Ecto.Create.html"><code class="inline">mix ecto.create</code></a>, (as it asks you to) we will do this the Ash way later.</p></blockquote><h3 id="add-dependencies" class="section-heading">
+  <a href="#add-dependencies" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Add Dependencies</span>
+</h3>
+<p>We now need to add Ash, AshPhoenix and AshPostgres to our Phoenix project. We need to add the dependencies to the <code class="inline">deps</code> function in our <code class="inline">mix.exs</code>. We'll also need to add dependencies to our <code class="inline">.formatter.exs</code> to ensure consistent formatting when using <a href="https://hexdocs.pm/mix/Mix.Tasks.Format.html"><code class="inline">mix format</code></a>.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># mix.exs</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="8304617859-1">do</span><span class="w">
+    </span><span class="p" data-group-id="8304617859-2">[</span><span class="w">
+      </span><span class="c1"># use `mix hex.info &lt;library_name&gt;` to get the latest versions of each dependency, for example, `mix hex.info phoenix`</span><span class="w">
+      </span><span class="p" data-group-id="8304617859-3">{</span><span class="ss">:phoenix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; x.x&quot;</span><span class="p" data-group-id="8304617859-3">}</span><span class="p">,</span><span class="w">
+      </span><span class="c1"># ...</span><span class="w">
+      </span><span class="p" data-group-id="8304617859-4">{</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; x.x&quot;</span><span class="p" data-group-id="8304617859-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8304617859-5">{</span><span class="ss">:picosat_elixir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; x.x&quot;</span><span class="p" data-group-id="8304617859-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8304617859-6">{</span><span class="ss">:ash_postgres</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; x.x&quot;</span><span class="p" data-group-id="8304617859-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8304617859-7">{</span><span class="ss">:ash_phoenix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; x.x&quot;</span><span class="p" data-group-id="8304617859-7">}</span><span class="w">
+    </span><span class="p" data-group-id="8304617859-2">]</span><span class="w">
+  </span><span class="k" data-group-id="8304617859-1">end</span></code></pre><p>Add <code class="inline">:ash</code>, <code class="inline">:ash_phoenix</code>, and <code class="inline">:ash_postgres</code> to your <code class="inline">.formatter.exs</code> file.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># .formatter.exs</span><span class="w">
+</span><span class="p" data-group-id="1325742311-1">[</span><span class="w">
+  </span><span class="ss">import_deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1325742311-2">[</span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_phoenix</span><span class="p">,</span><span class="w"> </span><span class="ss">:ash_postgres</span><span class="p" data-group-id="1325742311-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="n">...</span><span class="w">
+</span><span class="p" data-group-id="1325742311-1">]</span></code></pre><p>Now in the terminal install these new dependencies.</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">mix deps.get
+</span></code></pre><blockquote><h3 id="picosat-installation-issues" class="info section-heading">
+  <a href="#picosat-installation-issues" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Picosat installation issues?</span>
+</h3>
+<p>If you have trouble compiling <code class="inline">picosat_elixir</code>, then replace <code class="inline">{:picosat_elixir, &quot;~&gt; 0.2&quot;}</code> with <code class="inline">{:simple_sat, &quot;~&gt; 0.1&quot;}</code> to use a simpler (but mildly slower) solver. You can always switch back to <code class="inline">picosat_elixir</code> later once you're done with the tutorial.</p></blockquote><h3 id="use-ashpostgres-repo" class="section-heading">
+  <a href="#use-ashpostgres-repo" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Use <code class="inline">AshPostgres.Repo</code></span>
+</h3>
+<p>We need to swap <a href="https://hexdocs.pm/ecto/3.12.1/Ecto.Repo.html"><code class="inline">Ecto.Repo</code></a> for <code class="inline">AshPostgres.Repo</code>. <code class="inline">AshPostgres.Repo</code> enriches your repo with additional AshPostgres specific behaviour, but is essentially a thin wrapper around <a href="https://hexdocs.pm/ecto/3.12.1/Ecto.Repo.html"><code class="inline">Ecto.Repo</code></a>.
+To use <code class="inline">AshPostgres.Repo</code> change your repo module to look like this:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># lib/my_ash_phoenix_app/repo.ex</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Repo</span><span class="w"> </span><span class="k" data-group-id="7350876436-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">AshPostgres.Repo</span><span class="p">,</span><span class="w"> </span><span class="ss">otp_app</span><span class="p">:</span><span class="w"> </span><span class="ss">:my_ash_phoenix_app</span><span class="w">
+
+  </span><span class="c1"># Installs extensions that ash commonly uses</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">installed_extensions</span><span class="w"> </span><span class="k" data-group-id="7350876436-2">do</span><span class="w">
+    </span><span class="p" data-group-id="7350876436-3">[</span><span class="s">&quot;ash-functions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;uuid-ossp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;citext&quot;</span><span class="p" data-group-id="7350876436-3">]</span><span class="w">
+  </span><span class="k" data-group-id="7350876436-2">end</span><span class="w">
+</span><span class="k" data-group-id="7350876436-1">end</span></code></pre><h3 id="edit-config" class="section-heading">
+  <a href="#edit-config" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Edit Config</span>
+</h3>
+<p>We need to specify the Ash domains that our application uses.</p><p>Add this to your config:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># config/config.exs</span><span class="w">
+
+</span><span class="kn">import</span><span class="w"> </span><span class="nc">Config</span><span class="w">
+
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:my_ash_phoenix_app</span><span class="p">,</span><span class="w">
+  </span><span class="ss">ash_domains</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7307373954-1">[</span><span class="nc">MyAshPhoenixApp.Blog</span><span class="p" data-group-id="7307373954-1">]</span></code></pre><h3 id="create-the-domain-and-add-resources" class="section-heading">
+  <a href="#create-the-domain-and-add-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Create the Domain and add Resources</span>
+</h3>
+<p>An Ash domain can be thought of as a <a href="https://martinfowler.com/bliki/BoundedContext.html">Bounded Context</a> in Domain Driven Design terms and can seen as analogous to a Phoenix context. Put simply, its a way of grouping related resources together. In our case our domain will be called <code class="inline">MyAshPhoenixApp.Blog</code>.</p><p>An Ash domain points to Ash resources. An Ash domain can point to one or more resources. In our case we will only have a single resource <code class="inline">MyAshPhoenixApp.Blog.Post</code>. We'll be taking a deeper look into that in the next section.</p><p>For now take a look at the <code class="inline">Blog</code> domain and the associated resources:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># lib/my_ash_phoenix_app/blog/blog.ex</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog</span><span class="w"> </span><span class="k" data-group-id="3567095998-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Domain</span><span class="w">
+
+  </span><span class="n">resources</span><span class="w"> </span><span class="k" data-group-id="3567095998-2">do</span><span class="w">
+    </span><span class="n">resource</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog.Post</span><span class="w"> </span><span class="k" data-group-id="3567095998-3">do</span><span class="w">
+      </span><span class="c1"># Define an interface for calling resource actions.</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:create_post</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:list_posts</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:read</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:update_post</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:update</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:destroy_post</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:destroy</span><span class="w">
+      </span><span class="n">define</span><span class="w"> </span><span class="ss">:get_post</span><span class="p">,</span><span class="w"> </span><span class="ss">args</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3567095998-4">[</span><span class="ss">:id</span><span class="p" data-group-id="3567095998-4">]</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:by_id</span><span class="w">
+    </span><span class="k" data-group-id="3567095998-3">end</span><span class="w">
+  </span><span class="k" data-group-id="3567095998-2">end</span><span class="w">
+</span><span class="k" data-group-id="3567095998-1">end</span></code></pre><h2 id="creating-resources" class="section-heading">
+  <a href="#creating-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Creating Resources</span>
+</h2>
+<h3 id="creating-the-post-resource" class="section-heading">
+  <a href="#creating-the-post-resource" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Creating the <code class="inline">Post</code> Resource</span>
+</h3>
+<p>A resource is a central concept in Ash. In short, a resource is a domain model object in your system. A resource defines the data it holds and defines the actions that can operate on that data.</p><p>When we create <code class="inline">Post</code> we will place it in <code class="inline">lib/my_ash_phoenix_app/blog/post.ex</code>. So the structure after making the resource should look like so:</p><pre><code class="makeup elixir" translate="no"><span class="n">lib</span><span class="o">/</span><span class="w">
+</span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">my_ash_phoenix_app</span><span class="o">/</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">blog</span><span class="o">/</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">blog</span><span class="o">.</span><span class="n">ex</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="err">─</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">ex</span></code></pre><p>Below is the resource module. Read the comments carefully, every line is explained:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># lib/my_ash_phoenix_app/blog/post.ex</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog.Post</span><span class="w"> </span><span class="k" data-group-id="5099693141-1">do</span><span class="w">
+  </span><span class="c1"># Using Ash.Resource turns this module into an Ash resource.</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="c1"># Tells Ash where the generated code interface belongs</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog</span><span class="p">,</span><span class="w">
+    </span><span class="c1"># Tells Ash you want this resource to store its data in Postgres.</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPostgres.DataLayer</span><span class="w">
+
+  </span><span class="c1"># The Postgres keyword is specific to the AshPostgres module.</span><span class="w">
+  </span><span class="n">postgres</span><span class="w"> </span><span class="k" data-group-id="5099693141-2">do</span><span class="w">
+    </span><span class="c1"># Tells Postgres what to call the table</span><span class="w">
+    </span><span class="n">table</span><span class="w"> </span><span class="s">&quot;posts&quot;</span><span class="w">
+    </span><span class="c1"># Tells Ash how to interface with the Postgres table</span><span class="w">
+    </span><span class="n">repo</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Repo</span><span class="w">
+  </span><span class="k" data-group-id="5099693141-2">end</span><span class="w">
+
+  </span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="5099693141-3">do</span><span class="w">
+    </span><span class="c1"># Exposes default built in actions to manage the resource</span><span class="w">
+    </span><span class="n">defaults</span><span class="w"> </span><span class="p" data-group-id="5099693141-4">[</span><span class="ss">:read</span><span class="p">,</span><span class="w"> </span><span class="ss">:destroy</span><span class="p" data-group-id="5099693141-4">]</span><span class="w">
+
+    </span><span class="n">create</span><span class="w"> </span><span class="ss">:create</span><span class="w"> </span><span class="k" data-group-id="5099693141-5">do</span><span class="w">
+      </span><span class="c1"># accept title as input</span><span class="w">
+      </span><span class="n">accept</span><span class="w"> </span><span class="p" data-group-id="5099693141-6">[</span><span class="ss">:title</span><span class="p" data-group-id="5099693141-6">]</span><span class="w">
+    </span><span class="k" data-group-id="5099693141-5">end</span><span class="w">
+
+    </span><span class="n">update</span><span class="w"> </span><span class="ss">:update</span><span class="w"> </span><span class="k" data-group-id="5099693141-7">do</span><span class="w">
+      </span><span class="c1"># accept content as input</span><span class="w">
+      </span><span class="n">accept</span><span class="w"> </span><span class="p" data-group-id="5099693141-8">[</span><span class="ss">:content</span><span class="p" data-group-id="5099693141-8">]</span><span class="w">
+    </span><span class="k" data-group-id="5099693141-7">end</span><span class="w">
+
+    </span><span class="c1"># Defines custom read action which fetches post by id.</span><span class="w">
+    </span><span class="n">read</span><span class="w"> </span><span class="ss">:by_id</span><span class="w"> </span><span class="k" data-group-id="5099693141-9">do</span><span class="w">
+      </span><span class="c1"># This action has one argument :id of type :uuid</span><span class="w">
+      </span><span class="n">argument</span><span class="w"> </span><span class="ss">:id</span><span class="p">,</span><span class="w"> </span><span class="ss">:uuid</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+      </span><span class="c1"># Tells us we expect this action to return a single result</span><span class="w">
+      </span><span class="n">get?</span><span class="w"> </span><span class="no">true</span><span class="w">
+      </span><span class="c1"># Filters the `:id` given in the argument</span><span class="w">
+      </span><span class="c1"># against the `id` of each element in the resource</span><span class="w">
+      </span><span class="n">filter</span><span class="w"> </span><span class="n">expr</span><span class="p" data-group-id="5099693141-10">(</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">arg</span><span class="p" data-group-id="5099693141-11">(</span><span class="ss">:id</span><span class="p" data-group-id="5099693141-11">)</span><span class="p" data-group-id="5099693141-10">)</span><span class="w">
+    </span><span class="k" data-group-id="5099693141-9">end</span><span class="w">
+  </span><span class="k" data-group-id="5099693141-3">end</span><span class="w">
+
+  </span><span class="c1"># Attributes are simple pieces of data that exist in your resource</span><span class="w">
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="5099693141-12">do</span><span class="w">
+    </span><span class="c1"># Add an autogenerated UUID primary key called `:id`.</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="c1"># Add a string type attribute called `:title`</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:title</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w"> </span><span class="k" data-group-id="5099693141-13">do</span><span class="w">
+      </span><span class="c1"># We don&#39;t want the title to ever be `nil`</span><span class="w">
+      </span><span class="n">allow_nil?</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="k" data-group-id="5099693141-13">end</span><span class="w">
+
+    </span><span class="c1"># Add a string type attribute called `:content`</span><span class="w">
+    </span><span class="c1"># If allow_nil? is not specified, then content can be nil</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:content</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+  </span><span class="k" data-group-id="5099693141-12">end</span><span class="w">
+</span><span class="k" data-group-id="5099693141-1">end</span></code></pre><h3 id="creating-and-migrating-the-database" class="section-heading">
+  <a href="#creating-and-migrating-the-database" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Creating and Migrating the Database</span>
+</h3>
+<p>We have specified the resource in Ash. But we have yet to create it in our data layer (in our case Postgres).</p><p>First we need to create our database:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">mix ash.setup
+</span><span class="">
+</span><span class="">Running setup for AshPostgres.DataLayer...
+</span><span class="">The database for MyAshPhoenixApp.Repo has been created
+</span><span class="">
+</span><span class="">01:23:45.678 [info] Migrations already up
+</span></code></pre><p>Now we need to populate our database. We do this by generating and performing a migration.</p><p>We can use a generator to produce a migration for us. Ash can deduce what needs to go into the migration and do the hard work for us, to do this use the command below:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">mix ash.codegen initial_migration
+</span><span class="">
+</span><span class=""># ... don&#39;t worry about other files it creates
+</span><span class="">
+</span><span class="">Generating Migrations:
+</span><span class="">* creating priv/repo/migrations/20230208045101_initial_migration.exs
+</span></code></pre><p>Here is the migration file commented in detail:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># priv/repo/migrations/20230208045101_initial_migration.exs</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Repo.Migrations.InitialMigration</span><span class="w"> </span><span class="k" data-group-id="1001669966-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ecto.Migration</span><span class="w">
+
+  </span><span class="c1"># This function runs when migrating forward</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">up</span><span class="w"> </span><span class="k" data-group-id="1001669966-2">do</span><span class="w">
+    </span><span class="c1"># Creates the `:posts` table</span><span class="w">
+    </span><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="1001669966-3">(</span><span class="ss">:posts</span><span class="p">,</span><span class="w"> </span><span class="ss">primary_key</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="1001669966-3">)</span><span class="w"> </span><span class="k" data-group-id="1001669966-4">do</span><span class="w">
+      </span><span class="c1"># Adds primary key attribute `:id` of type `:uuid`</span><span class="w">
+      </span><span class="c1"># null values are not allowed</span><span class="w">
+      </span><span class="n">add</span><span class="w"> </span><span class="ss">:id</span><span class="p">,</span><span class="w"> </span><span class="ss">:uuid</span><span class="p">,</span><span class="w"> </span><span class="ss">null</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="n">fragment</span><span class="p" data-group-id="1001669966-5">(</span><span class="s">&quot;gen_random_uuid()&quot;</span><span class="p" data-group-id="1001669966-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">primary_key</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+
+      </span><span class="c1"># Adds attribute `:title` of type `:text`, null values are not allowed</span><span class="w">
+      </span><span class="n">add</span><span class="w"> </span><span class="ss">:title</span><span class="p">,</span><span class="w"> </span><span class="ss">:text</span><span class="p">,</span><span class="w"> </span><span class="ss">null</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+      </span><span class="c1"># Adds attribute `:content` of type `:text`, null values are allowed</span><span class="w">
+      </span><span class="n">add</span><span class="w"> </span><span class="ss">:content</span><span class="p">,</span><span class="w"> </span><span class="ss">:text</span><span class="w">
+    </span><span class="k" data-group-id="1001669966-4">end</span><span class="w">
+  </span><span class="k" data-group-id="1001669966-2">end</span><span class="w">
+
+  </span><span class="c1"># This is the function that runs if you want to rollback the migration.</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">down</span><span class="w"> </span><span class="k" data-group-id="1001669966-6">do</span><span class="w">
+    </span><span class="c1"># Deletes the `:posts` table</span><span class="w">
+    </span><span class="n">drop</span><span class="w"> </span><span class="n">table</span><span class="p" data-group-id="1001669966-7">(</span><span class="ss">:posts</span><span class="p" data-group-id="1001669966-7">)</span><span class="w">
+  </span><span class="k" data-group-id="1001669966-6">end</span><span class="w">
+</span><span class="k" data-group-id="1001669966-1">end</span></code></pre><p>We can run the <code class="inline">up/0</code> function which will perform the desired operations on the Postgres database. We do this with the migrate command:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">mix ash.migrate
+</span></code></pre><blockquote><p>In case you want to drop the database and start over again during development you can use <a href="https://hexdocs.pm/ash/3.4.1/Mix.Tasks.Ash.Reset.html"><code class="inline">mix ash.reset</code></a>.</p></blockquote><h2 id="interacting-with-your-resources" class="section-heading">
+  <a href="#interacting-with-your-resources" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Interacting with your Resources</span>
+</h2>
+<p><strong>All interaction with your resource attributes always occur through an action</strong>. In our resource we are using the default actions for <code class="inline">:create, :read, :update, :destroy</code> along with a custom action <code class="inline">:by_id</code>.</p><p><code class="inline">:create</code> and <code class="inline">:update</code> and <code class="inline">:destroy</code> actions require a changeset. Ash changesets are conceptually similar to <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html">Ecto changesets</a>. They're data structures which represent an intended change to an Ash resource and provide validation.</p><p>The <code class="inline">:read</code> action takes a query instead of a changeset.</p><p>Below is the most verbose way of calling your resource. All other ways of interaction are some kind of shorthand of these. This means at some point a changeset is being created and passed to the domain, even if it's encapsulated within another function.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># create post</span><span class="w">
+</span><span class="n">new_post</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">MyAshPhoenixApp.Blog.Post</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_create</span><span class="p" data-group-id="1783727660-1">(</span><span class="ss">:create</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1783727660-2">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello world&quot;</span><span class="p" data-group-id="1783727660-2">}</span><span class="p" data-group-id="1783727660-1">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">create!</span><span class="p" data-group-id="1783727660-3">(</span><span class="p" data-group-id="1783727660-3">)</span><span class="w">
+
+</span><span class="c1"># read all posts</span><span class="w">
+</span><span class="nc">MyAshPhoenixApp.Blog.Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">for_read</span><span class="p" data-group-id="1783727660-4">(</span><span class="ss">:read</span><span class="p" data-group-id="1783727660-4">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read!</span><span class="p" data-group-id="1783727660-5">(</span><span class="p" data-group-id="1783727660-5">)</span><span class="w">
+
+</span><span class="c1"># get single post by id</span><span class="w">
+</span><span class="nc">MyAshPhoenixApp.Blog.Post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">for_read</span><span class="p" data-group-id="1783727660-6">(</span><span class="ss">:by_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1783727660-7">%{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">new_post</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="1783727660-7">}</span><span class="p" data-group-id="1783727660-6">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read_one!</span><span class="p" data-group-id="1783727660-8">(</span><span class="p" data-group-id="1783727660-8">)</span><span class="w">
+
+</span><span class="c1"># update post</span><span class="w">
+</span><span class="n">updated_post</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="n">new_post</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="1783727660-9">(</span><span class="ss">:update</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1783727660-10">%{</span><span class="ss">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello to you too!&quot;</span><span class="p" data-group-id="1783727660-10">}</span><span class="p" data-group-id="1783727660-9">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="1783727660-11">(</span><span class="p" data-group-id="1783727660-11">)</span><span class="w">
+
+</span><span class="c1"># delete post</span><span class="w">
+</span><span class="n">new_post</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_destroy</span><span class="p" data-group-id="1783727660-12">(</span><span class="ss">:destroy</span><span class="p" data-group-id="1783727660-12">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">destroy!</span><span class="p" data-group-id="1783727660-13">(</span><span class="p" data-group-id="1783727660-13">)</span></code></pre><p>As stated above, this is verbose so Ash has a built in shortcut - The <code class="inline">code_interface</code>. You may notice this has already been done in your <code class="inline">Post</code> resource inside of the domain module.</p><blockquote><h3 id="you-can-call-code-interfaces-whatever-you-like" class="info section-heading">
+  <a href="#you-can-call-code-interfaces-whatever-you-like" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">you can call code interfaces whatever you like</span>
+</h3>
+<p>The function name doesn't have to match the action name in any way. You could also write:</p><pre><code class="makeup elixir" translate="no"><span class="n">define</span><span class="w"> </span><span class="ss">:make_post</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="ss">:create</span></code></pre><p>That's perfectly valid and could be called via <code class="inline">Blog.make_post/2</code>.</p></blockquote><p>Now we can call our resource like so:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># create post</span><span class="w">
+</span><span class="n">new_post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog</span><span class="o">.</span><span class="n">create_post!</span><span class="p" data-group-id="8137126827-1">(</span><span class="p" data-group-id="8137126827-2">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello world&quot;</span><span class="p" data-group-id="8137126827-2">}</span><span class="p" data-group-id="8137126827-1">)</span><span class="w">
+
+</span><span class="c1"># read post</span><span class="w">
+</span><span class="nc">MyAshPhoenixApp.Blog</span><span class="o">.</span><span class="n">list_posts!</span><span class="p" data-group-id="8137126827-3">(</span><span class="p" data-group-id="8137126827-3">)</span><span class="w">
+
+</span><span class="c1"># get post by id</span><span class="w">
+</span><span class="nc">MyAshPhoenixApp.Blog</span><span class="o">.</span><span class="n">get_post!</span><span class="p" data-group-id="8137126827-4">(</span><span class="n">new_post</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8137126827-4">)</span><span class="w">
+
+</span><span class="c1"># update post</span><span class="w">
+</span><span class="n">updated_post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog</span><span class="o">.</span><span class="n">update_post!</span><span class="p" data-group-id="8137126827-5">(</span><span class="n">new_post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8137126827-6">%{</span><span class="ss">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello to you too!&quot;</span><span class="p" data-group-id="8137126827-6">}</span><span class="p" data-group-id="8137126827-5">)</span><span class="w">
+
+</span><span class="c1"># delete post</span><span class="w">
+</span><span class="nc">MyAshPhoenixApp.Blog</span><span class="o">.</span><span class="n">destroy_post!</span><span class="p" data-group-id="8137126827-7">(</span><span class="n">updated_post</span><span class="p" data-group-id="8137126827-7">)</span></code></pre><p>Now isn't that more convenient?</p><blockquote><h3 id="raising-and-non-raising-functions" class="info section-heading">
+  <a href="#raising-and-non-raising-functions" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">raising and non-raising functions</span>
+</h3>
+<p>All functions that interact with an Ash resource have a raising and non-raising version. For example there are two create functions <code class="inline">create/2</code> and <code class="inline">create!/2</code>. <code class="inline">create/2</code> returns <code class="inline">{:ok, resource}</code> or <code class="inline">{:error, reason}</code>. <code class="inline">create!/2</code> will return just the record on success and will raise an error on failure.</p></blockquote><h2 id="connecting-your-resource-to-a-phoenix-liveview" class="section-heading">
+  <a href="#connecting-your-resource-to-a-phoenix-liveview" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Connecting your Resource to a Phoenix LiveView</span>
+</h2>
+<p>Now we know how to interact with our resource, let's connect it to a simple Phoenix LiveView. Here is the LiveView below. If you are using phoenix live_view &lt;= 0.18, you will need to use <code class="inline">let={}</code> instead of <code class="inline">:let={}</code>.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># lib/my_ash_phoenix_app_web/posts_live.ex</span><span class="w">
+
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyAshPhoenixAppWeb.PostsLive</span><span class="w"> </span><span class="k" data-group-id="5497925895-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">MyAshPhoenixAppWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:live_view</span><span class="w">
+
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog</span><span class="w">
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">MyAshPhoenixApp.Blog.Post</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">render</span><span class="p" data-group-id="5497925895-2">(</span><span class="n">assigns</span><span class="p" data-group-id="5497925895-2">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-3">do</span><span class="w">
+    </span><span class="sx">~H&quot;&quot;&quot;
+    &lt;h2 class=&quot;text-xl text-center&quot;&gt;Your Posts&lt;/h2&gt;
+    &lt;div class=&quot;my-4&quot;&gt;
+      &lt;div :if={Enum.empty?(@posts)} class=&quot;font-bold text-center&quot;&gt;
+        No posts created yet
+      &lt;/div&gt;
+      &lt;ol class=&quot;list-decimal&quot;&gt;
+        &lt;li :for={post &lt;- @posts} class=&quot;mt-4&quot;&gt;
+          &lt;div class=&quot;font-bold&quot;&gt;&lt;%= post.title %&gt;&lt;/div&gt;
+          &lt;div&gt;&lt;%= if Map.get(post, :content), do: post.content, else: &quot;&quot; %&gt;&lt;/div&gt;
+          &lt;button
+            class=&quot;mt-2 p-2 bg-black text-white rounded-md&quot;
+            phx-click=&quot;delete_post&quot;
+            phx-value-post-id={post.id}
+          &gt;
+            Delete post
+          &lt;/button&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/div&gt;
+    &lt;h2 class=&quot;mt-8 text-lg&quot;&gt;Create Post&lt;/h2&gt;
+    &lt;.form :let={f} for={@create_form} phx-submit=&quot;create_post&quot;&gt;
+      &lt;.input type=&quot;text&quot; field={f[:title]} placeholder=&quot;input title&quot; /&gt;
+      &lt;.button class=&quot;mt-2&quot; type=&quot;submit&quot;&gt;Create&lt;/.button&gt;
+    &lt;/.form&gt;
+    &lt;h2 class=&quot;mt-8 text-lg&quot;&gt;Update Post&lt;/h2&gt;
+    &lt;.form :let={f} for={@update_form} phx-submit=&quot;update_post&quot;&gt;
+      &lt;.label&gt;Post Name&lt;/.label&gt;
+      &lt;.input type=&quot;select&quot; field={f[:post_id]} options={@post_selector} /&gt;
+      &lt;.input type=&quot;text&quot; field={f[:content]} placeholder=&quot;input content&quot; /&gt;
+      &lt;.button class=&quot;mt-2&quot; type=&quot;submit&quot;&gt;Update&lt;/.button&gt;
+    &lt;/.form&gt;
+    &quot;&quot;&quot;</span><span class="w">
+  </span><span class="k" data-group-id="5497925895-3">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">mount</span><span class="p" data-group-id="5497925895-4">(</span><span class="c">_params</span><span class="p">,</span><span class="w"> </span><span class="c">_session</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5497925895-4">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-5">do</span><span class="w">
+    </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Blog</span><span class="o">.</span><span class="n">list_posts!</span><span class="p" data-group-id="5497925895-6">(</span><span class="p" data-group-id="5497925895-6">)</span><span class="w">
+
+    </span><span class="n">socket</span><span class="w"> </span><span class="o">=</span><span class="w">
+      </span><span class="n">assign</span><span class="p" data-group-id="5497925895-7">(</span><span class="n">socket</span><span class="p">,</span><span class="w">
+        </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w">
+        </span><span class="ss">post_selector</span><span class="p">:</span><span class="w"> </span><span class="n">post_selector</span><span class="p" data-group-id="5497925895-8">(</span><span class="n">posts</span><span class="p" data-group-id="5497925895-8">)</span><span class="p">,</span><span class="w">
+        </span><span class="ss">create_form</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPhoenix.Form</span><span class="o">.</span><span class="n">for_create</span><span class="p" data-group-id="5497925895-9">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">:create</span><span class="p" data-group-id="5497925895-9">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_form</span><span class="p" data-group-id="5497925895-10">(</span><span class="p" data-group-id="5497925895-10">)</span><span class="p">,</span><span class="w">
+        </span><span class="ss">update_form</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPhoenix.Form</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="5497925895-11">(</span><span class="nc">List</span><span class="o">.</span><span class="n">first</span><span class="p" data-group-id="5497925895-12">(</span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5497925895-13">%</span><span class="nc" data-group-id="5497925895-13">Post</span><span class="p" data-group-id="5497925895-13">{</span><span class="p" data-group-id="5497925895-13">}</span><span class="p" data-group-id="5497925895-12">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:update</span><span class="p" data-group-id="5497925895-11">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">to_form</span><span class="p" data-group-id="5497925895-14">(</span><span class="p" data-group-id="5497925895-14">)</span><span class="w">
+      </span><span class="p" data-group-id="5497925895-7">)</span><span class="w">
+
+    </span><span class="p" data-group-id="5497925895-15">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5497925895-15">}</span><span class="w">
+  </span><span class="k" data-group-id="5497925895-5">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5497925895-16">(</span><span class="s">&quot;delete_post&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5497925895-17">%{</span><span class="s">&quot;post-id&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">post_id</span><span class="p" data-group-id="5497925895-17">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5497925895-16">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-18">do</span><span class="w">
+    </span><span class="n">post_id</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Blog</span><span class="o">.</span><span class="n">get_post!</span><span class="p" data-group-id="5497925895-19">(</span><span class="p" data-group-id="5497925895-19">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Blog</span><span class="o">.</span><span class="n">destroy_post!</span><span class="p" data-group-id="5497925895-20">(</span><span class="p" data-group-id="5497925895-20">)</span><span class="w">
+    </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Blog</span><span class="o">.</span><span class="n">list_posts!</span><span class="p" data-group-id="5497925895-21">(</span><span class="p" data-group-id="5497925895-21">)</span><span class="w">
+
+    </span><span class="p" data-group-id="5497925895-22">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="5497925895-23">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">post_selector</span><span class="p">:</span><span class="w"> </span><span class="n">post_selector</span><span class="p" data-group-id="5497925895-24">(</span><span class="n">posts</span><span class="p" data-group-id="5497925895-24">)</span><span class="p" data-group-id="5497925895-23">)</span><span class="p" data-group-id="5497925895-22">}</span><span class="w">
+  </span><span class="k" data-group-id="5497925895-18">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5497925895-25">(</span><span class="s">&quot;create_post&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5497925895-26">%{</span><span class="s">&quot;form&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">form_params</span><span class="p" data-group-id="5497925895-26">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5497925895-25">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-27">do</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">AshPhoenix.Form</span><span class="o">.</span><span class="n">submit</span><span class="p" data-group-id="5497925895-28">(</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">create_form</span><span class="p">,</span><span class="w"> </span><span class="ss">params</span><span class="p">:</span><span class="w"> </span><span class="n">form_params</span><span class="p" data-group-id="5497925895-28">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-29">do</span><span class="w">
+      </span><span class="p" data-group-id="5497925895-30">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="c">_post</span><span class="p" data-group-id="5497925895-30">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Blog</span><span class="o">.</span><span class="n">list_posts!</span><span class="p" data-group-id="5497925895-31">(</span><span class="p" data-group-id="5497925895-31">)</span><span class="w">
+
+        </span><span class="p" data-group-id="5497925895-32">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="5497925895-33">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">post_selector</span><span class="p">:</span><span class="w"> </span><span class="n">post_selector</span><span class="p" data-group-id="5497925895-34">(</span><span class="n">posts</span><span class="p" data-group-id="5497925895-34">)</span><span class="p" data-group-id="5497925895-33">)</span><span class="p" data-group-id="5497925895-32">}</span><span class="w">
+
+      </span><span class="p" data-group-id="5497925895-35">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">create_form</span><span class="p" data-group-id="5497925895-35">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="5497925895-36">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="5497925895-37">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">create_form</span><span class="p">:</span><span class="w"> </span><span class="n">create_form</span><span class="p" data-group-id="5497925895-37">)</span><span class="p" data-group-id="5497925895-36">}</span><span class="w">
+    </span><span class="k" data-group-id="5497925895-29">end</span><span class="w">
+  </span><span class="k" data-group-id="5497925895-27">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5497925895-38">(</span><span class="s">&quot;update_post&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5497925895-39">%{</span><span class="s">&quot;form&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">form_params</span><span class="p" data-group-id="5497925895-39">}</span><span class="p">,</span><span class="w"> </span><span class="n">socket</span><span class="p" data-group-id="5497925895-38">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-40">do</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">AshPhoenix.Form</span><span class="o">.</span><span class="n">submit</span><span class="p" data-group-id="5497925895-41">(</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">update_form</span><span class="p">,</span><span class="w"> </span><span class="ss">params</span><span class="p">:</span><span class="w"> </span><span class="n">form_params</span><span class="p" data-group-id="5497925895-41">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-42">do</span><span class="w">
+      </span><span class="p" data-group-id="5497925895-43">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="c">_post</span><span class="p" data-group-id="5497925895-43">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Blog</span><span class="o">.</span><span class="n">list_posts!</span><span class="p" data-group-id="5497925895-44">(</span><span class="p" data-group-id="5497925895-44">)</span><span class="w">
+
+        </span><span class="p" data-group-id="5497925895-45">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="5497925895-46">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">posts</span><span class="p">:</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">post_selector</span><span class="p">:</span><span class="w"> </span><span class="n">post_selector</span><span class="p" data-group-id="5497925895-47">(</span><span class="n">posts</span><span class="p" data-group-id="5497925895-47">)</span><span class="p" data-group-id="5497925895-46">)</span><span class="p" data-group-id="5497925895-45">}</span><span class="w">
+
+      </span><span class="p" data-group-id="5497925895-48">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">update_form</span><span class="p" data-group-id="5497925895-48">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="5497925895-49">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">assign</span><span class="p" data-group-id="5497925895-50">(</span><span class="n">socket</span><span class="p">,</span><span class="w"> </span><span class="ss">update_form</span><span class="p">:</span><span class="w"> </span><span class="n">update_form</span><span class="p" data-group-id="5497925895-50">)</span><span class="p" data-group-id="5497925895-49">}</span><span class="w">
+    </span><span class="k" data-group-id="5497925895-42">end</span><span class="w">
+  </span><span class="k" data-group-id="5497925895-40">end</span><span class="w">
+
+  </span><span class="kd">defp</span><span class="w"> </span><span class="nf">post_selector</span><span class="p" data-group-id="5497925895-51">(</span><span class="n">posts</span><span class="p" data-group-id="5497925895-51">)</span><span class="w"> </span><span class="k" data-group-id="5497925895-52">do</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="n">post</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="k" data-group-id="5497925895-53">do</span><span class="w">
+      </span><span class="p" data-group-id="5497925895-54">{</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="5497925895-54">}</span><span class="w">
+    </span><span class="k" data-group-id="5497925895-53">end</span><span class="w">
+  </span><span class="k" data-group-id="5497925895-52">end</span><span class="w">
+</span><span class="k" data-group-id="5497925895-1">end</span></code></pre><p>Don't forget to add the LiveView to your router.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># lib/my_ash_phoenix_app_web/router.ex</span><span class="w">
+  </span><span class="n">scope</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">MyAshPhoenixAppWeb</span><span class="w"> </span><span class="k" data-group-id="6052747230-1">do</span><span class="w">
+    </span><span class="c1"># ...</span><span class="w">
+    </span><span class="n">live</span><span class="w"> </span><span class="s">&quot;/posts&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">PostsLive</span><span class="w">
+  </span><span class="k" data-group-id="6052747230-1">end</span></code></pre><p>Now, start the web server by running <a href="https://hexdocs.pm/phoenix/1.7.14/Mix.Tasks.Phx.Server.html"><code class="inline">mix phx.server</code></a>. Then, visit <a href="http://localhost:4000/posts">http://localhost:4000/posts</a> in your browser to see what we have just created.</p><p>You can see how using functions created by our <code class="inline">code_interface</code> makes it easy to integrate Ash with Phoenix.</p><p>You may also notice this is the first time we've used the AshPhoenix library. The AshPhoenix library contains utilities to help Ash integrate with Phoenix and LiveView Seamlessly. One of these utilities is <a href="AshPhoenix.Form.html"><code class="inline">AshPhoenix.Form</code></a> which can automatically produce changesets to be used in the forms.</p><p>That's it for this guide. We've gone from 0 to a fully working Phoenix App using Ash. To get a closer look, see the accompanying repo <a href="https://github.com/team-alembic/my_ash_phoenix_project">here</a>.</p><h2 id="where-to-next" class="section-heading">
+  <a href="#where-to-next" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Where to Next?</span>
+</h2>
+<p>We are really just scratching the surface of what can be done in Ash. Look below for what to look at next.</p><h3 id="continue-learning" class="section-heading">
+  <a href="#continue-learning" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Continue Learning</span>
+</h3>
+<p>There's a few places you can go to learn more about how to use ash:</p><ul><li>Read more about how to query the data in your resources - <a href="https://hexdocs.pm/ash/3.4.1/Ash.Query.html"><code class="inline">Ash.Query</code></a></li><li><a href="https://hexdocs.pm/ash/actions.html">Dig deeper into actions.</a></li><li><a href="https://hexdocs.pm/ash/managing-relationships.html">Study resource relationship management</a></li></ul><h3 id="ash-authentication-ash-authentication-phoenix" class="section-heading">
+  <a href="#ash-authentication-ash-authentication-phoenix" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Ash Authentication &amp; Ash Authentication Phoenix</span>
+</h3>
+<p>See the power Ash can bring to your web app or API. <a href="https://hexdocs.pm/ash_authentication_phoenix/get-started.html">Get authentication working in minutes</a>.</p><h3 id="add-an-api-or-two" class="section-heading">
+  <a href="#add-an-api-or-two" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Add an API (or two)</span>
+</h3>
+<p>Check out the <a href="https://hexdocs.pm/ash_json_api/getting-started-with-json-api.html">AshJsonApi</a> and <a href="https://hexdocs.pm/ash_graphql/getting-started-with-graphql.html">AshGraphql</a> extensions to effortlessly build APIs around your resources.</p>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Home
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="union-forms.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Union Forms
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_phoenix/2.1.2" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_phoenix/2.1.2">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_phoenix/2.1.2/show/documentation/tutorials/getting-started-with-ash-and-phoenix.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_phoenix.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

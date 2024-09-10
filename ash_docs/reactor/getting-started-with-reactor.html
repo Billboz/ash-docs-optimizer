@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="reactor v0.9.1">
+
+
+    <title>Getting started with Reactor — reactor v0.9.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-60580F90.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="reactor" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/reactor" class="sidebar-projectName" translate="no">
+reactor
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.9.1
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of reactor</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/reactor/blob/main/documentation/tutorials/getting-started-with-reactor.md/#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Getting started with Reactor</span>
+  </h1>
+
+<p>Reactor is a lot of things:</p><ul><li>A <a href="https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf">saga orchestrator</a>.</li><li>A <a href="https://hexdocs.pm/reactor/Reactor.html">composable DSL</a> for creating workflows.</li><li>A <a href="https://hexdocs.pm/reactor/Reactor.Builder.html">builder</a> for dynamically creating workflows.</li><li>Capable of mixing concurrent and serialised workflows.</li><li>Resolves dependencies between tasks using a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graph</a>.</li></ul><p>Let's start by breaking down what each of these features are, and how we can use them.</p><h2 id="transaction-like-semantics-with-sagas" class="section-heading">
+  <a href="#transaction-like-semantics-with-sagas" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Transaction-like semantics with Sagas</span>
+</h2>
+<p>If you've been building apps long enough you will have used database transactions. They're amazing. Basically, if you put all your changes in a transaction and there's a failure then the transaction gets rolled back and the system is not left in an inconsistent state. This is great when you're working with a single database, but in the modern world we often have to integrate with <a href="https://www.postgresql.org/">many</a> <a href="https://www.mongodb.com/">different</a> <a href="https://redis.io/">kinds</a> <a href="https://cassandra.apache.org/_/index.html">of</a> <a href="https://aws.amazon.com/redshift/">data</a> <a href="https://clickhouse.com/">stores</a> and <a href="https://www.salesforce.com/">as</a> <a href="https://stripe.com/">many</a> <a href="https://www.twilio.com/en-us">different</a> <a href="https://www.xero.com/">SaaS</a> <a href="https://www.vendhq.com/">products</a>.</p><p>Often we need to orchestrate a &quot;transaction&quot; across multiple services at once; for example:</p><ol><li>Register a new user</li><li>Create a Stripe customer</li><li>Create a Stripe subscription</li><li>Send a transactional welcome email via SendGrid</li><li>Track the conversion in Salesforce</li></ol><p>If any of these steps fails we may want to retry or roll back depending on what failed and whether it's recoverable. Reactor allows us to do this by defining the <a href="Reactor.Step.html"><code class="inline">Reactor.Step</code></a> behaviour:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.CreateStripeSubscriptionStep</span><span class="w"> </span><span class="k" data-group-id="9658191289-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor.Step</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">run</span><span class="p" data-group-id="9658191289-2">(</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p" data-group-id="9658191289-2">)</span><span class="w"> </span><span class="k" data-group-id="9658191289-3">do</span><span class="w">
+    </span><span class="nc">Stripe.Subscription</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="9658191289-4">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">stripe_customer_id</span><span class="p">,</span><span class="w"> </span><span class="ss">items</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9658191289-5">[</span><span class="ss">plan</span><span class="p">:</span><span class="w"> </span><span class="n">arguments</span><span class="o">.</span><span class="n">stripe_plan_id</span><span class="p" data-group-id="9658191289-5">]</span><span class="p" data-group-id="9658191289-4">)</span><span class="w">
+  </span><span class="k" data-group-id="9658191289-3">end</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">compensate</span><span class="p" data-group-id="9658191289-6">(</span><span class="p" data-group-id="9658191289-7">%{</span><span class="ss">code</span><span class="p">:</span><span class="w"> </span><span class="ss">:network_error</span><span class="p" data-group-id="9658191289-7">}</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p" data-group-id="9658191289-6">)</span><span class="w"> </span><span class="k" data-group-id="9658191289-8">do</span><span class="w">
+    </span><span class="ss">:retry</span><span class="w">
+  </span><span class="k" data-group-id="9658191289-8">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">compensate</span><span class="p" data-group-id="9658191289-9">(</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p" data-group-id="9658191289-9">)</span><span class="w"> </span><span class="k" data-group-id="9658191289-10">do</span><span class="w">
+    </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="9658191289-10">end</span><span class="w">
+
+  </span><span class="na">@impl</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">undo</span><span class="p" data-group-id="9658191289-11">(</span><span class="n">subscription</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p" data-group-id="9658191289-11">)</span><span class="w"> </span><span class="k" data-group-id="9658191289-12">do</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">Stripe.Subscription</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="9658191289-13">(</span><span class="n">subscription</span><span class="p" data-group-id="9658191289-13">)</span><span class="w"> </span><span class="k" data-group-id="9658191289-14">do</span><span class="w">
+      </span><span class="p" data-group-id="9658191289-15">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="9658191289-15">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="ss">:ok</span><span class="w">
+      </span><span class="p" data-group-id="9658191289-16">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p" data-group-id="9658191289-16">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="9658191289-17">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p" data-group-id="9658191289-17">}</span><span class="w">
+    </span><span class="k" data-group-id="9658191289-14">end</span><span class="w">
+  </span><span class="k" data-group-id="9658191289-12">end</span><span class="w">
+</span><span class="k" data-group-id="9658191289-1">end</span></code></pre><p>Here we've defined a step that tries to create a new Stripe subscription. If that fails then we have defined <code class="inline">compensate/4</code> check whether it was a network error, and if so ask the Reactor to retry, otherwise we return <code class="inline">:ok</code> because the subscription wasn't created so we don't have to do any other clean up. Lastly, we define <code class="inline">undo/4</code> to delete the subscription if the Reactor asks us to undo our work - which it will do if a step later in the workflow fails.</p><p>How do you compose these steps together you ask? Let's discuss that in the next section.</p><h2 id="composing-steps-with-the-reactor-dsl" class="section-heading">
+  <a href="#composing-steps-with-the-reactor-dsl" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Composing steps with the Reactor DSL</span>
+</h2>
+<p>Reactor uses <a href="https://hexdocs.pm/spark/get-started-with-spark.html"><code class="inline">spark</code></a> to define an easy to use (and easy to extend) DSL for defining workflows. Let's start with an example:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.RegisterUserReactor</span><span class="w"> </span><span class="k" data-group-id="7540717091-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Reactor</span><span class="w">
+
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:email</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:password</span><span class="w">
+  </span><span class="n">input</span><span class="w"> </span><span class="ss">:plan_name</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:register_user</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.RegisterUserStep</span><span class="w"> </span><span class="k" data-group-id="7540717091-2">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-3">(</span><span class="ss">:email</span><span class="p" data-group-id="7540717091-3">)</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:password</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-4">(</span><span class="ss">:password</span><span class="p" data-group-id="7540717091-4">)</span><span class="w">
+  </span><span class="k" data-group-id="7540717091-2">end</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:create_stripe_customer</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.CreateStripeCustomerStep</span><span class="w"> </span><span class="k" data-group-id="7540717091-5">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-6">(</span><span class="ss">:email</span><span class="p" data-group-id="7540717091-6">)</span><span class="w">
+  </span><span class="k" data-group-id="7540717091-5">end</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:find_stripe_plan</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.FindStripePlanStep</span><span class="w"> </span><span class="k" data-group-id="7540717091-7">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:plan_name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-8">(</span><span class="ss">:plan_name</span><span class="p" data-group-id="7540717091-8">)</span><span class="w">
+  </span><span class="k" data-group-id="7540717091-7">end</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:create_stripe_subscription</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.CreateStripeSubscriptionStep</span><span class="w"> </span><span class="k" data-group-id="7540717091-9">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:customer_id</span><span class="w"> </span><span class="k" data-group-id="7540717091-10">do</span><span class="w">
+      </span><span class="n">source</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7540717091-11">(</span><span class="ss">:create_stripe_customer</span><span class="p" data-group-id="7540717091-11">)</span><span class="w">
+      </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="7540717091-12">(</span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="7540717091-12">)</span><span class="w">
+    </span><span class="k" data-group-id="7540717091-10">end</span><span class="w">
+
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:plan_id</span><span class="w"> </span><span class="k" data-group-id="7540717091-13">do</span><span class="w">
+      </span><span class="n">source</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7540717091-14">(</span><span class="ss">:get_stripe_plan</span><span class="p" data-group-id="7540717091-14">)</span><span class="w">
+      </span><span class="n">transform</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="7540717091-15">(</span><span class="ni">&amp;1</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="7540717091-15">)</span><span class="w">
+    </span><span class="k" data-group-id="7540717091-13">end</span><span class="w">
+  </span><span class="k" data-group-id="7540717091-9">end</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:send_welcome_email</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.SendWelcomeEmailStep</span><span class="w"> </span><span class="k" data-group-id="7540717091-16">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-17">(</span><span class="ss">:email</span><span class="p" data-group-id="7540717091-17">)</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:_subscription</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7540717091-18">(</span><span class="ss">:create_stripe_subscription</span><span class="p" data-group-id="7540717091-18">)</span><span class="w">
+  </span><span class="k" data-group-id="7540717091-16">end</span><span class="w">
+
+  </span><span class="n">step</span><span class="w"> </span><span class="ss">:track_conversion</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.TrackSalesforceConversionStep</span><span class="w"> </span><span class="k" data-group-id="7540717091-19">do</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:email</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-20">(</span><span class="ss">:email</span><span class="p" data-group-id="7540717091-20">)</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:plan_name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p" data-group-id="7540717091-21">(</span><span class="ss">:plan_name</span><span class="p" data-group-id="7540717091-21">)</span><span class="w">
+    </span><span class="n">argument</span><span class="w"> </span><span class="ss">:_welcome_email</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7540717091-22">(</span><span class="ss">:send_welcome_email</span><span class="p" data-group-id="7540717091-22">)</span><span class="w">
+  </span><span class="k" data-group-id="7540717091-19">end</span><span class="w">
+
+  </span><span class="n">return</span><span class="w"> </span><span class="ss">:register_user</span><span class="w">
+</span><span class="k" data-group-id="7540717091-1">end</span></code></pre><p>Here we've defined a Reactor that performs the steps needed for the user registration example above.</p><p>Here we define the steps that need to be performed and describe the dependencies between them by way of arguments.</p><blockquote><h4 class="warning">Beware of ordering</h4><p>Whilst the order of the steps in the example makes sense logically it has no
+effect on the order that the Reactor will execute them in. This is the
+fundamental difference between Reactor and other Saga tools in the Elixir
+ecosystem.</p></blockquote><p>The Reactor will put the steps into a graph with the steps as vertices and the arguments as edges and will find any that have no inbound edges and run as many of them at once as possible. This means that <code class="inline">:register_user</code>, <code class="inline">:create_stripe_customer</code> and <code class="inline">:find_stripe_plan</code> will all execute simultaneously, after which <code class="inline">:create_stripe_subscription</code>, then <code class="inline">:send_welcome_email</code> and <code class="inline">:track_conversion</code> will run. Notice that <code class="inline">:send_welcome_email</code> and <code class="inline">:track_conversion</code> have arguments that depend on the results of previews steps that they don't necessarily need, however we want to ensure that they don't run until all the important steps are complete (it's hard to unsend an email!)</p><h2 id="building-workflows-programmatically" class="section-heading">
+  <a href="#building-workflows-programmatically" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Building workflows programmatically</span>
+</h2>
+<p>While using the DSL makes it extremely easy to build a static workflow, sometimes you need the flexibility to build a workflow based on a set of criteria that may not be known at compile time (for example if you're using user input to build the workflow).</p><p>Every Reactor is ultimately an instance of the <a href="Reactor.html"><code class="inline">Reactor</code></a> struct (you can use <code class="inline">Reactor.Info.to_struct(MyApp.RegisterUserReactor)</code> to see the one for the DSL Reactor above). The functions in <a href="Reactor.Builder.html"><code class="inline">Reactor.Builder</code></a> can be used to create an identical workflow:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">reactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reactor.Builder</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="5560919250-1">(</span><span class="p" data-group-id="5560919250-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="5560919250-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="5560919250-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reactor.Builder</span><span class="o">.</span><span class="n">add_input</span><span class="p" data-group-id="5560919250-3">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:email</span><span class="p" data-group-id="5560919250-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="5560919250-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="5560919250-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reactor.Builder</span><span class="o">.</span><span class="n">add_input</span><span class="p" data-group-id="5560919250-5">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:password</span><span class="p" data-group-id="5560919250-5">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="5560919250-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="5560919250-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reactor.Builder</span><span class="o">.</span><span class="n">add_input</span><span class="p" data-group-id="5560919250-7">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:plan_name</span><span class="p" data-group-id="5560919250-7">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="5560919250-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">reactor</span><span class="p" data-group-id="5560919250-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reactor.Builder</span><span class="o">.</span><span class="n">add_step</span><span class="p" data-group-id="5560919250-9">(</span><span class="n">reactor</span><span class="p">,</span><span class="w"> </span><span class="ss">:register_user</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.RegisterUserStep</span><span class="p">,</span><span class="w"> </span><span class="ss">email</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5560919250-10">{</span><span class="ss">:input</span><span class="p">,</span><span class="w"> </span><span class="ss">:email</span><span class="p" data-group-id="5560919250-10">}</span><span class="p">,</span><span class="w"> </span><span class="ss">password</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5560919250-11">{</span><span class="ss">:input</span><span class="p">,</span><span class="w"> </span><span class="ss">:password</span><span class="p" data-group-id="5560919250-11">}</span><span class="p" data-group-id="5560919250-9">)</span><span class="w">
+</span><span class="c1"># etc...</span></code></pre><h2 id="mixing-concurrent-and-synchronous-workflow-steps" class="section-heading">
+  <a href="#mixing-concurrent-and-synchronous-workflow-steps" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Mixing concurrent and synchronous workflow steps</span>
+</h2>
+<p>If you look at the <a href="Reactor.Step.html"><code class="inline">Reactor.Step</code></a> struct, you'll see that it has an <code class="inline">async?</code> field. This is available as a step DSL option, and as an option to <code class="inline">add_step/5</code>. It defaults to <code class="inline">true</code>, however if you set it to <code class="inline">false</code> Reactor will run the step synchronously. Note that it will only run synchronous steps when it has run out of async steps which can be started. Other than that caveat, Reactor will follow the same ordering rules as specified above.</p><h2 id="running-your-reactor" class="section-heading">
+  <a href="#running-your-reactor" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Running your Reactor</span>
+</h2>
+<p>You can pass either a Reactor DSL module or a Reactor struct straight into the <code class="inline">Reactor.run/1..4</code> function.</p><h2 id="halting-and-resuming-workflows" class="section-heading">
+  <a href="#halting-and-resuming-workflows" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Halting and resuming workflows</span>
+</h2>
+<p>Any step in the flow can return <code class="inline">{:halt, value}</code> instead of <code class="inline">{:ok, value}</code>. When this happens Reactor will wait for any running asynchronous steps to finish and then halt the Reactor returning <code class="inline">{:halted, reactor}</code>. Later on you can resume the Reactor by passing the halted reactor to the <code class="inline">Reactor.run/1..4</code> function.</p><h2 id="dynamically-adding-steps-at-reactor-run-time" class="section-heading">
+  <a href="#dynamically-adding-steps-at-reactor-run-time" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Dynamically adding steps at Reactor run time</span>
+</h2>
+<p>Any step can return <code class="inline">{:ok, value, additional_steps}</code> instead of just <code class="inline">{:ok, value}</code> and those new steps will be added to the graph and have their dependencies calculated automatically. <code class="inline">additional_steps</code> should be a list of <a href="Reactor.Step.html"><code class="inline">Reactor.Step</code></a> structs, which you can create with <code class="inline">Reactor.Builder.new_step/2..4</code>.</p><p>There are a couple of additional things to be aware of when steps at run time:</p><ol><li>If you add steps that induce a cyclic dependency then the Reactor will commence an undo, just as if a step had failed.</li><li>Steps can have the same name as other steps and their intermediate results will be replaced.</li><li>You are allowed to make dependency cycles in the very specific case of a new
+step relying on it's own output.</li></ol>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Read Me
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dsl-reactor.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+DSL: Reactor.Dsl
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/reactor/0.9.1" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/reactor/0.9.1">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/reactor/0.9.1/show/documentation/tutorials/getting-started-with-reactor.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

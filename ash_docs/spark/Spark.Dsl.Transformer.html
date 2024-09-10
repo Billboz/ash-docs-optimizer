@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Dsl.Transformer — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Dsl.Transformer</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>A transformer manipulates and/or validates the entire DSL state of a resource.</p><p>It's <code class="inline">transform/1</code> takes a <code class="inline">map</code>, which is just the values/configurations at each point
+of the DSL. Don't manipulate it directly, if possible, instead use functions like
+<code class="inline">get_entities/3</code> and <a href="#replace_entity/4"><code class="inline">replace_entity/4</code></a> to manipulate it.</p><p>Use the <code class="inline">after?/1</code> and <code class="inline">before?/1</code> callbacks to ensure that your transformer
+runs either before or after some other transformer.</p><p>Return <code class="inline">true</code> in <code class="inline">after_compile/0</code> to have the transformer run in an <code class="inline">after_compile</code> hook,
+but keep in mind that no modifications to the dsl structure will be retained, so there is no
+real point in modifying the dsl that you return.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:after?/1" data-no-tooltip translate="no">after?(module)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:after_compile?/0" data-no-tooltip translate="no">after_compile?()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:before?/1" data-no-tooltip translate="no">before?(module)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:transform/1" data-no-tooltip translate="no">transform(map)</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#add_entity/4" data-no-tooltip translate="no">add_entity(dsl_state, path, entity, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#async_compile/2" data-no-tooltip translate="no">async_compile(dsl, fun)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Runs the function in an async compiler.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build_entity/4" data-no-tooltip translate="no">build_entity(extension, path, name, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build_entity!/4" data-no-tooltip translate="no">build_entity!(extension, path, name, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#eval/3" data-no-tooltip translate="no">eval(dsl, bindings, block)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add a quoted expression to be evaluated in the DSL module's context.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#fetch_option/3" data-no-tooltip translate="no">fetch_option(dsl_state, path, option)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#fetch_persisted/2" data-no-tooltip translate="no">fetch_persisted(dsl, key)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_entities/2" data-no-tooltip translate="no">get_entities(dsl_state, path)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_option/4" data-no-tooltip translate="no">get_option(dsl_state, path, option, default \\ nil)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_persisted/3" data-no-tooltip translate="no">get_persisted(dsl, key, default \\ nil)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#persist/3" data-no-tooltip translate="no">persist(dsl, key, value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Saves a value into the dsl config with the given key.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#remove_entity/3" data-no-tooltip translate="no">remove_entity(dsl_state, path, func)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#replace_entity/4" data-no-tooltip translate="no">replace_entity(dsl_state, path, replacement, matcher \\ nil)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#set_option/4" data-no-tooltip translate="no">set_option(dsl_state, path, option, value)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#sort/1" data-no-tooltip translate="no">sort(transformers)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:after?/1">
+
+  <div class="detail-header">
+    <a href="#c:after?/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">after?(module)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L23" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> after?(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:after_compile?/0">
+
+  <div class="detail-header">
+    <a href="#c:after_compile?/0" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">after_compile?()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L24" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> after_compile?() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:before?/1">
+
+  <div class="detail-header">
+    <a href="#c:before?/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">before?(module)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L22" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> before?(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:transform/1">
+
+  <div class="detail-header">
+    <a href="#c:transform/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">transform(map)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L16" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> transform(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  :ok
+  | {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()}
+  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:warn, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]}
+  | :halt</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="add_entity/4">
+
+    <span id="add_entity/3"></span>
+
+  <div class="detail-header">
+    <a href="#add_entity/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">add_entity(dsl_state, path, entity, opts \\ [])</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L203" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="async_compile/2">
+
+  <div class="detail-header">
+    <a href="#async_compile/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">async_compile(dsl, fun)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L54" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Runs the function in an async compiler.</p><p>Use this for compiling new modules and having them compiled
+efficiently asynchronously.</p>
+  </section>
+</section>
+<section class="detail" id="build_entity/4">
+
+  <div class="detail-header">
+    <a href="#build_entity/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build_entity(extension, path, name, opts)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L127" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="build_entity!/4">
+
+  <div class="detail-header">
+    <a href="#build_entity!/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build_entity!(extension, path, name, opts)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L113" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="eval/3">
+
+  <div class="detail-header">
+    <a href="#eval/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">eval(dsl, bindings, block)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L90" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Add a quoted expression to be evaluated in the DSL module's context.</p><p>Use this <em>extremely sparingly</em>. It should almost never be necessary, unless building certain
+extensions that <em>require</em> the module in question to define a given function.</p><p>What you likely want is either one of the DSL introspection functions, like <a href="Spark.Dsl.Extension.html#get_entities/2"><code class="inline">Spark.Dsl.Extension.get_entities/2</code></a>
+or <code class="inline">Spark.Dsl.Extension.get_opt/5)</code>. If you simply want to store a custom value that can be retrieved easily, or
+cache some precomputed information onto the resource, use <a href="#persist/3"><code class="inline">persist/3</code></a>.</p><p>Provide the dsl state, bindings that should be unquote-able, and the quoted block
+to evaluate in the module. For example, if we wanted to support a <code class="inline">resource.primary_key()</code> function
+that would return the primary key (this is unnecessary, just an example), we might do this:</p><pre><code class="makeup elixir" translate="no"><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">the_primary_key_fields</span><span class="w">
+
+</span><span class="n">dsl_state</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">Transformer</span><span class="o">.</span><span class="n">eval</span><span class="p" data-group-id="2491632360-1">(</span><span class="w">
+    </span><span class="n">dsl_state</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="2491632360-2">[</span><span class="ss">fields</span><span class="p">:</span><span class="w"> </span><span class="n">fields</span><span class="p" data-group-id="2491632360-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="k">quote</span><span class="w"> </span><span class="k" data-group-id="2491632360-3">do</span><span class="w">
+      </span><span class="kd">def</span><span class="w"> </span><span class="nf">primary_key</span><span class="p" data-group-id="2491632360-4">(</span><span class="p" data-group-id="2491632360-4">)</span><span class="w"> </span><span class="k" data-group-id="2491632360-5">do</span><span class="w">
+        </span><span class="k">unquote</span><span class="p" data-group-id="2491632360-6">(</span><span class="n">fields</span><span class="p" data-group-id="2491632360-6">)</span><span class="w">
+      </span><span class="k" data-group-id="2491632360-5">end</span><span class="w">
+    </span><span class="k" data-group-id="2491632360-3">end</span><span class="w">
+  </span><span class="p" data-group-id="2491632360-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="fetch_option/3">
+
+  <div class="detail-header">
+    <a href="#fetch_option/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">fetch_option(dsl_state, path, option)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L229" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="fetch_persisted/2">
+
+  <div class="detail-header">
+    <a href="#fetch_persisted/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">fetch_persisted(dsl, key)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L107" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_entities/2">
+
+  <div class="detail-header">
+    <a href="#get_entities/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_entities(dsl_state, path)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L223" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_option/4">
+
+    <span id="get_option/3"></span>
+
+  <div class="detail-header">
+    <a href="#get_option/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_option(dsl_state, path, option, default \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L237" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="get_persisted/3">
+
+    <span id="get_persisted/2"></span>
+
+  <div class="detail-header">
+    <a href="#get_persisted/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">get_persisted(dsl, key, default \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L101" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="persist/3">
+
+  <div class="detail-header">
+    <a href="#persist/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">persist(dsl, key, value)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L44" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Saves a value into the dsl config with the given key.</p><p>This can be used to precompute some information and cache it onto the resource,
+or simply store a computed value. It can later be retrieved with <a href="Spark.Dsl.Extension.html#get_persisted/3"><code class="inline">Spark.Dsl.Extension.get_persisted/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="remove_entity/3">
+
+  <div class="detail-header">
+    <a href="#remove_entity/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">remove_entity(dsl_state, path, func)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L215" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="replace_entity/4">
+
+    <span id="replace_entity/3"></span>
+
+  <div class="detail-header">
+    <a href="#replace_entity/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">replace_entity(dsl_state, path, replacement, matcher \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L257" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="set_option/4">
+
+  <div class="detail-header">
+    <a href="#set_option/4" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">set_option(dsl_state, path, option, value)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L245" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="sort/1">
+
+  <div class="detail-header">
+    <a href="#sort/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">sort(transformers)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl/transformer.ex#L282" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

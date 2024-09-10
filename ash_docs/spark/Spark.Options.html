@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Options — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Options</span> 
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>Provides a standard API to handle keyword-list-based options.</p><p>This module began its life as a vendored form of <a href="https://hexdocs.pm/nimble_options/1.1.1/NimbleOptions.html"><code class="inline">NimbleOptions</code></a>.
+We had various features to add to it, and the spirit of nimble
+options is to be as lightweight as possible. With that in mind,
+we were advised to vendor <a href="https://hexdocs.pm/nimble_options/1.1.1/NimbleOptions.html"><code class="inline">NimbleOptions</code></a>. We would like to
+thank the authors of <a href="https://hexdocs.pm/nimble_options/1.1.1/NimbleOptions.html"><code class="inline">NimbleOptions</code></a> for their excellent work,
+and their blessing to transplant their work into Spark.</p><p><a href="Spark.Options.html"><code class="inline">Spark.Options</code></a> allows developers to create schemas using a
+pre-defined set of options and types. The main benefits are:</p><ul><li>A single unified way to define simple static options</li><li>Config validation against schemas</li><li>Automatic doc generation</li></ul><p>Spark also uses this to power entity and section schemas.</p><h2 id="module-schema-options" class="section-heading">
+  <a href="#module-schema-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Schema Options</span>
+</h2>
+<p>These are the options supported in a <em>schema</em>. They are what
+defines the validation for the items in the given schema.</p><ul><li><p><code class="inline">:type</code> - The type of the option item. The default value is <code class="inline">:any</code>.</p></li><li><p><code class="inline">:required</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Defines if the option item is required. The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:default</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - The default value for the option item if that option is not specified. This value
+is <em>validated</em> according to the given <code class="inline">:type</code>. This means that you cannot
+have, for example, <code class="inline">type: :integer</code> and use <code class="inline">default: &quot;a string&quot;</code>.</p></li><li><p><code class="inline">:keys</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">keyword/0</code></a>) - Available for types <code class="inline">:keyword_list</code>, <code class="inline">:non_empty_keyword_list</code>, and <code class="inline">:map</code>,
+it defines which set of keys are accepted for the option item. The value of the
+<code class="inline">:keys</code> option is a schema itself. For example: <code class="inline">keys: [foo: [type: :atom]]</code>.
+Use <code class="inline">:*</code> as the key to allow multiple arbitrary keys and specify their schema:
+<code class="inline">keys: [*: [type: :integer]]</code>.</p></li><li><p><code class="inline">:deprecated</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - Defines a message to indicate that the option item is deprecated. The message will be displayed as a warning when passing the item.</p></li><li><p><code class="inline">:private?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Defines an option as private, used with <a href="Spark.Options.Validator.html"><code class="inline">Spark.Options.Validator</code></a> The default value is <code class="inline">false</code>.</p></li><li><p><code class="inline">:hide</code> (one or a list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - A list of keys that should be hidden when generating documentation</p></li><li><p><code class="inline">:as</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - A name to remap the option to when used in DSLs. Not supported in regular option parsing</p></li><li><p><code class="inline">:snippet</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - A snippet to use when autocompleting DSLs. Not supported in regular option parsing</p></li><li><p><code class="inline">:links</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>) - A keyword list of links to include in DSL documentation for the option item.</p></li><li><p><code class="inline">:doc</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a> or <code class="inline">false</code>) - The documentation for the option item.</p></li><li><p><code class="inline">:subsection</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a>) - The title of separate subsection of the options' documentation</p></li><li><p><code class="inline">:type_doc</code> (<a href="https://hexdocs.pm/elixir/String.html#t:t/0"><code class="inline">String.t/0</code></a> or <code class="inline">false</code>) - The type doc to use <em>in the documentation</em> for the option item. If <code class="inline">false</code>,
+no type documentation is added to the item. If it's a string, it can be
+anything. For example, you can use <code class="inline">&quot;a list of PIDs&quot;</code>, or you can use
+a typespec reference that ExDoc can link to the type definition, such as
+<code class="inline">&quot;`t:binary/0`&quot;</code>. You can use Markdown in this documentation. If the
+<code class="inline">:type_doc</code> option is not present, Spark.Options tries to produce a type
+documentation automatically if it can do it unambiguously. For example,
+if <code class="inline">type: :integer</code>, Spark.Options will use <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">integer/0</code></a> as the
+auto-generated type doc.</p></li><li><p><code class="inline">:type_spec</code> (<a href="https://hexdocs.pm/elixir/Macro.html#t:t/0"><code class="inline">Macro.t/0</code></a>) - The quoted spec to use <em>in the typespec</em> for the option item. You should use this
+when the auto-generated spec is not specific enough. For example, if you are performing
+custom validation on an option (with the <code class="inline">{:custom, ...}</code> type), then the
+generated type spec for that option will always be <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">term/0</code></a>, but you can use
+this option to customize that. The value for this option <strong>must</strong> be a quoted Elixir
+term. For example, if you have an <code class="inline">:exception</code> option that is validated with a
+<code class="inline">{:custom, ...}</code> type (based on <a href="https://hexdocs.pm/elixir/Kernel.html#is_exception/1"><code class="inline">is_exception/1</code></a>), you can override the type
+spec for that option to be <code class="inline">quote(do: Exception.t())</code>. <em>Available since v1.1.0</em>.</p></li></ul><h2 id="module-types" class="section-heading">
+  <a href="#module-types" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Types</span>
+</h2>
+<ul><li><p><code class="inline">:any</code> - Any type.</p></li><li><p><code class="inline">:keyword_list</code> - A keyword list.</p></li><li><p><code class="inline">:non_empty_keyword_list</code> - A non-empty keyword list.</p></li><li><p><code class="inline">:map</code> - A map consisting of <code class="inline">:atom</code> keys. Shorthand for <code class="inline">{:map, :atom, :any}</code>.
+Keys can be specified using the <code class="inline">keys</code> option.</p></li><li><p><code class="inline">{:map, key_type, value_type}</code> - A map consisting of <code class="inline">key_type</code> keys and
+<code class="inline">value_type</code> values.</p></li><li><p><code class="inline">:atom</code> - An atom.</p></li><li><p><code class="inline">:string</code> - A string.</p></li><li><p><code class="inline">:boolean</code> - A boolean.</p></li><li><p><code class="inline">:integer</code> - An integer.</p></li><li><p><code class="inline">:non_neg_integer</code> - A non-negative integer.</p></li><li><p><code class="inline">:pos_integer</code> - A positive integer.</p></li><li><p><code class="inline">:float</code> - A float.</p></li><li><p><code class="inline">:timeout</code> - A non-negative integer or the atom <code class="inline">:infinity</code>.</p></li><li><p><code class="inline">:pid</code> - A PID (process identifier).</p></li><li><p><code class="inline">:reference</code> - A reference (see <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">reference/0</code></a>).</p></li><li><p><code class="inline">nil</code> - The value <code class="inline">nil</code> itself. Available since v1.0.0.</p></li><li><p><code class="inline">:mfa</code> - A named function in the format <code class="inline">{module, function, arity}</code> where
+<code class="inline">arity</code> is a list of arguments. For example, <code class="inline">{MyModule, :my_fun, [arg1, arg2]}</code>.</p></li><li><p><code class="inline">:mod_arg</code> - A module along with arguments, such as <code class="inline">{MyModule, arguments}</code>.
+Usually used for process initialization using <code class="inline">start_link</code> and similar. The
+second element of the tuple can be any term.</p></li><li><p><code class="inline">:fun</code> - Any function.</p></li><li><p><code class="inline">{:fun, arity}</code> - Any function with the specified arity.</p></li><li><p><code class="inline">{:fun, args_types}</code> - A function with the specified arguments.</p></li><li><p><code class="inline">{:fun, args_types, return_type}</code> - A function with the specified arguments and return type.</p></li><li><p><code class="inline">{:in, choices}</code> or <code class="inline">{:one_of, choices}</code> - A value that is a member of one of the <code class="inline">choices</code>. <code class="inline">choices</code>
+should be a list of terms or a <a href="https://hexdocs.pm/elixir/Range.html"><code class="inline">Range</code></a>. The value is an element in said
+list of terms, that is, <code class="inline">value in choices</code> is <code class="inline">true</code>.</p></li><li><p><code class="inline">{:struct, struct_name}</code> - An instance of the struct type given.</p></li><li><p><code class="inline">:struct</code> - An instance of any struct</p></li><li><p><code class="inline">{:tagged_tuple, tag, inner_type}</code> - maps to <code class="inline">{tag, type}</code></p></li><li><p><code class="inline">{:spark_behaviour, behaviour}</code> - expects a module that implements the given behaviour, and can be specified with options, i.e <code class="inline">mod</code> or <code class="inline">{mod, [opt: :val]}</code></p></li><li><p><code class="inline">{:spark_behaviour, behaviour, builtin_module}</code> - Same as the above, but also accepts a <code class="inline">builtin_module</code>. The builtin_module is used to provide additional options for the elixir_sense plugin.</p></li><li><p><code class="inline">{:spark_function_behaviour, behaviour, {function_mod, arity}}</code> - expects a module that implements the given behaviour, and can be specified with options, i.e <code class="inline">mod</code> or <code class="inline">{mod, [opt: :val]}</code>, that also has a special module that supports being provided an anonymous function or MFA as the <code class="inline">:fun</code> option.</p></li><li><p><code class="inline">{:spark_function_behaviour, behaviour, builtin_module, {function_mod, arity}}</code> - Same as the above, but also accepts a <code class="inline">builtin_module</code>. The builtin_module is used to provide additional options for the elixir_sense plugin.</p></li><li><p><code class="inline">{:behaviour, behaviour}</code> - expects a module that implements a given behaviour.</p></li><li><p><code class="inline">{:protocol, protocol}</code> - expects a value for which the protocol is implemented.</p></li><li><p><code class="inline">{:spark, dsl_module}</code> - expects a module that is a <a href="Spark.Dsl.html"><code class="inline">Spark.Dsl</code></a></p></li><li><p><code class="inline">{:mfa_or_fun, arity}</code> - expects a function or MFA of a corresponding arity.</p></li><li><p><code class="inline">{:spark_type, module, builtin_function}</code> - a behaviour that defines <code class="inline">builtin_function/0</code> that returns a list of atoms that map to built in variations of that thing.</p></li><li><p><code class="inline">{:spark_type, module, builtin_function, templates}</code> - same as the above, but includes additional templates for elixir_sense autocomplete</p></li><li><p><code class="inline">:literal</code> -&gt; any literal value. Maps to <code class="inline">:any</code>, but is used for documentation.</p></li><li><p><code class="inline">{:literal, value}</code> -&gt; exactly the value specified.</p></li><li><p><code class="inline">:quoted</code> -&gt; retains the quoted value of the code provided to the option</p></li><li><p><code class="inline">{:wrap_list, type}</code> -&gt; Allows a single value or a list of values.</p></li><li><p><code class="inline">{:custom, mod, fun, args}</code> - A custom type. The related value must be validated
+by <code class="inline">mod.fun(values, ...args)</code>. The function should return <code class="inline">{:ok, value}</code> or
+<code class="inline">{:error, message}</code>.</p></li><li><p><code class="inline">{:or, subtypes}</code> - A value that matches one of the given <code class="inline">subtypes</code>. The value is
+matched against the subtypes in the order specified in the list of <code class="inline">subtypes</code>. If
+one of the subtypes matches and <strong>updates</strong> (casts) the given value, the updated
+value is used. For example: <code class="inline">{:or, [:string, :boolean, {:fun, 2}]}</code>. If one of the
+subtypes is a keyword list or map, you won't be able to pass <code class="inline">:keys</code> directly. For this reason,
+<code class="inline">:keyword_list</code>, <code class="inline">:non_empty_keyword_list</code>, and <code class="inline">:map</code> are special cased and can
+be used as subtypes with <code class="inline">{:keyword_list, keys}</code>, <code class="inline">{:non_empty_keyword_list, keys}</code> or <code class="inline">{:map, keys}</code>.
+For example, a type such as <code class="inline">{:or, [:boolean, keyword_list: [enabled: [type: :boolean]]]}</code>
+would match either a boolean or a keyword list with the <code class="inline">:enabled</code> boolean option in it.</p></li><li><p><code class="inline">{:list, subtype}</code> - A list where all elements match <code class="inline">subtype</code>. <code class="inline">subtype</code> can be any
+of the accepted types listed here. Empty lists are allowed. The resulting validated list
+contains the validated (and possibly updated) elements, each as returned after validation
+through <code class="inline">subtype</code>. For example, if <code class="inline">subtype</code> is a custom validator function that returns
+an updated value, then that updated value is used in the resulting list. Validation
+fails at the <em>first</em> element that is invalid according to <code class="inline">subtype</code>. If <code class="inline">subtype</code> is
+a keyword list or map, you won't be able to pass <code class="inline">:keys</code> directly. For this reason,
+<code class="inline">:keyword_list</code>, <code class="inline">:non_empty_keyword_list</code>, and <code class="inline">:map</code> are special cased and can
+be used as the subtype by using <code class="inline">{:keyword_list, keys}</code>, <code class="inline">{:non_empty_keyword_list, keys}</code>
+or <code class="inline">{:keyword_list, keys}</code>. For example, a type such as
+<code class="inline">{:list, {:keyword_list, enabled: [type: :boolean]}}</code> would a <em>list of keyword lists</em>,
+where each keyword list in the list could have the <code class="inline">:enabled</code> boolean option in it.</p></li><li><p><code class="inline">{:tuple, list_of_subtypes}</code> - A tuple as described by <code class="inline">tuple_of_subtypes</code>.
+<code class="inline">list_of_subtypes</code> must be a list with the same length as the expected tuple.
+Each of the list's elements must be a subtype that should match the given element in that
+same position. For example, to describe 3-element tuples with an atom, a string, and
+a list of integers you would use the type <code class="inline">{:tuple, [:atom, :string, {:list, :integer}]}</code>.
+<em>Available since v0.4.1</em>.</p></li></ul><h2 id="module-example" class="section-heading">
+  <a href="#module-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9438523214-1">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">producer</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9438523214-2">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:non_empty_keyword_list</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">keys</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9438523214-3">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="ss">module</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9438523214-4">[</span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:mod_arg</span><span class="p" data-group-id="9438523214-4">]</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="ss">concurrency</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9438523214-5">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">        </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:pos_integer</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="p" data-group-id="9438523214-5">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="9438523214-3">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="9438523214-2">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9438523214-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9438523214-6">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">producer</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9438523214-7">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">concurrency</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="9438523214-7">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9438523214-6">]</span><span class="w">
+</span><span class="gp unselectable">...&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9438523214-8">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9438523214-9">%</span><span class="nc" data-group-id="9438523214-9">Spark.Options.ValidationError</span><span class="p" data-group-id="9438523214-9">{</span><span class="p" data-group-id="9438523214-9">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">error</span><span class="p" data-group-id="9438523214-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="9438523214-10">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="9438523214-10">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Exception</span><span class="o">.</span><span class="n">message</span><span class="p" data-group-id="9438523214-11">(</span><span class="n">error</span><span class="p" data-group-id="9438523214-11">)</span><span class="w">
+</span><span class="s">&quot;required :module option not found, received options: [:concurrency] (in options [:producer])&quot;</span></code></pre><h2 id="module-nested-option-items" class="section-heading">
+  <a href="#module-nested-option-items" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Nested Option Items</span>
+</h2>
+<p><a href="Spark.Options.html"><code class="inline">Spark.Options</code></a> allows option items to be nested so you can recursively validate
+any item down the options tree.</p><h3 id="module-example-1" class="section-heading">
+  <a href="#module-example-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2059855459-1">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">producer</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-2">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:non_empty_keyword_list</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">keys</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-3">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="ss">rate_limiting</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-4">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">        </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:non_empty_keyword_list</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">        </span><span class="ss">keys</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-5">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">          </span><span class="ss">interval</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-6">[</span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:pos_integer</span><span class="p" data-group-id="2059855459-6">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">        </span><span class="p" data-group-id="2059855459-5">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="p" data-group-id="2059855459-4">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="2059855459-3">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="2059855459-2">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2059855459-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2059855459-7">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">producer</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-8">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">rate_limiting</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2059855459-9">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">      </span><span class="ss">interval</span><span class="p">:</span><span class="w"> </span><span class="ss">:oops!</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="p" data-group-id="2059855459-9">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="2059855459-8">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2059855459-7">]</span><span class="w">
+</span><span class="gp unselectable">...&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2059855459-10">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2059855459-11">%</span><span class="nc" data-group-id="2059855459-11">Spark.Options.ValidationError</span><span class="p" data-group-id="2059855459-11">{</span><span class="p" data-group-id="2059855459-11">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">error</span><span class="p" data-group-id="2059855459-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="2059855459-12">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="2059855459-12">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Exception</span><span class="o">.</span><span class="n">message</span><span class="p" data-group-id="2059855459-13">(</span><span class="n">error</span><span class="p" data-group-id="2059855459-13">)</span><span class="w">
+</span><span class="s">&quot;invalid value for :interval option: expected positive integer, got: :oops! (in options [:producer, :rate_limiting])&quot;</span></code></pre><h2 id="module-validating-schemas" class="section-heading">
+  <a href="#module-validating-schemas" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Validating Schemas</span>
+</h2>
+<p>Each time <a href="#validate/2"><code class="inline">validate/2</code></a> is called, the given schema itself will be validated before validating
+the options.</p><p>In most applications the schema will never change but validating options will be done
+repeatedly.</p><p>To avoid the extra cost of validating the schema, it is possible to validate the schema once,
+and then use that valid schema directly. This is done by using the <a href="#new!/1"><code class="inline">new!/1</code></a> function first, and
+then passing the returned schema to <a href="#validate/2"><code class="inline">validate/2</code></a>.</p><blockquote><h4 class="tip">Create the Schema at Compile Time</h4><p>If your option schema doesn't include any runtime-only terms in it (such as anonymous
+functions), you can call <a href="#new!/1"><code class="inline">new!/1</code></a> to validate the schema and returned a <em>compiled</em> schema
+<strong>at compile time</strong>. This is an efficient way to avoid doing any unnecessary work at
+runtime. See the example below for more information.</p></blockquote><h3 id="module-example-2" class="section-heading">
+  <a href="#module-example-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h3>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">raw_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7809715701-1">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">hostname</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7809715701-2">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="7809715701-2">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="7809715701-1">]</span><span class="w">
+</span><span class="gp unselectable">...&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">new!</span><span class="p" data-group-id="7809715701-3">(</span><span class="n">raw_schema</span><span class="p" data-group-id="7809715701-3">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="7809715701-4">(</span><span class="p" data-group-id="7809715701-5">[</span><span class="ss">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;elixir-lang.org&quot;</span><span class="p" data-group-id="7809715701-5">]</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="7809715701-4">)</span><span class="w">
+</span><span class="p" data-group-id="7809715701-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;elixir-lang.org&quot;</span><span class="p" data-group-id="7809715701-6">}</span></code></pre><p>Calling <a href="#new!/1"><code class="inline">new!/1</code></a> from a function that receives options will still validate the schema each time
+that function is called. Declaring the schema as a module attribute is supported:</p><pre><code class="makeup elixir" translate="no"><span class="na">@options_schema</span><span class="w"> </span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">new!</span><span class="p" data-group-id="6492002553-1">(</span><span class="p" data-group-id="6492002553-2">[</span><span class="n">...</span><span class="p" data-group-id="6492002553-2">]</span><span class="p" data-group-id="6492002553-1">)</span></code></pre><p>This schema will be validated at compile time. Calling <a href="#docs/1"><code class="inline">docs/1</code></a> on that schema is also
+supported.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:option_schema/0" data-no-tooltip translate="no">option_schema()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:schema/0" data-no-tooltip translate="no">schema()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A schema.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <a href="Spark.Options.html"><code class="inline">Spark.Options</code></a> struct embedding a validated schema.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:type/0" data-no-tooltip translate="no">type()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#docs/2" data-no-tooltip translate="no">docs(schema, options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns documentation for the given schema.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#merge/3" data-no-tooltip translate="no">merge(left, right, section \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Merges two schemas, and sets the <code class="inline">subsection</code> option on all options on the right side.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new!/1" data-no-tooltip translate="no">new!(schema)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validates the given <code class="inline">schema</code> and returns a wrapped schema to be used with <a href="#validate/2"><code class="inline">validate/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#option_typespec/1" data-no-tooltip translate="no">option_typespec(schema)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the quoted typespec for any option described by the given schema.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate/2" data-no-tooltip translate="no">validate(options, schema)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validates the given <code class="inline">options</code> with the given <code class="inline">schema</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate!/2" data-no-tooltip translate="no">validate!(options, schema)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validates the given <code class="inline">options</code> with the given <code class="inline">schema</code> and raises if they're not valid.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:option_schema/0">
+
+  <div class="detail-header">
+    <a href="#t:option_schema/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">option_schema()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L436" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> option_schema() :: [
+  type: <a href="#t:type/0">type</a>(),
+  required: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  default: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  keys: <a href="#t:schema/0">schema</a>(),
+  private?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  deprecated: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  doc: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  subsection: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil,
+  type_doc: false | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  rename_to: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  hide: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()],
+  as: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  snippet: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  links: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:schema/0">
+
+  <div class="detail-header">
+    <a href="#t:schema/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">schema()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L458" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> schema() :: [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="#t:option_schema/0">option_schema</a>()}]</pre>
+
+      </div>
+
+<p>A schema.</p><p>See the module documentation for more information.</p>
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L466" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: %Spark.Options{schema: <a href="#t:schema/0">schema</a>()}</pre>
+
+      </div>
+
+<p>The <a href="Spark.Options.html"><code class="inline">Spark.Options</code></a> struct embedding a validated schema.</p><p>See the <a href="#module-validating-schemas"><em>Validating Schemas</em> section</a> in
+the module documentation.</p>
+  </section>
+</section>
+<section class="detail" id="t:type/0">
+
+  <div class="detail-header">
+    <a href="#t:type/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">type()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L389" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> type() ::
+  :any
+  | :keyword_list
+  | :non_empty_keyword_list
+  | :map
+  | {:map, key_type :: <a href="#t:type/0">type</a>(), value_type :: <a href="#t:type/0">type</a>()}
+  | :atom
+  | :string
+  | :boolean
+  | :integer
+  | :non_neg_integer
+  | :pos_integer
+  | :float
+  | :timeout
+  | :pid
+  | :reference
+  | :mfa
+  | :mod_arg
+  | :fun
+  | {:fun, arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
+  | {:fun, [<a href="#t:type/0">type</a>()]}
+  | {:fun, [<a href="#t:type/0">type</a>()], <a href="#t:type/0">type</a>()}
+  | {:in, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()] | <a href="https://hexdocs.pm/elixir/Range.html#t:t/0">Range.t</a>()}
+  | {:or,
+     [
+       <a href="#t:type/0">type</a>()
+       | {:keyword_list, <a href="#t:schema/0">schema</a>()}
+       | {:non_empty_keyword_list, <a href="#t:schema/0">schema</a>()}
+       | {:map, <a href="#t:schema/0">schema</a>()}
+     ]}
+  | {:list,
+     <a href="#t:type/0">type</a>()
+     | {:keyword_list, <a href="#t:schema/0">schema</a>()}
+     | {:non_empty_keyword_list, <a href="#t:schema/0">schema</a>()}
+     | {:map, <a href="#t:schema/0">schema</a>()}}
+  | {:tuple, [<a href="#t:type/0">type</a>()]}
+  | {:one_of, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()] | <a href="https://hexdocs.pm/elixir/Range.html#t:t/0">Range.t</a>()}
+  | {:tagged_tuple, tag :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), inner_type :: <a href="#t:type/0">type</a>()}
+  | {:spark_behaviour, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
+  | {:spark_behaviour, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
+  | {:spark_function_behaviour, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}}
+  | {:spark_function_behaviour, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}}
+  | {:behaviour, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
+  | {:protocol, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
+  | {:spark, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
+  | {:mfa_or_fun, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
+  | {:spark_type, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), builtin_function :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}
+  | {:spark_type, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), builtin_function :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+     templates :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]}
+  | {:struct, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
+  | {:wrap_list, <a href="#t:type/0">type</a>()}
+  | :literal
+  | {:literal, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
+  | :quoted
+  | {:custom, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), function :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="docs/2">
+
+    <span id="docs/1"></span>
+
+  <div class="detail-header">
+    <a href="#docs/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">docs(schema, options \\ [])</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L571" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> docs(
+  <a href="#t:schema/0">schema</a>() | <a href="#t:t/0">t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Returns documentation for the given schema.</p><p>You can use this to inject documentation in your docstrings. For example,
+say you have your schema in a module attribute:</p><pre><code class="makeup elixir" translate="no"><span class="na">@options_schema</span><span class="w"> </span><span class="p" data-group-id="1506679566-1">[</span><span class="n">...</span><span class="p" data-group-id="1506679566-1">]</span></code></pre><p>With this, you can use <a href="#docs/1"><code class="inline">docs/1</code></a> to inject documentation:</p><pre><code class="makeup elixir" translate="no"><span class="na">@doc</span><span class="w"> </span><span class="s">&quot;Supported options:</span><span class="se">\n</span><span class="si" data-group-id="7227693157-1">#{</span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">docs</span><span class="p" data-group-id="7227693157-2">(</span><span class="na">@options_schema</span><span class="p" data-group-id="7227693157-2">)</span><span class="si" data-group-id="7227693157-1">}</span><span class="s">&quot;</span></code></pre><h2 id="docs/2-options" class="section-heading">
+  <a href="#docs/2-options" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Options</span>
+</h2>
+<ul><li><p><code class="inline">:nest_level</code> - an integer deciding the &quot;nest level&quot; of the generated
+docs. This is useful when, for example, you use <a href="#docs/2"><code class="inline">docs/2</code></a> inside the <code class="inline">:doc</code>
+option of another schema. For example, if you have the following nested schema:</p><pre><code class="makeup elixir" translate="no"><span class="n">nested_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7578777977-1">[</span><span class="w">
+  </span><span class="ss">allowed_messages</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7578777977-2">[</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:pos_integer</span><span class="p">,</span><span class="w"> </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Allowed messages.&quot;</span><span class="p" data-group-id="7578777977-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">interval</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7578777977-3">[</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:pos_integer</span><span class="p">,</span><span class="w"> </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Interval.&quot;</span><span class="p" data-group-id="7578777977-3">]</span><span class="w">
+</span><span class="p" data-group-id="7578777977-1">]</span></code></pre><p>then you can document it inside another schema with its nesting level increased:</p><pre><code class="makeup elixir" translate="no"><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3198322694-1">[</span><span class="w">
+  </span><span class="ss">producer</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3198322694-2">[</span><span class="w">
+    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3198322694-3">{</span><span class="ss">:or</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3198322694-4">[</span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">keyword_list</span><span class="p">:</span><span class="w"> </span><span class="n">nested_schema</span><span class="p" data-group-id="3198322694-4">]</span><span class="p" data-group-id="3198322694-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="ss">doc</span><span class="p">:</span><span class="w">
+      </span><span class="s">&quot;Either a string or a keyword list with the following keys:</span><span class="se">\n</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w">
+        </span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">docs</span><span class="p" data-group-id="3198322694-5">(</span><span class="n">nested_schema</span><span class="p">,</span><span class="w"> </span><span class="ss">nest_level</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3198322694-5">)</span><span class="w">
+  </span><span class="p" data-group-id="3198322694-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">other_key</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3198322694-6">[</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="3198322694-6">]</span><span class="w">
+</span><span class="p" data-group-id="3198322694-1">]</span></code></pre></li></ul>
+  </section>
+</section>
+<section class="detail" id="merge/3">
+
+    <span id="merge/2"></span>
+
+  <div class="detail-header">
+    <a href="#merge/3" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">merge(left, right, section \\ nil)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L494" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> merge(<a href="#t:schema/0">schema</a>(), <a href="#t:schema/0">schema</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil) :: <a href="#t:schema/0">schema</a>()</pre>
+
+      </div>
+
+<p>Merges two schemas, and sets the <code class="inline">subsection</code> option on all options on the right side.</p>
+  </section>
+</section>
+<section class="detail" id="new!/1">
+
+  <div class="detail-header">
+    <a href="#new!/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new!(schema)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L523" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> new!(<a href="#t:schema/0">schema</a>()) :: <a href="#t:t/0">t</a>()</pre>
+
+      </div>
+
+<p>Validates the given <code class="inline">schema</code> and returns a wrapped schema to be used with <a href="#validate/2"><code class="inline">validate/2</code></a>.</p><p>If the given schema is not valid, raises a <a href="Spark.Options.ValidationError.html"><code class="inline">Spark.Options.ValidationError</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="option_typespec/1">
+
+  <div class="detail-header">
+    <a href="#option_typespec/1" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">option_typespec(schema)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L691" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> option_typespec(<a href="#t:schema/0">schema</a>() | <a href="#t:t/0">t</a>()) :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()</pre>
+
+      </div>
+
+<p>Returns the quoted typespec for any option described by the given schema.</p><p>The returned quoted code represents the <strong>type union</strong> for all possible
+keys in the schema, alongside their type. Nested keyword lists are
+spec'ed as <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">keyword/0</code></a>.</p><h2 id="option_typespec/1-usage" class="section-heading">
+  <a href="#option_typespec/1-usage" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Usage</span>
+</h2>
+<p>Because of how typespecs are treated by the Elixir compiler, you have
+to use <a href="https://hexdocs.pm/elixir/Kernel.SpecialForms.html#unquote/1"><code class="inline">unquote/1</code></a> on the return value of this function to use it
+in a typespec:</p><pre><code class="makeup elixir" translate="no"><span class="na">@type</span><span class="w"> </span><span class="n">option</span><span class="p" data-group-id="3136126113-1">(</span><span class="p" data-group-id="3136126113-1">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="k">unquote</span><span class="p" data-group-id="3136126113-2">(</span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">option_typespec</span><span class="p" data-group-id="3136126113-3">(</span><span class="n">my_schema</span><span class="p" data-group-id="3136126113-3">)</span><span class="p" data-group-id="3136126113-2">)</span></code></pre><p>This function returns the type union for a single option: to give you
+flexibility to combine it and use it in your own typespecs. For example,
+if you only validate part of the options through Spark.Options, you could
+write a spec like this:</p><pre><code class="makeup elixir" translate="no"><span class="na">@type</span><span class="w"> </span><span class="n">my_option</span><span class="p" data-group-id="7542248314-1">(</span><span class="p" data-group-id="7542248314-1">)</span><span class="w"> </span><span class="o">::</span><span class="w">
+        </span><span class="p" data-group-id="7542248314-2">{</span><span class="ss">:my_opt1</span><span class="p">,</span><span class="w"> </span><span class="n">integer</span><span class="p" data-group-id="7542248314-3">(</span><span class="p" data-group-id="7542248314-3">)</span><span class="p" data-group-id="7542248314-2">}</span><span class="w">
+        </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="7542248314-4">{</span><span class="ss">:my_opt2</span><span class="p">,</span><span class="w"> </span><span class="n">boolean</span><span class="p" data-group-id="7542248314-5">(</span><span class="p" data-group-id="7542248314-5">)</span><span class="p" data-group-id="7542248314-4">}</span><span class="w">
+        </span><span class="o">|</span><span class="w"> </span><span class="k">unquote</span><span class="p" data-group-id="7542248314-6">(</span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">option_typespec</span><span class="p" data-group-id="7542248314-7">(</span><span class="n">my_schema</span><span class="p" data-group-id="7542248314-7">)</span><span class="p" data-group-id="7542248314-6">)</span></code></pre><p>If you want to spec a whole schema, you could write something like this:</p><pre><code class="makeup elixir" translate="no"><span class="na">@type</span><span class="w"> </span><span class="n">options</span><span class="p" data-group-id="6205939678-1">(</span><span class="p" data-group-id="6205939678-1">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p" data-group-id="6205939678-2">[</span><span class="k">unquote</span><span class="p" data-group-id="6205939678-3">(</span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">option_typespec</span><span class="p" data-group-id="6205939678-4">(</span><span class="n">my_schema</span><span class="p" data-group-id="6205939678-4">)</span><span class="p" data-group-id="6205939678-3">)</span><span class="p" data-group-id="6205939678-2">]</span></code></pre><h2 id="option_typespec/1-example" class="section-heading">
+  <a href="#option_typespec/1-example" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Example</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0258899412-1">[</span><span class="w">
+  </span><span class="ss">int</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0258899412-2">[</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="0258899412-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">number</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0258899412-3">[</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0258899412-4">{</span><span class="ss">:or</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0258899412-5">[</span><span class="ss">:integer</span><span class="p">,</span><span class="w"> </span><span class="ss">:float</span><span class="p" data-group-id="0258899412-5">]</span><span class="p" data-group-id="0258899412-4">}</span><span class="p" data-group-id="0258899412-3">]</span><span class="w">
+</span><span class="p" data-group-id="0258899412-1">]</span><span class="w">
+
+</span><span class="na">@type</span><span class="w"> </span><span class="n">option</span><span class="p" data-group-id="0258899412-6">(</span><span class="p" data-group-id="0258899412-6">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="k">unquote</span><span class="p" data-group-id="0258899412-7">(</span><span class="nc">Spark.Options</span><span class="o">.</span><span class="n">option_typespec</span><span class="p" data-group-id="0258899412-8">(</span><span class="n">schema</span><span class="p" data-group-id="0258899412-8">)</span><span class="p" data-group-id="0258899412-7">)</span></code></pre><p>The code above would essentially compile to:</p><pre><code class="makeup elixir" translate="no"><span class="na">@type</span><span class="w"> </span><span class="n">option</span><span class="p" data-group-id="7953034006-1">(</span><span class="p" data-group-id="7953034006-1">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p" data-group-id="7953034006-2">{</span><span class="ss">:int</span><span class="p">,</span><span class="w"> </span><span class="n">integer</span><span class="p" data-group-id="7953034006-3">(</span><span class="p" data-group-id="7953034006-3">)</span><span class="p" data-group-id="7953034006-2">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="7953034006-4">{</span><span class="ss">:number</span><span class="p">,</span><span class="w"> </span><span class="n">integer</span><span class="p" data-group-id="7953034006-5">(</span><span class="p" data-group-id="7953034006-5">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">float</span><span class="p" data-group-id="7953034006-6">(</span><span class="p" data-group-id="7953034006-6">)</span><span class="p" data-group-id="7953034006-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="validate/2">
+
+  <div class="detail-header">
+    <a href="#validate/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">validate(options, schema)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L482" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(),
+  <a href="#t:schema/0">schema</a>() | <a href="#t:t/0">t</a>()
+) ::
+  {:ok, validated_options :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}
+  | {:error, <a href="Spark.Options.ValidationError.html#t:t/0">Spark.Options.ValidationError.t</a>()}</pre>
+
+      </div>
+
+<p>Validates the given <code class="inline">options</code> with the given <code class="inline">schema</code>.</p><p>See the module documentation for what a <code class="inline">schema</code> is.</p><p>If the validation is successful, this function returns <code class="inline">{:ok, validated_options}</code>
+where <code class="inline">validated_options</code> is a keyword list. If the validation fails, this
+function returns <code class="inline">{:error, validation_error}</code> where <code class="inline">validation_error</code> is a
+<a href="Spark.Options.ValidationError.html"><code class="inline">Spark.Options.ValidationError</code></a> struct explaining what's wrong with the options.
+You can use <a href="https://hexdocs.pm/elixir/Kernel.html#raise/1"><code class="inline">raise/1</code></a> with that struct or <a href="https://hexdocs.pm/elixir/Exception.html#message/1"><code class="inline">Exception.message/1</code></a> to turn it into a string.</p>
+  </section>
+</section>
+<section class="detail" id="validate!/2">
+
+  <div class="detail-header">
+    <a href="#validate!/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">validate!(options, schema)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/options/options.ex#L510" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate!(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(),
+  <a href="#t:schema/0">schema</a>() | <a href="#t:t/0">t</a>()
+) :: validated_options :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()</pre>
+
+      </div>
+
+<p>Validates the given <code class="inline">options</code> with the given <code class="inline">schema</code> and raises if they're not valid.</p><p>This function behaves exactly like <a href="#validate/2"><code class="inline">validate/2</code></a>, but returns the options directly
+if they're valid or raises a <a href="Spark.Options.ValidationError.html"><code class="inline">Spark.Options.ValidationError</code></a> exception otherwise.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.0">
+    <meta name="project" content="spark v2.2.24">
+
+
+    <title>Spark.Dsl — spark v2.2.24</title>
+    <link rel="stylesheet" href="dist/html-elixir-K5ICTFVY.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-C8EEC430.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-Q4PYR6ZR.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/ash-project/spark" class="sidebar-projectName" translate="no">
+spark
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.2.24
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of spark</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Spark.Dsl</span> <small>behaviour</small>
+    <small class="app-vsn" translate="no">(spark v2.2.24)</small>
+
+  </h1>
+
+
+    <section id="moduledoc">
+<p>The primary entry point for adding a DSL to a module.</p><p>To add a DSL to a module, add <code class="inline">use Spark.Dsl, ...options</code>. The options supported with <code class="inline">use Spark.Dsl</code> are:</p><ul><li><p><code class="inline">:single_extension_kinds</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The extension kinds that are allowed to have a single value. For example: <code class="inline">[:data_layer]</code> The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:many_extension_kinds</code> (list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a>) - The extension kinds that can have multiple values. e.g <code class="inline">[notifiers: [Notifier1, Notifier2]]</code> The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:untyped_extensions?</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">boolean/0</code></a>) - Whether or not to support an <code class="inline">extensions</code> key which contains untyped extensions The default value is <code class="inline">true</code>.</p></li><li><p><code class="inline">:extension_kind_types</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">keyword/0</code></a>) - A keyword list of extension kinds and their types, e.g <code class="inline">[authorizers: {:list, {:behaviour, Ash.Authorizer}}]</code> The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:extension_kind_docs</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">keyword/0</code></a>) - A keyword list of extension kinds and a short documentation snippet to be used when autocompleting that option The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:default_extensions</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">keyword/0</code></a>) - The extensions that are included by default. e.g <code class="inline">[data_layer: Default, notifiers: [Notifier1]]</code>
+Default values for single extension kinds are overwritten if specified by the implementor, while many extension
+kinds are appended to if specified by the implementor. The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:opt_schema</code> (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types"><code class="inline">keyword/0</code></a>) - A schema for additional options to accept when calling <code class="inline">use YourSpark</code> The default value is <code class="inline">[]</code>.</p></li><li><p><code class="inline">:opts_to_document</code> - A list of <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types"><code class="inline">atom/0</code></a> or <code class="inline">:all</code>. Spark automatically detects options and documents them in <code class="inline">@moduledoc</code>.
+You can instruct Spark to use only a subset of options, e.g. <code class="inline">opts_to_document: [:fragments]</code>. The default value is <code class="inline">:all</code>.</p></li></ul><p>See the callbacks defined in this module to augment the behavior/compilation of the module getting a Dsl.</p><h2 id="module-schemas-data-types" class="section-heading">
+  <a href="#module-schemas-data-types" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Schemas/Data Types</span>
+</h2>
+<p>For more information, see <a href="Spark.Options.html"><code class="inline">Spark.Options</code></a>.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:entity/0" data-no-tooltip translate="no">entity()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:opts/0" data-no-tooltip translate="no">opts()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:section/0" data-no-tooltip translate="no">section()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:explain/2" data-no-tooltip translate="no">explain(t, opts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validate/add options. Those options will be passed to <code class="inline">handle_opts</code> and <code class="inline">handle_before_compile</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:handle_before_compile/1" data-no-tooltip translate="no">handle_before_compile(keyword)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handle options in the context of the module, after all extensions have been processed. Must return a <code class="inline">quote</code> block.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:handle_opts/1" data-no-tooltip translate="no">handle_opts(keyword)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handle options in the context of the module. Must return a <code class="inline">quote</code> block.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:init/1" data-no-tooltip translate="no">init(opts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validate/add options. Those options will be passed to <code class="inline">handle_opts</code> and <code class="inline">handle_before_compile</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:verify/2" data-no-tooltip translate="no">verify(module, keyword)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>A callback that is called in the <code class="inline">after_verify</code> hook. Only runs on versions of Elixir &gt;= 1.14.0</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#handle_fragments/2" data-no-tooltip translate="no">handle_fragments(dsl_config, fragments)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#is?/2" data-no-tooltip translate="no">is?(module, type)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:entity/0">
+
+  <div class="detail-header">
+    <a href="#t:entity/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">entity()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L58" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> entity() :: %Spark.Dsl.Entity{
+  args: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  auto_set_fields: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  deprecations: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  describe: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  docs: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  entities: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  examples: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  hide: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  identifier: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  imports: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  links: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  modules: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  no_depend_modules: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  recursive_as: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  schema: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  singleton_entity_keys: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  snippet: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  target: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  transform: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:opts/0">
+
+  <div class="detail-header">
+    <a href="#t:opts/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">opts()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L76" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> opts() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:section/0">
+
+  <div class="detail-header">
+    <a href="#t:section/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">section()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L60" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> section() :: %Spark.Dsl.Section{
+  auto_set_fields: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  deprecations: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  describe: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  docs: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  entities: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  examples: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  imports: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  links: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  modules: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  no_depend_modules: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  patchable?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  schema: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  sections: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  snippet: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  top_level?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L77" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Callbacks</span>
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:explain/2">
+
+  <div class="detail-header">
+    <a href="#c:explain/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">explain(t, opts)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L87" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> explain(<a href="#t:t/0">t</a>(), <a href="#t:opts/0">opts</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+      </div>
+
+<p>Validate/add options. Those options will be passed to <code class="inline">handle_opts</code> and <code class="inline">handle_before_compile</code></p>
+  </section>
+</section>
+<section class="detail" id="c:handle_before_compile/1">
+
+  <div class="detail-header">
+    <a href="#c:handle_before_compile/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">handle_before_compile(keyword)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L106" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> handle_before_compile(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()</pre>
+
+      </div>
+
+<p>Handle options in the context of the module, after all extensions have been processed. Must return a <code class="inline">quote</code> block.</p>
+  </section>
+</section>
+<section class="detail" id="c:handle_opts/1">
+
+  <div class="detail-header">
+    <a href="#c:handle_opts/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">handle_opts(keyword)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L96" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> handle_opts(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="https://hexdocs.pm/elixir/Macro.html#t:t/0">Macro.t</a>()</pre>
+
+      </div>
+
+<p>Handle options in the context of the module. Must return a <code class="inline">quote</code> block.</p><p>If you want to persist anything in the DSL persistence layer,
+use <code class="inline">@persist {:key, value}</code>. It can be called multiple times to
+persist multiple times.</p>
+  </section>
+</section>
+<section class="detail" id="c:init/1">
+
+  <div class="detail-header">
+    <a href="#c:init/1" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">init(opts)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L82" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> init(<a href="#t:opts/0">opts</a>()) :: {:ok, <a href="#t:opts/0">opts</a>()} | {:error, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Validate/add options. Those options will be passed to <code class="inline">handle_opts</code> and <code class="inline">handle_before_compile</code></p>
+  </section>
+</section>
+<section class="detail" id="c:verify/2">
+
+  <div class="detail-header">
+    <a href="#c:verify/2" class="detail-link" data-no-tooltip title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">verify(module, keyword)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L101" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> verify(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>A callback that is called in the <code class="inline">after_verify</code> hook. Only runs on versions of Elixir &gt;= 1.14.0</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="handle_fragments/2">
+
+  <div class="detail-header">
+    <a href="#handle_fragments/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">handle_fragments(dsl_config, fragments)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L631" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="is?/2">
+
+  <div class="detail-header">
+    <a href="#is?/2" class="detail-link" data-no-tooltip title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">is?(module, type)</h1>
+
+      <a href="https://github.com/ash-project/spark/blob/v2.2.24/lib/spark/dsl.ex#L623" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/spark/2.2.24" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/spark/2.2.24">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="spark.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.0) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

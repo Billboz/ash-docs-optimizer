@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.34.2">
+    <meta name="project" content="igniter v0.3.29">
+
+
+    <title>Change Log — igniter v0.3.29</title>
+    <link rel="stylesheet" href="dist/html-elixir-F2VRIOKR.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-FADF54DF.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-YIPIRHGU.js"></script>
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="igniter" />
+        </a>
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+igniter
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.3.29
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of igniter</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/ash-project/igniter/blob/v0.3.29/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+
+    <span>Change Log</span>
+  </h1>
+
+<p>All notable changes to this project will be documented in this file.
+See <a href="Https://conventionalcommits.org">Conventional Commits</a> for commit guidelines.</p><!-- changelog --><h2 id="v0-3-29-2024-09-09" class="section-heading">
+  <a href="#v0-3-29-2024-09-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.28...v0.3.29">v0.3.29</a> (2024-09-09)</span>
+</h2>
+<h3 id="improvements" class="section-heading">
+  <a href="#improvements" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>check for git changes to avoid overwriting unsaved changes</p></li><li><p>add <a href="Mix.Tasks.Igniter.Gen.Task.html"><code class="inline">mix igniter.gen.task</code></a> to quickly generate a full task</p></li><li><p>properly find the default location for mix task modules</p></li><li><p>add <code class="inline">--only</code> option, and <code class="inline">only</code> key in <a href="Igniter.Mix.Task.Info.html"><code class="inline">Igniter.Mix.Task.Info</code></a></p></li><li><p>add <a href="Igniter.Test.html"><code class="inline">Igniter.Test</code></a> with helpers for writing tests</p></li><li><p>extract app name and app module from mix.exs file</p></li></ul><h2 id="v0-3-28-2024-09-09" class="section-heading">
+  <a href="#v0-3-28-2024-09-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.27...v0.3.28">v0.3.28</a> (2024-09-09)</span>
+</h2>
+<h3 id="bug-fixes" class="section-heading">
+  <a href="#bug-fixes" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>don't hardcode <code class="inline">Spark.Formatter</code> plugin</li></ul><h2 id="v0-3-27-2024-09-08" class="section-heading">
+  <a href="#v0-3-27-2024-09-08" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.26...v0.3.27">v0.3.27</a> (2024-09-08)</span>
+</h2>
+<h3 id="improvements-1" class="section-heading">
+  <a href="#improvements-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>when replacing a dependency, leave it in the same location</li></ul><h2 id="v0-3-26-2024-09-08" class="section-heading">
+  <a href="#v0-3-26-2024-09-08" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.25...v0.3.26">v0.3.26</a> (2024-09-08)</span>
+</h2>
+<h3 id="improvements-2" class="section-heading">
+  <a href="#improvements-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add <code class="inline">igniter.update_gettext</code></li></ul><h2 id="v0-3-25-2024-09-06" class="section-heading">
+  <a href="#v0-3-25-2024-09-06" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.24...v0.3.25">v0.3.25</a> (2024-09-06)</span>
+</h2>
+<h3 id="improvements-3" class="section-heading">
+  <a href="#improvements-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>add <code class="inline">configure_runtime_env</code> codemod</p></li><li><p>remove dependencies that aren't strictly necessary</p></li><li><p>remove dependencies that we don't really need</p></li><li><p>more options to <code class="inline">igniter.new</code></p></li></ul><h2 id="v0-3-24-2024-08-26" class="section-heading">
+  <a href="#v0-3-24-2024-08-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.23...v0.3.24">v0.3.24</a> (2024-08-26)</span>
+</h2>
+<h3 id="bug-fixes-1" class="section-heading">
+  <a href="#bug-fixes-1" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>detect equal lists for node equality</li></ul><h2 id="v0-3-23-2024-08-26" class="section-heading">
+  <a href="#v0-3-23-2024-08-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.22...v0.3.23">v0.3.23</a> (2024-08-26)</span>
+</h2>
+<h3 id="bug-fixes-2" class="section-heading">
+  <a href="#bug-fixes-2" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly move to arguments of Module.fun calls</li></ul><h3 id="improvements-4" class="section-heading">
+  <a href="#improvements-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>add <a href="Igniter.Code.Common.html#expand_literal/1"><code class="inline">Igniter.Code.Common.expand_literal/1</code></a></p></li><li><p>add <code class="inline">--with-args</code> to pass additional args to installers</p></li></ul><h2 id="v0-3-22-2024-08-20" class="section-heading">
+  <a href="#v0-3-22-2024-08-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.21...v0.3.22">v0.3.22</a> (2024-08-20)</span>
+</h2>
+<h3 id="improvements-5" class="section-heading">
+  <a href="#improvements-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add options to control behavior when creating a file that already exists</li></ul><h2 id="v0-3-21-2024-08-20" class="section-heading">
+  <a href="#v0-3-21-2024-08-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.20...v0.3.21">v0.3.21</a> (2024-08-20)</span>
+</h2>
+<h3 id="improvements-6" class="section-heading">
+  <a href="#improvements-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add <code class="inline">copy_template/4</code></li></ul><h2 id="v0-3-20-2024-08-19" class="section-heading">
+  <a href="#v0-3-20-2024-08-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.19...v0.3.20">v0.3.20</a> (2024-08-19)</span>
+</h2>
+<h3 id="bug-fixes-3" class="section-heading">
+  <a href="#bug-fixes-3" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>ensure no timeout on task async streams</p></li><li><p>don't hardcode <code class="inline">Foo.Supervisor</code> ð¤¦</p></li></ul><h2 id="v0-3-19-2024-08-13" class="section-heading">
+  <a href="#v0-3-19-2024-08-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.18...v0.3.19">v0.3.19</a> (2024-08-13)</span>
+</h2>
+<h3 id="bug-fixes-4" class="section-heading">
+  <a href="#bug-fixes-4" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>properly handle values vs code in configure</li></ul><h2 id="v0-3-18-2024-08-08" class="section-heading">
+  <a href="#v0-3-18-2024-08-08" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.17...v0.3.18">v0.3.18</a> (2024-08-08)</span>
+</h2>
+<h3 id="bug-fixes-5" class="section-heading">
+  <a href="#bug-fixes-5" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix and test keyword setting on empty list</li></ul><h2 id="v0-3-17-2024-08-08" class="section-heading">
+  <a href="#v0-3-17-2024-08-08" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.16...v0.3.17">v0.3.17</a> (2024-08-08)</span>
+</h2>
+<h3 id="bug-fixes-6" class="section-heading">
+  <a href="#bug-fixes-6" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly parse boolean switches from positional args</p></li><li><p>don't warn on <a href="https://hexdocs.pm/elixir/Macro.Env.html#expand_alias/3"><code class="inline">Macro.Env.expand_alias/3</code></a> not being defined</p></li><li><p>descend into single child block when modifying keyword</p></li><li><p>set <code class="inline">format: :keyword</code> when adding keyword list item to empty list</p></li><li><p>escape injected code in Common.replace_code/2 (#70)</p></li><li><p>:error consistency in remove_keyword_key and argument_equals? in Config.configure (#68)</p></li></ul><h3 id="improvements-7" class="section-heading">
+  <a href="#improvements-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>support for non-elixir files with create_new_file, update_file, include_existing_file, include_or_create_file, create_or_update_file (#75)</p></li><li><p>support &quot;notices&quot; (#65)</p></li></ul><h2 id="v0-3-16-2024-07-31" class="section-heading">
+  <a href="#v0-3-16-2024-07-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.15...v0.3.16">v0.3.16</a> (2024-07-31)</span>
+</h2>
+<h3 id="bug-fixes-7" class="section-heading">
+  <a href="#bug-fixes-7" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>loadpaths after compiling deps</li></ul><h3 id="improvements-8" class="section-heading">
+  <a href="#improvements-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add <code class="inline">create_module</code> utility</li></ul><h2 id="v0-3-15-2024-07-31" class="section-heading">
+  <a href="#v0-3-15-2024-07-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.14...v0.3.15">v0.3.15</a> (2024-07-31)</span>
+</h2>
+<h3 id="bug-fixes-8" class="section-heading">
+  <a href="#bug-fixes-8" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>remove <code class="inline">force?: true</code> from dep installation</p></li><li><p>better handling of positional args in igniter.new</p></li></ul><h2 id="v0-3-14-2024-07-30" class="section-heading">
+  <a href="#v0-3-14-2024-07-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.13...v0.3.14">v0.3.14</a> (2024-07-30)</span>
+</h2>
+<h3 id="bug-fixes-9" class="section-heading">
+  <a href="#bug-fixes-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>detect more function call formats</p></li><li><p>properly extract arguments when parsing positional args</p></li></ul><h2 id="v0-3-13-2024-07-30" class="section-heading">
+  <a href="#v0-3-13-2024-07-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.12...v0.3.13">v0.3.13</a> (2024-07-30)</span>
+</h2>
+<h3 id="bug-fixes-10" class="section-heading">
+  <a href="#bug-fixes-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>force compile dependencies to avoid strange compiler issues</li></ul><h2 id="v0-3-12-2024-07-30" class="section-heading">
+  <a href="#v0-3-12-2024-07-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.11...v0.3.12">v0.3.12</a> (2024-07-30)</span>
+</h2>
+<h3 id="improvements-9" class="section-heading">
+  <a href="#improvements-9" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add <a href="Igniter.Libs.Phoenix.html#endpoints_for_router/2"><code class="inline">Igniter.Libs.Phoenix.endpoints_for_router/2</code></a></li></ul><h2 id="v0-3-11-2024-07-27" class="section-heading">
+  <a href="#v0-3-11-2024-07-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.10...v0.3.11">v0.3.11</a> (2024-07-27)</span>
+</h2>
+<h3 id="bug-fixes-11" class="section-heading">
+  <a href="#bug-fixes-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>ensure igniter is compiled first</p></li><li><p>fetch deps after adding any nested installers</p></li><li><p>various fixes &amp; improvements to positional argument listing</p></li></ul><h3 id="improvements-10" class="section-heading">
+  <a href="#improvements-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>clean up dependency compiling logic</p></li><li><p>optimize module finding w/ async_stream</p></li><li><p>add <code class="inline">rest: true</code> option for positional args</p></li></ul><h2 id="v0-3-10-2024-07-26" class="section-heading">
+  <a href="#v0-3-10-2024-07-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.9...v0.3.10">v0.3.10</a> (2024-07-26)</span>
+</h2>
+<h3 id="bug-fixes-12" class="section-heading">
+  <a href="#bug-fixes-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>recompile igniter in <code class="inline">ingiter.install</code></li></ul><h3 id="improvements-11" class="section-heading">
+  <a href="#improvements-11" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>add <code class="inline">positional_args!/1</code> macro for use in tasks</p></li><li><p>better output on missing installers &amp; already present dep</p></li></ul><h2 id="v0-3-9-2024-07-22" class="section-heading">
+  <a href="#v0-3-9-2024-07-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.8...v0.3.9">v0.3.9</a> (2024-07-22)</span>
+</h2>
+<h3 id="bug-fixes-13" class="section-heading">
+  <a href="#bug-fixes-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>force compile dependencies.</p></li><li><p>use length of path for insertion point, instead of node equality</p></li></ul><h2 id="v0-3-8-2024-07-19" class="section-heading">
+  <a href="#v0-3-8-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.7...v0.3.8">v0.3.8</a> (2024-07-19)</span>
+</h2>
+<h3 id="improvements-12" class="section-heading">
+  <a href="#improvements-12" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>better map key setting</p></li><li><p>detect strings as non extendable blocks</p></li><li><p>add option to ignore already present phoenix scopes</p></li></ul><h2 id="v0-3-7-2024-07-19" class="section-heading">
+  <a href="#v0-3-7-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.6...v0.3.7">v0.3.7</a> (2024-07-19)</span>
+</h2>
+<h3 id="bug-fixes-14" class="section-heading">
+  <a href="#bug-fixes-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>improve <code class="inline">add_code</code> by modifying the <code class="inline">supertree</code></li></ul><h2 id="v0-3-6-2024-07-19" class="section-heading">
+  <a href="#v0-3-6-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.5...v0.3.6">v0.3.6</a> (2024-07-19)</span>
+</h2>
+<h3 id="bug-fixes-15" class="section-heading">
+  <a href="#bug-fixes-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly scope configuration modification code</p></li><li><p>properly add blocks of code together</p></li></ul><h2 id="v0-3-5-2024-07-19" class="section-heading">
+  <a href="#v0-3-5-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.4...v0.3.5">v0.3.5</a> (2024-07-19)</span>
+</h2>
+<h3 id="bug-fixes-16" class="section-heading">
+  <a href="#bug-fixes-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>properly move to pattern matches in scope</p></li><li><p>configures?/3 -&gt; configures_key &amp; configures_root_key (#54)</p></li></ul><h3 id="improvements-13" class="section-heading">
+  <a href="#improvements-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>add blocks together more fluidly in <code class="inline">add_code</code></li></ul><h2 id="v0-3-4-2024-07-19" class="section-heading">
+  <a href="#v0-3-4-2024-07-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.3...v0.3.4">v0.3.4</a> (2024-07-19)</span>
+</h2>
+<h3 id="bug-fixes-17" class="section-heading">
+  <a href="#bug-fixes-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>recompile <code class="inline">:igniter</code> if it has to</li></ul><h3 id="improvements-14" class="section-heading">
+  <a href="#improvements-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>include config in include_all_elixir_files (#55)</p></li><li><p>add Function.argument_equals?/3 (#53)</p></li><li><p>add Function.argument_equals?/3</p></li></ul><h2 id="v0-3-3-2024-07-18" class="section-heading">
+  <a href="#v0-3-3-2024-07-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.2...v0.3.3">v0.3.3</a> (2024-07-18)</span>
+</h2>
+<h3 id="improvements-15" class="section-heading">
+  <a href="#improvements-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>fix function typespecs &amp; add <code class="inline">inflex</code> dependency</p></li><li><p>only show executed installers (#50)</p></li><li><p>support tuple dependencies in igniter.install (#49)</p></li></ul><h2 id="v0-3-2-2024-07-16" class="section-heading">
+  <a href="#v0-3-2-2024-07-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.1...v0.3.2">v0.3.2</a> (2024-07-16)</span>
+</h2>
+<h3 id="bug-fixes-18" class="section-heading">
+  <a href="#bug-fixes-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>don't compile igniter dep again when compiling deps</li></ul><h2 id="v0-3-1-2024-07-16" class="section-heading">
+  <a href="#v0-3-1-2024-07-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.3.0...v0.3.1">v0.3.1</a> (2024-07-16)</span>
+</h2>
+<h3 id="bug-fixes-19" class="section-heading">
+  <a href="#bug-fixes-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>when adding code to surrounding block, don't go up multiple blocks</li></ul><h2 id="v0-3-0-2024-07-15" class="section-heading">
+  <a href="#v0-3-0-2024-07-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.13...v0.3.0">v0.3.0</a> (2024-07-15)</span>
+</h2>
+<h3 id="improvements-16" class="section-heading">
+  <a href="#improvements-16" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>Add <a href="Igniter.Libs.Phoenix.html"><code class="inline">Igniter.Libs.Phoenix</code></a> for working with Phoenix</p></li><li><p>deprecate duplicate <code class="inline">Igniter.Code.Module.move_to_use</code> function</p></li><li><p><a href="Igniter.Project.Config.html#configures?/4"><code class="inline">Igniter.Project.Config.configures?/4</code></a> that takes a config file</p></li><li><p>Add <a href="Igniter.Util.Warning.html"><code class="inline">Igniter.Util.Warning</code></a> for formatting code in warnings</p></li></ul><h2 id="v0-2-13-2024-07-15" class="section-heading">
+  <a href="#v0-2-13-2024-07-15" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.12...v0.2.13">v0.2.13</a> (2024-07-15)</span>
+</h2>
+<h3 id="bug-fixes-20" class="section-heading">
+  <a href="#bug-fixes-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>remove redundant case clause in <a href="Igniter.Code.Common.html"><code class="inline">Igniter.Code.Common</code></a></li></ul><h3 id="improvements-17" class="section-heading">
+  <a href="#improvements-17" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>make <code class="inline">apply_and_fetch_dependencies</code> only change <code class="inline">deps/0</code></p></li><li><p>remove a bunch of dependencies by using :inets &amp; :httpc</p></li></ul><h2 id="v0-2-12-2024-07-10" class="section-heading">
+  <a href="#v0-2-12-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.11...v0.2.12">v0.2.12</a> (2024-07-10)</span>
+</h2>
+<h3 id="bug-fixes-21" class="section-heading">
+  <a href="#bug-fixes-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>fix dialyzer warnings about info/2 never being nil</li></ul><h2 id="v0-2-11-2024-07-10" class="section-heading">
+  <a href="#v0-2-11-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.10...v0.2.11">v0.2.11</a> (2024-07-10)</span>
+</h2>
+<h3 id="bug-fixes-22" class="section-heading">
+  <a href="#bug-fixes-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>prevent crash on specific cases with <code class="inline">igniter.new</code></li></ul><h3 id="improvements-18" class="section-heading">
+  <a href="#improvements-18" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>more consistent initial impl of <code class="inline">elixirc_paths</code></p></li><li><p>support :kind in find_and_update_or_create_module/5 (#38)</p></li></ul><h2 id="v0-2-10-2024-07-10" class="section-heading">
+  <a href="#v0-2-10-2024-07-10" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.9...v0.2.10">v0.2.10</a> (2024-07-10)</span>
+</h2>
+<h3 id="improvements-19" class="section-heading">
+  <a href="#improvements-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>ensure <code class="inline">test/support</code> is in elixirc paths automatically when necessary</li></ul><h2 id="v0-2-9-2024-07-09" class="section-heading">
+  <a href="#v0-2-9-2024-07-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.8...v0.2.9">v0.2.9</a> (2024-07-09)</span>
+</h2>
+<h3 id="bug-fixes-23" class="section-heading">
+  <a href="#bug-fixes-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>simplify how we get tasks to run</p></li><li><p>don't try to format after editing <code class="inline">mix.exs</code></p></li></ul><h2 id="v0-2-8-2024-07-09" class="section-heading">
+  <a href="#v0-2-8-2024-07-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.7...v0.2.8">v0.2.8</a> (2024-07-09)</span>
+</h2>
+<h3 id="bug-fixes-24" class="section-heading">
+  <a href="#bug-fixes-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>fix deps compilation issues by vendoring <code class="inline">deps.compile</code></p></li><li><p>honor <code class="inline">--yes</code> flag when installing deps always</p></li></ul><h3 id="improvements-20" class="section-heading">
+  <a href="#improvements-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>small tweaks to output</li></ul><h2 id="v0-2-7-2024-07-09" class="section-heading">
+  <a href="#v0-2-7-2024-07-09" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.6...v0.2.7">v0.2.7</a> (2024-07-09)</span>
+</h2>
+<h3 id="bug-fixes-25" class="section-heading">
+  <a href="#bug-fixes-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>remove shortnames for global options, to reduce conflicts</p></li><li><p>remove erroneous warning while composing tasks</p></li><li><p>pass file_path to <code class="inline">ensure_default_configs_exist</code> (#36)</p></li><li><p>preserve original ordering in Util.Install (#33)</p></li><li><p>include only &quot;mix.exs&quot; in the actual run in apply_and_fetch_dependencies (#32)</p></li><li><p>always return {:ok, zipper} in append_new_to_list/2 (#31)</p></li></ul><h3 id="improvements-21" class="section-heading">
+  <a href="#improvements-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>support an optional append? flag for add_dep/3 (#34)</p></li><li><p>add <code class="inline">add_dep/2-3</code>, that accepts a full dep specification</p></li><li><p>deprecate <code class="inline">add_dependency/3-4</code></p></li><li><p>make module moving much smarter</p></li><li><p>add configurations for not moving certain modules</p></li><li><p>make <code class="inline">source_folders</code> configurable</p></li></ul><h2 id="v0-2-6-2024-07-02" class="section-heading">
+  <a href="#v0-2-6-2024-07-02" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.5...v0.2.6">v0.2.6</a> (2024-07-02)</span>
+</h2>
+<h3 id="improvements-22" class="section-heading">
+  <a href="#improvements-22" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>properly find nested modules again</p></li><li><p>make igniter tests much faster by not searching our own project</p></li><li><p>add <code class="inline">include_all_elixir_files/1</code></p></li><li><p>add <code class="inline">module_exists?/2</code></p></li><li><p>add <code class="inline">find_and_update_module/3</code></p></li><li><p>only require rejecting mix deps.get one time &amp; remember that choice</p></li><li><p>simpler messages signaling a mix deps.get</p></li></ul><h2 id="v0-2-5-2024-07-02" class="section-heading">
+  <a href="#v0-2-5-2024-07-02" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.4...v0.2.5">v0.2.5</a> (2024-07-02)</span>
+</h2>
+<h3 id="improvements-23" class="section-heading">
+  <a href="#improvements-23" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p><code class="inline">move_modules</code> -&gt; <code class="inline">move_files</code></p></li><li><p>move some files around and update config names</p></li><li><p>use <code class="inline">%Info{}</code> structs to compose and plan nested installers</p></li><li><p>add Igniter.apply_and_fetch_dependencies/1 and Igniter.has_changes?/1 (#28)</p></li><li><p>rename option_schema/2 -&gt; info/2</p></li><li><p>only create default configs if an env-specific config is created</p></li></ul><h2 id="v0-2-4-2024-06-28" class="section-heading">
+  <a href="#v0-2-4-2024-06-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.3...v0.2.4">v0.2.4</a> (2024-06-28)</span>
+</h2>
+<h3 id="bug-fixes-26" class="section-heading">
+  <a href="#bug-fixes-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>fix match error in <code class="inline">append_new_to_list</code></p></li><li><p>version string splitting (#25)</p></li></ul><h3 id="improvements-24" class="section-heading">
+  <a href="#improvements-24" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>add an optional path argument to <code class="inline">find_and_update_or_create_module/5</code></p></li><li><p>add <code class="inline">option_schema/2</code> callback to <a href="Igniter.Mix.Task.html"><code class="inline">Igniter.Mix.Task</code></a></p></li><li><p><code class="inline">Module.find_and_update_or_create_module</code></p></li><li><p>add a way to move files</p></li><li><p>add <code class="inline">.igniter.exs</code> file, and <a href="Mix.Tasks.Igniter.Setup.html"><code class="inline">mix igniter.setup</code></a> to create it</p></li><li><p>move files to configured location based on changes</p></li><li><p>add fallback to compose_task (#19)</p></li><li><p>add proper_test_support_location/1 (#18)</p></li><li><p>add proper_test_location/1 (#17)</p></li></ul><h2 id="v0-2-3-2024-06-21" class="section-heading">
+  <a href="#v0-2-3-2024-06-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.2...v0.2.3">v0.2.3</a> (2024-06-21)</span>
+</h2>
+<h3 id="improvements-25" class="section-heading">
+  <a href="#improvements-25" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>use <code class="inline">override: true</code> for git/github deps as well</li></ul><h2 id="v0-2-2-2024-06-21" class="section-heading">
+  <a href="#v0-2-2-2024-06-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.1...v0.2.2">v0.2.2</a> (2024-06-21)</span>
+</h2>
+<h3 id="bug-fixes-27" class="section-heading">
+  <a href="#bug-fixes-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>don't show unnecessary diff output</p></li><li><p>don't compile before fetching deps</p></li></ul><h2 id="v0-2-1-2024-06-21" class="section-heading">
+  <a href="#v0-2-1-2024-06-21" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.2.0...v0.2.1">v0.2.1</a> (2024-06-21)</span>
+</h2>
+<h3 id="improvements-26" class="section-heading">
+  <a href="#improvements-26" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>workaround trailing comment issues w/ sourceror</p></li><li><p>support <code class="inline">--with</code> option in <code class="inline">igniter.new</code></p></li></ul><h2 id="v0-2-0-2024-06-20" class="section-heading">
+  <a href="#v0-2-0-2024-06-20" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.8...v0.2.0">v0.2.0</a> (2024-06-20)</span>
+</h2>
+<h3 id="improvements-27" class="section-heading">
+  <a href="#improvements-27" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>make installer use <code class="inline">override: true</code> on local dependency</p></li><li><p>ensure dependencies are compiled after <a href="https://hexdocs.pm/mix/Mix.Tasks.Deps.Get.html"><code class="inline">mix deps.get</code></a></p></li><li><p>use warnings instead of errors for better UX</p></li><li><p>move proejct related things to <code class="inline">Project</code> namespace</p></li></ul><h2 id="v0-1-8-2024-06-19" class="section-heading">
+  <a href="#v0-1-8-2024-06-19" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.7...v0.1.8">v0.1.8</a> (2024-06-19)</span>
+</h2>
+<h3 id="bug-fixes-28" class="section-heading">
+  <a href="#bug-fixes-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>update spitfire for env fix</li></ul><h3 id="improvements-28" class="section-heading">
+  <a href="#improvements-28" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>rename <code class="inline">env_at_cursor</code> to <code class="inline">current_env</code></p></li><li><p>improve marshalling of spitfire env to macro env</p></li><li><p>show warning when adding dependencies by default</p></li></ul><h2 id="v0-1-7-2024-06-14" class="section-heading">
+  <a href="#v0-1-7-2024-06-14" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.6...v0.1.7">v0.1.7</a> (2024-06-14)</span>
+</h2>
+<h3 id="improvements-29" class="section-heading">
+  <a href="#improvements-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>various restructurings and improvements across the board</p></li><li><p>use <a href="https://hexdocs.pm/spitfire/0.1.3/Spitfire.html"><code class="inline">Spitfire</code></a> to ensure that aliases are considered when comparing modules</p></li><li><p>use <a href="https://hexdocs.pm/spitfire/0.1.3/Spitfire.html"><code class="inline">Spitfire</code></a> to <em>use</em> any existing aliases when inserting code</p></li><li><p>use <code class="inline">Zipper.topmost</code> to power new <a href="https://hexdocs.pm/spitfire/0.1.3/Spitfire.html"><code class="inline">Spitfire</code></a>-related features</p></li></ul><h2 id="v0-1-6-2024-06-13" class="section-heading">
+  <a href="#v0-1-6-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.5...v0.1.6">v0.1.6</a> (2024-06-13)</span>
+</h2>
+<h3 id="bug-fixes-29" class="section-heading">
+  <a href="#bug-fixes-29" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>patch formatter fix, to be removed later when rewrite PR is merged</p></li><li><p>properly find functions in scope</p></li></ul><h2 id="v0-1-5-2024-06-13" class="section-heading">
+  <a href="#v0-1-5-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.4...v0.1.5">v0.1.5</a> (2024-06-13)</span>
+</h2>
+<h3 id="bug-fixes-30" class="section-heading">
+  <a href="#bug-fixes-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>Igniter.Code.Common.with/2 was not properly merging with original zipper</li></ul><h2 id="v0-1-4-2024-06-13" class="section-heading">
+  <a href="#v0-1-4-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.3...v0.1.4">v0.1.4</a> (2024-06-13)</span>
+</h2>
+<h3 id="improvements-30" class="section-heading">
+  <a href="#improvements-30" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>use <code class="inline">path:</code> prefix instead of <code class="inline">local:</code></li></ul><h2 id="v0-1-3-2024-06-13" class="section-heading">
+  <a href="#v0-1-3-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.2...v0.1.3">v0.1.3</a> (2024-06-13)</span>
+</h2>
+<h3 id="improvements-31" class="section-heading">
+  <a href="#improvements-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li>support space-separated installers</li></ul><h2 id="v0-1-2-2024-06-13" class="section-heading">
+  <a href="#v0-1-2-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.1...v0.1.2">v0.1.2</a> (2024-06-13)</span>
+</h2>
+<h3 id="bug-fixes-31" class="section-heading">
+  <a href="#bug-fixes-31" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li><p>remove unsupportable package installation symbols</p></li><li><p>don't run <a href="https://hexdocs.pm/mix/Mix.Tasks.Deps.Get.html"><code class="inline">mix deps.get</code></a> if dependency changes are aborted</p></li></ul><h2 id="v0-1-1-2024-06-13" class="section-heading">
+  <a href="#v0-1-1-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.0...v0.1.1">v0.1.1</a> (2024-06-13)</span>
+</h2>
+<h3 id="bug-fixes-32" class="section-heading">
+  <a href="#bug-fixes-32" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>always format the file even if no <code class="inline">.formatter.exs</code> exists</li></ul><h2 id="v0-1-0-2024-06-13" class="section-heading">
+  <a href="#v0-1-0-2024-06-13" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text"><a href="https://github.com/ash-project/igniter/compare/v0.1.0...v0.1.0">v0.1.0</a> (2024-06-13)</span>
+</h2>
+<h3 id="bug-fixes-33" class="section-heading">
+  <a href="#bug-fixes-33" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Bug Fixes:</span>
+</h3>
+<ul><li>handle existing deps when they are not local properly</li></ul><h3 id="improvements-32" class="section-heading">
+  <a href="#improvements-32" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Improvements:</span>
+</h3>
+<ul><li><p>ignore installer tasks that are not igniter tasks</p></li><li><p>draw the rest of the owl</p></li><li><p>add installer archive</p></li><li><p>more module helpers</p></li><li><p>wrap code in <code class="inline">==code==</code> so you can tell what is being <code class="inline">puts</code></p></li><li><p>add CI/build and get it passing locally</p></li></ul>
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="configuring-igniter.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Configuring Igniter
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/igniter/0.3.29" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/igniter/0.3.29">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/igniter/0.3.29/show/CHANGELOG.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="igniter.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.34.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

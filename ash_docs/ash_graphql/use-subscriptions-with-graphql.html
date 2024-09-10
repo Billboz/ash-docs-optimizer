@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.31.2">
+    <meta name="project" content="ash_graphql v1.3.3">
+
+
+    <title>Using Subscriptions — ash_graphql v1.3.3</title>
+    <link rel="stylesheet" href="dist/html-elixir-HOYFI7O5.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-A7S2WMC7.js"></script>
+    <script src="dist/sidebar_items-515155DF.js"></script>
+    <script async src="dist/html-5VHYSU4S.js"></script>
+
+<script>
+  if (location.hostname === "hexdocs.pm") {
+    var script = document.createElement("script");
+    script.src = "https://plausible.io/js/script.js";
+    script.setAttribute("defer", "defer")
+    script.setAttribute("data-domain", "ashhexdocs")
+    document.head.appendChild(script);
+  }
+</script>
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="ash_graphql" />
+        </a>
+
+      <div>
+        <a href="https://github.com/ash-project/ash_graphql" class="sidebar-projectName" translate="no">
+ash_graphql
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.3.3
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+GUIDES
+        </button>
+      </li>
+
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
+
+
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
+
+    </ul>
+  </div>
+
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
+
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
+  <output role="status" id="toast"></output>
+
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ash_graphql</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<h1>
+
+    <a href="https://github.com/ash-project/ash_graphql/blob/v1.3.3/documentation/topics/use-subscriptions-with-graphql.md#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+
+  <span>Using Subscriptions</span>
+</h1>
+
+<p>The AshGraphql DSL does not currently support subscriptions. However, you can do this with Absinthe direclty, and use <a href="AshGraphql.Subscription.html#query_for_subscription/3"><code class="inline">AshGraphql.Subscription.query_for_subscription/3</code></a>. Here is an example of how you could do this for a subscription for a single record. This example could be extended to support lists of records as well.</p><pre><code class="makeup elixir" translate="no"><span class="c1"># in your absinthe schema file</span><span class="w">
+</span><span class="n">subscription</span><span class="w"> </span><span class="k" data-group-id="0669945999-1">do</span><span class="w">
+  </span><span class="n">field</span><span class="w"> </span><span class="ss">:field</span><span class="p">,</span><span class="w"> </span><span class="ss">:type_name</span><span class="w"> </span><span class="k" data-group-id="0669945999-2">do</span><span class="w">
+    </span><span class="n">config</span><span class="p" data-group-id="0669945999-3">(</span><span class="k" data-group-id="0669945999-4">fn</span><span class="w">
+      </span><span class="c">_args</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0669945999-5">%{</span><span class="ss">context</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0669945999-6">%{</span><span class="ss">current_user</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0669945999-7">%{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">user_id</span><span class="p" data-group-id="0669945999-7">}</span><span class="p" data-group-id="0669945999-6">}</span><span class="p" data-group-id="0669945999-5">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="0669945999-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">topic</span><span class="p">:</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="ss">context_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;user/</span><span class="si" data-group-id="0669945999-9">#{</span><span class="n">user_id</span><span class="si" data-group-id="0669945999-9">}</span><span class="s">&quot;</span><span class="p" data-group-id="0669945999-8">}</span><span class="w">
+
+      </span><span class="c">_args</span><span class="p">,</span><span class="w"> </span><span class="c">_context</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+        </span><span class="p" data-group-id="0669945999-10">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:unauthorized</span><span class="p" data-group-id="0669945999-10">}</span><span class="w">
+    </span><span class="k" data-group-id="0669945999-4">end</span><span class="p" data-group-id="0669945999-3">)</span><span class="w">
+
+    </span><span class="n">resolve</span><span class="p" data-group-id="0669945999-11">(</span><span class="k" data-group-id="0669945999-12">fn</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">resolution</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="c1"># loads all the data you need</span><span class="w">
+      </span><span class="nc">AshGraphql.Subscription</span><span class="o">.</span><span class="n">query_for_subscription</span><span class="p" data-group-id="0669945999-13">(</span><span class="w">
+        </span><span class="nc">YourResource</span><span class="p">,</span><span class="w">
+        </span><span class="nc">YourDomain</span><span class="p">,</span><span class="w">
+        </span><span class="n">resolution</span><span class="w">
+      </span><span class="p" data-group-id="0669945999-13">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Query</span><span class="o">.</span><span class="n">filter</span><span class="p" data-group-id="0669945999-14">(</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">^</span><span class="n">args</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="0669945999-14">)</span><span class="w">
+      </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">read</span><span class="p" data-group-id="0669945999-15">(</span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">resolution</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">current_user</span><span class="p" data-group-id="0669945999-15">)</span><span class="w">
+    </span><span class="k" data-group-id="0669945999-12">end</span><span class="p" data-group-id="0669945999-11">)</span><span class="w">
+  </span><span class="k" data-group-id="0669945999-2">end</span><span class="w">
+</span><span class="k" data-group-id="0669945999-1">end</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="use-json-with-graphql.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Use JSON with GraphQL
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="use-unions-with-graphql.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Use Unions with GraphQL
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/ash_graphql/1.3.3" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/ash_graphql/1.3.3">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/ash_graphql/1.3.3/show/documentation/topics/use-subscriptions-with-graphql.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="ash_graphql.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.31.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+
+  </body>
+</html>
