@@ -33,7 +33,7 @@ Active Github projects and a couple of Hex.pm packages:
 19. ash_sqlite
 20. ash_state_machine
 21. igniter
-22. igniter_new -- only on Hex.pm
+22. igniter_new
 23. iterex
 24. reactor
 25. spark
