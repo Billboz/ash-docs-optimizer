@@ -5,39 +5,39 @@ This project contains two representations of Ash framework documentation:
 1. Original HTML documentation in the `ash_docs` folder
 2. Optimized Markdown documentation in the `optimized_ash_docs` folder
 
+Customize this list to your liking along with the ash_docs_script.py and run the script to scrape the docs.
+If you want to optimize the docs for LLM useyou can run the optimize_docs.py script.
+Not tested yet but you can run the ash_docs_script.py and update the docs.
+I realize this is an incomplete list, I will add more as I learn more about the Ash ecosystem, or you can submit a PR.
 Active Github projects and a couple of Hex.pm packages:
 
 1. ash
 2. ash_admin
-3. ash_ai
-4. ash_appsignal
-5. ash_archival
-6. ash_authentication
-7. ash_authentication_phoenix
-8. ash_blog
-9. ash_cloak
-10. ash_csv
-11. ash_dashboard
-12. ash_double_entry
-13. ash_events
-14. ash_graphql
-15. ash_json_api
-16. ash_json_api_wrapper
-17. ash_money
-18. ash_mysql
-19. ash_oban
-20. ash_paper_trail
-21. ash_phoenix
-22. ash_postgres
-23. ash_slug
-24. ash_sql
-25. ash_sqlite
-26. ash_state_machine
-27. igniter
-28. iterex
-29. reactor
-30. spark
-
+3. ash_appsignal
+4. ash_archival
+5. ash_authentication
+6. ash_authentication_phoenix
+7. ash_cloak
+8.  ash_csv
+9.  ash_double_entry
+10. ash_graphql
+11. ash_json_api
+12. ash_money
+13. ash_oban
+14. ash_paper_trail
+15. ash_phoenix
+16. ash_policy_access -- only on Hex.pm
+17. ash_policy_authorizer -- only on Hex.pm
+18. ash_postgres
+19. ash_slug
+20. ash_sql
+21. ash_sqlite
+22. ash_state_machine
+23. igniter
+24. igniter_new -- only on Hex.pm
+25. iterex
+26. reactor
+27. spark
 
 ## Optimization Benefits
 
