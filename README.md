@@ -5,6 +5,40 @@ This project contains two representations of Ash framework documentation:
 1. Original HTML documentation in the `ash_docs` folder
 2. Optimized Markdown documentation in the `optimized_ash_docs` folder
 
+Active Github projects and a couple of Hex.pm packages:
+
+1. ash
+2. ash_admin
+3. ash_ai
+4. ash_appsignal
+5. ash_archival
+6. ash_authentication
+7. ash_authentication_phoenix
+8. ash_blog
+9. ash_cloak
+10. ash_csv
+11. ash_dashboard
+12. ash_double_entry
+13. ash_events
+14. ash_graphql
+15. ash_json_api
+16. ash_json_api_wrapper
+17. ash_money
+18. ash_mysql
+19. ash_oban
+20. ash_paper_trail
+21. ash_phoenix
+22. ash_postgres
+23. ash_slug
+24. ash_sql
+25. ash_sqlite
+26. ash_state_machine
+27. igniter
+28. iterex
+29. reactor
+30. spark
+
+
 ## Optimization Benefits
 
 The optimized Markdown version in `optimized_ash_docs` is superior for AI processing and understanding of the Ash project. Here's why:
