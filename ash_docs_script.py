@@ -21,8 +21,6 @@ ASH_PACKAGES = [
     "ash_oban",
     "ash_paper_trail",
     "ash_phoenix",
-    "ash_policy_access",
-    "ash_policy_authorizer",
     "ash_postgres",
     "ash_slug",
     "ash_sql",

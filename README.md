@@ -27,18 +27,16 @@ Active Github projects and a couple of Hex.pm packages:
 13. ash_oban
 14. ash_paper_trail
 15. ash_phoenix
-16. ash_policy_access -- only on Hex.pm
-17. ash_policy_authorizer -- only on Hex.pm
-18. ash_postgres
-19. ash_slug
-20. ash_sql
-21. ash_sqlite
-22. ash_state_machine
-23. igniter
-24. igniter_new -- only on Hex.pm
-25. iterex
-26. reactor
-27. spark
+16. ash_postgres
+17. ash_slug
+18. ash_sql
+19. ash_sqlite
+20. ash_state_machine
+21. igniter
+22. igniter_new -- only on Hex.pm
+23. iterex
+24. reactor
+25. spark
 
 ## Optimization Benefits
 
