@@ -6,10 +6,11 @@ This project contains two representations of Ash framework documentation:
 2. Optimized Markdown documentation in the `optimized_ash_docs` folder
 
 Customize this list to your liking along with the ash_docs_script.py and run the script to scrape the docs.
-If you want to optimize the docs for LLM useyou can run the optimize_docs.py script.
+If you want to optimize the docs for LLM use you can run the optimize_docs.py script.
 Not tested yet but you can run the ash_docs_script.py and update the docs.
-I realize this is an incomplete list, I will add more as I learn more about the Ash ecosystem, or you can submit a PR.
-Active Github projects and a couple of Hex.pm packages:
+I realize this is an incomplete list, I will add more as I learn more about the Ash ecosystem, or submit a PR.
+
+##Active Github projects and a couple of Hex.pm packages:
 
 1. ash
 2. ash_admin
